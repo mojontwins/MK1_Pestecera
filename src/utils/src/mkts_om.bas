@@ -27,7 +27,7 @@ End Type
 Const PLATFORM_ZX = 0
 Const PLATFORM_CPC = 1
 
-Dim Shared As Integer silent, flipped, upsideDown, debug
+Dim Shared As Integer silent, flipped, upsideDown, debug, cpcMode
 
 Dim Shared As uByte mainBin (65535)
 Dim Shared As uByte auxBin (65535)
@@ -129,6 +129,7 @@ Sub usage
 	Puts "$ mkts_om.exe platform=[zx|cpc] [brickInput] [pal=palette.png] [prefix=prefix]"
 	Puts "              in=file.png out=output.bin mode=mode [offset=x,y] [size=w,h]"
 	Puts "              [metasize=w,h] [tmapoffs=offset] [max=n] [silent] [defaultink=i]"
+	Puts "              [cpcmode=m]"
 	Puts ""
 	Puts "Supported modes: pals, chars, mapped, sprites, bg, scripted, scr"
 	Puts "In scripted mode, parameter out will be ignored."
@@ -291,7 +292,7 @@ Function zxGetBitmapFrom (x0 As Integer, y0 As Integer, c2 As Integer, img As An
 	zxGetBitmapFrom = res
 End Function
 
-Function cpcGetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any Ptr) As uByte
+Function cpcMode0GetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any Ptr) As uByte
 	' Will convert two pixels.
 	Dim As uByte c1, c2
 
@@ -304,7 +305,7 @@ Function cpcGetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any 
 	' 1 5 3 7  0 4 2 6
 
 	' Build garbled byte
-	cpcGetBitmapFrom = _
+	cpcMode0GetBitmapFrom = _
 		getBit (c2, 3) Or _
 		(getBit (c1, 3) Shl 1) Or _
 		(getBit (c2, 1) Shl 2) Or _
@@ -318,6 +319,46 @@ Function cpcGetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any 
 			Pset (x0,y0+200),c1*16
 			Pset (x0+brickMultiplier,y0+200),c2*16
 		End If
+End Function
+
+Function cpcMode1GetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any Ptr) As uByte
+	' Will convert four pixels.
+	Dim As uByte c1, c2, c3, c4
+
+	c1 = palIndex (cpcNormalizeColour (Point (x0    , y0, img)), globalPalette ()) And 3
+	c2 = palIndex (cpcNormalizeColour (Point (x0 + 1, y0, img)), globalPalette ()) And 3
+	c3 = palIndex (cpcNormalizeColour (Point (x0 + 2, y0, img)), globalPalette ()) And 3
+	c4 = palIndex (cpcNormalizeColour (Point (x0 + 3, y0, img)), globalPalette ()) And 3
+
+	' P_0 P_1 P_2 P_3
+	' 1 0 1 0 1 0 1 0
+	' 3 7 2 6 1 5 0 4
+
+	' Build garbled byte
+	cpcMode1GetBitmapFrom = _
+		getBit (c4, 1) Or _
+		(getBit (c3, 1) Shl 1) Or _
+		(getBit (c2, 1) Shl 2) Or _
+		(getBit (c1, 1) Shl 3) Or _
+		(getBit (c4, 0) Shl 4) Or _
+		(getBit (c3, 0) Shl 5) Or _
+		(getBit (c2, 0) Shl 6) Or _
+		(getBit (c1, 0) Shl 7)
+
+	If debug Then
+		Pset (x0, y0+200),c1*64
+		Pset (x0+1,y0+200),c2*64
+		Pset (x0+2, y0+200),c3*64
+		Pset (x0+3,y0+200),c4*64
+	End If
+End Function
+
+Function cpcGetBitmapFrom (Byval x0 As Integer, Byval y0 As Integer, img As Any Ptr) As uByte
+	If cpcMode = 0 Then 
+		cpcGetBitmapFrom = cpcMode0GetBitmapFrom (x0, y0, img)
+	ElseIf cpcMode = 1 Then
+		cpcGetBitmapFrom = cpcMode1GetBitmapFrom (x0, y0, img)
+	End If
 End Function
 
 Sub extractPatternFrom (x0 As Integer, y0 As Integer, img As Any Ptr, pattern () As uByte, ByRef attr as uByte)
@@ -452,6 +493,36 @@ Sub doChars (img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h As 
 	Next y
 
 	Puts "mkts_om v0.2.20180904 ~ Chars mode, " & ct & " patterns extracted (" & (ct * patternSize) & " bytes)."
+End Sub
+
+Sub doStrait2x2(img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h As Integer, max As Integer)
+	Dim As Integer x, y, x0, y0, x1, y1, ct, xx, yy
+	Dim As uByte attr 	' will be ignored in this Sub
+	Dim As uByte pattern (15)
+
+	x0 = xc0 * patternWidthInPixels
+	y0 = yc0 * 8
+	x1 = x0 + w * 2 * patternWidthInPixels - 1
+	y1 = x0 + h * 16 - 1
+	ct = 0
+
+	For y = y0 To y1 Step 16
+		For x = x0 To x1 Step patternWidthInPixels * 2
+			for yy = 0 To 8 Step 8
+				For xx = 0 To patternWidthInPixels Step patternWidthInPixels
+					extractPatternFrom x, y, img, pattern (), attr
+					addPatternToPool patternToString (pattern ())
+					if debug Then puts patternToString (pattern ())
+					copyPartialArrayToMainBin pattern (), patternSize
+				Next xx
+			Next yy
+			ct = ct + 1
+			If max <> -1 And ct = max Then Exit For
+		Next x
+		If max <> -1 And ct = max Then Exit For
+	Next y
+
+	Puts "mkts_om v0.2.20180904 ~ Strait2x2 mode, " & ct*4 & " patterns extracted (" & (ct*4 * patternSize) & " bytes)."
 End Sub
 
 Sub cpcDoSuperBuffer (img As Any Ptr)
@@ -925,6 +996,12 @@ Sub zxDoScripted (scriptFile As String)
 		parseTokenizeString lineIn, tokens (), ",;" & Chr (9), "#"
 
 		Select Case Lcase (tokens (0))
+			Case "cpcmode"
+				cpcMode = Val (tokens (1))
+				fiPuts ("CPC Mode = " & cpcMode)
+				brickMultiplier = 2
+				patternWidthInPixels = 8
+
 			Case "brickinput"
 				If tokens (1) = "off" Then brickMultiplier = 1 Else brickMultiplier = 2
 				fiPuts "Brick multiplier = " & brickMultiplier
@@ -992,6 +1069,17 @@ Sub zxDoScripted (scriptFile As String)
 				max = Val (tokens (7)): If max = 0 Then max = -1
 				
 				doTmaps img, xc0, yc0, w, h, wMeta, hMeta, max
+
+			case "strait2x2"
+				xc0 = Val (tokens (1))
+				yc0 = Val (tokens (2))
+				w = Val (tokens (3))
+				h = Val (tokens (4))
+				wMeta = Val (tokens (5))
+				hMeta = Val (tokens (6))
+				max = Val (tokens (7)): If max = 0 Then max = -1
+
+				doStrait2x2 img, xc0, yc0, w, h, max
 
 			Case "charset"
 				xc0 = Val (tokens (1))
@@ -1061,6 +1149,13 @@ End If
 ' Bricks
 brickMultiplier = 1
 If sclpGetValue ("brickInput") <> "" Then brickMultiplier = 2
+
+' CPC Mode
+cpcMode = 0
+If Val (sclpGetValue ("cpcmode")) = 1 Then 
+	brickMultiplier = 2
+	cpcMode = 1
+End If
 
 ' We need to read the input image at this point
 If debug Then
@@ -1180,6 +1275,11 @@ Select Case sclpGetValue ("mode")
 
 	Case "mapped"
 		doTmaps img, xc0, yc0, w, h, wMeta, hMeta, max
+		writeFullBinary outputBaseFn & ".bin" 
+		ImageDestroy img
+
+	Case "strait2x2"
+		doStrait2x2 img, xc0, yc0, w, h, max
 		writeFullBinary outputBaseFn & ".patterns.bin"
 		writeTsmaps outputBaseFn & ".tilemaps.bin" 
 		ImageDestroy img
