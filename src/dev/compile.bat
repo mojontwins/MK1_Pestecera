@@ -26,12 +26,13 @@ echo Convirtiendo enemigos/hotspots
 ..\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
 
 echo Importando GFX
-..\utils\ts2bin.exe ..\gfx\font.png ..\gfx\work.png tileset.bin 7 >nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=chars in=..\gfx\font.png out=..\bin\font.bin silent > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=strait2x2 in=..\gfx\work.png out=..\bin\work.bin silent > nul
 
-..\utils\sprcnv.exe ..\gfx\sprites.png assets\sprites.h > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin silent > nul
 
-..\utils\sprcnvbin.exe ..\gfx\sprites_extra.png sprites_extra.bin 1 > nul
-..\utils\sprcnvbin8.exe ..\gfx\sprites_bullet.png sprites_bullet.bin 1 > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
 
 ..\utils\png2scr.exe ..\gfx\title.png ..\gfx\title.scr > nul
 ..\utils\png2scr.exe ..\gfx\marco.png ..\gfx\marco.scr > nul
@@ -65,7 +66,6 @@ del loader.tap > nul
 del screen.tap > nul
 del main.tap > nul
 del ..\gfx\*.scr > nul
-del *.bin > nul
 
 goto :end 
 

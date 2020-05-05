@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"doS",
+				"doStrait2x2\tabc"
+			],
+			[
+				"patter",
+				"patternWidthInPixels\tabc"
+			],
+			[
+				"cpcMode",
+				"cpcMode0GetBitmapFrom\tabc"
+			],
+			[
 				"_s",
 				"_simple_coco_update_continue\tabc"
 			],
@@ -502,18 +514,6 @@
 			[
 				"upload_progres",
 				"upload_progress_time\t(app.js)"
-			],
-			[
-				"async",
-				"async_upload_form_consigna"
-			],
-			[
-				"rcube",
-				"rcube_sandetel"
-			],
-			[
-				"wri",
-				"write_log"
 			]
 		]
 	},
@@ -523,7 +523,23 @@
 			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 32,
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "diario.md",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/utils/src/mkts_om.bas",
+			"settings":
+			{
+				"buffer_size": 33178,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -609,6 +625,7 @@
 	],
 	"file_history":
 	[
+		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
 		"/C/git/mk1/examples/helmet/dev/helmet.map",
 		"/C/temp/left-right/dev/my/ci/enems_extra_actions.h",
 		"/C/git/mk1/docs/README.md",
@@ -657,7 +674,6 @@
 		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_orthoshooters.h",
 		"/C/git/mk1/examples/helmet/dev/definitions.h",
 		"/C/git/mk1/examples/helmet/dev/my/config.h",
-		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
 		"/C/git/mk1/examples/dogmole/dev/definitions.h",
 		"/C/git/mk1/examples/helmet/dev/engine/simple_cocos.h",
 		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_pursuers.h",
@@ -763,6 +779,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_en_t",
+			"rdt",
+			"_en_t",
+			"malotes [enoffsmasi].t",
+			"malotes [eno",
+			"dostrait",
+			"strait",
+			"doTmaps",
+			"mode",
+			"cpcgetbitmapfrom",
+			"patternwidth",
+			"brick",
 			"genital",
 			"**sprite**",
 			"**sprites**",
@@ -940,7 +968,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -949,7 +977,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -966,6 +994,63 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "diario.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/utils/src/mkts_om.bas",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 33178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12098,
+								12098
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax QBasic/QBasic.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6242.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

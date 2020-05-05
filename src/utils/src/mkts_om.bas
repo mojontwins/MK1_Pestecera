@@ -131,7 +131,7 @@ Sub usage
 	Puts "              [metasize=w,h] [tmapoffs=offset] [max=n] [silent] [defaultink=i]"
 	Puts "              [cpcmode=m]"
 	Puts ""
-	Puts "Supported modes: pals, chars, mapped, sprites, bg, scripted, scr"
+	Puts "Supported modes: pals, chars, strait2x2, mapped, sprites, bg, scripted, scr"
 	Puts "In scripted mode, parameter out will be ignored."
 	Puts "brickinput means input png has 2x1 ""pixels""."
 End Sub
