@@ -35,12 +35,15 @@ echo Importando GFX
 ..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
 
 ..\utils\png2scr.exe ..\gfx\title.png ..\gfx\title.scr > nul
-..\utils\png2scr.exe ..\gfx\marco.png ..\gfx\marco.scr > nul
-..\utils\png2scr.exe ..\gfx\ending.png ..\gfx\ending.scr > nul
-..\utils\png2scr.exe ..\gfx\loading.png loading.bin > nul
-..\utils\apultra.exe ..\gfx\title.scr title.bin > nul
-..\utils\apultra.exe ..\gfx\marco.scr marco.bin > nul
-..\utils\apultra.exe ..\gfx\ending.scr ending.bin > nul
+
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
+..\utils\apultra.exe ..\bin\title.bin ..\bin\titlec.bin > nul
+..\utils\apultra.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
+..\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+
+..\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
 
 if [%1]==[justassets] goto :end
 

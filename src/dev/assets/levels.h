@@ -61,7 +61,7 @@ typedef struct {
 
 extern unsigned char font [0];
 #asm
-	._font BINARY "font.bin"
+	._font BINARY "../bin/font.bin"
 #endasm
 
 extern LEVELHEADER level_data [0];
@@ -89,7 +89,7 @@ extern unsigned char mapa [0];
 
 extern unsigned char tileset [0];
 #asm
-	._tileset defs 1792 ; 192 * 8 + 256
+	._tileset defs 3072 	// 16*192
 #endasm
 
 extern MALOTE malotes [0];
@@ -105,11 +105,6 @@ extern HOTSPOT hotspots [0];
 extern unsigned char behs [0];
 #asm
 	._behs defs 48
-#endasm
-
-extern unsigned char sprites [0];
-#asm
-	._sprites
 #endasm
 
 #if defined MODE_128K || defined PER_LEVEL_SPRITESET

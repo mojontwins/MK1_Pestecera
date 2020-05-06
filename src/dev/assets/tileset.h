@@ -3,6 +3,12 @@
 
 extern unsigned char tileset [0];
 #asm
+		XDEF _ts
+		XDEF tiles
 	._tileset
-		BINARY "tileset.bin"
+	.tiles
+	._font
+		BINARY "../bin/font.bin" 	// 1024 bytes for 64 patterns
+	._tspatterns
+		BINARY "../bin/work.bin"   // 3072 bytes for 192 patterns
 #endasm

@@ -12,28 +12,33 @@
 
 	#asm
 		._s_title
-			BINARY "title.bin"
+			BINARY "../bin/title.bin"
 		._s_marco
 	#endasm
 	#ifndef DIRECT_TO_PLAY
 		#asm
-				BINARY "marco.bin"
+				BINARY "../bin/marco.bin"
 		#endasm
 	#endif
 	#asm
 		._s_ending
-			BINARY "ending.bin"
+			BINARY "../bin/ending.bin"
 	#endasm
 #endif
 
 void blackout (void) {
 	#asm
-		ld hl, 22528
-		ld (hl), 0
-		push hl
-		pop de
-		inc de
-		ld bc, 767
-		ldir
+			ld  a, c0
+		.bo_l1
+			ld  h, a
+			ld  l, 0
+			ld  (hl), 0
+			ld  d, a
+			ld  l, 1
+			ld  bc, 1535
+			ldir
+
+			add 8
+			jr  nz, bo_l1
 	#endasm
 }
