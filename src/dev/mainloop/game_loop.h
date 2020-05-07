@@ -32,14 +32,12 @@
 		script_result = 0;
 	#endif
 	
-	#ifdef MODE_128K
-			// Play music
-		#ifdef COMPRESSED_LEVELS		
-			wyz_play_music (levels [level].music_id);
-		#else
-			wyz_play_music (1);
-		#endif		
-	#endif
+	// Play music
+	#ifdef COMPRESSED_LEVELS		
+		AY_PLAY_MUSIC (levels [level].music_id);
+	#else
+		AY_PLAY_MUSIC (1);
+	#endif		
 
 	#ifdef ACTIVATE_SCRIPTING
 		// Entering game
@@ -225,11 +223,7 @@
 			#ifdef MSC_MAXITEMS
 				if (sp_KeyPressed (KEY_Z)) {
 					if (!key_z_pressed) {
-						#ifdef MODE_128K
-							wyz_play_sound (0);
-						#else
-							beep_fx (2);
-						#endif
+						AY_PLAY_SOUND (0);
 						flags [FLAG_SLOT_SELECTED] = (flags [FLAG_SLOT_SELECTED] + 1) % MSC_MAXITEMS;
 						display_items ();
 					}
@@ -260,22 +254,18 @@
 			// Pause/Abort handling
 			if (sp_KeyPressed (KEY_H)) {
 				sp_WaitForNoKey ();
-				#ifdef MODE_128K
-					wyz_stop_sound ();
-					wyz_play_sound (1);
-				#endif				
+				AY_STOP_SOUND ();
+				AY_PLAY_SOUND (1);
 				clear_sprites ();
 				pause_screen ();
 				while (!sp_KeyPressed (KEY_H));
 				sp_WaitForNoKey ();
 				draw_scr ();
-				#ifdef MODE_128K
-					#ifdef COMPRESSED_LEVELS
-						//wyz_play_music (levels [level].music_id);
-					#else
-						//wyz_play_music (1);
-					#endif
-				#endif				
+				#ifdef COMPRESSED_LEVELS
+					AY_PLAY_MUSIC (levels [level].music_id);
+				#else
+					AY_PLAY_MUSIC (1);
+				#endif
 			}			
 			if (sp_KeyPressed (KEY_Y)) {
 				playing = 0;
@@ -324,8 +314,6 @@
 	sp_UpdateNow ();
 	sp_WaitForNoKey ();
 
-	#ifdef MODE_128K		
-		wyz_stop_sound ();
-	#endif
+	AY_STOP_SOUND ();
 
 	#include "my/ci/after_game_loop.h"

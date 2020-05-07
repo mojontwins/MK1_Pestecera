@@ -7,26 +7,13 @@ void break_wall (void) {
 	gpaux = COORDS (_x, _y);
 	if (brk_buff [gpaux] < BREAKABLE_WALLS_LIFE) {
 		++ brk_buff [gpaux];
-		#ifdef MODE_128K
-			gpit = SFX_BREAKABLE_HIT;			
-		#else
-			gpit = 1;
-		#endif
+		gpit = SFX_BREAKABLE_HIT;			
 		#include "my/ci/on_wall_hit.h"
 	} else {
 		_n = _t = 0; update_tile ();
-		#ifdef MODE_128K
-			gpix = SFX_BREAKABLE_BREAK
-		#else
-			gpit = 0;
-		#endif
+		gpit = SFX_BREAKABLE_BREAK;
 		#include "my/ci/on_wall_broken.h"
 	}
-	#ifdef MODE_128K
-		wyz_play_sound (gpit);
-	#else			
-		// Show what just happened before the sound interrupts the action
-		sp_UpdateNow ();
-		beep_fx (gpit);
-	#endif
+	AY_PLAY_SOUND (gpit);
+	
 }

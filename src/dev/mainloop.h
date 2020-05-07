@@ -160,9 +160,6 @@ void main (void) {
 
 			#ifdef COMPRESSED_LEVELS
 				if (success) {
-					#ifdef MODE_128K
-						//wyz_play_music (6);
-					#endif
 					
 					zone_clear ();
 
@@ -182,26 +179,19 @@ void main (void) {
 						break;
 					}
 				} else {
-					#ifdef MODE_128K
-						//wyz_play_music (8);
-					#endif
-
 					#if defined(TIMER_ENABLE) && defined(TIMER_GAMEOVER_0) && defined(SHOW_TIMER_OVER)
 						if (timer_zero) time_over (); else game_over ();
 					#else
 						game_over ();
 					#endif
 					
-					#ifdef MODE_128K
-						wyz_stop_sound ();
-					#endif
+					AY_STOP_SOUND ();
 					break;
 				}
 			#else
 				if (success) {
 					game_ending (); 
 				} else {
-					//wyz_play_music (8);
 					game_over ();
 				}
 			#endif

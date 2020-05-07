@@ -399,11 +399,7 @@ unsigned char player_move (void) {
 					if (possee || p_gotten || hit_v) {
 						p_saltando = 1;
 						p_cont_salto = 0;
-						#ifdef MODE_128K
-							wyz_play_sound (SFX_JUMP);
-						#else
-							beep_fx (3);
-						#endif
+						AY_PLAY_SOUND (SFX_JUMP);
 					}
 				} else {
 					p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
@@ -425,11 +421,7 @@ unsigned char player_move (void) {
 			if ( p_saltando == 0 && (possee || p_gotten || hit_v) ) {
 				p_saltando = 1;
 				p_cont_salto = 0;
-				#ifdef MODE_128K
-					wyz_play_sound (SFX_JUMP);
-				#else				
-					beep_fx (3);
-				#endif
+				AY_PLAY_SOUND (SFX_JUMP);
 			}
 			
 			if (p_saltando ) {
@@ -755,12 +747,8 @@ void player_kill (unsigned char sound) {
 
 	player_deplete ();
 
-	#ifdef MODE_128K
-		wyz_play_sound (sound);
-	#else
-		beep_fx (sound);
-	#endif
-
+	AY_PLAY_SOUND (sound);
+	
 	#ifdef CP_RESET_WHEN_DYING
 		#ifdef CP_RESET_ALSO_FLAGS
 			mem_load ();

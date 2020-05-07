@@ -110,10 +110,3 @@ void sg_submenu (void);
 // tilanim.h
 void add_tilanim (unsigned char x, unsigned char y, unsigned char t);
 void do_tilanims (void);
-
-// wyzplayer.h
-void ISR (void);
-void wyz_init (void);
-void wyz_play_sound (unsigned char fx_number);
-void wyz_play_music (unsigned char song_number);
-void wyz_stop_sound (void);

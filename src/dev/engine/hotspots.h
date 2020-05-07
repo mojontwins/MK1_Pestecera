@@ -24,17 +24,9 @@ void hotspots_do (void) {
 					#ifdef ONLY_ONE_OBJECT
 						if (p_objs == 0) {
 							p_objs ++;
-							#ifdef MODE_128K
-								wyz_play_sound (SFX_ONE_OBJECT_GET);
-							#else
-								beep_fx (9);
-							#endif
+							AY_PLAY_SOUND (SFX_ONE_OBJECT_GET);
 						} else {
-							#ifdef MODE_128K
-								wyz_play_sound (SFX_ONE_OBJECT_WRONG);
-							#else
-								beep_fx (4);
-							#endif
+							AY_PLAY_SOUND (SFX_ONE_OBJECT_WRONG);
 							hotspot_destroy = 0;
 							hotspot_y = 240;
 						}
@@ -44,12 +36,8 @@ void hotspots_do (void) {
 							flags [OBJECT_COUNT] = p_objs;
 						#endif
 
-						#ifdef MODE_128K
-							wyz_play_sound (SFX_OBJECT_GET);
-						#else
-							beep_fx (9);
-						#endif
-
+						AY_PLAY_SOUND (SFX_OBJECT_GET);
+						
 						#if defined GET_X_MORE && defined PLAYER_NUM_OBJETOS
 							if (PLAYER_NUM_OBJETOS > p_objs) {
 								_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
@@ -69,11 +57,7 @@ void hotspots_do (void) {
 			#ifndef DEACTIVATE_KEYS
 				case 2:
 					p_keys ++;
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_KEY_GET);
-					#else
-						beep_fx (7);
-					#endif
+					AY_PLAY_SOUND (SFX_KEY_GET);
 					break;
 			#endif
 
@@ -96,11 +80,7 @@ void hotspots_do (void) {
 						p_ammo += AMMO_REFILL;
 					else
 						p_ammo = MAX_AMMO;
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_REFILL_GET);
-					#else
-						beep_fx (9);
-					#endif
+					AY_PLAY_SOUND (SFX_REFILL_GET);
 					break;
 			#endif
 
@@ -110,22 +90,14 @@ void hotspots_do (void) {
 						timer_t += TIMER_REFILL;
 					else
 						timer_t = 99;
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_REFILL_GET);
-					#else
-						beep_fx (7);
-					#endif
+					AY_PLAY_SOUND (SFX_REFILL_GET);
 					break;
 			#endif
 
 			#ifdef ENABLE_CHECKPOINTS
 				case 6:
 					mem_save ();
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_START);
-					#else
-						beep_fx (7);
-					#endif
+					AY_PLAY_SOUND (SFX_START);
 					break;						
 			#endif
 

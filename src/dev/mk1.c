@@ -90,12 +90,6 @@ unsigned char AD_FREE [NUMBLOCKS * 15];
 
 #include "my/ci/extra_vars.h"
 
-#ifdef MODE_128K
-	#include "wyzplayer.h"
-#else
-	#include "beeper.h"
-#endif
-
 #include "printer.h"
 #include "my/ci/extra_functions.h"
 

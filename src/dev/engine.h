@@ -152,11 +152,7 @@ void espera_activa (int espera) {
 					_x = x1; _y = y1; _t = 14; _n = 10; update_tile ();
 					
 					// Sonido
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_PUSH_BOX);
-					#else			
-						beep_fx (2);	
-					#endif
+					AY_PLAY_SOUND (SFX_PUSH_BOX);
 				
 					#if defined(ACTIVATE_SCRIPTING) && defined(ENABLE_PUSHED_SCRIPTING) && defined(PUSHING_ACTION)
 						// Call scripting
@@ -181,12 +177,8 @@ void espera_activa (int espera) {
 				_x = x0; _y = y0; _t = 0; _n = 0; update_tile ();
 				-- p_keys;
 		
-				#ifdef MODE_128K
-					wyz_play_sound (SFX_OPEN_LOCK);
-				#else
-					beep_fx (8);
-				#endif
-
+				AY_PLAY_SOUND (SFX_OPEN_LOCK);
+				
 				#include "my/ci/on_unlocked_bolt.h"
 			}
 		#endif
@@ -611,10 +603,8 @@ void select_joyfunc (void) {
 		}			
 	}
 
-	#ifdef MODE_128K
-		wyz_play_sound (SFX_START);
-		sp_WaitForNoKey ();
-	#endif
+	AY_PLAY_SOUND (SFX_START);
+	sp_WaitForNoKey ();
 }
 
 #ifdef WALLS_STOP_ENEMIES

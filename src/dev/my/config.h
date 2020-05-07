@@ -7,6 +7,9 @@
 // I. General configuration
 // ============================================================================
 
+#define SOUND_NONE
+//#define SOUND_WYZ
+
 //#define MODE_128K 						// Read the docs!
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
@@ -324,4 +327,14 @@ unsigned char behs [] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
+#endif
+
+#ifdef SOUND_NONE
+	#define AY_PLAY_SOUND ;
+	#define AY_STOP_SOUND ;
+	#define AY_PLAY_MUSIC ;
+#elif defined (SOUND_WYZ)
+	#define AY_PLAY_SOUND ;
+	#define AY_STOP_SOUND ;
+	#define AY_PLAY_MUSIC ;
 #endif

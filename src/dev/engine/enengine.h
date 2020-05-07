@@ -448,21 +448,12 @@ void enems_move (void) {
 							if (gpy < _en_y - 2 && p_vy >= 0 && _en_t >= PLAYER_MIN_KILLABLE)
 						#endif				
 						{
-							#ifdef MODE_128K
-								wyz_play_sound (SFX_KILL_ENEMY_STEP);										
-								en_an_state [enit] = GENERAL_DYING;
-								en_an_count [enit] = 12;
-								en_an_next_frame [enit] = sprite_17_a;
-								p_vy = -256;
-							#else
-								en_an_next_frame [enit] = sprite_17_a;
-								enems_draw_current ();
-								sp_UpdateNow ();
-
-								beep_fx (5);
-								en_an_next_frame [enit] = sprite_18_a;								
-							#endif					
-
+							AY_PLAY_SOUND (SFX_KILL_ENEMY_STEP);										
+							en_an_state [enit] = GENERAL_DYING;
+							en_an_count [enit] = 12;
+							en_an_next_frame [enit] = sprite_17_a;
+							p_vy = -256;
+						
 							enems_kill ();
 						} else
 					#endif
@@ -545,14 +536,9 @@ void enems_move (void) {
 								if (_en_life == 0) {
 									enems_draw_current ();
 									sp_UpdateNow ();
-									#ifdef MODE_128K
-										en_an_state [enit] = GENERAL_DYING;
-										en_an_count [enit] = 12;
-										wyz_play_sound (SFX_KILL_ENEMY_SHOOT);
-									#else															
-										beep_fx (5);
-										en_an_next_frame [enit] = sprite_18_a;
-									#endif	
+									en_an_state [enit] = GENERAL_DYING;
+									en_an_count [enit] = 12;
+									AY_PLAY_SOUND (SFX_KILL_ENEMY_SHOOT);
 									
 									#ifdef ENABLE_PURSUERS
 										enems_pursuers_init ();
@@ -561,11 +547,7 @@ void enems_move (void) {
 									enems_kill ();					
 								}
 
-								#ifdef MODE_128K
-									wyz_play_sound (SFX_HIT_ENEMY);
-								#else
-									beep_fx (1);
-								#endif
+								AY_PLAY_SOUND (SFX_HIT_ENEMY);
 							}
 						}
 					}

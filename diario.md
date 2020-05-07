@@ -195,3 +195,11 @@ Los octavos están en C000, C800, D000, D800, E000, E800, F000, y F800 así que 
     }
 ```
 
+## Desactivar el audio susbsystem (por ahora)
+
+Por ahora lo voy a dejar off y de camino lo meto todo en #defines por si algún día se tercia cambiar a Arkos. `wyz_play_sound` -> `AY_PLAY_SOUND`, `wyz_play_music` -> `AY_PLAY_MUSIC`, `wyz_stop_sound` -> `AY_STOP_SOUND`.
+
+## Inicialización 
+
+Cambio toda la inicialización el sistema en `mainloop.h`. Dejamos WYZ para luego.
+

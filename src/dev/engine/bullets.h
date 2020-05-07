@@ -164,12 +164,8 @@ void bullets_fire (void) {
 				#endif
 			#endif
 
-			#ifdef MODE_128K
-				wyz_play_sound (SFX_SHOOT);
-			#else
-				beep_fx (6);
-			#endif
-
+			AY_PLAY_SOUND (SFX_SHOOT);
+			
 			#ifdef LIMITED_BULLETS
 				#if defined (LB_FRAMES) || !defined (ACTIVATE_SCRIPTING)
 					bullets_life [b_it] = LB_FRAMES;
