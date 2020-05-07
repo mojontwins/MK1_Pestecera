@@ -6,92 +6,110 @@
 
 void main (void) {
 
-	// Install ISR
+	// CPC initialization
 	
 	#asm
 		di
+
+		ld  a, 195
+		ld  (0x38), a
+		ld  hl, (_isr)
+		ld  (0x39), hl
+		jp  isr_done
+
+	._isr
+		ret
+
+	._isr_done
 	#endasm
 	
-	#ifdef MODE_128K
-		sp_InitIM2(0xf1f1);
-		sp_CreateGenericISR(0xf1f1);
-		sp_RegisterHook(255, ISR);
-		
-		#asm
-			ei
-		#endasm
+	// Border 0
 
-		wyz_init ();
-	#endif
+	#asm
+		ld 	a, 0x54
+		ld  bc, 0x7F11
+		out (c), c
+		out (c), a
+	#endasm
+
+	// Decompress LUT in place
+
+	#asm
+		ld hl, _trpixlutc
+		ld de, BASE_LUT
+		call depack
+	#endasm
 
 	cortina ();
 	
-	// splib2 initialization
-	sp_Initialize (0, 0);
-	sp_Border (BLACK);
-	sp_AddMemory(0, NUMBLOCKS, 14, AD_FREE);
+	pal_set (my_inks);
 	
-	// Load tileset
-	#ifdef COMPRESSED_LEVELS
-		gen_pt = font;
-	#else
-		gen_pt = tileset;
-	#endif
-	gpit = 0; do {
-		sp_TileArray (gpit, gen_pt);
-		gen_pt += 8;
-		gpit ++;
-		#ifdef COMPRESSED_LEVELS
-			if (gpit == 64) gen_pt = tileset;
-		#endif
-	} while (gpit);
+	// Set mode
+
+	cpc_SetMode (CPC_GFX_MODE);
+
+	// Set tweaked mode 
+	// (thanks Augusto Ruiz for the code & explanations!)
+	
+	#asm
+		; Horizontal chars (32), CRTC REG #1
+		ld    b, 0xbc
+		ld    c, 1			; REG = 1
+		out   (c), c
+		inc   b
+		ld    c, 32			; VALUE = 32
+		out   (c), c
+
+		; Horizontal pos (42), CRTC REG #2
+		ld    b, 0xbc
+		ld    c, 2			; REG = 2
+		out   (c), c
+		inc   b
+		ld    c, 42			; VALUE = 42
+		out   (c), c
+
+		; Vertical chars (24), CRTC REG #6
+		ld    b, 0xbc
+		ld    c, 6			; REG = 6
+		out   (c), c
+		inc   b
+		ld    c, 24			; VALUE = 24
+		out   (c), c
+	#endasm
 
 	// Sprite creation
-	#ifdef NO_MASKS
-		sp_player = sp_CreateSpr (sp_OR_SPRITE, 3, sprite_2_a);
-		sp_AddColSpr (sp_player, sprite_2_b);
-		sp_AddColSpr (sp_player, sprite_2_c);
-		p_current_frame = p_next_frame = sprite_2_a;
-		
-		for (gpit = 0; gpit < 3; gpit ++) {
-			sp_moviles [gpit] = sp_CreateSpr(sp_OR_SPRITE, 3, sprite_9_a);
-			sp_AddColSpr (sp_moviles [gpit], sprite_9_b);
-			sp_AddColSpr (sp_moviles [gpit], sprite_9_c);	
-			en_an_current_frame [gpit] = sprite_9_a;
-		}
-	#else
-		sp_player = sp_CreateSpr (sp_MASK_SPRITE, 3, sprite_2_a);
-		sp_AddColSpr (sp_player, sprite_2_b);
-		sp_AddColSpr (sp_player, sprite_2_c);
-		p_current_frame = p_next_frame = sprite_2_a;
-		
-		for (gpit = 0; gpit < MAX_ENEMS; gpit ++) {
-			sp_moviles [gpit] = sp_CreateSpr(sp_MASK_SPRITE, 3, sprite_9_a);
-			sp_AddColSpr (sp_moviles [gpit], sprite_9_b);
-			sp_AddColSpr (sp_moviles [gpit], sprite_9_c);	
-			en_an_current_frame [gpit] = en_an_next_frame [gpit] = sprite_9_a;
-		}
-	#endif
+
+	// Player 
+
+	sp_sw [SP_PLAYER].cox = sm_cox [0];
+	sp_sw [SP_PLAYER].coy = sm_coy [0];
+	sp_sw [SP_PLAYER].invfunc = sm_invfunc [0];
+	sp_sw [SP_PLAYER].updfunc = sm_updfunc [0];
+	sp_sw [SP_PLAYER].sp0 = sp_sw [SP_PLAYER].sp1 = sm_sprptr [0];
+
+	// Enemies - delegated to enems_load
+
+	// Bullets are 4x8
 
 	#ifdef PLAYER_CAN_FIRE
-		for (gpit = 0; gpit < MAX_BULLETS; gpit ++) {
-			#ifdef MASKED_BULLETS
-				sp_bullets [gpit] = sp_CreateSpr (sp_MASK_SPRITE, 2, sprite_19_a);
-			#else		
-				sp_bullets [gpit] = sp_CreateSpr (sp_OR_SPRITE, 2, sprite_19_a);
-			#endif
-			sp_AddColSpr (sp_bullets [gpit], sprite_19_a+32);
+		for (gpit = SP_BULLETS_BASE; gpit < SP_BULLETS_BASE + MAX_BULLETS; gpit ++) {
+			sp_sw [gpit].cox = 0;
+			sp_sw [gpit].coy = 0;
+			sp_sw [gpit].invfunc =cpc_PutSpTileMap4x8;
+			sp_sw [gpit].updfunc = cpc_PutTrSp4x8TileMap2b;
+			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = sprite_19_a;
 		}
 	#endif
 
+	// Cocos are 4x8
+
 	#ifdef ENABLE_SIMPLE_COCOS
-		for (gpit = 0; gpit < MAX_ENEMS; gpit ++) {
-			#ifdef MASKED_BULLETS
-				sp_cocos [gpit] = sp_CreateSpr (sp_MASK_SPRITE, 2, sprite_19_a);
-			#else		
-				sp_cocos [gpit] = sp_CreateSpr (sp_OR_SPRITE, 2, sprite_19_a);
-			#endif
-			sp_AddColSpr (sp_cocos [gpit], sprite_19_a+32);
+		for (gpit = SP_COCOS_BASE; gpit < SP_COCOS_BASE + MAX_BULLETS; gpit ++) {
+			sp_sw [gpit].cox = 0;
+			sp_sw [gpit].coy = 0;
+			sp_sw [gpit].invfunc =cpc_PutSpTileMap4x8;
+			sp_sw [gpit].updfunc = cpc_PutTrSp4x8TileMap2b;
+			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = sprite_19_a;
 		}
 	#endif
 

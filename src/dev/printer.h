@@ -891,3 +891,12 @@ void clear_sprites (void) {
 		#endif
 	#endasm
 }
+
+void pal_set (unsigned char *pal) {
+	#if CPC_GFX_MODE == 0
+		gpit = 16;
+	#else
+		gpit = 4;
+	#endif
+	while (gpit --) cpc_SetColour (gpit, s[gpit]);
+}

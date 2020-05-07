@@ -6,12 +6,6 @@
 	.fsClipStruct defb 0, 24, 0, 32
 #endasm	
 
-void *joyfunc = sp_JoyKeyboard;		// Puntero a la función de manejo seleccionada.
-
-const void *joyfuncs [] = {
-	sp_JoyKeyboard, sp_JoyKempston, sp_JoySinclair1
-};
-
 unsigned char pad0;
 #ifdef USE_TWO_BUTTONS
 	unsigned char isJoy;
@@ -22,27 +16,40 @@ unsigned char pad0;
 #define KEY_Y 0x10df
 #define KEY_Z 0x02fe
 
-void *my_malloc(uint bytes) {
-   return sp_BlockAlloc(0);
-}
-
-void *u_malloc = my_malloc;
-void *u_free = sp_FreeBlock;
-
 // Safe stuff in low(est) RAM
 
 unsigned char safe_byte @ 23296;
 
 // Globales muy globalizadas
 
-struct sp_SS *sp_player;
-struct sp_SS *sp_moviles [MAX_ENEMS];
-#ifdef PLAYER_CAN_FIRE
-	struct sp_SS *sp_bullets [MAX_BULLETS];
-#endif
-#ifdef ENABLE_ORTHOSHOOTERS
-	struct sp_SS *sp_cocos [MAX_ENEMS];
-#endif
+#define KEY_LEFT 		0
+#define KEY_RIGHT		1
+#define KEY_DOWN 		2
+#define KEY_UP  		3
+#define KEY_BUTTON_A	4
+#define KEY_BUTTON_B	5
+#define KEY_ENTER		6
+#define KEY_ESC			7
+#define KEY_AUX1		8
+#define KEY_AUX2		9
+
+typedef struct sprite {
+	int sp0;					// 0
+	int sp1; 					// 2
+	int coord0;
+	signed char cox, coy;		// 6 7
+	unsigned char cx, cy; 		// 8 9
+	unsigned char ox, oy;		// 10 11
+	void *invfunc;				// 12
+	void *updfunc;				// 14
+} SPR;
+
+unsigned char *spr_next [SW_SPRITES_ALL];
+
+//SPR sp_sw [SW_SPRITES_ALL];
+SPR sp_sw [SW_SPRITES_ALL] @ BASE_SPRITES;
+#define SP_SW_COY (sp_sw [gpit].coy)
+#define SP_SW_COX (sp_sw [gpit].cox)
 
 unsigned char enoffs;
 

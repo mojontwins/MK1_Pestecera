@@ -153,7 +153,6 @@ void enems_load (void) {
 				case 5:					
 					#if ORTHOSHOOTERS_BASE_CELL==99
 						en_an_base_frame [enit] = ORTHOSHOOTERS_BASE_CELL;
-						en_an_next_frame [enit] = sprite_18_a;
 					#else
 						en_an_base_frame [enit] = ORTHOSHOOTERS_BASE_CELL << 1;
 					#endif
@@ -186,10 +185,23 @@ void enems_load (void) {
 				#include "my/ci/enems_load.h"
 
 			default:
-				en_an_next_frame [enit] = sprite_18_a;
+				en_an_base_frame [enit] = 0xff;
 		}
 
 		malotes [enoffsmasi].t &= 0x1f;
+
+		// Sprite creation
+
+		rda = SP_ENEMS_BASE + enit;
+		if (rdb = en_an_base_frame [enit] != 0xff) {
+			sp_sw [rda].cox = sm_cox [rdb];
+			sp_sw [rda].coy = sm_coy [rdb];
+			sp_sw [rda].invfunc = sm_invfunc [rdb];
+			sp_sw [rda].updfunc = sm_updfunc [rdb];
+			sp_sw [rda].sp0 = sp_sw [rda].sp1 = sm_sprptr [rdb];
+		} else {
+			sp_sw [rda].sp0 = sp_sw [rda].sp1 = sprite_18_a;
+		}
 
 		#include "my/ci/enems_extra_mods.h"
 	}
