@@ -3,36 +3,6 @@
 
 #ifdef TEST_DEBUG
 	void test_debug (void) {
-		sp_UpdateNow ();
-		sp_PrintAtInv (5, 5, 71, 69);
-		sp_PrintAtInv (6, 6, 15, 70);
-		#asm
-				ld  ix, (_sp_player)
-				ld  iy, vpClipStruct
-
-				ld  bc, 0
-
-				ld  hl, 0x0707 
-				ld  de, 0x0000
-
-				call SPMoveSprAbs
-		#endasm
-		sp_UpdateNow ();
-		espera_activa (50);
-		#asm
-				ld  ix, (_sp_player)
-				ld  iy, vpClipStruct
-
-				ld  bc, 0
-
-				ld  hl, 0x0404 
-				ld  de, 0x0000
-
-				call SPMoveSprAbs
-		#endasm
-		sp_UpdateNow ();
-		while (sp_GetKey ());
-		while (!sp_GetKey ());
 	}
 #endif
 
