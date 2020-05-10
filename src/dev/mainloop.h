@@ -160,7 +160,7 @@ void main (void) {
 			#ifndef DIRECT_TO_PLAY
 				// Clear screen and show game frame
 				cortina ();
-				sp_UpdateNow();
+				
 				#ifdef MODE_128K
 					// Resource 1 = marco.bin
 					get_resource (MARCO_BIN, 16384);

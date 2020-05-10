@@ -4,20 +4,28 @@
 		"selected_items":
 		[
 			[
+				"SOUND_",
+				"SOUND_WYZ"
+			],
+			[
+				"AY_PLAY",
+				"AY_PLAY_MUSIC"
+			],
+			[
 				"doS",
-				"doStrait2x2\tabc"
+				"doStrait2x2	abc"
 			],
 			[
 				"patter",
-				"patternWidthInPixels\tabc"
+				"patternWidthInPixels	abc"
 			],
 			[
 				"cpcMode",
-				"cpcMode0GetBitmapFrom\tabc"
+				"cpcMode0GetBitmapFrom	abc"
 			],
 			[
 				"_s",
-				"_simple_coco_update_continue\tabc"
+				"_simple_coco_update_continue	abc"
 			],
 			[
 				"eij_state_moving",
@@ -25,7 +33,7 @@
 			],
 			[
 				"_eij_stil",
-				"_eij_state_still_appearing\tabc"
+				"_eij_state_still_appearing	abc"
 			],
 			[
 				"eij_",
@@ -33,75 +41,75 @@
 			],
 			[
 				"enems_hotspot",
-				"enems_hotspots_0\tabc"
+				"enems_hotspots_0	abc"
 			],
 			[
 				"custom",
-				"custom_animation.h\t(custom_animation.h)"
+				"custom_animation.h	(custom_animation.h)"
 			],
 			[
 				"BREAL",
-				"BREAKABLE_WALLS\t(bullets.h)"
+				"BREAKABLE_WALLS	(bullets.h)"
 			],
 			[
 				"bullets_",
-				"bullets_update\tabc"
+				"bullets_update	abc"
 			],
 			[
 				"ENABLE",
-				"ENABLE_FANTIES\tabc"
+				"ENABLE_FANTIES	abc"
 			],
 			[
 				"FANTI",
-				"FANTIES_TYPE_HOMING\t(config.h)"
+				"FANTIES_TYPE_HOMING	(config.h)"
 			],
 			[
 				"invali",
-				"invalidate_tile\t(printer.h)"
+				"invalidate_tile	(printer.h)"
 			],
 			[
 				"VIEW",
-				"VIEWPORT_Y\tabc"
+				"VIEWPORT_Y	abc"
 			],
 			[
 				"inval",
-				"invalidate_tile\t(printer.h)"
+				"invalidate_tile	(printer.h)"
 			],
 			[
 				"main",
-				"maincounter\tabc"
+				"maincounter	abc"
 			],
 			[
 				"VIE",
-				"VIEWPORT_Y\t(printer.h)"
+				"VIEWPORT_Y	(printer.h)"
 			],
 			[
 				"draw_colou",
-				"draw_coloured_tile\t(printer.h)"
+				"draw_coloured_tile	(printer.h)"
 			],
 			[
 				"invalidate",
-				"invalidate_viewport\t(printer.h)"
+				"invalidate_viewport	(printer.h)"
 			],
 			[
 				"orig",
-				"orig_tile\tabc"
+				"orig_tile	abc"
 			],
 			[
 				"draw_om",
-				"draw_invalidate_coloured_tile_gamearea\t(printer.h)"
+				"draw_invalidate_coloured_tile_gamearea	(printer.h)"
 			],
 			[
 				"draw_coloured_ti",
-				"draw_coloured_tile_gamearea\tabc"
+				"draw_coloured_tile_gamearea	abc"
 			],
 			[
 				"dra",
-				"draw_invalidate_coloured_tile_gamearea\tabc"
+				"draw_invalidate_coloured_tile_gamearea	abc"
 			],
 			[
 				"draw",
-				"draw_coloured_tile_gamearea\tabc"
+				"draw_coloured_tile_gamearea	abc"
 			],
 			[
 				"baddies",
@@ -109,127 +117,127 @@
 			],
 			[
 				"baddiesCou",
-				"baddiesCountGenital\tabc"
+				"baddiesCountGenital	abc"
 			],
 			[
 				"textMap",
-				"textMapH\tabc"
+				"textMapH	abc"
 			],
 			[
 				"textT",
-				"textTilesetfile\tabc"
+				"textTilesetfile	abc"
 			],
 			[
 				"TextBox",
-				"TextBox_GetText\tabc"
+				"TextBox_GetText	abc"
 			],
 			[
 				"text",
-				"textEnemsLoadFile\tabc"
+				"textEnemsLoadFile	abc"
 			],
 			[
 				"textt",
-				"textTilesetfile\tabc"
+				"textTilesetfile	abc"
 			],
 			[
 				"button",
-				"buttonTilesetfile\tabc"
+				"buttonTilesetfile	abc"
 			],
 			[
 				"Button_",
-				"Button_Event\tabc"
+				"Button_Event	abc"
 			],
 			[
 				"buttonC",
-				"buttonCreateNew\tabc"
+				"buttonCreateNew	abc"
 			],
 			[
 				"Text",
-				"TextBox_GetText\tabc"
+				"TextBox_GetText	abc"
 			],
 			[
 				"textScr",
-				"textScrW\tabc"
+				"textScrW	abc"
 			],
 			[
 				"Textb",
-				"TextBox_New\tabc"
+				"TextBox_New	abc"
 			],
 			[
 				"TILANI",
-				"TILANIMS_TYPE_SELECT_FLAG\tabc"
+				"TILANIMS_TYPE_SELECT_FLAG	abc"
 			],
 			[
 				"TILANIMS_SE",
-				"TILANIMS_TYPE_SELECT_FLAG\t(config.h)"
+				"TILANIMS_TYPE_SELECT_FLAG	(config.h)"
 			],
 			[
 				"TILANIMS_TP",
-				"TILANIMS_TYPE_ONE\tabc"
+				"TILANIMS_TYPE_ONE	abc"
 			],
 			[
 				"TILAN",
-				"TILANIMS_PERIOD\t(config.h)"
+				"TILANIMS_PERIOD	(config.h)"
 			],
 			[
 				"_va_coll",
-				"_va_collision_done\tabc"
+				"_va_collision_done	abc"
 			],
 			[
 				"MA",
-				"MAX_BULLETS\tabc"
+				"MAX_BULLETS	abc"
 			],
 			[
 				"clausuas",
-				"clausulasUsed\tabc"
+				"clausulasUsed	abc"
 			],
 			[
 				"CUSTOM",
-				"CUSTOM_HIT\t(player.h)"
+				"CUSTOM_HIT	(player.h)"
 			],
 			[
 				"PLAY_SAM",
-				"PLAY_SAMPLE_ON_DEATH\t(config.h)"
+				"PLAY_SAMPLE_ON_DEATH	(config.h)"
 			],
 			[
 				"LEVEL_ENDING",
-				"LEVEL_ENDING_GOOD\t(script.spt)"
+				"LEVEL_ENDING_GOOD	(script.spt)"
 			],
 			[
 				"LEVEL_END",
-				"LEVEL_ENDING_BAD\t(script.spt)"
+				"LEVEL_ENDING_BAD	(script.spt)"
 			],
 			[
 				"LEVEL_CAS",
-				"LEVEL_CASTLE_B\t(script.spt)"
+				"LEVEL_CASTLE_B	(script.spt)"
 			],
 			[
 				"PLA",
-				"PLAYER_DRUNK_EXPR\t(va_genital.h)"
+				"PLAYER_DRUNK_EXPR	(va_genital.h)"
 			],
 			[
 				"_player_mvoe",
-				"_player_move_af_holed_set\tabc"
+				"_player_move_af_holed_set	abc"
 			],
 			[
 				"_player_move",
-				"_player_move_af_incframe_done\tabc"
+				"_player_move_af_incframe_done	abc"
 			],
 			[
 				"p_ct",
-				"p_state_ct\tabc"
+				"p_state_ct	abc"
 			],
 			[
 				"EST_",
-				"EST_HOLED\tabc"
+				"EST_HOLED	abc"
 			],
 			[
 				"_enems",
-				"_enems_move_pregotten_set\tabc"
+				"_enems_move_pregotten_set	abc"
 			],
 			[
 				"bye",
-				"byteCoordinates\tabc"
+				"byteCoordinates	abc"
 			],
 			[
 				"sp_nana",
@@ -293,7 +301,7 @@
 			],
 			[
 				"double_hots",
-				"double_hotspots_do\t(mainloop.h)"
+				"double_hotspots_do	(mainloop.h)"
 			],
 			[
 				"double",
@@ -305,23 +313,23 @@
 			],
 			[
 				"togg",
-				"toggle_switch\t(extra_vars.h)"
+				"toggle_switch	(extra_vars.h)"
 			],
 			[
 				"toggle",
-				"toggle_timer\t(extra_vars.h)"
+				"toggle_timer	(extra_vars.h)"
 			],
 			[
 				"HOTSPOT_TYPE_TO",
-				"HOTSPOT_TYPE_TOGGLE_OFF\t(extra_vars.h)"
+				"HOTSPOT_TYPE_TOGGLE_OFF	(extra_vars.h)"
 			],
 			[
 				"wate",
-				"water_strip\t(on_entering_screen.h)"
+				"water_strip	(on_entering_screen.h)"
 			],
 			[
 				"PPU_CTRL",
-				"PPU_CTRL_VAR1\t(neslib.s)"
+				"PPU_CTRL_VAR1	(neslib.s)"
 			],
 			[
 				"frame",
@@ -369,7 +377,7 @@
 			],
 			[
 				"chac_chacs_queu",
-				"chac_chacs_queue_write\t(bss.h)"
+				"chac_chacs_queue_write	(bss.h)"
 			],
 			[
 				"chac",
@@ -397,27 +405,27 @@
 			],
 			[
 				"max_",
-				"max_chac_chacs\t(tile_chac_chac.h)"
+				"max_chac_chacs	(tile_chac_chac.h)"
 			],
 			[
 				"ENABLE_CH",
-				"ENABLE_TILE_CHAC_CHAC\t(map_detectors.h)"
+				"ENABLE_TILE_CHAC_CHAC	(map_detectors.h)"
 			],
 			[
 				"chac_chac",
-				"chac_chacs_ct\t(tile_chac_chac.h)"
+				"chac_chacs_ct	(tile_chac_chac.h)"
 			],
 			[
 				"chac_c",
-				"chac_chacs_state\t(tile_chac_chac.h)"
+				"chac_chacs_state	(tile_chac_chac.h)"
 			],
 			[
 				"addressboo",
-				"addressbook_export\t(export.inc)"
+				"addressbook_export	(export.inc)"
 			],
 			[
 				"bedework_rec",
-				"bedework_records_starting_with\t(simple_bedework_rest_client.php)"
+				"bedework_records_starting_with	(simple_bedework_rest_client.php)"
 			],
 			[
 				"start",
@@ -461,7 +469,7 @@
 			],
 			[
 				"getg",
-				"get_group\t(list.inc)"
+				"get_group	(list.inc)"
 			],
 			[
 				"rcmail",
@@ -489,7 +497,7 @@
 			],
 			[
 				"u",
-				"uid\t(rcube_webdav_addressbook.php)"
+				"uid	(rcube_webdav_addressbook.php)"
 			],
 			[
 				"webdav_aboo",
@@ -501,59 +509,45 @@
 			],
 			[
 				"uploadf",
-				"uploadform\t(app.js)"
+				"uploadform	(app.js)"
 			],
 			[
 				"back",
 				"background-position"
-			],
-			[
-				"upload_pr",
-				"upload_progress_start\t(app.js)"
-			],
-			[
-				"upload_progres",
-				"upload_progress_time\t(app.js)"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "diario.md",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
+				"buffer_size": 12085,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/utils/src/mkts_om.bas",
+			"file": "src/dev/mainloop.h",
 			"settings":
 			{
-				"buffer_size": 33178,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"buffer_size": 3996,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/dev/printer.h",
+			"settings":
+			{
+				"buffer_size": 16447,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
-		"height": 132.0,
-		"last_filter": "",
+		"height": 339.0,
 		"selected_items":
 		[
 			[
@@ -601,14 +595,11 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 382.0
+		"width": 392.0
 	},
 	"console":
 	{
-		"height": 118.0,
-		"history":
-		[
-		]
+		"height": 118.0
 	},
 	"distraction_free":
 	{
@@ -619,12 +610,22 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/git/MK1_Pestecera"
-	],
 	"file_history":
 	[
+		"/E/git/MK1_Pestecera/src/dev/mk1.c",
+		"/E/git/MK1_Pestecera/src/dev/my/config.h",
+		"/E/git/MK1_Pestecera/src/dev/prototypes.h",
+		"/E/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
+		"/E/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/E/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/E/git/MK1_Pestecera/src/dev/engine/hotspots.h",
+		"/E/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/E/git/MK1_Pestecera/src/dev/engine/bullets.h",
+		"/E/git/MK1_Pestecera/src/dev/engine/breakable.h",
+		"/E/git/MK1_Pestecera/src/dev/engine.h",
+		"/E/git/MK1_Pestecera/diario.md",
+		"/E/git/MK1_Pestecera/README.md",
+		"/E/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
 		"/C/git/mk1/examples/helmet/dev/helmet.map",
 		"/C/temp/left-right/dev/my/ci/enems_extra_actions.h",
@@ -738,21 +739,7 @@
 		"/C/git/mk1/examples/dogmole/dev/engine.h",
 		"/C/git/mk1/examples/dogmole/dev/mk1.c",
 		"/C/git/mk1/src/dev/engine/enem_mods/enem_type_fanties.h",
-		"/C/git/mk1/src/dev/engine/enengine.h",
-		"/C/git/mk1/src/dev/config.h",
-		"/C/git/mk1/src/dev/mk1.c",
-		"/C/git/mk1/src/dev/enems.h",
-		"/C/git/mk1/src/utils/src/ene2h.bas",
-		"/C/git/mk1/src/dev/lala_beta.map",
-		"/C/git/mk1/src/dev/levels.h",
-		"/C/git/mk1/src/dev/levels128.h",
-		"/C/git/mk1/src/dev/savegame.h",
-		"/C/git/mk1/src/dev/tilanim.h",
-		"/C/git/mk1/src/dev/beeper.h",
-		"/C/git/mk1/src/dev/aplib.h",
-		"/C/git/mk1/src/dev/128k.h",
-		"/C/git/mk1/src/dev/engine/general.h",
-		"/C/git/mk1/src/dev/extern.h"
+		"/C/git/mk1/src/dev/engine/enengine.h"
 	],
 	"find":
 	{
@@ -760,9 +747,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 135.0,
+		"height": 0.0,
 		"where_history":
 		[
+			"E:\\git\\MK1_Pestecera\\src\\dev",
 			"C:\\git\\mk1\\docs",
 			"C:\\git\\mk1",
 			"C:\\git\\mk1\\examples\\helmet\\dev",
@@ -779,6 +767,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sp_",
+			"music",
+			"sp_",
+			"PLAY_",
+			"wyz",
 			"_en_t",
 			"rdt",
 			"_en_t",
@@ -901,12 +894,7 @@
 			"gpcx",
 			"gpx =",
 			"p_cx",
-			"IS_EVIL",
-			"FIXBITS",
-			"PLAYER_GENITAL",
-			"FIXBITS",
-			"FIXBITSº",
-			"p(x|y|cx|vx|vy|g|ax|rx|salto|cont_salto|current_frame|next_frame|saltando|frame|subframe|facing_v|facing_h|facing|estado|ct_estado|gotten|life|objs|keys|fuel|killed|disparando|ammo|killme)"
+			"IS_EVIL"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -973,87 +961,84 @@
 			[
 				{
 					"buffer": 0,
-					"file": "README.md",
-					"semi_transient": false,
+					"file": "diario.md",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 12085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								12085,
+								12085
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+							"syntax": "Packages/Markdown-extended/Syntaxes/Markdown Extended.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3458.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "diario.md",
-					"semi_transient": false,
+					"file": "src/dev/mainloop.h",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1278,
+								1281
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 824.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/utils/src/mkts_om.bas",
-					"semi_transient": false,
+					"file": "src/dev/printer.h",
 					"settings":
 					{
-						"buffer_size": 33178,
+						"buffer_size": 16447,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12098,
-								12098
+								2749,
+								2749
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Syntax QBasic/QBasic.tmLanguage",
+							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6242.0,
+						"translation.y": 874.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1094,8 +1079,6 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
-	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
 		"height": 48.0
@@ -1104,7 +1087,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1113,7 +1095,6 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1123,26 +1104,10 @@
 		],
 		"width": 380.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 195.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"side_bar_width": 113.0,
+	"status_bar_visible": true
 }
