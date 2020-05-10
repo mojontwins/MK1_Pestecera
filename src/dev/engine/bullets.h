@@ -132,10 +132,10 @@ void bullets_fire (void) {
 				
 			#else
 				#ifdef CAN_FIRE_UP
-					if ((pad0 & sp_UP) == 0) {
+					if (cpc_TestKey (KEY_UP)) {
 						_b_y = gpy;
 						_b_my = -PLAYER_BULLET_SPEED;
-					} else if (!(pad0 & sp_DOWN)) {
+					} else if (cpc_TestKey (KEY_DOWN)) {
 						_b_y = 8 + gpy;
 						_b_my = PLAYER_BULLET_SPEED;	 
 					} else 
@@ -147,7 +147,7 @@ void bullets_fire (void) {
 
 
 				#ifdef CAN_FIRE_UP
-					if ((pad0 & sp_LEFT) == 0 || (pad0 & sp_RIGHT) == 0 || ((pad0 & sp_UP) && (pad0 & sp_DOWN))) {
+					if (cpc_TestKey (KEY_LEFT) || cpc_TestKey (KEY_RIGHT) || (cpc_TestKey (KEY_UP) == 0 && cpc_TestKey (KEY_DOWN) == 0)) {
 				#endif
 					if (p_facing == 0) {
 						_b_x = gpx - 4;

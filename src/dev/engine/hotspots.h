@@ -44,8 +44,7 @@ void hotspots_do (void) {
 								getxmore [5] = '0' + PLAYER_NUM_OBJETOS - p_objs;
 								_x = 10; _y = 12; _t = 79; _gp_gen = getxmore; print_str ();
 								_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
-								sp_UpdateNow ();
-								sp_WaitForNoKey ();
+								cpc_ShowTileMap (0);
 								espera_activa (100);
 								draw_scr_background ();
 							}

@@ -52,6 +52,7 @@ void tape_load (void) {
 }
 
 void sg_submenu (void) {
+	/*
 	sg_do_load = 0;
 	if (sg_saved) {
 		blackout_area ();
@@ -65,5 +66,6 @@ void sg_submenu (void) {
 				break;
 			}
 		}
-	}	
+	}
+	*/	
 }

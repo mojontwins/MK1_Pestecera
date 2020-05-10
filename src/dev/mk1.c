@@ -41,9 +41,7 @@
 	#endif
 #endif
 
-#define NUMBLOCKS (40 + (MAX_PROJECTILES * 5))
-
-unsigned char AD_FREE [NUMBLOCKS * 15];
+#define SW_SPRITES_ALL 4 + MAX_PROJECTILES
 
 // Cosas del juego:
 

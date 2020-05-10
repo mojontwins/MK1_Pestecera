@@ -12,7 +12,6 @@
 #endif
 
 void game_ending (void) {
-	sp_UpdateNow();
 	blackout ();
 	#ifdef MODE_128K
 		// Resource 2 = ending
@@ -38,7 +37,8 @@ void game_over (void) {
 	_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
 	_x = 10; _y = 12; _t = 79; _gp_gen = " GAME OVER! "; print_str ();
 	_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
-	sp_UpdateNow ();
+	
+	cpc_ShowTileMap (0);
 
 	#ifdef MODE_128K
 	#else
@@ -54,7 +54,8 @@ void game_over (void) {
 		_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
 		_x = 10; _y = 12; _t = 79; _gp_gen = " TIME'S UP! "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
-		sp_UpdateNowEx (0);
+		
+		cpc_ShowTileMap (0);
 			
 		#ifdef MODE_128K
 		#else
@@ -71,7 +72,8 @@ void game_over (void) {
 		_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
 		_x = 10; _y = 12; _t = 79; _gp_gen = "   PAUSED   "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
-		sp_UpdateNowEx (0);
+		
+		cpc_ShowTileMap (0);
 	}
 #endif
 
@@ -80,7 +82,8 @@ void game_over (void) {
 		_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
 		_x = 10; _y = 12; _t = 79; _gp_gen = " ZONE CLEAR "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
-		sp_UpdateNowEx (0);
+		
+		cpc_ShowTileMap (0);
 		espera_activa (250);			
 	}
 #endif

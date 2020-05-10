@@ -226,7 +226,7 @@ unsigned char player_move (void) {
 		{
 			// Pad do
 
-			if ( ! ((pad0 & sp_UP) == 0 || (pad0 & sp_DOWN) == 0)) {
+			if ( ! (cpc_TestKey (KEY_UP) || cpc_TestKey (KEY_DOWN))) {
 				p_facing_v = 0xff;
 				wall_v = 0;
 				if (p_vy > 0) {
@@ -238,12 +238,12 @@ unsigned char player_move (void) {
 				}
 			}
 
-			if ((pad0 & sp_UP) == 0) {
+			if (cpc_TestKey (KEY_UP)) {
 				p_facing_v = FACING_UP;
 				if (p_vy > -PLAYER_MAX_VX) p_vy -= PLAYER_AX;
 			}
 
-			if ((pad0 & sp_DOWN) == 0) {
+			if (cpc_TestKey (KEY_DOWN)) {
 				p_facing_v = FACING_DOWN;
 				if (p_vy < PLAYER_MAX_VX) p_vy += PLAYER_AX;
 			}
@@ -255,7 +255,7 @@ unsigned char player_move (void) {
 			if (veng_selector == VENG_JETPAC)
 		#endif
 		{
-			if ((pad0 & sp_UP) == 0) {
+			if (cpc_TestKey (KEY_UP)) {
 				p_vy -= PLAYER_INCR_JETPAC;
 				if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
 
@@ -387,11 +387,11 @@ unsigned char player_move (void) {
 		#endif
 		{
 			#if defined (PLAYER_CAN_FIRE) && !defined (USE_TWO_BUTTONS)
-				rda = (pad0 & sp_UP) == 0;
+				rda = cpc_TestKey (KEY_UP);
 			#elif defined (PLAYER_CAN_FIRE) && defined (USE_TWO_BUTTONS)				
-				rda = isJoy ? ((pad0 & sp_UP) == 0) : (sp_KeyPressed (key_jump));
+				rda = cpc_TestKey (KEY_BUTTON_B);
 			#else
-				rda = (pad0 & sp_FIRE) == 0;
+				rda = cpc_TestKey (KEY_BUTTON_A);
 			#endif
 
 			if (rda) {
@@ -439,7 +439,7 @@ unsigned char player_move (void) {
 	// ***************************************************************************
 
 	#ifndef PLAYER_DISABLE_DEFAULT_HENG
-		if ( ! ((pad0 & sp_LEFT) == 0 || (pad0 & sp_RIGHT) == 0)) {
+		if ( ! (cpc_TestKey (KEY_LEFT) || cpc_TestKey (KEY_RIGHT))) {
 			#ifdef PLAYER_GENITAL		
 				p_facing_h = 0xff;
 			#endif
@@ -453,7 +453,7 @@ unsigned char player_move (void) {
 			wall_h = 0;
 		}
 
-		if ((pad0 & sp_LEFT) == 0) {
+		if (cpc_TestKey (KEY_LEFT)) {
 			#ifdef PLAYER_GENITAL
 				p_facing_h = FACING_LEFT;
 			#endif
@@ -465,7 +465,7 @@ unsigned char player_move (void) {
 			}
 		}
 
-		if ((pad0 & sp_RIGHT) == 0) {
+		if (cpc_TestKey (KEY_RIGHT)) {
 			#ifdef PLAYER_GENITAL	
 				p_facing_h = FACING_RIGHT;
 			#endif
@@ -655,7 +655,7 @@ unsigned char player_move (void) {
 
 	#ifdef PLAYER_CAN_FIRE
 		// Disparos
-		if ((pad0 & sp_FIRE) == 0 && p_disparando == 0) {			
+		if (cpc_TestKey (KEY_BUTTON_A) && p_disparando == 0) {			
 			p_disparando = 1;
 			#ifdef FIRE_TO_PUSH	
 				//if (pushed_any == 0)
@@ -666,7 +666,7 @@ unsigned char player_move (void) {
 			#endif
 		}
 		
-		if ((pad0 & sp_FIRE)) 
+		if (cpc_TestKey (KEY_BUTTON_A) == 0) 
 			p_disparando = 0;
 
 	#endif

@@ -26,6 +26,7 @@
 #endif
 
 void enems_draw_current (void) {
+	/*
 	_en_x = malotes [enoffsmasi].x;
 	_en_y = malotes [enoffsmasi].y;
 	
@@ -117,6 +118,7 @@ void enems_draw_current (void) {
 		ldi
 		ldi
 	#endasm
+	*/
 }
 
 void enems_load (void) {
@@ -547,7 +549,7 @@ void enems_move (void) {
 								
 								if (_en_life == 0) {
 									enems_draw_current ();
-									sp_UpdateNow ();
+									
 									en_an_state [enit] = GENERAL_DYING;
 									en_an_count [enit] = 12;
 									AY_PLAY_SOUND (SFX_KILL_ENEMY_SHOOT);

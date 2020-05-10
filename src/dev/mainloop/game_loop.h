@@ -84,12 +84,6 @@
 
 	o_pant = 0xff;
 	while (playing) {
-		#ifdef DEBUG_KEYS
-			if (sp_KeyPressed (KEY_M)) { ++ p_objs; beep_fx (0); }
-			if (sp_KeyPressed (KEY_H)) { ++ n_pant; beep_fx (0); }
-			if (sp_KeyPressed (KEY_Y)) { -- n_pant; beep_fx (0); }
-		#endif
-
 		p_kill_amt = 1;
 		pad0 = (joyfunc) (&keys);
 
@@ -200,8 +194,6 @@
 		// Render
 		if (o_pant == n_pant) {
 			#include "mainloop/update_sprites.h"
-
-			sp_UpdateNow();
 		}
 
 		#ifdef PLAYER_FLICKERS
@@ -221,6 +213,7 @@
 		#ifdef ACTIVATE_SCRIPTING
 			// Select object
 			#ifdef MSC_MAXITEMS
+				/*
 				if (sp_KeyPressed (KEY_Z)) {
 					if (!key_z_pressed) {
 						AY_PLAY_SOUND (0);
@@ -231,17 +224,15 @@
 				} else {
 					key_z_pressed = 0;
 				}
+				*/
 			#endif			
 
 			#ifndef SCRIPTING_KEY_NONE
-				#ifdef SCRIPTING_KEY_M			
-					if (sp_KeyPressed (KEY_M))
-				#endif
 				#ifdef SCRIPTING_DOWN
-					if ((pad0 & sp_DOWN) == 0)
+					if (cpc_TestKey (KEY_DOWN))
 				#endif
 				#ifdef SCRIPTING_KEY_FIRE
-					if ((pad0 & sp_FIRE) == 0)
+					if (cpc_TestKey (KEY_BUTTON_A))
 				#endif
 				{
 					// Any scripts to run in this screen?
@@ -252,6 +243,7 @@
 
 		#ifdef PAUSE_ABORT
 			// Pause/Abort handling
+			/*
 			if (sp_KeyPressed (KEY_H)) {
 				sp_WaitForNoKey ();
 				AY_STOP_SOUND ();
@@ -270,6 +262,7 @@
 			if (sp_KeyPressed (KEY_Y)) {
 				playing = 0;
 			}
+			*/
 		#endif
 
 		// Flick the screen ?
@@ -311,9 +304,7 @@
 
 		#include "my/ci/extra_routines.h"
 	}
-	sp_UpdateNow ();
-	sp_WaitForNoKey ();
-
+	
 	AY_STOP_SOUND ();
 
 	#include "my/ci/after_game_loop.h"

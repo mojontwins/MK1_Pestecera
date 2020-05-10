@@ -209,6 +209,7 @@
 #ifdef USE_TWO_BUTTONS
 	// Define here if you selected the TWO BUTTONS configuration
 
+	/*
 	struct sp_UDK keys = {
 		0x047f, // .fire
 		0x04fd, // .right
@@ -219,9 +220,11 @@
 	
 	int key_jump = 0x087f;
 	int key_fire = 0x047f;
+	*/
 #else
 	// Define here if you selected the NORMAL configuration
 
+	/*
 	struct sp_UDK keys = {
 		0x017f, // .fire
 		0x01df, // .right
@@ -229,6 +232,7 @@
 		0x01fd, // .down
 		0x01fb	// .up
 	};
+	*/
 #endif
 
 // ============================================================================
