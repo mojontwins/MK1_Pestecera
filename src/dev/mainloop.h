@@ -13,11 +13,12 @@ void main (void) {
 
 		ld  a, 195
 		ld  (0x38), a
-		ld  hl, (_isr)
+		ld  hl, _isr
 		ld  (0x39), hl
 		jp  isr_done
 
 	._isr
+		ei
 		ret
 
 	.isr_done
@@ -114,6 +115,10 @@ void main (void) {
 	#endif
 
 	#include "my/ci/after_load.h"
+
+	#asm
+		ei
+	#endasm
 
 	while (1) {
 		#ifdef ACTIVATE_SCRIPTING

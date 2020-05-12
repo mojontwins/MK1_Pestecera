@@ -314,7 +314,24 @@ Los enemigos deberán ser inicializados en `enems_load`:
 	}
 ```
 
-# Quitar splib2 y poner CPCRSLIB
+## Quitar splib2 y poner CPCRSLIB
 
 Ahora es cuando me pateo todo el código y cambio splib2 por CPCRSLIB. Por ahora voy a hacer sólo las pantallas de superbuffer y todo el fondo, sin renderizar ni un sprite (luego usaré el actualzador que escribí para **MK3-OM**).
 
+# 20200512
+
+Me he dado cuenta, tras la primera compilación (sin sprites), que la forma de manejar la lista de actualizaciones (tiles invalidados) no es muy compatible con como hago las cosas y presenta problemas. CPCRSLIB sería mucho más utilizable de modo general (y creo que más rápida) si usase un bitfield en vez de una lista de tiles no válidos.
+
+El bitfield usaría 1 bit por cada uno de los 768 caracteres, o lo que es lo mismo, 768/8 = 96 bytes fijos, que es bastante menos que lo que puede crecer la lista original.
+
+Para obtener si la casilla `(x, y)` es válida, teniendo 32/8 = 4 bytes por linea, tendría que mirar en el byte `y * 4 + x / 8`, en el bit `x & 7`. ¡Oye, ni tan costoso! 
+
+Ahora mismo tenemos `cpc_UpdTileTable` que toma `D = Y, E = X` y añade una entrada a la lista `tiles_tocados`. Modificando levemente este código podría escribir en el bitfield. 
+
+`cpc_ResetTouchedTiles` debería poner los 96 bytes a 0.
+
+La parte más complicada vendrá a la hora de actualizar. Haciendo una búsqueda rápida y mal, veo que sólo consultan `cpc_ShowTouchedTiles`, `cpc_TouchTileSpXY` que no sé si uso (NO), `cpc_UpdScr` (para actualizar los tiles tocados al buffer).
+
+Ni tanto. 
+
+Me lo planteo mucho (lo haré).

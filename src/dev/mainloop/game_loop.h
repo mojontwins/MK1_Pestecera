@@ -92,7 +92,7 @@
 			draw_scr ();
 			o_pant = n_pant;
 		}
-
+/*
 		#ifdef TIMER_ENABLE
 			#if defined(TIMER_SCRIPT_0) && defined(ACTIVATE_SCRIPTING)
 				if (timer_zero) {
@@ -207,7 +207,7 @@
 		
 		// Hotspot interaction.
 		hotspots_do ();
-
+*/
 		// Scripting related stuff
 		
 		#ifdef ACTIVATE_SCRIPTING
@@ -266,7 +266,7 @@
 		#endif
 
 		// Flick the screen ?
-			
+		/*	
 		#include "mainloop/flick_screen.h"			
 
 		// Win game condition
@@ -303,6 +303,8 @@
 		}
 
 		#include "my/ci/extra_routines.h"
+		*/
+
 	}
 	
 	AY_STOP_SOUND ();

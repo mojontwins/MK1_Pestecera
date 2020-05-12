@@ -511,7 +511,7 @@ Sub doStrait2x2(img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h 
 		For x = x0 To x1 Step patternWidthInPixels * 2
 			for yy = 0 To 8 Step 8
 				For xx = 0 To patternWidthInPixels Step patternWidthInPixels
-					extractPatternFrom x, y, img, pattern (), attr
+					extractPatternFrom x+xx, y+yy, img, pattern (), attr
 					addPatternToPool patternToString (pattern ())
 					if debug Then puts patternToString (pattern ())
 					copyPartialArrayToMainBin pattern (), patternSize
