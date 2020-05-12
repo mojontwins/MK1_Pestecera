@@ -55,12 +55,10 @@ zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -cpcwyzlib -DCPC_GFX_MODE=%c
 ..\utils\printsize.exe %game%.bin
 ..\utils\printsize.exe scripts.bin
 
-echo Construyendo cinta
-rem cambia LOADER por el nombre que quieres que salga en Program:
-..\utils\bas2tap -a10 -sLOADER loader\loader.bas loader.tap > nul
-..\utils\bin2tap -o screen.tap -a 16384 loading.bin > nul
-..\utils\bin2tap -o main.tap -a 24000 %game%.bin > nul
-copy /b loader.tap + screen.tap + main.tap %game%.tap > nul
+echo Construyendo Snapshot %game%.sna
+..\utils\cpctbin2sna.exe %game%.bin 0x400 -pc 0x400 -o %game%.sna
+
+rem echo Construyendo cinta
 
 if [%1]==[justcompile] goto :end
 if [%1]==[noclean] goto :end
