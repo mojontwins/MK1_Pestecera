@@ -85,7 +85,7 @@
 	o_pant = 0xff;
 	while (playing) {
 		p_kill_amt = 1;
-		pad0 = (joyfunc) (&keys);
+		//pad0 = (joyfunc) (&keys);
 
 		if (o_pant != n_pant) {
 			#include "my/ci/before_entering_screen.h"

@@ -65,11 +65,8 @@ void hotspots_do (void) {
 					p_life += PLAYER_REFILL;
 					if (p_life > PLAYER_LIFE)
 						p_life = PLAYER_LIFE;
-					#ifdef MODE_128K
-						wyz_play_sound (SFX_REFILL_GET);
-					#else	
-						beep_fx (8);
-					#endif
+					AY_PLAY_SOUND (SFX_REFILL_GET);
+					
 					break;
 			#endif
 

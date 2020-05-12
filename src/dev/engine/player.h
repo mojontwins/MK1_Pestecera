@@ -702,6 +702,7 @@ unsigned char player_move (void) {
 	#ifdef PLAYER_CUSTOM_ANIMATION
 		#include "my/custom_animation.h"
 	#elif defined PLAYER_GENITAL
+		/*
 		if (p_vx || p_vy) {
 			++ p_subframe;
 			if (p_subframe == 4) {
@@ -714,7 +715,9 @@ unsigned char player_move (void) {
 		}
 		
 		p_next_frame = player_cells [p_facing + p_frame];
+		*/
 	#elif defined PLAYER_BOOTEE
+		/*
 		gpit = p_facing << 2;
 		if (p_vy == 0) {
 			p_next_frame = player_cells [gpit];
@@ -723,7 +726,9 @@ unsigned char player_move (void) {
 		} else {
 			p_next_frame = player_cells [gpit + 2];
 		}
-	#else	
+		*/
+	#else
+		/*	
 		if (!possee && !p_gotten) {
 			p_next_frame = player_cells [8 + p_facing];
 		} else {
@@ -735,6 +740,7 @@ unsigned char player_move (void) {
 			}
 			p_next_frame = player_cells [gpit + rda];
 		}
+		*/
 	#endif
 }
 

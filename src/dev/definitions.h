@@ -16,9 +16,9 @@ unsigned char pad0;
 #define KEY_Y 0x10df
 #define KEY_Z 0x02fe
 
-// Safe stuff in low(est) RAM
+// Safe stuff in non paged RAM
 
-unsigned char safe_byte @ 23296;
+unsigned char safe_byte @ 0xC7FF;
 
 // Globales muy globalizadas
 
@@ -34,9 +34,9 @@ unsigned char safe_byte @ 23296;
 #define KEY_AUX2		9
 
 typedef struct sprite {
-	int sp0;					// 0
-	int sp1; 					// 2
-	int coord0;
+	unsigned int sp0;			// 0
+	unsigned int sp1; 			// 2
+	unsigned int coord0;
 	signed char cox, coy;		// 6 7
 	unsigned char cx, cy; 		// 8 9
 	unsigned char ox, oy;		// 10 11
@@ -176,11 +176,11 @@ unsigned char *_baddies_pointer;
 
 // atributos de la pantalla: Contiene información
 // sobre qué tipo de tile hay en cada casilla
-unsigned char map_attr [150];
-unsigned char map_buff [150] @ FREEPOOL;
+unsigned char map_attr [150] @ BASE_ROOM_BUFFERS;
+unsigned char map_buff [150] @ BASE_ROOM_BUFFERS + 150;
 // Breakable walls/etc
 #ifdef BREAKABLE_WALLS
-	unsigned char brk_buff [150] @ 23297;
+	unsigned char brk_buff [150] @ @ BASE_ROOM_BUFFERS + 300;
 #endif
 
 // posición del objeto (hotspot). Para no objeto,

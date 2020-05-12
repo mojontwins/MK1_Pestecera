@@ -29,7 +29,7 @@ void enems_move (void);
 unsigned char collide (void);
 unsigned char cm_two_points (void);
 unsigned char rand (void);
-unsigned int abs (int n);
+unsigned int abs (signed int n);
 void step (void);
 void cortina (void);
 

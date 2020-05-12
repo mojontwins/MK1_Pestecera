@@ -200,9 +200,9 @@ void enems_load (void) {
 			sp_sw [rda].coy = sm_coy [rdb];
 			sp_sw [rda].invfunc = sm_invfunc [rdb];
 			sp_sw [rda].updfunc = sm_updfunc [rdb];
-			sp_sw [rda].sp0 = sp_sw [rda].sp1 = sm_sprptr [rdb];
+			sp_sw [rda].sp0 = sp_sw [rda].sp1 = (unsigned int) (sm_sprptr [rdb]);
 		} else {
-			sp_sw [rda].sp0 = sp_sw [rda].sp1 = sprite_18_a;
+			sp_sw [rda].sp0 = sp_sw [rda].sp1 = (unsigned int) (sprite_18_a);
 		}
 
 		#include "my/ci/enems_extra_mods.h"
@@ -374,6 +374,7 @@ void enems_move (void) {
 					en_an_next_frame [enit] = enem_cells [en_an_base_frame [enit] + en_an_frame [enit]];
 				}
 				*/
+				/*
 				#asm
 						ld  bc, (_enit)
 						ld  b, 0
@@ -417,6 +418,7 @@ void enems_move (void) {
 						ldi 							; Copy 16 bit
 					._enems_move_update_frame_done
 				#endasm
+				*/
 			}
 			
 			// Collide with player

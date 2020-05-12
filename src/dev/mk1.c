@@ -3,39 +3,46 @@
 
 // mk1.c
 //#define DEBUG_KEYS
-#include <spritepack.h>
+#include <cpcrslib.h>
+#include <cpcwyzlib.h>
 
 // We are using some stuff from splib2 directly.
 #asm
-		LIB SPMoveSprAbs
-		LIB SPPrintAtInv
-		LIB SPTileArray
-		LIB SPInvalidate
-		LIB SPCompDListAddr
+		XREF _nametable
+		LIB cpc_UpdTileTable
 #endasm
 
 #include "my/config.h"
 #include "prototypes.h"
 
 // DON'T touch these
-#define FIXBITS 		6	
-#define MAX_ENEMS 		3			
+#define FIXBITS 			6	
+#define MAX_ENEMS 			3			
 
-#define BASE_SPRITES 	0xE000 + 0x600
-#define BASE_LUT		0xF800 + 0x600
-#define BASE_SUPERBUFF  0x9000
+#define BASE_ROOM_BUFFERS	0xC000 + 0x600
+#define BASE_DIRTY_CELLS 	0xC800 + 0x600
+#define BASE_SPRITES 		0xE000 + 0x600
+#define BASE_LUT			0xF800 + 0x600
+
+#define BASE_SUPERBUFF  	0x9000
 
 // Configure number of blocks and reserve a pool for sprites
 
+#define SP_PLAYER 			0
+#define SP_ENEMS_BASE 		1
+
 #ifdef PLAYER_CAN_FIRE
+	#define SP_BULLETS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
 	#ifdef ENABLE_SIMPLE_COCOS
 		#define MAX_PROJECTILES (MAX_BULLETS + MAX_ENEMS)
+		#define SP_COCOS_BASE 	SP_BULLETS_BASE + MAX_BULLETS
 	#else
 		#define MAX_PROJECTILES MAX_BULLETS
 	#endif
 #else
 	#ifdef ENABLE_SIMPLE_COCOS
 		#define MAX_PROJECTILES MAX_ENEMS
+		#define SP_COCOS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
 	#else
 		#define MAX_PROJECTILES 0
 	#endif
@@ -53,10 +60,10 @@
 
 #ifdef MODE_128K
 	#include "128k.h"
-	#include "assets/ay_fx_numbers.h"
 	#include "assets/librarian.h"
 #endif
 
+#include "assets/ay_fx_numbers.h"
 #include "aplib.h"
 #include "pantallas.h"
 #include "assets/pal.h"
@@ -72,6 +79,8 @@
 	#include "assets/sprites.h"
 	#include "assets/extrasprites.h"
 #endif
+#include "assets/spriteset_mappings.h"
+#include "assets/trpixlut.h"
 
 #include "my/ci/extra_vars.h"
 

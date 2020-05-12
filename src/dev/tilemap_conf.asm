@@ -8,6 +8,7 @@
 	XLIB TileMapConf
 	
 	XREF _tileset
+
 	XDEF _nametable
 
 	XREF tiles
@@ -53,6 +54,8 @@
 	defc mascara2 = $00;
 	
 ; VALORES QUE DEFINEN EL BUFFER Y LA PANTALLA
+	
+	defc tiles_tocados = $C800 + $600
 
 	defc posicion_inicial_area_visible = $c000
 	defc posicion_inicial_superbuffer = $9000
@@ -134,9 +137,6 @@
 ._nametable
 .pantalla_juego 
 	defs 768
-	
-.tiles_tocados 
-	defs 256
 
 .tiles_tocados_ptr
 	defw tiles_tocados

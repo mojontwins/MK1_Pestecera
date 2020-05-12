@@ -614,5 +614,5 @@ void pal_set (unsigned char *pal) {
 	#else
 		gpit = 4;
 	#endif
-	while (gpit --) cpc_SetColour (gpit, s[gpit]);
+	while (gpit --) cpc_SetColour (gpit, pal[gpit]);
 }

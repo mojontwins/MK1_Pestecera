@@ -67,10 +67,6 @@ if [%1]==[noclean] goto :end
 
 :clean
 echo Limpiando
-del loader.tap > nul
-del screen.tap > nul
-del main.tap > nul
-del ..\gfx\*.scr > nul
 
 goto :end 
 

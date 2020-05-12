@@ -20,7 +20,7 @@ void main (void) {
 	._isr
 		ret
 
-	._isr_done
+	.isr_done
 	#endasm
 	
 	// Border 0
@@ -85,7 +85,7 @@ void main (void) {
 	sp_sw [SP_PLAYER].coy = sm_coy [0];
 	sp_sw [SP_PLAYER].invfunc = sm_invfunc [0];
 	sp_sw [SP_PLAYER].updfunc = sm_updfunc [0];
-	sp_sw [SP_PLAYER].sp0 = sp_sw [SP_PLAYER].sp1 = sm_sprptr [0];
+	sp_sw [SP_PLAYER].sp0 = sp_sw [SP_PLAYER].sp1 = (unsigned int) (sm_sprptr [0]);
 
 	// Enemies - delegated to enems_load
 

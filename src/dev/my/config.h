@@ -334,11 +334,11 @@ unsigned char behs [] = {
 #endif
 
 #ifdef SOUND_NONE
-	#define AY_PLAY_SOUND ;
-	#define AY_STOP_SOUND ;
-	#define AY_PLAY_MUSIC ;
+	#define AY_PLAY_SOUND(a) ;
+	#define AY_STOP_SOUND()  ;
+	#define AY_PLAY_MUSIC(a) ;
 #elif defined (SOUND_WYZ)
-	#define AY_PLAY_SOUND ;
-	#define AY_STOP_SOUND ;
-	#define AY_PLAY_MUSIC ;
+	#define AY_PLAY_SOUND(a) ;
+	#define AY_STOP_SOUND()  ;
+	#define AY_PLAY_MUSIC(a) ;
 #endif

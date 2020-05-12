@@ -128,7 +128,7 @@ unsigned char rand (void) {
 	#endasm
 }
 
-unsigned int abs (int n) {
+unsigned int abs (signed int n) {
 	if (n < 0)
 		return (unsigned int) (-n);
 	else 

@@ -1,16 +1,6 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-#ifndef MODE_128K
-	void lame_sound (void) {
-		gpit = 4; do {
-			beep_fx (rda);
-			beep_fx (rdb);
-		} while (-- gpit);
-		beep_fx (9);
-	}
-#endif
-
 void game_ending (void) {
 	blackout ();
 	#ifdef MODE_128K
@@ -24,12 +14,6 @@ void game_ending (void) {
 		#endasm
 	#endif
 	cpc_ShowTileMap (1);
-
-	#ifdef MODE_128K
-	#else
-		rda = 7; rdb = 2;
-		lame_sound ();
-	#endif
 	
 	espera_activa (500);
 }
@@ -40,12 +24,6 @@ void game_over (void) {
 	_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
 	
 	cpc_ShowTileMap (0);
-
-	#ifdef MODE_128K
-	#else
-		rda = 7; rdb = 2;
-		lame_sound ();
-	#endif
 
 	espera_activa (500);
 }
@@ -58,12 +36,6 @@ void game_over (void) {
 		
 		cpc_ShowTileMap (0);
 			
-		#ifdef MODE_128K
-		#else
-			rda = 1; rdb = 2;
-		lame_sound ();
-		#endif
-		
 		espera_activa (250);
 	}
 #endif
