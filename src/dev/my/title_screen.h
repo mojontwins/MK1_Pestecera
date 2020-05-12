@@ -7,15 +7,16 @@
 	blackout ();
 	
 	#ifdef MODE_128K
-		get_resource (TITLE_BIN, 16384);
+		get_resource (TITLE_BIN, BASE_SUPERBUFF);
 		AY_PLAY_MUSIC (0);
 	#else		
 		#asm
 			ld hl, _s_title
-			ld de, 16384
+			ld de, BASE_SUPERBUFF
 			call depack
 		#endasm
 	#endif
+	cpc_ShowTileMap (1);
 
 	select_joyfunc ();
 }

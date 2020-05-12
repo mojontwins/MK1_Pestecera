@@ -163,14 +163,15 @@ void main (void) {
 				
 				#ifdef MODE_128K
 					// Resource 1 = marco.bin
-					get_resource (MARCO_BIN, 16384);
+					get_resource (MARCO_BIN, BASE_SUPERBUFF);
 				#else		
 					#asm
 						ld hl, _s_marco
-						ld de, 16384
+						ld de, BASE_SUPERBUFF
 						call depack
 					#endasm
 				#endif
+				cpc_ShowTileMap (1);						
 			#endif
 
 			// Let's do it.

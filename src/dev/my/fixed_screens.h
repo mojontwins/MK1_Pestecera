@@ -15,14 +15,15 @@ void game_ending (void) {
 	blackout ();
 	#ifdef MODE_128K
 		// Resource 2 = ending
-		get_resource (ENDING_BIN, 16384);
+		get_resource (ENDING_BIN, BASE_SUPERBUFF);
 	#else
 		#asm
 			ld hl, _s_ending
-			ld de, 16384
+			ld de, BASE_SUPERBUFF
 			call depack
 		#endasm
 	#endif
+	cpc_ShowTileMap (1);
 
 	#ifdef MODE_128K
 	#else
