@@ -390,8 +390,13 @@ void invalidate_tile (void) {
 }
 
 void invalidate_viewport (void) {
-	cpc_ShowTileMap (0);
-	cpc_ResetTouchedTiles ();
+	#asm
+			ld  B, VIEWPORT_Y
+			ld  C, VIEWPORT_X
+			ld  D, VIEWPORT_Y+19
+			ld  E, VIEWPORT_X+29
+			call cpc_InvalidateRect
+	#endasm
 }
 
 void draw_invalidate_coloured_tile_gamearea (void) {

@@ -91,6 +91,9 @@
 			#include "my/ci/before_entering_screen.h"
 			draw_scr ();
 			o_pant = n_pant;
+			cpc_UpdScr ();
+			cpc_ShowTouchedTiles();
+			cpc_SetColour (16, 0x15);
 		}
 /*
 		#ifdef TIMER_ENABLE

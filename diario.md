@@ -335,3 +335,109 @@ La parte más complicada vendrá a la hora de actualizar. Haciendo una búsqueda
 Ni tanto. 
 
 Me lo planteo mucho (lo haré).
+
+# 20200513
+
+Leg's rock in Vietnam! Vamos a hacer el cambio y a romper la CPCRSLIB durante muchos días :D
+
+Lo más sencillo es modificar primero `cpc_UpdTileTable`. Para ello he añadido una paqueña LUT para seleccionar el bit y la sencilla rutina `tbllookup` directamente desde splib2. El tema ha quedado así:
+
+```
+    XLIB cpc_UpdTileTable       ;marca un tile indicando las coordenadas del tile
+    LIB cpc_Bit2Mask, cpc_TblLookup
+    XREF tiles_tocados
+
+    .cpc_UpdTileTable   
+        ; D = y
+        ; E = x
+
+        ld  a, d
+        sla a
+        sla a               ; y = 0-23, 23*4 fits in a byte.
+        ld  b, a            ; B = y * 4
+
+        ld  a, e
+        srl a
+        srl a
+        srl a               ; x / 8
+
+        add b               ; A = x / 8 + y * 4
+
+        ld  hl, tiles_tocados
+        ld  b, 0
+        ld  c, a            ; BC = x / 8 + y * 4
+        add hl, bc          ; HL = tiles_tocados + x / 8 + y * 4
+
+        ld  a, e            ; A = x
+        ld  de, cpc_Bit2Mask
+        call cpc_TblLookup  ; A = bit mask
+
+        or  (hl)            ; A = bit mask | [tiles_tocados + x / 8 + y * 4]
+        ld  (hl), a
+
+        ret
+```
+
+La siguiente es `cpc_ResetTouchedTiles` que simplemente debería dejarlos todos a 0:
+
+```
+    XLIB cpc_ResetTouchedTiles
+    XREF tiles_tocados
+     
+    .cpc_ResetTouchedTiles
+
+        ld  hl, tiles_tocados
+        ld  de, tiles_tocados + 1
+        ld  bc, 95
+        ld  (hl), 0
+        ldir
+
+        ret 
+```
+
+Y ahora vienen las difíciles: `cpc_ShowTouchedTiles`, `cpc_UpdScr`. El código es muy largo porque soy menso y si no lo hago desenrollado no me sale. Y cuando lo pruebe reventarán CPCs de todo el mundo.
+
+Antes de probar, necesito una función que me invalide de forma arbitraria un rectángulo. Voy a mirar como está hecho esto en splib2... Pues resulta que hay un código bastante complejete que lo hace de forma muy optimizada, con máscaras y hostias.
+
+Tomando BCDE así:
+
+```
+    B - row, top left.
+    C - col, top left.
+    D - row, bottom right.
+    E - col, bottom right.
+```
+
+Primero transforma D y E en las longitudes del rectángulo. Luego hace una intersección con el rectángulo de clipping (yo no necesito hilar tan fino) y luego hace sus potagias. Creo que según la entiendo la puedo replicar. Pero a lo mejor ya va a ser mucha tela para hoy ¿no?
+
+Al final sí. Y compilar, compila XD
+
+¡Y tras un par de eructitos, funciona! Ya puedo añadir N tiles invalidados como quiera y cuando quiera. Para otro día intento optimizarlo, pero por ahora me vale.
+
+Ahora lo siguiente son los sprites, y para ello voy a recordar el tema de MK3_OM para hacerlo igual con las cosas nuevas que he puesto en provisión de futuros spritesets de tamaños mezclados.
+
+Veo que para sprite hago algo parecido a esto:
+
+```c
+    spr_on [SPR_PLAYER] = (pflickering == 0) || half_life;
+    spr_x [SPR_PLAYER] = prx - 4;
+    spr_y [SPR_PLAYER] = pry;
+    spr_next [SPR_PLAYER] = sprite_cells [psprid];
+```
+
+Luego en el bucle principal, se recorre `spr_on`. Si está a true, se actualizan las coordenadas y el gráfico de los sprites software en las estructuras:
+
+```c
+    {
+        sp_sw [(a)].cx = (((x) + SCR_X*8) >> 2); sp_sw [(a)].cy = (y) + SCR_Y*8;
+        sp_sw [(a)].sp0 = (int) (spr_next [(a)]);
+    }
+```
+
+si `spr_on` es false, se les asigna el sprite vacío y se ponen en 0, 0:
+
+```c
+    { sp_sw [(a)].sp0 = (int) (ss_empty); sp_sw [(a)].cx = sp_sw [(a)].cy = 0; }
+```
+
+Con todo esto relleno, se llama a una rutina `cpc_screen_update` que recorre la estructura `sp_sw` llamando a las funciones de actualización pertinentes según estén definidas para cada sprite `invfunc` y `updfunc`.

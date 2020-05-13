@@ -3,20 +3,12 @@
 ; **	   Raúl Simarro, 	  Artaburu 2007           **
 ; ******************************************************
 
-; Cambio radical al tema de los tiles tocados marca ACME (Actualización de 
-; Código Mojona Eructo) by na_th_an
-
-; Ahora en lugar de haber una lista de tiles tocados, tenemos un bitfield. El
-; bitfield se ubica a partir de `tiles_tocados` y ocupa 96 bytes, con 1 bit 
-; para cada uno de las 768 casillas.
-
-; Ahora no se recorrerá una lista de parejas X, Y, sino que debe recorrerse el
-; bitfield y ejecutarse la rutina de actualización para cada bit a 1.
+; [na_th_an] Modificada por Mojon Twins - ajustamos a la geometría de 32 columnas
 
 XLIB cpc_ShowTouchedTiles
 
 XREF tiles_tocados
-
+XREF tiles_tocados_ptr
 XREF pantalla_juego				; Buffer pantalla
 XREF posiciones_super_buffer
 XREF posiciones_pantalla
@@ -27,112 +19,25 @@ XREF ancho_pantalla_bytes
 XREF alto_pantalla_bytes
 
 .cpc_ShowTouchedTiles
+	; Recorre la lista de tiles tocados.
+	; Copia esos tiles del superbuffer a la pantalla.
 
-	ld  hl,tiles_tocados
-	ld  b, 96
-	ld  de, 0 			; (x, y) = (0, 0)
+	; Marcar el final de la lista!
+	;ld  hl, (tiles_tocados_ptr)
+	;ld  (hl), $ff
+
+	LD IX,tiles_tocados
 
 .bucle_cpc_ShowTouchedTiles	
-	; Unrolled
-	ld  a, (hl)
-	or  a
-	jr  nz, process
+	LD E,(IX+0)					; Lee un byte de la lista (X)
 
-	ld  a, e
-	add 8
-	ld  e, a
-	jr skipall
+	LD A,$FF
+	CP E
+	RET Z 						; Si es $FF, terminamos.
 
-.process
-
-	push bc
-	push hl
-
-	; A contains a bitfield
-
-	bit 0, a
-	jr  z, bit0_skip
-	push de
-	call copyTile
-	pop de
-.bit0_skip
-	inc e
-
-	bit 1, a
-	jr  z, bit1_skip	
-	push de
-	call copyTile
-	pop de
-.bit1_skip
-	inc e
-
-	bit 2, a
-	jr  z, bit2_skip	
-	push de
-	call copyTile
-	pop de
-.bit2_skip
-	inc e
-
-	bit 3, a
-	jr  z, bit3_skip	
-	push de
-	call copyTile
-	pop de
-.bit3_skip
-	inc e
-
-	bit 4, a
-	jr  z, bit4_skip	
-	push de
-	call copyTile
-	pop de
-.bit4_skip
-	inc e
-
-	bit 5, a
-	jr  z, bit5_skip	
-	push de
-	call copyTile
-	pop de
-.bit5_skip
-	inc e
-
-	bit 6, a
-	jr  z, bit6_skip	
-	push de
-	call copyTile
-	pop de
-.bit6_skip
-	inc e
-
-	bit 7, a
-	jr  z, bit7_skip
-	push de
-	call copyTile
-	pop de
-.bit7_skip
-	inc e
-
-	pop hl
-	pop bc
-
-.skipall
-	ld  a, e
-	cp  32
-	jr  nz, noincd
-
-	inc d
-	ld  e, 0
-
-.noincd
-	inc hl
-
-	djnz bucle_cpc_ShowTouchedTiles
-	ret
-
-.copyTile
-	; copia el tile en (x, y) = E, D.
+	LD D,(IX+1)					; La lista contiene pares (x,y) (Y)
+	INC IX
+	INC IX 						; Avanzamos al siguiente par.
 
 .posicionar_superbuffer
 	; Superbuffer is 64 bytes per row*8
@@ -237,4 +142,4 @@ XREF alto_pantalla_bytes
 	ldi
 	ldi
 
-	ret
+	jp bucle_cpc_ShowTouchedTiles

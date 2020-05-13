@@ -10,6 +10,7 @@
 #asm
 		XREF _nametable
 		LIB cpc_UpdTileTable
+		LIB cpc_InvalidateRect
 #endasm
 
 #include "my/config.h"

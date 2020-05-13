@@ -290,6 +290,9 @@ void draw_scr_background (void) {
 }
 
 void draw_scr (void) {
+
+	cpc_ResetTouchedTiles ();
+
 	is_rendering = 1;
 
 	#ifdef ENABLE_TILANIMS

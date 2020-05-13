@@ -1,24 +1,26 @@
 ; ******************************************************
 ; **       Librería de rutinas para Amstrad CPC       **
-; **	   Raúl Simarro, 	  Artaburu 2007       **
+; **	   Raúl Simarro, 	  Artaburu 2007           **
 ; ******************************************************
 
-XLIB cpc_ResetTouchedTiles
+; Cambio radical al tema de los tiles tocados marca ACME (Actualización de 
+; Código Mojona Eructo) by na_th_an
 
+; Ahora en lugar de haber una lista de tiles tocados, tenemos un bitfield. El
+; bitfield se ubica a partir de `tiles_tocados` y ocupa 96 bytes, con 1 bit 
+; para cada uno de las 768 casillas.
+
+; Esta rutina pone el bitfield a 0
+
+XLIB cpc_ResetTouchedTiles
 XREF tiles_tocados
-XREF tiles_tocados_ptr
  
 .cpc_ResetTouchedTiles
 
-; [na_th_an] El código original ponía una marca al principio
-; Yo voy a usar inserción directa en una lista indexada, así que
-; lo hago diferentemente:
-
-;	LD HL,tiles_tocados
-;	LD (HL),$FF
-;	RET
-
 	ld  hl, tiles_tocados
-	ld  (tiles_tocados_ptr), hl
-	ld  (hl), $ff
+	ld  de, tiles_tocados + 1
+	ld  bc, 95
+	ld  (hl), 0
+	ldir
+
 	ret 

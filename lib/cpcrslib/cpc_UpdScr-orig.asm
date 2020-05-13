@@ -3,15 +3,7 @@
 ; **	   Raúl Simarro, 	  Artaburu 2007       **
 ; ******************************************************
 
-; Cambio radical al tema de los tiles tocados marca ACME (Actualización de 
-; Código Mojona Eructo) by na_th_an
 
-; Ahora en lugar de haber una lista de tiles tocados, tenemos un bitfield. El
-; bitfield se ubica a partir de `tiles_tocados` y ocupa 96 bytes, con 1 bit 
-; para cada uno de las 768 casillas.
-
-; Ahora no se recorrerá una lista de parejas X, Y, sino que debe recorrerse el
-; bitfield y ejecutarse la rutina de actualización para cada bit a 1.
 
 XLIB cpc_UpdScr	
 
@@ -23,112 +15,18 @@ XREF tiles
 XREF ancho_pantalla_bytes
 
 .cpc_UpdScr
+	;lee la tabla de tiles tocados 
+	; y va restaurando cada uno en su sitio.
 
-	ld  hl,tiles_tocados
-	ld  b, 96
-	ld  de, 0 			; (x, y) = (0, 0)
-
+	LD IX,tiles_tocados
 .bucle_cpc_UpdScr	
-	; Unrolled
-	ld  a, (hl)
-	or  a
-	jr  nz, process
-
-	ld  a, e
-	add 8
-	ld  e, a
-	jr  skipall
-
-.process
-
-	push bc
-	push hl
-
-	; A contains a bitfield
-
-	bit 0, a
-	jr  z, bit0_skip
-	push de
-	call ucopyTile
-	pop de
-.bit0_skip
-	inc e
-
-	bit 1, a
-	jr  z, bit1_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit1_skip
-	inc e
-
-	bit 2, a
-	jr  z, bit2_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit2_skip
-	inc e
-
-	bit 3, a
-	jr  z, bit3_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit3_skip
-	inc e
-
-	bit 4, a
-	jr  z, bit4_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit4_skip
-	inc e
-
-	bit 5, a
-	jr  z, bit5_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit5_skip
-	inc e
-
-	bit 6, a
-	jr  z, bit6_skip	
-	push de
-	call ucopyTile
-	pop de
-.bit6_skip
-	inc e
-
-	bit 7, a
-	jr  z, bit7_skip
-	push de
-	call ucopyTile
-	pop de
-.bit7_skip
-	inc e
-
-	pop hl
-	pop bc
-
-.skipall
-	ld  a, e
-	cp  32
-	jr  nz, noincd
-
-	inc d
-	ld  e, 0
-
-.noincd
-	inc hl	
-
-	djnz bucle_cpc_UpdScr
-	ret
-
-.ucopyTile
-	; copia el tile en (x, y) = E, D.
+	LD E,(IX+0)
+	LD A,$FF
+	CP E
+	RET Z		;RETORNA SI NO HAY MÁS DATOS EN LA LISTA
+	LD D,(IX+1)
+	INC IX
+	INC IX
 
 .posicionar_superbuffer 
 
@@ -154,6 +52,10 @@ XREF ancho_pantalla_bytes
 
 	; D = Y; E = X.
 
+	;ld a,e
+	;ld e,d
+
+	;include "multiplication2.asm"
 
 	ld l, d
 	ld h, 0
@@ -206,44 +108,45 @@ XREF ancho_pantalla_bytes
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 	ex de,hl
 	ld c,ancho_pantalla_bytes-2
 	add HL,BC	
-	ex de,hl
+		ex de,hl
 	ldi
 	ldi
 
-	ret
+jp bucle_cpc_UpdScr
+

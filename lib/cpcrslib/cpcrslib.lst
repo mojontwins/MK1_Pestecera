@@ -7,7 +7,6 @@ cpc_TouchTileSpXY
 cpc_ResetTouchedTiles
 cpc_UpdScr
 cpc_ShowTouchedTiles
-cpc_ShowTouchedTiles2
 cpc_PutSpTileMap
 cpc_PutSpTileMap4x8
 cpc_PutSpTileMap8x16
@@ -99,3 +98,8 @@ cpc_KeysData
 cpc_ScanKeyboard
 cpc_TestKeyF
 cpc_PutSpTileMapO
+cpc_Bit2Mask
+cpc_TblLookup
+cpc_InvalidateRect
+cpc_bitright2mask
+cpc_bitleft2mask
