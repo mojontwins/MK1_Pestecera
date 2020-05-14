@@ -50,6 +50,9 @@ echo Importando GFX
 if [%1]==[justassets] goto :end
 
 :compile
+echo Generating LUTs
+..\utils\pasmo.exe assets\cpc_TrPixLutM%cpc_gfx_mode%.asm assets\trpixlut.bin
+..\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
 echo Compilando guego
 zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -cpcwyzlib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
 ..\utils\printsize.exe %game%.bin

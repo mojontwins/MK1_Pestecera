@@ -43,7 +43,6 @@
 		// Entering game
 		run_script (2 * MAP_W * MAP_H);
 	#endif
-
 	#include "my/ci/entering_game.h"
 	
 	#ifdef PLAYER_STEPS_ON_ENEMIES 	
@@ -91,11 +90,8 @@
 			#include "my/ci/before_entering_screen.h"
 			draw_scr ();
 			o_pant = n_pant;
-			cpc_UpdScr ();
-			cpc_ShowTouchedTiles();
-			cpc_SetColour (16, 0x15);
 		}
-/*
+
 		#ifdef TIMER_ENABLE
 			#if defined(TIMER_SCRIPT_0) && defined(ACTIVATE_SCRIPTING)
 				if (timer_zero) {
@@ -210,7 +206,7 @@
 		
 		// Hotspot interaction.
 		hotspots_do ();
-*/
+
 		// Scripting related stuff
 		
 		#ifdef ACTIVATE_SCRIPTING
@@ -269,7 +265,7 @@
 		#endif
 
 		// Flick the screen ?
-		/*	
+		
 		#include "mainloop/flick_screen.h"			
 
 		// Win game condition
@@ -306,8 +302,6 @@
 		}
 
 		#include "my/ci/extra_routines.h"
-		*/
-
 	}
 	
 	AY_STOP_SOUND ();

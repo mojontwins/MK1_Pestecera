@@ -28,7 +28,7 @@ extern unsigned char sprite_18_a [];
 
 #asm
 	._sprite_18_a
-		defs 64, 0
+		defs 96, 0
 #endasm
 
 #if defined(PLAYER_CAN_FIRE) || defined (MODE_128K)
@@ -37,3 +37,6 @@ extern unsigned char sprite_18_a [];
 			BINARY "../bin/sprites_bullet.bin"
 	#endasm
 #endif
+
+#define SPRFR_EXPL  sprite_17_a
+#define SPRFR_EMPTY sprite_18_a

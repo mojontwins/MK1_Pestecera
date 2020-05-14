@@ -14,6 +14,7 @@
 #endasm
 
 #include "my/config.h"
+#include "autodefs.h"
 #include "prototypes.h"
 
 // DON'T touch these
@@ -22,34 +23,11 @@
 
 #define BASE_ROOM_BUFFERS	0xC000 + 0x600
 #define BASE_DIRTY_CELLS 	0xC800 + 0x600
+#define BASE_ARRAYS 		0xD000 + 0x600
 #define BASE_SPRITES 		0xE000 + 0x600
 #define BASE_LUT			0xF800 + 0x600
 
 #define BASE_SUPERBUFF  	0x9000
-
-// Configure number of blocks and reserve a pool for sprites
-
-#define SP_PLAYER 			0
-#define SP_ENEMS_BASE 		1
-
-#ifdef PLAYER_CAN_FIRE
-	#define SP_BULLETS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
-	#ifdef ENABLE_SIMPLE_COCOS
-		#define MAX_PROJECTILES (MAX_BULLETS + MAX_ENEMS)
-		#define SP_COCOS_BASE 	SP_BULLETS_BASE + MAX_BULLETS
-	#else
-		#define MAX_PROJECTILES MAX_BULLETS
-	#endif
-#else
-	#ifdef ENABLE_SIMPLE_COCOS
-		#define MAX_PROJECTILES MAX_ENEMS
-		#define SP_COCOS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
-	#else
-		#define MAX_PROJECTILES 0
-	#endif
-#endif
-
-#define SW_SPRITES_ALL 4 + MAX_PROJECTILES
 
 // Cosas del juego:
 

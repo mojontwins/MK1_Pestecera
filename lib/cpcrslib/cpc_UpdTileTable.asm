@@ -22,28 +22,36 @@ XREF tiles_tocados
 	; D = y
 	; E = x
 
-	ld  a, d
-	sla a
-	sla a 				; y = 0-23, 23*4 fits in a byte.
-	ld  b, a 			; B = y * 4
+	ld  b, d
+	ld  c, e
 
-	ld  a, e
-	srl a
-	srl a
-	srl a 				; x / 8
+	ld  a, d 			; Y
+	add a, a
+	add a, a
 
-	add b 				; A = x / 8 + y * 4
+	ld  l, a
+	ld  h, 0 			; HL = Y*4
 
-	ld  hl, tiles_tocados
-	ld  b, 0
-	ld  c, a 			; BC = x / 8 + y * 4
-	add hl, bc 			; HL = tiles_tocados + x / 8 + y * 4
+	ld  a, e 			; X
+	and $07				; A = X & 7 (bit mask)
 
-	ld  a, e 			; A = x
+	srl e
+	srl e
+	srl e 				; E = X\8
+
+	ld  d, 0 			; DE = X\8
+	add hl, de 			; HL = X\8 + Y*4
+
+	ld  de, tiles_tocados
+	add hl, de
+
 	ld  de, cpc_Bit2Mask
 	call cpc_TblLookup	; A = bit mask
 
 	or  (hl) 			; A = bit mask | [tiles_tocados + x / 8 + y * 4]
 	ld  (hl), a
+
+	ld  d, b
+	ld  e, c
 
 	ret

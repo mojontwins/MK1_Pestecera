@@ -39,6 +39,7 @@ void main (void) {
 		ld hl, _trpixlutc
 		ld de, BASE_LUT
 		call depack
+	.vaudeville_tirants
 	#endasm
 
 	cortina ();
@@ -114,6 +115,9 @@ void main (void) {
 		}
 	#endif
 
+	// Turn off all sprites
+	for (gpit = 0; gpit < SW_SPRITES_ALL; ++ gpit) spr_on [gpit] = 0;
+
 	#include "my/ci/after_load.h"
 
 	#asm
@@ -127,14 +131,12 @@ void main (void) {
 
 		level = 0;
 
-		// Here the title screen
-		
+		// Here the title screen		
 		#include "my/title_screen.h"
 		
 		#ifdef ENABLE_CHECKPOINTS
 			sg_submenu ();
 		#endif
-
 		#include "my/ci/before_game.h"
 
 		#ifdef COMPRESSED_LEVELS
@@ -177,6 +179,7 @@ void main (void) {
 					#endasm
 				#endif
 				cpc_ShowTileMap (1);						
+
 			#endif
 
 			// Let's do it.

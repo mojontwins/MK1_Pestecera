@@ -702,7 +702,7 @@ unsigned char player_move (void) {
 	#ifdef PLAYER_CUSTOM_ANIMATION
 		#include "my/custom_animation.h"
 	#elif defined PLAYER_GENITAL
-		/*
+		
 		if (p_vx || p_vy) {
 			++ p_subframe;
 			if (p_subframe == 4) {
@@ -713,35 +713,40 @@ unsigned char player_move (void) {
 				#endif
 			}
 		}
-		
-		p_next_frame = player_cells [p_facing + p_frame];
-		*/
-	#elif defined PLAYER_BOOTEE
-		/*
+				
+		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [p_facing + p_frame]);
+	#elif defined PLAYER_BOOTEE		
 		gpit = p_facing << 2;
-		if (p_vy == 0) {
-			p_next_frame = player_cells [gpit];
-		} else if (p_vy < 0) {
-			p_next_frame = player_cells [gpit + 1];
+		if (p_vy < 0) {
+			++ gpit; 
 		} else {
-			p_next_frame = player_cells [gpit + 2];
+			gpit += 2;
 		}
-		*/
+		
+		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#else
-		/*	
-		if (!possee && !p_gotten) {
-			p_next_frame = player_cells [8 + p_facing];
+			
+		if (!possee && !p_gotten) {			
+			gpit = p_facing ? 3 : 7;
 		} else {
-			gpit = p_facing << 2;
+			gpit = p_facing ? 0 : 4;
 			if (p_vx == 0) {
-				rda = 1;
+				++ gpit;
 			} else {
 				rda = ((gpx + 4) >> 3) & 3;
+				if (rda == 3) rda = 1;
+				gpit += rda;
 			}
-			p_next_frame = player_cells [gpit + rda];
+			
 		}
-		*/
+		
+		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#endif
+
+	sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 2;
+	sp_sw [SP_PLAYER].cy = (gpy + VIEWPORT_Y*8 + sp_sw [SP_PLAYER].coy);
+
+	if ( (p_estado & EST_PARP) && half_life ) sp_sw [SP_PLAYER].sp0 = (int) (SPRFR_EMPTY);
 }
 
 void player_deplete (void) {

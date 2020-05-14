@@ -57,6 +57,9 @@
 	
 	defc tiles_tocados = $C800 + $600
 
+	defc _nametable = $100
+	defc pantalla_juego= $100
+
 	defc posicion_inicial_area_visible = $c000
 	defc posicion_inicial_superbuffer = $9000
 	
@@ -130,13 +133,3 @@
 	defw posicion_inicial_superbuffer+8*ancho_pantalla_bytes*23
 	
 ;Rutinas para transferir bloques independientes a la pantalla
-
-.pantalla_actual 
-	defw 0
-
-._nametable
-.pantalla_juego 
-	defs 768
-
-.tiles_tocados_ptr
-	defw tiles_tocados

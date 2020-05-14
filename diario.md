@@ -441,3 +441,10 @@ si `spr_on` es false, se les asigna el sprite vacío y se ponen en 0, 0:
 ```
 
 Con todo esto relleno, se llama a una rutina `cpc_screen_update` que recorre la estructura `sp_sw` llamando a las funciones de actualización pertinentes según estén definidas para cada sprite `invfunc` y `updfunc`.
+
+# 20200514
+
+Vamos a tratar de habilitar primero el sprite del player. Daré directamente valores a `sp_sw [SP_PLAYER].cx`, `.cy`, y `sp0`, y tendré cuidado de poner el frame vacío cuando el jugador esté parpadeando.
+
+Esto parece que está medio funcionando. Ahora voy a meter a los enemigos. En el proceso he tenido que revisar algunas funciones (las funciones que pintan los sprites usaban DE y la función que invalida el bitfield se los follaba) y añadir un LUT de transparencias para el modo 1.
+

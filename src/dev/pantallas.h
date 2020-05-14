@@ -27,6 +27,8 @@
 #endif
 
 void blackout (void) {
+	// Study why this ain't working...
+	/*
 	#asm
 			ld  a, 0xc0
 		.bo_l1
@@ -41,4 +43,5 @@ void blackout (void) {
 			add 8
 			jr  nz, bo_l1
 	#endasm
+	*/
 }

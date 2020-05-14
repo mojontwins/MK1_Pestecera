@@ -16,6 +16,7 @@
 			call depack
 		#endasm
 	#endif
+			
 	cpc_ShowTileMap (1);
 
 	select_joyfunc ();

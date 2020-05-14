@@ -44,12 +44,11 @@ typedef struct sprite {
 	void *updfunc;				// 14
 } SPR;
 
-unsigned char *spr_next [SW_SPRITES_ALL];
-
-//SPR sp_sw [SW_SPRITES_ALL];
-SPR sp_sw [SW_SPRITES_ALL] @ BASE_SPRITES;
-#define SP_SW_COY (sp_sw [gpit].coy)
-#define SP_SW_COX (sp_sw [gpit].cox)
+SPR sp_sw [SW_SPRITES_ALL] 					@ BASE_SPRITES;
+unsigned char *spr_next [SW_SPRITES_ALL] 	@ BASE_SPRITES + SW_SPRITES_ALL*16;
+unsigned char spr_on [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*18;
+unsigned char spr_x [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*19;
+unsigned char spr_y [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*20;
 
 unsigned char enoffs;
 
@@ -98,7 +97,6 @@ unsigned char half_life;
 // player
 signed int p_x, p_y;
 signed int p_vx, p_vy;
-unsigned char *p_current_frame, *p_next_frame;
 unsigned char p_saltando, p_cont_salto;
 unsigned char p_frame, p_subframe, p_facing;
 unsigned char p_estado;
@@ -122,24 +120,39 @@ const unsigned char *spacer = "            ";
 
 unsigned char enit;
 
-unsigned char en_an_base_frame [MAX_ENEMS];
-unsigned char en_an_frame [MAX_ENEMS];
-unsigned char en_an_count [MAX_ENEMS];
-unsigned char *en_an_current_frame [MAX_ENEMS], *en_an_next_frame [MAX_ENEMS];
-unsigned char en_an_state [MAX_ENEMS];
+// Locate those arrays @ BASE_ARRAYS
+unsigned char en_an_base_frame [MAX_ENEMS]		@ BASE_ARRAYS;
+unsigned char en_an_frame [MAX_ENEMS] 			@ BASE_ARRAYS + MAX_ENEMS;
+unsigned char en_an_count [MAX_ENEMS]			@ BASE_ARRAYS + MAX_ENEMS * 2;
+unsigned char en_an_sprid [MAX_ENEMS] 			@ BASE_ARRAYS + MAX_ENEMS * 3;
+unsigned char en_an_state [MAX_ENEMS] 			@ BASE_ARRAYS + MAX_ENEMS * 4;
+signed int    en_an_x [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 5;
+signed int    en_an_y [MAX_ENEMS] 				@ BASE_ARRAYS + MAX_ENEMS * 7;			
+signed int    en_an_vx [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 9;
+signed int    en_an_vy [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 11;
+unsigned char en_an_alive [MAX_ENEMS] 			@ BASE_ARRAYS + MAX_ENEMS * 13;
+unsigned char en_an_dead_row [MAX_ENEMS] 		@ BASE_ARRAYS + MAX_ENEMS * 14;
+unsigned char en_an_rawv [MAX_ENEMS]			@ BASE_ARRAYS + MAX_ENEMS * 15;
+unsigned char cocos_x [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 16;
+unsigned char cocos_y [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 17;
+signed char   cocos_mx [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 18;
+signed char   cocos_my [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 19;
+unsigned char *en_an_next_frame [MAX_ENEMS] 	@ BASE_ARRAYS + MAX_ENEMS * 20;
+unsigned char bullets_x [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22;
+unsigned char bullets_y [MAX_BULLETS] 			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS;
+signed char   bullets_mx [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 2;
+signed char   bullets_my [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 3;
+unsigned char bullets_estado [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 4;
+unsigned char bullets_life [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 5;
 
-#if defined (ENABLE_FANTIES)
-	int en_an_x [MAX_ENEMS];
-	int en_an_y [MAX_ENEMS];
-	int en_an_vx [MAX_ENEMS];
-	int en_an_vy [MAX_ENEMS];
-	int _en_an_x, _en_an_y, _en_an_vx, _en_an_vy;
+#ifdef PLAYER_CAN_FIRE
+	unsigned char _b_estado;
+	unsigned char b_it, _b_x, _b_y;
+	signed char _b_mx, _b_my;
 #endif
 
-#ifdef ENABLE_PURSUERS
-	unsigned char en_an_alive [MAX_ENEMS];
-	unsigned char en_an_dead_row [MAX_ENEMS];
-	unsigned char en_an_rawv [MAX_ENEMS];
+#if defined (ENABLE_FANTIES)
+	int _en_an_x, _en_an_y, _en_an_vx, _en_an_vy;
 #endif
 
 unsigned char _en_x, _en_y;
@@ -154,33 +167,14 @@ unsigned char *_baddies_pointer;
 	unsigned char _en_cx, _en_cy;
 #endif
 
-#ifdef PLAYER_CAN_FIRE
-	unsigned char bullets_x [MAX_BULLETS];
-	unsigned char bullets_y [MAX_BULLETS];
-	char bullets_mx [MAX_BULLETS];
-	char bullets_my [MAX_BULLETS];
-	unsigned char bullets_estado [MAX_BULLETS];
-	#ifdef LIMITED_BULLETS
-		unsigned char bullets_life [MAX_BULLETS];
-	#endif		
-
-	unsigned char _b_estado;
-	unsigned char b_it, _b_x, _b_y;
-	signed char _b_mx, _b_my;
-#endif
-
-#ifdef ENABLE_SIMPLE_COCOS
-	unsigned char cocos_x [MAX_ENEMS], cocos_y [MAX_ENEMS];
-	signed char cocos_mx [MAX_ENEMS], cocos_my [MAX_ENEMS];
-#endif
 
 // atributos de la pantalla: Contiene información
 // sobre qué tipo de tile hay en cada casilla
-unsigned char map_attr [150] @ BASE_ROOM_BUFFERS;
-unsigned char map_buff [150] @ BASE_ROOM_BUFFERS + 150;
+unsigned char map_attr [150]					@ BASE_ROOM_BUFFERS;
+unsigned char map_buff [150]					@ BASE_ROOM_BUFFERS + 150;
 // Breakable walls/etc
 #ifdef BREAKABLE_WALLS
-	unsigned char brk_buff [150] @ @ BASE_ROOM_BUFFERS + 300;
+	unsigned char brk_buff [150] 				@ BASE_ROOM_BUFFERS + 300;
 #endif
 
 // posición del objeto (hotspot). Para no objeto,
@@ -237,7 +231,7 @@ unsigned char *map_pointer;
 #ifdef PLAYER_CAN_FIRE
 	unsigned char blx, bly;
 #endif
-unsigned char rdx, rdy, rda, rdb, rdc, rdd, rdn;
+unsigned char rdx, rdy, rda, rdb, rdc, rdd, rdn, rdt;
 
 // More stuff
 

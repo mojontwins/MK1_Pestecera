@@ -13,6 +13,7 @@
 //#define MODE_128K 						// Read the docs!
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
+#define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
@@ -331,14 +332,4 @@ unsigned char behs [] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
-#endif
-
-#ifdef SOUND_NONE
-	#define AY_PLAY_SOUND(a) ;
-	#define AY_STOP_SOUND()  ;
-	#define AY_PLAY_MUSIC(a) ;
-#elif defined (SOUND_WYZ)
-	#define AY_PLAY_SOUND(a) ;
-	#define AY_STOP_SOUND()  ;
-	#define AY_PLAY_MUSIC(a) ;
 #endif

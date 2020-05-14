@@ -22,9 +22,9 @@
 		case 1:
 			if (!en_an_dead_row [enit]) {
 				#ifdef PURSUERS_BASE_CELL
-					en_an_base_frame [enit] = PURSUERS_BASE_CELL << 1;
+					en_an_base_frame [enit] = GENERAL_ENEMS_BASE_CELL + (PURSUERS_BASE_CELL << 1);
 				#else							
-					en_an_base_frame [enit] = (rand () & 3) << 1;
+					en_an_base_frame [enit] = GENERAL_ENEMS_BASE_CELL + ((rand () & 3) << 1);
 				#endif							
 				en_an_alive [enit] = 2;
 			} else {
