@@ -448,3 +448,15 @@ Vamos a tratar de habilitar primero el sprite del player. Daré directamente val
 
 Esto parece que está medio funcionando. Ahora voy a meter a los enemigos. En el proceso he tenido que revisar algunas funciones (las funciones que pintan los sprites usaban DE y la función que invalida el bitfield se los follaba) y añadir un LUT de transparencias para el modo 1.
 
+# 20200515
+
+Con todo medio organizado (al final he puesto teclas/joystick predefinidos y si alguien quiere añadir codigo para redefinir que lo haga), voy a ver como carajo monto la música.
+
+Por ahora he hecho un parser de los .mus.asm de Wyz Tracker para crearme un `assets/instrumentos.h` que defina `tabla_pautas` y `tabla_instrumentos`, dos arrays que, junto con `wyz_effects_table` y `wyz_song_table` necesito para configurar el player embebido en `CPCWYZLIB`.
+
+```
+    ..\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
+```
+
+Luego eso lo meteré dentro de `my/sound.h` junto con la tabla de canciones y la de instrumentos.
+

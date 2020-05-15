@@ -73,7 +73,7 @@ void select_joyfunc (void);
 unsigned char mons_col_sc_x (void);	
 unsigned char mons_col_sc_y (void);
 unsigned char distance (void);
-int limit (int val, int min, int max);
+signed int limit (signed int val, signed int min, signed int max);
 
 // pantallas.h
 void blackout (void);

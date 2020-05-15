@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"wyz",
+				"wyztrackerparser\tabc"
+			],
+			[
+				"whi",
+				"whiteSpace\tabc"
+			],
+			[
+				"tabla",
+				"tabla_teclas\t(mk1.c)"
+			],
+			[
+				"tablate",
+				"tabla_teclas0\t(cpc_KeysData.asm)"
+			],
+			[
+				"SCRI",
+				"SCRIPTING_DOWN\t(config.h)"
+			],
+			[
+				"kte",
+				"ktext_3\tabc"
+			],
+			[
+				"KEY_AUX",
+				"KEY_AUX1\t(config.h)"
+			],
+			[
+				"VIEW",
+				"VIEWPORT_X\tabc"
+			],
+			[
+				"SPR",
+				"SPRFR_EMPTY\tabc"
+			],
+			[
+				"VIER",
+				"VIEWPORT_Y\t(update_sprites.h)"
+			],
+			[
+				"VI",
+				"VIEWPORT_X\t(update_sprites.h)"
+			],
+			[
+				"VIR",
+				"VIEWPORT_X\tabc"
+			],
+			[
+				"VIE",
+				"VIEWPORT_X\tabc"
+			],
+			[
 				"doS",
 				"doStrait2x2\tabc"
 			],
@@ -60,20 +112,12 @@
 				"invalidate_tile\t(printer.h)"
 			],
 			[
-				"VIEW",
-				"VIEWPORT_Y\tabc"
-			],
-			[
 				"inval",
 				"invalidate_tile\t(printer.h)"
 			],
 			[
 				"main",
 				"maincounter\tabc"
-			],
-			[
-				"VIE",
-				"VIEWPORT_Y\t(printer.h)"
 			],
 			[
 				"draw_colou",
@@ -470,64 +514,11 @@
 			[
 				"grou",
 				"group_id"
-			],
-			[
-				"vcard_",
-				"vcard_filename"
-			],
-			[
-				"toa",
-				"total_entries"
-			],
-			[
-				"write",
-				"write_log"
-			],
-			[
-				"webdav_abook",
-				"webdav_abook_user_url"
-			],
-			[
-				"u",
-				"uid\t(rcube_webdav_addressbook.php)"
-			],
-			[
-				"webdav_aboo",
-				"webdav_abook_dir"
-			],
-			[
-				"sande",
-				"rcube_sandetel"
-			],
-			[
-				"uploadf",
-				"uploadform\t(app.js)"
-			],
-			[
-				"back",
-				"background-position"
-			],
-			[
-				"upload_pr",
-				"upload_progress_start\t(app.js)"
-			],
-			[
-				"upload_progres",
-				"upload_progress_time\t(app.js)"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "diario.md",
-			"settings":
-			{
-				"buffer_size": 13304,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -607,19 +598,79 @@
 	[
 		"/H/git/MK1_Pestecera",
 		"/H/git/MK1_Pestecera/lib",
-		"/H/git/MK1_Pestecera/lib/cpcrslib"
+		"/H/git/MK1_Pestecera/src",
+		"/H/git/MK1_Pestecera/src/dev",
+		"/H/git/MK1_Pestecera/src/dev/assets",
+		"/H/git/MK1_Pestecera/src/dev/my",
+		"/H/git/MK1_Pestecera/src/mus",
+		"/H/git/MK1_Pestecera/src/utils",
+		"/H/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
-		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ResetTouchedTiles.asm",
-		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdScr.asm",
-		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable_norepeat.asm",
+		"/H/git/MK1_Pestecera/src/dev/lala_beta.map",
+		"/H/git/MK1_Pestecera/src/dev/my/config.h",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
+		"/H/git/MK1_Pestecera/src/mus/instrumentos.asm",
+		"/H/git/MK1_Pestecera/src/mus/efectos.asm",
+		"/H/git/MK1_Pestecera/src/mus/efectos.h",
+		"/H/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/H/git/MK1_Pestecera/src/dev/mk1.c",
+		"/H/git/MK1_Pestecera/src/dev/definitions.h",
+		"/H/git/MK1_Pestecera/src/dev/my/title_screen.h",
+		"/H/git/MK1_Pestecera/src/utils/src/wyzTrackerParser.bas",
+		"/H/git/MK1_Pestecera/src/dev/assets/instrumentos.h",
+		"/H/git/MK1_Pestecera/diario.md",
+		"/H/git/MK1_Pestecera/src/dev/compile.bat",
+		"/H/git/MK1_Pestecera/src/dev/my/sound.h",
+		"/H/git/MK1_Pestecera/src/utils/src/asm2z88dk.bas",
+		"/H/git/MK1_Pestecera/src/dev/sound.h",
+		"/H/git/MK1_Pestecera/src/mus/01_ingame.mus.asm",
+		"/H/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
+		"/H/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/H/git/MK1_Pestecera/src/dev/engine/general.h",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_AssignKey.asm",
+		"/H/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/H/git/MK1_Pestecera/src/dev/engine.h",
+		"/H/git/MK1_Pestecera/src/dev/prototypes.h",
+		"/H/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
+		"/H/git/MK1_Pestecera/src/dev/engine/simple_cocos.h",
+		"/H/git/MK1_Pestecera/src/dev/assets/enems.h",
+		"/H/git/MK1_Pestecera/src/dev/prepro.c",
+		"/H/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/H/git/MK1_Pestecera/src/dev/engine/bullets.h",
+		"/H/git/MK1_Pestecera/src/dev/assets/extrasprites.h",
+		"/H/git/MK1_Pestecera/src/dev/engine/enem_mods/enem_type_pursuers.h",
+		"/H/git/MK1_Pestecera/src/dev/pantallas.h",
+		"/H/git/MK1_Pestecera/src/dev/assets/cpc_TrPixLutM1.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable-orig.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_TblLookup.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x24.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_TouchTiles.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2b.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x16.asm",
+		"/H/git/MK1_Pestecera/src/dev/my/custom_animation.h",
+		"/H/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ShowTouchedTiles.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_InvalidateRect.asm",
+		"/H/git/MK1_Pestecera/src/dev/tilemap_conf.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdScr.asm",
+		"/H/git/MK1_Pestecera/src/dev/printer.h",
+		"/H/git/MK2/lib/splib2/updater/SPInvalidate.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_Bit2Mask.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.lst",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_bitright2mask.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_bitleft2mask.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ResetTouchedTiles.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdScr-orig.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ResetTouchedTiles-orig.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ShowTouchedTiles-orig.asm",
+		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable_norepeat.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_TouchTileXY.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_TouchTileSpXY.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_SuperbufferAddress.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ShowTouchedTiles2.asm",
-		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_ShowTouchedTiles.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_SetTouchTileXY.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSpTileMap2b.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSpriteTileMap2b.asm",
@@ -630,28 +681,13 @@
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutMaskSpriteTileMap2b.asm",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_PutCpSpTileMap2b.asm",
 		"/H/git/newspectrum/MK3_OM/cheman/dev/compile_cpc.bat",
-		"/H/git/MK1_Pestecera/src/dev/compile.bat",
-		"/H/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/H/git/MK1_Pestecera/src/dev/printer.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/pal.h",
-		"/H/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/H/git/MK1_Pestecera/src/dev/engine.h",
 		"/H/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/H/git/newspectrum/MK3_OM/cheman/dev/buildbins_cpc.bat",
 		"/C/z88dk10/lib/cpc_crt0.asm",
-		"/H/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/H/git/MK1_Pestecera/src/utils/src/bin2sna/main.cpp",
 		"/H/git/MK1_Pestecera/src/utils/src/bin2sna/mem_imgs.cpp",
 		"/C/z88dk10/lib/spec_crt0.asm",
-		"/H/git/MK1_Pestecera/src/dev/mk1.c",
-		"/H/git/MK1_Pestecera/src/dev/engine/player.h",
-		"/H/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/H/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
-		"/H/git/MK1_Pestecera/src/dev/tilemap_conf.asm",
-		"/H/git/MK1_Pestecera/src/dev/definitions.h",
-		"/H/git/MK1_Pestecera/src/dev/my/config.h",
-		"/H/git/MK1_Pestecera/src/dev/engine/general.h",
-		"/H/git/MK1_Pestecera/src/dev/prototypes.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/H/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
 		"/H/git/MK1_Pestecera/src/dev/my/msc.h",
@@ -659,8 +695,6 @@
 		"/H/git/MK1_Pestecera/src/dev/assets/sprites.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/tileset.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/sprites-empty.h",
-		"/H/git/MK1_Pestecera/diario.md",
-		"/H/git/MK1_Pestecera/src/dev/assets/extrasprites.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/levels.h",
 		"/C/Users/na_th/Desktop/cpc_crt0.asm",
 		"/C/z88dk10/lib/cpc_crt0.opt",
@@ -701,54 +735,24 @@
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/before_entering_screen.h",
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/entering_game.h",
 		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h",
-		"/C/git/mk1/docs/tutorial-cap13.md",
-		"/C/git/mk1/examples/helmet/dev/mainloop/game_loop.h",
-		"/C/git/mk1/examples/helmet/dev/my/ci/entering_game.h",
-		"/C/git/mk1/src/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/nightmare_on_halloween/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/misco_jones/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/printer.h",
-		"/C/git/mk1/examples/helmet/dev/mainloop.h",
-		"/C/git/mk1/examples/helmet/dev/preproc.c",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_orthoshooters.h",
-		"/C/git/mk1/examples/helmet/dev/definitions.h",
-		"/C/git/mk1/examples/helmet/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole/dev/definitions.h",
-		"/C/git/mk1/examples/helmet/dev/engine/simple_cocos.h",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_pursuers.h",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
-		"/C/git/mk1/examples/helmet/dev/helmet.asm",
-		"/C/git/mk1/examples/helmet/dev/mk1.c",
-		"/C/git/mk1/examples/helmet/dev/my/ci/extra_routines.h",
-		"/C/git/mk1/examples/helmet/dev/engine.h",
-		"/C/git/mk1/examples/helmet/dev/compile.bat",
-		"/C/git/mk1/examples/helmet/dev/my/levelset.h",
-		"/C/git/mk1/examples/helmet/dev/assets/levels.h",
-		"/C/git/mk1/src/utils/src/ene2bin_mk1.bas",
-		"/C/git/mk1/src/utils/src/buildlevel.bas",
-		"/C/git/mk1/src/utils/src/asm2z88dk.bas",
-		"/C/git/mk1/examples/dogmole/dev/music.h",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_music_phaser.asm",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_fx.asm",
-		"/C/git/mk1/docs/tutorial-cap10.md",
-		"/C/git/mk1/examples/dogmole/dev/beeper.h",
-		"/C/git/mk1/examples/dogmole/script/dogmole.spt",
-		"/C/git/mk1/src/utils/src/mtparser.bas",
-		"/C/git/mk1/src/utils/src/mtparser.bi",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine/hotspots.h"
+		"/C/git/mk1/docs/tutorial-cap13.md"
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
 		"height": 135.0,
 		"where_history":
 		[
+			"H:\\git\\MK1_Pestecera\\src",
+			"H:\\git\\MK1_Pestecera\\src\\dev",
+			"H:\\git\\MK1_Pestecera\\lib\\cpcrslib",
+			"H:\\git\\MK1_Pestecera\\src\\dev",
+			"H:\\git\\MK1_Pestecera",
+			"H:\\git\\MK1_Pestecera\\lib\\cpcrslib",
+			"H:\\git\\MK1_Pestecera\\lib",
 			"H:\\git\\MK1_Pestecera\\lib\\cpcrslib",
 			"H:\\git\\MK1_Pestecera\\src\\dev",
 			"C:\\git\\mk1\\docs",
@@ -767,6 +771,41 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"trimmed",
+			"linea",
+			"v0.1 20200120",
+			"tokens",
+			"tabla_teclas",
+			"gp_gen",
+			"11",
+			"step_sound",
+			"testkey",
+			"tabla_teclas0",
+			"tabla_teclas",
+			"SW_SPRITES_ALL",
+			".cox",
+			"enems_draw_current",
+			"base_frame",
+			"en_an_base_frame",
+			"en_an_next_frame",
+			"enems_draw_current",
+			"bo_l1",
+			" \\",
+			"0x",
+			".db",
+			"bc",
+			"call cpc_UpdTileTable",
+			"tbllookup",
+			"SW_SPRITES_ALL",
+			"cox",
+			"genital",
+			"spr_sw",
+			"tiles_tocados_ptr",
+			"copyTile",
+			"SP",
+			"spcompdirtyaddr",
+			"a",
+			"showtouchedtiles",
 			"tiles_tocados",
 			"CPCHWColours",
 			"ei",
@@ -859,42 +898,7 @@
 			"gpit",
 			"bullets",
 			"bull",
-			"cx2",
-			"draw_scr",
-			"malotes [enoffsmasi].t",
-			".t",
-			"gpt",
-			"rando",
-			"life",
-			"distance",
-			"movesprabs",
-			"5e46",
-			"draw_scr",
-			"fsclipstruct",
-			"_en_y",
-			"_en_x",
-			"enit",
-			"_n_f",
-			"_c_f",
-			"spritesclip",
-			"p_state",
-			"sp_movesprabs",
-			"p_c_f",
-			"p_n_f",
-			"comportamiento_tiles",
-			"COORDS",
-			"gp_gen",
-			"sp_print",
-			"print_str \\((.+), (.+), (.+), (.+)\\);",
-			"print_str \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+), (.+)\\);",
-			"print_str",
-			"print_number2 \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+)\\);",
-			"print_number2",
-			"draw_coloured",
-			"map_attr",
-			"draw_coloured_tile",
-			"p_facing",
-			"ALTERNATE_ANIMATION"
+			"cx2"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -902,6 +906,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"v0.2 20200515",
+			"_gp_gen",
+			"",
+			"$",
+			"defb",
+			"sp_sw",
+			"ucopyTile",
 			"_sprites",
 			"sprites",
 			"v0.3.20200505",
@@ -959,39 +970,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "diario.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13304,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13304,
-								13304
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4290.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1046,7 +1026,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 90.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1080,7 +1060,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

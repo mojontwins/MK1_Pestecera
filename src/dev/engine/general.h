@@ -135,26 +135,6 @@ unsigned int abs (signed int n) {
 		return (unsigned int) n;
 }
 
-#ifdef PLAYER_STEP_SOUND
-	void step (void) {
-		#asm
-			ld a, 16
-			out (254), a
-			nop
-			nop
-			nop
-			nop
-			nop
-			nop
-			nop
-			nop
-			nop
-			xor 16
-			out (254), a
-		#endasm	
-	}
-#endif
-
 void cortina (void) {
 	#asm
 	#endasm

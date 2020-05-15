@@ -32,8 +32,8 @@ XDEF keymap
 
 	defw $4880		; Z
 	defw $4780 		; X
-	defw $ffff
-	defw $ffff
+	defw $4801 		; 1
+	defw $4802      ; 2	
 
 	defb 0
 

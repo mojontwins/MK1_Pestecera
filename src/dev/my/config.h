@@ -87,9 +87,9 @@
 //#define FANTIES_LIFE_GAUGE		10		// Amount of shots needed to kill flying enemies.
 //#define FANTIES_TYPE_HOMING				// Unset for simple fanties.
 
-#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
-#define ORTHOSHOOTERS_FREQ 		(rand()&15)
-#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
+//#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
+//#define ORTHOSHOOTERS_FREQ 		(rand()&15)
+//#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
 
 // Cocos
 // -----
@@ -137,7 +137,7 @@
 //#define ACTIVATE_SCRIPTING				// Activates msc scripting and flag related stuff.
 #define MAX_FLAGS 					32
 #define SCRIPTING_DOWN						// Use DOWN as the action key.
-//#define SCRIPTING_KEY_M					// Use M as the action key instead.
+//#define SCRIPTING_KEY_AUX1				// Use AUX1 as the action key instead.
 //#define SCRIPTING_KEY_FIRE				// User FIRE as the action key instead.
 //#define SCRIPTING_KEY_NONE 				// No action key. 
 //#define ENABLE_EXTERN_CODE				// Enables custom code to be run from the script using EXTERN n
@@ -185,56 +185,56 @@
 //#define PLAYER_STEPS_ON_ENEMIES			// If defined, stepping on enemies kills them
 //#define PLAYER_CAN_STEP_ON_FLAG	1		// If defined, player can only kill when flag # is "1"
 //#define PLAYER_MIN_KILLABLE		3		// Only kill enemies with id >= PLAYER_MIN_KILLABLE
-#define PLAYER_STEP_SOUND					// Sound while walking. No effect in the BOOTEE engine.
 
 //#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
 
 // Configure keyboard
 
+// How keys work (in sideview)
+// - If player can't fire, BUTTON_A will JUMP.
+// - If player can fire, and USE_TWO_BUTTONS is DEFINED, BUTTON_A will FIRE, BUTTON_B will JUMP
+// - If player can fire, and USE_TWO_BUTTONS is DEFINED, BUTTON_A will FIRE, ÛP will JUMP
+
 // To define different keys, the first two hex digits are the COLUMN, the next the ROW
+// (Adapt. from cpctelera docs @ https://lronaldo.github.io/cpctelera/files/keyboard/keyboard-txt.html)
 /*
-	    01 02 04 08 10
-	f7   1  2  3  4  5
-	fb   Q  W  E  R  T
-	fd   A  S  D  F  G
-	fe  CS  Z  X  C  V
-
-	ef   0  9  8  7  6
-	df   P  O  I  U  Y
-	bf  EN  L  K  J  H
-	7f  SP SS  M  N  B
-
+=========================================================================================================
+|     |                                       column                                                    |
+|     |-------------------------------------------------------------------------------------------------|
+| row |     40      |     41     |  42   | 43  | 44  | 45   |     46       | 47  |   48     |    49     |
+|=====|=============|============|=======|=====|=====|======|==============|=====|==========|===========|
+| 80  | f.          | f0         | Ctrl  | > , | < . | Space| V            | X   | Z        | Del       |
+| 40  | Enter       | f2         | ` \   | ? / | M   | N    | B            | C   | Caps Lock| Unused    |
+| 20  | f3          | f1         | Shift | * : | K   | J    | F Joy1_Fire1 | D   | A        | Joy0_Fire1|
+| 10  | f6          | f5         | f4    | + ; | L   | H    | G Joy1_Fire2 | S   | Tab      | Joy0_Fire2|
+| 08  | f9          | f8         | } ]   | P   | I   | Y    | T Joy1_Right | W   | Q        | Joy0_Right|
+| 04  | Cursor Down | f7         | Return| | @ | O   | U    | R Joy1_Left  | E   | Esc      | Joy0_Left |
+| 02  | Cursor Right| Copy       | { [   | = - | ) 9 | ' 7  | % 5 Joy1_Down| # 3 | " 2      | Joy0_Down |
+| 01  | Cursor Up   | Cursor Left| Clr   | £ ^ | _ 0 | ( 8  | & 6 Joy1_Up  | $ 4 | ! 1      | Joy0_Up   |
+=========================================================================================================
 */
 
 //#define USE_TWO_BUTTONS					// Alternate keyboard scheme for two-buttons games
-#ifdef USE_TWO_BUTTONS
-	// Define here if you selected the TWO BUTTONS configuration
 
-	/*
-	struct sp_UDK keys = {
-		0x047f, // .fire
-		0x04fd, // .right
-		0x01fd, // .left
-		0x02fd, // .down
-		0x02fb	// .up
-	};
-	
-	int key_jump = 0x087f;
-	int key_fire = 0x047f;
-	*/
-#else
-	// Define here if you selected the NORMAL configuration
+extern unsigned char def_keys [0];
+#asm
+	._def_keys
+		defw $4820 		; LEFT     A
+		defw $4720 		; RIGHT    D
+		defw $4708 		; UP       W
+		defw $4710 		; DOWN     S
 
-	/*
-	struct sp_UDK keys = {
-		0x017f, // .fire
-		0x01df, // .right
-		0x02df, // .left
-		0x01fd, // .down
-		0x01fb	// .up
-	};
-	*/
-#endif
+		defw $4440 		; BUTTON_A M
+		defw $4540 		; BUTTON_B N
+
+		defw $4204		; KEY_ENTER
+		defw $4804		; KEY_ESC	
+
+		defw $4880		; KEY_AUX1 Z
+		defw $4780 		; KEY_AUX2 X
+		defw $4801 		; KEY_AUX3 1
+		defw $4802 		; KEY_AUX4 2
+#endasm
 
 // ============================================================================
 // III. Screen configuration

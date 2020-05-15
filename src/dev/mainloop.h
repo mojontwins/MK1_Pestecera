@@ -89,7 +89,12 @@ void main (void) {
 	sp_sw [SP_PLAYER].updfunc = sm_updfunc [0];
 	sp_sw [SP_PLAYER].sp0 = sp_sw [SP_PLAYER].sp1 = (unsigned int) (sm_sprptr [0]);
 
-	// Enemies - delegated to enems_load
+	// Enemies 
+
+	for (gpit = SP_ENEMS_BASE; gpit < SP_ENEMS_BASE + MAX_ENEMS; gpit ++) {
+		sp_sw [gpit].invfunc = cpc_PutSpTileMap4x8;
+		sp_sw [gpit].updfunc = cpc_PutTrSp4x8TileMap2b;
+	}
 
 	// Bullets are 4x8
 
@@ -136,7 +141,7 @@ void main (void) {
 		level = 0;
 
 		// Here the title screen		
-		#include "my/title_screen.h"
+		title_screen ();
 		
 		#ifdef ENABLE_CHECKPOINTS
 			sg_submenu ();

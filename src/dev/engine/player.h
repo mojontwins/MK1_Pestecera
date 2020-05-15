@@ -708,9 +708,6 @@ unsigned char player_move (void) {
 			if (p_subframe == 4) {
 				p_subframe = 0;
 				p_frame = !p_frame;
-				#ifdef PLAYER_STEP_SOUND			
-					step (); 
-				#endif
 			}
 		}
 				

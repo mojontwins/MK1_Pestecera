@@ -211,9 +211,8 @@
 		
 		#ifdef ACTIVATE_SCRIPTING
 			// Select object
-			#ifdef MSC_MAXITEMS
-				/*
-				if (sp_KeyPressed (KEY_Z)) {
+			#ifdef MSC_MAXITEMS				
+				if (cpc_TestKey (KEY_AUX2)) {
 					if (!key_z_pressed) {
 						AY_PLAY_SOUND (0);
 						flags [FLAG_SLOT_SELECTED] = (flags [FLAG_SLOT_SELECTED] + 1) % MSC_MAXITEMS;
@@ -222,11 +221,13 @@
 					key_z_pressed = 1;
 				} else {
 					key_z_pressed = 0;
-				}
-				*/
+				}				
 			#endif			
 
 			#ifndef SCRIPTING_KEY_NONE
+				#ifdef SCRIPTING_KEY_AUX1
+					if (cpc_TestKey (KEY_AUX1))
+				#endif
 				#ifdef SCRIPTING_DOWN
 					if (cpc_TestKey (KEY_DOWN))
 				#endif
@@ -242,15 +243,15 @@
 
 		#ifdef PAUSE_ABORT
 			// Pause/Abort handling
-			/*
-			if (sp_KeyPressed (KEY_H)) {
+			
+			if (cpc_TestKey (KEY_ENTER)) {
 				sp_WaitForNoKey ();
 				AY_STOP_SOUND ();
 				AY_PLAY_SOUND (1);
 				clear_sprites ();
 				pause_screen ();
-				while (!sp_KeyPressed (KEY_H));
-				sp_WaitForNoKey ();
+				while (!cpc_TestKey (KEY_ENTER));
+				while (cpc_TestKey (KEY_ENTER));
 				draw_scr ();
 				#ifdef COMPRESSED_LEVELS
 					AY_PLAY_MUSIC (levels [level].music_id);
@@ -258,10 +259,10 @@
 					AY_PLAY_MUSIC (1);
 				#endif
 			}			
-			if (sp_KeyPressed (KEY_Y)) {
+			if (cpc_TestKey (KEY_ESC)) {
 				playing = 0;
 			}
-			*/
+			
 		#endif
 
 		// Flick the screen ?

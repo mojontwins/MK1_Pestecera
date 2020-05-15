@@ -1,4 +1,4 @@
-' asm2z88dk v0.1 20200120
+' asm2z88dk v0.2 20200515
 ' prepares a standard .asm file to be included in a z88dk C project
 ' Copyleft 2020 by The Mojon Twins
 
@@ -102,9 +102,6 @@ While Not Eof (fIn)
 		linea = whiteSpace & trimmed
 	Endif
 
-	' Find equs
-	parseTokenizeString linea, tokens (), "", ";"
-			
 	linea = linea & " "
 	For i = 0 To equIndex - 1
 		p = Instr (lCase (linea), lCase (equs (i).ident))
@@ -135,6 +132,16 @@ While Not Eof (fIn)
 		linea = whiteSpace & "." & Left (trimmed, i - 1) & Right (trimmed, Len (trimmed) - i)
 	End If
 
+	' db -> defb, dw -> defw
+	parseTokenizeString linea, tokens (), "" & Chr(9), ";"
+	linea = "    " & whiteSpace
+	For i = 0 To uBound (tokens)
+		If i > 0 And tokens (i) <> "" Then linea = linea & " "
+		If lcase (tokens (i)) = "db" Then tokens (i) = "defb"
+		If lcase (tokens (i)) = "dw" Then tokens (i) = "defw"		
+		linea = linea & tokens (i)
+	Next i
+			
 	p = Instr (linea, "'")
 	If p Then Mid (linea, p, 1) = " "
 
@@ -205,7 +212,7 @@ While Not Eof (fIn)
 	Wend
 	linea = Rtrim (linea)
 
-	Print #fOut, linea
+	If (trim (linea) <> "")Then Print #fOut, linea
 Wend
 
 Print #fOut, "#endasm"

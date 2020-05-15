@@ -24,14 +24,16 @@ unsigned char safe_byte @ 0xC7FF;
 
 #define KEY_LEFT 		0
 #define KEY_RIGHT		1
-#define KEY_DOWN 		2
-#define KEY_UP  		3
+#define KEY_UP  		2
+#define KEY_DOWN 		3
 #define KEY_BUTTON_A	4
 #define KEY_BUTTON_B	5
 #define KEY_ENTER		6
 #define KEY_ESC			7
 #define KEY_AUX1		8
 #define KEY_AUX2		9
+#define KEY_AUX3 		10
+#define KEY_AUX4 		11
 
 typedef struct sprite {
 	unsigned int sp0;			// 0
@@ -45,10 +47,10 @@ typedef struct sprite {
 } SPR;
 
 SPR sp_sw [SW_SPRITES_ALL] 					@ BASE_SPRITES;
-unsigned char *spr_next [SW_SPRITES_ALL] 	@ BASE_SPRITES + SW_SPRITES_ALL*16;
-unsigned char spr_on [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*18;
-unsigned char spr_x [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*19;
-unsigned char spr_y [SW_SPRITES_ALL]		@ BASE_SPRITES + SW_SPRITES_ALL*20;
+unsigned char *spr_next [SW_SPRITES_ALL] 	@ BASE_SPRITES + (SW_SPRITES_ALL)*16;
+unsigned char spr_on [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*18;
+unsigned char spr_x [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*19;
+unsigned char spr_y [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*20;
 
 unsigned char enoffs;
 
@@ -138,12 +140,14 @@ unsigned char cocos_y [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 17;
 signed char   cocos_mx [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 18;
 signed char   cocos_my [MAX_ENEMS]				@ BASE_ARRAYS + MAX_ENEMS * 19;
 unsigned char *en_an_next_frame [MAX_ENEMS] 	@ BASE_ARRAYS + MAX_ENEMS * 20;
-unsigned char bullets_x [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22;
-unsigned char bullets_y [MAX_BULLETS] 			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS;
-signed char   bullets_mx [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 2;
-signed char   bullets_my [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 3;
-unsigned char bullets_estado [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 4;
-unsigned char bullets_life [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 5;
+#if MAX_BULLETS > 0
+	unsigned char bullets_x [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22;
+	unsigned char bullets_y [MAX_BULLETS] 			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS;
+	signed char   bullets_mx [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 2;
+	signed char   bullets_my [MAX_BULLETS]			@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 3;
+	unsigned char bullets_estado [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 4;
+	unsigned char bullets_life [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_BULLETS * 5;
+#endif
 
 #ifdef PLAYER_CAN_FIRE
 	unsigned char _b_estado;
@@ -152,7 +156,7 @@ unsigned char bullets_life [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_B
 #endif
 
 #if defined (ENABLE_FANTIES)
-	int _en_an_x, _en_an_y, _en_an_vx, _en_an_vy;
+	signed int _en_an_x, _en_an_y, _en_an_vx, _en_an_vy;
 #endif
 
 unsigned char _en_x, _en_y;
@@ -293,3 +297,8 @@ unsigned char *_gp_gen;
 #ifdef MODE_128K
 	unsigned char song_playing = 0;
 #endif
+
+unsigned char def_keys_joy [] = {
+	0x4904, 0x4908, 0x4901, 0x4902, 0x4920, 0x4910,
+	0x4004, 0x4804, 0x4880, 0x4780, 0x4801, 0x4802
+};

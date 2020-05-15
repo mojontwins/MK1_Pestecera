@@ -523,9 +523,6 @@ void draw_scr (void) {
 	is_rendering = 0;
 }
 
-void select_joyfunc (void) {
-}
-
 #ifdef WALLS_STOP_ENEMIES
 	unsigned char mons_col_sc_x (void) {
 		cx1 = cx2 = (_en_mx > 0 ? _en_x + 15 : _en_x) >> 4;
@@ -565,7 +562,7 @@ void select_joyfunc (void) {
 #endif
 
 #if defined(ENABLE_FANTIES)
-	int limit (int val, int min, int max) {
+	signed int limit (signed int val, signed int min, signed int max) {
 		if (val < min) return min;
 		if (val > max) return max;
 		return val;

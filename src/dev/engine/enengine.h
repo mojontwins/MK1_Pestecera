@@ -111,7 +111,7 @@ void enems_load (void) {
 			sp_sw [rda].updfunc = sm_updfunc [rdb];
 			en_an_next_frame [enit] = sm_sprptr [rdb];
 		} else {
-			en_an_next_frame [enit] = SPRFR_EMPTY;			
+			en_an_next_frame [enit] = SPRFR_EMPTY;
 		}
 
 		#include "my/ci/enems_extra_mods.h"

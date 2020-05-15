@@ -9,17 +9,18 @@
 // We are using some stuff from splib2 directly.
 #asm
 		XREF _nametable
+		LIB cpc_KeysData
 		LIB cpc_UpdTileTable
 		LIB cpc_InvalidateRect
 #endasm
 
-#include "my/config.h"
-#include "autodefs.h"
-#include "prototypes.h"
-
 // DON'T touch these
 #define FIXBITS 			6	
 #define MAX_ENEMS 			3			
+
+#include "my/config.h"
+#include "autodefs.h"
+#include "prototypes.h"
 
 #define BASE_ROOM_BUFFERS	0xC000 + 0x600
 #define BASE_DIRTY_CELLS 	0xC800 + 0x600
@@ -95,4 +96,5 @@
 	#include "savegame.h"
 #endif
 
+#include "my/title_screen.h"
 #include "mainloop.h"

@@ -232,11 +232,11 @@ void *invfunc;
 void *updfunc;
 } SPR;
 
-SPR sp_sw [4 + 3] @ 0xE000 + 0x600;
-unsigned char *spr_next [4 + 3] @ 0xE000 + 0x600 + 4 + 3*16;
-unsigned char spr_on [4 + 3] @ 0xE000 + 0x600 + 4 + 3*18;
-unsigned char spr_x [4 + 3] @ 0xE000 + 0x600 + 4 + 3*19;
-unsigned char spr_y [4 + 3] @ 0xE000 + 0x600 + 4 + 3*20;
+SPR sp_sw [1 + 3 + 0 + 3] @ 0xE000 + 0x600;
+unsigned char *spr_next [1 + 3 + 0 + 3] @ 0xE000 + 0x600 + (1 + 3 + 0 + 3)*16;
+unsigned char spr_on [1 + 3 + 0 + 3] @ 0xE000 + 0x600 + (1 + 3 + 0 + 3)*18;
+unsigned char spr_x [1 + 3 + 0 + 3] @ 0xE000 + 0x600 + (1 + 3 + 0 + 3)*19;
+unsigned char spr_y [1 + 3 + 0 + 3] @ 0xE000 + 0x600 + (1 + 3 + 0 + 3)*20;
 
 unsigned char enoffs;
 
@@ -289,13 +289,7 @@ unsigned char cocos_y [3] @ 0xD000 + 0x600 + 3 * 17;
 signed char cocos_mx [3] @ 0xD000 + 0x600 + 3 * 18;
 signed char cocos_my [3] @ 0xD000 + 0x600 + 3 * 19;
 unsigned char *en_an_next_frame [3] @ 0xD000 + 0x600 + 3 * 20;
-unsigned char bullets_x [3] @ 0xD000 + 0x600 + 3 * 22;
-unsigned char bullets_y [3] @ 0xD000 + 0x600 + 3 * 22 + 3;
-signed char bullets_mx [3] @ 0xD000 + 0x600 + 3 * 22 + 3 * 2;
-signed char bullets_my [3] @ 0xD000 + 0x600 + 3 * 22 + 3 * 3;
-unsigned char bullets_estado [3] @ 0xD000 + 0x600 + 3 * 22 + 3 * 4;
-unsigned char bullets_life [3] @ 0xD000 + 0x600 + 3 * 22 + 3 * 5;
-# 158
+# 160
 unsigned char _en_x, _en_y;
 unsigned char _en_x1, _en_y1, _en_x2, _en_y2;
 signed char _en_mx, _en_my;
@@ -303,15 +297,15 @@ signed char _en_t;
 signed char _en_life;
 
 unsigned char *_baddies_pointer;
-# 173
+# 175
 unsigned char map_attr [150] @ 0xC000 + 0x600;
 unsigned char map_buff [150] @ 0xC000 + 0x600 + 150;
-# 182
+# 184
 unsigned char hotspot_x;
 unsigned char hotspot_y;
 unsigned char hotspot_destroy;
 unsigned char orig_tile;
-# 191
+# 193
 unsigned char flags[32];
 
 
@@ -323,7 +317,7 @@ unsigned char level, slevel;
 unsigned char warp_to_level = 0;
 
 unsigned char maincounter;
-# 223
+# 225
 unsigned char gpx, gpox, gpy, gpd, gpc, gpt;
 unsigned char gpxx, gpyy, gpcx, gpcy;
 unsigned char possee, hit_v, hit_h, hit, wall_h, wall_v;
@@ -332,23 +326,23 @@ unsigned char tocado, active;
 unsigned char gpit, gpjt;
 unsigned char enoffsmasi;
 unsigned char *map_pointer;
-# 234
+# 236
 unsigned char rdx, rdy, rda, rdb, rdc, rdd, rdn, rdt;
-# 242
+# 244
 int itj;
 unsigned char objs_old, keys_old, life_old, killed_old;
-# 261
+# 263
 unsigned char *gen_pt;
 unsigned char playing;
 
 unsigned char success;
-# 269
+# 271
 unsigned char _x, _y, _n, _t;
 unsigned char cx1, cy1, cx2, cy2, at1, at2;
 unsigned char x0, y0, x1, y1;
 unsigned char ptx1, pty1, ptx2, pty2;
 unsigned char *_gp_gen;
-# 289
+# 291
 const signed char _dx [] = { 0, 8, 0, -8 };
 const signed char _dy [] = { -8, 0, 8, 0 };
 # 4 "aplib.h"
@@ -1359,7 +1353,7 @@ ld (hl), c
 }
 
 void simple_coco_update (void) {
-enspit = 1 + 3;
+enspit = 1 + 3 + 0;
 for (enit = 0; enit < 3; ++ enit) {
 if (cocos_y [enit] < 160) {
 #asm
@@ -1400,13 +1394,8 @@ jp _simple_coco_update_continue
 
 ._simple_coco_update_keep_going
 #endasm
-
-
-sp_sw [enspit].cx = (rdx + 1 * 8) >> 2;
-sp_sw [enspit].cy = (rdy + 2 * 8);
-sp_sw [enspit].sp0 = (int) (sprite_19_a);
 #asm
-# 122
+# 124
 ld a, (_gpx)
 ld c, a
 ld a, (_rdx)
@@ -1421,7 +1410,7 @@ ld a, (_gpx)
 add 12
 cp c
 jr c, _simple_coco_update_collpl_done
-# 141
+# 143
 ld a, (_gpy)
 ld c, a
 ld a, (_rdy)
@@ -1480,9 +1469,7 @@ ld (hl), a
 #endasm
 
 } else {
-sp_sw [enspit].cx = (1 * 8) >> 2;
-sp_sw [enspit].cy = (2 * 8);
-sp_sw [enspit].sp0 = (int) (sprite_18_a);
+# 203
 }
 ++ enspit;
 }
@@ -2307,15 +2294,17 @@ sp_sw [rda].updfunc = sm_updfunc [rdb];
 en_an_next_frame [enit] = sm_sprptr [rdb];
 } else {
 en_an_next_frame [enit] = sprite_18_a;
+sp_sw [rda].invfunc = cpc_PutSpTileMap4x8;
+sp_sw [rda].updfunc = cpc_PutTrSp4x8TileMap2b;
 }
-# 118
+# 120
 }
 }
 
 void enems_kill (void) {
 if (_en_t != 7) _en_t |= 16;
 ++ p_killed;
-# 134
+# 136
 }
 
 void enems_move (void) {
@@ -2325,10 +2314,10 @@ for (enit = 0; enit < 3; enit ++) {
 active = 0;
 enoffsmasi = enoffs + enit;
 #asm
-# 150
+# 152
 ld hl, (_enoffsmasi)
 ld h, 0
-# 162
+# 164
 ld d, h
 ld e, l
 add hl, hl
@@ -2380,7 +2369,7 @@ ld (__en_t), a
 and 0x1f
 ld (_rdt), a
 #endasm
-# 225
+# 227
 if (en_an_state [enit] == 4) {
 -- en_an_count [enit];
 if (en_an_count [enit] == 0) {
@@ -2393,7 +2382,7 @@ continue;
 
 
 pregotten = (gpx + 12 >= _en_x && gpx <= _en_x + 12);
-# 242
+# 244
 switch (rdt) {
 case 1:
 case 2:
@@ -2452,25 +2441,25 @@ ld (__en_my), a
 
 ._enems_lm_change_axis_y_done
 #endasm
-# 252 "engine/enengine.h"
+# 254 "engine/enengine.h"
 if (rdt == 5) {
 # 6 "./engine/enem_mods/enem_type_orthoshooters.h"
 if ((rand()&15) == 1) {
 rda = en_an_state [enit];
 simple_coco_shoot ();
 }
-# 254 "engine/enengine.h"
+# 256 "engine/enengine.h"
 }
 
 break;
-# 273
+# 275
 }
 
 if (active) {
 
 if (en_an_base_frame [enit] != 99) {
 #asm
-# 288
+# 290
 ld bc, (_enit)
 ld b, 0
 
@@ -2516,7 +2505,7 @@ ldi ; Copy 16 bit
 
 
 }
-# 337
+# 339
 if (_en_t == 4) {
 if (pregotten) {
 
@@ -2543,25 +2532,25 @@ gpy = (_en_y - 16); p_y = gpy << 6;
 } else
 
 {
-# 365
+# 367
 cx2 = _en_x; cy2 = _en_y;
 if (!tocado && collide () && p_estado == 0) {
-# 385
+# 387
 {
 tocado = 1;
-# 400
+# 402
 p_killme = 4;
-# 413
+# 415
 {
 p_vx = addsign (_en_mx, 192);
 p_vy = addsign (_en_my, 192);
 }
-# 430
+# 432
 }
 }
 }
 player_enem_collision_done:
-# 482
+# 484
 }
 
 rda = 1 + enit; rdt = en_an_sprid [enit];
@@ -2570,7 +2559,7 @@ sp_sw [rda].cy = (malotes [enoffsmasi].y + 2 * 8 + sm_coy [rdt]);
 if (rdt != 0xff) sp_sw [rda].sp0 = (int) (en_an_next_frame [enit]);
 else sp_sw [rda].sp0 = (int) (sprite_18_a);
 #asm
-# 494
+# 496
 ld hl, (__baddies_pointer)
 
 ld a, (__en_x)
@@ -2609,9 +2598,9 @@ ld a, (__en_t)
 ld (hl), a
 inc hl
 #endasm
-# 537
+# 539
 }
-# 542
+# 544
 }
 # 7 "engine/hotspots.h"
 void hotspots_init (void) {
@@ -2742,7 +2731,7 @@ sp_sw [0].invfunc = sm_invfunc [0];
 sp_sw [0].updfunc = sm_updfunc [0];
 sp_sw [0].sp0 = sp_sw [0].sp1 = (unsigned int) (sm_sprptr [0]);
 # 109
-for (gpit = 1 + 3; gpit < 1 + 3 + 3; gpit ++) {
+for (gpit = 1 + 3 + 0; gpit < 1 + 3 + 0 + 3; gpit ++) {
 sp_sw [gpit].cox = 0;
 sp_sw [gpit].coy = 0;
 sp_sw [gpit].invfunc =cpc_PutSpTileMap4x8;
@@ -2752,7 +2741,7 @@ sp_sw [gpit].sp0 = sp_sw [0].sp1 = (unsigned int) (sprite_19_a);
 
 
 
-for (gpit = 0; gpit < 4 + 3; ++ gpit) {
+for (gpit = 0; gpit < 1 + 3 + 0 + 3; ++ gpit) {
 spr_on [gpit] = 0;
 sp_sw [gpit].ox = (1*8) >> 2;
 sp_sw [gpit].oy = 2*8;
@@ -2915,13 +2904,13 @@ ret
 pop bc
 inc b
 ld a, b
-cp 4 + 3
+cp 1 + 3 + 0 + 3
 jr nz, _cpc_screen_update_inv_loop
 
 ._cpc_screen_update_upd_buffer
 call cpc_UpdScr
 # 114
-ld b, 4 + 3
+ld b, 1 + 3 + 0 + 3
 ._cpc_screen_update_upd_loop
 dec b
 push bc

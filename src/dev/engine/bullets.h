@@ -217,7 +217,7 @@ void bullets_move (void) {
 
 			if (_b_mx) {
 				_b_x += _b_mx;								
-				if (_b_x > 240) {
+				if (_b_x > 232) {
 					_b_estado = 0;
 				}
 			} 
@@ -229,11 +229,6 @@ void bullets_move (void) {
 					}
 				}
 			#endif
-		
-			// Render
-			sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
-			sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
-			sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
 
 			_x = (_b_x + 3) >> 4;
 			_y = (_b_y + 3) >> 4;
@@ -251,6 +246,14 @@ void bullets_move (void) {
 				}
 			#endif
 
+			// Render
+			if (_b_estado) {
+				sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
+				sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
+				sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
+			}
+
+			// Update arrays
 			bullets_update ();				
 		} else {
 			sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
