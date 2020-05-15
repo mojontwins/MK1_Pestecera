@@ -60,128 +60,147 @@ void simple_coco_shoot (void) {
 }
 
 void simple_coco_update (void) {
-	for (enit = 0; enit < MAX_ENEMS; ++ enit) if (cocos_y [enit] < 160) {
-		#asm				
-			._simple_coco_update_do
-				// Move coco and copy to simple vars
+	enspit = SP_COCOS_BASE;
+	for (enit = 0; enit < MAX_ENEMS; ++ enit) {
+		if (cocos_y [enit] < 160) {
+			#asm				
+				._simple_coco_update_do
+					// Move coco and copy to simple vars
 
-				ld  de, (_enit)
-				ld  d, 0
+					ld  de, (_enit)
+					ld  d, 0
 
-				ld  hl, _cocos_y 
-				add hl, de
-				ld  b, (hl) 			// B = cocos_y [enit]
+					ld  hl, _cocos_y 
+					add hl, de
+					ld  b, (hl) 			// B = cocos_y [enit]
 
-				ld  hl, _cocos_x
-				add hl, de
-				ld  c, (hl) 			// C = cocos_x [enit]
+					ld  hl, _cocos_x
+					add hl, de
+					ld  c, (hl) 			// C = cocos_x [enit]
 
-				ld  hl, _cocos_my
-				add hl, de
-				ld  a, (hl)
-				add b
-				ld  (_rdy), a 			// rdy = cocos_y [enit] + cocos_my [enit]
+					ld  hl, _cocos_my
+					add hl, de
+					ld  a, (hl)
+					add b
+					ld  (_rdy), a 			// rdy = cocos_y [enit] + cocos_my [enit]
 
-				ld  hl, _cocos_mx
-				add hl, de
-				ld  a, (hl)
-				add c
-				ld  (_rdx), a 			// rdx = cocos_x [enit] + cocos_mx [enit]
+					ld  hl, _cocos_mx
+					add hl, de
+					ld  a, (hl)
+					add c
+					ld  (_rdx), a 			// rdx = cocos_x [enit] + cocos_mx [enit]
 
-				// Check if X is off limits
-				cp  240
-				jr  c, _simple_coco_update_keep_going
+					// Check if X is off limits
+					cp  240
+					jr  c, _simple_coco_update_keep_going
 
-				ld  a, 0xff
-				ld  (_rdy), a 			// This effectively marks the coco for destruction
-				jr  _simple_coco_update_continue
+					ld  a, 0xff
+					ld  (_rdy), a 			// This effectively marks the coco for destruction
+					jp  _simple_coco_update_continue
 
-			._simple_coco_update_keep_going
-			
-				// Check collision (player)	
+				._simple_coco_update_keep_going
+			#endasm
 
-			#ifdef PLAYER_FLICKERS
-				ld  a, (_p_estado)
-				or  a 
-				jr  nz, _simple_coco_update_continue
-			#endif
+			/*
+			sp_sw [enspit].cx = (rdx + VIEWPORT_X * 8) >> 2;
+			sp_sw [enspit].cy = (rdy + VIEWPORT_Y * 8);
+			sp_sw [enspit].sp0 = (int) (sprite_19_a);
+			*/
 
-				// rdx + 3 >= gpx && rdx + 3 <= gpx + 15 &&
-				// rdx + 3 >= gpx && rdx <= gpx + 12
+			#asm
+				
+					// Check collision (player)	
 
-				// rdx + 3 >= gpx
-				ld  a, (_gpx)
-				ld  c, a
-				ld  a, (_rdx)
-				add 3
-				cp  c 
-				jr  c, _simple_coco_update_collpl_done
+				#ifdef PLAYER_FLICKERS
+					ld  a, (_p_estado)
+					or  a 
+					jr  nz, _simple_coco_update_continue
+				#endif
 
-				// gpx + 12 >= rdx
-				ld  a, (_rdx)
-				ld  c, a
-				ld  a, (_gpx)
-				add 12
-				cp  c 
-				jr  c, _simple_coco_update_collpl_done
+					// rdx + 3 >= gpx && rdx + 3 <= gpx + 15 &&
+					// rdx + 3 >= gpx && rdx <= gpx + 12
 
-				// rdy + 3 >= gpy && rdy + 3 <= gpy + 15
-				// rdy + 3 >= gpy && rdy <= gpy + 12
+					// rdx + 3 >= gpx
+					ld  a, (_gpx)
+					ld  c, a
+					ld  a, (_rdx)
+					add 3
+					cp  c 
+					jr  c, _simple_coco_update_collpl_done
 
-				// rdy + 3 >= gpy
-				ld  a, (_gpy)
-				ld  c, a
-				ld  a, (_rdy)
-				add 3
-				cp  c 
-				jr  c, _simple_coco_update_collpl_done
+					// gpx + 12 >= rdx
+					ld  a, (_rdx)
+					ld  c, a
+					ld  a, (_gpx)
+					add 12
+					cp  c 
+					jr  c, _simple_coco_update_collpl_done
 
-				// gpy + 12 >= rdy
-				ld  a, (_rdy)
-				ld  c, a
-				ld  a, (_gpy)
-				add 12
-				cp  c 
-				jr  c, _simple_coco_update_collpl_done
+					// rdy + 3 >= gpy && rdy + 3 <= gpy + 15
+					// rdy + 3 >= gpy && rdy <= gpy + 12
 
-				// Kill player
-				ld  a, 0xff
-				ld  (_rdy), a 			// This effectively marks the coco for destruction
+					// rdy + 3 >= gpy
+					ld  a, (_gpy)
+					ld  c, a
+					ld  a, (_rdy)
+					add 3
+					cp  c 
+					jr  c, _simple_coco_update_collpl_done
 
-			#ifdef MODE_128K
-				ld  a, SFX_ENEMY_HIT
-			#else
-				ld  a, 4
-			#endif
-				ld  (_p_killme), a
+					// gpy + 12 >= rdy
+					ld  a, (_rdy)
+					ld  c, a
+					ld  a, (_gpy)
+					add 12
+					cp  c 
+					jr  c, _simple_coco_update_collpl_done
 
-				jr  _simple_coco_update_continue
+					// Kill player
+					ld  a, 0xff
+					ld  (_rdy), a 			// This effectively marks the coco for destruction
 
-			._simple_coco_update_collpl_done
+				#ifdef MODE_128K
+					ld  a, SFX_ENEMY_HIT
+				#else
+					ld  a, 4
+				#endif
+					ld  (_p_killme), a
 
-		#endasm
-			
-		// Check collision (BG)	
-		if (attr ((rdx + 3) >> 4, (rdy + 3) >> 4) & 12) rdy = 0xff;
+					jr  _simple_coco_update_continue
 
-		#asm
+				._simple_coco_update_collpl_done
 
-			._simple_coco_update_continue
-				// And update arrays 
-				ld  de, (_enit)
-				ld  d, 0
+			#endasm
+				
+			// Check collision (BG)	
+			if (attr ((rdx + 3) >> 4, (rdy + 3) >> 4) & 12) rdy = 0xff;
 
-				ld  hl, _cocos_y 
-				add hl, de
-				ld  a, (_rdy)
-				ld  (hl), a
+			#asm
 
-				ld  hl, _cocos_x
-				add hl, de
-				ld  a, (_rdx)
-				ld  (hl), a
+				._simple_coco_update_continue
+					// And update arrays 
+					ld  de, (_enit)
+					ld  d, 0
 
-			._simple_coco_update_done
-		#endasm
+					ld  hl, _cocos_y 
+					add hl, de
+					ld  a, (_rdy)
+					ld  (hl), a
+
+					ld  hl, _cocos_x
+					add hl, de
+					ld  a, (_rdx)
+					ld  (hl), a
+
+				._simple_coco_update_done
+			#endasm
+		} else {
+			/*
+			sp_sw [enspit].cx = (VIEWPORT_X * 8) >> 2;
+			sp_sw [enspit].cy = (VIEWPORT_Y * 8);
+			sp_sw [enspit].sp0 = (int) (SPRFR_EMPTY);
+			*/
+		}
+		++ enspit;
 	}
 }

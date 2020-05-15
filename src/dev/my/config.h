@@ -87,14 +87,14 @@
 //#define FANTIES_LIFE_GAUGE		10		// Amount of shots needed to kill flying enemies.
 //#define FANTIES_TYPE_HOMING				// Unset for simple fanties.
 
-//#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
-//#define ORTHOSHOOTERS_FREQ 		(rand()&15)
-//#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
+#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
+#define ORTHOSHOOTERS_FREQ 		(rand()&15)
+#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
 
 // Cocos
 // -----
 
-//#define COCOS_V 					8		// pixels per frame
+#define COCOS_V 					8		// pixels per frame
 
 // Pushable tile
 // -------------

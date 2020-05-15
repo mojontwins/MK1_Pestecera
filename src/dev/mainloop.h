@@ -99,24 +99,28 @@ void main (void) {
 			sp_sw [gpit].coy = 0;
 			sp_sw [gpit].invfunc =cpc_PutSpTileMap4x8;
 			sp_sw [gpit].updfunc = cpc_PutTrSp4x8TileMap2b;
-			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = sprite_19_a;
+			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = (unsigned int) (sprite_19_a);
 		}
 	#endif
 
 	// Cocos are 4x8
 
 	#ifdef ENABLE_SIMPLE_COCOS
-		for (gpit = SP_COCOS_BASE; gpit < SP_COCOS_BASE + MAX_BULLETS; gpit ++) {
+		for (gpit = SP_COCOS_BASE; gpit < SP_COCOS_BASE + MAX_ENEMS; gpit ++) {
 			sp_sw [gpit].cox = 0;
 			sp_sw [gpit].coy = 0;
 			sp_sw [gpit].invfunc =cpc_PutSpTileMap4x8;
 			sp_sw [gpit].updfunc = cpc_PutTrSp4x8TileMap2b;
-			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = sprite_19_a;
+			sp_sw [gpit].sp0 = sp_sw [SP_PLAYER].sp1 = (unsigned int) (sprite_19_a);
 		}
 	#endif
 
 	// Turn off all sprites
-	for (gpit = 0; gpit < SW_SPRITES_ALL; ++ gpit) spr_on [gpit] = 0;
+	for (gpit = 0; gpit < SW_SPRITES_ALL; ++ gpit) {
+		spr_on [gpit] = 0;
+		sp_sw [gpit].ox = (VIEWPORT_X*8) >> 2;
+		sp_sw [gpit].oy = VIEWPORT_Y*8;
+	}
 
 	#include "my/ci/after_load.h"
 

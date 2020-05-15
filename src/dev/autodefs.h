@@ -1,7 +1,13 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
+// Autodefs
+
 // ¡No tocar!
+
+#if defined ENABLE_ORTHOSHOOTERS
+	#define ENABLE_SIMPLE_COCOS
+#endif
 
 #ifndef MAX_BULLETS
 	#define MAX_BULLETS 3

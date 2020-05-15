@@ -118,7 +118,7 @@ signed int ptgmx, ptgmy;
 
 const unsigned char *spacer = "            ";
 
-unsigned char enit;
+unsigned char enit, enspit;
 
 // Locate those arrays @ BASE_ARRAYS
 unsigned char en_an_base_frame [MAX_ENEMS]		@ BASE_ARRAYS;
@@ -147,7 +147,7 @@ unsigned char bullets_life [MAX_BULLETS]		@ BASE_ARRAYS + MAX_ENEMS * 22 + MAX_B
 
 #ifdef PLAYER_CAN_FIRE
 	unsigned char _b_estado;
-	unsigned char b_it, _b_x, _b_y;
+	unsigned char b_it, bspr_it, _b_x, _b_y;
 	signed char _b_mx, _b_my;
 #endif
 

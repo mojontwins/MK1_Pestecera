@@ -14,7 +14,7 @@
 
 extern unsigned char sprite_18_a []; 
 
-#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K)
+#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K) || defined ENABLE_SIMPLE_COCOS
 	extern unsigned char sprite_19_a [];
 	extern unsigned char sprite_19_b [];
 #endif
@@ -31,7 +31,7 @@ extern unsigned char sprite_18_a [];
 		defs 96, 0
 #endasm
 
-#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K)
+#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K) || defined ENABLE_SIMPLE_COCOS
 	#asm
 		._sprite_19_a
 			BINARY "../bin/sprites_bullet.bin"

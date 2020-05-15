@@ -184,6 +184,7 @@ void bullets_fire (void) {
 }
 
 void bullets_move (void) {
+	bspr_it = SP_BULLETS_BASE;
 	for (b_it = 0; b_it < MAX_BULLETS; b_it ++) {
 		if (bullets_estado [b_it]) {
 			#asm
@@ -228,6 +229,12 @@ void bullets_move (void) {
 					}
 				}
 			#endif
+		
+			// Render
+			sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
+			sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
+			sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
+
 			_x = (_b_x + 3) >> 4;
 			_y = (_b_y + 3) >> 4;
 			rda = attr (_x, _y);
@@ -245,6 +252,12 @@ void bullets_move (void) {
 			#endif
 
 			bullets_update ();				
-		}	
+		} else {
+			sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
+			sp_sw [bspr_it].cy = (VIEWPORT_Y * 8);
+			sp_sw [bspr_it].sp0 = (int) (SPRFR_EMPTY);
+		}
+
+		++ bspr_it;	
 	}	
 }

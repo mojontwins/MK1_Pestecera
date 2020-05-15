@@ -222,17 +222,15 @@ void enems_move (void) {
 			_en_cx = _en_x; _en_cy = _en_y;
 		#endif
 		
-		#ifdef MODE_128K
-			if (en_an_state [enit] == GENERAL_DYING) {
-				-- en_an_count [enit];
-				if (en_an_count [enit] == 0) {
-					en_an_state [enit] = 0;
-					en_an_next_frame [enit] = SPRFR_EMPTY;
-					continue;
-				}
+		if (en_an_state [enit] == GENERAL_DYING) {
+			-- en_an_count [enit];
+			if (en_an_count [enit] == 0) {
+				en_an_state [enit] = 0;
+				en_an_next_frame [enit] = SPRFR_EMPTY;
+				continue;
 			}
-		#endif
-
+		}
+		
 		#ifndef PLAYER_GENITAL
 			#if defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_8_BOTTOM)
 				pregotten = (gpx + 12 >= _en_x && gpx <= _en_x + 12);
