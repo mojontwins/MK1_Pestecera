@@ -10,11 +10,7 @@ void title_screen (void) {
 		get_resource (TITLE_BIN, BASE_SUPERBUFF);
 		AY_PLAY_MUSIC (0);
 	#else		
-		#asm
-			ld hl, _s_title
-			ld de, BASE_SUPERBUFF
-			call depack
-		#endasm
+		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
 			
 	cpc_ShowTileMap (1);

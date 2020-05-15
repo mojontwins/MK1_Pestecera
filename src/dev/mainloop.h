@@ -35,12 +35,7 @@ void main (void) {
 
 	// Decompress LUT in place
 
-	#asm
-		ld hl, _trpixlutc
-		ld de, BASE_LUT
-		call depack
-	.vaudeville_tirants
-	#endasm
+	unpack ((unsigned int) (trpixlutc), BASE_LUT);
 
 	cortina ();
 	
@@ -181,11 +176,7 @@ void main (void) {
 					// Resource 1 = marco.bin
 					get_resource (MARCO_BIN, BASE_SUPERBUFF);
 				#else		
-					#asm
-						ld hl, _s_marco
-						ld de, BASE_SUPERBUFF
-						call depack
-					#endasm
+					unpack ((unsigned int) (s_marco), BASE_SUPERBUFF);				
 				#endif
 				cpc_ShowTileMap (1);						
 

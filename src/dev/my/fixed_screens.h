@@ -7,11 +7,7 @@ void game_ending (void) {
 		// Resource 2 = ending
 		get_resource (ENDING_BIN, BASE_SUPERBUFF);
 	#else
-		#asm
-			ld hl, _s_ending
-			ld de, BASE_SUPERBUFF
-			call depack
-		#endasm
+		unpack ((unsigned int) (s_ending), BASE_SUPERBUFF);
 	#endif
 	cpc_ShowTileMap (1);
 	

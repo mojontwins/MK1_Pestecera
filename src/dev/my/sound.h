@@ -23,6 +23,7 @@ extern unsigned char wyz_song_0 [0];
 extern unsigned char wyz_song_1 [0];
 
 void wyz_play_compressed_song (unsigned char n) {
+	unpack ((unsigned int) wyz_song_table [n], SONG_BUFFER);
 	
 }
 

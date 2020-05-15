@@ -151,15 +151,15 @@ unsigned int ram_destination;
 		#endasm
 	}
 #else
-	#ifdef COMPRESSED_LEVELS	
-		void unpack (unsigned int address, unsigned int destination) {
-			ram_address = address; ram_destination = destination;
-			#asm
-				ld hl, (_ram_address)
-				ld de, (_ram_destination)
-				call depack
-			#endasm
-		}
-	#endif
+
+	void unpack (unsigned int address, unsigned int destination) {
+		ram_address = address; ram_destination = destination;
+		#asm
+			ld hl, (_ram_address)
+			ld de, (_ram_destination)
+			call depack
+		#endasm
+	}
+
 #endif
 		
