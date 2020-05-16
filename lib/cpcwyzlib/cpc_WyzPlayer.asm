@@ -10,8 +10,7 @@ XLIB cpc_WyzPlayer
 
 XDEF CARGA_CANCION_WYZ
 XDEF INICIA_EFECTO_WYZ
-XDEF cpc_WyzSetPlayerOn0
-XDEF cpc_WyzSetPlayerOff0
+XDEF wyz_player_isr
 
 XDEF TABLA_SONG
 XDEF TABLA_EFECTOS
@@ -22,71 +21,11 @@ XDEF INTERRUPCION
 XDEF BUFFER_MUSICA
 XDEF direcc_tempo
 
-
 DEFINE AMSTRAD = 1
-
-;DEFINE BUFFER_DEC  = $100
-
-
-
-
 
 ; CPC PSG proPLAYER - WYZ 2010
 
-
 .cpc_WyzPlayer
-
-
-
-.cpc_WyzSetPlayerOn1
-	;El player funcionará por interrupciones.
-	DI
-	ld a,($0038)
-	ld (datos_int),a
-	ld (salto_int),a
-	ld a,($0039)
-	ld (datos_int+1),a
-	ld (salto_int+1),a
-	ld a,($003a)
-	ld (datos_int+2),a
-	ld (salto_int+2),a
-	
-	
-;	ld hl,($0038)	
-;	ld (datos_int),HL	;guardo el salto original
-;	ld a,l
-;	ld (salto_int+1),a
-;	ld a,h
-;	ld (salto_int+2),a
-	ld a,$C3
-	ld ($0038),a
-	ld HL,INICIO
-	ld ($0039),HL
-	EI
-	ret
-
-.cpc_WyzSetPlayerOff1
-	
-	;apago todos los sonidos poniendo los registros a 0
-	call PLAYER_OFF
-	DI	
-	;Restaura salto original
-	ld a,(datos_int)	;guardo el salto original
-	ld ($0038),A
-	ld a,(datos_int+1)	;guardo el salto original
-	ld ($0039),A
-	ld a,(datos_int+2)	;guardo el salto original
-	ld ($003a),A		
-	
-	EI
-	ret
-	
-	
-	
-
-
-                
-
 
 ;___________________________________________________________
 
@@ -99,7 +38,7 @@ DEFINE AMSTRAD = 1
 
 .INICIO
 
-
+.wyz_player_isr
 	;primero mira si toca tocar :P
 	push af
 	LD A,(contador)
@@ -1285,15 +1224,9 @@ DefB      'P','S','G',' ','P','R','O','P','L','A','Y','E','R',' ','B','Y',' ','W
 
 
 .BUFFER_DEC   defs $40
-;   DEFB     $00		;************************* mucha atencion!!!!
-;.BUFFER_DEC defs 2048		;space dinamically asigned in source code compilation!!
-					; aqui se decodifica la cancion hay que dejar suficiente espacio libre.
-					;*************************
                 
 DEFC CARGA_CANCION_WYZ = CARGA_CANCION_WYZ0
 DEFC INICIA_EFECTO_WYZ = INICIA_EFECTO_WYZ0
-DEFC cpc_WyzSetPlayerOn0 = cpc_WyzSetPlayerOn1
-DEFC cpc_WyzSetPlayerOff0 = cpc_WyzSetPlayerOff1
 DEFC TABLA_SONG = TABLA_SONG0
 DEFC TABLA_EFECTOS = TABLA_EFECTOS0
 DEFC TABLA_PAUTAS = TABLA_PAUTAS0

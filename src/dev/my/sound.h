@@ -1,16 +1,6 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-// Interface. Attempt to automaticly use WYZ Tracker's output and compressed
-// .mus.bin files.
-
-// This expects 
-// - ../mus/instrumentos.asm
-// - ../mus/00_title.mus.bin
-// - ../mus/01_title.mus.bin
-
-// Change as fit
-
 // If your songs are bigger than 2Kb, you have to change this
 
 #define SONG_BUFFER 		0x9000-0x800
@@ -21,6 +11,15 @@ extern unsigned char wyz_song_table [0];
 extern unsigned char wyz_effects_table [0];
 extern unsigned char wyz_song_0 [0];
 extern unsigned char wyz_song_1 [0];
+
+void wyz_player_init (void) {
+	cpc_WyzInitPlayer (
+		(unsigned int) (tabla_sonidos),
+		(unsigned int) (tabla_pautas),
+		(unsigned int) (wyz_effects_table),
+		(unsigned int) (wyz_song_table)
+	);
+}
 
 void wyz_play_compressed_song (unsigned char n) {
 	unpack ((unsigned int) wyz_song_table [n], SONG_BUFFER);

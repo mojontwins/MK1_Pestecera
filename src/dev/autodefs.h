@@ -10,10 +10,12 @@
 #endif
 
 #ifdef SOUND_NONE
+	#define AY_INIT()        ;
 	#define AY_PLAY_SOUND(a) ;
 	#define AY_STOP_SOUND()  ;
 	#define AY_PLAY_MUSIC(a) ;
 #elif defined (SOUND_WYZ)
+	#define AY_INIT()        wyz_player_init ();
 	#define AY_PLAY_SOUND(a) cpc_WyzStartEffect (1, a);
 	#define AY_STOP_SOUND()  cpc_WyzSetPlayerOff ();
 	#define AY_PLAY_MUSIC(a) wyz_play_compressed_song(a);
