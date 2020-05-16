@@ -608,21 +608,24 @@
 	],
 	"file_history":
 	[
-		"/H/git/MK1_Pestecera/src/dev/lala_beta.map",
+		"/H/git/MK1_Pestecera/src/dev/my/title_screen.h",
+		"/H/git/MK1_Pestecera/src/dev/aplib.h",
+		"/H/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/H/git/MK1_Pestecera/src/dev/my/sound.h",
 		"/H/git/MK1_Pestecera/src/dev/my/config.h",
+		"/H/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/H/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
+		"/H/git/MK1_Pestecera/src/dev/lala_beta.map",
 		"/H/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
 		"/H/git/MK1_Pestecera/src/mus/instrumentos.asm",
 		"/H/git/MK1_Pestecera/src/mus/efectos.asm",
 		"/H/git/MK1_Pestecera/src/mus/efectos.h",
-		"/H/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/H/git/MK1_Pestecera/src/dev/mk1.c",
 		"/H/git/MK1_Pestecera/src/dev/definitions.h",
-		"/H/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/H/git/MK1_Pestecera/src/utils/src/wyzTrackerParser.bas",
 		"/H/git/MK1_Pestecera/src/dev/assets/instrumentos.h",
 		"/H/git/MK1_Pestecera/diario.md",
 		"/H/git/MK1_Pestecera/src/dev/compile.bat",
-		"/H/git/MK1_Pestecera/src/dev/my/sound.h",
 		"/H/git/MK1_Pestecera/src/utils/src/asm2z88dk.bas",
 		"/H/git/MK1_Pestecera/src/dev/sound.h",
 		"/H/git/MK1_Pestecera/src/mus/01_ingame.mus.asm",
@@ -638,7 +641,6 @@
 		"/H/git/MK1_Pestecera/src/dev/engine/simple_cocos.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/enems.h",
 		"/H/git/MK1_Pestecera/src/dev/prepro.c",
-		"/H/git/MK1_Pestecera/src/dev/autodefs.h",
 		"/H/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/extrasprites.h",
 		"/H/git/MK1_Pestecera/src/dev/engine/enem_mods/enem_type_pursuers.h",
@@ -689,7 +691,6 @@
 		"/H/git/MK1_Pestecera/src/utils/src/bin2sna/mem_imgs.cpp",
 		"/C/z88dk10/lib/spec_crt0.asm",
 		"/H/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
-		"/H/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
 		"/H/git/MK1_Pestecera/src/dev/my/msc.h",
 		"/H/git/MK1_Pestecera/src/dev/engine/hotspots.h",
 		"/H/git/MK1_Pestecera/src/dev/assets/sprites.h",
@@ -734,8 +735,7 @@
 		"/C/git/mk1/examples/goku_mal/dev/my/level_screen.h",
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/before_entering_screen.h",
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/entering_game.h",
-		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h",
-		"/C/git/mk1/docs/tutorial-cap13.md"
+		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h"
 	],
 	"find":
 	{
@@ -746,6 +746,7 @@
 		"height": 135.0,
 		"where_history":
 		[
+			"H:\\git\\MK1_Pestecera\\src\\dev",
 			"H:\\git\\MK1_Pestecera\\src",
 			"H:\\git\\MK1_Pestecera\\src\\dev",
 			"H:\\git\\MK1_Pestecera\\lib\\cpcrslib",
@@ -771,6 +772,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"depack",
 			"trimmed",
 			"linea",
 			"v0.1 20200120",
@@ -897,8 +899,7 @@
 			"bit",
 			"gpit",
 			"bullets",
-			"bull",
-			"cx2"
+			"bull"
 		],
 		"highlight": true,
 		"in_selection": false,

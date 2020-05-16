@@ -24,7 +24,8 @@ extern unsigned char wyz_song_1 [0];
 
 void wyz_play_compressed_song (unsigned char n) {
 	unpack ((unsigned int) wyz_song_table [n], SONG_BUFFER);
-	
+	cpc_WyzLoadSong (0);
+	cpc_WyzSetPlayerOn ();
 }
 
 #asm
@@ -37,7 +38,7 @@ void wyz_play_compressed_song (unsigned char n) {
 		BINARY "../mus/01_ingame.mus.bin"
 
 	._wyz_song_table
-		defw SONG_BUFFER, SONG_BUFFER
+		defw SONG_BUFFER
 
 	._wyz_effects_table
 		defw EFECTO0, EFECTO1, EFECTO2, EFECTO3, EFECTO4, EFECTO5, EFECTO6, EFECTO7
