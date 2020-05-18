@@ -460,3 +460,28 @@ Por ahora he hecho un parser de los .mus.asm de Wyz Tracker para crearme un `ass
 
 Luego eso lo meteré dentro de `my/sound.h` junto con la tabla de canciones y la de instrumentos.
 
+# 20200518
+
+Al final he decidido pasar de `CPCWYZLIB` e integrar la versión más reciente de **WYZ Player** por mi mismo. Como la documentación no existe y los fuentes y sus comentarios son algo confusos (nomenclatura mal), me he hecho unos apuntes:
+
+## WYZ Player
+
+La idea es tomar el original `WYZPROPLAY47c_CPC.ASM` y generar un módulo directamente compilable por z88dk que pueda linkar al igual que se hace con `tilema_conf.asm`. Eso implica cambiar algunas cosas de sitio, modificar las etiquetas, etc.
+
+### Puntos de entrada
+
+Estos son los puntos de entrada que necesitamo para integrar el player:
+
+|Label|Wat|
+|---|---|
+|WYZPLAYER_INIT|**Inicialización**. Reserva memoria para los canales. No sé por qué hace falta dar tanta vuelta; probablemente sea porque esto está pensado para ejecutarse desde una ROM. Quizá la primera modificación que haga sea dejar esto "fijo".|
+|INICIO|**Actualización**. Esta es la rutina a la que tengo que llamar cada frame.|
+|INICIA_EFECTO|**Tocar un SFX**. A = # sonido; B = canal (0, 1, 2).|
+|CARGA_CANCION|**Tocar una canción**. A = # canción. Empieza a tocarla delti.|
+|PLAYER_OFF|**Silencio**|
+
+### K ASE
+
+Lo primero que voy a hacer es montarme esto en plan monolítico teniendo en cuenta que "sonidos" y "pautas" (percusiones e instrumentos) tendrán que ser inyectados posteriormente de alguna manera. El primer paso será modificar el código de `WYZPROPLAY47c_CPC.ASM` para que compile con z88dk y de camino para que incluya las interfaces con C `wyz_init`, `wyz_play_sound`, `wyz_play_music` y `wyz_stop_sound`.
+
+  
