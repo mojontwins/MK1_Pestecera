@@ -97,5 +97,9 @@
 	#include "savegame.h"
 #endif
 
+#ifdef SOUND_WYZ
+	#include "wyz_player.h"
+#endif
+		
 #include "my/title_screen.h"
 #include "mainloop.h"

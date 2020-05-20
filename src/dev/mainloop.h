@@ -18,8 +18,33 @@ void main (void) {
 		jp  isr_done
 
 	._isr
+		#ifdef SOUND_WYZ
+			push af 
+
+			ld  a, (isr_c1)
+			inc a
+			ld  (isr_c1), a
+			cp  6
+			jr  c, _skip_wyz
+
+			push hl
+			push de
+			push bc
+
+			call WYZ_PLAYER_ISR
+
+			pop bc
+			pop de 
+			pop hl
+
+		._skip_wyz 
+			pop af
+		#endif
 		ei
 		ret
+
+	.isr_c1 
+		defb 0
 
 	.isr_done
 	#endasm
