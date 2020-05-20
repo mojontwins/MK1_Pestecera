@@ -27,6 +27,7 @@
 #define BASE_ARRAYS 		0xD000 + 0x600
 #define BASE_SPRITES 		0xE000 + 0x600
 #define BASE_LUT			0xF800 + 0x600
+#define BASE_WYZ 			0xFF80				// Decode buffers
 
 #define BASE_SUPERBUFF  	0x9000
 

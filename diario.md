@@ -484,4 +484,40 @@ Estos son los puntos de entrada que necesitamo para integrar el player:
 
 Lo primero que voy a hacer es montarme esto en plan monolítico teniendo en cuenta que "sonidos" y "pautas" (percusiones e instrumentos) tendrán que ser inyectados posteriormente de alguna manera. El primer paso será modificar el código de `WYZPROPLAY47c_CPC.ASM` para que compile con z88dk y de camino para que incluya las interfaces con C `wyz_init`, `wyz_play_sound`, `wyz_play_music` y `wyz_stop_sound`.
 
-  
+# 20200520
+
+He hecho esta pequeña interfaz C:
+
+```c
+    void wyz_init (void) {
+        #asm
+            call WYZPLAYER_INIT
+        #endasm 
+    }
+
+    void __FASTCALL__ wyz_play_music (unsigned char m) {
+        #asm
+            ; Song number is in L
+            ld  a, l
+            call CARGA_CANCION
+        #endasm
+    }
+
+    void __FASTCALL__ wyz_play_sound (unsigned char s) {
+        #asm
+            ; Sound number is in L
+            ld  a, l
+            ld  b, WYZ_FX_CHANNEL
+            call INICIA_EFECTO
+        #endasm
+    }
+
+    void wyz_stop_sound (void) {
+        #asm
+            call PLAYER_OFF
+        #endasm
+    }
+```
+
+Aunque ahora estoy pensando que a lo mejor es mejor usar ensamble en linea por unos bytes... Meh, da igual, así es más fácil de usar para los muggles.
+
