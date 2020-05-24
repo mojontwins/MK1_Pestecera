@@ -557,3 +557,5 @@ También necesito una lista con las canciones y los propios binarios de las canc
     #endif
 ```
 
+Ya compila pero no suena nada y el juego luego no inicia (aunque la pantalla de título parece que sí). Voy a desactivar a ver si así vuelve a funcionar. Sí que vuelve. Pues toca depurar paso a paso. Lo que me flipa es que ahora ocupa todo 3100 bytes más O_o.
+

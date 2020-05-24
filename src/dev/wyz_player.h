@@ -4,8 +4,6 @@
 
 #define WYZ_SONG_BUFFER 0x9000-2048
 #define BASE_WYZ 		0xE000-0x80
-#define EFECTO_REGS 	BASE_WYZ-16
-#define SONIDO_REGS 	BASE_WYZ-32
 
 void wyz_init (void) {
 	#asm
@@ -51,7 +49,7 @@ void wyz_stop_sound (void) {
 	.WYZPLAYER_INIT
 		CALL PLAYER_OFF
 
-		LD DE, #0020 		; No. BYTES RESERVADOS POR CANAL
+		LD DE, 0x0020 		; No. BYTES RESERVADOS POR CANAL
 		
 		LD HL, BASE_WYZ 	;* RESERVAR MEMORIA PARA BUFFER DE SONIDO!!!!!
 		LD (CANAL_A), HL
@@ -1098,6 +1096,10 @@ void wyz_stop_sound (void) {
 
 	.N_SONIDO 		defb 0	;DB : NUMERO DE SONIDO
 	.PUNTERO_SONIDO defw 0	;DW : PUNTERO DEL SONIDO QUE SE REPRODUCE
+
+	.EFECTO_REGS 	defw 0
+	.SONIDO_REGS 	defw 0
+
 
 	;DB (13) BUFFERs DE REGISTROS DEL PSG
 
