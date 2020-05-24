@@ -25,7 +25,6 @@ void main (void) {
 
 			ld  a, (isr_c1)
 			inc a
-			ld  (isr_c1), a
 			cp  6
 			jr  c, _skip_wyz
 
@@ -43,7 +42,11 @@ void main (void) {
 			pop de 
 			pop hl
 
+			xor a
+			
 		._skip_wyz 
+			ld  (isr_c1), a
+			
 			pop af
 		#endif
 		ei
