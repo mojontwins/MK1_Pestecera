@@ -508,7 +508,8 @@ void wyz_stop_sound (void) {
 		INC DE
 		RET
 
-	.GETLEN LD B,A
+	.GETLEN 
+		LD B,A
 		AND 00111111B
 		PUSH AF
 		LD A,B
@@ -518,14 +519,16 @@ void wyz_stop_sound (void) {
 		INC A
 		LD B,A
 		LD A,10000000B
-	.DCBC0 RLCA
+	.DCBC0 
+		RLCA
 		DJNZ DCBC0
 		LD B,A
 		POP AF
 		RET
 		
 	;PLAY __________________________________________________
-	.PLAY LD HL,INTERR ;PLAY BIT 1 ON?
+	.PLAY 
+		LD HL,INTERR ;PLAY BIT 1 ON?
 		BIT 1,(HL)
 		RET Z
 	;TEMPO 
