@@ -16,6 +16,8 @@ void __FASTCALL__ wyz_play_music (unsigned char m) {
 	#asm
 		ld  a, 0
 		call CARGA_CANCION
+		ld  a, 1
+		ld  (isr_player_on), a
 	#endasm
 }
 
@@ -31,6 +33,8 @@ void __FASTCALL__ wyz_play_sound (unsigned char s) {
 void wyz_stop_sound (void) {
 	#asm
 		call PLAYER_OFF
+		xor a
+		ld  (isr_player_on), a
 	#endasm
 }
 
@@ -255,7 +259,8 @@ void wyz_stop_sound (void) {
 		RET
 
 	;PLAYER OFF
-	.PLAYER_OFF XOR A ;***** IMPORTANTE SI NO HAY MUSICA ****
+	.PLAYER_OFF 
+		XOR A ;***** IMPORTANTE SI NO HAY MUSICA ****
 		LD (INTERR),A
 		;LD (FADE),A ;solo si hay fade out
 

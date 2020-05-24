@@ -20,8 +20,12 @@ void main (void) {
 		jp  isr_done
 
 	._isr
+		push af 
+		
 		#ifdef SOUND_WYZ
-			push af 
+			ld  a, (isr_player_on)
+			or  a
+			jr  z, _skip_wyz
 
 			ld  a, (isr_c1)
 			inc a
@@ -43,16 +47,19 @@ void main (void) {
 			pop hl
 
 			xor a
-			
+
 		._skip_wyz 
-			ld  (isr_c1), a
-			
-			pop af
+			ld  (isr_c1), a	
 		#endif
+		
+		pop af
 		ei
 		ret
 
 	.isr_c1 
+		defb 0
+
+	.isr_player_on
 		defb 0
 
 	.isr_done
