@@ -15,10 +15,10 @@
 	#define AY_STOP_SOUND()  ;
 	#define AY_PLAY_MUSIC(a) ;
 #elif defined SOUND_WYZ
-	#define AY_INIT()        wyz_player_init ();
-	#define AY_PLAY_SOUND(a) cpc_WyzStartEffect (1, a);
-	#define AY_STOP_SOUND()  cpc_WyzSetPlayerOff ();
-	#define AY_PLAY_MUSIC(a) wyz_play_compressed_song(a);
+	#define AY_INIT()        wyz_init ();
+	#define AY_PLAY_SOUND(a) wyz_play_sound (a);
+	#define AY_STOP_SOUND()  wyz_stop_sound ();
+	#define AY_PLAY_MUSIC(a) wyz_play_music (a);
 #endif
 
 // Configure number of blocks and reserve a pool for sprites

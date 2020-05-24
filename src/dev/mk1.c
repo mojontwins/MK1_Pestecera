@@ -27,7 +27,6 @@
 #define BASE_ARRAYS 		0xD000 + 0x600
 #define BASE_SPRITES 		0xE000 + 0x600
 #define BASE_LUT			0xF800 + 0x600
-#define BASE_WYZ 			0xFF80				// Decode buffers
 
 #define BASE_SUPERBUFF  	0x9000
 
@@ -98,8 +97,11 @@
 #endif
 
 #ifdef SOUND_WYZ
+	#include "assets/efectos.h"
+	#include "assets/instrumentos.h"
+	#include "assets/songs.h"
 	#include "wyz_player.h"
 #endif
-		
+
 #include "my/title_screen.h"
 #include "mainloop.h"

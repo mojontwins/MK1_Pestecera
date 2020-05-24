@@ -1,3 +1,6 @@
+// MTE MK1 (la Churrera) v5.0
+// Copyleft 2010-2014, 2020 by the Mojon Twins
+
 #asm
     .EFECTO0 defb 0x25, 0x1C, 0x00
     				defb 0x3A, 0x0F, 0x00

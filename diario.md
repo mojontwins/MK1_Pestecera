@@ -526,3 +526,34 @@ También añado este enganche al ISR:
 # 20200522
 
 `DATOS_NOTAS` y `TABLA_SONG` van fijas en el código. `TABLA_EFECTOS` puedo sacarla a otro archivo, junto con los efectos de sonido, para que sea fácil cambiarlo, y `TABLA_PAUTAS` y `TABLA_SONIDOS`, que exporta WYZ Tracker, deberían ir en otro, que montaré a mano pero que, idealmente, debería generarse automáticamente.
+
+# 20200524
+
+He instalado WYZ Tracker 2.0.X y he reexportado los .MUS, teniendo cuidado de elegir "Amstrad CPC" en el modelo (esto lo escribo para cuando tenga que hacer la DOC pestecera).
+
+Esto produce los archivos .mus y unos .mus.asm que en teoría deberían ser todos iguales. Uno de esos debería estar dentro de `wyz_player.h`. La idea, al menos en las primeras versiones será:
+
+1.- Renombrar uno de estos archivos como `instrumentos.asm`.
+2.- Usar wyzTrackerParser.exe para obtener `assets/instrumentos.h`.
+
+En `assets/instrumentos.h` va un bloque `#asm`..`#endasm` donde se definen `TABLA_PAUTAS` (instrumentos) y `TABLA_SONIDOS` (percusiones).
+
+He generado `assets/efectos.h` usando `asm2z88dk.exe` para incluir de forma fija, pero habrá que mencionarlo en la doc para que la gente se pueda hacer sus propios efectos.
+
+También necesito una lista con las canciones y los propios binarios de las canciones. Para esto estará `assets/songs.h` que por ahora generaré a mano.
+
+```c
+    extern unsigned char *wyz_songs [0];
+
+    #asm
+        ._00_title_mus_bin
+            BINARY "../mus/_00_title.mus.bin"
+
+        ._01_ingame_mus_bin
+            BINARY "../mus/_01_ingame.mus.bin"
+
+        ._wyz_songs
+            defw    _00_title_mus_bin, _01_ingame_mus_bin
+    #endif
+```
+

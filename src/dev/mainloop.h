@@ -8,6 +8,8 @@ void main (void) {
 
 	// CPC initialization
 	
+	AY_INIT ();
+
 	#asm
 		di
 
@@ -30,9 +32,13 @@ void main (void) {
 			push hl
 			push de
 			push bc
+			push ix
+			push iy
 
 			call WYZ_PLAYER_ISR
 
+			pop iy
+			pop ix
 			pop bc
 			pop de 
 			pop hl

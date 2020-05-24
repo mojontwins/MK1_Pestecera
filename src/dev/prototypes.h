@@ -108,5 +108,5 @@ void do_tilanims (void);
 // wyz_player.h
 void wyz_init (void);
 void __FASTCALL__ wyz_play_music (unsigned char m);
-void __FASTCALL__ wyz_play_sound (unsigned char s):
+void __FASTCALL__ wyz_play_sound (unsigned char s);
 void wyz_stop_sound (void);
