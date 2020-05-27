@@ -55,7 +55,7 @@
 	
 ; VALORES QUE DEFINEN EL BUFFER Y LA PANTALLA
 	
-	defc tiles_tocados = $C800 + $600
+	defc tiles_tocados = $CE00
 
 	defc _nametable = $100
 	defc pantalla_juego= $100

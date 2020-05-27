@@ -1,3 +1,18 @@
+Memory map
+
+0100 tilemap
+0400 ejecutable
+8800 descomprimir canción
+9000 buffer
+C000 pantalla (a trozos)
+C600 room buffers
+CE00 dirty cells (tiles_tocados)
+D600 arrays
+DF80 buffers WYZ
+E600 sprite structures
+FE00 LUT
+
+
 20200426
 ========
 

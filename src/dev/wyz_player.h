@@ -2,8 +2,8 @@
 // This needs a buffer to decompress songs.
 // Biggest .mus file must fit, so adjust if needed:
 
-#define WYZ_SONG_BUFFER 0x9000-2048
-#define BASE_WYZ 		0xE000-0x80
+#define WYZ_SONG_BUFFER 0x8800
+#define BASE_WYZ 		0xDF80
 
 void wyz_init (void) {
 	#asm
