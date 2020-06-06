@@ -42,14 +42,6 @@ void wyz_stop_sound (void) {
 	; CPC PSG proPLAYER V 0.47c - WYZ 19.03.2016
 	; (WYZTracker 2.0 o superior)
 
-	; ENSAMBLAR CON AsMSX 
-
-	; LOS DATOS QUE HAY QUE VARIAR :
-	; * BUFFER DE SONIDO DONDE SE DECODIFICA TOTALMENTE EL ARCHIVO MUS
-	; * Nº DE CANCION. 
-	; * TABLA DE CANCIONES
-	;______________________________________________________
-
 	.WYZPLAYER_INIT
 		CALL PLAYER_OFF
 
@@ -87,7 +79,7 @@ void wyz_stop_sound (void) {
 		LD (PUNTERO_SONIDO), DE
 		LD HL, INTERR
 		SET 2, (HL)
-		LD A, B
+		LD A, 1
 		LD HL, TABLA_DATOS_CANAL_SFX
 		CALL EXT_WORD
 		LD (SONIDO_REGS), DE
@@ -293,7 +285,8 @@ void wyz_stop_sound (void) {
 	;IN-> INTERR 0 ON
 	; SONG
 	;CARGA CANCION SI/NO
-	.DECODE_SONG LD A,(SONG)
+	.DECODE_SONG 
+		LD A,(SONG)
 
 	;LEE CABECERA DE LA CANCION
 	;BYTE 0=TEMPO
@@ -318,7 +311,7 @@ void wyz_stop_sound (void) {
 		
 	;SELECCION DEL CANAL DE EFECTOS DE RITMO
 	.NPTJP0
-		AND 0x06 ; AND 00000110B 
+		AND 00000110B 
 		RRA
 		;LD (SELECT_CANAL_P),A
 
@@ -402,8 +395,10 @@ void wyz_stop_sound (void) {
 
 	;BUSCA INICIO DEL CANAL
 
-	.BGICMODBC1 LD E,0x3F ;CODIGO INSTRUMENTO 0
-	.BGICMODBC2 XOR A ;BUSCA EL BYTE 0
+	.BGICMODBC1 
+		LD E,0x3F ;CODIGO INSTRUMENTO 0
+	.BGICMODBC2 
+		XOR A ;BUSCA EL BYTE 0
 		LD B,0xFF ;EL MODULO DEBE TENER UNA LONGITUD MENOR DE 0xFF00 ... o_O!
 		CPIR
 		
@@ -444,14 +439,16 @@ void wyz_stop_sound (void) {
 		OR 0x40 ; SET 6,A
 		JR NO_MODIFICA
 		
-	.NO_SILENCIO CP 00111110B ;ES PUNTILLO?
+	.NO_SILENCIO 
+		CP 00111110B ;ES PUNTILLO?
 		JR NZ,NO_PUNTILLO
 		OR A
 		RRC B
 		XOR A
 		JR NO_MODIFICA
 
-	.NO_PUNTILLO CP 00111111B ;ES COMANDO?
+	.NO_PUNTILLO 
+		CP 00111111B ;ES COMANDO?
 		JR NZ,NO_MODIFICA
 		BIT 0,B ;COMADO=INSTRUMENTO?
 		JR Z,NO_INSTRUMENTO 
@@ -471,7 +468,8 @@ void wyz_stop_sound (void) {
 		; INC HL
 		JR DECODE_CANAL
 		
-	.NO_INSTRUMENTO BIT 2,B
+	.NO_INSTRUMENTO 
+		BIT 2,B
 		JR Z,NO_ENVOLVENTE
 		LD A,11000100B ;CODIGO ENVOLVENTE
 		LD (DE),A
@@ -484,7 +482,8 @@ void wyz_stop_sound (void) {
 		; INC HL
 		JR DECODE_CANAL
 		
-	.NO_ENVOLVENTE BIT 1,B
+	.NO_ENVOLVENTE 
+		BIT 1,B
 		JR Z,NO_MODIFICA 
 		LD A,11000010B ;CODIGO EFECTO
 		LD (DE),A 
@@ -493,7 +492,8 @@ void wyz_stop_sound (void) {
 		LD A,(HL) 
 		CALL GETLEN 
 		
-	.NO_MODIFICA LD (DE),A
+	.NO_MODIFICA 
+		LD (DE),A
 		INC DE
 		XOR A
 		DJNZ NO_MODIFICA
@@ -503,7 +503,8 @@ void wyz_stop_sound (void) {
 		INC HL
 		RET ;** JR DECODE_CANAL
 		
-	.FIN_DEC_CANAL OR 0x80 ; SET 7,A
+	.FIN_DEC_CANAL 
+		OR 0x80 ; SET 7,A
 		LD (DE),A
 		INC DE
 		RET
@@ -643,6 +644,7 @@ void wyz_stop_sound (void) {
 		INC HL
 		LD (IX+PUNTERO_A-PUNTERO_A),L
 		LD (IX+PUNTERO_A-PUNTERO_A+1),H
+
 		JP INICIA_SONIDO
 
 	.COM_ENVOLVENTE 
@@ -743,7 +745,7 @@ void wyz_stop_sound (void) {
 		LD L,(IX+0) ;HL=(PUNTERO_P)
 		LD H,(IX+1)
 		LD A,(HL)
-		CP 0xC2 ; CP 11000010B
+		CP 11000010B
 		JR NZ,LEJP0
 
 		INC HL
@@ -751,6 +753,7 @@ void wyz_stop_sound (void) {
 		INC HL
 		LD (IX+00),L
 		LD (IX+01),H
+
 		JP INICIA_SONIDO
 		
 		
