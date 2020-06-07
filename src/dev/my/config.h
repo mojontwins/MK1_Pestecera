@@ -220,6 +220,7 @@
 extern unsigned char def_keys [0];
 #asm
 	._def_keys
+		/*
 		defw $4820 		; LEFT     A
 		defw $4720 		; RIGHT    D
 		defw $4708 		; UP       W
@@ -227,6 +228,15 @@ extern unsigned char def_keys [0];
 
 		defw $4440 		; BUTTON_A M
 		defw $4540 		; BUTTON_B N
+		*/
+
+		defw $4404 		; LEFT     O
+		defw $4308 		; RIGHT    P
+		defw $4808 		; UP       Q
+		defw $4820 		; DOWN     A
+
+		defw $4440 		; BUTTON_A SPACE
+		defw $4580 		; BUTTON_B Q
 
 		defw $4204		; KEY_ENTER
 		defw $4804		; KEY_ESC	
@@ -281,7 +291,6 @@ extern unsigned char def_keys [0];
 											// the value especifies first animated tile pair.
 //#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT
 //#define GET_X_MORE						// Shows "get X more" when getting an object
-#define HUD_INK 					7 		// Use this attribute for digits in the hud
 
 // ============================================================================
 // IV. Player movement configuration

@@ -40,10 +40,10 @@ void hotspots_do (void) {
 						
 						#if defined GET_X_MORE && defined PLAYER_NUM_OBJETOS
 							if (PLAYER_NUM_OBJETOS > p_objs) {
-								_x = 10; _y = 11; _t = 79; _gp_gen = spacer; print_str ();
+								_x = 10; _y = 11; _gp_gen = spacer; print_str ();
 								getxmore [5] = '0' + PLAYER_NUM_OBJETOS - p_objs;
-								_x = 10; _y = 12; _t = 79; _gp_gen = getxmore; print_str ();
-								_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
+								_x = 10; _y = 12; _gp_gen = getxmore; print_str ();
+								_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 								cpc_ShowTileMap (0);
 								espera_activa (100);
 								draw_scr_background ();

@@ -6,6 +6,7 @@
 #define BASE_WYZ 		0xDF80
 
 void wyz_init (void) {
+	isr_player_on = 0; 
 	#asm
 		call WYZPLAYER_INIT
 	#endasm	
@@ -17,7 +18,7 @@ void __FASTCALL__ wyz_play_music (unsigned char m) {
 		ld  a, 0
 		call CARGA_CANCION
 		ld  a, 1
-		ld  (isr_player_on), a
+		ld  (_isr_player_on), a
 	#endasm
 }
 
@@ -34,7 +35,7 @@ void wyz_stop_sound (void) {
 	#asm
 		call PLAYER_OFF
 		xor a
-		ld  (isr_player_on), a
+		ld  (_isr_player_on), a
 	#endasm
 }
 

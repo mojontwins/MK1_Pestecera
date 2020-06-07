@@ -311,7 +311,7 @@ void draw_scr (void) {
 
 	#ifdef ACTIVATE_SCRIPTING
 		#if defined LINE_OF_TEXT && !defined LINE_OF_TEXT_NO_AUTOERASE
-			_x = LINE_OF_TEXT_X; _y = LINE_OF_TEXT; _t = LINE_OF_TEXT_ATTR; _gp_gen = "                              "; print_str ();
+			_x = LINE_OF_TEXT_X; _y = LINE_OF_TEXT; _gp_gen = "                              "; print_str ();
 		#endif
 		// Ejecutamos los scripts de entrar en pantalla:
 		run_script (2 * MAP_W * MAP_H + 1); 	// ENTERING ANY

@@ -245,19 +245,14 @@
 			// Pause/Abort handling
 			
 			if (cpc_TestKey (KEY_ENTER)) {
-				sp_WaitForNoKey ();
-				AY_STOP_SOUND ();
-				AY_PLAY_SOUND (1);
+				while (cpc_TestKey (KEY_ENTER));
+				isr_player_on = 0;
 				clear_sprites ();
 				pause_screen ();
 				while (!cpc_TestKey (KEY_ENTER));
 				while (cpc_TestKey (KEY_ENTER));
 				draw_scr ();
-				#ifdef COMPRESSED_LEVELS
-					AY_PLAY_MUSIC (levels [level].music_id);
-				#else
-					AY_PLAY_MUSIC (1);
-				#endif
+				isr_player_on = 1;
 			}			
 			if (cpc_TestKey (KEY_ESC)) {
 				playing = 0;

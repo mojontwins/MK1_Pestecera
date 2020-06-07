@@ -23,7 +23,7 @@ void main (void) {
 		push af 
 		
 		#ifdef SOUND_WYZ
-			ld  a, (isr_player_on)
+			ld  a, (_isr_player_on)
 			or  a
 			jr  z, _skip_wyz
 
@@ -57,9 +57,6 @@ void main (void) {
 		ret
 
 	.isr_c1 
-		defb 0
-
-	.isr_player_on
 		defb 0
 
 	.isr_done

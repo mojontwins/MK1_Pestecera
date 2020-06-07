@@ -7,7 +7,7 @@
 	blackout_area ();
 	
 	level_str [7] = 49 + level;
-	_x = 12; _y = 12; _t = 71; _gp_gen = level_str; print_str ();
+	_x = 12; _y = 12; _gp_gen = level_str; print_str ();
 	
 	cpc_ShowTileMap (0);
 

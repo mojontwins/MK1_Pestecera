@@ -56,8 +56,8 @@ void sg_submenu (void) {
 	sg_do_load = 0;
 	if (sg_saved) {
 		blackout_area ();
-		_x = VIEWPORT_X + 11; _y = VIEWPORT_Y + 8; _t = 71; _gp_gen = "0 START"; print_str ();
-		_x = VIEWPORT_X + 11; _y = VIEWPORT_Y + 8; _t = 71; _gp_gen = "9 CONTINUE"; print_str ();
+		_x = VIEWPORT_X + 11; _y = VIEWPORT_Y + 8; _gp_gen = "0 START"; print_str ();
+		_x = VIEWPORT_X + 11; _y = VIEWPORT_Y + 8; _gp_gen = "9 CONTINUE"; print_str ();
 		while (1) {
 			sgit = sp_GetKey ();
 			if (sgit == '0') break;
