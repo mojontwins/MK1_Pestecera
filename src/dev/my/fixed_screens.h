@@ -11,7 +11,9 @@ void game_ending (void) {
 	#endif
 	cpc_ShowTileMap (1);
 	
+	AY_PLAY_MUSIC (0)
 	espera_activa (500);
+	AY_STOP_SOUND ();
 }
 
 void game_over (void) {
@@ -19,8 +21,7 @@ void game_over (void) {
 	_x = 10; _y = 12; _t = 79; _gp_gen = " GAME OVER! "; print_str ();
 	_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
 	
-	cpc_ShowTileMap (0);
-
+	cpc_UpdateNow (0);
 	espera_activa (500);
 }
 
@@ -30,8 +31,7 @@ void game_over (void) {
 		_x = 10; _y = 12; _t = 79; _gp_gen = " TIME'S UP! "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
 		
-		cpc_ShowTileMap (0);
-			
+		cpc_UpdateNow (0);
 		espera_activa (250);
 	}
 #endif
@@ -42,7 +42,7 @@ void game_over (void) {
 		_x = 10; _y = 12; _t = 79; _gp_gen = "   PAUSED   "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
 		
-		cpc_ShowTileMap (0);
+		cpc_UpdateNow (0);
 	}
 #endif
 
@@ -52,7 +52,7 @@ void game_over (void) {
 		_x = 10; _y = 12; _t = 79; _gp_gen = " ZONE CLEAR "; print_str ();
 		_x = 10; _y = 13; _t = 79; _gp_gen = spacer; print_str ();
 		
-		cpc_ShowTileMap (0);
+		cpc_UpdateNow (0);
 		espera_activa (250);			
 	}
 #endif

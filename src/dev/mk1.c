@@ -65,6 +65,7 @@
 #include "my/ci/extra_vars.h"
 
 #include "printer.h"
+#include "engine/update.h"
 #include "my/ci/extra_functions.h"
 
 #ifdef ACTIVATE_SCRIPTING
@@ -97,9 +98,9 @@
 #endif
 
 #ifdef SOUND_WYZ
-	#include "assets/efectos.h"
-	#include "assets/instrumentos.h"
-	#include "assets/songs.h"
+	#include "my/wyz/efectos.h"
+	#include "my/wyz/instrumentos.h"
+	#include "my/wyz/songs.h"
 	#include "wyz_player.h"
 #endif
 

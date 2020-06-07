@@ -575,3 +575,30 @@ También necesito una lista con las canciones y los propios binarios de las canc
 Ya compila pero no suena nada y el juego luego no inicia (aunque la pantalla de título parece que sí). Voy a desactivar a ver si así vuelve a funcionar. Sí que vuelve. Pues toca depurar paso a paso. Lo que me flipa es que ahora ocupa todo 3100 bytes más O_o.
 
 Parece que se me está colgando en la rutina `PLAY`. Y dentro de ahí, a `LOCALIZA_EFECTO`.
+
+//
+
+Muchos días después y con la ayuda de Augusto Ruiz, esto está funcionando.
+
+20200607
+========
+
+Entendamos la lib. A ver, que se me va la pinzorra.
+
+`cpc_ShowTouchedTiles ()` copia los tiles marcados del buffer a la pantalla, por lo que deben haberse dibujado antes en el buffer.
+
+Si solo modifico el nametable, no hay *nada* que me pinte el tile realmente. Por lo que muchas de mis funciones tienen un planteamiento mal y por eso no estoy viendo lo que tengo que ver.
+
+Voy a recapitular a ver qué mierdas estoy haciendo. Porque todas mis funciones de tile solo estan escribiendo cosas en la nametable, ¿Quién está pintando las cosas realmente? 
+
+Si llamo a `cpc_UpdateNow (); while (1);` justo tras invalidar la pantalla no se muestra nada. Estoy haciendo algo MUY MAL.
+
+Me cango en san peo virgen, ¿quién hace esto?
+
+Vale joder.
+
+En la parte que actualiza los sprites, primero marca todos los sprites, luego llama a una función que copia todos los TILES DE FONDO marcados al buffer, y luego pinta los sprites encima.
+
+Voy a reorganizar el codigo y hacer una `cpc_UpdateNow (unsigned char sprites)` que haga todo con o sin sprites y a incluirla en el resto del motor.
+
+ 

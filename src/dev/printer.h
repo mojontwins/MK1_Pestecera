@@ -584,13 +584,16 @@ void print_number2 (void) {
 
 void print_str (void) {
 	#asm
+			xor a 
+			ld  (_rdn), a 		; Strlen
+
 			call __tile_address	; DE = buffer address
 			ld  hl, (__gp_gen)
 
 		.print_str_loop
 			ld  a, (hl)
 			or  a
-			ret z 
+			jr  z, print_str_inv 
 			
 			sub 32
 			ld  (de), a
@@ -598,7 +601,24 @@ void print_str (void) {
 			inc hl
 			inc de 
 
+			ld  a, (_rdn)
+			inc a
+			ld  (_rdn), a
+
 			jr  print_str_loop
+
+		.print_str_inv
+
+			; Invalidate cells based upon strlen.
+			ld  a, (__y)
+			ld  b, a
+			ld  d, a
+			ld  a, (__x)
+			ld  c, a
+			ld  a, (_rdn)
+			add c
+			ld  e, a
+			call cpc_InvalidateRect
 	#endasm
 }
 

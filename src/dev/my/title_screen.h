@@ -8,7 +8,6 @@ void title_screen (void) {
 	
 	#ifdef MODE_128K
 		get_resource (TITLE_BIN, BASE_SUPERBUFF);
-		AY_PLAY_MUSIC (0);
 	#else		
 		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
@@ -16,10 +15,12 @@ void title_screen (void) {
 	cpc_ShowTileMap (1);
 
 	// Do a simple 0 start/1 redefine menu
+	AY_PLAY_MUSIC (0);
 	while (1) {
 		if (cpc_TestKey (KEY_AUX3)) { _gp_gen = def_keys; break; }
 		if (cpc_TestKey (KEY_AUX4)) { _gp_gen = def_keys_joy; break; }
 	}	
+	AY_STOP_SOUND ();
 
 	// Copy keys to extern 
 	#asm

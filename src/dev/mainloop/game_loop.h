@@ -192,7 +192,7 @@
 
 		// Render
 		if (o_pant == n_pant) {
-			#include "mainloop/update_sprites.h"
+			cpc_UpdateNow (1);
 		}
 
 		#ifdef PLAYER_FLICKERS

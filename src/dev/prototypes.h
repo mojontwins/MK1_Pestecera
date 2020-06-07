@@ -94,6 +94,9 @@ void print_str (void);
 void blackout_area (void);
 void clear_sprites (void);
 
+// update.h
+void cpc_UpdateNow (unsigned char sprites);
+
 // savegame.h
 void mem_save (void);
 void mem_load (void);
