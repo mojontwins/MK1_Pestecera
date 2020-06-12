@@ -46,7 +46,6 @@ echo Importando GFX
 ..\utils\apultra.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
 ..\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 
-..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
 ..\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 
 if [%1]==[justassets] goto :end
@@ -65,13 +64,32 @@ echo Construyendo Snapshot %game%.sna
 del %game%.sna > nul
 ..\utils\cpctbin2sna.exe %game%.bin 0x400 -pc 0x400 -o %game%.sna
 
-rem echo Construyendo cinta
 
+if [%2]==[andtape] goto :tape
 if [%1]==[justcompile] goto :end
-if [%1]==[noclean] goto :end
 
 :clean
-echo Limpiando
+:tape
+echo Construyendo cinta
+..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
+..\utils\apack.exe ..\bin\loading.bin ..\bin\loading.c.bin > nul
+..\utils\apack.exe %game%.bin ..\bin\%game%.c.bin > nul
+
+set loader_org=$a300
+rem $a300 = 41728
+
+..\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
+	binsize=?..\bin\%game%.c.bin ^
+	scrc_size=?..\bin\loading.c.bin ^
+	mainbin_addr=?41728-..\bin\%game%.c.bin ^
+	mainbin_size=?..\bin\%game%.c.bin ^
+	loader_org=%loader_org% ^
+	loader_mode=%cpc_gfx_mode% > nul
+..\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
+
+..\utils\2cdt.exe -n -r %game% -s 1 -X %loader_org% -L %loader_org% ..\bin\loader.bin %game%.cdt  > nul
+..\utils\2cdt.exe -r scr -s 1 -m 2 ..\bin\loading.c.bin %game%.cdt  > nul
+..\utils\2cdt.exe -r game -s 1 -m 2 ..\bin\%game%.c.bin %game%.cdt  > nul
 
 goto :end 
 
