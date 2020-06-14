@@ -601,4 +601,9 @@ En la parte que actualiza los sprites, primero marca todos los sprites, luego ll
 
 Voy a reorganizar el codigo y hacer una `cpc_UpdateNow (unsigned char sprites)` que haga todo con o sin sprites y a incluirla en el resto del motor.
 
- 
+20200613
+========
+
+Con todo resuelto y funcionando, me puse a montar la cinta. Todo parece OK, pero obviamente algo cambia porque en un entorno no ideal (o sea, cargando de cinta y no de un snapshot super controlado) los sprites de los enemigos aparecen desplazados abajo y a la derecha, con lo que obviamente no estoy inicializando algo que debería inicializar.
+
+Voy a intentar depurar esto. Primero con un breakpoint en $400 y comprobando como está todo a la hora de ejecutar, y luego con otro tras la inicialización, por ejemplo en `_GAME_LOOP_INIT`.

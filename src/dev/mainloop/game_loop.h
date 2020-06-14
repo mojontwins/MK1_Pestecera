@@ -3,6 +3,11 @@
 
 // game_loop.h - Da game loop.
 
+	#asm
+		; Makes debugging easier
+		._game_loop_init
+	#endasm
+
 	playing = 1;
 	player_init ();
 
@@ -83,6 +88,11 @@
 
 	o_pant = 0xff;
 	while (playing) {
+		#asm
+			; Makes debugging easier
+			._game_loop_do
+		#endasm
+
 		p_kill_amt = 1;
 		//pad0 = (joyfunc) (&keys);
 

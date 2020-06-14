@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"WYZ_",
+				"WYZ_FX_CHANNEL\tabc"
+			],
+			[
+				"isr_",
+				"isr_player_on\t(mainloop.h)"
+			],
+			[
+				"isr",
+				"isr_player_on\tabc"
+			],
+			[
+				"WYZ",
+				"WYZ_SONG_BUFFER\tabc"
+			],
+			[
 				"__",
 				"__tile_address\tabc"
 			],
@@ -498,27 +514,28 @@
 			[
 				"u",
 				"uid\t(rcube_webdav_addressbook.php)"
-			],
-			[
-				"webdav_aboo",
-				"webdav_abook_dir"
-			],
-			[
-				"sande",
-				"rcube_sandetel"
-			],
-			[
-				"uploadf",
-				"uploadform\t(app.js)"
-			],
-			[
-				"back",
-				"background-position"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "src/dev/mainloop.h",
+			"settings":
+			{
+				"buffer_size": 4756,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/z88dk10/lib/cpc_crt0.asm",
+			"settings":
+			{
+				"buffer_size": 345,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -597,43 +614,64 @@
 	"expanded_folders":
 	[
 		"/C/git/MK1_Pestecera",
-		"/C/git/MK1_Pestecera/lib",
-		"/C/git/MK1_Pestecera/lib/cpcwyzlib",
 		"/C/git/MK1_Pestecera/src",
 		"/C/git/MK1_Pestecera/src/dev",
-		"/C/git/MK1_Pestecera/src/dev/assets",
-		"/C/git/MK1_Pestecera/src/dev/engine",
-		"/C/git/MK1_Pestecera/src/dev/my"
+		"/C/git/MK1_Pestecera/src/mus",
+		"/C/git/MK1_Pestecera/src/mus/wyz",
+		"/C/git/MK1_Pestecera/src/spare",
+		"/C/git/MK1_Pestecera/src/utils",
+		"/C/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
-		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpc_WyzPlayer.asm",
-		"/C/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/C/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/C/git/MK1_Pestecera/src/dev/my/sound.h",
-		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpcwyzlib.h",
-		"/C/git/MK1_Pestecera/src/dev/mk1.c",
-		"/C/git/MK1_Pestecera/src/dev/savegame.h",
-		"/C/git/MK1_Pestecera/src/dev/printer.h",
-		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
+		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
+		"/C/git/MK1_Pestecera/src/dev/compile.bat",
+		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
+		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/C/git/MK1_Pestecera/src/dev/my/config.h",
-		"/C/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
-		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/C/git/MK1_Pestecera/docs/tutorial-cap01.md",
+		"/C/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
+		"/C/git/MK1_Pestecera/src/dev/savegame.h",
+		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/hotspots.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/C/git/MK1_Pestecera/src/dev/engine.h",
 		"/C/git/MK1_Pestecera/diario.md",
+		"/C/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/C/git/MK1_Pestecera/src/dev/definitions.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
+		"/C/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
+		"/C/git/MK1_Pestecera/src/dev/printer.h",
+		"/C/git/MK1_Pestecera/src/dev/engine/update.h",
+		"/C/git/MK1_Pestecera/src/dev/prototypes.h",
+		"/C/git/MK1_Pestecera/src/dev/mk1.c",
+		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2b.asm",
+		"/C/git/MK1_Pestecera/src/dev/lala_beta.map",
+		"/C/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.h",
+		"/C/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
+		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
+		"/C/git/MK1_Pestecera/src/dev/assets/efectos.h",
+		"/C/git/MK1_Pestecera/src/dev/wyz_player.h_orig.h",
+		"/C/git/MK1_Pestecera/src/spare/WYZProPlay47cCPC.ASM",
+		"/C/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/C/git/newspectrum/MK3_OM/cheman/lib/cpcwyzlib/cpc_WyzPlayer.asm",
+		"/C/Users/na_th_an/Downloads/WYZProPlay47cCPC.ASM",
+		"/C/git/MK1_Pestecera/src/dev/assets/instrumentos.h",
+		"/C/git/MK1_Pestecera/src/dev/assets/songs.h",
+		"/C/git/MK1_Pestecera/src/utils/src/wyzTrackerParser.bas",
+		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
+		"/C/git/MK1_Pestecera/src/trash/frequencies.asm",
+		"/C/git/newspectrum/MK3_OM/mega_meghan/lib/cpcwyzlib/cpc_WyzPlayer.asm",
+		"/C/git/MK1_Pestecera/lib/update-libs.bat",
+		"/C/git/MK1_Pestecera/src/spare/WYZPROPLAY47c_CPC.ASM",
+		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpc_WyzPlayer.asm",
+		"/C/git/MK1_Pestecera/src/dev/my/sound.h",
+		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpcwyzlib.h",
+		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
 		"/C/git/MK1_Pestecera/README.md",
 		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
 		"/C/git/mk1/examples/helmet/dev/helmet.map",
@@ -713,38 +751,21 @@
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_vars.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_game.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt",
-		"/C/git/mk1/examples/dogmole/dev/my/msc.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_routines.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine/player.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/mainloop.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_tile_pushed.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_unlocked_bolt.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_enems_killed.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/definitions.h",
-		"/C/git/mk1/src/dev/compile.bat",
-		"/C/git/mk1/examples/dogmole_ci/dev/compile.bat",
-		"/C/git/mk1/examples/dogmole/dev/printer.h",
-		"/C/git/mk1/examples/dogmole/dev/compile.bat",
-		"/C/git/mk1/src/dev/printer.h",
-		"/C/git/mk1/src/utils/src/ts2bin.bas",
-		"/C/git/mk1/docs/tutorial-cap03.md",
-		"/C/temp/impossamal/dev/mainloop/flick_screen.h",
-		"/C/temp/impossamal/dev/engine.h",
-		"/C/git/mk1/src/dev/engine/player.h",
-		"/C/git/mk1/src/dev/my/ci/custom_veng.h",
-		"/C/temp/impossamal/dev/compile.bat"
+		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
 		"height": 135.0,
 		"where_history":
 		[
+			"C:\\git\\MK1_Pestecera\\src\\dev",
+			"C:\\git\\MK1_Pestecera\\src",
+			"C:\\git\\MK1_Pestecera\\src\\dev",
+			"C:\\git\\MK1_Pestecera",
 			"C:\\git\\MK1_Pestecera\\src\\dev",
 			"C:\\git\\mk1\\docs",
 			"C:\\git\\mk1",
@@ -762,6 +783,98 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cox",
+			"di",
+			"ei",
+			"_t = 79; ",
+			"print_str",
+			"_t = 79; ",
+			"HUD_INK",
+			"hud_ink",
+			"isr_player_on",
+			"player",
+			"isr_player_on",
+			"call",
+			"draw_scr",
+			"tile_address",
+			"cpc_screen_update_done",
+			"_cpc_screen_update_show",
+			"WYZ_STOP",
+			"invalidate",
+			"invalidaterect",
+			"invalidate",
+			"AY_STOP_SOUND",
+			"AY_PLAY_MUSIC",
+			"sonido_regs",
+			"SONIDO_REGS",
+			"efecto_regs",
+			"SONIDO_REGS",
+			"reproduce_sonido",
+			"\\[([A-Za-z0-9\\+_]+)\\]",
+			"SONIDO_REGS",
+			"INICIA_SONIDO",
+			"SONIDO_REGS",
+			"INICIA_SONIDO",
+			"na_th_an",
+			"inicia_sonido",
+			"InICIA_SONIDO",
+			"inicia_sonido",
+			"localiza_nota",
+			"b",
+			"INICIA_SONIDO",
+			"([0-1]+B)",
+			"([0-1",
+			"reproduce_sonidO_o_efe",
+			"REPRODUCE_SONID",
+			"inicia_sonido",
+			"PUNTERO_SONIDO",
+			"Reproduce_sonido_o_efecto",
+			"TABLA_DATOS_CANAL_SFX",
+			"EXT_WORD",
+			"EFECTO_REGS",
+			"reproduce_sonido_o_efecto",
+			"reproduce_efecto",
+			"INICIO",
+			"LOCALIZA_EFECTO",
+			"PLAY",
+			".PLAY",
+			"LOCALIZA_EFECTO",
+			"PLAY",
+			"reproduce_efecto",
+			"INTERR",
+			"53",
+			"4f29",
+			"5601",
+			"init",
+			"CANAL_A",
+			"4f10",
+			"WYZ_SONG_BUFFER",
+			"BASE_WYZ",
+			"regs",
+			"EFECTO",
+			"regs",
+			"sonido_regs",
+			"SONIDO_REGS",
+			"\\[([A-Za-z0-9\\+\\S]+)\\]",
+			"\\[([A-Za-z0-9]+)\\]",
+			"\\$([A-Za-z0-9]+)",
+			"AY_INIT",
+			"wyz",
+			"DW",
+			"TABLA_SONG",
+			"$",
+			"defw",
+			"datos_notas",
+			";defw",
+			";defb",
+			"([A-Za-z][A-Za-z0-9_]*):",
+			"([A-Za-z0-9_]+):",
+			"([A-Za-z0-9_])+:",
+			"DW",
+			"DB",
+			"BUFFER_DEC",
+			"CANAL_A",
+			"PLAYER_OFF",
 			"wyzsetplayeron",
 			"sp_",
 			"cpcprintat",
@@ -797,106 +910,27 @@
 			"MAP_UNPACKED",
 			"sprites",
 			"spacer",
-			"entering_game",
-			"\"new level\"",
-			"blackout_area",
-			"blackout",
-			"jr",
-			"en_an_dead_row",
-			"KEY_",
-			"KEY_ç",
-			"bolts",
-			"hotspots",
-			"hots",
-			"sprites",
-			"7d85",
-			"0.4 20191212",
-			"1.0",
-			"MK2",
-			"mk2",
-			"mk1",
-			"digi",
-			"digital",
-			"digiº",
-			"border_col",
-			"31",
-			"\";\"",
-			"border_col",
-			"on_enemy",
-			"max_o",
-			"0.3 20191202",
-			"defaultInk",
-			"forcezero",
-			"custom",
-			"gpy == 0",
-			"elif",
-			"MLPLAYING",
-			"compressed_levels",
-			"max_objs",
-			"CERROJOS",
-			"Flags",
-			"ENABLE_FIRE_ZONE",
-			"break",
-			"bullets",
-			"\\(p_(x|y) >> 6\\)",
-			"(p_x >> 6)",
-			"_b_life",
-			"_b_estado",
-			"bullets_([a-z]+) \\[b_it\\]",
-			"bullets_estado [b_it]",
-			"bullets_([a-z]+) \\[b_it\\]",
-			"bit",
-			"gpit",
-			"bullets",
-			"bull",
-			"cx2",
-			"draw_scr",
-			"malotes [enoffsmasi].t",
-			".t",
-			"gpt",
-			"rando",
-			"life",
-			"distance",
-			"movesprabs",
-			"5e46",
-			"draw_scr",
-			"fsclipstruct",
-			"_en_y",
-			"_en_x",
-			"enit",
-			"_n_f",
-			"_c_f",
-			"spritesclip",
-			"p_state",
-			"sp_movesprabs",
-			"p_c_f",
-			"p_n_f",
-			"comportamiento_tiles",
-			"COORDS",
-			"gp_gen",
-			"sp_print",
-			"print_str \\((.+), (.+), (.+), (.+)\\);",
-			"print_str \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+), (.+)\\);",
-			"print_str",
-			"print_number2 \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+)\\);",
-			"print_number2",
-			"draw_coloured",
-			"map_attr",
-			"draw_coloured_tile",
-			"p_facing",
-			"ALTERNATE_ANIMATION",
-			"FIXBITS",
-			"_en_y",
-			"--",
-			"++",
-			"cy2"
+			"entering_game"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"",
+			"_cpc_screen_update_done",
+			"AY_STOP",
+			"(\\1)",
+			"0x\\1",
+			"defw",
+			"0x",
+			"defw",
+			";DW",
+			";DB",
+			".\\1",
+			"defw",
+			"defb",
 			"_CPCPrintAtInv",
 			"cpcmode=%cpc_gfx_mode%",
 			"*sprite*",
@@ -953,8 +987,66 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/dev/mainloop.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4756,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								271,
+								271
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/z88dk10/lib/cpc_crt0.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -997,7 +1089,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1039,7 +1131,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 195.0,
+	"side_bar_width": 204.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
