@@ -17,7 +17,7 @@ org $a300
 ; Load screen scrc.bin
 
 	ld     ix, $6400
-	ld     de, 299
+	ld     de, 4801
 	ld     a, $ff
 	call   topoload	
 
@@ -33,14 +33,14 @@ org $a300
 
 ; Load main block gamec.bin
 
-	ld     ix, 31644
-	ld     de, 10084
+	ld     ix, 28103
+	ld     de, 13625
 	ld     a, $ff
 	call   topoload
 
 ; Decompress
 
-	ld     hl, 31644
+	ld     hl, 28103
 	ld     de, $400
 	call   depack
 

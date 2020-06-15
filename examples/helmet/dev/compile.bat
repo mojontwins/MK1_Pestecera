@@ -61,7 +61,7 @@ zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode
 ..\..\..\src\utils\printsize.exe scripts.bin
 
 echo Construyendo Snapshot %game%.sna
-del %game%.sna > nul
+del %game%.sna > nul 2> nul
 ..\..\..\src\utils\cpctbin2sna.exe %game%.bin 0x400 -pc 0x400 -o %game%.sna
 
 
