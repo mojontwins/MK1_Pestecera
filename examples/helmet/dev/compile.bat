@@ -2,8 +2,8 @@
 
 if [%1]==[help] goto :help
 
-set game=lala_beta
-set cpc_gfx_mode=1
+set game=helmet
+set cpc_gfx_mode=0
 
 if [%1]==[justcompile] goto :compile
 if [%1]==[clean] goto :clean
@@ -21,10 +21,10 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 6 5 15 10 15 packed > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa0.map assets\mapa.h 1 24 15 10 15 packed > nul
 
 echo Convirtiendo enemigos/hotspots
-..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
+..\..\..\src\utils\ene2h.exe ..\enems\enems0.ene assets\enems.h
 
 if [%1]==[nogfx] goto :compile
 
