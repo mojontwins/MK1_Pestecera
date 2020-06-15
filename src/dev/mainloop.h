@@ -179,6 +179,7 @@ void main (void) {
 		#ifdef ENABLE_CHECKPOINTS
 			sg_submenu ();
 		#endif
+
 		#include "my/ci/before_game.h"
 
 		#ifdef COMPRESSED_LEVELS

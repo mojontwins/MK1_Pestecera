@@ -4,7 +4,7 @@
 // Printing functions
 
 unsigned char attr (unsigned char x, unsigned char y) {
-	if (x >= 14 || y >= 10) return 0;
+	if (x >= 15 || y >= 10) return 0;
 	return map_attr [x + (y << 4) - y];
 }
 
@@ -112,7 +112,6 @@ void draw_coloured_tile (void) {
 				ld  (__ta), a
 		#endasm
 
-		// Fill up c1, c2, c3, c4 then use them
 		// Precalc
 		
 		if (_t == 19) {
@@ -455,7 +454,8 @@ void update_tile (void) {
 	#ifdef ENABLE_TILANIMS
 		// Detect tilanims
 		if (_t >= ENABLE_TILANIMS) {
-			add_tilanim (_x, _y, _t);	
+			_n = (_x << 4) | _y;
+			tilanims_add ();	
 		}
 	#endif
 

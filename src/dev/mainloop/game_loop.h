@@ -188,7 +188,7 @@
 		#endif
 
 		#ifdef ENABLE_TILANIMS
-			do_tilanims ();
+			tilanims_do ();
 		#endif
 
 		// Detect fire zone

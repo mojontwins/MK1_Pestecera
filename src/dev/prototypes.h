@@ -1,6 +1,12 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
+// Autodefs
+
+#if defined ENABLE_ORTHOSHOOTERS
+	#define ENABLE_SIMPLE_COCOS
+#endif
+
 // Engine
 
 // breakable.h
@@ -105,8 +111,9 @@ void tape_load (void);// TODO!
 void sg_submenu (void);
 
 // tilanim.h
-void add_tilanim (unsigned char x, unsigned char y, unsigned char t);
-void do_tilanims (void);
+void tilanims_add (void);
+void tilanims_do (void);
+void tilanims_reset (void);
 
 // wyz_player.h
 void wyz_init (void);
