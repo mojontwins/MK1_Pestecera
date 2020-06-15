@@ -519,23 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/dev/mainloop.h",
-			"settings":
-			{
-				"buffer_size": 4756,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/z88dk10/lib/cpc_crt0.asm",
-			"settings":
-			{
-				"buffer_size": 345,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -614,16 +597,29 @@
 	"expanded_folders":
 	[
 		"/C/git/MK1_Pestecera",
+		"/C/git/MK1_Pestecera/examples",
+		"/C/git/MK1_Pestecera/examples/helmet",
+		"/C/git/MK1_Pestecera/examples/helmet/dev",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my",
 		"/C/git/MK1_Pestecera/src",
 		"/C/git/MK1_Pestecera/src/dev",
-		"/C/git/MK1_Pestecera/src/mus",
-		"/C/git/MK1_Pestecera/src/mus/wyz",
-		"/C/git/MK1_Pestecera/src/spare",
-		"/C/git/MK1_Pestecera/src/utils",
-		"/C/git/MK1_Pestecera/src/utils/src"
+		"/C/git/MK1_Pestecera/src/dev/engine",
+		"/C/git/MK1_Pestecera/src/dev/mainloop",
+		"/C/git/MK1_Pestecera/src/dev/my"
 	],
 	"file_history":
 	[
+		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
+		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/title_screen.h",
+		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
+		"/C/z88dk10/lib/cpc_crt0.asm",
+		"/C/git/MK1_Pestecera/diario.md",
+		"/C/git/MK1_Pestecera/src/dev/lala_beta.map",
+		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/C/git/MK1_Pestecera/src/dev/tilanim.h",
 		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
 		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
@@ -635,21 +631,16 @@
 		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/hotspots.h",
 		"/C/git/MK1_Pestecera/src/dev/engine.h",
-		"/C/git/MK1_Pestecera/diario.md",
 		"/C/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/C/git/MK1_Pestecera/src/dev/definitions.h",
 		"/C/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
 		"/C/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/update.h",
 		"/C/git/MK1_Pestecera/src/dev/prototypes.h",
 		"/C/git/MK1_Pestecera/src/dev/mk1.c",
-		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2b.asm",
-		"/C/git/MK1_Pestecera/src/dev/lala_beta.map",
 		"/C/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.h",
 		"/C/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
-		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/assets/efectos.h",
 		"/C/git/MK1_Pestecera/src/dev/wyz_player.h_orig.h",
 		"/C/git/MK1_Pestecera/src/spare/WYZProPlay47cCPC.ASM",
@@ -667,7 +658,6 @@
 		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpc_WyzPlayer.asm",
 		"/C/git/MK1_Pestecera/src/dev/my/sound.h",
 		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpcwyzlib.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
@@ -746,12 +736,7 @@
 		"/C/git/mk1/src/utils/src/mtparser.bi",
 		"/C/git/mk1/examples/dogmole_ci/dev/engine/hotspots.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/printer.h",
-		"/C/git/mk1/apúntalo!.md",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_screen.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_vars.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_game.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt"
+		"/C/git/mk1/apúntalo!.md"
 	],
 	"find":
 	{
@@ -762,6 +747,8 @@
 		"height": 135.0,
 		"where_history":
 		[
+			"C:\\git\\MK1_Pestecera\\lib",
+			"C:\\git\\MK1_Pestecera\\src",
 			"C:\\git\\MK1_Pestecera\\src\\dev",
 			"C:\\git\\MK1_Pestecera\\src",
 			"C:\\git\\MK1_Pestecera\\src\\dev",
@@ -783,6 +770,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cpc_KeysData",
+			"..\\utils\\",
 			"cox",
 			"di",
 			"ei",
@@ -908,16 +897,15 @@
 			"unpacked",
 			"19",
 			"MAP_UNPACKED",
-			"sprites",
-			"spacer",
-			"entering_game"
+			"sprites"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"..\\..\\..\\src\\utils\\",
 			"",
 			"_cpc_screen_update_done",
 			"AY_STOP",
@@ -987,66 +975,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/dev/mainloop.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 4756,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								271,
-								271
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/z88dk10/lib/cpc_crt0.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 345,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								335,
-								335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
