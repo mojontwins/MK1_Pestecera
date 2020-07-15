@@ -21,7 +21,7 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa0.map assets\mapa.h 1 24 15 10 15 packed > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa0.map assets\mapa.h 1 24 15 10 15 fixmappy packed > nul
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems0.ene assets\enems.h

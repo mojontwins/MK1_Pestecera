@@ -14,6 +14,11 @@ void title_screen (void) {
 			
 	cpc_ShowTileMap (1);
 
+	_x = _y = 0; for (_t = 0; _t < 48; ++_t) {
+		draw_coloured_tile ();invalidate_tile ();cpc_UpdateNow (0);
+		_x+=2; if (_x == 32) { _x = 0; _y += 2; }
+	}
+
 	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);
 	while (1) {

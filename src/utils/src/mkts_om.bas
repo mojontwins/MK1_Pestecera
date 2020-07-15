@@ -1233,7 +1233,7 @@ If sclpGetValue ("size") <> "" Then
 	parseCoordinatesString sclpGetValue ("size"), coords ()
 	w = coords (0): h = coords (1)
 Else
-	w = wIn \ (wMeta * 8): h = hIn \ (hMeta * 8)
+	w = wIn \ (wMeta * patternwidthInPixels): h = hIn \ (hMeta * 8)
 End If
 fiPuts "Process size (" & w & ", " & h & ")"
 
