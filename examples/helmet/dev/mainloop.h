@@ -274,5 +274,7 @@ void main (void) {
 		}
 		
 		clear_sprites ();
+
+		#include "my/ci/after_game.h"
 	}
 }

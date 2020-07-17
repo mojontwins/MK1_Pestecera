@@ -58,6 +58,7 @@ echo Importando GFX
 ..\..\..\src\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal_b.png prefix=my_inks_2 out=assets\pal_b.h silent > nul
 
 if [%1]==[justassets] goto :end
 
