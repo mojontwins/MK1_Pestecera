@@ -3,4 +3,4 @@
 
 // _x, _y contain the tile coordinates.
 
-_t = 27; draw_invalidate_coloured_tile_gamearea ();
+_t = 31; draw_invalidate_coloured_tile_gamearea ();

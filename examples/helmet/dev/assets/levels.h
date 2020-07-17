@@ -59,10 +59,6 @@ typedef struct {
 
 // This space will be overwritten by level data
 
-extern unsigned char font [0];
-#asm
-	._font BINARY "../bin/font.bin"
-#endasm
 
 extern LEVELHEADER level_data [0];
 #asm
@@ -89,7 +85,22 @@ extern unsigned char mapa [0];
 
 extern unsigned char tileset [0];
 #asm
-	._tileset defs 3072 	// 16*192
+		XDEF _ts
+		XDEF tiles
+	._tileset
+	.tiles
+	._font 
+		BINARY "../bin/font.bin"
+#endasm
+
+extern unsigned char tspatterns [0];
+#asm
+	._tspatterns
+	#ifdef PER_LEVEL_TILESET
+		defs 3072 	// 16*192
+	#else
+		BINARY "../bin/work.bin"
+	#endif
 #endasm
 
 extern MALOTE malotes [0];

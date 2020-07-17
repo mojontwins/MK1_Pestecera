@@ -114,6 +114,10 @@ void enems_load (void) {
 			en_an_next_frame [enit] = SPRFR_EMPTY;
 		}
 
+		#ifdef ENABLE_PURSUERS
+			if (rdt == 7) en_an_next_frame [enit] = SPRFR_EMPTY;
+		#endif
+
 		#include "my/ci/enems_extra_mods.h"
 	}
 }
@@ -393,7 +397,6 @@ void enems_move (void) {
 								#endif
 							}
 						#else
-						
 							#ifdef MODE_128K
 								p_killme = SFX_ENEMY_HIT;
 							#else							

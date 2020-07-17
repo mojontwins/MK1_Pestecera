@@ -23,7 +23,9 @@
 		unsigned char scr_ini, ini_x, ini_y;
 		unsigned char max_objs;
 		unsigned char *c_map_bolts;
-		unsigned char *c_tileset;
+		#ifdef PER_LEVEL_TILESET
+			unsigned char *c_tileset;
+		#endif
 		unsigned char *c_enems_hotspots;
 		unsigned char *c_behs;
 		#ifdef PER_LEVEL_SPRITESET
@@ -32,20 +34,35 @@
 		#ifdef ACTIVATE_SCRIPTING
 			unsigned int script_offset;
 		#endif
+		unsigned char music_id;
 	} LEVEL;
 #endif
 
 // In 48K mode, include here your compressed binaries:
 
-extern unsigned char my_binary [0];
+extern unsigned char map_bolts0 [0];
+extern unsigned char map_bolts1 [0];
+extern unsigned char enems_hotspots0 [0];
+extern unsigned char enems_hotspots1 [0];
+extern unsigned char behs0_1 [0];
 
 #asm
-	._my_binary
-		BINARY "../bin/my_binary.bin"	
+	._map_bolts0
+		BINARY "../bin/mapa0c.bin"	
+	._map_bolts1
+		BINARY "../bin/mapa1c.bin"
+	._enems_hotspots0
+		BINARY "../bin/enems_hotspots0c.bin"
+	._enems_hotspots1
+		BINARY "../bin/enems_hotspots1c.bin"
+	._behs0_1
+		BINARY "../bin/behs0_1c.bin"
 #endasm
 
 // Define your level sequence array here:
-// map_w, map_h, scr_ini, ini_x, ini_y, max_objs, c_map_bolts, c_tileset, c_enems_hotspots, c_behs, script
+// map_w, map_h, scr_ini, ini_x, ini_y, max_objs, 
+// c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
 LEVEL levels [] = {
-	
+	{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
+	{ 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 }
 };

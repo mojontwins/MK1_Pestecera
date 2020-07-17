@@ -13,6 +13,13 @@ void main (void) {
 	#asm
 		di
 
+		ld  hl, 0xC000
+		xor a
+		ld  (hl), a
+		ld  de, 0xC001
+		ld  bc, 0x3FFF
+		ldir
+
 		ld  a, 195
 		ld  (0x38), a
 		ld  hl, _isr
@@ -171,7 +178,7 @@ void main (void) {
 			main_script_offset = (int) (main_script);
 		#endif
 
-		level = 0;
+		level = 1;
 
 		// Here the title screen		
 		title_screen ();

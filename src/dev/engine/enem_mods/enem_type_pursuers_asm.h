@@ -84,12 +84,13 @@
 		jr  nz, _eij_state_still_appearing
 
 		#ifdef PURSUERS_BASE_CELL
-			ld  a, PURSUERS_BASE_CELL*2
+			ld  a, GENERAL_ENEMS_BASE_CELL + PURSUERS_BASE_CELL*2
 		#else
 			call _rand
 			ld  a, l
 			and 3
 			sla a
+			add GENERAL_ENEMS_BASE_CELL
 		#endif
 
 		ld  hl, _en_an_base_frame

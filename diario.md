@@ -607,3 +607,11 @@ Voy a reorganizar el codigo y hacer una `cpc_UpdateNow (unsigned char sprites)` 
 Con todo resuelto y funcionando, me puse a montar la cinta. Todo parece OK, pero obviamente algo cambia porque en un entorno no ideal (o sea, cargando de cinta y no de un snapshot super controlado) los sprites de los enemigos aparecen desplazados abajo y a la derecha, con lo que obviamente no estoy inicializando algo que debería inicializar.
 
 Voy a intentar depurar esto. Primero con un breakpoint en $400 y comprobando como está todo a la hora de ejecutar, y luego con otro tras la inicialización, por ejemplo en `_GAME_LOOP_INIT`.
+
+20200717
+========
+
+Todo lo de arriba lo resolví bien resuelto y eran idioteces de no inicializar la RAM. Ahora estoy portando el Helmet y encontrado fallillos.
+
+[X] Los tipo 7 salen con el sprite mal (empieza a contar desde la base del spriteset y no desde la base de los enemigos, parece ser).
+

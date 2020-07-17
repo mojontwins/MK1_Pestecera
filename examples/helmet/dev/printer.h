@@ -624,7 +624,14 @@ void print_str (void) {
 
 #if defined (COMPRESSED_LEVELS) || defined (SHOW_LEVEL_ON_SCREEN)
 	void blackout_area (void) {
-		
+		#asm
+			xor a 
+			ld  hl, _nametable
+			ld  (hl), a
+			ld  de, _nametable+1
+			ld  bc, 767
+			ldir
+		#endasm
 	}
 #endif
 

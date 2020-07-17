@@ -21,10 +21,21 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa0.map assets\mapa.h 1 24 15 10 15 fixmappy packed > nul
+..\..\..\src\utils\mapcnvbin.exe ..\map\mapa0.map ..\bin\mapa0.bin 1 24 15 10 15 fixmappy packed > nul
+..\..\..\src\utils\mapcnvbin.exe ..\map\mapa1.map ..\bin\mapa1.bin 1 24 15 10 15 fixmappy packed > nul
+..\..\..\src\utils\apultra.exe ..\bin\mapa0.bin ..\bin\mapa0c.bin
+..\..\..\src\utils\apultra.exe ..\bin\mapa1.bin ..\bin\mapa1c.bin
 
 echo Convirtiendo enemigos/hotspots
-..\..\..\src\utils\ene2h.exe ..\enems\enems0.ene assets\enems.h
+..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems0.ene ..\bin\enems_hotspots0.bin 2
+..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems0.ene ..\bin\enems_hotspots1.bin 2
+..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots0.bin ..\bin\enems_hotspots0c.bin
+..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots1.bin ..\bin\enems_hotspots1c.bin
+
+echo Convirtiendo behs
+..\..\..\src\utils\behs2bin.exe ..\gfx\behs0_1.txt ..\bin\behs0_1.bin >nul
+..\..\..\src\utils\apultra.exe ..\bin\behs0_1.bin ..\bin\behs0_1c.bin >nul
+
 
 if [%1]==[nogfx] goto :compile
 
@@ -57,13 +68,13 @@ echo Generating LUTs
 ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
 echo Compilando guego
 zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
+rem zcc +cpc -a -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.asm tilemap_conf.asm mk1.c > nul
 ..\..\..\src\utils\printsize.exe %game%.bin
 ..\..\..\src\utils\printsize.exe scripts.bin
 
 echo Construyendo Snapshot %game%.sna
 del %game%.sna > nul 2> nul
 ..\..\..\src\utils\cpctbin2sna.exe %game%.bin 0x400 -pc 0x400 -o %game%.sna
-
 
 if [%2]==[andtape] goto :tape
 if [%1]==[justcompile] goto :end

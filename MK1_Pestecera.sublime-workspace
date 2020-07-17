@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cpc_up",
+				"cpc_UpdTileTable\t(printer.h)"
+			],
+			[
 				"WYZ_",
 				"WYZ_FX_CHANNEL\tabc"
 			],
@@ -510,10 +514,6 @@
 			[
 				"webdav_abook",
 				"webdav_abook_user_url"
-			],
-			[
-				"u",
-				"uid\t(rcube_webdav_addressbook.php)"
 			]
 		]
 	},
@@ -600,22 +600,32 @@
 		"/C/git/MK1_Pestecera/examples",
 		"/C/git/MK1_Pestecera/examples/helmet",
 		"/C/git/MK1_Pestecera/examples/helmet/dev",
-		"/C/git/MK1_Pestecera/examples/helmet/dev/my",
+		"/C/git/MK1_Pestecera/examples/helmet/gfx",
 		"/C/git/MK1_Pestecera/src",
 		"/C/git/MK1_Pestecera/src/dev",
 		"/C/git/MK1_Pestecera/src/dev/engine",
+		"/C/git/MK1_Pestecera/src/dev/engine/enem_mods",
 		"/C/git/MK1_Pestecera/src/dev/mainloop",
-		"/C/git/MK1_Pestecera/src/dev/my"
+		"/C/git/MK1_Pestecera/src/utils",
+		"/C/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/config.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/helmet.asm",
+		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
+		"/C/git/MK1_Pestecera/diario.md",
+		"/C/git/MK1_Pestecera/src/dev/engine/enem_mods/enem_type_pursuers_asm.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/printer.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/pal.h",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
-		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/my/title_screen.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/update.h",
+		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
+		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
 		"/C/z88dk10/lib/cpc_crt0.asm",
-		"/C/git/MK1_Pestecera/diario.md",
 		"/C/git/MK1_Pestecera/src/dev/lala_beta.map",
 		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
@@ -659,7 +669,6 @@
 		"/C/git/MK1_Pestecera/src/dev/my/sound.h",
 		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpcwyzlib.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
 		"/C/git/MK1_Pestecera/README.md",
@@ -729,14 +738,7 @@
 		"/C/git/mk1/examples/dogmole/dev/music.h",
 		"/C/git/mk1/examples/dogmole/mus/dogmole_music_phaser.asm",
 		"/C/git/mk1/examples/dogmole/mus/dogmole_fx.asm",
-		"/C/git/mk1/docs/tutorial-cap10.md",
-		"/C/git/mk1/examples/dogmole/dev/beeper.h",
-		"/C/git/mk1/examples/dogmole/script/dogmole.spt",
-		"/C/git/mk1/src/utils/src/mtparser.bas",
-		"/C/git/mk1/src/utils/src/mtparser.bi",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine/hotspots.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/printer.h",
-		"/C/git/mk1/apúntalo!.md"
+		"/C/git/mk1/docs/tutorial-cap10.md"
 	],
 	"find":
 	{
@@ -770,6 +772,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_eij_state_appearing",
+			"sprites",
+			"draw_coloured_tile",
+			"patternwidthInPixels",
+			"w",
+			"xc0",
+			"strait2x2",
+			"doSprites",
+			"spirtes",
 			"cpc_KeysData",
 			"..\\utils\\",
 			"cox",
@@ -888,16 +899,7 @@
 			"cpcgetbitmapfrom",
 			"patternwidth",
 			"brick",
-			"genital",
-			"**sprite**",
-			"**sprites**",
-			"**sprite**",
-			"sprites",
-			"sprite",
-			"unpacked",
-			"19",
-			"MAP_UNPACKED",
-			"sprites"
+			"genital"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1061,7 +1063,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 204.0,
+	"side_bar_width": 189.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
