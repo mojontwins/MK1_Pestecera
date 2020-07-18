@@ -10,7 +10,13 @@ void break_wall (void) {
 		gpit = SFX_BREAKABLE_HIT;			
 		#include "my/ci/on_wall_hit.h"
 	} else {
-		_n = _t = 0; update_tile ();
+		_n = 0;
+		#ifdef BREAKABLE_WALLS_BROKEN
+			_t = BREAKABLE_WALLS_BROKEN;
+		#else
+			_t = 0; 
+		#endif
+		update_tile ();
 		gpit = SFX_BREAKABLE_BREAK;
 		#include "my/ci/on_wall_broken.h"
 	}

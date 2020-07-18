@@ -38,12 +38,13 @@
 	} LEVEL;
 #endif
 
-// In 48K mode, include here your compressed binaries:
+// Include here your compressed binaries:
 
 extern unsigned char map_bolts0 [0];
 extern unsigned char map_bolts1 [0];
 extern unsigned char enems_hotspots0 [0];
 extern unsigned char enems_hotspots1 [0];
+extern unsigned char enems_hotspots2 [0];
 extern unsigned char behs0_1 [0];
 
 #asm
@@ -55,6 +56,8 @@ extern unsigned char behs0_1 [0];
 		BINARY "../bin/enems_hotspots0c.bin"
 	._enems_hotspots1
 		BINARY "../bin/enems_hotspots1c.bin"
+	._enems_hotspots2
+		BINARY "../bin/enems_hotspots2c.bin"
 	._behs0_1
 		BINARY "../bin/behs0_1c.bin"
 #endasm
@@ -64,5 +67,6 @@ extern unsigned char behs0_1 [0];
 // c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
 LEVEL levels [] = {
 	{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
-	{ 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 }
+	{ 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
+	{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 }
 };

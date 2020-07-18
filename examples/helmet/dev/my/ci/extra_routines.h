@@ -1,8 +1,8 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-if (n_pant == 0 && flags [1] == 0 && gpy < 96 && p_objs == 5) {
-	flags [1] = 1;
+if (n_pant == 0 && f_1 == 0 && gpy < 96 && p_objs == 5) {
+	f_1 = 1;
 
 	// Animation
 	_gp_gen = decos_bombs;
@@ -20,9 +20,9 @@ if (n_pant == 0 && flags [1] == 0 && gpy < 96 && p_objs == 5) {
 	print_str ();
 }
 
-if (flags [0]) {
+if (f_0) {
 	if (gpx < 64 && gpy >= 16 && gpy < 80) {
-		flags [0] = 0;
+		f_0 = 0;
 		AY_PLAY_SOUND (SFX_START);
 		espera_activa (25);
 		_x = 1; _y = 0; _t = 71; 

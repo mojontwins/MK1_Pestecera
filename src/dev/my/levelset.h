@@ -23,7 +23,9 @@
 		unsigned char scr_ini, ini_x, ini_y;
 		unsigned char max_objs;
 		unsigned char *c_map_bolts;
-		unsigned char *c_tileset;
+		#ifdef PER_LEVEL_TILESET
+			unsigned char *c_tileset;
+		#endif
 		unsigned char *c_enems_hotspots;
 		unsigned char *c_behs;
 		#ifdef PER_LEVEL_SPRITESET
@@ -32,6 +34,7 @@
 		#ifdef ACTIVATE_SCRIPTING
 			unsigned int script_offset;
 		#endif
+		unsigned char music_id;
 	} LEVEL;
 #endif
 
@@ -45,7 +48,8 @@ extern unsigned char my_binary [0];
 #endasm
 
 // Define your level sequence array here:
-// map_w, map_h, scr_ini, ini_x, ini_y, max_objs, c_map_bolts, c_tileset, c_enems_hotspots, c_behs, script
+// map_w, map_h, scr_ini, ini_x, ini_y, max_objs, 
+// c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
 LEVEL levels [] = {
 	
 };

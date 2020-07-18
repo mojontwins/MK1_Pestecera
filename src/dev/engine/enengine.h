@@ -47,6 +47,8 @@ void enems_load (void) {
 			#endif
 		#endif
 
+		#include "my/ci/enems_custom_respawn.h"
+
 		en_an_next_frame [enit] = SPRFR_EMPTY;
 
 		rdt = malotes [enoffsmasi].t & 0x1f; 
@@ -397,7 +399,6 @@ void enems_move (void) {
 								#endif
 							}
 						#else
-						
 							#ifdef MODE_128K
 								p_killme = SFX_ENEMY_HIT;
 							#else							

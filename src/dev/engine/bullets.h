@@ -229,7 +229,7 @@ void bullets_move (void) {
 			#if defined(PLAYER_GENITAL) || defined(CAN_FIRE_UP)
 				if (_b_my) {
 					_b_y += _b_my;
-					if (_b_y > 160) {
+					if (_b_y > 152) {
 						_b_estado = 0;
 					}
 				}

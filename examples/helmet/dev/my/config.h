@@ -81,12 +81,12 @@
 #define DEATH_COUNT_ADD 			11 		// Frames to wait = ADD + (rand & AND)
 #define PURSUERS_BASE_CELL			3		// If defined, type 7 enemies are always #
 
-//#define ENABLE_FANTIES					// If defined, Fanties are enabled!
-//#define FANTIES_BASE_CELL 		2		// Base sprite cell (0, 1, 2 or 3)
+#define ENABLE_FANTIES						// If defined, Fanties are enabled!
+#define FANTIES_BASE_CELL 			4		// Base sprite cell (0, 1, 2 or 3)
 //#define FANTIES_SIGHT_DISTANCE	64 		// Used in our type 6 enemies.
-//#define FANTIES_MAX_V 			256 	// Flying enemies max speed (also for custom type 6 if you want)
-//#define FANTIES_A 				16		// Flying enemies acceleration.
-//#define FANTIES_LIFE_GAUGE		10		// Amount of shots needed to kill flying enemies.
+#define FANTIES_MAX_V 				128 	// Flying enemies max speed (also for custom type 6 if you want)
+#define FANTIES_A 					6		// Flying enemies acceleration.
+#define FANTIES_LIFE_GAUGE			10		// Amount of shots needed to kill flying enemies.
 //#define FANTIES_TYPE_HOMING				// Unset for simple fanties.
 
 //#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
@@ -123,7 +123,7 @@
 //#define LB_FRAMES 				4		// If defined, defines the # of frames bullets live (fixed)
 //#define LB_FRAMES_FLAG			2		// If defined, defines which flag determines the # of frames
 
-#define RESPAWN_ON_ENTER					// Enemies respawn when entering screen
+//#define RESPAWN_ON_ENTER					// Enemies respawn when entering screen
 #define FIRE_MIN_KILLABLE			3		// If defined, only enemies >= N can be killed.
 //#define CAN_FIRE_UP 						// If defined, player can fire upwards and diagonal.
 #define MAX_AMMO					99		// If defined, ammo is not infinite!
@@ -131,7 +131,8 @@
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
 #define BREAKABLE_WALLS 					// Breakable walls
-#define BREAKABLE_WALLS_LIFE		1		// Amount of hits to break wall
+#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
+#define BREAKABLE_WALLS_BROKEN 		30 		// Use this tile for a broken wall, 0 if not def.
 
 // Scripting
 // ---------

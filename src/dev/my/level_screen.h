@@ -8,13 +8,14 @@
 	
 	level_str [7] = 49 + level;
 	_x = 12; _y = 12; _gp_gen = level_str; print_str ();
+	invalidate_viewport ();
 	
-	cpc_ShowTileMap (0);
+	cpc_UpdateNow (0);
 
 	#ifdef MODE_128K
 		wyz_play_sound (SFX_START);
 	#else			
-		beep_fx (1);
+		AY_PLAY_SOUND (1);
 	#endif
 
 	espera_activa (100);

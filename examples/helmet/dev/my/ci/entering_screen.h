@@ -5,10 +5,14 @@
 
 // General text
 
-if (flags [1]) {
+if (f_1) {
 	_gp_gen = "BOMBS ARE SET! RETURN TO BASE!";
 } else {
-	_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";	
+	if (level == 2 && n_pant < 22) {
+		_gp_gen = " KILL GHOSTS TO COLLECT KEYS!";
+	} else {
+		_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";	
+	}
 }
 _x = 1; _y = 0; _t = 71;
 print_str ();
@@ -18,7 +22,7 @@ print_str ();
 if (n_pant == 0) {
 	_gp_gen = decos_computer; draw_decorations ();
 
-	if (flags [1]) {
+	if (f_1) {
 		_gp_gen = decos_bombs; draw_decorations ();
 	} else {
 		_gp_gen = " SET BOMBS IN EVIL COMPUTER ";
@@ -29,14 +33,14 @@ if (n_pant == 0) {
 
 // Half new motorcycle for sale
 
-if (n_pant == 21 && level == 0) {
+if (n_pant == 21 && (level == 0 || level == 2)) {
 	_gp_gen = decos_moto; draw_decorations ();
-	flags [0] = 1;
-}
+	f_0 = 1;
+} else f_0 = 0;
 
 // Ending condition
 
-if (n_pant == 23 && flags [1]) {
+if (n_pant == 23 && f_1) {
 	AY_PLAY_SOUND (0);
 	espera_activa (50);
 	success = 1;

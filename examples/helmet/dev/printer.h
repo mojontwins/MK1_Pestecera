@@ -451,13 +451,6 @@ void draw_decorations (void) {
 
 unsigned char utaux = 0;
 void update_tile (void) {
-	#ifdef ENABLE_TILANIMS
-		// Detect tilanims
-		if (_t >= ENABLE_TILANIMS) {
-			_n = (_x << 4) | _y;
-			tilanims_add ();	
-		}
-	#endif
 
 	/*
 	utaux = (_y << 4) - _y + _x;
@@ -495,6 +488,14 @@ void update_tile (void) {
 
 		call _invalidate_tile
 	#endasm
+	
+	#ifdef ENABLE_TILANIMS
+		// Detect tilanims
+		if (_t >= ENABLE_TILANIMS) {
+			_n = (_x << 4) | _y;
+			tilanims_add ();	
+		}
+	#endif
 }
 
 void print_number2 (void) {
