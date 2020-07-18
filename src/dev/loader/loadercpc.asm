@@ -7,7 +7,7 @@ org $a300
 ; Set mode 
 
 	ld     bc, $7f00
-	ld     a, $8C + 1
+	ld     a, $8C + 0
 	out    (c), a
 
 ; all blacks
@@ -17,7 +17,7 @@ org $a300
 ; Load screen scrc.bin
 
 	ld     ix, $6400
-	ld     de, 968
+	ld     de, 1070
 	ld     a, $ff
 	call   topoload	
 
@@ -33,14 +33,14 @@ org $a300
 
 ; Load main block gamec.bin
 
-	ld     ix, 27627
-	ld     de, 14101
+	ld     ix, 29020
+	ld     de, 12708
 	ld     a, $ff
 	call   topoload
 
 ; Decompress
 
-	ld     hl, 27627
+	ld     hl, 29020
 	ld     de, $400
 	call   depack
 
