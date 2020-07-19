@@ -4,8 +4,6 @@
 // Spriteset mappings. 
 // One entry per sprite face in the spriteset!
 
-#define SWSPRITES_ALL  18
-
 unsigned char sm_cox [] = { 
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,

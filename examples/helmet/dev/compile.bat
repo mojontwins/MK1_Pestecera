@@ -23,18 +23,22 @@ if [%1]==[justscripts] goto :compile
 echo Convirtiendo mapa
 ..\..\..\src\utils\mapcnvbin.exe ..\map\mapa0.map ..\bin\mapa0.bin 1 24 15 10 15 fixmappy packed > nul
 ..\..\..\src\utils\mapcnvbin.exe ..\map\mapa1.map ..\bin\mapa1.bin 1 24 15 10 15 fixmappy packed > nul
+..\..\..\src\utils\mapcnvbin.exe ..\map\mapa2.map ..\bin\mapa2.bin 1 24 15 10 15 fixmappy packed > nul
 ..\..\..\src\utils\apultra.exe ..\bin\mapa0.bin ..\bin\mapa0c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\mapa1.bin ..\bin\mapa1c.bin
+..\..\..\src\utils\apultra.exe ..\bin\mapa2.bin ..\bin\mapa2c.bin
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems0.ene ..\bin\enems_hotspots0.bin 2
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems1.ene ..\bin\enems_hotspots1.bin 2
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems2.ene ..\bin\enems_hotspots2.bin 2
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems3.ene ..\bin\enems_hotspots3.bin 2
+..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems4.ene ..\bin\enems_hotspots4.bin 2
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots0.bin ..\bin\enems_hotspots0c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots1.bin ..\bin\enems_hotspots1c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots2.bin ..\bin\enems_hotspots2c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots3.bin ..\bin\enems_hotspots3c.bin
+..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots4.bin ..\bin\enems_hotspots4c.bin
 
 echo Convirtiendo behs
 ..\..\..\src\utils\behs2bin.exe ..\gfx\behs0_1.txt ..\bin\behs0_1.bin >nul
@@ -74,7 +78,7 @@ echo Generating LUTs
 ..\..\..\src\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
 ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
 echo Compilando guego
-zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
+zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DLANG_ES -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
 rem zcc +cpc -a -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.asm tilemap_conf.asm mk1.c > nul
 ..\..\..\src\utils\printsize.exe %game%.bin
 ..\..\..\src\utils\printsize.exe scripts.bin

@@ -22,7 +22,9 @@ void game_over (void) {
 	_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 	
 	cpc_UpdateNow (0);
+	AY_PLAY_MUSIC (1);
 	espera_activa (500);
+	AY_STOP_SOUND ();
 }
 
 #if defined(TIMER_ENABLE) && defined(SHOW_TIMER_OVER)

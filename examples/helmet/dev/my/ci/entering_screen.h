@@ -8,37 +8,42 @@
 
 c_screen_address = mapa + n_pant * 75;
 
-// General text
+// General text & decorations
 
+_gp_gen = level_briefings [level];
 if (c_is_classic) {
-	if (f_1) {
-		_gp_gen = "BOMBS ARE SET! RETURN TO BASE!";
-	} else {
-		if (level == 2 && n_pant < 22) {
-			_gp_gen = " KILL GHOSTS TO COLLECT KEYS!";
+	#ifdef LANG_ES
+		_gp_gen = " PON 5 BOMBAS EN EL ORDENADOR";
+	#else
+		_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";
+	#endif
+	if (n_pant == 0) {
+		_gp_gen = decos_computer; draw_decorations ();
+		if (f_1) {
+			_gp_gen = decos_bombs; draw_decorations ();
+			#ifdef LANG_ES
+				_gp_gen = "BOMBAS PUESTAS! VUELVE A BASE!";
+			#else
+				_gp_gen = "BOMBS ARE SET! RETURN TO BASE!";
+			#endif
 		} else {
-			_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";	
+			#ifdef LANG_ES
+				_gp_gen = " ACERCATE Y COLOCA LAS BOMBAS";
+			#else
+				_gp_gen = "  SET BOMBS IN EVIL COMPUTER";
+			#endif
+		}
+	} else {
+		if (level > 4 && n_pant < 23) {
+			#ifdef LANG_ES
+				_gp_gen = "MATA FANTASMAS,CONSIGUE LLAVES";
+			#else
+				_gp_gen = " KILL GHOSTS TO COLLECT KEYS!";
+			#endif
 		}
 	}
-} else {
-	_gp_gen = level_briefings [level];
-}
-_x = 1; _y = 0; _t = 71;
-print_str ();
-
-// Screen 0: Paint computer / bomb & message
-
-if (n_pant == 0 && c_is_classic) {
-	_gp_gen = decos_computer; draw_decorations ();
-
-	if (f_1) {
-		_gp_gen = decos_bombs; draw_decorations ();
-	} else {
-		_gp_gen = " SET BOMBS IN EVIL COMPUTER ";
-		_x = 1; _y = 0; _t = 71;
-		print_str ();
-	}
-}
+} 
+ingame_text ();
 
 // Half new motorcycle for sale
 
@@ -49,9 +54,4 @@ if (n_pant == 21 && (level == 2 || level == 5)) {
 
 // Ending condition
 
-if (n_pant == 23 && f_1) {
-	AY_PLAY_SOUND (0);
-	espera_activa (50);
-	success = 1;
-	playing = 0;
-}
+if (n_pant == 23 && f_1) win_level ();

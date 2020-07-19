@@ -184,6 +184,33 @@ Y con esto:
 
 Obviamente el tile que se escribe en el mapa debe ser del rango 0..15 porque estamos en packed.
 
+## Cómo se monta la OGT
+
+Porque siempre es bueno repetirlo para recordarlo. Estos son los pasos:
+
+1. Necesito `instrumentos.asm`, que contiene `TABLA_PAUTAS` y `TABLA_EFECTOS` en `mus/`
+2. Necesito cada `*.mus` y llamarlos `00_title.mus` y `00_ingame.mus` en `mus/`
+3. Ejecuto `compress_songs.bat` *(Si tuviera más músicas tendría que modificarlo antes)*
+4. Uso `wyztrackerparser.exe` para obtener `my/wyz/instrumentos.h`:
+
+```
+	$ ..\..\..\src\utils\wyzTrackerParser.exe instrumentos.asm ..\dev\my\wyz\instrumentos.h
+```
+
+Oye, no está tan mal.
+
+## Optimizar
+
+Ahora tengo que tratar de refactorizar para ahorrar espacio, porque estamos acercándonos al límite.
+
+### Entering screen
+
+31151 -> 31099 (bueh)
+
+### Función que imprime el texto de juego
+
+31099 -> 31062 (meh)
+
 
 
 

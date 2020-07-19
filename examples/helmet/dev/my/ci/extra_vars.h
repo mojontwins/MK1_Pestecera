@@ -12,33 +12,55 @@ unsigned char f_0, f_1;
 #include "assets/pal_d.h"
 
 unsigned char *level_pal [] = {
-	0, 0, 
+	my_inks, my_inks_3, 
 	my_inks, my_inks_2, 
-	0,
+	my_inks_4,
 	my_inks_3, my_inks_4,
-	0
+	my_inks_2
 };
 
 unsigned char *level_names [] = {
-	" FIRST BOOT!",
-	" GET'EM SAFE",
-	"EVIL COMPUTER",
-	"NIGHT MISSION",
-	" PEACE MAKER",
-	" GHOST ARMY!",
-	" GHOST NIGHT",
-	"BIKE RENEWAL!",
+	#ifdef LANG_ES
+		"EL COMIENZO!",
+		" RESCATALOS",
+		"ORDENADOR MAL",
+		"  DE NOCHE",
+		"PACIFICANDO!",
+		" HOLOGRAMAS",
+		"NOCHE FANTY!",
+		" VENDO MOTO"
+	#else
+		" FIRST BOOT!",
+		" GET'EM SAFE",
+		"EVIL COMPUTER",
+		"NIGHT MISSION",
+		" PEACE MAKER",
+		" GHOST ARMY!",
+		" GHOST NIGHT",
+		"BIKE RENEWAL!"
+	#endif
 };
 
 unsigned char *level_briefings [] = {
-	"  MAKE YOUR WAY TO THE GOAL!",
-	"      RESCUE 5 HOSTAGES",
-	"",
-	"",
-	"STEAL THE PLANS WITH NO AMMO!",
-	"",
-	"",
-	"  BLAST THE BIKE WITH A BOMB"
+	#ifdef LANG_ES
+		"     AVANZA HASTA LA META",
+		"      RESCATA 5 REHENES!",
+		0,
+		0,
+		"ROBA LOS PLANOS SIN MUNICION",
+		0,
+		0,
+		"EXPLOTA LA MOTO CON UNA BOMBA!"
+#else 
+		"  MAKE YOUR WAY TO THE GOAL!",
+		"      RESCUE 5 HOSTAGES",
+		0,
+		0,
+		"STEAL THE PLANS WITH NO AMMO!",
+		0,
+		0,
+		"  BLAST THE BIKE WITH A BOMB"
+#endif
 };
 
 unsigned char l_is_classic [] = {
