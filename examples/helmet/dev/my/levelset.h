@@ -66,7 +66,7 @@ extern unsigned char behs0_1 [0];
 // map_w, map_h, scr_ini, ini_x, ini_y, max_objs, 
 // c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
 LEVEL levels [] = {
-	{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
-	{ 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
-	{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 }
+	{ 1, 24, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
+	{ 1, 24, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
+	{ 1, 24, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 }
 };

@@ -7,8 +7,8 @@ const unsigned char my_inks_2 [] = {
 	0x04, // FF000080
 	0x15, // FF0000FF
 	0x1B, // FF80FFFF
-	0x06, // FF008080
-	0x1F, // FF8080FF
+	0x17, // FF0080FF
+	0x13, // FF00FFFF
 	0x1F, // FF8080FF
 	0x06, // FF008080
 	0x04, // FF000080

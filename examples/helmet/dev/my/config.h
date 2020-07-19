@@ -27,7 +27,7 @@
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
 //#define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
-#define PLAYER_LIFE 				30		// Max and starting life gauge.
+#define PLAYER_LIFE 				25		// Max and starting life gauge.
 #define PLAYER_REFILL				5		// Life recharge
 #define COMPRESSED_LEVELS 					// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level
@@ -49,7 +49,7 @@
 											// Comment both for normal 16x16 bounding box
 #define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
 //#define BOUNDING_BOX_8_CENTERED			// 8x8 aligned to center in 16x16
-//#define SMALL_COLLISION 					// 8x8 centered collision instead of 12x12
+#define SMALL_COLLISION 					// 8x8 centered collision instead of 12x12
 
 // General directives:
 // -------------------
@@ -77,8 +77,9 @@
 // -----------------
 
 #define ENABLE_PURSUERS						// If defined, type 7 enemies are active
-#define DEATH_COUNT_AND 			7
-#define DEATH_COUNT_ADD 			11 		// Frames to wait = ADD + (rand & AND)
+#define DEATH_COUNT_AND 			15
+#define DEATH_COUNT_ADD 			16 		// Frames to wait = ADD + (rand & AND)
+#define PURSUERS_MAX_V 				2		// 1, 2, 4.
 #define PURSUERS_BASE_CELL			3		// If defined, type 7 enemies are always #
 
 #define ENABLE_FANTIES						// If defined, Fanties are enabled!
@@ -117,7 +118,7 @@
 #define PLAYER_BULLET_SPEED 		8		// Pixels/frame. 
 #define MAX_BULLETS 				3		// Max number of bullets on screen. Be careful!.
 #define PLAYER_BULLET_Y_OFFSET		6		// vertical offset from the player's top.
-#define PLAYER_BULLET_X_OFFSET		0		// vertical offset from the player's left/right.
+#define PLAYER_BULLET_X_OFFSET		2		// vertical offset from the player's left/right.
 #define ENEMIES_LIFE_GAUGE			2		// Amount of shots needed to kill enemies.
 //#define LIMITED_BULLETS 					// If defined, bullets die after N frames
 //#define LB_FRAMES 				4		// If defined, defines the # of frames bullets live (fixed)

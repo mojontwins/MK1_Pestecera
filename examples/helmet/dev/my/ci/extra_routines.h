@@ -24,7 +24,6 @@ if (f_0) {
 	if (gpx < 64 && gpy >= 16 && gpy < 80) {
 		f_0 = 0;
 		AY_PLAY_SOUND (SFX_START);
-		espera_activa (25);
 		_x = 1; _y = 0; _t = 71; 
 		_gp_gen = " HALF NEW MOTORBIKE FOR SALE! ";
 		print_str ();
