@@ -242,9 +242,7 @@ void draw_scr_background (void) {
 
 					._draw_scr_packed_noalt
 				#endif
-				#endasm
-				#include "my/ci/map_renderer_t_modification.h"
-				#asm
+
 						ld  hl, _map_buff
 						add hl, bc
 						

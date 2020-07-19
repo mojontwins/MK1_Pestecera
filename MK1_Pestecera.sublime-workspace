@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"levl",
+				"level_names\t(extra_vars.h)"
+			],
+			[
+				"behs",
+				"behs0_1\tabc"
+			],
+			[
+				"enems_hots",
+				"enems_hotspots0\tabc"
+			],
+			[
+				"map_",
+				"map_bolts0\tabc"
+			],
+			[
+				"PER_",
+				"PER_LEVEL_TILESET\t(config.h)"
+			],
+			[
+				"PURS",
+				"ENABLE_PURSUERS"
+			],
+			[
 				"cpc_up",
 				"cpc_UpdTileTable\t(printer.h)"
 			],
@@ -490,35 +514,91 @@
 			[
 				"getg",
 				"get_group\t(list.inc)"
-			],
-			[
-				"rcmail",
-				"rcmail::write_log"
-			],
-			[
-				"grou",
-				"group_id"
-			],
-			[
-				"vcard_",
-				"vcard_filename"
-			],
-			[
-				"toa",
-				"total_entries"
-			],
-			[
-				"write",
-				"write_log"
-			],
-			[
-				"webdav_abook",
-				"webdav_abook_user_url"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "examples/helmet/dev/my/ci/extra_routines.h",
+			"settings":
+			{
+				"buffer_size": 671,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/my/config.h",
+			"settings":
+			{
+				"buffer_size": 16733,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/engine/c_levels.h",
+			"settings":
+			{
+				"buffer_size": 1377,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/my/levelset.h",
+			"settings":
+			{
+				"buffer_size": 1890,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/README.md",
+			"settings":
+			{
+				"buffer_size": 5997,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/enems/spare2.h",
+			"settings":
+			{
+				"buffer_size": 7344,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/mainloop.h",
+			"settings":
+			{
+				"buffer_size": 4871,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/engine/bullets.h",
+			"settings":
+			{
+				"buffer_size": 5304,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 108 files for \"bxo\" (regex)\n\nC:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\engine\\bullets.h:\n   45  #ifdef PLAYER_GENITAL\n   46  \t// Based upon facing >> 1: RIGHT LEFT UP DOWN\n   47: \tsigned char _bxo [] = { 12, -4, 8 - PLAYER_BULLET_X_OFFSET, PLAYER_BULLET_X_OFFSET };\n   48  \tsigned char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, -4, 12};\n   49  \tsigned char _bmxo [] = { PLAYER_BULLET_SPEED, -PLAYER_BULLET_SPEED, 0, 0 };\n   ..\n   95  \t\t\t\t/*\n   96  \t\t\t\trda = p_facing >> 1;\n   97: \t\t\t\t_b_x = gpx + _bxo [rda];\n   98  \t\t\t\t_b_y = gpy + _byo [rda];\n   99  \t\t\t\t_b_mx = _bmxo [rda];\n  ...\n  107  \t\t\t\t\t\tld  b, 0\n  108  \n  109: \t\t\t\t\t\tld  hl, __bxo\n  110  \t\t\t\t\t\tadd hl, bc\t\t\t\t\t\t\n  111  \t\t\t\t\t\tld  d, (hl)\n\nC:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\helmet.asm:\n 1335  ;\tSECTION\ttext\n 1336  \n 1337: .__bxo\n 1338  \tdefm\t\"\"\n 1339  \tdefb\t12\n ....\n 1444  \tld c, a\n 1445  \tld b, 0\n 1446: \tld hl, __bxo\n 1447  \tadd hl, bc\n 1448  \tld d, (hl)\n ....\n 7341  \tXDEF\t_locks_init\n 7342  \tXDEF\t_utaux\n 7343: \tXDEF\t__bxo\n 7344  \tXDEF\t__byo\n 7345  \tXDEF\t_behs\n\nC:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\helmet.map:\n  873  __BMXO\t\t\t\t= 4453, G: MK1\n  874  __BMYO\t\t\t\t= 4457, G: MK1\n  875: __BXO\t\t\t\t= 444B, G: MK1\n  876  __BYO\t\t\t\t= 444F, G: MK1\n  877  __B_ESTADO\t\t\t= 7504, G: MK1\n  ...\n 1029  I_35\t\t\t\t= 441B, L: MK1\n 1030  _BULLETS_UPDATE\t\t\t= 441C, G: MK1\n 1031: __BXO\t\t\t\t= 444B, G: MK1\n 1032  __BYO\t\t\t\t= 444F, G: MK1\n 1033  __BMXO\t\t\t\t= 4453, G: MK1\n\n8 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 1468,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -600,27 +680,59 @@
 		"/C/git/MK1_Pestecera/examples",
 		"/C/git/MK1_Pestecera/examples/helmet",
 		"/C/git/MK1_Pestecera/examples/helmet/dev",
-		"/C/git/MK1_Pestecera/examples/helmet/gfx",
-		"/C/git/MK1_Pestecera/src",
-		"/C/git/MK1_Pestecera/src/dev",
-		"/C/git/MK1_Pestecera/src/dev/engine",
-		"/C/git/MK1_Pestecera/src/dev/engine/enem_mods",
-		"/C/git/MK1_Pestecera/src/dev/mainloop",
-		"/C/git/MK1_Pestecera/src/utils",
-		"/C/git/MK1_Pestecera/src/utils/src"
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my",
+		"/C/git/MK1_Pestecera/examples/helmet/enems"
 	],
 	"file_history":
 	[
+		"/C/git/MK1_Pestecera/examples/helmet/enems/spare.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop/flick_screen.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h.bak",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/bullets.h",
+		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/my/config.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods/enem_type_pursuers.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/enems_custom_respawn.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/entering_game.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/printer.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/extra_vars.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/level_screen.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/breakable.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/enengine.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop.h",
+		"/C/git/MK1_Pestecera/examples/helmet/README.md",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/on_enems_killed.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/entering_screen.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/spriteset_mappings.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/levelset.h",
+		"/C/git/MK1_Pestecera/examples/helmet/enems/ponedor.bat",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/on_player_killed.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/after_game.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/extra_routines.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/before_game.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/after_game_loop.h",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/helmet.asm",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/enems.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop/game_loop.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/mapa.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/128k.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/levels.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/c_levels.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/my/ci/on_wall_hit.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/ay_fx_numbers.h",
+		"/C/git/MK1_Pestecera/examples/helmet/dev/engine.h",
 		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/C/git/MK1_Pestecera/diario.md",
 		"/C/git/MK1_Pestecera/src/dev/engine/enem_mods/enem_type_pursuers_asm.h",
-		"/C/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/assets/pal.h",
-		"/C/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/my/title_screen.h",
-		"/C/git/MK1_Pestecera/examples/helmet/dev/mainloop.h",
 		"/C/git/MK1_Pestecera/examples/helmet/dev/engine/update.h",
 		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
 		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
@@ -631,7 +743,6 @@
 		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/C/git/MK1_Pestecera/src/dev/tilanim.h",
 		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
-		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/C/git/MK1_Pestecera/src/dev/my/config.h",
@@ -705,40 +816,7 @@
 		"/C/git/mk1/examples/goku_mal/dev/my/level_screen.h",
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/before_entering_screen.h",
 		"/C/git/mk1/examples/goku_mal/dev/my/ci/entering_game.h",
-		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h",
-		"/C/git/mk1/docs/tutorial-cap13.md",
-		"/C/git/mk1/examples/helmet/dev/mainloop/game_loop.h",
-		"/C/git/mk1/examples/helmet/dev/my/ci/entering_game.h",
-		"/C/git/mk1/src/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/nightmare_on_halloween/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/misco_jones/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/printer.h",
-		"/C/git/mk1/examples/helmet/dev/mainloop.h",
-		"/C/git/mk1/examples/helmet/dev/preproc.c",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_orthoshooters.h",
-		"/C/git/mk1/examples/helmet/dev/definitions.h",
-		"/C/git/mk1/examples/helmet/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole/dev/definitions.h",
-		"/C/git/mk1/examples/helmet/dev/engine/simple_cocos.h",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_pursuers.h",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
-		"/C/git/mk1/examples/helmet/dev/helmet.asm",
-		"/C/git/mk1/examples/helmet/dev/mk1.c",
-		"/C/git/mk1/examples/helmet/dev/my/ci/extra_routines.h",
-		"/C/git/mk1/examples/helmet/dev/engine.h",
-		"/C/git/mk1/examples/helmet/dev/compile.bat",
-		"/C/git/mk1/examples/helmet/dev/my/levelset.h",
-		"/C/git/mk1/examples/helmet/dev/assets/levels.h",
-		"/C/git/mk1/src/utils/src/ene2bin_mk1.bas",
-		"/C/git/mk1/src/utils/src/buildlevel.bas",
-		"/C/git/mk1/src/utils/src/asm2z88dk.bas",
-		"/C/git/mk1/examples/dogmole/dev/music.h",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_music_phaser.asm",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_fx.asm",
-		"/C/git/mk1/docs/tutorial-cap10.md"
+		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h"
 	],
 	"find":
 	{
@@ -749,6 +827,12 @@
 		"height": 135.0,
 		"where_history":
 		[
+			"C:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
+			"C:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci",
+			"C:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
+			"C:\\git\\MK1_Pestecera\\examples",
+			"C:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\my",
+			"C:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"C:\\git\\MK1_Pestecera\\lib",
 			"C:\\git\\MK1_Pestecera\\src",
 			"C:\\git\\MK1_Pestecera\\src\\dev",
@@ -772,6 +856,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"bxo",
+			" level =",
+			"SWsprites_ALL",
+			"flags",
+			"flags \\[(\\d)\\]",
+			"flags",
+			"RESPAWN_ON_ENTER",
+			"blackout_area",
+			"p_killme",
+			"tspatterns",
+			"cpc_UpdateNow",
+			"beep",
+			"beep_pf",
+			"halt",
 			"_eij_state_appearing",
 			"sprites",
 			"draw_coloured_tile",
@@ -885,28 +983,15 @@
 			"auto_shadows",
 			"sp_",
 			"cpcmode=1",
-			"MK3",
-			"strait2x2",
-			"_en_t",
-			"rdt",
-			"_en_t",
-			"malotes [enoffsmasi].t",
-			"malotes [eno",
-			"dostrait",
-			"strait",
-			"doTmaps",
-			"mode",
-			"cpcgetbitmapfrom",
-			"patternwidth",
-			"brick",
-			"genital"
+			"MK3"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"f_\\1",
 			"..\\..\\..\\src\\utils\\",
 			"",
 			"_cpc_screen_update_done",
@@ -977,8 +1062,316 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "examples/helmet/dev/my/ci/extra_routines.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								578,
+								578
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "examples/helmet/dev/my/config.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16733,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2420,
+								2431
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 509.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "examples/helmet/dev/engine/c_levels.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1017,
+								1017
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 112.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "examples/helmet/dev/my/levelset.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1828,
+								1828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 627.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "examples/helmet/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5997,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5995,
+								5995
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1867.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "examples/helmet/enems/spare2.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7344,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7179,
+								7179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 500.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "examples/helmet/dev/mainloop.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3080,
+								3080
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2121.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "examples/helmet/dev/engine/bullets.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								741,
+								741
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 427.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1468,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										202,
+										205
+									],
+									[
+										525,
+										528
+									],
+									[
+										663,
+										666
+									],
+									[
+										816,
+										819
+									],
+									[
+										907,
+										910
+									],
+									[
+										1015,
+										1018
+									],
+									[
+										1184,
+										1187
+									],
+									[
+										1357,
+										1360
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								204,
+								204
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1063,7 +1456,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 189.0,
+	"side_bar_width": 243.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

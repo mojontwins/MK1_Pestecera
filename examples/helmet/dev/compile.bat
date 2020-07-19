@@ -30,9 +30,11 @@ echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems0.ene ..\bin\enems_hotspots0.bin 2
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems1.ene ..\bin\enems_hotspots1.bin 2
 ..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems2.ene ..\bin\enems_hotspots2.bin 2
+..\..\..\src\utils\ene2bin_mk1.exe ..\enems\enems3.ene ..\bin\enems_hotspots3.bin 2
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots0.bin ..\bin\enems_hotspots0c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots1.bin ..\bin\enems_hotspots1c.bin
 ..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots2.bin ..\bin\enems_hotspots2c.bin
+..\..\..\src\utils\apultra.exe ..\bin\enems_hotspots3.bin ..\bin\enems_hotspots3c.bin
 
 echo Convirtiendo behs
 ..\..\..\src\utils\behs2bin.exe ..\gfx\behs0_1.txt ..\bin\behs0_1.bin >nul
@@ -62,6 +64,7 @@ echo Importando GFX
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal_b.png prefix=my_inks_2 out=assets\pal_b.h silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal_c.png prefix=my_inks_3 out=assets\pal_c.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal_d.png prefix=my_inks_4 out=assets\pal_d.h silent > nul
 
 if [%1]==[justassets] goto :end
 

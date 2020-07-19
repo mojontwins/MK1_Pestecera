@@ -134,3 +134,57 @@ Para hacer que los fanties dejen una llave podemos meter código en `my/ci/on_en
 	};
 ```
 
+# 20200719
+
+Tras un par de días haciendo y probando fases y puliendo cosas, hemos decidido hacer 8 fases empleando solo 3 mapas y 5 .enes. Cuatro de las fases serán meras 6 pantallas de un mapa de 24 que iremos reaprovechando empezando en diferentes puntos y con diferente código custom para controlar.
+
+Estas son las fases:
+
+1 - llegar esquivando alambradas/rayos
+2 - buscar rehenes
+3 - fase A original
+4 - fase B original
+5 - sin ammo
+6 - fase A fantasmas original
+7 - fase B fantasmas original
+8 - moto
+
+En cuanto haga el nuevo .ene para la fase B fantasmas original empiezo con los cambios. Como la lógica actual sólo se dará en las fase 3, 4, 6, 7, lo guardaré todo tras una variable `classic_level_logic` que pondré a 1 al empezar esas fases.
+
+## Persistencia de vallas rotas
+
+Vamos a programar la persistencia de breakables en un custom empleando el CIP `on_wall_broken.h`. Aquí llegamos con las coordenadas en `_x, _y` y la pantalla en `n_pant`. El mapa está a partir de la dirección apuntada por `mapa`. La fórmula pues sería `mapa + n_pant * 75 + COORDS [_x, _y] / 2`. Resulta que `COORDS [_x, _y]` lo tenemos precalculado ya en `gpaux`. Tendremos que tomar el byte que haya y modificar el nibble derecho si `gpaux & 1`, o el izquierdo en caso contrario.
+
+La dirección base de la pantalla la vamos a calcular en `on_entering_screen.h`:
+
+```c
+	// on_entering_screen.h
+	
+	c_screen_address = mapa + n_pant * 75;
+```
+
+Y con esto:
+
+```c
+	// on_wall_broken.h
+
+	_gp_gen = (c_screen_address + (gpaux >> 1));
+	rda = *_gp_gen;
+
+	if (gpaux & 1) {
+		// Modify right nibble
+		rda = (rda & 0xf0) | BREAKABLE_WALLS_BROKEN;
+	} else {
+		// Modify left nibble
+		rda = (rda & 0x0f) | (BREAKABLE_WALLS_BROKEN<<4);
+	}
+
+	*_gp_gen = rda;
+```
+
+Obviamente el tile que se escribe en el mapa debe ser del rango 0..15 porque estamos en packed.
+
+
+
+
+

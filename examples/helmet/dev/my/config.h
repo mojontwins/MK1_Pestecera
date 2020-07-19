@@ -133,7 +133,7 @@
 
 #define BREAKABLE_WALLS 					// Breakable walls
 #define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
-#define BREAKABLE_WALLS_BROKEN 		30 		// Use this tile for a broken wall, 0 if not def.
+#define BREAKABLE_WALLS_BROKEN 		1 		// Use this tile for a broken wall, 0 if not def.
 
 // Scripting
 // ---------

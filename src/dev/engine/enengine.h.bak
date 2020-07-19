@@ -100,7 +100,7 @@ void enems_load (void) {
 					en_an_base_frame [enit] = 0xff;
 			}
 		} else {
-			en_an_base_frame [enit] = 0xff;
+			en_an_base_frame [enoffsmasi] = 0xff;
 		}
 
 		// Sprite creation

@@ -4,3 +4,4 @@
 f_0 = f_1 = 0;
 
 pal_set (level_pal [level]);
+c_is_classic = l_is_classic [level]; // Classic gameplay (set bombs & return)

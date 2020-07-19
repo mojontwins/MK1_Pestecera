@@ -9,13 +9,41 @@ unsigned char f_0, f_1;
 
 #include "assets/pal_b.h"
 #include "assets/pal_c.h"
+#include "assets/pal_d.h"
 
 unsigned char *level_pal [] = {
-	my_inks, my_inks_2, my_inks_3
+	0, 0, 
+	my_inks, my_inks_2, 
+	0,
+	my_inks_3, my_inks_4,
+	0
 };
 
 unsigned char *level_names [] = {
 	" FIRST BOOT!",
+	" GET'EM SAFE",
+	"EVIL COMPUTER",
 	"NIGHT MISSION",
-	" GHOST ARMY!"
+	" PEACE MAKER",
+	" GHOST ARMY!",
+	" GHOST NIGHT",
+	"BIKE RENEWAL!",
 };
+
+unsigned char *level_briefings [] = {
+	"  MAKE YOUR WAY TO THE GOAL!",
+	"      RESCUE 5 HOSTAGES",
+	"",
+	"",
+	"STEAL THE PLANS WITH NO AMMO!",
+	"",
+	"",
+	"  BLAST THE BIKE WITH A BOMB"
+};
+
+unsigned char l_is_classic [] = {
+	0, 0, 1, 1, 0, 1, 1, 0
+};
+unsigned char c_is_classic;
+
+unsigned char *c_screen_address;

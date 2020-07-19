@@ -3,23 +3,32 @@
 
 // For all screens
 
+// Precalc this address which will be used with broken tile 
+// persistence.
+
+c_screen_address = mapa + n_pant * 75;
+
 // General text
 
-if (f_1) {
-	_gp_gen = "BOMBS ARE SET! RETURN TO BASE!";
-} else {
-	if (level == 2 && n_pant < 22) {
-		_gp_gen = " KILL GHOSTS TO COLLECT KEYS!";
+if (c_is_classic) {
+	if (f_1) {
+		_gp_gen = "BOMBS ARE SET! RETURN TO BASE!";
 	} else {
-		_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";	
+		if (level == 2 && n_pant < 22) {
+			_gp_gen = " KILL GHOSTS TO COLLECT KEYS!";
+		} else {
+			_gp_gen = " SET 5 BOMBS IN EVIL COMPUTER";	
+		}
 	}
+} else {
+	_gp_gen = level_briefings [level];
 }
 _x = 1; _y = 0; _t = 71;
 print_str ();
 
 // Screen 0: Paint computer / bomb & message
 
-if (n_pant == 0) {
+if (n_pant == 0 && c_is_classic) {
 	_gp_gen = decos_computer; draw_decorations ();
 
 	if (f_1) {
@@ -33,7 +42,7 @@ if (n_pant == 0) {
 
 // Half new motorcycle for sale
 
-if (n_pant == 21 && (level == 0 || level == 2)) {
+if (n_pant == 21 && (level == 2 || level == 5)) {
 	_gp_gen = decos_moto; draw_decorations ();
 	f_0 = 1;
 } else f_0 = 0;

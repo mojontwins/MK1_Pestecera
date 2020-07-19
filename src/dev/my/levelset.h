@@ -38,7 +38,7 @@
 	} LEVEL;
 #endif
 
-// In 48K mode, include here your compressed binaries:
+// Include here your compressed binaries:
 
 extern unsigned char my_binary [0];
 
