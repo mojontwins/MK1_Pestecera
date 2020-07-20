@@ -32,7 +32,7 @@
 #define COMPRESSED_LEVELS 					// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level
-#define MAX_LEVELS					2		// # of compressed levels
+#define MAX_LEVELS					8		// # of compressed levels
 #define REFILL_ME 							// If defined, refill player on each level
 
 // ============================================================================

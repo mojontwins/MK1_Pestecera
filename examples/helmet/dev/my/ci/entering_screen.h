@@ -11,6 +11,7 @@ c_screen_address = mapa + n_pant * 75;
 // General text & decorations
 
 _gp_gen = level_briefings [level];
+
 if (c_is_classic) {
 	#ifdef LANG_ES
 		_gp_gen = " PON 5 BOMBAS EN EL ORDENADOR";
@@ -43,7 +44,7 @@ if (c_is_classic) {
 		}
 	}
 } 
-ingame_text ();
+if (level != 1 || n_pant == 17) ingame_text ();
 
 // Half new motorcycle for sale
 
