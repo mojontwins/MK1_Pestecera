@@ -199,19 +199,90 @@ Porque siempre es bueno repetirlo para recordarlo. Estos son los pasos:
 
 Oye, no está tan mal.
 
-## Optimizar
+# La fase de los hostages
 
-Ahora tengo que tratar de refactorizar para ahorrar espacio, porque estamos acercándonos al límite.
+Podría haberlo hecho usando hotspots pero no me dan 6 pantallas para 5 rehenes y llaves y hostias en vinegar, así que vamos a implementarlo de otra forma.
 
-### Entering screen
+* En `level == 1`, los tiles #13 se sustituirán por el rehén (tile 21) al pintar.
+* Cuando el jugador toque el tile 21 (le pondré el beh especial 128, que lanza `on_special_tile`), el tile se sustituirá por el tile 0 (tengo que mover por tanto el persistidor de mapas a una función para usarlo desde aquí y desde el tile roto) y se incrementará `p_objs`.
+* Si `level == 1` y `p_objs == 5`, fin.
 
-31151 -> 31099 (bueh)
+```c
+	// extra_functions.h
+		
+	void persist_tile (void) {
+		// c_screen_address must be set
+		// gpaux must be COORDS (_x, _y)
+		// rdt = substitute with this tile
+		
+		_gp_gen = (c_screen_address + (gpaux >> 1));
+		rda = *_gp_gen;
 
-### Función que imprime el texto de juego
+		if (gpaux & 1) {
+			// Modify right nibble
+			rda = (rda & 0xf0) | rdt;
+		} else {
+			// Modify left nibble
+			rda = (rda & 0x0f) | (rdt<<4);
+		}
 
-31099 -> 31062 (meh)
+		*_gp_gen = rda;
+	}
+```
 
+Cambiamos tiles 13 por tile 21:
 
+```c
+	// map_renderer_t_modification.h
 
+	#asm
+			ld  a, (__t)
+			or  a
+			jr  nz, _ds_custom_packed_noalt
 
+			// Alt tile #2
+
+		._ds_custom_packed_alt
+			call _rand
+			ld  a, l
+			and 15
+			cp  1
+			jr  z, _ds_custom_packed_alt_subst
+
+			ld  a, (__t)
+			jr  _ds_custom_packed_noalt
+
+		._ds_custom_packed_alt_subst
+			ld  a, 30
+			ld  (__t), a
+
+		._ds_custom_packed_noalt
+
+			// Hostages, tile == 13?
+			cp  13
+			jr  nz, _ds_custom_end
+
+			// On level 1?
+			ld  a, (_level)
+			dec a
+			jr  nz, _ds_custom_end
+
+			// Clear behs
+			ld  a, 128
+			ld  hl, _map_attr
+			add hl, bc
+			ld  (hl), a
+
+			ld  a, 21
+			ld  (__t), a
+
+		._ds_custom_end
+	#endasm
+```
+
+Y ahora hay que detectar y modificar:
+
+```c
+	// 
+```
 

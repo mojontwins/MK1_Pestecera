@@ -178,7 +178,7 @@ void main (void) {
 			main_script_offset = (int) (main_script);
 		#endif
 
-		level = 0;
+		level = 1;
 
 		// Here the title screen		
 		title_screen ();

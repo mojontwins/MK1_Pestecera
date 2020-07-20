@@ -5,7 +5,7 @@ unsigned char decos_computer [] = { 0x63, 32, 0x73, 33, 0x83, 34, 0x64, 36, 0x74
 unsigned char decos_bombs [] = { 0x44, 17, 0x42, 17, 0x71, 17, 0xA2, 17, 0xA4, 17, 0xff };
 unsigned char decos_moto [] = { 0x13, 40, 0x23, 41, 0xff };
 
-unsigned char f_0, f_1;
+unsigned char f_0, f_1, f_2;
 
 #include "assets/pal_b.h"
 #include "assets/pal_c.h"

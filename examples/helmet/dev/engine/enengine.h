@@ -91,6 +91,7 @@ void enems_load (void) {
 				#ifdef ENABLE_PURSUERS
 					case 7:
 						enems_pursuers_init ();
+						en_an_base_frame [enit] = 0;
 						break;
 				#endif
 

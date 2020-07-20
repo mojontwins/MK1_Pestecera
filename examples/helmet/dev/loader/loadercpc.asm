@@ -17,7 +17,7 @@ org $a300
 ; Load screen scrc.bin
 
 	ld     ix, $6400
-	ld     de, 4801
+	ld     de, 4771
 	ld     a, $ff
 	call   topoload	
 
@@ -33,14 +33,14 @@ org $a300
 
 ; Load main block gamec.bin
 
-	ld     ix, 23072
-	ld     de, 18656
+	ld     ix, 22560
+	ld     de, 19168
 	ld     a, $ff
 	call   topoload
 
 ; Decompress
 
-	ld     hl, 23072
+	ld     hl, 22560
 	ld     de, $400
 	call   depack
 
@@ -89,7 +89,7 @@ loopPal:
 	ret
 
 palette:
-	defb 13, 4, 21, 11, 22, 18, 19, 6, 28, 12, 14, 23, 30, 0, 20, 10
+	defb 6, 30, 22, 20, 28, 14, 7, 11, 4, 0, 12, 10, 19, 5, 21, 18
 
 ;; Modified Topo soft loader
 ;;
