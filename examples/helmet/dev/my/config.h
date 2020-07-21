@@ -16,6 +16,8 @@
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
 
+#define BLACK_PEN 					14 		// Which palette entry is black
+
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						1		//
@@ -27,8 +29,9 @@
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
 //#define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
-#define PLAYER_LIFE 				25		// Max and starting life gauge.
+#define PLAYER_LIFE 				l_max_life [level]	// Max and starting life gauge.
 #define PLAYER_REFILL				5		// Life recharge
+#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 #define COMPRESSED_LEVELS 					// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level
@@ -244,9 +247,9 @@ extern unsigned char def_keys [0];
 		defw $4204		; KEY_ENTER
 		defw $4804		; KEY_ESC	
 
-		defw $4880		; KEY_AUX1 Z
-		defw $4780 		; KEY_AUX2 X
-		defw $4801 		; KEY_AUX3 1
+		defw $4440		; KEY_AUX1 M
+		defw $4608 		; KEY_AUX2 T
+		defw $4801 		; KEY_AUX3 1	// Those are used in the menus!
 		defw $4802 		; KEY_AUX4 2
 #endasm
 

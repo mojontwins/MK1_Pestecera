@@ -79,8 +79,8 @@ LEVEL levels [] = {
 	{ 1, 24, 17, 12, 7, 99, map_bolts2, enems_hotspots4, behs0_1, 1 },
 	{ 1, 24, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
 	{ 1, 24, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
-	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ 1, 24, 11, 12, 7, 99, map_bolts2, enems_hotspots4, behs0_1, 1 },
 	{ 1, 24, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 },
 	{ 1, 24, 23, 12, 7, 99, map_bolts1, enems_hotspots3, behs0_1, 1 },
-	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+	{ 1, 24, 5, 12, 7, 99, map_bolts2, enems_hotspots4, behs0_1, 1 }
 };

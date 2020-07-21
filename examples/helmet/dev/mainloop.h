@@ -82,7 +82,7 @@ void main (void) {
 
 	unpack ((unsigned int) (trpixlutc), BASE_LUT);
 
-	cortina ();
+	blackout ();
 	
 	pal_set (my_inks);
 	
@@ -178,7 +178,7 @@ void main (void) {
 			main_script_offset = (int) (main_script);
 		#endif
 
-		level = 1;
+		level = 0;
 
 		// Here the title screen		
 		title_screen ();
@@ -215,8 +215,6 @@ void main (void) {
 			#endif
 					
 			#ifndef DIRECT_TO_PLAY
-				// Clear screen and show game frame
-				cortina ();
 				
 				#ifdef MODE_128K
 					// Resource 1 = marco.bin
@@ -257,6 +255,7 @@ void main (void) {
 					#else
 						game_over ();
 					#endif
+					#include "my/ci/after_game_over.h"
 					
 					AY_STOP_SOUND ();
 					break;
@@ -266,10 +265,8 @@ void main (void) {
 					game_ending (); 
 				} else {
 					game_over ();
+					#include "my/ci/after_game_over.h"
 				}
-			#endif
-			#if !defined (DIRECT_TO_PLAY) || !defined (COMPRESSED_LEVELS)
-				cortina ();
 			#endif
 		}
 		

@@ -5,6 +5,7 @@
 
 {
 	blackout_area ();
+	pal_set (my_inks);
 	
 	level_str [7] = 49 + level;
 	_x = 12; _y = 11; _gp_gen = level_str; print_str ();

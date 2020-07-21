@@ -13,6 +13,11 @@ void title_screen (void) {
 	#endif
 			
 	cpc_ShowTileMap (1);
+	_x = 13; _y = 13; _gp_gen = "1 POQA"; print_str ();
+			 _y = 14; _gp_gen = "2 STICK"; print_str ();
+
+	_x = 5; _y = 19; _gp_gen = "@ 2020 THE MOJON TWINS"; print_str ();
+	cpc_UpdateNow (0);
 
 	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);

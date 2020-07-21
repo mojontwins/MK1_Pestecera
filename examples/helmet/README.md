@@ -286,3 +286,14 @@ Y ahora hay que detectar y modificar:
 	// 
 ```
 
+# 20200721
+
+La última fase: la moto. Hay que pintar la moto en la pantalla 5, me vale con la misma deco porque queda bien en las mismas coordenadas. La fase acaba si `n_pant == 5`, `p_objs == 1`, `gpy < 48` y `gpx < 80`. Y poco más.
+
+## La pantalla de continue?
+
+Tras el game over debe mostrarse "CONTINUE?" "ENTER=SI, ESC=NO". Si se continua. debería reiniciarse el nivel actual. Para ello emplearemos `my/ci/after_game_over.h`.
+
+
+
+Actualizar en ZX: `after_game_over` y lo de las 0 vidas.

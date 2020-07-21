@@ -37,5 +37,15 @@ if (f_0) {
 }
 
 // Special endings for extended levels
-if (level == 0 && n_pant == 18 && gpy < 48) win_level ();
-if (level == 1 && f_2 == 0) win_level ();
+switch (level) {
+	case 0:
+	case 4:
+		if ((n_pant == 18 || n_pant == 6) && gpy < 48) win_level ();
+		break;
+	case 1: 
+		if (f_2 == 0) win_level ();
+		break;
+	case 7:
+		if ((n_pant == 5 && p_objs && gpy < 48 && gpx < 80)) win_level ();
+		break;
+}

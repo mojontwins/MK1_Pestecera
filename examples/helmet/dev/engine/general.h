@@ -134,8 +134,3 @@ unsigned int abs (signed int n) {
 	else 
 		return (unsigned int) n;
 }
-
-void cortina (void) {
-	#asm
-	#endasm
-}

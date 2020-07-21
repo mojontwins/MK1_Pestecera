@@ -12,3 +12,6 @@
 
 pal_set (level_pal [level]);
 c_is_classic = l_is_classic [level]; // Classic gameplay (set bombs & return)
+
+// Level 4: no ammo
+if (level == 4) p_ammo = 0;

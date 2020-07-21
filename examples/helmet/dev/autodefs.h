@@ -42,3 +42,23 @@
 #define SP_ENEMS_BASE 		1
 #define SP_BULLETS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
 #define SP_COCOS_BASE 		SP_BULLETS_BASE + MAX_BULLETS
+
+// Automagically calculate this byte
+#if CPC_GFX_MODE == 0
+	// PIXEL 0  PIXEL 1
+	// 3 2 1 0  3 2 1 0
+	// 1 5 3 7  0 4 2 6
+	#define BLACK_COLOUR_BYTE ((BLACK_PEN>>3)&1)|(((BLACK_PEN>>3)&1)<<1)\
+								|(((BLACK_PEN>>1)&1)<<2)|(((BLACK_PEN>>1)&1)<<3)\
+								|(((BLACK_PEN>>2)&1)<<4)|(((BLACK_PEN>>2)&1)<<5)\
+								|((BLACK_PEN&1)<<6)|((BLACK_PEN&1)<<7)
+#else
+	// P_0 P_1 P_2 P_3
+	// 1 0 1 0 1 0 1 0
+	// 3 7 2 6 1 5 0 4
+	#define BLACK_COLOUR_BYTE (BLACK_PEN>>1)|((BLACK_PEN>>1)<<1)\
+								|((BLACK_PEN>>1)<<2)|((BLACK_PEN>>1)<<3)\
+								|((BLACK_PEN&1)<<4)|((BLACK_PEN&1)<<5)\
+								|((BLACK_PEN&1)<<6)|((BLACK_PEN&1)<<7)
+#endif
+

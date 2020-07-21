@@ -53,6 +53,12 @@ if (n_pant == 21 && (level == 2 || level == 5)) {
 	f_0 = 1;
 } else f_0 = 0;
 
+// Last level motorcycle
+
+if (level == 7 && n_pant == 5) {
+	_gp_gen = decos_moto; draw_decorations ();
+}
+
 // Ending condition
 
 if (n_pant == 23 && f_1) win_level ();

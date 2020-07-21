@@ -618,6 +618,7 @@ void print_str (void) {
 			ld  c, a
 			ld  a, (_rdn)
 			add c
+			dec a
 			ld  e, a
 			call cpc_InvalidateRect
 	#endasm

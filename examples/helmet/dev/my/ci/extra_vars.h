@@ -16,7 +16,7 @@ unsigned char *level_pal [] = {
 	my_inks, my_inks_2, 
 	my_inks_4,
 	my_inks_3, my_inks_4,
-	my_inks_2
+	my_inks_3
 };
 
 unsigned char *level_names [] = {
@@ -47,7 +47,7 @@ unsigned char *level_briefings [] = {
 		"      RESCATA 5 REHENES!",
 		0,
 		0,
-		"ROBA LOS PLANOS SIN MUNICION",
+		"LLAGA A LA META SIN MUNICION",
 		0,
 		0,
 		"EXPLOTA LA MOTO CON UNA BOMBA!"
@@ -56,7 +56,7 @@ unsigned char *level_briefings [] = {
 		"      RESCUE 5 HOSTAGES",
 		0,
 		0,
-		"STEAL THE PLANS WITH NO AMMO!",
+		" REACH THE GOAL WITH NO AMMO!",
 		0,
 		0,
 		"  BLAST THE BIKE WITH A BOMB"
@@ -69,3 +69,7 @@ unsigned char l_is_classic [] = {
 unsigned char c_is_classic;
 
 unsigned char *c_screen_address;
+
+unsigned char l_max_life [] = {
+	5, 5, 10, 10, 5, 10, 10, 5
+};
