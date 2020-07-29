@@ -16,6 +16,8 @@
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
 
+#define BLACK_PEN 					1		// Which palette entry is black
+
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						6		//
@@ -29,6 +31,7 @@
 #define PLAYER_NUM_OBJETOS			25		// Objects to get to finish game
 #define PLAYER_LIFE 				99		// Max and starting life gauge.
 #define PLAYER_REFILL				10		// Life recharge
+#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level

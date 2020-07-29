@@ -19,4 +19,8 @@
 	#endif
 
 	espera_activa (100);
+
+	blackout_area ();
+	invalidate_viewport ();
+	cpc_UpdateNow (0);
 }

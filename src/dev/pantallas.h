@@ -27,21 +27,22 @@
 #endif
 
 void blackout (void) {
-	// Study why this ain't working...
-	/*
+	rda = BLACK_COLOUR_BYTE;
 	#asm
 			ld  a, 0xc0
 		.bo_l1
 			ld  h, a
 			ld  l, 0
-			ld  (hl), 0
+			ld  b, a
+			ld  a, (_rda)
+			ld  (hl), a
+			ld  a, b
 			ld  d, a
-			ld  l, 1
-			ld  bc, 1535
+			ld  e, 1
+			ld  bc, 0x5ff
 			ldir
 
 			add 8
 			jr  nz, bo_l1
 	#endasm
-	*/
 }

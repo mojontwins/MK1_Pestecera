@@ -178,8 +178,10 @@
 		#endif
 
 		if (p_killme) {
-			player_kill (p_killme);
-			#include "my/ci/on_player_killed.h"
+			if (p_life) {
+				player_kill (p_killme);
+				#include "my/ci/on_player_killed.h"
+			} else playing = 0;
 		}
 
 		#ifdef PLAYER_CAN_FIRE
@@ -270,6 +272,12 @@
 			
 		#endif
 
+		#ifdef DEBUG_KEYS
+			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2)) {
+				playing = 0; success = 1;
+			}
+		#endif
+
 		// Flick the screen ?
 		
 		#include "mainloop/flick_screen.h"			
@@ -296,16 +304,18 @@
 		}
 		
 		// Game over condition
-		if (p_life == 0
-			#ifdef ACTIVATE_SCRIPTING
-				|| (script_result == 2)
-			#endif
-			#if defined(TIMER_ENABLE) && defined(TIMER_GAMEOVER_0)
-				|| timer_zero
-			#endif
-		) {
-			playing = 0;				
-		}
+		#if defined ACTIVATE_SCRIPTING || (defined(TIMER_ENABLE) && defined(TIMER_GAMEOVER_0)) 
+			if (0
+				#ifdef ACTIVATE_SCRIPTING
+					|| (script_result == 2)
+				#endif
+				#if defined(TIMER_ENABLE) && defined(TIMER_GAMEOVER_0)
+					|| timer_zero
+				#endif
+			) {
+				playing = 0;				
+			}
+		#endif
 
 		#include "my/ci/extra_routines.h"
 	}
