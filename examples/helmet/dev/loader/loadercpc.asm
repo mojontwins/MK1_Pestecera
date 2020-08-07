@@ -33,14 +33,14 @@ org $a300
 
 ; Load main block gamec.bin
 
-	ld     ix, 22046
-	ld     de, 19682
+	ld     ix, 21896
+	ld     de, 19832
 	ld     a, $ff
 	call   topoload
 
 ; Decompress
 
-	ld     hl, 22046
+	ld     hl, 21896
 	ld     de, $400
 	call   depack
 
