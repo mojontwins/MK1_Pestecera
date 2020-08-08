@@ -123,7 +123,7 @@ for (enit = 0; enit < 3; ++ enit) {
 			ld  a, (__en_y)
 			add 16
 			ld  (__en_y), a
-
+			
 		._on_tile_pushed_done
 
 		// At this point, enemy has been pushed. If it's been pushed out
@@ -133,22 +133,29 @@ for (enit = 0; enit < 3; ++ enit) {
 			ld  a, (__en_x)
 			cp  240
 			jr  nc, _on_tile_pushed_kill_enemy 	// C reset if A (__en_x) >= 240
-			ld  b, a
 
 			ld  a, (__en_y)
 			cp  160
 			jr  nc, _on_tile_pushed_kill_enemy 	// C reset if A (__en_y) >= 160
-			ld  c, a
-
+			
 		// Check tile. Beh != 0 -> kill
-		// COORD -> (__en_y << 4) + __en_x - __en_y
-		// A = __en_y, so:
-			sla a
-			sla a
-			sla a 
-			sla a
-			add b
-			sub c
+		// COORD -> (rdy << 4) + rdx - rdy;
+			and 0xf0		
+			ld  c, a 		// C -> (rdy << 4)
+
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  b, a
+
+			ld  a, (__en_x)
+			srl a
+			srl a
+			srl a
+			srl a
+			add c 
+			sub b
 
 			ld  d, 0
 			ld  e, a
@@ -156,6 +163,8 @@ for (enit = 0; enit < 3; ++ enit) {
 			add hl, de
 			ld  a, (hl)
 			or  a
+
+			jr  nz, _on_tile_pushed_kill_enemy
 
 		// Don't kill. Update arrays
 			ld  hl, (__baddies_pointer) 		// Restore pointer
@@ -168,13 +177,16 @@ for (enit = 0; enit < 3; ++ enit) {
 			ld  (hl), a
 			inc hl
 
-			jr  z, _on_tile_pushed_continue
+			jr  _on_tile_pushed_continue
 
 		._on_tile_pushed_kill_enemy
+
 	#endasm
-/*
+
 	en_an_state [enit] = GENERAL_DYING;
 	en_an_count [enit] = 12;
+	en_an_next_frame [enit] = sprite_17_a;
+
 	AY_PLAY_SOUND (SFX_KILL_ENEMY_SHOOT);
 								
 	#ifdef ENABLE_PURSUERS
@@ -182,7 +194,7 @@ for (enit = 0; enit < 3; ++ enit) {
 	#endif
 
 	enems_kill ();
-*/
+
 	#asm
 		._on_tile_pushed_continue
 	#endasm

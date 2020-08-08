@@ -30,7 +30,7 @@
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
 //#define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
 #define PLAYER_LIFE 				l_max_life [level]	// Max and starting life gauge.
-#define PLAYER_REFILL				5		// Life recharge
+#define PLAYER_REFILL				1		// Life recharge
 #define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 #define COMPRESSED_LEVELS 					// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level
