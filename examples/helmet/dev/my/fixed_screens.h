@@ -67,6 +67,8 @@ void game_over (void) {
 		_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 		
 		cpc_UpdateNow (0);
-		espera_activa (250);			
+		AY_PLAY_MUSIC (4)
+		espera_activa (250);
+		AY_STOP_SOUND ();			
 	}
 #endif

@@ -549,13 +549,13 @@ He instalado WYZ Tracker 2.0.X y he reexportado los .MUS, teniendo cuidado de el
 Esto produce los archivos .mus y unos .mus.asm que en teoría deberían ser todos iguales. Uno de esos debería estar dentro de `wyz_player.h`. La idea, al menos en las primeras versiones será:
 
 1.- Renombrar uno de estos archivos como `instrumentos.asm`.
-2.- Usar wyzTrackerParser.exe para obtener `assets/instrumentos.h`.
+2.- Usar wyzTrackerParser.exe para obtener `my/wiz/instrumentos.h`.
 
-En `assets/instrumentos.h` va un bloque `#asm`..`#endasm` donde se definen `TABLA_PAUTAS` (instrumentos) y `TABLA_SONIDOS` (percusiones).
+En `my/wiz/instrumentos.h` va un bloque `#asm`..`#endasm` donde se definen `TABLA_PAUTAS` (instrumentos) y `TABLA_SONIDOS` (percusiones).
 
-He generado `assets/efectos.h` usando `asm2z88dk.exe` para incluir de forma fija, pero habrá que mencionarlo en la doc para que la gente se pueda hacer sus propios efectos.
+He generado `my/wiz/efectos.h` usando `asm2z88dk.exe` para incluir de forma fija, pero habrá que mencionarlo en la doc para que la gente se pueda hacer sus propios efectos.
 
-También necesito una lista con las canciones y los propios binarios de las canciones. Para esto estará `assets/songs.h` que por ahora generaré a mano.
+También necesito una lista con las canciones y los propios binarios de las canciones. Para esto estará `my/wiz/songs.h` que por ahora generaré a mano.
 
 ```c
     extern unsigned char *wyz_songs [0];
@@ -615,3 +615,7 @@ Todo lo de arriba lo resolví bien resuelto y eran idioteces de no inicializar l
 
 [X] Los tipo 7 salen con el sprite mal (empieza a contar desde la base del spriteset y no desde la base de los enemigos, parece ser).
 
+20200807
+========
+
+Corrección de errores y mejoras miscelaneas. Portado Jet Paco en 0.2. Va todo genial.
