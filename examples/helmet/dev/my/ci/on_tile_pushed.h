@@ -41,7 +41,7 @@ for (enit = 0; enit < 3; ++ enit) {
 			ld  a, (hl)
 			ld  (__en_y), a
 
-			ld  bc, 6
+			ld  bc, 7
 			add hl, bc
 			ld  a, (hl)
 			ld  (__en_t), a
