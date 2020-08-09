@@ -472,7 +472,15 @@ void draw_scr (void) {
 				ld  a, b
 				cp  c
 				jr  nz, _open_locks_done
-				
+
+			// Remove x=y=np=0 pseudobug in multilevel games
+			#ifdef COMPRESSED_LEVELS
+				ld  a, b
+				or  d
+				or  e
+				jr  z, _open_locks_done				
+			#endif
+
 			._open_locks_do
 				ld  a, d
 				ld  (__x), a

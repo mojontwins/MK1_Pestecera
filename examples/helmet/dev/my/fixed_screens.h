@@ -63,7 +63,11 @@ void game_over (void) {
 #ifdef COMPRESSED_LEVELS
 	void zone_clear (void) {
 		_x = 10; _y = 11; _gp_gen = spacer; print_str ();
-		_x = 10; _y = 12; _gp_gen = " ZONE CLEAR "; print_str ();
+		#ifdef LANG_ES
+			_x = 10; _y = 12; _gp_gen = "  SUPERADO  "; print_str ();
+		#else
+			_x = 10; _y = 12; _gp_gen = " ZONE CLEAR "; print_str ();
+		#endif
 		_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 		
 		cpc_UpdateNow (0);
