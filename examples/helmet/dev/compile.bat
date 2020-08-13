@@ -94,16 +94,18 @@ if [%1]==[justcompile] goto :end
 :tape
 echo Construyendo cinta
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
-..\..\..\src\utils\apack.exe ..\bin\loading.bin ..\bin\loading.c.bin > nul
-..\..\..\src\utils\apack.exe %game%.bin ..\bin\%game%.c.bin > nul
+del ..\bin\loading.c.bin >nul 2>nul
+..\..\..\src\utils\zx7.exe ..\bin\loading.bin ..\bin\loading.c.bin > nul
+del ..\bin\%game%.c.bin >nul 2>nul
+..\..\..\src\utils\zx7.exe %game%.bin ..\bin\%game%.c.bin > nul
 
-set loader_org=$a300
-rem $a300 = 41728
+set loader_org=$aa00
+rem $aa00 = 43520
 
 ..\..\..\src\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
 	binsize=?..\bin\%game%.c.bin ^
 	scrc_size=?..\bin\loading.c.bin ^
-	mainbin_addr=?41728-..\bin\%game%.c.bin ^
+	mainbin_addr=?43520-..\bin\%game%.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
 	loader_org=%loader_org% ^
 	loader_mode=%cpc_gfx_mode% > nul

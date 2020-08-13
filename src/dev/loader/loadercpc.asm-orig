@@ -25,7 +25,7 @@ org %%%loader_org%%%
 
 	ld     hl, $6400
 	ld     de, $c000
-	call   depack
+	call   dzx7_standard
 
 ; Set palette
 
@@ -42,7 +42,7 @@ org %%%loader_org%%%
 
 	ld     hl, %%%mainbin_addr%%%
 	ld     de, $400
-	call   depack
+	call   dzx7_standard
 
 ; all blacks
 
@@ -89,7 +89,7 @@ loopPal:
 	ret
 
 palette:
-	defb 28, 20, 18, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11
+	defb 20, 22, 30, 6, 28, 14, 7, 11, 4, 0, 12, 10, 19, 5, 21, 18
 
 ;; Modified Topo soft loader
 ;;
@@ -334,120 +334,72 @@ exx
 scf     
 ret     
 
-; aPPack decompressor
-; original source by dwedit
-; very slightly adapted by utopian
-; optimized by Metalbrain
+; -----------------------------------------------------------------------------
+; ZX7 decoder by Einar Saukas, Antonio Villena & Metalbrain
+; "Standard" version (69 bytes only)
+; -----------------------------------------------------------------------------
+; Parameters:
+;   HL: source address (compressed data)
+;   DE: destination address (decompressing)
+; -----------------------------------------------------------------------------
 
-;hl = source
-;de = dest
-
-depack:		ld	ixl,128
-apbranch1:	ldi
-aploop0:	ld	ixh,1		;LWM = 0
-aploop:		call 	ap_getbit
-		jr 	nc,apbranch1
-		call 	ap_getbit
-		jr 	nc,apbranch2
-		ld 	b,0
-		call 	ap_getbit
-		jr 	nc,apbranch3
-		ld	c,16		;get an offset
-apget4bits:	call 	ap_getbit
-		rl 	c
-		jr	nc,apget4bits
-		jr 	nz,apbranch4
-		ld 	a,b
-apwritebyte:	ld 	(de),a		;write a 0
-		inc 	de
-		jr	aploop0
-apbranch4:	and	a
-		ex 	de,hl 		;write a previous byte (1-15 away from dest)
-		sbc 	hl,bc
-		ld 	a,(hl)
-		add	hl,bc
-		ex 	de,hl
-		jr	apwritebyte
-apbranch3:	ld 	c,(hl)		;use 7 bit offset, length = 2 or 3
-		inc 	hl
-		rr 	c
-		ret 	z		;if a zero is encountered here, it is EOF
-		ld	a,2
-		adc	a,b
-		push 	hl
-		ld	iyh,b
-		ld	iyl,c
-		ld 	h,d
-		ld 	l,e
-		sbc 	hl,bc
-		ld 	c,a
-		jr	ap_finishup2
-apbranch2:	call 	ap_getgamma	;use a gamma code * 256 for offset, another gamma code for length
-		dec 	c
-		ld	a,c
-		sub	ixh
-		jr 	z,ap_r0_gamma		;if gamma code is 2, use old r0 offset,
-		dec 	a
-		;do I even need this code?
-		;bc=bc*256+(hl), lazy 16bit way
-		ld 	b,a
-		ld 	c,(hl)
-		inc 	hl
-		ld	iyh,b
-		ld	iyl,c
-
-		push 	bc
+dzx7_standard:
+        ld      a, $80
+dzx7s_copy_byte_loop:
+        ldi                             ; copy literal byte
+dzx7s_main_loop:
+        call    dzx7s_next_bit
+        jr      nc, dzx7s_copy_byte_loop ; next bit indicates either literal or sequence
 		
-		call 	ap_getgamma
-
-		ex 	(sp),hl		;bc = len, hl=offs
+; determine number of bits used for length (Elias gamma coding)
 		push 	de
-		ex 	de,hl
+        ld      bc, 0
+        ld      d, b
+dzx7s_len_size_loop:
+        inc     d
+        call    dzx7s_next_bit
+        jr      nc, dzx7s_len_size_loop
 
-		ld	a,4
-		cp	d
-		jr 	nc,apskip2
-		inc 	bc
-		or	a
-apskip2:	ld 	hl,127
-		sbc 	hl,de
-		jr 	c,apskip3
-		inc 	bc
-		inc 	bc
-apskip3:		pop 	hl		;bc = len, de = offs, hl=junk
-		push 	hl
-		or 	a
-ap_finishup:	sbc 	hl,de
-		pop 	de		;hl=dest-offs, bc=len, de = dest
-ap_finishup2:	ldir
-		pop 	hl
-		ld	ixh,b
-		jr 	aploop
+; determine length
+dzx7s_len_value_loop:
+        call    nc, dzx7s_next_bit
+        rl      c
+        rl      b
+        jr      c, dzx7s_exit           ; check end marker
+        dec     d
+        jr      nz, dzx7s_len_value_loop
+        inc     bc                      ; adjust length
 
-ap_r0_gamma:	call 	ap_getgamma		;and a new gamma code for length
-		push 	hl
-		push 	de
-		ex	de,hl
+; determine offset
+        ld      e, (hl)                 ; load offset flag (1 bit) + offset value (7 bits)
+        inc     hl
+        defb    $cb, $33                ; opcode for undocumented instruction "SLL E" aka "SLS E"
+        jr      nc, dzx7s_offset_end    ; if offset flag is set, load 4 extra bits
+        ld      d, $10                  ; bit marker to load 4 bits
+dzx7s_rld_next_bit:
+        call    dzx7s_next_bit
+        rl      d                       ; insert next bit into D
+        jr      nc, dzx7s_rld_next_bit  ; repeat 4 times, until bit marker is out
+        inc     d                       ; add 128 to DE
+        srl	d			; retrieve fourth bit from D
+dzx7s_offset_end:
+        rr      e                       ; insert fourth bit into E
 
-		ld	d,iyh
-		ld	e,iyl
-		jr 	ap_finishup
-
-
-ap_getbit:	ld	a,ixl
-		add	a,a
-		ld	ixl,a
-		ret	nz
-		ld	a,(hl)
+; copy previous sequence
+        ex      (sp), hl                ; store source, restore destination
+        push    hl                      ; store destination
+        sbc     hl, de                  ; HL = destination - offset - 1
+        pop     de                      ; DE = destination
+        ldir
+dzx7s_exit:
+        pop     hl                      ; restore source address (compressed data)
+        jr      nc, dzx7s_main_loop
+dzx7s_next_bit:
+        add     a, a                    ; check next bit
+        ret     nz                      ; no more bits left?
+        ld      a, (hl)                 ; load another group of 8 bits
 		inc	hl
 		rla
-		ld	ixl,a
 		ret
 
-ap_getgamma:	ld 	bc,1
-ap_getgammaloop:	call 	ap_getbit
-		rl 	c
-		rl 	b
-		call 	ap_getbit
-		jr 	c,ap_getgammaloop
-		ret
+; -----------------------------------------------------------------------------
