@@ -520,85 +520,38 @@
 	"buffers":
 	[
 		{
-			"file": "examples/helmet/mus/compress_songs.bat",
+			"file": "examples/helmet/README.md",
 			"settings":
 			{
-				"buffer_size": 315,
+				"buffer_size": 10293,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "diario.md",
+			"file": "examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
 			"settings":
 			{
-				"buffer_size": 24789,
+				"buffer_size": 3262,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/helmet/dev/my/wyz/songs.h",
+			"file": "examples/helmet/dev/my/ci/on_tile_pushed.h",
 			"settings":
 			{
-				"buffer_size": 544,
+				"buffer_size": 3650,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/helmet/dev/my/levelset.h",
+			"file": "examples/helmet/dev/printer.h",
 			"settings":
 			{
-				"buffer_size": 2509,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "examples/helmet/dev/my/fixed_screens.h",
-			"settings":
-			{
-				"buffer_size": 1961,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "examples/helmet/dev/engine/bullets.h",
-			"settings":
-			{
-				"buffer_size": 5303,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "examples/helmet/dev/engine.h",
-			"settings":
-			{
-				"buffer_size": 11230,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 222 files for \"bxo\"\n\nF:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\engine\\bullets.h:\n   45  #ifdef PLAYER_GENITAL\n   46  \t// Based upon facing >> 1: RIGHT LEFT UP DOWN\n   47: \tsigned char _bxo [] = { 12, -4, 8 - PLAYER_BULLET_X_OFFSET, PLAYER_BULLET_X_OFFSET };\n   48  \tsigned char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, -4, 12};\n   49  \tsigned char _bmxo [] = { PLAYER_BULLET_SPEED, -PLAYER_BULLET_SPEED, 0, 0 };\n   ..\n   95  \t\t\t\t/*\n   96  \t\t\t\trda = p_facing >> 1;\n   97: \t\t\t\t_b_x = gpx + _bxo [rda];\n   98  \t\t\t\t_b_y = gpy + _byo [rda];\n   99  \t\t\t\t_b_mx = _bmxo [rda];\n  ...\n  107  \t\t\t\t\t\tld  b, 0\n  108  \n  109: \t\t\t\t\t\tld  hl, __bxo\n  110  \t\t\t\t\t\tadd hl, bc\t\t\t\t\t\t\n  111  \t\t\t\t\t\tld  d, (hl)\n\nF:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\helmet.asm:\n 1744  ;\tSECTION\ttext\n 1745  \n 1746: .__bxo\n 1747  \tdefm\t\"\"\n 1748  \tdefb\t12\n ....\n 1853  \tld c, a\n 1854  \tld b, 0\n 1855: \tld hl, __bxo\n 1856  \tadd hl, bc\n 1857  \tld d, (hl)\n ....\n 8358  \tXDEF\t_locks_init\n 8359  \tXDEF\t_utaux\n 8360: \tXDEF\t__bxo\n 8361  \tXDEF\t__byo\n 8362  \tXDEF\t_behs\n\nF:\\git\\MK1_Pestecera\\examples\\helmet\\dev\\helmet.map:\n  949  __BMXO\t\t\t\t= 48F1, G: MK1\n  950  __BMYO\t\t\t\t= 48F5, G: MK1\n  951: __BXO\t\t\t\t= 48E9, G: MK1\n  952  __BYO\t\t\t\t= 48ED, G: MK1\n  953  __B_ESTADO\t\t\t= 80B8, G: MK1\n  ...\n 1117  I_41\t\t\t\t= 48B9, L: MK1\n 1118  _BULLETS_UPDATE\t\t\t= 48BA, G: MK1\n 1119: __BXO\t\t\t\t= 48E9, G: MK1\n 1120  __BYO\t\t\t\t= 48ED, G: MK1\n 1121  __BMXO\t\t\t\t= 48F1, G: MK1\n\n8 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 1460,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "examples/helmet/dev/wyz_player.h",
-			"settings":
-			{
-				"buffer_size": 21104,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Unix"
+				"buffer_size": 10665,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -616,6 +569,14 @@
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Disable Package"
+			],
+			[
+				"the",
+				"UI: Select Theme"
 			],
 			[
 				"beauti",
@@ -678,13 +639,27 @@
 	},
 	"expanded_folders":
 	[
-		"/F/git/MK1_Pestecera",
-		"/F/git/MK1_Pestecera/examples",
-		"/F/git/MK1_Pestecera/examples/helmet",
-		"/F/git/MK1_Pestecera/examples/helmet/dev"
+		"/E/git/MK1_Pestecera",
+		"/E/git/MK1_Pestecera/examples",
+		"/E/git/MK1_Pestecera/examples/dogmole",
+		"/E/git/MK1_Pestecera/examples/dogmole/gfx",
+		"/E/git/MK1_Pestecera/examples/helmet",
+		"/E/git/MK1_Pestecera/examples/helmet/dev",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/engine",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/my",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/my/ci"
 	],
 	"file_history":
 	[
+		"/E/git/MK1_Pestecera/examples/helmet/dev/wyz_player.h",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/engine.h",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/engine/bullets.h",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/my/fixed_screens.h",
+		"/E/git/MK1_Pestecera/examples/helmet/mus/compress_songs.bat",
+		"/E/git/MK1_Pestecera/diario.md",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/my/wyz/songs.h",
+		"/E/git/MK1_Pestecera/examples/helmet/dev/my/levelset.h",
 		"/F/git/MK1_Pestecera/examples/helmet/mus/01_ingame.mus.bin",
 		"/F/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/C/git/MK1_Pestecera/lib/cpcwyzlib/cpc_WyzPlayer.asm",
@@ -804,19 +779,11 @@
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_enems_killed.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/definitions.h",
 		"/C/git/mk1/src/dev/compile.bat",
-		"/C/git/mk1/examples/dogmole_ci/dev/compile.bat",
-		"/C/git/mk1/examples/dogmole/dev/printer.h",
-		"/C/git/mk1/examples/dogmole/dev/compile.bat",
-		"/C/git/mk1/src/dev/printer.h",
-		"/C/git/mk1/src/utils/src/ts2bin.bas",
-		"/C/git/mk1/docs/tutorial-cap03.md",
-		"/C/temp/impossamal/dev/mainloop/flick_screen.h",
-		"/C/temp/impossamal/dev/engine.h",
-		"/C/git/mk1/src/dev/engine/player.h"
+		"/C/git/mk1/examples/dogmole_ci/dev/compile.bat"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -1032,197 +999,53 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "examples/helmet/mus/compress_songs.bat",
+					"file": "examples/helmet/README.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 315,
+						"buffer_size": 10293,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								315,
-								315
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "diario.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24789,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								21968,
-								21968
+								10234,
+								10234
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6719.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "examples/helmet/dev/my/wyz/songs.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 544,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								535,
-								535
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "examples/helmet/dev/my/levelset.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2509,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1974,
-								1976
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 494.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "examples/helmet/dev/my/fixed_screens.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1961,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1713,
-								1713
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 339.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "examples/helmet/dev/engine/bullets.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								902,
-								902
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 353.0,
+						"translation.y": 3725.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "examples/helmet/dev/engine.h",
+					"buffer": 1,
+					"file": "examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11230,
+						"buffer_size": 3262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9442,
-								9442
+								635,
+								635
 							]
 						],
 						"settings":
@@ -1231,101 +1054,62 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4961.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 2,
+					"file": "examples/helmet/dev/my/ci/on_tile_pushed.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1460,
+						"buffer_size": 3650,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										194,
-										197
-									],
-									[
-										517,
-										520
-									],
-									[
-										655,
-										658
-									],
-									[
-										808,
-										811
-									],
-									[
-										899,
-										902
-									],
-									[
-										1007,
-										1010
-									],
-									[
-										1176,
-										1179
-									],
-									[
-										1349,
-										1352
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								195,
-								195
+								969,
+								969
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 175.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
-					"buffer": 8,
-					"file": "examples/helmet/dev/wyz_player.h",
-					"semi_transient": false,
+					"buffer": 3,
+					"file": "examples/helmet/dev/printer.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 21104,
+						"buffer_size": 10665,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								524,
-								524
+								152,
+								152
 							]
 						],
 						"settings":
@@ -1337,7 +1121,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1345,7 +1129,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 20.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1360,11 +1144,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1382,7 +1173,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 38.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1424,7 +1215,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 177.0,
+	"side_bar_width": 273.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -294,6 +294,13 @@ La última fase: la moto. Hay que pintar la moto en la pantalla 5, me vale con l
 
 Tras el game over debe mostrarse "CONTINUE?" "ENTER=SI, ESC=NO". Si se continua. debería reiniciarse el nivel actual. Para ello emplearemos `my/ci/after_game_over.h`.
 
+# 20200816
+
+Añadì un mòdulo para que las rocas empujables desplacen a los enemigos, y lo puse para que lo hicieran con los patrollers tipo 3 y los demás, pero esto se ha visto que causa problemas:
+
+- Cuando colocas el boulder sobre el sitio donde aparecen los tipo 7 - no deberían aparecer.
+- Cuando desplazas a un tipo 3 lo puedes sacar fuera de su trayectoria y liarla parda - los tipos 3 deberían morir instantaneamente cuando mueves un boulder contra ellos.
+
 
 
 Actualizar en ZX: `after_game_over` y lo de las 0 vidas.

@@ -77,6 +77,15 @@ for (enit = 0; enit < 3; ++ enit) {
 			cp  c
 			jp  nz, _on_tile_pushed_continue
 
+		// Type 3: insta-kill
+			ld  a, (__en_t)
+			cp  3
+			jp  nz, _on_tile_pushed_do
+
+			jp _on_tile_pushed_kill_enemy
+
+		._on_tile_pushed_do
+
 		// If we got here, pushed tile overlaps the enemy.
 		// We have to push the enemy 16 pixels in the right direction.
 
