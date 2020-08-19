@@ -36,15 +36,15 @@
 				or  l
 			#else
 				ld  a, (__en_y1)
-				ld  b, a
+				ld  d, a
 				sla a
 				sla a
 				sla a
 				sla a
-				sub b
-				ld  b, a
+				sub d
+				ld  d, a
 				ld  a, (__en_x1)
-				add b 
+				add d 
 				ld  e, a 
 				ld  d, 0
 				ld  hl, _map_attr

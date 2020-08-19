@@ -205,6 +205,11 @@ for (enit = 0; enit < 3; ++ enit) {
 	enems_kill ();
 
 	#asm
+			ld  hl, (__baddies_pointer)
+			ld  bc, 8
+			add hl, bc
+			ld  a, (__en_t)
+			ld  (hl), a
 		._on_tile_pushed_continue
 	#endasm
 }
