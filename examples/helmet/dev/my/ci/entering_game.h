@@ -1,11 +1,12 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-// f_0 = f_1 = f_2 = 0;
 #asm
 		xor a
 		ld  (_f_0), a
 		ld  (_f_1), a
+		inc a
+		ld  (_f_3), a
 		ld  a, 5
 		ld  (_f_2), a
 #endasm

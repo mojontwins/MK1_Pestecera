@@ -19,6 +19,7 @@ void bullets_fire (void);
 void bullets_move (void);
 
 // enengine.h
+void enems_pursuers_init (void);
 void enems_init (void);
 void enems_draw_current (void);
 void enems_load (void);

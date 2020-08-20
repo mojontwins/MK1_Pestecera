@@ -29,7 +29,7 @@ void game_ending (void) {
 
 void game_over (void) {
 	_x = 10; _y = 11; _gp_gen = spacer; print_str ();
-	_x = 10; _y = 12; _gp_gen = " GAME OVER! "; print_str ();
+	_x = 10; _y = 12; _gp_gen = " GAME UNDER "; print_str ();
 	_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 	
 	cpc_UpdateNow (0);
@@ -53,7 +53,11 @@ void game_over (void) {
 #ifdef PAUSE_ABORT
 	void pause_screen (void) {
 		_x = 10; _y = 11; _gp_gen = spacer; print_str ();
-		_x = 10; _y = 12; _gp_gen = "   PAUSED   "; print_str ();
+		#ifdef LANG_ES
+			_x = 10; _y = 12; _gp_gen = "   KIETOR   "; print_str ();
+		#else
+			_x = 10; _y = 12; _gp_gen = "   PAUSED   "; print_str ();
+		#endif
 		_x = 10; _y = 13; _gp_gen = spacer; print_str ();
 		
 		cpc_UpdateNow (0);

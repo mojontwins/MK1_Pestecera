@@ -44,7 +44,8 @@ if (c_is_classic) {
 		}
 	}
 } 
-if (level != 1 || n_pant == 17) ingame_text ();
+if (level != 1 || (n_pant == 17 && f_3)) ingame_text ();
+f_3 = 0;
 
 // Half new motorcycle for sale
 

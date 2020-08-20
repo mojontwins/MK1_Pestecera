@@ -89,7 +89,7 @@ loopPal:
 	ret
 
 palette:
-	defb 20, 22, 30, 6, 28, 14, 7, 11, 4, 0, 12, 10, 19, 5, 21, 18
+	defb 3, 20, 4, 21, 6, 0, 27, 25, 22, 28, 12, 14, 15, 13, 5, 11
 
 ;; Modified Topo soft loader
 ;;

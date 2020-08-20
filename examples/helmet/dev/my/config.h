@@ -296,7 +296,7 @@ extern unsigned char def_keys [0];
 //#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
-//#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT
+#define PAUSE_ABORT							// Add ENTER=PAUSE, ESC=ABORT
 //#define GET_X_MORE						// Shows "get X more" when getting an object
 
 // ============================================================================

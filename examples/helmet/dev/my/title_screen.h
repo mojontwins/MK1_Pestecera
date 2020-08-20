@@ -16,6 +16,7 @@ void title_screen (void) {
 	_x = 13; _y = 13; _gp_gen = "1 POQA"; print_str ();
 			 _y = 14; _gp_gen = "2 STICK"; print_str ();
 
+	_x = 2; _y = 18; _gp_gen = "DEDICADO A IGNACIO Y PAQUITO"; print_str ();
 	_x = 5; _y = 19; _gp_gen = "@ 2020 THE MOJON TWINS"; print_str ();
 	cpc_UpdateNow (0);
 

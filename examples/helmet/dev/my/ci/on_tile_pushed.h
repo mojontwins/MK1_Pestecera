@@ -3,6 +3,23 @@
 
 // Tile was pushed from (x0, y0) -> (x1, y1).
 
+// First, put x1, y1 in pixels (precalc)
+#asm	
+		ld  a, (_x1)
+		sla a
+		sla a
+		sla a
+		sla a
+		ld  (_rdx), a
+
+		ld  a, (_y1)
+		sla a
+		sla a
+		sla a
+		sla a
+		ld  (_rdy), a
+#endasm
+
 // First detect if the tile overlaps an enemy (simple)
 for (enit = 0; enit < 3; ++ enit) {
 	enoffsmasi = enoffs + enit;
@@ -51,32 +68,62 @@ for (enit = 0; enit < 3; ++ enit) {
 			jp  c, _on_tile_pushed_continue
 
 		// Overlaps?
-		// if (((_en_x + 8) >> 4) == x0 && 
-		//     ((_en_y + 8) >> 4) == y0
-		// )
+		// v2 = Full 4 points check.
+
+		// Convert 
+
+		// First: x--x
+		//        |  |
+		//        ----
+		._on_tile_pushed_check_top
+			ld  a, (__en_y)
+			and 0xf0
+			ld  c, a
+			ld  a, (_rdy)
+			cp  c
+			jr  nz, _on_tile_pushed_check_bottom
 
 			ld  a, (__en_x)
-			add 8
-			srl a 
-			srl a
-			srl a
-			srl a
+			and 0xf0
 			ld  c, a
-			ld  a, (_x1)
+			ld  a, (_rdx)
 			cp  c
-			jp  nz, _on_tile_pushed_continue
+			jr  z, _on_tile_pushed_overlaps
 
+			ld  a, (__en_x)
+			add 15
+			and 0xf0
+			ld  c, a
+			ld  a, (_rdx)
+			cp  c
+			jr  z, _on_tile_pushed_overlaps
+			jp  _on_tile_pushed_continue
+
+		._on_tile_pushed_check_bottom
 			ld  a, (__en_y)
-			add 8
-			srl a 
-			srl a
-			srl a
-			srl a
+			add 15
+			and 0xf0
 			ld  c, a
-			ld  a, (_y1)
+			ld  a, (_rdy)
 			cp  c
 			jp  nz, _on_tile_pushed_continue
 
+			ld  a, (__en_x)
+			and 0xf0
+			ld  c, a
+			ld  a, (_rdx)
+			cp  c
+			jr  z, _on_tile_pushed_overlaps
+
+			ld  a, (__en_x)
+			add 15
+			and 0xf0
+			ld  c, a
+			ld  a, (_rdx)
+			cp  c
+			jp  nz, _on_tile_pushed_continue
+
+		._on_tile_pushed_overlaps
 		// Type 3: insta-kill
 			ld  a, (__en_t)
 			cp  3
@@ -87,7 +134,7 @@ for (enit = 0; enit < 3; ++ enit) {
 		._on_tile_pushed_do
 
 		// If we got here, pushed tile overlaps the enemy.
-		// We have to push the enemy 16 pixels in the right direction.
+		// We have to push the enemy in the right direction.
 
 			ld  a, (_x0)
 			ld  c, a
@@ -101,15 +148,45 @@ for (enit = 0; enit < 3; ++ enit) {
 											// C reset if A (_x1) >= C (_x0)
 		
 		._on_tile_pushed_left
+			// _en_x = (_en_x - 1) & 0xf0
 			ld  a, (__en_x)
-			sub 16
+			dec a
+			and 0xf0
 			ld  (__en_x), a
-			jr  _on_tile_pushed_done
+			jr  _on_tile_pushed_horizontally_done
 
 		._on_tile_pushed_right
 			ld  a, (__en_x)
 			add 16
+			and 0xf0
 			ld  (__en_x), a
+
+		._on_tile_pushed_horizontally_done
+			// Out of screen check
+			// A = _en_x
+			cp  240
+			jp  nc, _on_tile_pushed_kill_enemy 	// C reset if A (__en_x) >= 240
+
+
+			// Check if we moved to a tile. Checking TWO points should suffice
+			// as enemy is now horizontally aligned
+			call _on_tile_pushed_sr4
+			ld  (_cx1), a
+			ld  (_cx2), a
+			ld  a, (__en_y)
+			call _on_tile_pushed_sr4
+			ld  (_cy1), a
+			ld  a, (__en_y)
+			add 15
+			call _on_tile_pushed_sr4
+			ld  (_cy2), a
+			call _cm_two_points
+			ld  a, (_at1)
+			ld  c, a
+			ld  a, (_at2)
+			or  c
+			jp  nz, _on_tile_pushed_kill_enemy
+
 			jr  _on_tile_pushed_done
 
 		._on_tile_pushed_vertically
@@ -124,58 +201,41 @@ for (enit = 0; enit < 3; ++ enit) {
 
 		._on_tile_pushed_up
 			ld  a, (__en_y)
-			sub 16
+			dec a
+			and 0xf0
 			ld  (__en_y), a
-			jr  _on_tile_pushed_done
+			jr  _on_tile_pushed_vertically_done
 
 		._on_tile_pushed_down
 			ld  a, (__en_y)
 			add 16
+			and 0xf0
 			ld  (__en_y), a
-			
-		._on_tile_pushed_done
 
-		// At this point, enemy has been pushed. If it's been pushed out
-		// of screen or to a solid tile, kill the enemy.
-
-		// Out of screen simple test
-			ld  a, (__en_x)
-			cp  240
-			jr  nc, _on_tile_pushed_kill_enemy 	// C reset if A (__en_x) >= 240
-
-			ld  a, (__en_y)
+		._on_tile_pushed_vertically_done
+			// A = _en_y
 			cp  160
 			jr  nc, _on_tile_pushed_kill_enemy 	// C reset if A (__en_y) >= 160
 			
-		// Check tile. Beh != 0 -> kill
-		// COORD -> (rdy << 4) + rdx - rdy;
-			and 0xf0		
-			ld  c, a 		// C -> (rdy << 4)
-
-			srl a
-			srl a
-			srl a
-			srl a
-			ld  b, a
-
+			call _on_tile_pushed_sr4
+			ld  (_cy1), a
+			ld  (_cy2), a
 			ld  a, (__en_x)
-			srl a
-			srl a
-			srl a
-			srl a
-			add c 
-			sub b
+			call _on_tile_pushed_sr4
+			ld  (_cx1), a
+			ld  a, (__en_x)
+			add 15
+			call _on_tile_pushed_sr4
+			ld  (_cx2), a
+			call _cm_two_points
+			ld  a, (_at1)
+			ld  c, a
+			ld  a, (_at2)
+			or  c
+			jp  nz, _on_tile_pushed_kill_enemy
+			
+		._on_tile_pushed_done
 
-			ld  d, 0
-			ld  e, a
-			ld  hl, _map_attr
-			add hl, de
-			ld  a, (hl)
-			or  a
-
-			jr  nz, _on_tile_pushed_kill_enemy
-
-		// Don't kill. Update arrays
 			ld  hl, (__baddies_pointer) 		// Restore pointer
 
 			ld  a, (__en_x)
@@ -187,6 +247,13 @@ for (enit = 0; enit < 3; ++ enit) {
 			inc hl
 
 			jr  _on_tile_pushed_continue
+
+		._on_tile_pushed_sr4
+			srl a
+			srl a
+			srl a
+			srl a
+			ret
 
 		._on_tile_pushed_kill_enemy
 

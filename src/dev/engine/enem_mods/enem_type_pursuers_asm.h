@@ -24,6 +24,37 @@
 		or  a
 		jr  nz, _eij_state_still_idle
 
+		#ifdef PURSUERS_DONT_SPAWN_IN_OBSTACLE
+			// Don't spawn if tile is not walkable
+			#ifdef USE_AUTO_TILE_SHADOWS
+				ld  a, (__en_x1)
+				ld  (_cx1), a
+				ld  a, (__en_y1)
+				ld  (_cy1), a
+				call _attr_mk2
+				xor a
+				or  l
+			#else
+				ld  a, (__en_y1)
+				ld  d, a
+				sla a
+				sla a
+				sla a
+				sla a
+				sub d
+				ld  d, a
+				ld  a, (__en_x1)
+				add d 
+				ld  e, a 
+				ld  d, 0
+				ld  hl, _map_attr
+				add hl, de
+				ld  a, (hl) 
+				or  a
+			#endif
+			jr  nz, _eij_state_still_idle
+		#endif
+
 		ld  a, (__en_x1)
 		ld  (__en_x), a
 		ld  a, (__en_y1)
