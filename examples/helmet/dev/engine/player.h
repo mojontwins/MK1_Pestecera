@@ -688,11 +688,7 @@ unsigned char player_move (void) {
 				if (p_estado == EST_NORMAL)
 			#endif		
 			{
-				#ifdef MODE_128K
-					p_killme = SFX_SPIKES;
-				#else		
-					p_killme = 4;
-				#endif
+				p_killme = SFX_SPIKES;
 			}
 		}
 	#endif

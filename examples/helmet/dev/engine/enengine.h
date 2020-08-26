@@ -393,18 +393,10 @@ void enems_move (void) {
 						tocado = 1;
 						#if defined(SLOW_DRAIN) && defined(PLAYER_BOUNCES)
 							if (!lasttimehit || ((maincounter & 3) == 0)) {
-								#ifdef MODE_128K
-									p_killme = SFX_ENEMY_HIT;
-								#else							
-									p_killme = 4;
-								#endif
+								p_killme = SFX_ENEMY_HIT;
 							}
 						#else
-							#ifdef MODE_128K
-								p_killme = SFX_ENEMY_HIT;
-							#else							
-								p_killme = 4;
-							#endif
+							p_killme = SFX_ENEMY_HIT;
 						#endif					
 						
 						#ifdef PLAYER_BOUNCES
