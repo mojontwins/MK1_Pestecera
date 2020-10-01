@@ -532,7 +532,7 @@
 			"file": "examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
 			"settings":
 			{
-				"buffer_size": 3262,
+				"buffer_size": 3714,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +541,7 @@
 			"file": "examples/helmet/dev/my/ci/on_tile_pushed.h",
 			"settings":
 			{
-				"buffer_size": 3650,
+				"buffer_size": 4984,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -639,19 +639,14 @@
 	},
 	"expanded_folders":
 	[
-		"/E/git/MK1_Pestecera",
-		"/E/git/MK1_Pestecera/examples",
-		"/E/git/MK1_Pestecera/examples/dogmole",
-		"/E/git/MK1_Pestecera/examples/dogmole/gfx",
-		"/E/git/MK1_Pestecera/examples/helmet",
-		"/E/git/MK1_Pestecera/examples/helmet/dev",
-		"/E/git/MK1_Pestecera/examples/helmet/dev/engine",
-		"/E/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods",
-		"/E/git/MK1_Pestecera/examples/helmet/dev/my",
-		"/E/git/MK1_Pestecera/examples/helmet/dev/my/ci"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/src",
+		"/D/git/MK1_Pestecera/src/dev",
+		"/D/git/MK1_Pestecera/src/dev/engine"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/wyz_player.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/engine.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/engine/bullets.h",
@@ -778,12 +773,11 @@
 		"/C/git/mk1/examples/dogmole_ci/dev/engine.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_enems_killed.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/definitions.h",
-		"/C/git/mk1/src/dev/compile.bat",
-		"/C/git/mk1/examples/dogmole_ci/dev/compile.bat"
+		"/C/git/mk1/src/dev/compile.bat"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -1021,6 +1015,8 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1037,19 +1033,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3262,
+						"buffer_size": 3714,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								635,
-								635
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1066,19 +1064,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3650,
+						"buffer_size": 4984,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								969,
-								969
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1114,6 +1115,8 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1129,7 +1132,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1169,11 +1172,15 @@
 	{
 		"height": 0.0
 	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
 	"pinned_build_system": "",
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
