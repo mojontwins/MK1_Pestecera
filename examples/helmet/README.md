@@ -11,11 +11,11 @@ La primera idea es repetir el mapeado de la fase 1 con un cambio: no hay llaves,
 La mejor forma de modificar el respawn para que no se regeneren los fantasmas es desactivarlo y programándolo en un custom, concretamente en `my/ci/enems_custom_respawn.h`:
 
 ```c
-	// Back to life!
-	if (malotes [enoffsmasi].t != 6) {
-		malotes [enoffsmasi].t &= 0xEF;		
-		malotes [enoffsmasi].life = ENEMIES_LIFE_GAUGE;
-	}
+    // Back to life!
+    if (malotes [enoffsmasi].t != 6) {
+        malotes [enoffsmasi].t &= 0xEF;     
+        malotes [enoffsmasi].life = ENEMIES_LIFE_GAUGE;
+    }
 ```
 
 Y sin olvidarse de desactivar `RESPAWN_ON_ENTER`.
@@ -25,74 +25,74 @@ Y sin olvidarse de desactivar `RESPAWN_ON_ENTER`.
 Activamos los fanties:
 
 ```c
-	#define ENABLE_FANTIES						// If defined, Fanties are enabled!
-	#define FANTIES_BASE_CELL 			4		// Base sprite cell (0, 1, 2 or 3)
-	//#define FANTIES_SIGHT_DISTANCE	64 		// Used in our type 6 enemies.
-	#define FANTIES_MAX_V 				192 	// Flying enemies max speed (also for custom type 6 if you want)
-	#define FANTIES_A 					8		// Flying enemies acceleration.
-	#define FANTIES_LIFE_GAUGE			10		// Amount of shots needed to kill flying enemies.
-	//#define FANTIES_TYPE_HOMING				// Unset for simple fanties.
+    #define ENABLE_FANTIES                      // If defined, Fanties are enabled!
+    #define FANTIES_BASE_CELL           4       // Base sprite cell (0, 1, 2 or 3)
+    //#define FANTIES_SIGHT_DISTANCE    64      // Used in our type 6 enemies.
+    #define FANTIES_MAX_V               192     // Flying enemies max speed (also for custom type 6 if you want)
+    #define FANTIES_A                   8       // Flying enemies acceleration.
+    #define FANTIES_LIFE_GAUGE          10      // Amount of shots needed to kill flying enemies.
+    //#define FANTIES_TYPE_HOMING               // Unset for simple fanties.
 ```
 
 Base cell = 4 significa que necesitamos más sprites. He añadido dos al spriteset. Como por ahora `mkts_om` no genera el índice de punteros `spriteset_mappings.h` tendré que modificarlo para añadir a mano la información, quedando así:
 
 ```c
-	// MTE MK1 (la Churrera) v5.0
-	// Copyleft 2010-2014, 2020 by the Mojon Twins
+    // MTE MK1 (la Churrera) v5.0
+    // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-	// Spriteset mappings. 
-	// One entry per sprite face in the spriteset!
+    // Spriteset mappings. 
+    // One entry per sprite face in the spriteset!
 
-	#define SWSPRITES_ALL  18
+    #define SWSPRITES_ALL  18
 
-	unsigned char sm_cox [] = { 
-		0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0 						// <= extra sprite faces added
-	};
+    unsigned char sm_cox [] = { 
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0                        // <= extra sprite faces added
+    };
 
-	unsigned char sm_coy [] = { 
-		0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0 						// <= extra sprite faces added
-	};
+    unsigned char sm_coy [] = { 
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0                        // <= extra sprite faces added
+    };
 
-	void *sm_invfunc [] = {
-		cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-		cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-		cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-		cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16,
-		cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16 // <= extra sprite faces added
-	};
+    void *sm_invfunc [] = {
+        cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
+        cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
+        cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
+        cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16,
+        cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16 // <= extra sprite faces added
+    };
 
-	void *sm_updfunc [] = {
-		cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
-		cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
-		cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
-		cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
-		cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b // <= extra sprite faces added
-	};
+    void *sm_updfunc [] = {
+        cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
+        cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
+        cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
+        cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b,
+        cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b // <= extra sprite faces added
+    };
 
-	extern void *sm_sprptr [0]; 
-	#asm
-		._sm_sprptr
-			defw _sprites + 0x000, _sprites + 0x040, _sprites + 0x080, _sprites + 0x0C0
-			defw _sprites + 0x100, _sprites + 0x140, _sprites + 0x180, _sprites + 0x1C0
-			defw _sprites + 0x200, _sprites + 0x240, _sprites + 0x280, _sprites + 0x2C0
-			defw _sprites + 0x300, _sprites + 0x340, _sprites + 0x380, _sprites + 0x3C0
-			defw _sprites + 0x400, _sprites + 0x440 // <= extra sprite faces added
-	#endasm
+    extern void *sm_sprptr [0]; 
+    #asm
+        ._sm_sprptr
+            defw _sprites + 0x000, _sprites + 0x040, _sprites + 0x080, _sprites + 0x0C0
+            defw _sprites + 0x100, _sprites + 0x140, _sprites + 0x180, _sprites + 0x1C0
+            defw _sprites + 0x200, _sprites + 0x240, _sprites + 0x280, _sprites + 0x2C0
+            defw _sprites + 0x300, _sprites + 0x340, _sprites + 0x380, _sprites + 0x3C0
+            defw _sprites + 0x400, _sprites + 0x440 // <= extra sprite faces added
+    #endasm
 ```
 
 Para hacer que los fanties dejen una llave podemos meter código en `my/ci/on_enems_killed.h`:
 
 ```c
-	// Note that _en_t has bit 4 raised, so:
-	if (_en_t == 0x16) {	
-		// Fanties give you a key
-		++ p_keys;
-		AY_PLAY_SOUND (SFX_KEY_GET);
-	}
+    // Note that _en_t has bit 4 raised, so:
+    if (_en_t == 0x16) {    
+        // Fanties give you a key
+        ++ p_keys;
+        AY_PLAY_SOUND (SFX_KEY_GET);
+    }
 ```
 
 ## Tercer nivel
@@ -100,38 +100,38 @@ Para hacer que los fanties dejen una llave podemos meter código en `my/ci/on_en
 (level == 2, que se cuenta desde 0) añadimos los tiestos al levelset. Nótese como se reaprovecha el mapa pero no los enemigos / hotspots:
 
 ```c
-	// Include here your compressed binaries:
+    // Include here your compressed binaries:
 
-	extern unsigned char map_bolts0 [0];
-	extern unsigned char map_bolts1 [0];
-	extern unsigned char enems_hotspots0 [0];
-	extern unsigned char enems_hotspots1 [0];
-	extern unsigned char enems_hotspots2 [0];
-	extern unsigned char behs0_1 [0];
+    extern unsigned char map_bolts0 [0];
+    extern unsigned char map_bolts1 [0];
+    extern unsigned char enems_hotspots0 [0];
+    extern unsigned char enems_hotspots1 [0];
+    extern unsigned char enems_hotspots2 [0];
+    extern unsigned char behs0_1 [0];
 
-	#asm
-		._map_bolts0
-			BINARY "../bin/mapa0c.bin"	
-		._map_bolts1
-			BINARY "../bin/mapa1c.bin"
-		._enems_hotspots0
-			BINARY "../bin/enems_hotspots0c.bin"
-		._enems_hotspots1
-			BINARY "../bin/enems_hotspots1c.bin"
-		._enems_hotspots2
-			BINARY "../bin/enems_hotspots2c.bin"
-		._behs0_1
-			BINARY "../bin/behs0_1c.bin"
-	#endasm
+    #asm
+        ._map_bolts0
+            BINARY "../bin/mapa0c.bin"  
+        ._map_bolts1
+            BINARY "../bin/mapa1c.bin"
+        ._enems_hotspots0
+            BINARY "../bin/enems_hotspots0c.bin"
+        ._enems_hotspots1
+            BINARY "../bin/enems_hotspots1c.bin"
+        ._enems_hotspots2
+            BINARY "../bin/enems_hotspots2c.bin"
+        ._behs0_1
+            BINARY "../bin/behs0_1c.bin"
+    #endasm
 
-	// Define your level sequence array here:
-	// map_w, map_h, scr_ini, ini_x, ini_y, max_objs, 
-	// c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
-	LEVEL levels [] = {
-		{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
-		{ 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
-		{ 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 }
-	};
+    // Define your level sequence array here:
+    // map_w, map_h, scr_ini, ini_x, ini_y, max_objs, 
+    // c_map_bolts, [c_tileset], c_enems_hotspots, c_behs, [c_sprites], [script], music_id
+    LEVEL levels [] = {
+        { 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots0, behs0_1, 1 },
+        { 1, 23, 23, 12, 7, 99, map_bolts1, enems_hotspots1, behs0_1, 1 },
+        { 1, 23, 23, 12, 7, 99, map_bolts0, enems_hotspots2, behs0_1, 1 }
+    };
 ```
 
 # 20200719
@@ -158,28 +158,28 @@ Vamos a programar la persistencia de breakables en un custom empleando el CIP `o
 La dirección base de la pantalla la vamos a calcular en `on_entering_screen.h`:
 
 ```c
-	// on_entering_screen.h
-	
-	c_screen_address = mapa + n_pant * 75;
+    // on_entering_screen.h
+    
+    c_screen_address = mapa + n_pant * 75;
 ```
 
 Y con esto:
 
 ```c
-	// on_wall_broken.h
+    // on_wall_broken.h
 
-	_gp_gen = (c_screen_address + (gpaux >> 1));
-	rda = *_gp_gen;
+    _gp_gen = (c_screen_address + (gpaux >> 1));
+    rda = *_gp_gen;
 
-	if (gpaux & 1) {
-		// Modify right nibble
-		rda = (rda & 0xf0) | BREAKABLE_WALLS_BROKEN;
-	} else {
-		// Modify left nibble
-		rda = (rda & 0x0f) | (BREAKABLE_WALLS_BROKEN<<4);
-	}
+    if (gpaux & 1) {
+        // Modify right nibble
+        rda = (rda & 0xf0) | BREAKABLE_WALLS_BROKEN;
+    } else {
+        // Modify left nibble
+        rda = (rda & 0x0f) | (BREAKABLE_WALLS_BROKEN<<4);
+    }
 
-	*_gp_gen = rda;
+    *_gp_gen = rda;
 ```
 
 Obviamente el tile que se escribe en el mapa debe ser del rango 0..15 porque estamos en packed.
@@ -194,7 +194,7 @@ Porque siempre es bueno repetirlo para recordarlo. Estos son los pasos:
 4. Uso `wyztrackerparser.exe` para obtener `my/wyz/instrumentos.h`:
 
 ```
-	$ ..\..\..\src\utils\wyzTrackerParser.exe instrumentos.asm ..\dev\my\wyz\instrumentos.h
+    $ ..\..\..\src\utils\wyzTrackerParser.exe instrumentos.asm ..\dev\my\wyz\instrumentos.h
 ```
 
 Oye, no está tan mal.
@@ -208,82 +208,82 @@ Podría haberlo hecho usando hotspots pero no me dan 6 pantallas para 5 rehenes 
 * Si `level == 1` y `p_objs == 5`, fin.
 
 ```c
-	// extra_functions.h
-		
-	void persist_tile (void) {
-		// c_screen_address must be set
-		// gpaux must be COORDS (_x, _y)
-		// rdt = substitute with this tile
-		
-		_gp_gen = (c_screen_address + (gpaux >> 1));
-		rda = *_gp_gen;
+    // extra_functions.h
+        
+    void persist_tile (void) {
+        // c_screen_address must be set
+        // gpaux must be COORDS (_x, _y)
+        // rdt = substitute with this tile
+        
+        _gp_gen = (c_screen_address + (gpaux >> 1));
+        rda = *_gp_gen;
 
-		if (gpaux & 1) {
-			// Modify right nibble
-			rda = (rda & 0xf0) | rdt;
-		} else {
-			// Modify left nibble
-			rda = (rda & 0x0f) | (rdt<<4);
-		}
+        if (gpaux & 1) {
+            // Modify right nibble
+            rda = (rda & 0xf0) | rdt;
+        } else {
+            // Modify left nibble
+            rda = (rda & 0x0f) | (rdt<<4);
+        }
 
-		*_gp_gen = rda;
-	}
+        *_gp_gen = rda;
+    }
 ```
 
 Cambiamos tiles 13 por tile 21:
 
 ```c
-	// map_renderer_t_modification.h
+    // map_renderer_t_modification.h
 
-	#asm
-			ld  a, (__t)
-			or  a
-			jr  nz, _ds_custom_packed_noalt
+    #asm
+            ld  a, (__t)
+            or  a
+            jr  nz, _ds_custom_packed_noalt
 
-			// Alt tile #2
+            // Alt tile #2
 
-		._ds_custom_packed_alt
-			call _rand
-			ld  a, l
-			and 15
-			cp  1
-			jr  z, _ds_custom_packed_alt_subst
+        ._ds_custom_packed_alt
+            call _rand
+            ld  a, l
+            and 15
+            cp  1
+            jr  z, _ds_custom_packed_alt_subst
 
-			ld  a, (__t)
-			jr  _ds_custom_packed_noalt
+            ld  a, (__t)
+            jr  _ds_custom_packed_noalt
 
-		._ds_custom_packed_alt_subst
-			ld  a, 30
-			ld  (__t), a
+        ._ds_custom_packed_alt_subst
+            ld  a, 30
+            ld  (__t), a
 
-		._ds_custom_packed_noalt
+        ._ds_custom_packed_noalt
 
-			// Hostages, tile == 13?
-			cp  13
-			jr  nz, _ds_custom_end
+            // Hostages, tile == 13?
+            cp  13
+            jr  nz, _ds_custom_end
 
-			// On level 1?
-			ld  a, (_level)
-			dec a
-			jr  nz, _ds_custom_end
+            // On level 1?
+            ld  a, (_level)
+            dec a
+            jr  nz, _ds_custom_end
 
-			// Clear behs
-			ld  a, 128
-			ld  hl, _map_attr
-			add hl, bc
-			ld  (hl), a
+            // Clear behs
+            ld  a, 128
+            ld  hl, _map_attr
+            add hl, bc
+            ld  (hl), a
 
-			ld  a, 21
-			ld  (__t), a
+            ld  a, 21
+            ld  (__t), a
 
-		._ds_custom_end
-	#endasm
+        ._ds_custom_end
+    #endasm
 ```
 
 Y ahora hay que detectar y modificar:
 
 ```c
-	// 
+    // 
 ```
 
 # 20200721
@@ -304,3 +304,7 @@ Añadì un mòdulo para que las rocas empujables desplacen a los enemigos, y lo 
 
 
 Actualizar en ZX: `after_game_over` y lo de las 0 vidas.
+
+~
+
+Sorted! Ya lo han probau y el juego se puede de sacal.
