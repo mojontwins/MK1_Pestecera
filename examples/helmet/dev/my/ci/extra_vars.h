@@ -47,7 +47,7 @@ unsigned char *level_briefings [] = {
 		"      RESCATA 5 REHENES!",
 		0,
 		0,
-		"LLAGA A LA META SIN MUNICION",
+		"LLEGA A LA META SIN MUNICION",
 		0,
 		0,
 		"EXPLOTA LA MOTO CON UNA BOMBA!"
