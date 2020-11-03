@@ -78,7 +78,7 @@ echo Generating LUTs
 ..\..\..\src\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
 ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
 echo Compilando guego
-zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DLANG_ES -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
+zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
 rem zcc +cpc -a -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.asm tilemap_conf.asm mk1.c > nul
 ..\..\..\src\utils\printsize.exe %game%.bin
 ..\..\..\src\utils\printsize.exe scripts.bin

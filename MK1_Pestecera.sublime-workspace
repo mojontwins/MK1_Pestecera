@@ -5,31 +5,31 @@
 		[
 			[
 				"AY_S",
-				"AY_PLAY_SOUND	(diario.md)"
+				"AY_PLAY_SOUND\t(diario.md)"
 			],
 			[
 				"__",
-				"__tile_address	abc"
+				"__tile_address\tabc"
 			],
 			[
 				"mkts",
-				"mkts_om.exe	(mkts_om.bas)"
+				"mkts_om.exe\t(mkts_om.bas)"
 			],
 			[
 				"doS",
-				"doStrait2x2	abc"
+				"doStrait2x2\tabc"
 			],
 			[
 				"patter",
-				"patternWidthInPixels	abc"
+				"patternWidthInPixels\tabc"
 			],
 			[
 				"cpcMode",
-				"cpcMode0GetBitmapFrom	abc"
+				"cpcMode0GetBitmapFrom\tabc"
 			],
 			[
 				"_s",
-				"_simple_coco_update_continue	abc"
+				"_simple_coco_update_continue\tabc"
 			],
 			[
 				"eij_state_moving",
@@ -37,7 +37,7 @@
 			],
 			[
 				"_eij_stil",
-				"_eij_state_still_appearing	abc"
+				"_eij_state_still_appearing\tabc"
 			],
 			[
 				"eij_",
@@ -45,75 +45,75 @@
 			],
 			[
 				"enems_hotspot",
-				"enems_hotspots_0	abc"
+				"enems_hotspots_0\tabc"
 			],
 			[
 				"custom",
-				"custom_animation.h	(custom_animation.h)"
+				"custom_animation.h\t(custom_animation.h)"
 			],
 			[
 				"BREAL",
-				"BREAKABLE_WALLS	(bullets.h)"
+				"BREAKABLE_WALLS\t(bullets.h)"
 			],
 			[
 				"bullets_",
-				"bullets_update	abc"
+				"bullets_update\tabc"
 			],
 			[
 				"ENABLE",
-				"ENABLE_FANTIES	abc"
+				"ENABLE_FANTIES\tabc"
 			],
 			[
 				"FANTI",
-				"FANTIES_TYPE_HOMING	(config.h)"
+				"FANTIES_TYPE_HOMING\t(config.h)"
 			],
 			[
 				"invali",
-				"invalidate_tile	(printer.h)"
+				"invalidate_tile\t(printer.h)"
 			],
 			[
 				"VIEW",
-				"VIEWPORT_Y	abc"
+				"VIEWPORT_Y\tabc"
 			],
 			[
 				"inval",
-				"invalidate_tile	(printer.h)"
+				"invalidate_tile\t(printer.h)"
 			],
 			[
 				"main",
-				"maincounter	abc"
+				"maincounter\tabc"
 			],
 			[
 				"VIE",
-				"VIEWPORT_Y	(printer.h)"
+				"VIEWPORT_Y\t(printer.h)"
 			],
 			[
 				"draw_colou",
-				"draw_coloured_tile	(printer.h)"
+				"draw_coloured_tile\t(printer.h)"
 			],
 			[
 				"invalidate",
-				"invalidate_viewport	(printer.h)"
+				"invalidate_viewport\t(printer.h)"
 			],
 			[
 				"orig",
-				"orig_tile	abc"
+				"orig_tile\tabc"
 			],
 			[
 				"draw_om",
-				"draw_invalidate_coloured_tile_gamearea	(printer.h)"
+				"draw_invalidate_coloured_tile_gamearea\t(printer.h)"
 			],
 			[
 				"draw_coloured_ti",
-				"draw_coloured_tile_gamearea	abc"
+				"draw_coloured_tile_gamearea\tabc"
 			],
 			[
 				"dra",
-				"draw_invalidate_coloured_tile_gamearea	abc"
+				"draw_invalidate_coloured_tile_gamearea\tabc"
 			],
 			[
 				"draw",
-				"draw_coloured_tile_gamearea	abc"
+				"draw_coloured_tile_gamearea\tabc"
 			],
 			[
 				"baddies",
@@ -121,127 +121,127 @@
 			],
 			[
 				"baddiesCou",
-				"baddiesCountGenital	abc"
+				"baddiesCountGenital\tabc"
 			],
 			[
 				"textMap",
-				"textMapH	abc"
+				"textMapH\tabc"
 			],
 			[
 				"textT",
-				"textTilesetfile	abc"
+				"textTilesetfile\tabc"
 			],
 			[
 				"TextBox",
-				"TextBox_GetText	abc"
+				"TextBox_GetText\tabc"
 			],
 			[
 				"text",
-				"textEnemsLoadFile	abc"
+				"textEnemsLoadFile\tabc"
 			],
 			[
 				"textt",
-				"textTilesetfile	abc"
+				"textTilesetfile\tabc"
 			],
 			[
 				"button",
-				"buttonTilesetfile	abc"
+				"buttonTilesetfile\tabc"
 			],
 			[
 				"Button_",
-				"Button_Event	abc"
+				"Button_Event\tabc"
 			],
 			[
 				"buttonC",
-				"buttonCreateNew	abc"
+				"buttonCreateNew\tabc"
 			],
 			[
 				"Text",
-				"TextBox_GetText	abc"
+				"TextBox_GetText\tabc"
 			],
 			[
 				"textScr",
-				"textScrW	abc"
+				"textScrW\tabc"
 			],
 			[
 				"Textb",
-				"TextBox_New	abc"
+				"TextBox_New\tabc"
 			],
 			[
 				"TILANI",
-				"TILANIMS_TYPE_SELECT_FLAG	abc"
+				"TILANIMS_TYPE_SELECT_FLAG\tabc"
 			],
 			[
 				"TILANIMS_SE",
-				"TILANIMS_TYPE_SELECT_FLAG	(config.h)"
+				"TILANIMS_TYPE_SELECT_FLAG\t(config.h)"
 			],
 			[
 				"TILANIMS_TP",
-				"TILANIMS_TYPE_ONE	abc"
+				"TILANIMS_TYPE_ONE\tabc"
 			],
 			[
 				"TILAN",
-				"TILANIMS_PERIOD	(config.h)"
+				"TILANIMS_PERIOD\t(config.h)"
 			],
 			[
 				"_va_coll",
-				"_va_collision_done	abc"
+				"_va_collision_done\tabc"
 			],
 			[
 				"MA",
-				"MAX_BULLETS	abc"
+				"MAX_BULLETS\tabc"
 			],
 			[
 				"clausuas",
-				"clausulasUsed	abc"
+				"clausulasUsed\tabc"
 			],
 			[
 				"CUSTOM",
-				"CUSTOM_HIT	(player.h)"
+				"CUSTOM_HIT\t(player.h)"
 			],
 			[
 				"PLAY_SAM",
-				"PLAY_SAMPLE_ON_DEATH	(config.h)"
+				"PLAY_SAMPLE_ON_DEATH\t(config.h)"
 			],
 			[
 				"LEVEL_ENDING",
-				"LEVEL_ENDING_GOOD	(script.spt)"
+				"LEVEL_ENDING_GOOD\t(script.spt)"
 			],
 			[
 				"LEVEL_END",
-				"LEVEL_ENDING_BAD	(script.spt)"
+				"LEVEL_ENDING_BAD\t(script.spt)"
 			],
 			[
 				"LEVEL_CAS",
-				"LEVEL_CASTLE_B	(script.spt)"
+				"LEVEL_CASTLE_B\t(script.spt)"
 			],
 			[
 				"PLA",
-				"PLAYER_DRUNK_EXPR	(va_genital.h)"
+				"PLAYER_DRUNK_EXPR\t(va_genital.h)"
 			],
 			[
 				"_player_mvoe",
-				"_player_move_af_holed_set	abc"
+				"_player_move_af_holed_set\tabc"
 			],
 			[
 				"_player_move",
-				"_player_move_af_incframe_done	abc"
+				"_player_move_af_incframe_done\tabc"
 			],
 			[
 				"p_ct",
-				"p_state_ct	abc"
+				"p_state_ct\tabc"
 			],
 			[
 				"EST_",
-				"EST_HOLED	abc"
+				"EST_HOLED\tabc"
 			],
 			[
 				"_enems",
-				"_enems_move_pregotten_set	abc"
+				"_enems_move_pregotten_set\tabc"
 			],
 			[
 				"bye",
-				"byteCoordinates	abc"
+				"byteCoordinates\tabc"
 			],
 			[
 				"sp_nana",
@@ -305,7 +305,7 @@
 			],
 			[
 				"double_hots",
-				"double_hotspots_do	(mainloop.h)"
+				"double_hotspots_do\t(mainloop.h)"
 			],
 			[
 				"double",
@@ -317,23 +317,23 @@
 			],
 			[
 				"togg",
-				"toggle_switch	(extra_vars.h)"
+				"toggle_switch\t(extra_vars.h)"
 			],
 			[
 				"toggle",
-				"toggle_timer	(extra_vars.h)"
+				"toggle_timer\t(extra_vars.h)"
 			],
 			[
 				"HOTSPOT_TYPE_TO",
-				"HOTSPOT_TYPE_TOGGLE_OFF	(extra_vars.h)"
+				"HOTSPOT_TYPE_TOGGLE_OFF\t(extra_vars.h)"
 			],
 			[
 				"wate",
-				"water_strip	(on_entering_screen.h)"
+				"water_strip\t(on_entering_screen.h)"
 			],
 			[
 				"PPU_CTRL",
-				"PPU_CTRL_VAR1	(neslib.s)"
+				"PPU_CTRL_VAR1\t(neslib.s)"
 			],
 			[
 				"frame",
@@ -381,7 +381,7 @@
 			],
 			[
 				"chac_chacs_queu",
-				"chac_chacs_queue_write	(bss.h)"
+				"chac_chacs_queue_write\t(bss.h)"
 			],
 			[
 				"chac",
@@ -409,27 +409,27 @@
 			],
 			[
 				"max_",
-				"max_chac_chacs	(tile_chac_chac.h)"
+				"max_chac_chacs\t(tile_chac_chac.h)"
 			],
 			[
 				"ENABLE_CH",
-				"ENABLE_TILE_CHAC_CHAC	(map_detectors.h)"
+				"ENABLE_TILE_CHAC_CHAC\t(map_detectors.h)"
 			],
 			[
 				"chac_chac",
-				"chac_chacs_ct	(tile_chac_chac.h)"
+				"chac_chacs_ct\t(tile_chac_chac.h)"
 			],
 			[
 				"chac_c",
-				"chac_chacs_state	(tile_chac_chac.h)"
+				"chac_chacs_state\t(tile_chac_chac.h)"
 			],
 			[
 				"addressboo",
-				"addressbook_export	(export.inc)"
+				"addressbook_export\t(export.inc)"
 			],
 			[
 				"bedework_rec",
-				"bedework_records_starting_with	(simple_bedework_rest_client.php)"
+				"bedework_records_starting_with\t(simple_bedework_rest_client.php)"
 			],
 			[
 				"start",
@@ -473,7 +473,7 @@
 			],
 			[
 				"getg",
-				"get_group	(list.inc)"
+				"get_group\t(list.inc)"
 			],
 			[
 				"rcmail",
@@ -501,7 +501,7 @@
 			],
 			[
 				"u",
-				"uid	(rcube_webdav_addressbook.php)"
+				"uid\t(rcube_webdav_addressbook.php)"
 			],
 			[
 				"webdav_aboo",
@@ -513,35 +513,22 @@
 			],
 			[
 				"uploadf",
-				"uploadform	(app.js)"
+				"uploadform\t(app.js)"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"contents": "Searching 112 files for \"LANG_ES\"\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\compile.bat:\n   79  ..\\..\\..\\src\\utils\\wyzTrackerParser.exe ..\\mus\\instrumentos.asm assets\\instrumentos.h\n   80  echo Compilando guego\n   81: zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DLANG_ES -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul\n   82  rem zcc +cpc -a -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.asm tilemap_conf.asm mk1.c > nul\n   83  ..\\..\\..\\src\\utils\\printsize.exe %game%.bin\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci\\after_game_over.h:\n    9  // Continue screen\n   10  if (level) {\n   11: 	#ifdef LANG_ES\n   12  		_x = 10; _y = 12; _gp_gen = \" CONTINUAR?\"; print_str ();\n   13  		_x = 10; _y = 13; _gp_gen = \"   1   SI   \"; print_str ();\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci\\entering_screen.h:\n   14  \n   15  if (c_is_classic) {\n   16: 	#ifdef LANG_ES\n   17  		_gp_gen = \" PON 5 BOMBAS EN EL ORDENADOR\";\n   18  	#else\n   ..\n   23  		if (f_1) {\n   24  			_gp_gen = decos_bombs; draw_decorations ();\n   25: 			#ifdef LANG_ES\n   26  				_gp_gen = \"BOMBAS PUESTAS! VUELVE A BASE!\";\n   27  			#else\n   ..\n   29  			#endif\n   30  		} else {\n   31: 			#ifdef LANG_ES\n   32  				_gp_gen = \" ACERCATE Y COLOCA LAS BOMBAS\";\n   33  			#else\n   ..\n   37  	} else {\n   38  		if (level > 4 && n_pant < 23) {\n   39: 			#ifdef LANG_ES\n   40  				_gp_gen = \"MATA FANTASMAS,CONSIGUE LLAVES\";\n   41  			#else\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci\\extra_routines.h:\n   16  	}\n   17  \n   18: 	#ifdef LANG_ES\n   19  		_gp_gen = \"  HECHO! AHORA VUELVE A BASE  \";\n   20  	#else\n   ..\n   28  		f_0 = 0;\n   29  		AY_PLAY_SOUND (SFX_START);\n   30: 		#ifdef LANG_ES\n   31  			_gp_gen = \"     VENDO MOTO SEMINUEVA     \";\n   32  		#else\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci\\extra_vars.h:\n   21  \n   22  unsigned char *level_names [] = {\n   23: 	#ifdef LANG_ES\n   24  		\"EL COMIENZO!\",\n   25  		\" RESCATALOS\",\n   ..\n   43  \n   44  unsigned char *level_briefings [] = {\n   45: 	#ifdef LANG_ES\n   46  		\"     AVANZA HASTA LA META\",\n   47  		\"      RESCATA 5 REHENES!\",\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\ci\\on_special_tile.h:\n   50  	// Update screen\n   51  \n   52: 		#ifdef LANG_ES\n   53  			ld  hl, _nametable + 15\n   54  			ld  de, 0x000F\n\nZ:\\MK1_Pestecera\\examples\\helmet\\dev\\my\\fixed_screens.h:\n   14  	cpc_ShowTileMap (1);\n   15  \n   16: 	#ifdef LANG_ES\n   17  		_x = 7; _y = 20; _gp_gen = \"BRAVO SARGENTO!!!!\"; print_str ();\n   18  		_x = 2; _y = 22; _gp_gen = \"YA TE PUEDES IR A LA GUERRA\"; print_str ();\n   ..\n   54  	void pause_screen (void) {\n   55  		_x = 10; _y = 11; _gp_gen = spacer; print_str ();\n   56: 		#ifdef LANG_ES\n   57  			_x = 10; _y = 12; _gp_gen = \"   KIETOR   \"; print_str ();\n   58  		#else\n   ..\n   68  	void zone_clear (void) {\n   69  		_x = 10; _y = 11; _gp_gen = spacer; print_str ();\n   70: 		#ifdef LANG_ES\n   71  			_x = 10; _y = 12; _gp_gen = \"  SUPERADO  \"; print_str ();\n   72  		#else\n\n14 matches across 7 files\n",
-			"settings":
-			{
-				"buffer_size": 3008,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "examples/helmet/dev/compile.bat",
-			"settings":
-			{
-				"buffer_size": 6237,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 132.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -601,7 +588,10 @@
 	},
 	"console":
 	{
-		"height": 118.0
+		"height": 118.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -612,8 +602,22 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/examples",
+		"/D/git/MK1_Pestecera/examples/helmet",
+		"/D/git/MK1_Pestecera/examples/helmet/dev",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/my"
+	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop/game_loop.h",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/my/config.h",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
+		"/Z/MK1_Pestecera/examples/helmet/dev/compile.bat",
+		"/Z/MK1_Pestecera/examples/helmet/README.md",
 		"/Z/MK1_Pestecera/examples/helmet/dev/oooooo.sna",
 		"/Z/MK1_Pestecera/examples/helmet/dev/my/ci/extra_vars.h",
 		"/D/git/MK1_Pestecera/examples/helmet/README.md",
@@ -736,22 +740,18 @@
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_vars.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_game.h",
 		"/C/git/mk1/examples/dogmole_ci/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt",
-		"/C/git/mk1/examples/dogmole/dev/my/msc.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_routines.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine/player.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/mainloop.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/on_tile_pushed.h"
+		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"Z:\\MK1_Pestecera\\examples\\helmet\\dev",
 			"F:\\git\\MK1_Pestecera\\examples\\helmet",
 			"C:\\git\\MK1_Pestecera\\src\\dev",
@@ -771,6 +771,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"def_keys_joy",
 			"LANG_ES",
 			"bxo",
 			"wyz",
@@ -897,8 +898,7 @@
 			"draw_coloured_tile",
 			"p_facing",
 			"ALTERNATE_ANIMATION",
-			"FIXBITS",
-			"_en_y"
+			"FIXBITS"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -962,130 +962,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"settings":
-					{
-						"buffer_size": 3008,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										268,
-										275
-									],
-									[
-										660,
-										667
-									],
-									[
-										914,
-										921
-									],
-									[
-										1085,
-										1092
-									],
-									[
-										1222,
-										1229
-									],
-									[
-										1381,
-										1388
-									],
-									[
-										1555,
-										1562
-									],
-									[
-										1706,
-										1713
-									],
-									[
-										1905,
-										1912
-									],
-									[
-										2036,
-										2043
-									],
-									[
-										2231,
-										2238
-									],
-									[
-										2408,
-										2415
-									],
-									[
-										2685,
-										2692
-									],
-									[
-										2890,
-										2897
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								270,
-								270
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "examples/helmet/dev/compile.bat",
-					"settings":
-					{
-						"buffer_size": 6237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4521,
-								4531
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Batch File/Batch File.tmLanguage"
-						},
-						"translation.x": 272.0,
-						"translation.y": 803.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1140,6 +1018,8 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
+	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
 		"height": 40.0
@@ -1148,6 +1028,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1156,6 +1037,7 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1165,10 +1047,26 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 167.0,
-	"status_bar_visible": true
+	"side_bar_width": 294.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
