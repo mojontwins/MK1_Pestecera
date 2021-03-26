@@ -202,7 +202,7 @@
 		#endif
 
 		// Render
-		if (o_pant == n_pant) {
+		if (o_pant == n_pant) {			
 			cpc_UpdateNow (1);
 		}
 

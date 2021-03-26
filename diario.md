@@ -619,3 +619,11 @@ Todo lo de arriba lo resolví bien resuelto y eran idioteces de no inicializar l
 ========
 
 Corrección de errores y mejoras miscelaneas. Portado Jet Paco en 0.2. Va todo genial.
+
+20210326
+========
+
+Greenweb me apunta fallos y carencias porque está siendo tan osado como para ponerse a escribir un juego sin documentación. ¡Ole!
+
+Voy a tratar de resolverlas.
+
