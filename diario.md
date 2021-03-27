@@ -627,3 +627,21 @@ Greenweb me apunta fallos y carencias porque está siendo tan osado como para po
 
 Voy a tratar de resolverlas.
 
+20210327
+========
+
+Hoy trataré que `mkts_om.exe` sea capaz de generar `spriteset_mappings.h`. Esto tiene dos trabajos:
+
+- El fácil es que lo genere para el modo `sprites`, con todos los sprites iguales.
+- El complicado es que haya un modo para spritesets con tamaños variables, y para ello habrá que leer un script.
+
+Vamos con lo primero intentando que sea reutilizable.
+
+Ahora mismo los sprites se convierten con:
+
+```c
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin silent > nul
+```
+
+Podemos añadir un nuevo parámetro `mapping=file.h` y si existe que se genere el código necesario.
+
