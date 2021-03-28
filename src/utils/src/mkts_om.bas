@@ -48,6 +48,8 @@ Dim Shared As Integer patternWidthInPixels
 
 Dim Shared As uInteger globalPalette (31), HWPalette (31)
 
+Dim Shared As Integer cutSpriteCount
+
 ' 255 is an out of bounds value meaning "undefined". 
 Dim Shared As RGBType CPCHWColours (31) => { _
 	(1, 1, 1), _
@@ -684,6 +686,7 @@ Sub zxDoSprites (img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h
 	Next y
 zxDoSpritesBreak:
 
+	cutSpriteCount = ct
 	Puts "mkts_om v0.4.20210327 ~ Sprites mode, " & ct & " " & wMetaPixels & "x" & hMetaPixels & " sprite cells with masks extracted (" & (mainIndex) & " bytes)."
 End Sub
 
@@ -721,7 +724,7 @@ Sub cpcDoSprites (img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, 
 		Next x
 	Next y
 cpcDoSpritesBreak:
-
+	cutSpriteCount = ct
 	Puts "mkts_om v0.4.20210327 ~ Sprites mode, " & ct & " " & wMetaPixels & "x" & hMetaPixels & " sprite cells extracted (" & (mainIndex - curIndex) & " bytes)."
 End Sub
 
@@ -746,6 +749,9 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 	If hMeta = 3 Then coy = -8 Else coy = 0
 	functionSuffix = "" & (wMeta*4) & "x" & (hMeta*8)
 	cellSize = 16 * hMeta * wMeta
+
+	fiPuts ("Generating " & mappingsFn & ": (cox, coy)=(" & cox & ", " & coy & _
+		", s=" & functionSuffix & ", size=" & cellSize)
 
 	fOut = FreeFile
 	Open mappingsFn For Output As fOut
@@ -791,10 +797,10 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 
 	Print #fOut, "void *sm_invfunc [] = {"
 	For i = 0 To max - 1
-		If i Mod 8 = 0 Then Print #fOut, "	";
+		If i Mod 4 = 0 Then Print #fOut, "	";
 		Print #fOut, "cpc_PutSpTileMap" & functionSuffix;
 		If i < max - 1 Then Print #fOut, ", ";
-		If i Mod 8 = 7 Or i = max - 1 Then 
+		If i Mod 4 = 3 Or i = max - 1 Then 
 			Print #fOut, ""
 		End If
 	Next i
@@ -805,10 +811,10 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 
 	Print #fOut, "void *sm_updfunc [] = {"
 	For i = 0 To max - 1
-		If i Mod 8 = 0 Then Print #fOut, "	";
+		If i Mod 4 = 0 Then Print #fOut, "	";
 		Print #fOut, "cpc_PutTrSp" & functionSuffix & "TileMap2b";
 		If i < max - 1 Then Print #fOut, ", ";
-		If i Mod 8 = 7 Or i = max - 1 Then 
+		If i Mod 4 = 3 Or i = max - 1 Then 
 			Print #fOut, ""
 		End If
 	Next i
@@ -820,12 +826,13 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 	Print #fOut, "	._sm_sprptr"
 	offsetCounter = 0
 	For i = 0 To max - 1
-		If i Mod 8 = 0 Then Print #fOut, "		defw ";
+		If i Mod 4 = 0 Then Print #fOut, "		defw ";
 		Print #fOut, "_sprites + 0x" & Hex (offsetCounter, 4);
-		If i Mod 8 < 7 And i < max - 1 Then Print #fOut, ", ";
-		If i Mod 8 = 7 Or i = max - 1 Then 
+		If i Mod 4 < 3 And i < max - 1 Then Print #fOut, ", ";
+		If i Mod 4 = 3 Or i = max - 1 Then 
 			Print #fOut, ""
 		End If
+		offsetCounter = offsetCounter + cellSize
 	Next i
 	Print #fOut, "#endasm"
 	Print #fOut, ""
@@ -1390,7 +1397,7 @@ Select Case sclpGetValue ("mode")
 	Case "sprites"
 		doSprites img, xc0, yc0, w, h, wMeta, hMeta, max
 		writeFullBinary outputBaseFn & ".bin"
-		if mappingsFn = "" Then generateStraitMappings mappingsFn, wMeta, hMeta, max
+		if mappingsFn <> "" Then generateStraitMappings mappingsFn, wMeta, hMeta, cutSpriteCount
 		ImageDestroy img
 
 	Case "bg"
