@@ -519,6 +519,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "examples/helmet/dev/compile.bat",
+			"settings":
+			{
+				"buffer_size": 6227,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -607,9 +616,7 @@
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/examples",
 		"/D/git/MK1_Pestecera/examples/helmet",
-		"/D/git/MK1_Pestecera/examples/helmet/dev",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/my"
+		"/D/git/MK1_Pestecera/examples/helmet/dev"
 	],
 	"file_history":
 	[
@@ -962,8 +969,40 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "examples/helmet/dev/compile.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4521,
+								4521
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 546.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{

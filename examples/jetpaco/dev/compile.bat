@@ -1,11 +1,8 @@
 @echo off
 
-
 if [%1]==[help] goto :help
 
 set game=jet_paco
-
-rem For mode 1 change this and replace 'gfx' with 'gfx1' below
 set cpc_gfx_mode=0
 
 if [%1]==[justcompile] goto :compile
