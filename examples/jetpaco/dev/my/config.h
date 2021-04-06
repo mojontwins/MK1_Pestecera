@@ -176,7 +176,7 @@
 // Top view:
 // ---------
 
-//#define PLAYER_GENITAL				// Enable top view.
+//#define PLAYER_GENITAL					// Enable top view.
 //#define TOP_OVER_SIDE 					// UP/DOWN has priority over LEFT/RIGHT
 //#define PLAYER_BOUNCE_WITH_WALLS			// Bounce when hitting a wall. Only really useful in MOGGY_STYLE mode
 
@@ -290,8 +290,7 @@ extern unsigned char def_keys [0];
 //#define USE_AUTO_TILE_SHADOWS 			// Automatic shadows using specially defined tiles 32-47.
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
-//#define NO_MASKS							// Sprites are rendered using OR instead of masks.
-//#define MASKED_BULLETS					// If needed
+
 //#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
