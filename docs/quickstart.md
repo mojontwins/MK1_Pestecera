@@ -101,6 +101,7 @@ Una vez decididas las dos paletas (que bien pueden ser una sola) las almacenarem
 Al igual que en `MK1` de toda la vida, tenemos tres o cuatro pantallas fijas. Las tres primeras deberán ser de 256x192 píxels en modo 1 o 128x192 píxels en modo 0 y sólo debe usar los colores definidos en `gfx/pal.png`.
 
 * `title.png` es la pantalla de título, que además debe contener el marco de juego si activas la macro `DIRECT_TO_PLAY` en `dev/my/config.h`. 
+
 ![title.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/title.png)
 
 * `marco.png` es la pantalla del marco de juego, con espacio para los marcadores. Si hemos vamos a usar `DIRECT_TO_PLAY` no la necesitamos. 
