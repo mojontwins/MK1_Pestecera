@@ -9,41 +9,41 @@ Esto no es un sustituto del tutorial. Puede ser un documento muy util si ya cono
 Lo primero es coger el directorio `/src` y copiarla completa en otro sitio, y acto seguido cambiarle el nombre. Por ejemplo, para la conversión de **Jet Paco** le he cambiado el nombre a `src` por `jetpaco`, obteniendo esta estructura de directorios:
 
 ```
-	jcastano@POR133 MINGW64 /d/git/MK1_Pestecera/examples (master)
-	$ tree -d jetpaco
-	jetpaco
-	|-- bin
-	|-- dev
-	|   |-- assets
-	|   |-- engine
-	|   |   `-- enem_mods
-	|   |-- loader
-	|   |-- mainloop
-	|   `-- my
-	|       |-- ci
-	|       |   `-- bg_collision
-	|       `-- wyz
-	|-- enems
-	|-- gfx
-	|-- map
-	|-- mus
-	|   `-- wyz
-	`-- script
+    jcastano@POR133 MINGW64 /d/git/MK1_Pestecera/examples (master)
+    $ tree -d jetpaco
+    jetpaco
+    |-- bin
+    |-- dev
+    |   |-- assets
+    |   |-- engine
+    |   |   `-- enem_mods
+    |   |-- loader
+    |   |-- mainloop
+    |   `-- my
+    |       |-- ci
+    |       |   `-- bg_collision
+    |       `-- wyz
+    |-- enems
+    |-- gfx
+    |-- map
+    |-- mus
+    |   `-- wyz
+    `-- script
 
-	17 directories
+    17 directories
 ```
 
 Una vez hecho esto, editamos `dev/compile.bat` y establecemos el nombre del juego y el modo gráfico modificando el valor de estas dos variables al principio del archivo:
 
 ```cmd
-	@echo off
+    @echo off
 
-	if [%1]==[help] goto :help
+    if [%1]==[help] goto :help
 
-	set game=jet_paco
-	set cpc_gfx_mode=0
+    set game=jet_paco
+    set cpc_gfx_mode=0
 
-	[...]
+    [...]
 ```
 
 ## Los nuevos gráficos
@@ -151,21 +151,21 @@ En `gfx/` hay dos archivos gráficos más de tipo sprite (con lo que debes prest
 La conversión de los gráficos se efectúa en su sección de `dev/compile.bat`, al igual que ocurriá en **MTE MK1** para **ZX Spectrum**. Si estás empleando la configuración básica no tendrás que cambiar nada. De todos modos, voy a detallar linea por linea lo que estamos haciendo.
 
 ```cmd
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars in=..\gfx\font.png out=..\bin\font.bin silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars in=..\gfx\font.png out=..\bin\font.bin silent > nul
 ```
 
 La primera linea utiliza `mkts_om` en modo `chars` para convertir la fuente. En ausencia de más parámetros, el conversor procesará el archivo de entrada completo. Nótese que el parámetro `cpcmode` toma el valor de la variable `%cpc_gfx_mode%` que definimos al principio. La salida es `bin/font.bin`, que es lo que espera el motor.
 
 ```cmd
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 in=..\gfx\work.png out=..\bin\work.bin silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 in=..\gfx\work.png out=..\bin\work.bin silent > nul
 ```
 
 Seguidamente se procesa el tileset en modo `strait2x2`. Al igual que con la fuente, la ausencia de más parámetros implica que se procesará la imagen completa. La salida es `bin/work.bin`, que es lo que espera el motor.
 
 ```cmd
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h silent > nul
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
 ```
 
 Estas tres lineas procesan los sprites: el archivo con el spriteset principal `gfx/sprites.png`, que se convertirá a `bin/sprites.bin`, la explosión `gfx/sprites_extra.png` a `bin/sprites_extra.bin` y el proyectil `gfx/sprites_bullet.png` a `bin/sprites_bullet.bin`.
@@ -175,18 +175,18 @@ Nótese que se define el tamaño del gráfico que estamos recortando con el par�
 El parámetro `mappings` es para que el conversor genere una serie de estructuras que el motor necesita para conocer el offset de cada sprite en el binario y las funciones que debe emplear para pintarlo. Dichas estructuras deberán generarse en `dev/assets/spriteset_mappings.h`.
 
 ```cmd
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
-	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
-	..\utils\apultra.exe ..\bin\title.bin ..\bin\titlec.bin > nul
-	..\utils\apultra.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
-	..\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
+    ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
+    ..\utils\apultra.exe ..\bin\title.bin ..\bin\titlec.bin > nul
+    ..\utils\apultra.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
+    ..\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 ```
 
 Esta sección convierte las tres pantallas fijas y posteriormente las comprime usando apultra. `mtks_om` trabaja en esta ocasión en modo `superbuffer` produciendo una imagen binaria directamente compatible con el sistema empleado en `MK1` (básicamente, 192 lineas de 64 bytes).
 
 ```cmd
-	..\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
+    ..\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 ```
 
 Finalmente, utilizamos `mkts_om` en modo `pals` para generar `dev/assets/pal.h` con la información sobre la paleta que se empleará en el juego.
@@ -194,9 +194,9 @@ Finalmente, utilizamos `mkts_om` en modo `pals` para generar `dev/assets/pal.h` 
 Un poco más abajo, en la sección de `compile.bat` donde se genera el archivo `.cdt`, aparece la linea que ejecuta `mkts_om` en modo `scr` para exportar la pantalla de carga usando, esta vez, la paleta en `pal_loading.png`:
 
 ```cmd
-	echo Construyendo cinta
-	..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
-	[...]
+    echo Construyendo cinta
+    ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
+    [...]
 ```
 
 ## Adaptando mapa y enemigos
@@ -226,8 +226,8 @@ Tras esto, no debemos olvidar **grabar** de nuevo el mapa en `map/` sustituyendo
 Ahora sólo tendremos que acordarnos de que tenemos que emplear `fixmappy` en la conversión del mapa en `compile,bat`:
 
 ```cmd
-	echo Convirtiendo mapa
-	..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
+    echo Convirtiendo mapa
+    ..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
 ```
 
 Hecho esto vamos con los enemigos. Si estás adaptando un juego que hayas hecho con **MK1 v5** y más o menos has seguido las instrucciones del tutorial en lo referente a los nombres de archivos, probablemente no tengas que cambiar gran cosa. Sin embargo, he decidido precisamente portar un juego *viejo* de **MK1** (en concreto **Jet Paco** se confeccionó con una versión *3.9 beta* previa a la primera que distribuímos) para que tengamos todos los problemas posibles.
@@ -247,7 +247,7 @@ En nuestro caso vemos que el nombre del mapa está bien (`mapa.map`). Sin embarg
 Una vez hecho esto, grabamos nuestro archivo `enems.ene` modificado. Nos vamos a una ventana de linea de comandos y ejecutamos `ponedor.exe` pasándoloe `enems.ene` como parámetro:
 
 ```cmd
-	$ ..\utils\ponedor.exe enems.ene
+    $ ..\utils\ponedor.exe enems.ene
 ```
 
 Aún no está del todo bien. Por un lado, Ponedor no sabe aún que nuestro mapa tiene la fullería de Mappy. Por otro lado, en `enems.ene` original de Jet Paco usaba el formato antiguo de 2 bytes por Hotspot como se nos muestra en la parte superior de la ventana con ese **2b**:
@@ -269,101 +269,101 @@ Para nuestro **Jet Paco**, por ejemplo, apenas hemos cambiado unas cuantas cosas
 * El número de pluma equivalente al color negro:
 
 ```c
-	#define BLACK_PEN 					5		// Which palette entry is black
+    #define BLACK_PEN                   5       // Which palette entry is black
 ```
 
 * Las dimensiones del mapa y las coordenadas de inicio:
 
 ```c
-	#define MAP_W						7		//
-	#define MAP_H						5		// Map dimensions in screens
-	#define SCR_INICIO					28		// Initial screen
-	#define PLAYER_INI_X				5		//
-	#define PLAYER_INI_Y				6		// Initial tile coordinates
+    #define MAP_W                       7       //
+    #define MAP_H                       5       // Map dimensions in screens
+    #define SCR_INICIO                  28      // Initial screen
+    #define PLAYER_INI_X                5       //
+    #define PLAYER_INI_Y                6       // Initial tile coordinates
 ```
 
 * El número máximo de objetos, la vida inicial y el valor de las recargas.
 
 ```c
-	#define PLAYER_NUM_OBJETOS			20		// Objects to get to finish game
-	#define PLAYER_LIFE 				15		// Max and starting life gauge.
-	#define PLAYER_REFILL				1		// Life recharge
+    #define PLAYER_NUM_OBJETOS          20      // Objects to get to finish game
+    #define PLAYER_LIFE                 15      // Max and starting life gauge.
+    #define PLAYER_REFILL               1       // Life recharge
 ```
 
 * Que la pantalla de título contiene el marco:
 
 ```c
-	#define DIRECT_TO_PLAY						// If defined, title screen is also the game frame.
+    #define DIRECT_TO_PLAY                      // If defined, title screen is also the game frame.
 ```
 
 * Que no usamos llaves
 
 ```c
-	#define DEACTIVATE_KEYS 					// If defined, keys are not present.
+    #define DEACTIVATE_KEYS                     // If defined, keys are not present.
 ```
 
 * Que no queremos rebotar contra los enemigos
 
 ```c
-	//#define PLAYER_BOUNCES					// If defined, collisions make player bounce
+    //#define PLAYER_BOUNCES                    // If defined, collisions make player bounce
 ```
 
 * Que queremos que el jugador parpadée tras ser alcanzado o golpée pinchos
 
 ```c
-	#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
+    #define PLAYER_FLICKERS                     // If defined, collisions make player flicker instead.
 ```
 
 * Que queremos jetpac en vez de salto:
 
 ```c
-	//#define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
-	#define PLAYER_HAS_JETPAC 					// If defined, player can thrust a vertical jetpac
+    //#define PLAYER_HAS_JUMP                   // If defined, player is able to jump.
+    #define PLAYER_HAS_JETPAC                   // If defined, player can thrust a vertical jetpac
 ```
 
 * La posición de los elementos en el marco:
 
 ```c
-	#define VIEWPORT_X					0		//
-	#define VIEWPORT_Y					2		// Viewport character coordinates
-	#define LIFE_X						30		//
-	#define LIFE_Y						8		// Life gauge counter character coordinates
-	#define OBJECTS_X					30		//
-	#define OBJECTS_Y					12		// Objects counter character coordinates
-	#define OBJECTS_ICON_X				99		// 
-	#define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-	#define KEYS_X						99		//
-	#define KEYS_Y						99		// Keys counter character coordinates
-	#define KILLED_X					99		//
-	#define KILLED_Y					99		// Kills counter character coordinates
-	#define AMMO_X						99		// 
-	#define AMMO_Y						99		// Ammo counter character coordinates
-	#define TIMER_X 					99		//
-	#define TIMER_Y 					99		// Timer counter coordinates
+    #define VIEWPORT_X                  0       //
+    #define VIEWPORT_Y                  2       // Viewport character coordinates
+    #define LIFE_X                      30      //
+    #define LIFE_Y                      8       // Life gauge counter character coordinates
+    #define OBJECTS_X                   30      //
+    #define OBJECTS_Y                   12      // Objects counter character coordinates
+    #define OBJECTS_ICON_X              99      // 
+    #define OBJECTS_ICON_Y              99      // Objects icon character coordinates (use with ONLY_ONE_OBJECT)
+    #define KEYS_X                      99      //
+    #define KEYS_Y                      99      // Keys counter character coordinates
+    #define KILLED_X                    99      //
+    #define KILLED_Y                    99      // Kills counter character coordinates
+    #define AMMO_X                      99      // 
+    #define AMMO_Y                      99      // Ammo counter character coordinates
+    #define TIMER_X                     99      //
+    #define TIMER_Y                     99      // Timer counter coordinates
 ```
 
 * Reajustamos la velocidad máxima cayendo y la gravedad a valores más pequeños para "flotar" más
 
 ```c
-	#define PLAYER_MAX_VY_CAYENDO		128		// Max falling speed 
-	#define PLAYER_G					8		// Gravity acceleration 
+    #define PLAYER_MAX_VY_CAYENDO       128     // Max falling speed 
+    #define PLAYER_G                    8       // Gravity acceleration 
 ```
 
 * Definimos valores para la aceleración y velocidad máxima del jetpac:
 
 ```c
-	#define PLAYER_INCR_JETPAC			16		// Vertical jetpac gauge
-	#define PLAYER_MAX_VY_JETPAC		128 	// Max vertical jetpac speed
+    #define PLAYER_INCR_JETPAC          16      // Vertical jetpac gauge
+    #define PLAYER_MAX_VY_JETPAC        128     // Max vertical jetpac speed
 ```
 
 * Y, por último, definimos el comportamiento de los tiles:
 
 ```c
-	unsigned char behs [] = {
-		0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	};
+    unsigned char behs [] = {
+        0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    };
 ```
 
 ## Montando la OGT
@@ -379,8 +379,8 @@ Para montar el sistema de sonido necesitaremos:
 * Configurar `wyz_player.h`, que incluye el player propiamente dicho. Si lo editamos, veremos que empieza con dos macros:
 
 ```c
-	#define WYZ_SONG_BUFFER 0x8800
-	#define BASE_WYZ 		0xDF80
+    #define WYZ_SONG_BUFFER 0x8800
+    #define BASE_WYZ        0xDF80
 ```
 
 La primera de ellas, `WYZ_SONG_BUFFER`, que es la que nos interesa, define el espacio que se empleará para descomprimir la canción que se vaya a tocar. Este espacio va desde la dirección definida en la macro hasta 0x8FFF. Esto significa que, de entrada y sin tocar, tendremos 0x800 bytes, o lo que es lo mismo, 2Kb, para descomprimir nuestra canción. Esto significa que nuestro archivo .mus exportado más grande debe medir menos de 2Kb. Si hemos hecho músicas muy largas y la mayor ocupa más de 2Kb, habrá que dejar más espacio bajando el valor de `WYZ_SONG_BUFFER` hasta que quepa. Pero si nuestras canciones son más cortas, lo suyo es subir el valor todo lo que podamos para liberar más espacio para nuestro juego.
@@ -390,34 +390,34 @@ Para saber el valor tendremos que restar el tamaño del MUS más grande de 0x900
 * Comprimir todas los archivos `mus` con `apultra` dentro del directorio `mus/`. Podemos crearnos un archivo  `compress_songs.bat` para hacerlo porque si tenemos un músico competente como el señor Davidian retocará las canciones varias veces ;-). Por convención, generaremos `00_title.mus.bin` y `01_ingame.mus.bin`:
 
 ```cmd
-	..\utils\apultra.exe 00_title.mus 00_title.mus.bin
-	..\utils\apultra.exe 01_ingame.mus 01_ingame.mus.bin
+    ..\utils\apultra.exe 00_title.mus 00_title.mus.bin
+    ..\utils\apultra.exe 01_ingame.mus 01_ingame.mus.bin
 ```
 
 * Renombrar uno de los archivos `*.mus.asm` (todos deberían ser iguales, repito) a `instrumentos.asm`. Este archivo `mus/instrumentos.asm` será convertido durante la compilación por `compile.bat` a un archivo directamente usable por el motor (si estamos respetando la nomenclatura no tendremos que cambiar nada):
 
 ```cmd
-	..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
+    ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
 ```
 
 * Construir la lista de canciones. El motor debe saber qué canciones tiene disponibles y qué datos tienen. Para ello generaremos `my/wyz/songs.h` con esta estructura:
 
 ```c
-	// MTE MK1 (la Churrera) v5.0
-	// Copyleft 2010-2014, 2020 by the Mojon Twins
+    // MTE MK1 (la Churrera) v5.0
+    // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-	extern unsigned char *wyz_songs [0];
+    extern unsigned char *wyz_songs [0];
 
-	#asm
-		._00_title_mus_bin
-			BINARY "../mus/00_title.mus.bin"
+    #asm
+        ._00_title_mus_bin
+            BINARY "../mus/00_title.mus.bin"
 
-		._01_ingame_mus_bin
-			BINARY "../mus/01_ingame.mus.bin"
+        ._01_ingame_mus_bin
+            BINARY "../mus/01_ingame.mus.bin"
 
-		._wyz_songs
-			defw 	_00_title_mus_bin, _01_ingame_mus_bin
-	#endasm
+        ._wyz_songs
+            defw    _00_title_mus_bin, _01_ingame_mus_bin
+    #endasm
 ```
 
 Si añadiésemos más canciones habría que importarlas bajo una etiqueta `_NN_MUSICA_mus_bin` y luego añadirla a la lista bajo `_wyz_songs`.
