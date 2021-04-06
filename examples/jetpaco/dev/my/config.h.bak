@@ -85,7 +85,6 @@
 //#define DEATH_COUNT_ADD 			11 		// Frames to wait = ADD + (rand & AND)
 //#define PURSUERS_MAX_V 			4		// 1, 2, 4.
 //#define PURSUERS_BASE_CELL		3		// If defined, type 7 enemies are always #
-//#define PURSUERS_DONT_SPAWN_IN_OBSTACLE 	// Move an obstacle to stop spawning
 
 //#define ENABLE_FANTIES					// If defined, Fanties are enabled!
 //#define FANTIES_BASE_CELL 		2		// Base sprite cell (0, 1, 2 or 3)
@@ -270,8 +269,8 @@ extern unsigned char def_keys [0];
 #define OBJECTS_Y					12		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-#define KEYS_X						99		//
-#define KEYS_Y						99		// Keys counter character coordinates
+#define KEYS_X						30		//
+#define KEYS_Y						16		// Keys counter character coordinates
 #define KILLED_X					99		//
 #define KILLED_Y					99		// Kills counter character coordinates
 #define AMMO_X						99		// 

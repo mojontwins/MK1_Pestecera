@@ -260,5 +260,172 @@ Para corregirlo, pulsamos primero "+" en el teclado numérico para deshacer el d
 
 ## La configuración
 
-Lo siguiente será editar `dev/my/config.h` para establecer la configuración del juego, sustituyendo a la que viene por defecto (escrita para **Lala Prologue**).
+Lo siguiente será editar `dev/my/config.h` para establecer la configuración del juego, sustituyendo la que viene por defecto (escrita para **Lala Prologue**) por una adecuada para **Jet Paco**. Puedes consultar la [referencia de config.h](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/config.h.md).
 
+Obviamente, cuando estás convirtiendo juegos de versiones más antiguas de la churrera, encontrarás un montón de opciones que no existían y algunas es posible que hayan cambiado de nombre. Sin embargo, es muy sencillo partir del proyecto por defecto, que tiene prácticamente todo desactivado, e ir recorriendo en `config.h` original y buscando en el nuevo cada una de las opciones.
+
+Para nuestro **Jet Paco**, por ejemplo, apenas hemos cambiado unas cuantas cosas: 
+
+* El número de pluma equivalente al color negro:
+
+```c
+	#define BLACK_PEN 					5		// Which palette entry is black
+```
+
+* Las dimensiones del mapa y las coordenadas de inicio:
+
+```c
+	#define MAP_W						7		//
+	#define MAP_H						5		// Map dimensions in screens
+	#define SCR_INICIO					28		// Initial screen
+	#define PLAYER_INI_X				5		//
+	#define PLAYER_INI_Y				6		// Initial tile coordinates
+```
+
+* El número máximo de objetos, la vida inicial y el valor de las recargas.
+
+```c
+	#define PLAYER_NUM_OBJETOS			20		// Objects to get to finish game
+	#define PLAYER_LIFE 				15		// Max and starting life gauge.
+	#define PLAYER_REFILL				1		// Life recharge
+```
+
+* Que la pantalla de título contiene el marco:
+
+```c
+	#define DIRECT_TO_PLAY						// If defined, title screen is also the game frame.
+```
+
+* Que no usamos llaves
+
+```c
+	#define DEACTIVATE_KEYS 					// If defined, keys are not present.
+```
+
+* Que no queremos rebotar contra los enemigos
+
+```c
+	//#define PLAYER_BOUNCES					// If defined, collisions make player bounce
+```
+
+* Que queremos que el jugador parpadée tras ser alcanzado o golpée pinchos
+
+```c
+	#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
+```
+
+* Que queremos jetpac en vez de salto:
+
+```c
+	//#define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
+	#define PLAYER_HAS_JETPAC 					// If defined, player can thrust a vertical jetpac
+```
+
+* La posición de los elementos en el marco:
+
+```c
+	#define VIEWPORT_X					0		//
+	#define VIEWPORT_Y					2		// Viewport character coordinates
+	#define LIFE_X						30		//
+	#define LIFE_Y						8		// Life gauge counter character coordinates
+	#define OBJECTS_X					30		//
+	#define OBJECTS_Y					12		// Objects counter character coordinates
+	#define OBJECTS_ICON_X				99		// 
+	#define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
+	#define KEYS_X						99		//
+	#define KEYS_Y						99		// Keys counter character coordinates
+	#define KILLED_X					99		//
+	#define KILLED_Y					99		// Kills counter character coordinates
+	#define AMMO_X						99		// 
+	#define AMMO_Y						99		// Ammo counter character coordinates
+	#define TIMER_X 					99		//
+	#define TIMER_Y 					99		// Timer counter coordinates
+```
+
+* Reajustamos la velocidad máxima cayendo y la gravedad a valores más pequeños para "flotar" más
+
+```c
+	#define PLAYER_MAX_VY_CAYENDO		128		// Max falling speed 
+	#define PLAYER_G					8		// Gravity acceleration 
+```
+
+* Definimos valores para la aceleración y velocidad máxima del jetpac:
+
+```c
+	#define PLAYER_INCR_JETPAC			16		// Vertical jetpac gauge
+	#define PLAYER_MAX_VY_JETPAC		128 	// Max vertical jetpac speed
+```
+
+* Y, por último, definimos el comportamiento de los tiles:
+
+```c
+	unsigned char behs [] = {
+		0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	};
+```
+
+## Montando la OGT
+
+Los juegos de CPC tienen una OGT que hay que montar a menos que decidas no tener sonido (con SOUND_NONE). Para este ejemplo vamos a montar la OGT mínima basada en dos canciones: una para la pantalla de título y otra de fondo mientras jugamos.
+
+Para montar el sistema de sonido necesitaremos:
+
+* **Todas las canciones deben estar hechas con el mismo set de instrumentos y efectos de percusión**.
+
+* Exportar todas las canciones en formato `mus`. Hay que tener mucho cuidado de configurar **Wyz Tracker** para que exporte para **Amstrad CPC**. Las guardaremos en el directorio `mus/` y anotaremos sus tamaños. Nos interesa el tamaño de la más grande. Por convención, las llamaremos `00_title.mus` y `01_ingame.mus`. Esto también generará `00_title.mus.asm` y `01_ingame.mus.asm` que, **si lo hemos hecho bien, deberían ser idénticos**.
+
+* Configurar `wyz_player.h`, que incluye el player propiamente dicho. Si lo editamos, veremos que empieza con dos macros:
+
+```c
+	#define WYZ_SONG_BUFFER 0x8800
+	#define BASE_WYZ 		0xDF80
+```
+
+La primera de ellas, `WYZ_SONG_BUFFER`, que es la que nos interesa, define el espacio que se empleará para descomprimir la canción que se vaya a tocar. Este espacio va desde la dirección definida en la macro hasta 0x8FFF. Esto significa que, de entrada y sin tocar, tendremos 0x800 bytes, o lo que es lo mismo, 2Kb, para descomprimir nuestra canción. Esto significa que nuestro archivo .mus exportado más grande debe medir menos de 2Kb. Si hemos hecho músicas muy largas y la mayor ocupa más de 2Kb, habrá que dejar más espacio bajando el valor de `WYZ_SONG_BUFFER` hasta que quepa. Pero si nuestras canciones son más cortas, lo suyo es subir el valor todo lo que podamos para liberar más espacio para nuestro juego.
+
+Para saber el valor tendremos que restar el tamaño del MUS más grande de 0x9000, o 36864. En el ejemplo el mus más grande es el de la música que suena mientras jugamos, que ocupa 1843 bytes. Siendo así, podríamos usar el valor 36864-1843 = 35021 (o 0x88CD) en `WYZ_SONG_BUFFER` lo que nos daría 205 bytes extra. No es mucho, pero todo cuenta.
+
+* Comprimir todas los archivos `mus` con `apultra` dentro del directorio `mus/`. Podemos crearnos un archivo  `compress_songs.bat` para hacerlo porque si tenemos un músico competente como el señor Davidian retocará las canciones varias veces ;-). Por convención, generaremos `00_title.mus.bin` y `01_ingame.mus.bin`:
+
+```cmd
+	..\utils\apultra.exe 00_title.mus 00_title.mus.bin
+	..\utils\apultra.exe 01_ingame.mus 01_ingame.mus.bin
+```
+
+* Renombrar uno de los archivos `*.mus.asm` (todos deberían ser iguales, repito) a `instrumentos.asm`. Este archivo `mus/instrumentos.asm` será convertido durante la compilación por `compile.bat` a un archivo directamente usable por el motor (si estamos respetando la nomenclatura no tendremos que cambiar nada):
+
+```cmd
+	..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
+```
+
+* Construir la lista de canciones. El motor debe saber qué canciones tiene disponibles y qué datos tienen. Para ello generaremos `my/wyz/songs.h` con esta estructura:
+
+```c
+	// MTE MK1 (la Churrera) v5.0
+	// Copyleft 2010-2014, 2020 by the Mojon Twins
+
+	extern unsigned char *wyz_songs [0];
+
+	#asm
+		._00_title_mus_bin
+			BINARY "../mus/00_title.mus.bin"
+
+		._01_ingame_mus_bin
+			BINARY "../mus/01_ingame.mus.bin"
+
+		._wyz_songs
+			defw 	_00_title_mus_bin, _01_ingame_mus_bin
+	#endasm
+```
+
+Si añadiésemos más canciones habría que importarlas bajo una etiqueta `_NN_MUSICA_mus_bin` y luego añadirla a la lista bajo `_wyz_songs`.
+
+Si no tocamos nada más, el motor llamará a `AY_PLAY_MUSIC (0)` en la pantalla de título para tocar la canción 0 de la lista `wyz_songs` (la primera) y a `AY_PLAY_MUSIC (1)` al empezar la partida para tocar la canción 1 de la lista. Si quieres cambiar este comportamiento o añadir más canciones tendrás que tocar el código. Por suerte, casi todos los sitios donde tocar están en `my/`.
+
+En los juegos multifase la canción que sonará durante cada nivel se define en el array `levels` de `my/levelset.h`.
+
+## ¡Y ya está!
+
+Ahora es el momento de abrir una ventana de linea de comandos, ejecutar `setenv.bat` y luego `compile.bat` para generar un archivo .SNA o `compile.bat andtape` para generar además un archivo .CDT
