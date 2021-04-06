@@ -52,12 +52,12 @@ La Pestecera soporta tanto modo 0 como modo 1. Puedes emplear el modo que más t
 
 Antes de empezar, debes asegurarte de trabajar con los colores correctos. Como esto siempre está sujeto a implementación, hemos añadido en `/env` un archivo `.png` que contiene los 27 colores de la paleta, demás de un archivo `.act` de Photoshop y un archivo `.pal` para Paintshop Pro o Aseprite.
 
-![Paleta CPC](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/cpc_pal.png)
+![Paleta CPC](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/cpc_pal.png)
 
 Si tu programa no soporta ninguno de estos formatos puedes cargar el jpg e ir picando cada color desde ahí, o crear la paleta a mano en tu editor siguiendo esta tabla:
 
 |R|G|B
-|===|===|===
+|---|---|---
 |0|0|0
 |0|0|128
 |0|0|255
@@ -101,31 +101,31 @@ Una vez decididas las dos paletas (que bien pueden ser una sola) las almacenarem
 Al igual que en `MK1` de toda la vida, tenemos tres o cuatro pantallas fijas. Las tres primeras deberán ser de 256x192 píxels en modo 1 o 128x192 píxels en modo 0 y sólo debe usar los colores definidos en `gfx/pal.png`.
 
 * `title.png` es la pantalla de título, que además debe contener el marco de juego si activas la macro `DIRECT_TO_PLAY` en `dev/my/config.h`. 
-![title.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/title.png)
+![title.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/title.png)
 
 * `marco.png` es la pantalla del marco de juego, con espacio para los marcadores. Si hemos vamos a usar `DIRECT_TO_PLAY` no la necesitamos. 
 
 * `ending.png` es la pantalla que sale cuando el jugador gana el juego (la pantalla del final). 
 
-![ending.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/title.png)
+![ending.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/title.png)
 
 Finalmente, tendremos:
 
 * `loading.png`, la pantalla de carga, que tiene que ser de 320x200 píxels en modo 1 o 160x200 píxels en modo 0 y sólo debe usar los colores definidos en `gfx/pal_loading.png`.
 
-![loading.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/loading.png)
+![loading.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/loading.png)
 
 ### La fuente
 
 * `font.png` contendrá la fuente y debe ser un archivo de 256x32 píxels en modo 1 o 128x32 píxels en modo 0 y debe contener los 64 caracteres correspondientes a los códigos ASCII del 32 al 95. Debe usar los colores de `gfx/pal.png`:
 
-![font.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/font.png)
+![font.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/font.png)
 
 ### El tileset
 
 * `work.png` contendrá los 48 tiles del tileset, sobre el que aplicarán las mismas restricciones y características que en **MTE MK1** para **ZX Spectrum**. El archivo deberá medir 256x48 píxels en modo 1 o 128x48 píxels en modo 0
 
-![work.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/work.png)
+![work.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/work.png)
 
 ### El spriteset
 
@@ -135,7 +135,7 @@ La configuración básica es la misma que en **MTE MK1** para **ZX Spectrum**, p
 
 Ten en cuenta que la pluma 0 deberá emplearse para definir qué zonas del sprite deben ser transparentes. Recuerda que es el primer color que aparece en `gfx/pal.png`. En este caso, el amarillo pálido:
 
-![work.png](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/work.png)
+![work.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/work.png)
 
 ### Sprites extra
 
@@ -204,21 +204,21 @@ En realidad no vamos a adaptar mucho. Más que nada vamos a modificar `mapa.fmp`
 
 Como hemos trabajado en este juego en modo 0, tendremos que *engañar* a Mappy y Ponedor generando una nueva versión del tileset con píxeles ladrillo. Básicamente, abriremos nuestro `work.png` y lo escalaremos al doble de ancho, resultando en una imagen de 256x48 con los píxeles rectangulares que almacenaremos como `work.png` dentro de el directorio `enems/`.
 
-![work.png a doble de ancho en enems](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/enems-work.png)
+![work.png a doble de ancho en enems](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/enems-work.png)
 
 Hecho esto, copiamos el archivo con el mapa original de la versión de spectrum en el directorio `map/`, sobrescribiendo el `mapa.fmp` por defecto (el de **Lala Prologue**). Al abrirlo veremos el tileset original:
 
-![El mapa original de Jet Paco](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_orig.png)
+![El mapa original de Jet Paco](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/mappy_orig.png)
 
 Ahora lo que haremos será sustituir el tileset. Vamos a `File` → `Import` y buscamos el archivo `work.png` que hemos grabado en `enems/`. Pero hay un problema:
 
-![Mapa corrupto](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_new_wrong.png)
+![Mapa corrupto](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/mappy_new_wrong.png)
 
 Efectivamente, el nuevo `work.png` no tiene el primer tile en negro y Mappy hace su gracia desplazando todo el tileset. Para repararlo, buscamos en el menú `Layer` → `Adjust Values` y en el diálogo `adjust non-0 blocks in this layer by` escribimos `1` y pulsamos `Ok`. 
 
 Esto corregirá casi todo el mapa, pero el fondo sigue usando el tile 0 que en Mappy está vacío. Todo tiene solución: vamos a `Custom` → `Tile Replace`, introducimos el texto `0,1` y pulsamos `Ok`. Con esto, Mappy sustituirá todas las ocurrencias del tile 0 por el tile 1, con lo que el fondo se restaurará.
 
-![Mapa para CPC](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_new.png)
+![Mapa para CPC](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/mappy_new.png)
 
 Tras esto, no debemos olvidar **grabar** de nuevo el mapa en `map/` sustituyendo lo que haya, tanto en formato `.fmp` como en formato `.map`. Igualmente haremos una copia de `mapa.map` en `enems/` para el ponedor.
 
@@ -237,11 +237,11 @@ Empezaremos copiando el `enems.ene` original en `enems/`, sustituyendo al `enems
 
 Si abrimos el archivo `enems.ene` original de Jet Paco en tu editor hexadecimal deberías ver algo parecido a esto (si no se ve bien alineado probablemente tengas que configurar tu editor para que muestre 16 valores por linea):
 
-![enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/hex_1.png)
+![enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/hex_1.png)
 
 En nuestro caso vemos que el nombre del mapa está bien (`mapa.map`). Sin embargo, el nombre del tileset no: aparece `mappy.bmp`. Lo que haremos será cambiarlo por `work.png` - para ello editaremos el texto directamente en la ventana de la derecha (1). Hay que tener en cuenta que el resto de la cadena debe quedarse a "0", y la forma más fácil es escribir los ceros en la columna de la izquierda (2). Si te equivocas *don't panic*: sólo tienes que recargar el archivo y empezar de nuevo.
 
-![modificando enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/hex_2.png)
+![modificando enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/hex_2.png)
 
 Una vez hecho esto, grabamos nuestro archivo `enems.ene` modificado. Nos vamos a una ventana de linea de comandos y ejecutamos `ponedor.exe` pasándoloe `enems.ene` como parámetro:
 
@@ -251,11 +251,11 @@ Una vez hecho esto, grabamos nuestro archivo `enems.ene` modificado. Nos vamos a
 
 Aún no está del todo bien. Por un lado, Ponedor no sabe aún que nuestro mapa tiene la fullería de Mappy. Por otro lado, en `enems.ene` original de Jet Paco usaba el formato antiguo de 2 bytes por Hotspot como se nos muestra en la parte superior de la ventana con ese **2b**:
 
-![enems.ene sin ajustar](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/ponedor_1.png)
+![enems.ene sin ajustar](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/ponedor_1.png)
 
 Para corregirlo, pulsamos primero "+" en el teclado numérico para deshacer el desbarajuste de Mappy, y posteriormente "L" para convertir desde modo *legacy* al actual de 3 bytes por Hotspot. Ahora las pantallas se visualizarán correctamente y la leyenda habrá cambiado a **3b**. Hecho esto, **salvamos** el archivo pulsando `Save` o la tecla "S".
 
-![enems.ene ajustado](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/ponedor_2.png)
+![enems.ene ajustado](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/ponedor_2.png)
 
 ## La configuración
 
