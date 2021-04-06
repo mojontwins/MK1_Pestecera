@@ -6,7 +6,7 @@ Esto no es un sustituto del tutorial. Puede ser un documento muy util si ya cono
 
 ## Antes de empezar
 
-Lo primero es coger la carpeta `/src` y copiarla completa en otro sitio, y acto seguido cambiarle el nombre. Por ejemplo, para la conversión de **Jet Paco** le he cambiado el nombre a `src` por `jetpaco`, obteniendo esta estructura de directorios:
+Lo primero es coger el directorio `/src` y copiarla completa en otro sitio, y acto seguido cambiarle el nombre. Por ejemplo, para la conversión de **Jet Paco** le he cambiado el nombre a `src` por `jetpaco`, obteniendo esta estructura de directorios:
 
 ```
 	jcastano@POR133 MINGW64 /d/git/MK1_Pestecera/examples (master)
@@ -174,15 +174,90 @@ Nótese que se define el tamaño del gráfico que estamos recortando con el par�
 El parámetro `mappings` es para que el conversor genere una serie de estructuras que el motor necesita para conocer el offset de cada sprite en el binario y las funciones que debe emplear para pintarlo. Dichas estructuras deberán generarse en `dev/assets/spriteset_mappings.h`.
 
 ```cmd
-	..\utils\png2scr.exe ..\gfx\title.png ..\gfx\title.scr > nul
-
 	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
 	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
 	..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
 	..\utils\apultra.exe ..\bin\title.bin ..\bin\titlec.bin > nul
 	..\utils\apultra.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
 	..\utils\apultra.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+```
 
+Esta sección convierte las tres pantallas fijas y posteriormente las comprime usando apultra. `mtks_om` trabaja en esta ocasión en modo `superbuffer` produciendo una imagen binaria directamente compatible con el sistema empleado en `MK1` (básicamente, 192 lineas de 64 bytes).
+
+```cmd
 	..\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 ```
+
+Finalmente, utilizamos `mkts_om` en modo `pals` para generar `dev/assets/pal.h` con la información sobre la paleta que se empleará en el juego.
+
+Un poco más abajo, en la sección de `compile.bat` donde se genera el archivo `.cdt`, aparece la linea que ejecuta `mkts_om` en modo `scr` para exportar la pantalla de carga usando, esta vez, la paleta en `pal_loading.png`:
+
+```cmd
+	echo Construyendo cinta
+	..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
+	[...]
+```
+
+## Adaptando mapa y enemigos
+
+En realidad no vamos a adaptar mucho. Más que nada vamos a modificar `mapa.fmp` para que emplée los gráficos de CPC y modificar el archivo con el tileset que emplea Ponedor para que se muestre también con estos gráficos.
+
+Como hemos trabajado en este juego en modo 0, tendremos que *engañar* a Mappy y Ponedor generando una nueva versión del tileset con píxeles ladrillo. Básicamente, abriremos nuestro `work.png` y lo escalaremos al doble de ancho, resultando en una imagen de 256x48 con los píxeles rectangulares que almacenaremos como `work.png` dentro de el directorio `enems/`.
+
+![work.png a doble de ancho en enems](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/enems-work.png)
+
+Hecho esto, copiamos el archivo con el mapa original de la versión de spectrum en el directorio `map/`, sobrescribiendo el `mapa.fmp` por defecto (el de **Lala Prologue**). Al abrirlo veremos el tileset original:
+
+![El mapa original de Jet Paco](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_orig.png)
+
+Ahora lo que haremos será sustituir el tileset. Vamos a `File` → `Import` y buscamos el archivo `work.png` que hemos grabado en `enems/`. Pero hay un problema:
+
+![Mapa corrupto](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_new_wrong.png)
+
+Efectivamente, el nuevo `work.png` no tiene el primer tile en negro y Mappy hace su gracia desplazando todo el tileset. Para repararlo, buscamos en el menú `Layer` → `Adjust Values` y en el diálogo `adjust non-0 blocks in this layer by` escribimos `1` y pulsamos `Ok`. 
+
+Esto corregirá casi todo el mapa, pero el fondo sigue usando el tile 0 que en Mappy está vacío. Todo tiene solución: vamos a `Custom` → `Tile Replace`, introducimos el texto `0,1` y pulsamos `Ok`. Con esto, Mappy sustituirá todas las ocurrencias del tile 0 por el tile 1, con lo que el fondo se restaurará.
+
+![Mapa para CPC](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/mappy_new.png)
+
+Tras esto, no debemos olvidar **grabar** de nuevo el mapa en `map/` sustituyendo lo que haya, tanto en formato `.fmp` como en formato `.map`. Igualmente haremos una copia de `mapa.map` en `enems/` para el ponedor.
+
+Ahora sólo tendremos que acordarnos de que tenemos que emplear `fixmappy` en la conversión del mapa en `compile,bat`:
+
+```cmd
+	echo Convirtiendo mapa
+	..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
+```
+
+Hecho esto vamos con los enemigos. Si estás adaptando un juego que hayas hecho con **MK1 v5** y más o menos has seguido las instrucciones del tutorial en lo referente a los nombres de archivos, probablemente no tengas que cambiar gran cosa. Sin embargo, he decidido precisamente portar un juego *viejo* de **MK1** (en concreto **Jet Paco** se confeccionó con una versión *3.9 beta* previa a la primera que distribuímos) para que tengamos todos los problemas posibles.
+
+El problema es, principalmente, que los archivos `.ene` del Ponedor contienen referencias a los archivos de mapa y tileset y que, probablemente, el nombre de estos archivos haya cambiado. Para corregirlo emplearemos un editor hexadecimal. Si estás en Windows puedes usar `XVI32`, incluido en `/env`. 
+
+Empezaremos copiando el `enems.ene` original en `enems/`, sustituyendo al `enems.ene` por defecto (el de **Lala Prologue**). En este directorio deberían estar ya disponibles el archivo `work.png` a doble de ancho que preparamos antes y que acabamos de importar en `mapa.fmp` y el archivo `mapa.map` actualizado.
+
+Si abrimos el archivo `enems.ene` original de Jet Paco en tu editor hexadecimal deberías ver algo parecido a esto (si no se ve bien alineado probablemente tengas que configurar tu editor para que muestre 16 valores por linea):
+
+![enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/hex_1.png)
+
+En nuestro caso vemos que el nombre del mapa está bien (`mapa.map`). Sin embargo, el nombre del tileset no: aparece `mappy.bmp`. Lo que haremos será cambiarlo por `work.png` - para ello editaremos el texto directamente en la ventana de la derecha (1). Hay que tener en cuenta que el resto de la cadena debe quedarse a "0", y la forma más fácil es escribir los ceros en la columna de la izquierda (2). Si te equivocas *don't panic*: sólo tienes que recargar el archivo y empezar de nuevo.
+
+![modificando enems.ene en XVI32](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/hex_2.png)
+
+Una vez hecho esto, grabamos nuestro archivo `enems.ene` modificado. Nos vamos a una ventana de linea de comandos y ejecutamos `ponedor.exe` pasándoloe `enems.ene` como parámetro:
+
+```cmd
+	$ ..\utils\ponedor.exe enems.ene
+```
+
+Aún no está del todo bien. Por un lado, Ponedor no sabe aún que nuestro mapa tiene la fullería de Mappy. Por otro lado, en `enems.ene` original de Jet Paco usaba el formato antiguo de 2 bytes por Hotspot como se nos muestra en la parte superior de la ventana con ese **2b**:
+
+![enems.ene sin ajustar](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/ponedor_1.png)
+
+Para corregirlo, pulsamos primero "+" en el teclado numérico para deshacer el desbarajuste de Mappy, y posteriormente "L" para convertir desde modo *legacy* al actual de 3 bytes por Hotspot. Ahora las pantallas se visualizarán correctamente y la leyenda habrá cambiado a **3b**. Hecho esto, **salvamos** el archivo pulsando `Save` o la tecla "S".
+
+![enems.ene ajustado](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/jet_paco/ponedor_2.png)
+
+## La configuración
+
+Lo siguiente será editar `dev/my/config.h` para establecer la configuración del juego, sustituyendo a la que viene por defecto (escrita para **Lala Prologue**).
 
