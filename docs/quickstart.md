@@ -372,6 +372,8 @@ Los juegos de CPC tienen una OGT que hay que montar a menos que decidas no tener
 
 Para montar el sistema de sonido necesitaremos:
 
+* **WYZ Tracker 2** de **Augusto Ruiz** [link](https://github.com/AugustoRuiz/WYZTracker).
+
 * **Todas las canciones deben estar hechas con el mismo set de instrumentos y efectos de percusión**.
 
 * Exportar todas las canciones en formato `mus`. Hay que tener mucho cuidado de configurar **Wyz Tracker** para que exporte para **Amstrad CPC**. Las guardaremos en el directorio `mus/` y anotaremos sus tamaños. Nos interesa el tamaño de la más grande. Por convención, las llamaremos `00_title.mus` y `01_ingame.mus`. Esto también generará `00_title.mus.asm` y `01_ingame.mus.asm` que, **si lo hemos hecho bien, deberían ser idénticos**.

@@ -520,10 +520,38 @@
 	"buffers":
 	[
 		{
-			"file": "examples/helmet/dev/compile.bat",
+			"file": "src/dev/loader/loadercpc.asm-orig",
 			"settings":
 			{
-				"buffer_size": 6227,
+				"buffer_size": 15543,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "loadercpc.asm-orig"
+			}
+		},
+		{
+			"file": "src/dev/printer.h",
+			"settings":
+			{
+				"buffer_size": 10760,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/dev/loader/loadercpc.asm",
+			"settings":
+			{
+				"buffer_size": 15456,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/dev/compile.bat",
+			"settings":
+			{
+				"buffer_size": 3682,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -614,12 +642,35 @@
 	"expanded_folders":
 	[
 		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/docs",
+		"/D/git/MK1_Pestecera/env",
 		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/helmet",
-		"/D/git/MK1_Pestecera/examples/helmet/dev"
+		"/D/git/MK1_Pestecera/src",
+		"/D/git/MK1_Pestecera/src/dev",
+		"/D/git/MK1_Pestecera/src/dev/loader",
+		"/D/git/MK1_Pestecera/src/mus"
 	],
 	"file_history":
 	[
+		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
+		"/D/git/MK1_Pestecera/diario.md",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/D/git/MK1_Pestecera/README.md",
+		"/D/git/MK1_Pestecera/docs/quickstart.md",
+		"/D/git/MK1_Pestecera/docs/config.h.md",
+		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
+		"/D/Proyectos/2021/20210406a - Corrección eliminación DNI en miCuenta con usuarios GUIA+SIRHUS/instrucciones.txt",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/mk1.c",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/engine/simple_cocos.h",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/C/Users/jcastano/Desktop/LDAP Browser/ldapescritura.juntadeandalucia.es - admin.cfg",
+		"/D/git/MK1_Pestecera/env/cpc_pal.pal",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/my/config.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
@@ -630,7 +681,6 @@
 		"/D/git/MK1_Pestecera/examples/helmet/README.md",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/engine/enem_mods/enem_type_pursuers_asm.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/my/ci/on_tile_pushed.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/wyz_player.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/engine.h",
 		"/E/git/MK1_Pestecera/examples/helmet/dev/engine/bullets.h",
@@ -729,25 +779,7 @@
 		"/C/git/mk1/examples/helmet/dev/compile.bat",
 		"/C/git/mk1/examples/helmet/dev/my/levelset.h",
 		"/C/git/mk1/examples/helmet/dev/assets/levels.h",
-		"/C/git/mk1/src/utils/src/ene2bin_mk1.bas",
-		"/C/git/mk1/src/utils/src/buildlevel.bas",
-		"/C/git/mk1/src/utils/src/asm2z88dk.bas",
-		"/C/git/mk1/examples/dogmole/dev/music.h",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_music_phaser.asm",
-		"/C/git/mk1/examples/dogmole/mus/dogmole_fx.asm",
-		"/C/git/mk1/docs/tutorial-cap10.md",
-		"/C/git/mk1/examples/dogmole/dev/beeper.h",
-		"/C/git/mk1/examples/dogmole/script/dogmole.spt",
-		"/C/git/mk1/src/utils/src/mtparser.bas",
-		"/C/git/mk1/src/utils/src/mtparser.bi",
-		"/C/git/mk1/examples/dogmole_ci/dev/engine/hotspots.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/printer.h",
-		"/C/git/mk1/apúntalo!.md",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_screen.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/extra_vars.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/ci/entering_game.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/config.h",
-		"/C/git/mk1/examples/dogmole_ci/script/dogmole.spt"
+		"/C/git/mk1/src/utils/src/ene2bin_mk1.bas"
 	],
 	"find":
 	{
@@ -758,6 +790,7 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"Z:\\MK1_Pestecera\\examples\\helmet\\dev",
 			"F:\\git\\MK1_Pestecera\\examples\\helmet",
@@ -778,6 +811,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#",
+			"#0x",
+			"sp_sw",
+			"cpct_miniload_asm",
+			"^   ",
+			"AY_PLAY_MUSIC",
+			"wyz",
+			"SOUND_NONE",
+			"AMMO",
+			"MK1/",
+			"sprptr",
+			"enem_cells",
+			"en_an_base_frame",
+			"GENERAL_ENEMS_BASE_CELL",
+			"la carpeta",
+			"mappings",
+			"..\\..\\..\\src\\utils\\",
+			"(\\d+) (\\d+) (\\d+)",
 			"def_keys_joy",
 			"LANG_ES",
 			"bxo",
@@ -887,32 +938,20 @@
 			"_n_f",
 			"_c_f",
 			"spritesclip",
-			"p_state",
-			"sp_movesprabs",
-			"p_c_f",
-			"p_n_f",
-			"comportamiento_tiles",
-			"COORDS",
-			"gp_gen",
-			"sp_print",
-			"print_str \\((.+), (.+), (.+), (.+)\\);",
-			"print_str \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+), (.+)\\);",
-			"print_str",
-			"print_number2 \\(([A-Za-z0-9_]+), ([A-Za-z0-9_]+), ([A-Za-z0-9_]+)\\);",
-			"print_number2",
-			"draw_coloured",
-			"map_attr",
-			"draw_coloured_tile",
-			"p_facing",
-			"ALTERNATE_ANIMATION",
-			"FIXBITS"
+			"p_state"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"$",
+			"\\t",
+			"MK1_Pestecera/",
+			"el directorio",
+			"..\\utils\\",
+			"|\\1|\\2|\\3",
 			"_CPCPrintAtInv",
 			"cpcmode=%cpc_gfx_mode%",
 			"*sprite*",
@@ -974,19 +1013,120 @@
 			[
 				{
 					"buffer": 0,
-					"file": "examples/helmet/dev/compile.bat",
+					"file": "src/dev/loader/loadercpc.asm-orig",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6227,
+						"buffer_size": 15543,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4521,
-								4521
+								10157,
+								10157
+							]
+						],
+						"settings":
+						{
+							"auto_name": "loadercpc.asm-orig",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3042.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/dev/printer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10607,
+								10607
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7951.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/dev/loader/loadercpc.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12347,
+								12348
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3988.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "src/dev/compile.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3682,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3574,
+								3574
 							]
 						],
 						"settings":
@@ -997,17 +1137,12 @@
 							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 546.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -1049,6 +1184,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.SFTP":
+	{
+		"height": 96.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -1061,7 +1200,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 40.0
+		"height": 88.0
 	},
 	"save_all_on_build": true,
 	"select_file":

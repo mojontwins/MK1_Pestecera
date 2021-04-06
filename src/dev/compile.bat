@@ -82,17 +82,10 @@ set loader_org=$aa00
 rem $aa00 = 43520
 
 ..\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
-	binsize=?..\bin\%game%.c.bin ^
 	scrc_size=?..\bin\loading.c.bin ^
-	mainbin_addr=?43520-..\bin\%game%.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
-	loader_org=%loader_org% ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
-
-..\utils\2cdt.exe -n -r %game% -s 1 -X %loader_org% -L %loader_org% ..\bin\loader.bin %game%.cdt  > nul
-..\utils\2cdt.exe -r scr -s 1 -m 2 ..\bin\loading.c.bin %game%.cdt  > nul
-..\utils\2cdt.exe -r game -s 1 -m 2 ..\bin\%game%.c.bin %game%.cdt  > nul
 
 goto :end 
 
