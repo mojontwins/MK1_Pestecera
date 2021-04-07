@@ -462,6 +462,16 @@ Si no tocamos nada más, el motor llamará a `AY_PLAY_MUSIC (0)` en la pantalla 
 
 En los juegos multifase la canción que sonará durante cada nivel se define en el array `levels` de `my/levelset.h`.
 
+## Los colores de la carga
+
+Cuando carga el juego se ven bandas de dos colores en el fondo. Las puedes cambiar editando el archivo `dev/loader/loadercpc.asm-orig` y cambiando el valor de la primera linea que es:
+
+```asm
+    COLORES_CARGA equ $5c56
+```
+
+El valor de la variable comprende los dos colores (2 dígitos hexadecimales cada uno), que no son más que los valores "Hardware" de la paleta del CPC que puedes consultar, entre otros lugares, [aquí](http://www.cpcwiki.eu/index.php/CPC_Palette).
+
 ## ¡Y ya está!
 
 Ahora es el momento de abrir una ventana de linea de comandos, ejecutar `setenv.bat` y luego `compile.bat` para generar un archivo .SNA o `compile.bat andtape` para generar además un archivo .CDT

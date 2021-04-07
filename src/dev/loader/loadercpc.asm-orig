@@ -1,3 +1,5 @@
+COLORES_CARGA equ $445f
+
 ; This is the real loader which will be used once the CPC is set up
 
 org $BA00
@@ -336,7 +338,7 @@ cpct_miniload_asm:
 	exx               ;; 
 	push  bc          ;; Save BC' value before changing it (it will be restored at the end)
 	push  de 			;; **********
-	ld    de, $4454
+	ld    de, COLORES_CARGA
 	ld    bc, $7F10 ;; B = Gate array port (0x7F), C=Border Register (0x10)
 	out  (c), c       ;; Select border register for later color changes
 	exx               ;;

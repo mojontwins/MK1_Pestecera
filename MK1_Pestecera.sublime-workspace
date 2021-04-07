@@ -519,6 +519,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/dev/loader/loadercpc.asm",
+			"settings":
+			{
+				"buffer_size": 16254,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -606,36 +615,32 @@
 	[
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
-		"/D/git/MK1_Pestecera/env",
 		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/helmet",
-		"/D/git/MK1_Pestecera/examples/helmet/dev",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/loader",
 		"/D/git/MK1_Pestecera/examples/jetpaco",
-		"/D/git/MK1_Pestecera/examples/jetpaco/bin",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader",
 		"/D/git/MK1_Pestecera/src",
-		"/D/git/MK1_Pestecera/src/bin",
 		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/loader",
-		"/D/git/MK1_Pestecera/src/mus",
-		"/D/git/MK1_Pestecera/src/trash"
+		"/D/git/MK1_Pestecera/src/dev/loader"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/docs/quickstart.md",
+		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1/examples/helmet/map/mapa.MAP",
+		"/D/Proyectos/CIs.txt",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/preloadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/aplib.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/helmet.asm",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/my/msc.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/trash/mkcdt.bat",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/diario.md",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
@@ -747,11 +752,7 @@
 		"/C/git/mk1/contrib/nightmare_on_halloween/dev/my/level_screen.h",
 		"/C/git/mk1/contrib/misco_jones/dev/my/level_screen.h",
 		"/C/git/mk1/examples/helmet/dev/printer.h",
-		"/C/git/mk1/examples/helmet/dev/mainloop.h",
-		"/C/git/mk1/examples/helmet/dev/preproc.c",
-		"/C/git/mk1/examples/helmet/dev/engine/enem_mods/enem_type_orthoshooters.h",
-		"/C/git/mk1/examples/helmet/dev/definitions.h",
-		"/C/git/mk1/examples/helmet/dev/my/config.h"
+		"/C/git/mk1/examples/helmet/dev/mainloop.h"
 	],
 	"find":
 	{
@@ -762,6 +763,8 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
+			"D:\\git\\MK1_Pestecera\\lib\\cpcrslib",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
@@ -786,6 +789,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tiles_tocados",
 			"@",
 			"ei",
 			"@",
@@ -912,8 +916,7 @@
 			"movesprabs",
 			"5e46",
 			"draw_scr",
-			"fsclipstruct",
-			"_en_y"
+			"fsclipstruct"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -984,8 +987,41 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/dev/loader/loadercpc.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16254,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								705,
+								705
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 10.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
