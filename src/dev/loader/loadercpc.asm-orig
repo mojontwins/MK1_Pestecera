@@ -1,10 +1,10 @@
-; 'ere, the stack!
+; This is the real loader which will be used once the CPC is set up
 
-org $BF00
+org $BA00
 
-; Ints off
+	ld     sp, $BFFF
 
-	di
+	call   blackenpal
 
 ; Set mode 
 
@@ -14,31 +14,73 @@ org $BF00
 
 ; Load screen 
 
-	ld      ix, $BF00 - %%%scrc_size%%%
+	ld      ix, $BA00 - %%%scrc_size%%%
 	ld      de, %%%scrc_size%%%
 	call    cpct_miniload_asm
 
+	call setPal
+
 ; Depack screen
 
-	ld      hl, $BF00 - %%%scrc_size%%%
+	ld      hl, $BA00 - %%%scrc_size%%%
 	ld      de, $C000
 	call    dzx7_standard
 
 ; Load binary
 
-	ld      ix, $BF00 - %%%mainbin_size%%%
+	ld      ix, $BA00 - %%%mainbin_size%%%
 	ld      de, %%%mainbin_size%%%
 	call    cpct_miniload_asm
 
 ; Depack binary
 
-	ld      hl, $BF00 - %%%mainbin_size%%%
-	ld      de, $0040
+	ld      hl, $BA00 - %%%mainbin_size%%%
+	ld      de, $0400
 	call    dzx7_standard
 
 ; Run 
 
-	jp 		$40
+	call    blackenpal
+	jp 		$400
+
+blackenpal:
+	ld     de, 15	
+	ld     b, $7f
+
+loopBlackPal:
+
+	out    (c), e    ; Select index
+	ld     a, 20
+	or     $40
+	out    (c), a    ; Set colour
+	dec    e
+	jp     p, loopBlackPal
+
+	ret
+
+setPal:
+
+; Set palette adapted from cpctelera
+
+	ld     de, 15	
+	ld     hl, palette
+	add    hl, de
+	ld     b, $7f
+
+loopPal:
+
+	out    (c), e    ; Select index
+	ld     a, (hl)
+	or     $40
+	out    (c), a    ; Set colour
+	dec    hl
+	dec    e
+	jp     p, loopPal
+
+	ret
+
+palette:
+	defb 3, 20, 4, 21, 6, 0, 27, 25, 22, 28, 12, 14, 15, 13, 5, 11
 
 
 ; -----------------------------------------------------------------------------
@@ -293,6 +335,8 @@ cpct_miniload_asm:
 	;; This is guaranteed if this is called from BASIC, but not otherwise
 	exx               ;; 
 	push  bc          ;; Save BC' value before changing it (it will be restored at the end)
+	push  de 			;; **********
+	ld    de, $4454
 	ld    bc, $7F10 ;; B = Gate array port (0x7F), C=Border Register (0x10)
 	out  (c), c       ;; Select border register for later color changes
 	exx               ;;
@@ -345,9 +389,12 @@ edge:
 	
 	;; Set new random border colour
 	exx               ;; use B' = 0x7F to send data to the Gate Array
-	ld     a, r       ;; read R to get some randomness
-	or    $40       ;; Add this bit for colour commands (hardware values)
-	and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+	;ld     a, r       ;; read R to get some randomness
+	;or    $40         ;; Add this bit for colour commands (hardware values)
+	;and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+	ld      a, e
+	ld      e, d
+	ld      d, a       ;; na_th_an picha 8====D
 	out  (c), a       ;; set random border colour
 	exx
 	
@@ -390,6 +437,7 @@ exit:
 	exx               ;; 
 	ld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)
 	out  (c), c       ;; Cassette stop
+	pop   de
 	pop   bc          ;; Restore BC' before ending (Leave alternate register set as it was)
 	exx               ;;
 	;ei                ;; Enable interrupts again

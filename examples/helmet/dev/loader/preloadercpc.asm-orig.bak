@@ -1,155 +1,15 @@
-; This is the real loader which will be used once the CPC is set up
+; Minimally set up the CPC to remove FW
 
-org $BA00
+org $400
 
-	ld     sp, $BFFF
+di
+ld   	hl, 0xC9FB
+ld 		($38), hl
 
-	call   blackenpal
-
-; Set mode 
-
-	ld     bc, $7f00
-	ld     a, $8C + 0
-	out    (c), a
-
-; Load screen 
-
-	ld      ix, $BA00 - 1126
-	ld      de, 1126
-	call    cpct_miniload_asm
-
-	call setPal
-
-; Depack screen
-
-	ld      hl, $BA00 - 1126
-	ld      de, $C000
-	call    dzx7_standard
-
-; Load binary
-
-	ld      ix, $BA00 - 13269
-	ld      de, 13269
-	call    cpct_miniload_asm
-
-; Depack binary
-
-	ld      hl, $BA00 - 13269
-	ld      de, $0400
-	call    dzx7_standard
-
-; Run 
-
-	call    blackenpal
-	jp 		$400
-
-blackenpal:
-	ld     de, 15	
-	ld     b, $7f
-
-loopBlackPal:
-
-	out    (c), e    ; Select index
-	ld     a, 20
-	or     $40
-	out    (c), a    ; Set colour
-	dec    e
-	jp     p, loopBlackPal
-
-	ret
-
-setPal:
-
-; Set palette adapted from cpctelera
-
-	ld     de, 15	
-	ld     hl, palette
-	add    hl, de
-	ld     b, $7f
-
-loopPal:
-
-	out    (c), e    ; Select index
-	ld     a, (hl)
-	or     $40
-	out    (c), a    ; Set colour
-	dec    hl
-	dec    e
-	jp     p, loopPal
-
-	ret
-
-palette:
-	defb 3, 20, 4, 21, 6, 0, 27, 25, 22, 28, 12, 14, 15, 13, 5, 11
-
-
-; -----------------------------------------------------------------------------
-; ZX7 decoder by Einar Saukas, Antonio Villena & Metalbrain
-; "Standard" version (69 bytes only)
-; -----------------------------------------------------------------------------
-; Parameters:
-;   HL: source address (compressed data)
-;   DE: destination address (decompressing)
-; -----------------------------------------------------------------------------
-
-dzx7_standard:
-		ld      a, $80
-dzx7s_copy_byte_loop:
-		ldi                             ; copy literal byte
-dzx7s_main_loop:
-		call    dzx7s_next_bit
-		jr      nc, dzx7s_copy_byte_loop ; next bit indicates either literal or sequence
-
-; determine number of bits used for length (Elias gamma coding)
-		push    de
-		ld      bc, 0
-		ld      d, b
-dzx7s_len_size_loop:
-		inc     d
-		call    dzx7s_next_bit
-		jr      nc, dzx7s_len_size_loop
-
-; determine length
-dzx7s_len_value_loop:
-		call    nc, dzx7s_next_bit
-		rl      c
-		rl      b
-		jr      c, dzx7s_exit           ; check end marker
-		dec     d
-		jr      nz, dzx7s_len_value_loop
-		inc     bc                      ; adjust length
-
-; determine offset
-		ld      e, (hl)                 ; load offset flag (1 bit) + offset value (7 bits)
-		inc     hl
-		defb    $cb, $33                ; opcode for undocumented instruction "SLL E" aka "SLS E"
-		jr      nc, dzx7s_offset_end    ; if offset flag is set, load 4 extra bits
-		ld      d, $10                  ; bit marker to load 4 bits
-dzx7s_rld_next_bit:
-		call    dzx7s_next_bit
-		rl      d                       ; insert next bit into D
-		jr      nc, dzx7s_rld_next_bit  ; repeat 4 times, until bit marker is out
-		inc     d                       ; add 128 to DE
-		srl	d			; retrieve fourth bit from D
-dzx7s_offset_end:
-		rr      e                       ; insert fourth bit into E
-
-; copy previous sequence
-		ex      (sp), hl                ; store source, restore destination
-		push    hl                      ; store destination
-		sbc     hl, de                  ; HL = destination - offset - 1
-		pop     de                      ; DE = destination
-		ldir
-dzx7s_exit:
-		pop     hl                      ; restore source address (compressed data)
-		jr      nc, dzx7s_main_loop
-dzx7s_next_bit:
-		add     a, a                    ; check next bit
-		ret     nz                      ; no more bits left?
-		ld      a, (hl)                 ; load another group of 8 bits
-		inc     hl
-		rla
-		ret
+ld      ix, $BA00
+ld      de, %%%loader_size%%%
+call    cpct_miniload_asm
+jp      $BA00
 
 ; -----------------------------------------------------------------------------
 
@@ -335,8 +195,6 @@ cpct_miniload_asm:
 	;; This is guaranteed if this is called from BASIC, but not otherwise
 	exx               ;; 
 	push  bc          ;; Save BC' value before changing it (it will be restored at the end)
-	push  de 			;; **********
-	ld    de, $4454
 	ld    bc, $7F10 ;; B = Gate array port (0x7F), C=Border Register (0x10)
 	out  (c), c       ;; Select border register for later color changes
 	exx               ;;
@@ -389,12 +247,9 @@ edge:
 	
 	;; Set new random border colour
 	exx               ;; use B' = 0x7F to send data to the Gate Array
-	;ld     a, r       ;; read R to get some randomness
-	;or    $40         ;; Add this bit for colour commands (hardware values)
-	;and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
-	ld      a, e
-	ld      e, d
-	ld      d, a       ;; na_th_an picha 8====D
+	ld     a, r       ;; read R to get some randomness
+	or    $40       ;; Add this bit for colour commands (hardware values)
+	and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
 	out  (c), a       ;; set random border colour
 	exx
 	
@@ -437,7 +292,6 @@ exit:
 	exx               ;; 
 	ld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)
 	out  (c), c       ;; Cassette stop
-	pop   de
 	pop   bc          ;; Restore BC' before ending (Leave alternate register set as it was)
 	exx               ;;
 	;ei                ;; Enable interrupts again

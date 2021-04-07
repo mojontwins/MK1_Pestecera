@@ -78,14 +78,22 @@ del ..\bin\loading.c.bin >nul 2>nul
 del ..\bin\%game%.c.bin >nul 2>nul
 ..\utils\zx7.exe %game%.bin ..\bin\%game%.c.bin > nul
 
-set loader_org=$aa00
-rem $aa00 = 43520
-
 ..\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
 	scrc_size=?..\bin\loading.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
+
+..\utils\imanol.exe in=loader\preloadercpc.asm-orig out=loader\preloadercpc.asm ^
+	loader_size=?..\bin\loader.bin ^
+	loader_mode=%cpc_gfx_mode% > nul
+..\utils\pasmo.exe loader\preloadercpc.asm ..\bin\preloader.bin  > nul
+
+del %game%.cdt > nul
+..\utils\cpc2cdt.exe -r %game% -m cpc -l 1024 -x 1024 -p 2000 ..\bin\preloader.bin %game%.cdt
+..\utils\cpc2cdt.exe -r LOADER -m raw1full -rl 740 -p 2000 ..\bin\loader.bin %game%.cdt
+..\utils\cpc2cdt.exe -r SCR -m raw1full -rl 740 -p 2000 ..\bin\loading.c.bin %game%.cdt
+..\utils\cpc2cdt.exe -r MAIN -m raw1full -rl 740 -p 2000 ..\bin\%game%.c.bin %game%.cdt
 
 goto :end 
 

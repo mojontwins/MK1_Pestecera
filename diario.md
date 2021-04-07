@@ -645,3 +645,13 @@ Ahora mismo los sprites se convierten con:
 
 Podemos añadir un nuevo parámetro `mapping=file.h` y si existe que se genere el código necesario.
 
+20210407
+========
+
+Rehaciendo el loader.
+
+Todo es enorme, incluso la idea de combinar miniload y dx7 para meterlo en la pila ocupa demasiado, así que haré un sistema de un cargador básico y mínimo que cargar en cualquier sitio en que me de acceso libre a todo y un segundo cargador que ya sea el real y que cargue en BA00.
+
+1.- preloadercpc se carga en $200, quita las interrupciones, y carga el cargador real en $BA00
+2.- el cargador real carga pantalla en DX7, descomprime, carga jueg en $40, descomprime, y ejecuta.
+

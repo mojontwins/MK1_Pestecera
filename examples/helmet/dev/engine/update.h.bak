@@ -135,14 +135,6 @@ void cpc_UpdateNow (unsigned char sprites) {
 		#endasm
 	}
 
-	#ifdef MIN_FAPS_PER_FRAME
-		while (isrc < MIN_FAPS_PER_FRAME*6) {
-			#asm
-				halt
-			#endasm
-		} isrc = 0;
-	#endif
-
 	#asm
 			call cpc_ShowTouchedTiles
 			call cpc_ResetTouchedTiles
