@@ -391,12 +391,12 @@ edge:
 	
 	;; Set new random border colour
 	exx               ;; use B' = 0x7F to send data to the Gate Array
-	;ld     a, r       ;; read R to get some randomness
-	;or    $40         ;; Add this bit for colour commands (hardware values)
-	;and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
-	ld      a, e
-	ld      e, d
-	ld      d, a       ;; na_th_an picha 8====D
+	ld     a, r       ;; read R to get some randomness
+	or    $40         ;; Add this bit for colour commands (hardware values)
+	and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+	;ld      a, e
+	;ld      e, d
+	;ld      d, a       ;; na_th_an picha 8====D
 	out  (c), a       ;; set random border colour
 	exx
 	

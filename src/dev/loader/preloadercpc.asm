@@ -5,7 +5,7 @@ org $400
 di
 
 ld      ix, $BA00
-ld      de, 304
+ld      de, 306
 call    cpct_miniload_asm
 jp      $BA00
 
