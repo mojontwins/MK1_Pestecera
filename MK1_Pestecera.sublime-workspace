@@ -520,10 +520,37 @@
 	"buffers":
 	[
 		{
-			"file": "src/dev/loader/loadercpc.asm",
+			"file": "src/dev/loader/loadercpc.asm-orig",
 			"settings":
 			{
-				"buffer_size": 16254,
+				"buffer_size": 16403,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/helmet/dev/loader/loadercpc.asm-orig",
+			"settings":
+			{
+				"buffer_size": 16543,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
+			"settings":
+			{
+				"buffer_size": 5296,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/loader/loadercpc.asm-orig",
+			"settings":
+			{
+				"buffer_size": 16404,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -616,15 +643,17 @@
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
 		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/jetpaco",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader",
+		"/D/git/MK1_Pestecera/examples/helmet",
+		"/D/git/MK1_Pestecera/examples/helmet/dev",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/engine",
+		"/D/git/MK1_Pestecera/examples/helmet/dev/loader",
 		"/D/git/MK1_Pestecera/src",
 		"/D/git/MK1_Pestecera/src/dev",
 		"/D/git/MK1_Pestecera/src/dev/loader"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
@@ -642,7 +671,6 @@
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/trash/mkcdt.bat",
 		"/D/git/MK1_Pestecera/diario.md",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
 		"/D/git/MK1_Pestecera/README.md",
@@ -756,7 +784,7 @@
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -987,24 +1015,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/dev/loader/loadercpc.asm",
+					"file": "src/dev/loader/loadercpc.asm-orig",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16254,
+						"buffer_size": 16403,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								705,
-								705
+								14275,
+								14275
 							]
 						],
 						"settings":
@@ -1016,10 +1044,103 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10.0,
+						"translation.y": 4777.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "examples/helmet/dev/loader/loadercpc.asm-orig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14208,
+								14208
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4680.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3530,
+								3530
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 400.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "examples/jetpaco/dev/loader/loadercpc.asm-orig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14403,
+								14068
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4563.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
