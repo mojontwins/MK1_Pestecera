@@ -199,39 +199,7 @@ Un poco más abajo, en la sección de `compile.bat` donde se genera el archivo `
     [...]
 ```
 
-### Paleta de la pantalla de carga
-
-Hasta que no me invente una forma de automatizar esto, habrá que toquetear el cargador de cinta para poner la paleta correcta tras cargar la pantalla de carga. Para eso tendremos que ejecutar el conversor desde linea de comandos para que nos chive la paleta, así:
-
-```cmd
-    Administrador@SHADOW_LITE_SP3 Y:\MK1_Pestecera\examples\jetpaco\dev
-    $ ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin
-    mkts_om v0.4.20210327
-    Reading palette file ..\gfx\pal_loading.png
-    Reading input file ..\gfx\loading.png
-    Offset (0, 0)
-    Metasize (2, 2)
-    Process size (20, 12)
-    tmapoffs 0
-    max -1
-    with prefix
-    mkts_om v0.4.20210327 ~ Superbuffer mode (16384 bytes).
-    HW Palette for the ASM loader:
-    10, 24, 29, 4, 0, 20, 11, 23, 21, 26, 22, 28, 14, 7, 5, 12
-    FW Palette for the BASIC loader:
-    24, 4, 5, 1, 13, 0, 26, 11, 2, 21, 9, 3, 15, 16, 7, 6
-    Opening ..\bin\loading.bin for output.
-    Writing 16384 bytes to output.
-    + 16384 bytes written
-    DONE
-```
-
-Nos interesa la linea de números bajo "HW Palette for the ASM loader". Copiamos esos números y los pegamos en el archivo `dev/loader/loadercpc.asm-orig` sustituyendo la lista que existe bajo la etiqueta `palette` alrededor de la linea 83, de forma que quede:
-
-```asm
-    palette:
-        defb 10, 24, 29, 4, 0, 20, 11, 23, 21, 26, 22, 28, 14, 7, 5, 12
-```
+Seguidamente se crea la cinta. Nótese que si tienes tu paleta de la pantalla de carga en una ubicación distinta o no se llama `pal_loading.png` tendrás que modificar tambien eso.
 
 ## Adaptando mapa y enemigos
 
