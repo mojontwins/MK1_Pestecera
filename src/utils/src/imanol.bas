@@ -45,7 +45,7 @@ End Function
 
 ' Variables
 
-Dim As Integer fIn, fOut, cpos, from, cto, offset, filel, result, ccpos, i, lastOp
+Dim As Integer fIn, fOut, cpos, from, cto, offset, filel, result, ccpos, i, lastOp, fPipe
 Dim As String linea
 Dim As String leftTrim, rightTrim, find, replace, portn, m
 
@@ -129,6 +129,13 @@ While Not Eof (fIn)
 				
 				Print "    Replacing with expression; result = " & result
 				replace = Str (result)
+			ElseIf Left (replace, 1) = "!" Then
+				replace = Right (replace, Len (replace) - 1)
+				fPipe = FreeFile
+				open pipe (Exepath & "/mkts_om.exe platform=cpc mode=outputpal in=" & replace & " silent") For Input As fPipe
+				Line Input #fPipe, replace
+				Close fPipe
+				Print "    Replacing with  " & replace
 			Else
 				Print "    Replacing with  " & replace
 			End If

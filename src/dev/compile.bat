@@ -81,6 +81,7 @@ del ..\bin\%game%.c.bin >nul 2>nul
 ..\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
 	scrc_size=?..\bin\loading.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
+	loading_palette=!..\gfx\pal_loading.png ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
 

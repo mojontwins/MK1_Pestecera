@@ -472,6 +472,25 @@ Sub doPals (img As Any Ptr, prefix As String, outputFn As String)
 	End Select
 End Sub
 
+Sub writePals (img As Any Ptr, prefix As String)
+	Dim As Integer i, f, c
+	Dim As String strOutput
+
+	extractGlobalPalette img
+	
+	strOutput = ""
+	Select Case platform
+		Case PLATFORM_CPC:
+			' Write HW colours
+			For i = 0 To 15
+				c = globalPalette (i)
+				strOutput = strOutput & "$" & Hex (cpcHWColour (c), 2)
+				If i < 15 Then strOutput = strOutput & ", "				
+			Next i			
+	End Select
+	Puts strOutput
+End Sub
+
 Sub doChars (img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h As Integer, max As Integer)
 	Dim As Integer x, y, x0, y0, x1, y1, ct
 	Dim As uByte attr 	' will be ignored in this Sub
@@ -1255,7 +1274,9 @@ Next i
 fiPuts "mkts_om v0.4.20210327"
 
 ' Mandatory params
-If sclpGetValue ("mode") = "scripted" Then
+If sclpGetValue ("mode") = "outputpal" Then
+	' check is nonce
+ElseIf sclpGetValue ("mode") = "scripted" Then
 	If Not sclpCheck (mandatoryScripted ()) Then usage: End
 Else
 	If Not sclpCheck (mandatory ()) Then usage: End
@@ -1285,7 +1306,7 @@ If sclpGetValue ("platform") = "cpc" Then
 	patternSize = 16
 	patternWidthInPixels = 4 * brickMultiplier
 
-	If sclpGetValue ("mode") <> "scripted" And sclpGetValue ("mode") <> "pal" And sclpGetValue ("mode") <> "pals" Then
+	If sclpGetValue ("mode") <> "scripted" And sclpGetValue ("mode") <> "pal" And sclpGetValue ("mode") <> "outputpal" And sclpGetValue ("mode") <> "pals" Then
 		If sclpGetValue ("pal") = "" Then
 			Puts ("** pal file missing **")
 			usage
@@ -1385,6 +1406,10 @@ Select Case sclpGetValue ("mode")
 	Case "pal", "pals"
 		If Trim (prefix) = "" Then prefix = "my_inks"
 		doPals img, prefix, outputBaseFn & ".h"
+		ImageDestroy img
+
+	Case "outputpal"
+		writePals img, prefix
 		ImageDestroy img
 
 	Case "chars"
