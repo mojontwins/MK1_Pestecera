@@ -519,33 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "Searching 109 files for \"clear_sprites\" (regex)\n\nD:\\git\\MK1_Pestecera\\src\\dev\\lala_beta.map:\n  551  _BLACKOUT\t\t\t= 0D98, G: MK1\n  552  _CERROJOS\t\t\t= 1691, G: MK1\n  553: _CLEAR_SPRITES\t\t\t= 3129, G: MK1\n  554  _CM_TWO_POINTS\t\t\t= 3264, G: MK1\n  555  _CM_TWO_POINTS_AT1_DO\t\t= 3275, L: MK1\n  ...\n  848  PRINT_STR_LOOP\t\t\t= 3104, L: MK1\n  849  PRINT_STR_INV\t\t\t= 3116, L: MK1\n  850: _CLEAR_SPRITES\t\t\t= 3129, G: MK1\n  851  I_19\t\t\t\t= 3133, L: MK1\n  852  I_21\t\t\t\t= 3138, L: MK1\n\nD:\\git\\MK1_Pestecera\\src\\dev\\mainloop.h:\n  271  \t\t}\n  272  \t\t\n  273: \t\tclear_sprites ();\n  274  \n  275  \t\t#include \"my/ci/after_game.h\"\n\nD:\\git\\MK1_Pestecera\\src\\dev\\mainloop\\game_loop.h:\n  107  \t\t\t\t\ttimer_zero = 0;\n  108  \t\t\t\t\t#ifdef SHOW_TIMER_OVER\n  109: \t\t\t\t\t\tclear_sprites ();\n  110  \t\t\t\t\t\ttime_over ();\n  111  \t\t\t\t\t#endif\n  ...\n  118  \t\t\t\t\t#ifdef SHOW_TIMER_OVER\n  119  \t\t\t\t\t\t#ifndef TIMER_SCRIPT_0\n  120: \t\t\t\t\t\t\tclear_sprites ();\n  121  \t\t\t\t\t\t\ttime_over ();\n  122  \t\t\t\t\t\t#endif\n  ...\n  259  \t\t\t\twhile (cpc_TestKey (KEY_ENTER));\n  260  \t\t\t\tisr_player_on = 0;\n  261: \t\t\t\tclear_sprites ();\n  262  \t\t\t\t//pause_screen ();\n  263  \t\t\t\twhile (!cpc_TestKey (KEY_ENTER));\n\nD:\\git\\MK1_Pestecera\\src\\dev\\printer.h:\n  638  #endif\n  639  \n  640: void clear_sprites (void) {\n  641  \t#asm\n  642  \t#endasm\n\nD:\\git\\MK1_Pestecera\\src\\dev\\prototypes.h:\n  100  void print_str (void);\n  101  void blackout_area (void);\n  102: void clear_sprites (void);\n  103  \n  104  // update.h\n\n8 matches across 5 files\n",
-			"settings":
-			{
-				"buffer_size": 1458,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "src/dev/printer.h",
-			"settings":
-			{
-				"buffer_size": 10760,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/dev/engine/bullets.h",
-			"settings":
-			{
-				"buffer_size": 5303,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -643,6 +616,9 @@
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
+		"/D/git/MK1_Pestecera/src/dev/printer.h",
+		"/D/git/MK1_Pestecera/src/dev/aplib.h",
 		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
@@ -682,7 +658,6 @@
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
 		"/D/git/MK1_Pestecera/README.md",
-		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/D/git/MK1_Pestecera/docs/config.h.md",
@@ -768,9 +743,7 @@
 		"/C/git/mk1/examples/goku_mal/dev/build_assets.bat",
 		"/C/git/mk1/examples/goku_mal/gfx/behs2.txt",
 		"/C/git/mk1/src/utils/src/png2scr.bas",
-		"/C/git/mk1/examples/goku_mal/dev/my/level_screen.h",
-		"/C/git/mk1/examples/goku_mal/dev/my/ci/before_entering_screen.h",
-		"/C/git/mk1/examples/goku_mal/dev/my/ci/entering_game.h"
+		"/C/git/mk1/examples/goku_mal/dev/my/level_screen.h"
 	],
 	"find":
 	{
@@ -781,6 +754,8 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\src\\dev",
+			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"D:\\git\\MK1_Pestecera\\lib\\cpcrslib",
@@ -808,6 +783,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pal_set",
+			"AY_PLAY",
+			"unpack",
 			"clear_sprites",
 			"generatestraitmappings",
 			"sm_sprptr",
@@ -932,10 +910,7 @@
 			"_b_estado",
 			"bullets_([a-z]+) \\[b_it\\]",
 			"bullets_estado [b_it]",
-			"bullets_([a-z]+) \\[b_it\\]",
-			"bit",
-			"gpit",
-			"bullets"
+			"bullets_([a-z]+) \\[b_it\\]"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1006,148 +981,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1458,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										169,
-										182
-									],
-									[
-										375,
-										388
-									],
-									[
-										538,
-										551
-									],
-									[
-										731,
-										744
-									],
-									[
-										886,
-										899
-									],
-									[
-										1043,
-										1056
-									],
-									[
-										1211,
-										1224
-									],
-									[
-										1383,
-										1396
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								1218,
-								1218
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/dev/printer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10760,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10605,
-								10512
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7381.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/dev/engine/bullets.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4572,
-								4572
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2889.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		},
 		{
