@@ -837,6 +837,14 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 	Print #fOut, "#endasm"
 	Print #fOut, ""
 
+	Print #fOut, "// A list of MK1v4-friendly macros"
+	offsetCounter = 0
+	For i = 0 To max - 1
+		Print #fOut, "#define SPRITE_" & Hex (i, 2) & " (_sprites + 0x" & Hex (offsetCounter, 4) & ")"
+		offsetCounter = offsetCounter + cellSize
+	Next i
+	Print #fOut, ""
+
 	Close fOut
 End Sub
 

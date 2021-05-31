@@ -519,42 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/dev/loader/loadercpc.asm-orig",
-			"settings":
-			{
-				"buffer_size": 16403,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/helmet/dev/loader/loadercpc.asm-orig",
-			"settings":
-			{
-				"buffer_size": 16543,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
-			"settings":
-			{
-				"buffer_size": 5296,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "examples/jetpaco/dev/loader/loadercpc.asm-orig",
-			"settings":
-			{
-				"buffer_size": 16404,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -643,24 +607,34 @@
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
 		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/helmet",
-		"/D/git/MK1_Pestecera/examples/helmet/dev",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/engine",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/loader",
 		"/D/git/MK1_Pestecera/src",
 		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/loader"
+		"/D/git/MK1_Pestecera/src/dev/my",
+		"/D/git/MK1_Pestecera/src/gfx"
 	],
 	"file_history":
 	[
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
+		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/definitions.h",
+		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
+		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
+		"/D/git/MK1_Pestecera/src/dev/mk1.c",
+		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/D/temp/cubito/web/comics.css",
+		"/C/Users/jcastano/Desktop/test.html",
+		"/D/temp/cubito/comics.css",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
+		"/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
+		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
+		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1/examples/helmet/map/mapa.MAP",
 		"/D/Proyectos/CIs.txt",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/preloadercpc.asm-orig",
@@ -677,14 +651,9 @@
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/D/git/MK1_Pestecera/docs/config.h.md",
-		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/D/Proyectos/2021/20210406a - Corrección eliminación DNI en miCuenta con usuarios GUIA+SIRHUS/instrucciones.txt",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
-		"/D/git/MK1_Pestecera/src/dev/mk1.c",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/engine/simple_cocos.h",
 		"/C/Users/jcastano/Desktop/LDAP Browser/ldapescritura.juntadeandalucia.es - admin.cfg",
 		"/D/git/MK1_Pestecera/env/cpc_pal.pal",
@@ -772,25 +741,18 @@
 		"/C/git/mk1/examples/goku_mal/dev/mainloop/game_loop.h",
 		"/C/git/mk1/docs/tutorial-cap13.md",
 		"/C/git/mk1/examples/helmet/dev/mainloop/game_loop.h",
-		"/C/git/mk1/examples/helmet/dev/my/ci/entering_game.h",
-		"/C/git/mk1/src/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole_ci/dev/my/level_screen.h",
-		"/C/git/mk1/examples/dogmole/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/nightmare_on_halloween/dev/my/level_screen.h",
-		"/C/git/mk1/contrib/misco_jones/dev/my/level_screen.h",
-		"/C/git/mk1/examples/helmet/dev/printer.h",
-		"/C/git/mk1/examples/helmet/dev/mainloop.h"
+		"/C/git/mk1/examples/helmet/dev/my/ci/entering_game.h"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
 			"D:\\git\\MK1_Pestecera\\lib\\cpcrslib",
 			"D:\\git\\MK1_Pestecera\\examples\\helmet\\dev",
@@ -817,6 +779,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"blackout",
+			"spr_on",
+			"SW_SPRITES_ALL",
+			"sm_sprptr",
 			"tiles_tocados",
 			"@",
 			"ei",
@@ -940,11 +906,7 @@
 			"gpt",
 			"rando",
 			"life",
-			"distance",
-			"movesprabs",
-			"5e46",
-			"draw_scr",
-			"fsclipstruct"
+			"distance"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1015,134 +977,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/dev/loader/loadercpc.asm-orig",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16403,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14275,
-								14275
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4777.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "examples/helmet/dev/loader/loadercpc.asm-orig",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16543,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14208,
-								14208
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4680.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5296,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3530,
-								3530
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 400.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "examples/jetpaco/dev/loader/loadercpc.asm-orig",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14403,
-								14068
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4563.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1225,7 +1061,7 @@
 		[
 			[
 				"",
-				"D:\\Proyectos\\remote\\desccobuz05.sublime-project"
+				"D:\\Proyectos\\remote\\p3sdes.sublime-project"
 			]
 		],
 		"width": 380.0
