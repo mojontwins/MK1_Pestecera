@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Im",
+				"ImageDestroy\tabc"
+			],
+			[
 				"offs",
 				"offsetCounter\tabc"
 			],
@@ -510,15 +514,20 @@
 			[
 				"webdav_aboo",
 				"webdav_abook_dir"
-			],
-			[
-				"sande",
-				"rcube_sandetel"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "docs/quickstart.md",
+			"settings":
+			{
+				"buffer_size": 27276,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -609,17 +618,20 @@
 		"/D/git/MK1_Pestecera/examples",
 		"/D/git/MK1_Pestecera/src",
 		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/assets",
-		"/D/git/MK1_Pestecera/src/dev/engine",
-		"/D/git/MK1_Pestecera/src/dev/mainloop",
-		"/D/git/MK1_Pestecera/src/dev/my"
+		"/D/git/MK1_Pestecera/src/dev/loader",
+		"/D/git/MK1_Pestecera/src/utils",
+		"/D/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
+		"/D/git/MK1/src_cpc/utils/imanol.bas",
+		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/aplib.h",
-		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
@@ -632,14 +644,11 @@
 		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
 		"/D/git/MK1_Pestecera/src/dev/mk1.c",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/D/temp/cubito/web/comics.css",
 		"/C/Users/jcastano/Desktop/test.html",
 		"/D/temp/cubito/comics.css",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
 		"/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
@@ -742,8 +751,7 @@
 		"/C/git/mk1/trash/blip_blep/dev/my/ci/on_wall_broken.cpp",
 		"/C/git/mk1/examples/goku_mal/dev/build_assets.bat",
 		"/C/git/mk1/examples/goku_mal/gfx/behs2.txt",
-		"/C/git/mk1/src/utils/src/png2scr.bas",
-		"/C/git/mk1/examples/goku_mal/dev/my/level_screen.h"
+		"/C/git/mk1/src/utils/src/png2scr.bas"
 	],
 	"find":
 	{
@@ -754,6 +762,7 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
@@ -783,6 +792,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pal_loading",
+			"writepals",
+			"outputpal",
+			"invfunc",
 			"pal_set",
 			"AY_PLAY",
 			"unpack",
@@ -906,11 +919,7 @@
 			"bullets",
 			"\\(p_(x|y) >> 6\\)",
 			"(p_x >> 6)",
-			"_b_life",
-			"_b_estado",
-			"bullets_([a-z]+) \\[b_it\\]",
-			"bullets_estado [b_it]",
-			"bullets_([a-z]+) \\[b_it\\]"
+			"_b_life"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -981,8 +990,42 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "docs/quickstart.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12117,
+								12117
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3013.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
