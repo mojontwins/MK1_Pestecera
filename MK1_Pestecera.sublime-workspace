@@ -523,7 +523,7 @@
 			"file": "docs/quickstart.md",
 			"settings":
 			{
-				"buffer_size": 27276,
+				"buffer_size": 27285,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -615,24 +615,29 @@
 	[
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
-		"/D/git/MK1_Pestecera/examples",
+		"/D/git/MK1_Pestecera/docs/wiki-img",
+		"/D/git/MK1_Pestecera/docs/wiki-img/jet_paco",
 		"/D/git/MK1_Pestecera/src",
 		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/loader",
+		"/D/git/MK1_Pestecera/src/dev/engine",
+		"/D/git/MK1_Pestecera/src/dev/engine/enem_mods",
 		"/D/git/MK1_Pestecera/src/utils",
 		"/D/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/docs/quickstart.md",
+		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
+		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/src/dev/printer.h",
+		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1/src_cpc/utils/imanol.bas",
 		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/aplib.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
@@ -652,7 +657,6 @@
 		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
 		"/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
-		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1/examples/helmet/map/mapa.MAP",
 		"/D/Proyectos/CIs.txt",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
@@ -668,7 +672,6 @@
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
 		"/D/git/MK1_Pestecera/README.md",
 		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
-		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/D/git/MK1_Pestecera/docs/config.h.md",
 		"/D/Proyectos/2021/20210406a - Corrección eliminación DNI en miCuenta con usuarios GUIA+SIRHUS/instrucciones.txt",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
@@ -750,8 +753,7 @@
 		"/C/git/mk1/docs/code_injection.md",
 		"/C/git/mk1/trash/blip_blep/dev/my/ci/on_wall_broken.cpp",
 		"/C/git/mk1/examples/goku_mal/dev/build_assets.bat",
-		"/C/git/mk1/examples/goku_mal/gfx/behs2.txt",
-		"/C/git/mk1/src/utils/src/png2scr.bas"
+		"/C/git/mk1/examples/goku_mal/gfx/behs2.txt"
 	],
 	"find":
 	{
@@ -762,6 +764,7 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
@@ -792,6 +795,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sprites",
+			"cpc_UpdateNow (0);",
+			"isr_player_on",
+			"AY_",
+			"wyz",
 			"pal_loading",
 			"writepals",
 			"outputpal",
@@ -914,12 +922,7 @@
 			"max_objs",
 			"CERROJOS",
 			"Flags",
-			"ENABLE_FIRE_ZONE",
-			"break",
-			"bullets",
-			"\\(p_(x|y) >> 6\\)",
-			"(p_x >> 6)",
-			"_b_life"
+			"ENABLE_FIRE_ZONE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -999,15 +1002,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27276,
+						"buffer_size": 27285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12117,
-								12117
+								7125,
+								7125
 							]
 						],
 						"settings":
@@ -1020,7 +1023,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3013.0,
+						"translation.y": 1857.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1108,7 +1111,7 @@
 		[
 			[
 				"",
-				"D:\\Proyectos\\remote\\p3sdes.sublime-project"
+				"D:\\git\\MK1\\MK1_v4.sublime-project"
 			]
 		],
 		"width": 380.0

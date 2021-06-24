@@ -130,17 +130,17 @@ Finalmente, tendremos:
 
 ### El spriteset
 
-* `work.png` contendrá los gráficos que necesitemos para representar los sprites de nuestro juego. En la configuración básica serán 16 cells de 16x16 píxels en modo 1 u 8x16 píxels en modo 0 (pueden ser más y pueden ser de 24 píxels de alto). El conversor espera 8 cells por fila, así que nuestro archivo deberá tener 128 píxels de ancho en modo 1 o 64 en modo 0. Se puede hacer juegos con gráficos de diferente tamaño (16 o 24 píxels de alto), pero eso es algo que no trataremos en esta guía.
+* `sprites.png` contendrá los gráficos que necesitemos para representar los sprites de nuestro juego. En la configuración básica serán 16 cells de 16x16 píxels en modo 1 u 8x16 píxels en modo 0 (pueden ser más y pueden ser de 24 píxels de alto). El conversor espera 8 cells por fila, así que nuestro archivo deberá tener 128 píxels de ancho en modo 1 o 64 en modo 0. Se puede hacer juegos con gráficos de diferente tamaño (16 o 24 píxels de alto), pero eso es algo que no trataremos en esta guía.
 
 La configuración básica es la misma que en **MTE MK1** para **ZX Spectrum**, pudiendo hacer los añadidos y personalizaciones que necesites mediante inyección de código y diferentes configuraciones que no trataremos en esta guía.
 
 Ten en cuenta que la pluma 0 deberá emplearse para definir qué zonas del sprite deben ser transparentes. Recuerda que es el primer color que aparece en `gfx/pal.png`. En este caso, el amarillo pálido:
 
-![work.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/work.png)
+![sprites.png](https://raw.githubusercontent.com/mojontwins/MK1_Pestecera/master/docs/wiki-img/jet_paco/sprites.png)
 
 ### Sprites extra
 
-En `gfx/` hay dos archivos gráficos más de tipo sprite (con lo que debes prestar atención a usar la prima 0 para marcar qué píxeles son transparentes) que puedes (debes) modificar al gusto:
+En `gfx/` hay dos archivos gráficos más de tipo sprite (con lo que debes prestar atención a usar la pluma 0 para marcar qué píxeles son transparentes) que puedes (debes) modificar al gusto:
 
 * `sprites_bullet.png` contiene el gráfico empleado para representar las balas. Será de 8x8 píxels en modo 1 u 4x8 en modo 0.
 

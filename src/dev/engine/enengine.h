@@ -14,7 +14,7 @@
 	#if defined(PLAYER_STEPS_ON_ENEMIES) || defined (PLAYER_CAN_FIRE)
 		void enems_init (void) {
 			enit = 0;
-			while (enit < MAP_W * MAP_H * 3) {
+			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
 				malotes [enit].t = malotes [enit].t & 15;	
 				#ifdef PLAYER_CAN_FIRE
 					malotes [enit].life = ENEMIES_LIFE_GAUGE;
@@ -27,7 +27,7 @@
 
 void enems_load (void) {
 	// Movemos y cambiamos a los enemigos según el tipo que tengan
-	enoffs = n_pant * 3;
+	enoffs = n_pant * MAX_ENEMS;
 	
 	for (enit = 0; enit < MAX_ENEMS; ++ enit) {
 		en_an_frame [enit] = 0;

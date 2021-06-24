@@ -177,7 +177,7 @@ Dim As String neededParamsArray (1 To 11) => { _
 }
 Dim As Integer errors
 Dim As Byte flag, is_packed
-Dim As integer i, j, x, y, xx, yy, f, fout, idx, byteswritten, totalsize
+Dim As integer i, j, x, y, xx, yy, f, fout, idx, byteswritten, totalsize, nEnems
 Dim As uByte d, life, numlocks
 Dim As Byte sd
 Dim As integer map_w, map_h, tile_lock, max
@@ -379,11 +379,11 @@ For y = 0 To (10 * map_h) - 1
 		If d = tile_lock Then
 			If numlocks = 32 Then Puts ("ERROR! No more than 32 locks allowed!!"): End
 			x_pant = x \ 15: y_pant = y \ 10
-			Puts "    lock @ (" & x & ", " & y & ") => (" & x_pant & ", " & y_pant & ")=" & (x_pant + y_pant * map_w) & "."
 			l (numlocks).np = x_pant + y_pant * map_w
 			l (numlocks).x = x Mod 15
-			l (numlocks).y = y Mod 15
+			l (numlocks).y = y Mod 10
 			l (numlocks).st = 1
+			Puts "    lock @ " & l (numlocks).np & " (" & l (numlocks).x & ", " & l (numlocks).y & ")"
 			numlocks = numlocks + 1
 		End If
 	Next x
@@ -400,6 +400,7 @@ If tile_lock <> 99 Then Puts ("    " & numlocks & " bolts found.")
 
 Puts ("writing map...")
 byteswritten = 0
+Puts ("    bin offset = " & Hex (totalsize, 4))
 If doForce Then 
 	fExtra = freefile
 	Open sclpGetValue ("decorations") For Output as #fExtra
@@ -541,6 +542,7 @@ If tile_lock = 99 Then
 	Puts ("No bolts will be output.")
 Else
 	Puts ("writing bolts...")
+	Puts ("    bin offset = " & Hex (totalsize, 4))
 	byteswritten = 0
 	For i = 0 To 31
 		d = l (i).np: Put #fout, , d
@@ -597,6 +599,7 @@ Next idx
 Puts ("    converted " & (48*4) & " chars")
 Puts ("writing tileset")
 
+Puts ("    bin offset = " & Hex (totalsize, 4))
 For idx = 512 To byteswritten - 1
 	d = tileset (idx)
 	put #fout, , d
@@ -616,10 +619,17 @@ Puts ("    enems filename = " & sclpGetValue ("enemsfile"))
 f = freefile
 Open sclpGetValue ("enemsfile") For Binary as #f
 ' Skip header
-dummy = Input (261, f)
+dummy = Input (256, f)
+Get #f, , d
+Get #f, , d
+Get #f, , d
+Get #f, , d
+Get #f, , d: nEnems = d
+
 ' Read enems
-max = map_w * map_h * 3 
+max = map_w * map_h * nEnems
 Puts ("    reading " & max & " enemies")
+Puts ("    bin offset = " & Hex (totalsize, 4))
 For idx = 1 To max
 	' Read
 	Get #f, , e.t
@@ -677,6 +687,7 @@ Else
 	
 	max = map_w * map_h
 	Puts ("    reading " & max & " hotspots")
+	Puts ("    bin offset = " & Hex (totalsize, 4))
 	For idx = 1 To max
 		' Read
 		get #f, , e.x
@@ -718,6 +729,7 @@ End If
 Puts ("reading behaviours")
 Puts ("    Behaviours file = " & sclpGetValue ("behsfile"))
 f = Freefile
+Puts ("    bin offset = " & Hex (totalsize, 4))
 byteswritten = 0
 Open sclpGetValue ("behsfile") For Input as #f
 	For i = 1 To 3	
@@ -744,6 +756,7 @@ img = png_load (sclpGetValue ("spritesfile"))
 Puts ("    spriteset filename = " & sclpGetValue ("spritesfile"))
 
 Puts ("converting & writing spriteset")
+Puts ("    bin offset = " & Hex (totalsize, 4))
 Puts ("    sprite count = " & nSprites)
 
 x = 0
