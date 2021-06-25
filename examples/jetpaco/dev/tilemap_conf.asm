@@ -14,7 +14,7 @@
 	XREF tiles
 	XDEF pantalla_juego
 	XDEF tiles_tocados
-	XDEF tiles_tocados_ptr
+	
 	XDEF posiciones_pantalla
 	XDEF posiciones_super_buffer
 	

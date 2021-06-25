@@ -30,13 +30,13 @@ org $BA00
 
 ; Load binary
 
-	ld      ix, $BA00 - 13269
-	ld      de, 13269
+	ld      ix, $BA00 - 13306
+	ld      de, 13306
 	call    cpct_miniload_asm
 
 ; Depack binary
 
-	ld      hl, $BA00 - 13269
+	ld      hl, $BA00 - 13306
 	ld      de, $0400
 	call    dzx7_standard
 
@@ -82,7 +82,7 @@ loopPal:
 	ret
 
 palette:
-	defb 3, 20, 4, 21, 6, 0, 27, 25, 22, 28, 12, 14, 15, 13, 5, 11
+	defb $03, $14, $04, $15, $06, $00, $1B, $19, $16, $1C, $0C, $0E, $0F, $0D, $05, $0B
 
 
 ; -----------------------------------------------------------------------------

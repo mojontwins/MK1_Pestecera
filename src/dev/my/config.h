@@ -18,6 +18,10 @@
 
 #define BLACK_PEN 					1		// Which palette entry is black
 
+#define PIXELPERFECT 						// If you use mode 0, don't forget the pixelperfectm0
+											// parameter to mkts when converting the main spriteset
+											// WON'T WORK IN MODE 1
+
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						6		//

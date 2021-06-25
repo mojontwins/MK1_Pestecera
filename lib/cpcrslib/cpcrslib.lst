@@ -9,8 +9,11 @@ cpc_UpdScr
 cpc_ShowTouchedTiles
 cpc_PutSpTileMap
 cpc_PutSpTileMap4x8
+cpc_PutSpTileMap4x8Px
 cpc_PutSpTileMap8x16
+cpc_PutSpTileMap8x16Px
 cpc_PutSpTileMap8x24
+cpc_PutSpTileMap8x24Px
 cpc_PutMaskSpTileMap2b
 cpc_PutORSpTileMap2b
 cpc_PutSpTileMap2b
@@ -80,8 +83,11 @@ cpc_UnExo
 cpc_ScrollLeft0
 cpc_ScrollRight0
 cpc_PutTrSp4x8TileMap2b
+cpc_PutTrSp4x8TileMap2bPx
 cpc_PutTrSp8x16TileMap2b
+cpc_PutTrSp8x16TileMap2bPx
 cpc_PutTrSp8x24TileMap2b
+cpc_PutTrSp8x24TileMap2bPx
 cpc_PutCpSpTileMap2b
 cpc_GetTiles
 cpc_PutTiles

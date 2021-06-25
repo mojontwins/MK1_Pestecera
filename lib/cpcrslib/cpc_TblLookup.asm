@@ -11,7 +11,7 @@ XLIB cpc_TblLookup
 .cpc_TblLookup
    add a,e
    ld e,a
-   jp nc, noinc
+   jr nc, noinc
    inc d
 
 .noinc
