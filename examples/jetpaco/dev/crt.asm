@@ -6,4 +6,4 @@
         org     CRT_ORG_CODE
 start:
         ld sp,$ffff
-        jp    _main
+        jp _main
