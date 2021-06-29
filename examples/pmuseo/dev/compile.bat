@@ -2,7 +2,7 @@
 
 if [%1]==[help] goto :help
 
-set game=jet_paco
+set game=pmuseo
 set cpc_gfx_mode=0
 
 if [%1]==[justcompile] goto :compile
@@ -21,7 +21,7 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 6 6 15 10 15  > nul
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h

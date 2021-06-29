@@ -14,9 +14,9 @@
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
-//#define MIN_FAPS_PER_FRAME 		2		// frame cap, *limits* to 50/N fps.
+#define MIN_FAPS_PER_FRAME 			2		// frame cap, *limits* to 50/N fps.
 
-#define BLACK_PEN 					5		// Which palette entry is black
+#define BLACK_PEN 					1		// Which palette entry is black
 
 #define PIXELPERFECT 						// If you use mode 0, don't forget the pixelperfectm0
 											// parameter to mkts when converting the main spriteset
@@ -24,16 +24,16 @@
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
-#define MAP_W						7		//
-#define MAP_H						5		// Map dimensions in screens
-#define SCR_INICIO					28		// Initial screen
-#define PLAYER_INI_X				5		//
-#define PLAYER_INI_Y				6		// Initial tile coordinates
+#define MAP_W						6		//
+#define MAP_H						6		// Map dimensions in screens
+#define SCR_INICIO					0		// Initial screen
+#define PLAYER_INI_X				2		//
+#define PLAYER_INI_Y				0		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS			20		// Objects to get to finish game
-#define PLAYER_LIFE 				15		// Max and starting life gauge.
+#define PLAYER_NUM_OBJETOS			99		// Objects to get to finish game
+#define PLAYER_LIFE 				99		// Max and starting life gauge.
 #define PLAYER_REFILL				1		// Life recharge
 #define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
@@ -54,26 +54,26 @@
 // Bounding box size
 // -----------------
 											// Comment both for normal 16x16 bounding box
-#define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
+//#define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
 //#define BOUNDING_BOX_8_CENTERED			// 8x8 aligned to center in 16x16
 #define SMALL_COLLISION 					// 8x8 centered collision instead of 12x12
 
 // General directives:
 // -------------------
 
-//#define PLAYER_CHECK_MAP_BOUNDARIES		// If defined, you can't exit the map.
+#define PLAYER_CHECK_MAP_BOUNDARIES			// If defined, you can't exit the map.
 #define DIRECT_TO_PLAY						// If defined, title screen is also the game frame.
-#define DEACTIVATE_KEYS 					// If defined, keys are not present.
-//#define DEACTIVATE_OBJECTS				// If defined, objects are not present.
-//#define DEACTIVATE_REFILLS				// If defined, life refills are not present.
+//#define DEACTIVATE_KEYS 					// If defined, keys are not present.
+#define DEACTIVATE_OBJECTS					// If defined, objects are not present.
+#define DEACTIVATE_REFILLS					// If defined, life refills are not present.
 //#define ONLY_ONE_OBJECT					// If defined, only one object can be carried at a time.
 //#define OBJECT_COUNT				1		// Defines which FLAG will be used to store the object count.
 //#define REVERSE_OBJECTS_COUNT 			// Counts from PLAYER_NUM_OBJETOS to 0
-//#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
+#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
 //#define PLAYER_BOUNCES					// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
-#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
+//#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS					// If defined, exiting the map bottomwise kills.
 //#define WALLS_STOP_ENEMIES				// If defined, enemies react to the scenary
 //#define EVERYTHING_IS_A_WALL				// If defined, any tile <> type 0 is a wall, otherwise just 8.
@@ -189,16 +189,16 @@
 // ----------
 
 //#define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
-#define PLAYER_HAS_JETPAC 					// If defined, player can thrust a vertical jetpac
+//#define PLAYER_HAS_JETPAC 				// If defined, player can thrust a vertical jetpac
 //#define PLAYER_BOOTEE 					// Always jumping engine. Don't forget to disable "HAS_JUMP" and "HAS_JETPAC"!!!
 //#define PLAYER_VKEYS 						// Use with VENG_SELECTOR. Advanced.
-//#define PLAYER_DISABLE_GRAVITY			// Disable gravity. Advanced.
+#define PLAYER_DISABLE_GRAVITY				// Disable gravity. Advanced.
 
 //#define PLAYER_STEPS_ON_ENEMIES			// If defined, stepping on enemies kills them
 //#define PLAYER_CAN_STEP_ON_FLAG	1		// If defined, player can only kill when flag # is "1"
 //#define PLAYER_MIN_KILLABLE		3		// Only kill enemies with id >= PLAYER_MIN_KILLABLE
 
-//#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
+#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
 
 // Configure keyboard
 
@@ -265,16 +265,16 @@ extern unsigned char def_keys [0];
 // This sections defines how stuff is rendered, where to show counters, etcetera
 // Set to 99 so it doesn't show even if it should!!
 
-#define VIEWPORT_X					0		//
-#define VIEWPORT_Y					2		// Viewport character coordinates
-#define LIFE_X						30		//
-#define LIFE_Y						8		// Life gauge counter character coordinates
-#define OBJECTS_X					30		//
-#define OBJECTS_Y					12		// Objects counter character coordinates
+#define VIEWPORT_X					1		//
+#define VIEWPORT_Y					0		// Viewport character coordinates
+#define LIFE_X						10		//
+#define LIFE_Y						21		// Life gauge counter character coordinates
+#define OBJECTS_X					99		//
+#define OBJECTS_Y					99		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-#define KEYS_X						99		//
-#define KEYS_Y						99		// Keys counter character coordinates
+#define KEYS_X						16		//
+#define KEYS_Y						21		// Keys counter character coordinates
 #define KILLED_X					99		//
 #define KILLED_Y					99		// Kills counter character coordinates
 #define AMMO_X						99		// 
@@ -293,8 +293,8 @@ extern unsigned char def_keys [0];
 
 //#define USE_AUTO_SHADOWS					// Automatic shadows made of darker attributes
 //#define USE_AUTO_TILE_SHADOWS 			// Automatic shadows using specially defined tiles 32-47.
-//#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
-#define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
+#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
+//#define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
 //#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
@@ -348,8 +348,8 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 8, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8,10,
+	8, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 0, 4,
+	8, 0, 8, 8, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0
 };
 #endif

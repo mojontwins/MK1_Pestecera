@@ -11,8 +11,8 @@ void title_screen (void) {
 	#else		
 		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
-			
 	cpc_ShowTileMap (1);
+	
 	_x = 13; _y = 13; _gp_gen = "1 POQA"; print_str ();
 			 _y = 14; _gp_gen = "2 STICK"; print_str ();
 

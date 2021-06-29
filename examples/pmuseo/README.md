@@ -14,4 +14,18 @@ Este juego tenía varias cosas puestas directamente sobre el mapa que tendré qu
 |44|14|12|4
 |45|1|12|3
 
+## El movimiento
+
+Para programar desde 0 todo el movimiento primero hay que preparar el motor:
+
+```c
+	//#define PLAYER_HAS_JUMP 		
+	//#define PLAYER_HAS_JETPAC 	
+	//#define PLAYER_BOOTEE 		
+	#define PLAYER_DISABLE_GRAVITY				// Disable gravity. Advanced.
+
+	[...]
+	#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
+```
+
 
