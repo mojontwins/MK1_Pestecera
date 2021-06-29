@@ -688,7 +688,7 @@ unsigned char player_move (void) {
 				if (p_estado == EST_NORMAL)
 			#endif		
 			{
-				p_killme = SFX_SPIKES;
+					p_killme = SFX_SPIKES;
 			}
 		}
 	#endif
@@ -736,7 +736,11 @@ unsigned char player_move (void) {
 		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#endif
 
-	sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 2;
+	#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
+	#else
+		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 2;
+	#endif
 	sp_sw [SP_PLAYER].cy = (gpy + VIEWPORT_Y*8 + sp_sw [SP_PLAYER].coy);
 
 	if ( (p_estado & EST_PARP) && half_life ) sp_sw [SP_PLAYER].sp0 = (int) (SPRFR_EMPTY);
@@ -769,4 +773,3 @@ void player_kill (unsigned char sound) {
 		p_ct_estado = 50;
 	#endif
 }
-

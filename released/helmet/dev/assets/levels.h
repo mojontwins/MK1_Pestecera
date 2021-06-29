@@ -14,7 +14,7 @@
 // Map data, 75 or 150 * (MAP_W*MAP_H) bytes
 // Bolts, 32 * 4 = 128 bytes
 // Tileset, 2304 bytes
-// Enemies, MAP_W * MAP_H * 3 * 10 bytes
+// Enemies, MAP_W * MAP_H * MAX_ENEMS * 10 bytes
 // Hotspots, MAP_W * MAP_H * 3 bytes
 // Behs, 48 bytes
 // Spriteset, 2312 bytes
@@ -59,8 +59,7 @@ typedef struct {
 
 // This space will be overwritten by level data
 
-
-extern LEVELHEADER level_data [0];
+extern LEVELHEADER level_data;
 #asm
 	._level_data defs 16
 #endasm
@@ -85,7 +84,6 @@ extern unsigned char mapa [0];
 
 extern unsigned char tileset [0];
 #asm
-		XDEF _ts
 		XDEF tiles
 	._tileset
 	.tiles
@@ -105,7 +103,7 @@ extern unsigned char tspatterns [0];
 
 extern MALOTE malotes [0];
 #asm
-	._malotes defs MAP_W * MAP_H * 3 * 10
+	._malotes defs MAP_W * MAP_H * MAX_ENEMS * 10
 #endasm
 
 extern HOTSPOT hotspots [0];

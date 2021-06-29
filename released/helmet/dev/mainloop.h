@@ -211,7 +211,7 @@ void main (void) {
 			#ifdef COMPRESSED_LEVELS
 				#include "my/level_screen.h"
 			
-				prepare_level (level);				
+				prepare_level ();			
 			#endif
 					
 			#ifndef DIRECT_TO_PLAY
