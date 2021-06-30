@@ -296,7 +296,7 @@ extern unsigned char def_keys [0];
 #define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 //#define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
-//#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
 //#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT

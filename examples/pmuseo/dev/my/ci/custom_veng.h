@@ -7,8 +7,4 @@
 // Linear Platformer Engine v0.1. Vertical axis
 // Needs constants defined in `extra_vars.h`.
 
-if (p_saltando) {
-
-} else {
-	p_vy = PLAYER_LINEAR_GRAVITY*64;
-}
+linear_vertical_axis ();
