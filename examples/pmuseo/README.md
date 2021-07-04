@@ -28,4 +28,8 @@ Para programar desde 0 todo el movimiento primero hay que preparar el motor:
 	#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
 ```
 
+## Script
+
+El tema de los objetos se puede hacer de mil formas, por ejemplo usando hotspots custom. Pero vamos a hacerlo mediante scripting por eso de ser didácticos.
+
 

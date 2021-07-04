@@ -32,9 +32,9 @@
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS			99		// Objects to get to finish game
+#define PLAYER_NUM_OBJETOS			5		// Objects to get to finish game
 #define PLAYER_LIFE 				99		// Max and starting life gauge.
-#define PLAYER_REFILL				1		// Life recharge
+#define PLAYER_REFILL				25		// Life recharge
 #define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K

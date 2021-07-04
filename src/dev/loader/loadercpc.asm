@@ -16,27 +16,27 @@ org $BA00
 
 ; Load screen 
 
-	ld      ix, $BA00 - 1126
-	ld      de, 1126
+	ld      ix, $BA00 - 5400
+	ld      de, 5400
 	call    cpct_miniload_asm
 
 	call setPal
 
 ; Depack screen
 
-	ld      hl, $BA00 - 1126
+	ld      hl, $BA00 - 5400
 	ld      de, $C000
 	call    dzx7_standard
 
 ; Load binary
 
-	ld      ix, $BA00 - 13306
-	ld      de, 13306
+	ld      ix, $BA00 - 13413
+	ld      de, 13413
 	call    cpct_miniload_asm
 
 ; Depack binary
 
-	ld      hl, $BA00 - 13306
+	ld      hl, $BA00 - 13413
 	ld      de, $0400
 	call    dzx7_standard
 
