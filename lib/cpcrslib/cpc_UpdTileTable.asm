@@ -14,22 +14,51 @@
 ; que había, así que recibirá (x, y) en los registros E, D. Tendremos que 
 ; ubicar el byte en `tiles_tocados + y * 4 + x / 8` y levantar el bit `x & 7`.
 
-XLIB cpc_UpdTileTable		;marca un tile indicando las coordenadas del tile
+; Si CHURRERA_CLIPPING, se comprueba que el rectángulo que se quiere marcar
+; esté en el area de juego.
+
+INCLUDE "CPCconfig.def"
+
+XLIB cpc_UpdTileTable		; marca un tile indicando las coordenadas del tile
+XDEF cpc_UpdTileTableClp	; con clipping (si se activa)
+
 LIB cpc_Bit2Mask, cpc_TblLookup
 XREF tiles_tocados
 
-.cpc_UpdTileTable	
+IF CHURRERA_CLIPPING
+	XREF viewport_x, viewport_y
+ENDIF 
+
+.cpc_UpdTileTableClp	
 	; D = y
 	; E = x
 
+	IF CHURRERA_CLIPPING
+
+		ld  a, d
+		cp  viewport_y
+		ret c 				; Y < viewport_Y
+
+		cp  viewport_y+20
+		ret nc 				; Y >= viewport_y+20
+
+		ld  a, e
+		cp  viewport_x
+		ret c 				; A < viewport_x
+
+		cp  viewport_x+30
+		ret nc 				; A >= viewport_x+30
+		
+	ENDIF
+
+.cpc_UpdTileTable
 	ld  b, d
 	ld  c, e
 
-	ld  a, d 			; Y
-	add a, a
-	add a, a
+	sla d 				; Y * 2
+	sla d 				; Y * 4
 
-	ld  l, a
+	ld  l, d
 	ld  h, 0 			; HL = Y*4
 
 	ld  a, e 			; X

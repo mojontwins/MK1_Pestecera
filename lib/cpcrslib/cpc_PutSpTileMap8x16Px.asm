@@ -21,7 +21,7 @@ XREF pantalla_juego
 XREF posiciones_super_buffer
 XREF tiles
 
-LIB cpc_UpdTileTable
+LIB cpc_UpdTileTableClp
 
 .cpc_PutSpTileMap8x16Px
     ex  de, hl
@@ -68,11 +68,11 @@ do_update:
     push de                 ; Lo guardamos
 
     ; Marco el tile origen
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Y el de su derecha
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
     ld a, (ancho)
@@ -80,7 +80,7 @@ do_update:
     jr z, origin_next_row
 
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
 origin_next_row:
     pop de                  ; Recuperamos   
@@ -88,11 +88,11 @@ origin_next_row:
     push de                 ; Guardamos
 
     ; Marco el primer tile
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Y el de su derecha
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
     ld a, (ancho)
@@ -100,7 +100,7 @@ origin_next_row:
     jr z, origin_last_row
 
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
 origin_last_row:
     pop de                  ; Recuperamos   
@@ -113,11 +113,11 @@ origin_last_row:
     inc d                   ; Y = Y + 1
 
     ; Marco el primer tile
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Y el de su derecha
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
     ld a, (ancho)
@@ -125,7 +125,7 @@ origin_last_row:
     jr z, fin
 
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
 fin:
     ret

@@ -1,0 +1,16 @@
+; Personalización de CPCRSLIB Mojona
+
+; Ponlo a 1 si quieres que los sprites pasen por detrás de cosas.
+; Necesitarás definir y exportar un behindtilemasks de 256 bytes 
+; con info sobre cada tile de fondo. Un 1 lo marcará como "primer
+; plano"
+
+DEFC PASARPORDETRAS = 1
+
+; Ponlo a 1 si quieres que se tome el area de juego de la churrera
+; como rectángulo de clipping.
+
+; Necesitas exportar los símbolos viewport_x y viewport_y con las
+; coordenadas del área de juego desde tu módulo de C.
+
+DEFC CHURRERA_CLIPPING = 1

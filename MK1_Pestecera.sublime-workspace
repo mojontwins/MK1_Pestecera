@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "examples/pmuseo/README.md",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -604,21 +612,19 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera",
-		"/D/git/MK1_Pestecera/src",
-		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/engine",
-		"/D/git/MK1_Pestecera/src/dev/mainloop",
-		"/D/git/MK1_Pestecera/src/dev/my"
+		"/C/git/MK1_Pestecera",
+		"/C/git/MK1_Pestecera/examples",
+		"/C/git/MK1_Pestecera/examples/pmuseo"
 	],
 	"file_history":
 	[
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/C/git/MK1_Pestecera/src/dev/compile.bat",
+		"/C/git/MK1_Pestecera/src/dev/my/config.h",
+		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/simple_cocos.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/D/git/MK1_Pestecera/lib/update-libs.bat",
@@ -646,6 +652,7 @@
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1/src_cpc/utils/imanol.bas",
 		"/D/git/MK1_Pestecera/src/dev/aplib.h",
@@ -656,6 +663,7 @@
 		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/D/git/MK1_Pestecera/src/dev/mk1.c",
 		"/D/temp/cubito/web/comics.css",
@@ -717,10 +725,8 @@
 		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
 		"/C/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
-		"/C/git/MK1_Pestecera/src/dev/my/config.h",
 		"/C/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
 		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/hotspots.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
@@ -729,7 +735,6 @@
 		"/C/git/MK1_Pestecera/src/dev/definitions.h",
 		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
 		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
@@ -751,7 +756,6 @@
 		"height": 128.0,
 		"where_history":
 		[
-			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
@@ -783,7 +787,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"extern",
 			"apultra",
 			".cx",
 			".sp0",
@@ -910,7 +913,8 @@
 			"on_enemy",
 			"max_o",
 			"0.3 20191202",
-			"defaultInk"
+			"defaultInk",
+			"forcezero"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -982,8 +986,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "examples/pmuseo/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
@@ -1066,7 +1099,7 @@
 		[
 			[
 				"",
-				"D:\\temp\\vmware_shared\\MK1\\mk1.sublime-project"
+				"D:\\git\\MK1\\MK1_v4.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -13,237 +13,238 @@
 ; Ahora no se recorrerá una lista de parejas X, Y, sino que debe recorrerse el
 ; bitfield y ejecutarse la rutina de actualización para cada bit a 1.
 
+INCLUDE "CPCconfig.def"
+
 XLIB cpc_UpdScr	
 
 XREF tiles_tocados
 XREF pantalla_juego
-XREF posiciones_super_buffer
+XREF posicion_inicial_superbuffer
 XREF tiles
 
-XREF ancho_pantalla_bytes
+IF PASARPORDETRAS
+	XREF behindtilemasks
+ENDIF
 
 .cpc_UpdScr
+	ld  hl, tiles_tocados
+	ld  (_tiles_tocados_ptr), hl
 
-	ld  hl,tiles_tocados
-	ld  b, 96
-	ld  de, 0 			; (x, y) = (0, 0)
+	ld  hl, pantalla_juego					; the nametable (aligned)
+	ld  de, posicion_inicial_superbuffer	; frame buffer (aligned)
 
-.bucle_cpc_UpdScr	
-	; Unrolled
-	ld  a, (hl)
-	or  a
-	jr  nz, process
+	ld  b, 24 								; 24 lines
 
-	ld  a, e
-	add 8
-	ld  e, a
-	jr  skipall
-
-.process
-
+.main_loop
 	push bc
-	push hl
 
-	; A contains a bitfield
+	ld  bc, (_tiles_tocados_ptr)
+
+	call process_touched_byte
+	call process_touched_byte
+	call process_touched_byte
+	call process_touched_byte
+
+	ld  (_tiles_tocados_ptr), bc
+
+	; Next line in superbuffer
+	ld  e, 0
+	inc d
+	inc d
+
+	pop  bc
+	djnz main_loop
+
+	ret
+
+._tiles_tocados_ptr
+	defw 0
+
+.process_touched_byte
+
+	; Read byte from pointer
+	ld  a, (bc)
+	inc bc
 
 	bit 0, a
 	jr  z, bit0_skip
-	push de
 	call ucopyTile
-	pop de
 .bit0_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 1, a
-	jr  z, bit1_skip	
-	push de
+	jr  z, bit1_skip
 	call ucopyTile
-	pop de
 .bit1_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 2, a
-	jr  z, bit2_skip	
-	push de
+	jr  z, bit2_skip
 	call ucopyTile
-	pop de
 .bit2_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 3, a
-	jr  z, bit3_skip	
-	push de
+	jr  z, bit3_skip
 	call ucopyTile
-	pop de
 .bit3_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 4, a
-	jr  z, bit4_skip	
-	push de
+	jr  z, bit4_skip
 	call ucopyTile
-	pop de
 .bit4_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 5, a
-	jr  z, bit5_skip	
-	push de
+	jr  z, bit5_skip
 	call ucopyTile
-	pop de
 .bit5_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 6, a
-	jr  z, bit6_skip	
-	push de
+	jr  z, bit6_skip
 	call ucopyTile
-	pop de
 .bit6_skip
+	inc l 									; Next pos. in nametable
 	inc e
+	inc e 									; Next pos. in superbuffer
 
 	bit 7, a
 	jr  z, bit7_skip
-	push de
 	call ucopyTile
-	pop de
 .bit7_skip
+	inc hl 									; N.p. nametable (may of)
 	inc e
+	inc de 									; N.p. superbuffer (of)
 
-	pop hl
-	pop bc
-
-.skipall
-	ld  a, e
-	cp  32
-	jr  nz, noincd
-
-	inc d
-	ld  e, 0
-
-.noincd
-	inc hl	
-
-	djnz bucle_cpc_UpdScr
 	ret
 
 .ucopyTile
-	; copia el tile en (x, y) = E, D.
 
-.posicionar_superbuffer 
+	push hl
+	push de
+	push bc
+	push af
 
-	LD c,D
-	SLA c
-	
-	LD B,0
-	LD HL,posiciones_super_buffer
-	ADD HL,BC
-	LD C,(HL)
-	INC HL
-	LD B,(HL)	; BC -> Inicio linea en superbuffer
-	
-	LD l,E
-	SLA l
-	LD H,0		; HL -> Columna en bytes
-	
-	ADD HL,BC 	; HL -> Posición en superbuffer
+IF PASARPORDETRAS
 
-	push hl 	; Lo guardamos.
-	
-.posicionar_tile	
+	; Read tile from nametable, break if FG tile
 
-	; D = Y; E = X.
+	ld  a, (hl)
+	exx
+	ld  l, a
+	ld  h, 0
+	ld  bc, behindtilemasks
+	add hl, bc
+	ld  a, (hl)
+	or  a
+	exx
+	jr  nz, skeep
 
+ENDIF
 
-	ld l, d
-	ld h, 0
+	; Read which tile from nametabe, get pointer in HL
+	ld  l, (hl)
+	ld  h, 0
+
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	add hl, hl
+	ld  bc, tiles
+	add hl, bc
 
-	; Aquí HL = Y * 32
-
-	LD D,0
-
-	; DE = X
-
-	ADD HL,DE
-
-	; Aquí HL = Y * 32 + X
+.transferir_map_sbuffer_grey
 	
-	LD DE,pantalla_juego
-	ADD HL,DE
+	; Thanks Augusto Ruiz, Syx, Fran Gallego for the hints
 
-	; Aquí HL apunta al tile correcto dentro
-	; del nametable (pantalla_juego)
-	
-	LD L,(HL)
-	LD H,0
+	; Address is D        E
+	;            -------y yyxxxxxxx
 
-	; Aquí HL contiene el número de tile en esa pos.
+	; Gray order is 0 1 3 2 6 7 5 4
 
-	ADD HL,HL
-	ADD HL,HL
-	ADD HL,HL
-	ADD HL,HL	;X16
-	LD DE,tiles
-	ADD HL,DE
 
-	; Aquí HL apunta a los gráficos del tile.
-	
-	pop de 		; Recuperamos la posición en el superbuffer
-				; Que almacenamos antes.
+	; First row 0: DE = -------0 00xxxxxx
+	ldi 
+	ldi
 
-	; HL -> Gráfico del tile
-	; DE -> Superbuffer
+	;       row 1: DE = -------0 01xxxxxx, copy <-
+	dec e
+	set 6, e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+	dec e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
 
-.transferir_map_sbuffer	
-	ld bc,ancho_pantalla_bytes-2 ;63
+	;       row 3: DE = -------0 11xxxxxx,
+	set 7, e
 	ldi
 	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
+
+	;       row 2: DE = -------0 10xxxxxx, copy <-
+	dec de
+	res 6, e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+	dec e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+
+	;       row 6: DE = -------1 10xxxxxx
+	set 0, d
+	ldi 
+	ldi
+
+	;       row 7: DE = -------1 11xxxxxx, copy <-
+	dec e
+	set 6, e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+	dec e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+
+	;       row 5: DE = -------1 01xxxxxx
+	res 7, e
 	ldi
 	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
-	ex de,hl
-	ld c,ancho_pantalla_bytes-2
-	add HL,BC	
-	ex de,hl
-	ldi
-	ldi
+
+	;       row 4: DE = -------1 00xxxxxx, copy <-
+	dec e
+	res 6, e
+	ld  a, (hl)
+	ld  (de), a
+	inc hl
+	dec e
+	ld  a, (hl)
+	ld  (de), a
+	;inc hl
+
+.skeep
+
+	pop af
+	pop bc
+	pop de
+	pop hl
 
 	ret

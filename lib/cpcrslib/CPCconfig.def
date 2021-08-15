@@ -7,3 +7,10 @@
 
 DEFC PASARPORDETRAS = 1
 
+; Ponlo a 1 si quieres que se tome el area de juego de la churrera
+; como rectángulo de clipping.
+
+; Necesitas exportar los símbolos viewport_x y viewport_y con las
+; coordenadas del área de juego desde tu módulo de C.
+
+DEFC CHURRERA_CLIPPING = 1

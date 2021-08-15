@@ -11,23 +11,11 @@ void msc_init_all (void) {
 
 unsigned char read_byte (void) {
     #asm
-        #ifdef MODE_128K
-            di
-            ld b, SCRIPT_PAGE
-            call SetRAMBank
-        #endif
-
             ld  hl, (_script)
             ld  a, (hl)
             ld  (_safe_byte), a
             inc hl
             ld  (_script), hl
-
-        #ifdef MODE_128K
-            ld b, 0
-            call SetRAMBank
-            ei
-        #endif
     #endasm
     return safe_byte;
 }
@@ -69,11 +57,6 @@ void read_two_bytes_D_E (void) {
     #asm
             // Read two bytes: flag #, number
 
-            #ifdef MODE_128K
-                di
-                ld  b, SCRIPT_PAGE
-                call SetRAMBank
-            #endif
 
                 ld  hl, (_script)
                 ld  d, (hl)         // flag #
@@ -82,11 +65,6 @@ void read_two_bytes_D_E (void) {
                 inc hl
                 ld  (_script), hl
 
-            #ifdef MODE_128K
-                ld  b, 0
-                call SetRAMBank
-                ei
-            #endif
     #endasm
 }
 unsigned char *next_script;
@@ -98,13 +76,6 @@ void run_script (unsigned char whichs) {
     debug_print_16bits (0, 23, asm_int);
 #endif
 
-#ifdef MODE_128K
-    #asm
-        di
-        ld b, SCRIPT_PAGE
-        call SetRAMBank
-    #endasm
-#endif
 
     #asm
         ld hl, (_asm_int)
@@ -115,13 +86,6 @@ void run_script (unsigned char whichs) {
         ld  (_script), hl
     #endasm
 
-#ifdef MODE_128K
-    #asm
-        ld b, 0
-        call SetRAMBank
-        ei
-    #endasm
-#endif
 
 #ifdef DEBUG
     debug_print_16bits (5, 23, (unsigned int) script);
@@ -141,6 +105,33 @@ void run_script (unsigned char whichs) {
         sc_terminado = sc_continuar = 0;
         while (!sc_terminado) {
             switch (read_byte ()) {
+                case 0x10:
+                    // IF FLAG sc_x = sc_n
+                    // Opcode: 10 sc_x sc_n
+                    // readxy ();
+                    // sc_terminado = (flags [sc_x] != sc_y);
+                    #asm
+                            call _read_two_bytes_D_E
+                            // Set sc_terminado if flags [C] != E
+                            ld  b, 0
+                            ld  c, d
+                            ld  hl, _flags
+                            add hl, bc
+                            ld  a, (hl)
+                            cp  e
+                            jr  z, _flag_equal_val_ok
+                            ld  a, 1
+                            ld  (_sc_terminado), a
+                        ._flag_equal_val_ok
+                    #endasm
+                    break;
+                case 0x20:
+                    // IF PLAYER_TOUCHES sc_x, sc_y
+                    // Opcode: 20 sc_x sc_y
+                    readxy ();
+                    sc_x <<= 4; sc_y <<= 4;
+                    sc_terminado = (!(gpx + 15 >= sc_x && gpx <= sc_x + 15 && gpy + 15 >= sc_y && gpy <= sc_y + 15));
+                    break;
                 case 0xFF:
                     // THEN
                     // Opcode: FF
@@ -153,6 +144,45 @@ void run_script (unsigned char whichs) {
             sc_terminado = 0;
             while (!sc_terminado) {
                 switch (read_byte ()) {
+                    case 0x01:
+                        // SET FLAG sc_x = sc_n
+                        // Opcode: 01 sc_x sc_n
+                        #asm
+                                call _readxy
+                                ld  de, (_sc_x)
+                                ld  d, 0
+                                ld  hl, _flags
+                                add hl, de
+                                ld  a, (_sc_y)
+                                ld  (hl), a
+                        #endasm
+                        break;
+                    case 0x20:
+                        // SET TILE (sc_x, sc_y) = sc_n
+                        // Opcode: 20 sc_x sc_y sc_n
+                        readxy ();
+                        sc_n = read_vbyte ();
+                        _x = sc_x; _y = sc_y; _n = behs [sc_n]; _t = sc_n; update_tile ();
+                        break;
+                    case 0x30:
+                        // INC LIFE sc_n
+                        // Opcode: 30 sc_n
+                        p_life += read_vbyte ();
+                        break;
+                    case 0x40:
+                        // INC OBJECTS sc_n
+                        // Opcode: 40 sc_n
+                        p_objs += read_vbyte ();
+                        break;
+                    case 0x51:
+                        // SET_FIRE_ZONE x1, y1, x2, y2
+                        // Opcode: 51 x1 y1 x2 y2
+                        fzx1 = read_byte ();
+                        fzy1 = read_byte ();
+                        fzx2 = read_byte ();
+                        fzy2 = read_byte ();
+                        f_zone_ac = 1;
+                        break;
                     case 0xFF:
                         sc_terminado = 1;
                         break;

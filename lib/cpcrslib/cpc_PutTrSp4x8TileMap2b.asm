@@ -25,22 +25,19 @@ XREF posicion_inicial_superbuffer
 
 	;lo cambio para la rutina de multiplicar 
     ld e,(ix+8)		;x
-    ld l,(ix+9)		;y
+    ld h,(ix+9)		;y
 
 .pasa_bloque_a_sbuffer
 
 .transferir_sprite
+	ld d,0
 
-	ld h,0
-	ld d,h
-
-	; Multiplico HL * 64, offset "Y"
-	add hl, hl ; 2
-	add hl, hl ; 4
-	add hl, hl ; 8
-	add hl, hl ; 16
-	add hl, hl ; 32
-	add hl, hl ; 64
+	; Multiplico HL = H * 64, offset "Y"
+	ld  l, 0
+	srl h
+	rr  l
+	srl h
+	rr  l
 	
 	add hl,de 		; sumo offset "X"
 
