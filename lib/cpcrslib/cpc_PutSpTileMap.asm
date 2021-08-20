@@ -5,17 +5,10 @@
 
 XLIB cpc_PutSpTileMap		;se encarga de actualizar los tiles que toca el sprite 
 
-XDEF bit_ancho
-XDEF bit_alto
-XDEF solo_coordenadas 
-
 XREF tiles_tocados
 XREF pantalla_juego					;datos de la pantalla, cada byte indica un tile
 XREF posiciones_super_buffer
 XREF tiles
-
-
-
 
 LIB cpc_UpdTileTable
 

@@ -45,7 +45,7 @@ void bullets_update (void) {
 #ifdef PLAYER_GENITAL
 	// Based upon facing >> 1: RIGHT LEFT UP DOWN
 	signed char _bxo [] = { 12, -4, 8 - PLAYER_BULLET_X_OFFSET, PLAYER_BULLET_X_OFFSET };
-	signed char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, -4, 12};
+	signed char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, 4, 12};
 	signed char _bmxo [] = { PLAYER_BULLET_SPEED, -PLAYER_BULLET_SPEED, 0, 0 };
 	signed char _bmyo [] = { 0, 0, -PLAYER_BULLET_SPEED, PLAYER_BULLET_SPEED };
 #endif
@@ -253,7 +253,11 @@ void bullets_move (void) {
 
 			// Render
 			if (_b_estado) {
-				sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
+				#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+					sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 1;
+				#else
+					sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
+				#endif
 				sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
 				sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
 			}
@@ -261,7 +265,11 @@ void bullets_move (void) {
 			// Update arrays
 			bullets_update ();				
 		} else {
-			sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
+			#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+				sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 1;
+			#else
+				sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
+			#endif
 			sp_sw [bspr_it].cy = (VIEWPORT_Y * 8);
 			sp_sw [bspr_it].sp0 = (int) (SPRFR_EMPTY);
 		}

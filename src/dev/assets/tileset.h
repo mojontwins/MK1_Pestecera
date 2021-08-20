@@ -3,7 +3,6 @@
 
 extern unsigned char tileset [0];
 #asm
-		XDEF _ts
 		XDEF tiles
 	._tileset
 	.tiles

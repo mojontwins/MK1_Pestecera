@@ -17,7 +17,7 @@ void main (void) {
 		xor a
 		ld  (hl), a
 		ld  de, 0xC001
-		ld  bc, 0x3FFF
+		ld  bc, 0x3DFF
 		ldir
 
 		ld  a, 195

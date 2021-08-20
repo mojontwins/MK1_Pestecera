@@ -30,13 +30,13 @@ org $BA00
 
 ; Load binary
 
-	ld      ix, $BA00 - 11918
-	ld      de, 11918
+	ld      ix, $BA00 - 11870
+	ld      de, 11870
 	call    cpct_miniload_asm
 
 ; Depack binary
 
-	ld      hl, $BA00 - 11918
+	ld      hl, $BA00 - 11870
 	ld      de, $0400
 	call    dzx7_standard
 
@@ -82,7 +82,7 @@ loopPal:
 	ret
 
 palette:
-	defb 20, 22, 28, 23, 27, 14, 12, 4, 7, 5, 10, 11, 26, 3, 21, 18
+	defb $14, $16, $1C, $17, $1B, $0E, $0C, $04, $07, $05, $0A, $0B, $1A, $03, $15, $12
 
 
 ; -----------------------------------------------------------------------------
@@ -391,12 +391,18 @@ edge:
 	
 	;; Set new random border colour
 	exx               ;; use B' = 0x7F to send data to the Gate Array
+	
+	;;  This takes 4 NOPS
 	;ld     a, r       ;; read R to get some randomness
 	;or    $40         ;; Add this bit for colour commands (hardware values)
 	;and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+	
+	;;  This, too, takes 4 NOPS
 	ld      a, e
 	ld      e, d
 	ld      d, a       ;; na_th_an picha 8====D
+	nop
+
 	out  (c), a       ;; set random border colour
 	exx
 	
