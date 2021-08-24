@@ -536,17 +536,6 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"contents": "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\n",
-			"file": "/C/Users/jcastano/Documents/github_token.txt",
-			"file_size": 0,
-			"file_write_time": 132742732433538802,
-			"settings":
-			{
-				"buffer_size": 41,
-				"line_ending": "Windows"
-			}
 		}
 	],
 	"build_system": "",
@@ -1078,43 +1067,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "/C/Users/jcastano/Documents/github_token.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 41,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								41,
-								41
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
