@@ -4,6 +4,23 @@ En esta guía te contamos cómo montar un proyecto. Para ilustrarlo, vamos a por
 
 Esto no es un sustituto del tutorial. Puede ser un documento muy util si ya conocías MK1 para ZX Spectrum y quieres aprender a usar la Pestecera. También puede servir para portar tu juego favorito MK1 a CPC.
 
+## z88dk
+
+**MK1 Pestecera** debería funcionar con la versión más reciente de **z88dk**. Si optas por una instalación manual, [descarga e instala la *nightly build* más reciente de **z88dk**](https://github.com/z88dk/z88dk) según las [instrucciones de su web](https://github.com/z88dk/z88dk/wiki/installation). Posteriormente, entra en el subdirectorio `lib/cpcrslib` de **MK1 Pestecera** y copia `cpcrslib.h` en `c:\z88dk\include` y los archivos `*.lib` en `c:\z88dk\lib\clibs`.
+
+Alternativamente, descomprime el archivo `env/z88dk-mt.zip` que incluimos en `c:\`.
+
+## Probando
+
+Para probar que lo tenemos todo en su sitio, entraremos en `src/dev` y ejecutaremos, en una ventana de linea de comandos:
+
+```
+    $ setenv.bat
+    $ compile.bat
+```
+
+El juego de ejemplo (**Lala Prologue**) debería compilar sin errores y los archivos `.sna` y `.cdt` generados deberían funcionar en cualquier emulador moderno de CPC.
+
 ## Antes de empezar
 
 Lo primero es coger el directorio `/src` y copiarla completa en otro sitio, y acto seguido cambiarle el nombre. Por ejemplo, para la conversión de **Jet Paco** le he cambiado el nombre a `src` por `jetpaco`, obteniendo esta estructura de directorios:

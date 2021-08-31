@@ -622,13 +622,12 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera",
-		"/D/git/MK1_Pestecera/src",
-		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/gfx"
+		"/D/git/MK1_Pestecera"
 	],
 	"file_history":
 	[
+		"/C/Users/jcastano/Documents/github_token.txt",
+		"/D/git/MK1_Pestecera/MK1_Pestecera.sublime-workspace",
 		"/D/git/MK1_Pestecera/README.md",
 		"/D/git/MK1_Pestecera/examples/pmuseo/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/examples/pmuseo/dev/loader/preloadercpc.asm-orig",
@@ -754,13 +753,11 @@
 		"/C/git/MK1_Pestecera/src/dev/savegame.h",
 		"/C/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
-		"/C/git/MK1_Pestecera/src/dev/my/config.h"
+		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
@@ -803,6 +800,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"token",
 			"miniload",
 			"COLORES_CARGA",
 			"p_cont_salto",
@@ -929,8 +927,7 @@
 			"KEY_ç",
 			"bolts",
 			"hotspots",
-			"hots",
-			"sprites"
+			"hots"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1035,7 +1032,7 @@
 						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1066,9 +1063,14 @@
 						"translation.y": 156.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
