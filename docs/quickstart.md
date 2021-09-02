@@ -12,11 +12,18 @@ Alternativamente, descomprime el archivo `env/z88dk-mt.zip` que incluimos en `c:
 
 ## Probando
 
-Para probar que lo tenemos todo en su sitio, entraremos en `src/dev` y ejecutaremos, en una ventana de linea de comandos:
+Para probar que lo tenemos todo en su sitio, abrimos una ventana de linea de comandos **cmd**, entramos en `src/dev` y ejecutamos:
 
 ```
-    $ setenv.bat
-    $ compile.bat
+    setenv.bat
+    compile.bat
+```
+
+Si usas **Powershell** en lugar de **cmd** deberás ejecutar:
+
+```
+    .\setenv.ps1
+    .\compile.bat
 ```
 
 El juego de ejemplo (**Lala Prologue**) debería compilar sin errores y los archivos `.sna` y `.cdt` generados deberían funcionar en cualquier emulador moderno de CPC.

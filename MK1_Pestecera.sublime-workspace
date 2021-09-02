@@ -536,6 +536,15 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "docs/quickstart.md",
+			"settings":
+			{
+				"buffer_size": 28198,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -622,7 +631,8 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/docs"
 	],
 	"file_history":
 	[
@@ -1032,7 +1042,7 @@
 						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1063,14 +1073,48 @@
 						"translation.y": 156.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 2,
+					"file": "docs/quickstart.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1348,
+								1348
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
