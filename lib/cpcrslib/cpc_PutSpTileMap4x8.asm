@@ -20,7 +20,7 @@ XREF pantalla_juego
 XREF posiciones_super_buffer
 XREF tiles
 
-LIB cpc_UpdTileTable
+LIB cpc_UpdTileTableClp
 
 .cpc_PutSpTileMap4x8
     ex  de, hl
@@ -64,7 +64,7 @@ do_update:
     srl d                   ; D = Y / 8
 
     ; Marco el tile origen
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el tile de la derecha?
     ld a, (ancho)
@@ -73,7 +73,7 @@ do_update:
 
     push de
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
     pop de
 
 origin_next_row:
@@ -83,7 +83,7 @@ origin_next_row:
     jr z, fin
 
     inc d
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el tile de la derecha?
     ld a, (ancho)
@@ -91,7 +91,7 @@ origin_next_row:
     jr z, fin
 
     inc e
-    call cpc_UpdTileTable   ; Marca el tile en DE
+    call cpc_UpdTileTableClp   ; Marca el tile en DE
 
 fin:
     ret

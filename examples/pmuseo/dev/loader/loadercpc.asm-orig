@@ -1,4 +1,4 @@
-COLORES_CARGA equ $455A
+COLORES_CARGA equ $544B
 
 ; This is the real loader which will be used once the CPC is set up
 

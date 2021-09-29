@@ -11,12 +11,16 @@
 #define SOUND_WYZ
 #define WYZ_FX_CHANNEL 				1		// Where to play sound effects
 
-//#define MODE_128K 						// Read the docs!
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
+//#define MIN_FAPS_PER_FRAME 		2		// frame cap, *limits* to 50/N fps.
 
 #define BLACK_PEN 					14 		// Which palette entry is black
+
+#define PIXELPERFECT 						// If you use mode 0, don't forget the pixelperfectm0
+											// parameter to mkts when converting the main spriteset
+											// WON'T WORK IN MODE 1
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
@@ -291,8 +295,7 @@ extern unsigned char def_keys [0];
 //#define USE_AUTO_TILE_SHADOWS 			// Automatic shadows using specially defined tiles 32-47.
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
-//#define NO_MASKS							// Sprites are rendered using OR instead of masks.
-//#define MASKED_BULLETS					// If needed
+
 //#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.

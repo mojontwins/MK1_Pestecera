@@ -12,3 +12,5 @@
 
 // i.e. 
 // spr_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [0]);
+
+linear_custom_animation ();

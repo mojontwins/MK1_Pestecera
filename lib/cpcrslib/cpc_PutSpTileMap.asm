@@ -10,7 +10,7 @@ XREF pantalla_juego					;datos de la pantalla, cada byte indica un tile
 XREF posiciones_super_buffer
 XREF tiles
 
-LIB cpc_UpdTileTable
+LIB cpc_UpdTileTableClp
 
 .cpc_PutSpTileMap
 ;según las coordenadas x,y que tenga el sprite, se dibuja en el buffer
@@ -82,7 +82,7 @@ pasos_alto_xW: ; *parametro
     ld c,0
 bucle_pasos_altoW:
         ; Mete E y D
-            call cpc_UpdTileTable
+            call cpc_UpdTileTableClp
         inc d
         dec c
         jp nz,bucle_pasos_altoW

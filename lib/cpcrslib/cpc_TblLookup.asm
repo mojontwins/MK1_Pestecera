@@ -10,10 +10,10 @@ XLIB cpc_TblLookup
 
 .cpc_TblLookup
    add a,e
-   ld e,a
-   jr nc, noinc
+   ld  e,a
+   jr  nc, noinc
    inc d
 
 .noinc
-   ld a,(de)
+   ld  a, (de)
    ret

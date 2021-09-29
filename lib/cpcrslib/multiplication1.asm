@@ -12,16 +12,25 @@
 ;add hl, hl ; 64
 
 
-ld  a, e 	; 		4
-add a, a	; 2		4
-add a, a	; 4		4
-add a, a	; 8		4
-ld  h, 0	;		2
-ld  l, a 	;		4
-add hl, hl  ; 16	11
-add hl, hl  ; 32	11
-add hl, hl  ; 64	11
-;					55 t-states
+;ld  a, e 	; 		1
+;add a, a	; 2		1
+;add a, a	; 4		1
+;add a, a	; 8		1
+;ld  h, 0	;		2
+;ld  l, a 	;		1
+;add hl, hl  ; 16	3
+;add hl, hl  ; 32	3
+;add hl, hl  ; 64	3
+;					16
+
+ld  l, 0 		;   2
+ld  h, e 		;   1
+srl h 			;   2
+rr  l 			;   2
+srl h 			;   2
+rr  l 			;   2
+				;	11
+
 
 ; Multiplication by generic is slower
 

@@ -1,4 +1,8 @@
+COLORES_CARGA equ $5c56
+
 ; This is the real loader which will be used once the CPC is set up
+; ZX7 decoder by Einas Saukas
+; Miniload from https://github.com/lronaldo/cpctelera/blob/development/cpctelera/src/loaders/cpct_miniload.asm
 
 org $BA00
 
@@ -28,13 +32,13 @@ org $BA00
 
 ; Load binary
 
-	ld      ix, $BA00 - 21254
-	ld      de, 21254
+	ld      ix, $BA00 - 21268
+	ld      de, 21268
 	call    cpct_miniload_asm
 
 ; Depack binary
 
-	ld      hl, $BA00 - 21254
+	ld      hl, $BA00 - 21268
 	ld      de, $0400
 	call    dzx7_standard
 
@@ -80,7 +84,7 @@ loopPal:
 	ret
 
 palette:
-	defb 20, 22, 30, 6, 28, 14, 7, 11, 4, 0, 12, 10, 19, 5, 21, 18
+	defb $14, $16, $1E, $06, $1C, $0E, $07, $0B, $04, $00, $0C, $0A, $13, $05, $15, $12
 
 
 ; -----------------------------------------------------------------------------
@@ -335,6 +339,8 @@ cpct_miniload_asm:
 	;; This is guaranteed if this is called from BASIC, but not otherwise
 	exx               ;; 
 	push  bc          ;; Save BC' value before changing it (it will be restored at the end)
+	push  de 			;; **********
+	ld    de, COLORES_CARGA
 	ld    bc, $7F10 ;; B = Gate array port (0x7F), C=Border Register (0x10)
 	out  (c), c       ;; Select border register for later color changes
 	exx               ;;
@@ -387,9 +393,18 @@ edge:
 	
 	;; Set new random border colour
 	exx               ;; use B' = 0x7F to send data to the Gate Array
-	ld     a, r       ;; read R to get some randomness
-	or    $40       ;; Add this bit for colour commands (hardware values)
-	and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+
+	;;  This takes 4 NOPS
+	;ld     a, r       ;; read R to get some randomness
+	;or    $40         ;; Add this bit for colour commands (hardware values)
+	;and    b          ;; Remove upper bit doing and with 0x7F (unrequired bit)
+	
+	;;  This, too, takes 4 NOPS
+	ld      a, e
+	ld      e, d
+	ld      d, a       ;; na_th_an picha 8====D
+	nop
+
 	out  (c), a       ;; set random border colour
 	exx
 	
@@ -432,6 +447,7 @@ exit:
 	exx               ;; 
 	ld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)
 	out  (c), c       ;; Cassette stop
+	pop   de
 	pop   bc          ;; Restore BC' before ending (Leave alternate register set as it was)
 	exx               ;;
 	;ei                ;; Enable interrupts again

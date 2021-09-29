@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"PLAYER_LINE",
+				"PLAYER_LINEAR_VX\t(extra_vars.h)"
+			],
+			[
+				"cpc_set",
+				"cpc_SetColour\t(jet_paco.map)"
+			],
+			[
 				"Im",
 				"ImageDestroy\tabc"
 			],
@@ -506,88 +514,35 @@
 			[
 				"webdav_abook",
 				"webdav_abook_user_url"
-			],
-			[
-				"u",
-				"uid\t(rcube_webdav_addressbook.php)"
-			],
-			[
-				"webdav_aboo",
-				"webdav_abook_dir"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "lib/update-libs.bat",
+			"file": "src/dev/tilemap_conf.asm",
 			"settings":
 			{
-				"buffer_size": 113,
+				"buffer_size": 4851,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/cpcrslib/make.bat",
+			"file": "src/dev/compile.bat",
 			"settings":
 			{
-				"buffer_size": 109,
+				"buffer_size": 4374,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/cpcrslib/setenv.bat",
+			"file": "docs/quickstart.md",
 			"settings":
 			{
-				"buffer_size": 137,
+				"buffer_size": 28198,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/dev/setenv.bat",
-			"settings":
-			{
-				"buffer_size": 138,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_TestKeyboard.asm",
-			"settings":
-			{
-				"buffer_size": 1985,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_TestKey.asm",
-			"settings":
-			{
-				"buffer_size": 774,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/dev/definitions.h",
-			"settings":
-			{
-				"buffer_size": 8575,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_KeysData.asm",
-			"settings":
-			{
-				"buffer_size": 780,
-				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		}
@@ -676,13 +631,55 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/docs"
 	],
 	"file_history":
 	[
+		"/C/Users/jcastano/Documents/github_token.txt",
+		"/D/git/MK1_Pestecera/MK1_Pestecera.sublime-workspace",
+		"/D/git/MK1_Pestecera/README.md",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/loader/loadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/loader/preloadercpc.asm-orig",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/plugins/plugin_linear_platformers.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/title_screen.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/mk1.c",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/config.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/ci/custom_veng.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/ci/custom_heng.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/my/custom_animation.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/compile.bat",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/definitions.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/dev/engine/update.h",
+		"/D/git/MK1/src_cpc/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/examples/pmuseo/README.md",
+		"/D/git/MK1_Pestecera/src/dev/definitions.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/simple_cocos.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/helmet.map",
+		"/D/git/MK1_Pestecera/released/helmet/dev/definitions.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/mainloop/flick_screen.h",
+		"/D/git/MK1_Pestecera/src/dev/mainloop/flick_screen.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/setenv.bat",
+		"/D/git/MK1_Pestecera/src/dev/setenv.bat",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/src/dev/printer.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
+		"/D/git/MK1_Pestecera/lib/update-libs.bat",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/make.bat",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/setenv.bat",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_TestKeyboard.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_TestKey.asm",
 		"/D/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/D/git/MK1_Pestecera/src/dev/lala_beta.map",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_KeysData.asm",
 		"/D/git/MK1_Pestecera/src/dev/compile_new.bat",
 		"/D/git/MK1_Pestecera/src/utils/src/ene2h.bas",
 		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
@@ -697,24 +694,17 @@
 		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap.asm",
 		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1/src_cpc/utils/imanol.bas",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/D/git/MK1_Pestecera/src/dev/aplib.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/sprites.h",
-		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/D/git/MK1_Pestecera/src/dev/mk1.c",
 		"/D/temp/cubito/web/comics.css",
@@ -738,7 +728,6 @@
 		"/D/git/MK1_Pestecera/diario.md",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
-		"/D/git/MK1_Pestecera/README.md",
 		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
 		"/D/git/MK1_Pestecera/docs/config.h.md",
 		"/D/Proyectos/2021/20210406a - Corrección eliminación DNI en miCuenta con usuarios GUIA+SIRHUS/instrucciones.txt",
@@ -774,40 +763,7 @@
 		"/C/git/MK1_Pestecera/src/dev/savegame.h",
 		"/C/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/git/MK1_Pestecera/src/dev/my/title_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h",
-		"/C/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
-		"/C/git/MK1_Pestecera/src/dev/my/config.h",
-		"/C/git/MK1_Pestecera/src/dev/mainloop/update_sprites.h",
-		"/C/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/hotspots.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/C/git/MK1_Pestecera/src/dev/engine.h",
-		"/C/git/MK1_Pestecera/diario.md",
-		"/C/git/MK1_Pestecera/src/dev/definitions.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
-		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/C/git/MK1_Pestecera/src/dev/compile.bat",
-		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
-		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
-		"/C/git/MK1_Pestecera/README.md",
-		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
-		"/C/git/mk1/examples/helmet/dev/helmet.map",
-		"/C/temp/left-right/dev/my/ci/enems_extra_actions.h",
-		"/C/git/mk1/docs/README.md",
-		"/C/git/mk1/docs/tutorial-cap16.md",
-		"/C/git/mk1/docs/tutorial-cap15.md",
-		"/C/git/mk1/src/utils/src/sprcnv.bas",
-		"/C/git/mk1/src/utils/src/sprcnvbin.bas",
-		"/C/git/mk1/src/dev/engine.h",
-		"/C/git/mk1/docs/tutorial-cap07.md",
-		"/C/git/mk1/src/dev/my/config.h",
-		"/C/git/mk1/docs/tutorial-cap12.md",
-		"/C/git/mk1/docs/tutorial-cap02.md",
-		"/C/git/mk1/src/dev/engine/c_levels.h",
-		"/C/git/mk1/src/dev/assets/sprites-empty.h"
+		"/C/git/MK1_Pestecera/src/dev/my/level_screen.h"
 	],
 	"find":
 	{
@@ -818,6 +774,11 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\examples\\pmuseo\\dev",
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
+			"D:\\git\\MK1_Pestecera\\src\\dev\\engine",
+			"D:\\git\\MK1_Pestecera\\src\\dev",
+			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
@@ -849,6 +810,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"token",
+			"miniload",
+			"COLORES_CARGA",
+			"p_cont_salto",
+			"player_frames",
+			"enem_frames",
+			"//",
+			"isrc",
+			"$42f",
+			"title_screen",
+			"isr",
+			".",
+			"PIXEL",
+			"PIXEL_PERFECT",
+			"zcc",
+			"->",
+			"spacer",
+			"justcompile",
+			"extern",
+			"apultra",
+			".cx",
+			".sp0",
 			"cpc_keysdata",
 			"cpc_TestKey",
 			"noclean",
@@ -954,36 +937,16 @@
 			"KEY_ç",
 			"bolts",
 			"hotspots",
-			"hots",
-			"sprites",
-			"7d85",
-			"0.4 20191212",
-			"1.0",
-			"MK2",
-			"mk2",
-			"mk1",
-			"digi",
-			"digital",
-			"digiº",
-			"border_col",
-			"31",
-			"\";\"",
-			"border_col",
-			"on_enemy",
-			"max_o",
-			"0.3 20191202",
-			"defaultInk",
-			"forcezero",
-			"custom",
-			"gpy == 0",
-			"elif"
+			"hots"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			",",
+			"apack",
 			"BA00",
 			"$",
 			"\\t",
@@ -1047,24 +1010,24 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/update-libs.bat",
+					"file": "src/dev/tilemap_conf.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 113,
+						"buffer_size": 4851,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								90,
-								90
+								4236,
+								4236
 							]
 						],
 						"settings":
@@ -1072,61 +1035,31 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "lib/cpcrslib/make.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 109,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								100,
-								100
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "lib/cpcrslib/setenv.bat",
+					"buffer": 1,
+					"file": "src/dev/compile.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 137,
+						"buffer_size": 4374,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								0
+								2334,
+								2334
 							]
 						],
 						"settings":
@@ -1137,27 +1070,33 @@
 							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 156.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
-					"buffer": 3,
-					"file": "src/dev/setenv.bat",
+					"buffer": 2,
+					"file": "docs/quickstart.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 138,
+						"buffer_size": 28198,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								137
+								1348,
+								1348
 							]
 						],
 						"settings":
@@ -1165,147 +1104,15 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "lib/cpcrslib/cpc_TestKeyboard.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1985,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								763,
-								763
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "lib/cpcrslib/cpc_TestKey.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								389,
-								389
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/dev/definitions.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 8575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								427,
-								427
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "lib/cpcrslib/cpc_KeysData.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 780,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								165,
-								165
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1385,7 +1192,7 @@
 		[
 			[
 				"",
-				"D:\\git\\MK1\\MK1_v4.sublime-project"
+				"D:\\temp\\vmware_shared\\MK1\\mk1.sublime-project"
 			]
 		],
 		"width": 380.0
@@ -1399,7 +1206,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

@@ -69,8 +69,8 @@
 
 	#ifdef PLAYER_CHECK_MAP_BOUNDARIES		
 		#ifdef COMPRESSED_LEVELS
-			x_pant = n_pant % level_data->map_w;
-			y_pant = n_pant / level_data->map_w;
+			x_pant = n_pant % level_data.map_w;
+			y_pant = n_pant / level_data.map_w;
 		#else
 			x_pant = n_pant % MAP_W; y_pant = n_pant / MAP_W;
 		#endif
@@ -94,7 +94,6 @@
 		#endasm
 
 		p_kill_amt = 1;
-		//pad0 = (joyfunc) (&keys);
 
 		if (o_pant != n_pant) {
 			#include "my/ci/before_entering_screen.h"
@@ -260,16 +259,15 @@
 				while (cpc_TestKey (KEY_ENTER));
 				isr_player_on = 0;
 				clear_sprites ();
-				pause_screen ();
+				//pause_screen ();
 				while (!cpc_TestKey (KEY_ENTER));
 				while (cpc_TestKey (KEY_ENTER));
-				draw_scr ();
+				//draw_scr ();
 				isr_player_on = 1;
 			}			
 			if (cpc_TestKey (KEY_ESC)) {
 				playing = 0;
 			}
-			
 		#endif
 
 		#ifdef DEBUG_KEYS

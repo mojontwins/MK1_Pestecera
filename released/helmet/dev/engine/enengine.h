@@ -14,7 +14,7 @@
 	#if defined(PLAYER_STEPS_ON_ENEMIES) || defined (PLAYER_CAN_FIRE)
 		void enems_init (void) {
 			enit = 0;
-			while (enit < MAP_W * MAP_H * 3) {
+			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
 				malotes [enit].t = malotes [enit].t & 15;	
 				#ifdef PLAYER_CAN_FIRE
 					malotes [enit].life = ENEMIES_LIFE_GAUGE;
@@ -27,7 +27,7 @@
 
 void enems_load (void) {
 	// Movemos y cambiamos a los enemigos según el tipo que tengan
-	enoffs = n_pant * 3;
+	enoffs = n_pant * MAX_ENEMS;
 	
 	for (enit = 0; enit < MAX_ENEMS; ++ enit) {
 		en_an_frame [enit] = 0;
@@ -480,7 +480,11 @@ void enems_move (void) {
 		} 
 
 		rda = SP_ENEMS_BASE + enit; rdt = en_an_sprid [enit];
+		#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+			sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 1;
+		#else
 		sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 2;
+		#endif
 		sp_sw [rda].cy = (_en_y + VIEWPORT_Y * 8 + sp_sw [rda].coy);
 		if (rdt != 0xff) sp_sw [rda].sp0 = (int) (en_an_next_frame [enit]);
 		else sp_sw [rda].sp0 = (int) (SPRFR_EMPTY);

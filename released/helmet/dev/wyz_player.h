@@ -8,15 +8,6 @@
 void wyz_init (void) {
 	isr_player_on = 0; 
 	#asm
-		// Clear WYZ_SONG_BUFFER
-		/*
-		ld  hl, WYZ_SONG_BUFFER
-		ld  de, WYZ_SONG_BUFFER + 1
-		ld  bc, 0x8FFF-WYZ_SONG_BUFFER
-		xor a
-		ld  (hl), a
-		ldir
-		*/
 		call WYZPLAYER_INIT
 	#endasm	
 }

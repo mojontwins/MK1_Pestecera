@@ -118,7 +118,7 @@ unsigned char p_tx, p_ty;
 #endif
 signed int ptgmx, ptgmy;
 
-const unsigned char *spacer = "            ";
+unsigned char *spacer = "            ";
 
 unsigned char enit, enspit;
 

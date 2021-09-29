@@ -27,7 +27,7 @@ End Type
 Const PLATFORM_ZX = 0
 Const PLATFORM_CPC = 1
 
-Dim Shared As Integer silent, flipped, upsideDown, debug, cpcMode
+Dim Shared As Integer silent, flipped, upsideDown, debug, cpcMode, greyOrdered
 
 Dim Shared As uByte mainBin (65535)
 Dim Shared As uByte auxBin (65535)
@@ -51,6 +51,8 @@ Dim Shared As uInteger globalPalette (31), HWPalette (31)
 Dim Shared As Integer cutSpriteCount
 
 Dim Shared As Integer pixelperfectm0
+
+Dim Shared As Integer greyRowOrder (7) => { 0, 1, 3, 2, 6, 7, 5, 4 }
 
 ' 255 is an out of bounds value meaning "undefined". 
 Dim Shared As RGBType CPCHWColours (31) => { _
@@ -133,13 +135,14 @@ Sub usage
 	Puts "$ mkts_om.exe platform=[zx|cpc] [brickInput] [pal=palette.png] [prefix=prefix]"
 	Puts "              in=file.png out=output.bin mode=mode [offset=x,y] [size=w,h]"
 	Puts "              [metasize=w,h] [tmapoffs=offset] [max=n] [silent] [defaultink=i]"
-	Puts "              [cpcmode=m] [pixelperfectm0]"
+	Puts "              [cpcmode=m] [pixelperfectm0] [greyordered]"
 	Puts ""
 	Puts "Supported modes: pals, chars, strait2x2, mapped, sprites, bg, scripted, scr, "
 	Puts "                 superbuffer"
 	Puts "In scripted mode, parameter out will be ignored."
 	Puts "brickinput means input png has 2x1 ""pixels""."
 	Puts "pixelperfectm0 uses the pixel-perfect sprite routines from MK1v4.CPC"
+	Puts "greyordered is used with chars and strait2x2"
 End Sub
 
 Sub mbWrite (v As uByte)
@@ -1029,14 +1032,41 @@ Sub doNametableRLE (img As Any Ptr)
 End Sub
 
 Function writeBin (fOut As Integer, binArray () As uByte, binOffs As Integer, bytes As Integer) As Integer
-	Dim As Integer i, upperBound
+	Dim As Integer i, upperBound, gbase, j
 	upperBound = binOffs + bytes - 1
 	If upperBound > uBound (binArray) Then upperBound = uBound (binArray)
 
-	fiPuts "Writing " & bytes & " bytes to output."
-	For i = binOffs To upperBound 
-		Put #fOut, , binArray (i)
-	Next i
+	If greyOrdered Then
+		fiPuts "Writing " & bytes & " bytes to output, w/ Grey & ZigZag."
+		
+		'' Grey + Zigzag format
+		'' 1.- Make chunks of 16 bytes
+		'' 2.- Per chunk, consider 8 rows of 2 bytes
+		'' 3.- Row order is 0 1 3 2 6 7 5 4
+		'' 4.- Even write two bytes A B
+		'' 5.- Odd write two bytes B A
+
+		For i = binOffs To upperBound Step 16
+			For j = 0 To 7
+				gbase = i + (greyRowOrder (j) * 2)
+				If (j And 1) = 0 Then 
+					' Even, write straight
+					Put #fOut, , binArray (gbase)
+					Put #fOut, , binArray (gbase + 1)
+				Else 
+					' Odd, write reverse
+					Put #fOut, , binArray (gbase + 1)
+					Put #fOut, , binArray (gbase)
+				End If
+			Next j
+		Next i
+
+	Else
+		fiPuts "Writing " & bytes & " bytes to output."
+		For i = binOffs To upperBound 
+			Put #fOut, , binArray (i)
+		Next i
+	End If
 
 	writeBin = upperBound - binOffs + 1
 End Function
@@ -1271,6 +1301,7 @@ flipped = (sclpGetValue ("genflipped") <> "")
 silent = (sclpGetValue ("silent") <> "")
 debug = (sclpGetValue ("debug") <> "")
 pixelperfectm0 = (sclpGetValue ("pixelperfectm0") <> "")
+greyOrdered = (sclpGetValue ("greyordered") <> "")
 
 For i = 0 To uBound (globalPalette)
 	globalPalette (i) = RGB (&HFE, &HFE, &HFE)

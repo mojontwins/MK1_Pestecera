@@ -5,6 +5,13 @@
 
 // ¡No tocar!
 
+#asm
+		defc viewport_x = VIEWPORT_X
+		defc viewport_y = VIEWPORT_Y
+		XDEF viewport_x
+		XDEF viewport_y
+#endasm
+
 #if defined ENABLE_ORTHOSHOOTERS
 	#define ENABLE_SIMPLE_COCOS
 #endif

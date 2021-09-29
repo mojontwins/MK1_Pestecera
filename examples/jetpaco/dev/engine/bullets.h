@@ -253,11 +253,7 @@ void bullets_move (void) {
 
 			// Render
 			if (_b_estado) {
-				#if defined PIXELPERFECT && CPC_GFX_MODE == 0
-					sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 1;
-				#else
 					sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
-				#endif
 				sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
 				sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
 			}
@@ -265,11 +261,7 @@ void bullets_move (void) {
 			// Update arrays
 			bullets_update ();				
 		} else {
-			#if defined PIXELPERFECT && CPC_GFX_MODE == 0
-				sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 1;
-			#else
 				sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
-			#endif
 			sp_sw [bspr_it].cy = (VIEWPORT_Y * 8);
 			sp_sw [bspr_it].sp0 = (int) (SPRFR_EMPTY);
 		}

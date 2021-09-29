@@ -2,7 +2,7 @@
 
 if [%1]==[help] goto :help
 
-set game=jet_paco
+set game=pmuseo
 set cpc_gfx_mode=0
 
 if [%1]==[justcompile] goto :compile
@@ -21,7 +21,7 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 6 6 15 10 15  > nul
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
@@ -29,8 +29,8 @@ echo Convirtiendo enemigos/hotspots
 if [%1]==[nogfx] goto :compile
 
 echo Importando GFX
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars in=..\gfx\font.png out=..\bin\font.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 in=..\gfx\work.png out=..\bin\work.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars greyordered in=..\gfx\font.png out=..\bin\font.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 greyordered in=..\gfx\work.png out=..\bin\work.bin silent > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h pixelperfectm0 silent > nul
 

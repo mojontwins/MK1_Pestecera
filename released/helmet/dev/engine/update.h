@@ -136,11 +136,16 @@ void cpc_UpdateNow (unsigned char sprites) {
 	}
 
 	#ifdef MIN_FAPS_PER_FRAME
-		while (isrc < MIN_FAPS_PER_FRAME*6) {
 			#asm
-				halt
+			.ml_min_faps_loop
+				ld  a, (isr_c2)
+				cp  MIN_FAPS_PER_FRAME
+				jr  c, ml_min_faps_loop
+
+			.ml_min_faps_loop_end
+				xor a
+				ld  (isr_c2), a
 			#endasm
-		} isrc = 0;
 	#endif
 
 	#asm

@@ -3,8 +3,8 @@
 
 // mk1.c
 //#define DEBUG_KEYS
+
 #include <cpcrslib.h>
-#include <cpcwyzlib.h>
 
 // We are using some stuff from splib2 directly.
 #asm

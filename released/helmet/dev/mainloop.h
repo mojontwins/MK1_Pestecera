@@ -29,15 +29,19 @@ void main (void) {
 	._isr
 		push af 
 		
+		ld  a, (isr_c1)
+		inc a
+		cp  6
+		jr  c, _skip_player
+
+		ld  a, (isr_c2)
+		inc a
+		ld  (isr_c2), a
+		
 		#ifdef SOUND_WYZ
 			ld  a, (_isr_player_on)
 			or  a
-			jr  z, _skip_wyz
-
-			ld  a, (isr_c1)
-			inc a
-			cp  6
-			jr  c, _skip_wyz
+			jr  z, _skip_player
 
 			push hl
 			push de
@@ -52,18 +56,20 @@ void main (void) {
 			pop bc
 			pop de 
 			pop hl
+	#endif
 
 			xor a
 
-		._skip_wyz 
+	._skip_player
 			ld  (isr_c1), a	
-		#endif
 		
 		pop af
 		ei
 		ret
 
 	.isr_c1 
+		defb 0
+	.isr_c2
 		defb 0
 
 	.isr_done
@@ -181,6 +187,7 @@ void main (void) {
 		level = 0;
 
 		// Here the title screen		
+	
 		title_screen ();
 		
 		#ifdef ENABLE_CHECKPOINTS
@@ -211,7 +218,7 @@ void main (void) {
 			#ifdef COMPRESSED_LEVELS
 				#include "my/level_screen.h"
 			
-				prepare_level (level);				
+				prepare_level ();			
 			#endif
 					
 			#ifndef DIRECT_TO_PLAY

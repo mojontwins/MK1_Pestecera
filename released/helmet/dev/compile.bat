@@ -48,10 +48,10 @@ echo Convirtiendo behs
 if [%1]==[nogfx] goto :compile
 
 echo Importando GFX
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars in=..\gfx\font.png out=..\bin\font.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 in=..\gfx\work.png out=..\bin\work.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars greyordered in=..\gfx\font.png out=..\bin\font.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 greyordered in=..\gfx\work.png out=..\bin\work.bin silent > nul
 
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin max=18 silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin max=18 mappings=assets\spriteset_mappings.h pixelperfectm0  silent > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
@@ -78,7 +78,7 @@ echo Generating LUTs
 ..\..\..\src\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
 ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
 echo Compilando guego
-zcc +cpc -m -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
+zcc +cpc -m -vn -O3 -unsigned -crt0=crt.asm -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
 rem zcc +cpc -a -vn -O3 -unsigned -zorg=1024 -lcpcrslib -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.asm tilemap_conf.asm mk1.c > nul
 ..\..\..\src\utils\printsize.exe %game%.bin
 ..\..\..\src\utils\printsize.exe scripts.bin
@@ -102,6 +102,7 @@ del ..\bin\%game%.c.bin >nul 2>nul
 ..\..\..\src\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
 	scrc_size=?..\bin\loading.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
+	loading_palette=!..\gfx\pal_loading.png ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\..\..\src\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
 

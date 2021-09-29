@@ -15,15 +15,15 @@
 ; e is 24 at maximum. 
 ; I can first multiply * 8 in 8 bits math, then * 4 in 16 bits.
 
-ld  a, e 	; 		4
-add a, a	; 2		4
-add a, a	; 4		4
-add a, a	; 8		4
+ld  a, e 	; 		1
+add a, a	; 2		1
+add a, a	; 4		1
+add a, a	; 8		1
 ld  h, 0	;		2
-ld  l, a 	;		4
-add hl, hl  ; 16	11
-add hl, hl  ; 32	11
-;					44 t-states
+ld  l, a 	;		1
+add hl, hl  ; 16	3
+add hl, hl  ; 32	3
+;					13
 
 ; Multiplication by generic is slower
 

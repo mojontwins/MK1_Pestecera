@@ -2,6 +2,7 @@
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
 // mk1.c
+#define IS_CPC
 //#define DEBUG_KEYS
 
 #include <cpcrslib.h>
