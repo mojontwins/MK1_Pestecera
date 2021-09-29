@@ -248,6 +248,7 @@ void draw_scr_background (void) {
 						ld  hl, _map_buff
 						add hl, bc
 						
+						ld  a, (__t)
 						ld  (hl), a
 				#endasm
 			#endif	
