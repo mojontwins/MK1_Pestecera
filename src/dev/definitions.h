@@ -318,3 +318,4 @@ extern unsigned char def_keys_joy [0];
 #endasm
 
 unsigned char isr_player_on;
+unsigned int t_seconds;

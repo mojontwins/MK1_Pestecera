@@ -11,77 +11,91 @@ void main (void) {
 	AY_INIT ();
 
 	#asm
-		di
+			di
 
-		ld  hl, 0xC000
-		xor a
-		ld  (hl), a
-		ld  de, 0xC001
-		ld  bc, 0x3DFF
-		ldir
+			ld  hl, 0xC000
+			xor a
+			ld  (hl), a
+			ld  de, 0xC001
+			ld  bc, 0x3DFF
+			ldir
 
-		ld  a, 195
-		ld  (0x38), a
-		ld  hl, _isr
-		ld  (0x39), hl
-		jp  isr_done
+			ld  a, 195
+			ld  (0x38), a
+			ld  hl, _isr
+			ld  (0x39), hl
+			jp  isr_done
 
-	._isr
-		push af 
-		
-		ld  a, (isr_c1)
-		inc a
-		cp  6
-		jr  c, _skip_player
-
-		ld  a, (isr_c2)
-		inc a
-		ld  (isr_c2), a
-		
-		#ifdef SOUND_WYZ
-			ld  a, (_isr_player_on)
-			or  a
-			jr  z, _skip_player
-
+		._isr
+			push af 
 			push hl
-			push de
-			push bc
-			push ix
-			push iy
+					
+			ld  a, (isr_c1)
+			inc a
+			cp  6
+			jr  c, _skip_player
 
-			call WYZ_PLAYER_ISR
+			ld  a, (isr_c2)
+			inc a
+			ld  (isr_c2), a
 
-			pop iy
-			pop ix
-			pop bc
-			pop de 
-			pop hl
-	#endif
+			ld  a, (isr_c3)
+			inc a 
+			cp  50
+			jr  nz, isr_c3_upd
+
+			ld  hl, _t_seconds
+			inc (hl)
+
+			xor a
+		.isr_c3_upd
+			ld  (isr_c3), a
+			
+		#ifdef SOUND_WYZ
+				ld  a, (_isr_player_on)
+				or  a
+				jr  z, _skip_player
+
+				push de
+				push bc
+				push ix
+				push iy
+
+				call WYZ_PLAYER_ISR
+
+				pop iy
+				pop ix
+				pop bc
+				pop de 
+		#endif
 
 			xor a
 
-	._skip_player
+		._skip_player
 			ld  (isr_c1), a	
-		
-		pop af
-		ei
-		ret
+			
+			pop hl
+			pop af
+			ei
+			ret
 
-	.isr_c1 
-		defb 0
-	.isr_c2
-		defb 0
+		.isr_c1 
+			defb 0
+		.isr_c2
+			defb 0
+		.isr_c3
+			defb 0
 
-	.isr_done
+		.isr_done
 	#endasm
 	
 	// Border 0
 
 	#asm
-		ld 	a, 0x54
-		ld  bc, 0x7F11
-		out (c), c
-		out (c), a
+			ld 	a, 0x54
+			ld  bc, 0x7F11
+			out (c), c
+			out (c), a
 	#endasm
 
 	// Decompress LUT in place
@@ -100,29 +114,29 @@ void main (void) {
 	// (thanks Augusto Ruiz for the code & explanations!)
 	
 	#asm
-		; Horizontal chars (32), CRTC REG #1
-		ld    b, 0xbc
-		ld    c, 1			; REG = 1
-		out   (c), c
-		inc   b
-		ld    c, 32			; VALUE = 32
-		out   (c), c
+			; Horizontal chars (32), CRTC REG #1
+			ld    b, 0xbc
+			ld    c, 1			; REG = 1
+			out   (c), c
+			inc   b
+			ld    c, 32			; VALUE = 32
+			out   (c), c
 
-		; Horizontal pos (42), CRTC REG #2
-		ld    b, 0xbc
-		ld    c, 2			; REG = 2
-		out   (c), c
-		inc   b
-		ld    c, 42			; VALUE = 42
-		out   (c), c
+			; Horizontal pos (42), CRTC REG #2
+			ld    b, 0xbc
+			ld    c, 2			; REG = 2
+			out   (c), c
+			inc   b
+			ld    c, 42			; VALUE = 42
+			out   (c), c
 
-		; Vertical chars (24), CRTC REG #6
-		ld    b, 0xbc
-		ld    c, 6			; REG = 6
-		out   (c), c
-		inc   b
-		ld    c, 24			; VALUE = 24
-		out   (c), c
+			; Vertical chars (24), CRTC REG #6
+			ld    b, 0xbc
+			ld    c, 6			; REG = 6
+			out   (c), c
+			inc   b
+			ld    c, 24			; VALUE = 24
+			out   (c), c
 	#endasm
 
 	// Sprite creation
