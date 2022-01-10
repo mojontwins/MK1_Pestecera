@@ -33,8 +33,8 @@
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
 #define PLAYER_NUM_OBJETOS			25		// Objects to get to finish game
-#define PLAYER_LIFE 				99		// Max and starting life gauge.
-#define PLAYER_REFILL				10		// Life recharge
+#define PLAYER_LIFE 				10		// Max and starting life gauge.
+#define PLAYER_REFILL				1		// Life recharge
 #define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K
@@ -73,7 +73,7 @@
 #define PLAYER_BOUNCES						// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
-//#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
+#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS					// If defined, exiting the map bottomwise kills.
 //#define WALLS_STOP_ENEMIES				// If defined, enemies react to the scenary
 //#define EVERYTHING_IS_A_WALL				// If defined, any tile <> type 0 is a wall, otherwise just 8.
