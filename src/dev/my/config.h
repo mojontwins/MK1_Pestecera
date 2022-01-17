@@ -27,7 +27,7 @@
 #define MAP_W						6		//
 #define MAP_H						5		// Map dimensions in screens
 #define SCR_INICIO					24		// Initial screen
-#define PLAYER_INI_X				2		//
+#define PLAYER_INI_X				1		//
 #define PLAYER_INI_Y				2		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
@@ -75,8 +75,8 @@
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
 #define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS					// If defined, exiting the map bottomwise kills.
-//#define WALLS_STOP_ENEMIES				// If defined, enemies react to the scenary
-//#define EVERYTHING_IS_A_WALL				// If defined, any tile <> type 0 is a wall, otherwise just 8.
+#define WALLS_STOP_ENEMIES					// If defined, enemies react to the scenary
+#define EVERYTHING_IS_A_WALL				// If defined, any tile <> type 0 is a wall, otherwise just 8.
 //#define BODY_COUNT_ON 			2		// If defined, count enemies on flag #
 //#define DISABLE_PLATFORMS 				// Disables platforms in side-view
 
@@ -189,6 +189,7 @@
 // ----------
 
 #define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
+#define BOTH_KEYS_JUMP 						// If jump and no fire, use UP or FIRE to jump (only with keyboard)
 //#define PLAYER_HAS_JETPAC 				// If defined, player can thrust a vertical jetpac
 //#define PLAYER_BOOTEE 					// Always jumping engine. Don't forget to disable "HAS_JUMP" and "HAS_JETPAC"!!!
 //#define PLAYER_VKEYS 						// Use with VENG_SELECTOR. Advanced.

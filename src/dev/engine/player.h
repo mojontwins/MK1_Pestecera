@@ -392,6 +392,9 @@ unsigned char player_move (void) {
 				rda = cpc_TestKey (KEY_BUTTON_B);
 			#else
 				rda = cpc_TestKey (KEY_BUTTON_A);
+				#ifdef BOTH_KEYS_JUMP
+					if (is_joystick == 0) rda |= cpc_TestKey(KEY_BUTTON_B);
+				#endif
 			#endif
 
 			if (rda) {

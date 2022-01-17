@@ -17,8 +17,16 @@ void title_screen (void) {
 	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);
 	while (1) {
-		if (cpc_TestKey (KEY_AUX3)) { _gp_gen = def_keys; break; }
-		if (cpc_TestKey (KEY_AUX4)) { _gp_gen = def_keys_joy; break; }
+		if (cpc_TestKey (KEY_AUX3)) { 
+			_gp_gen = def_keys; 
+			is_joystick = 0;
+			break; 
+		}
+		if (cpc_TestKey (KEY_AUX4)) { 
+			_gp_gen = def_keys_joy;
+			is_joystick = 1; 
+			break; 
+		}
 	}	
 	AY_STOP_SOUND ();
 

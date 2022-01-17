@@ -319,3 +319,4 @@ extern unsigned char def_keys_joy [0];
 
 unsigned char isr_player_on;
 unsigned int t_seconds;
+unsigned char is_joystick;
