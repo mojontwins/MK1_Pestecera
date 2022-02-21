@@ -520,59 +520,48 @@
 	"buffers":
 	[
 		{
-			"contents": "import java.io.DataInputStream;\nimport java.io.DataOutputStream;\nimport java.io.File;\nimport java.net.URL;\nimport javax.xml.parsers.DocumentBuilder;\nimport javax.xml.parsers.DocumentBuilderFactory;\nimport net.minecraft.client.Minecraft;\nimport org.w3c.dom.Element;\nimport org.w3c.dom.Node;\nimport org.w3c.dom.NodeList;\nimport org.w3c.dom.Document;\n\n\npublic class ck extends Thread {\n\tpublic File a;\n\t\n\tpublic ck(File paramFile, Minecraft paramMinecraft) {\n\t\tthis.b = paramMinecraft;\n\t\tsetName(\"Resource download thread\");\n\t\tsetDaemon(true);\n\t\tthis.a = new File(paramFile, \"resources/\");\n\t\tif (!this.a.exists() && !this.a.mkdirs()) throw new RuntimeException(\"The working directory could not be created: \" + this.a); \n\t}\n\tprivate Minecraft b; private boolean c = false;\n\tpublic void run() {\n\t\ttry {\n\t\t\tURL uRL = new URL(\"http://s3.amazonaws.com/MinecraftResources/\");\n\t\t\tDocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();\n\t\t\tDocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();\n\t\t\tDocument document = documentBuilder.parse(uRL.openStream());\n\t\t\tNodeList nodeList = document.getElementsByTagName(\"Contents\");\n\t\t\t\n\t\t\tfor (byte b = 0; b < 2; b++) {\n\t\t\t\tfor (byte b1 = 0; b1 < nodeList.getLength(); b1++) {\n\t\t\t\t\tNode node = nodeList.item(b1);\n\t\t\t\t\tif (node.getNodeType() == 1) {\n\t\t\t\t\t\tElement element = (Element)node;\n\t\t\t\t\t\t\n\t\t\t\t\t\tString str = ((Element)element.getElementsByTagName(\"Key\").item(0)).getChildNodes().item(0).getNodeValue();\n\t\t\t\t\t\t\n\t\t\t\t\t\tlong l = Long.parseLong(((Element)element.getElementsByTagName(\"Size\").item(0)).getChildNodes().item(0).getNodeValue());\n\t\t\t\t\t\t\n\t\t\t\t\t\tif (l > 0L)\n\t\t\t\t\t\t{ a(uRL, str, l, b);\n\t\t\t\t\t\t\tif (this.c)\n\t\t\t\t\t\t\t\treturn;  } \n\t\t\t\t\t} \n\t\t\t\t} \n\t\t\t} \n\t\t} catch (Exception exception) {\n\t\t\ta(this.a, \"\");\n\t\t\texception.printStackTrace();\n\t\t} \n\t}\n\t\n\tpublic void a() {\n\t\ta(this.a, \"\");\n\t}\n\t\n\tprivate void a(File paramFile, String paramString) {\n\t\tFile[] arrayOfFile = paramFile.listFiles();\n\t\tfor (byte b = 0; b < arrayOfFile.length; b++) {\n\t\t\tif (arrayOfFile[b].isDirectory()) {\n\t\t\t\ta(arrayOfFile[b], paramString + arrayOfFile[b].getName() + \"/\");\n\t\t\t} else {\n\t\t\t\ttry {\n\t\t\t\t\tthis.b.a(paramString + arrayOfFile[b].getName(), arrayOfFile[b]);\n\t\t\t\t} catch (Exception exception) {\n\t\t\t\t\tSystem.out.println(\"Failed to add \" + paramString + arrayOfFile[b].getName());\n\t\t\t\t} \n\t\t\t} \n\t\t} \n\t}\n\n\n\n\t\n\tprivate void a(URL paramURL, String paramString, long paramLong, int paramInt) {\n\t\ttry {\n\t\t\tint i = paramString.indexOf(\"/\");\n\t\t\tString str = paramString.substring(0, i);\n\t\t\t\n\t\t\tif (str.equals(\"sound\") || str.equals(\"newsound\")) {\n\t\t\t\tif (paramInt != 0)\n\t\t\t\t\treturn; \n\t\t\t} else if (paramInt != 1) {\n\t\t\t\treturn;\n\t\t\t} \n\n\t\t\t\n\t\t\tFile file = new File(this.a, paramString);\n\t\t\tif (!file.exists() || file.length() != paramLong) {\n\t\t\t\tfile.getParentFile().mkdirs();\n\t\t\t\tString str1 = paramString.replaceAll(\" \", \"%20\");\n\t\t\t\ta(new URL(paramURL, str1), file, paramLong);\n\t\t\t\tif (this.c)\n\t\t\t\t\treturn; \n\t\t\t}  this.b.a(paramString, file);\n\t\t} catch (Exception exception) {\n\t\t\texception.printStackTrace();\n\t\t} \n\t}\n\t\n\tprivate void a(URL paramURL, File paramFile, long paramLong) {\n\t\tbyte[] arrayOfByte = new byte[4096];\n\t\tDataInputStream dataInputStream = new DataInputStream(paramURL.openStream());\n\t\tDataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(paramFile));\n\t\t\n\t\tint i = 0;\n\t\twhile ((i = dataInputStream.read(arrayOfByte)) >= 0) {\n\t\t\tdataOutputStream.write(arrayOfByte, 0, i);\n\t\t\tif (this.c)\n\t\t\t\treturn; \n\t\t}  dataInputStream.close();\n\t\tdataOutputStream.close();\n\t}\n\t\n\tpublic void b() {\n\t\tthis.c = true;\n\t}\n}\n\n\n/* Location:              D:\\Games\\Minecraft 1.2.5 Modded\\data\\.minecraft\\bin\\minecraft.jar!\\ck.class\n * Java compiler version: 5 (49.0)\n * JD-Core Version:       1.1.3\n */",
+			"file": "released/helmet/dev/behindtilemasks.asm",
 			"settings":
 			{
-				"buffer_size": 3777,
-				"line_ending": "Windows",
-				"name": "import java.io.DataInputStream;"
-			}
-		},
-		{
-			"file": "src/dev/my/config.h",
-			"settings":
-			{
-				"buffer_size": 17250,
+				"buffer_size": 587,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/dev/my/title_screen.h",
+			"file": "released/helmet/dev/compile.bat",
 			"settings":
 			{
-				"buffer_size": 744,
+				"buffer_size": 6601,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/dev/engine/player.h",
+			"file": "released/helmet/dev/wyz_player.h",
 			"settings":
 			{
-				"buffer_size": 15442,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/dev/definitions.h",
-			"settings":
-			{
-				"buffer_size": 8620,
+				"buffer_size": 21104,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "import java.awt.image.BufferedImage;\nimport java.io.File;\nimport java.io.FileInputStream;\nimport java.io.FileNotFoundException;\nimport java.io.FileOutputStream;\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.io.OutputStream;\nimport java.lang.reflect.Field;\nimport java.lang.reflect.InvocationTargetException;\nimport java.lang.reflect.Method;\nimport java.net.URL;\nimport java.net.URLClassLoader;\nimport java.nio.charset.Charset;\nimport java.security.DigestException;\nimport java.security.NoSuchAlgorithmException;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Collections;\nimport java.util.HashMap;\nimport java.util.HashSet;\nimport java.util.Iterator;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Properties;\nimport java.util.Random;\nimport java.util.Map.Entry;\nimport java.util.logging.FileHandler;\nimport java.util.logging.Level;\nimport java.util.logging.Logger;\nimport java.util.logging.SimpleFormatter;\nimport java.util.zip.ZipEntry;\nimport java.util.zip.ZipInputStream;\nimport javax.imageio.ImageIO;\nimport net.minecraft.client.Minecraft;\nimport org.lwjgl.input.Keyboard;\nimport org.lwjgl.input.Mouse;\n\npublic final class ModLoader {\n\tprivate static final List animList = new LinkedList();\n\tprivate static final Map blockModels = new HashMap();\n\tprivate static final Map blockSpecialInv = new HashMap();\n\tprivate static final File cfgdir = new File(Minecraft.b(), \"/config/\");\n\tprivate static final File cfgfile;\n\tpublic static Level cfgLoggingLevel;\n\tprivate static Map classMap;\n\tprivate static long clock;\n\tpublic static final boolean DEBUG = false;\n\tprivate static Field field_animList;\n\tprivate static Field field_armorList;\n\tprivate static Field field_modifiers;\n\tprivate static Field field_TileEntityRenderers;\n\tprivate static boolean hasInit;\n\tprivate static int highestEntityId;\n\tprivate static final Map inGameHooks;\n\tprivate static final Map inGUIHooks;\n\tprivate static Minecraft instance;\n\tprivate static int itemSpriteIndex;\n\tprivate static int itemSpritesLeft;\n\tprivate static final Map keyList;\n\tprivate static String langPack;\n\tprivate static Map localizedStrings;\n\tprivate static final File logfile;\n\tprivate static final Logger logger;\n\tprivate static FileHandler logHandler;\n\tprivate static Method method_RegisterEntityID;\n\tprivate static Method method_RegisterTileEntity;\n\tprivate static final File modDir;\n\tprivate static final LinkedList modList;\n\tprivate static int nextBlockModelID;\n\tprivate static final Map overrides;\n\tprivate static final Map packetChannels;\n\tpublic static final Properties props;\n\tprivate static abn[] standardBiomes;\n\tprivate static int terrainSpriteIndex;\n\tprivate static int terrainSpritesLeft;\n\tprivate static String texPack;\n\tprivate static boolean texturesAdded;\n\tprivate static final boolean[] usedItemSprites;\n\tprivate static final boolean[] usedTerrainSprites;\n\tpublic static final String VERSION = \"ModLoader 1.2.5\";\n\tprivate static adl netHandler;\n\n\tstatic {\n\t\tcfgfile = new File(cfgdir, \"ModLoader.cfg\");\n\t\tcfgLoggingLevel = Level.FINER;\n\t\tclassMap = null;\n\t\tclock = 0L;\n\t\tfield_animList = null;\n\t\tfield_armorList = null;\n\t\tfield_modifiers = null;\n\t\tfield_TileEntityRenderers = null;\n\t\thasInit = false;\n\t\thighestEntityId = 3000;\n\t\tinGameHooks = new HashMap();\n\t\tinGUIHooks = new HashMap();\n\t\tinstance = null;\n\t\titemSpriteIndex = 0;\n\t\titemSpritesLeft = 0;\n\t\tkeyList = new HashMap();\n\t\tlangPack = null;\n\t\tlocalizedStrings = new HashMap();\n\t\tlogfile = new File(Minecraft.b(), \"ModLoader.txt\");\n\t\tlogger = Logger.getLogger(\"ModLoader\");\n\t\tlogHandler = null;\n\t\tmethod_RegisterEntityID = null;\n\t\tmethod_RegisterTileEntity = null;\n\t\tmodDir = new File(Minecraft.b(), \"/mods/\");\n\t\tmodList = new LinkedList();\n\t\tnextBlockModelID = 1000;\n\t\toverrides = new HashMap();\n\t\tpacketChannels = new HashMap();\n\t\tprops = new Properties();\n\t\tterrainSpriteIndex = 0;\n\t\tterrainSpritesLeft = 0;\n\t\ttexPack = null;\n\t\ttexturesAdded = false;\n\t\tusedItemSprites = new boolean[256];\n\t\tusedTerrainSprites = new boolean[256];\n\t\tnetHandler = null;\n\t}\n\n\tpublic static void addAchievementDesc(aeb achievement, String name, String description) {\n\t\ttry {\n\t\t\tif (achievement.i().contains(\".\")) {\n\t\t\t\tString[] split = achievement.i().split(\"\\\\.\");\n\t\t\t\tif (split.length == 2) {\n\t\t\t\t\tString key = split[1];\n\t\t\t\t\taddLocalization(\"achievement.\" + key, name);\n\t\t\t\t\taddLocalization(\"achievement.\" + key + \".desc\", description);\n\t\t\t\t\tsetPrivateValue(ajw.class, achievement, 1, cy.a(\"achievement.\" + key));\n\t\t\t\t\tsetPrivateValue(aeb.class, achievement, 3, cy.a(\"achievement.\" + key + \".desc\"));\n\t\t\t\t} else {\n\t\t\t\t\tsetPrivateValue(ajw.class, achievement, 1, name);\n\t\t\t\t\tsetPrivateValue(aeb.class, achievement, 3, description);\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tsetPrivateValue(ajw.class, achievement, 1, name);\n\t\t\t\tsetPrivateValue(aeb.class, achievement, 3, description);\n\t\t\t}\n\t\t} catch (IllegalArgumentException var5) {\n\t\t\tlogger.throwing(\"ModLoader\", \"AddAchievementDesc\", var5);\n\t\t\tthrowException(var5);\n\t\t} catch (SecurityException var6) {\n\t\t\tlogger.throwing(\"ModLoader\", \"AddAchievementDesc\", var6);\n\t\t\tthrowException(var6);\n\t\t} catch (NoSuchFieldException var7) {\n\t\t\tlogger.throwing(\"ModLoader\", \"AddAchievementDesc\", var7);\n\t\t\tthrowException(var7);\n\t\t}\n\n\t}\n\n\tpublic static int addAllFuel(int id, int metadata) {\n\t\tlogger.finest(\"Finding fuel for \" + id);\n\t\tint result = 0;\n\n\t\tfor (Iterator iter = modList.iterator(); iter.hasNext()\n\t\t\t\t&& result == 0; result = ((BaseMod) iter.next()).addFuel(id, metadata)) {\n\t\t\t;\n\t\t}\n\n\t\tif (result != 0) {\n\t\t\tlogger.finest(\"Returned \" + result);\n\t\t}\n\n\t\treturn result;\n\t}\n\n\tpublic static void addAllRenderers(Map renderers) {\n\t\tif (!hasInit) {\n\t\t\tinit();\n\t\t\tlogger.fine(\"Initialized\");\n\t\t}\n\n\t\tIterator var2 = modList.iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var2.next();\n\t\t\tmod.addRenderer(renderers);\n\t\t}\n\n\t}\n\n\tpublic static void addAnimation(tt anim) {\n\t\tlogger.finest(\"Adding animation \" + anim.toString());\n\t\tIterator var2 = animList.iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\ttt oldAnim = (tt) var2.next();\n\t\t\tif (oldAnim.g == anim.g && oldAnim.k == anim.k) {\n\t\t\t\tanimList.remove(anim);\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tanimList.add(anim);\n\t}\n\n\tpublic static int addArmor(String armor) {\n\t\ttry {\n\t\t\tString[] existingArmor = (String[]) field_armorList.get((Object) null);\n\t\t\tList existingArmorList = Arrays.asList(existingArmor);\n\t\t\tList combinedList = new ArrayList();\n\t\t\tcombinedList.addAll(existingArmorList);\n\t\t\tif (!combinedList.contains(armor)) {\n\t\t\t\tcombinedList.add(armor);\n\t\t\t}\n\n\t\t\tint index = combinedList.indexOf(armor);\n\t\t\tfield_armorList.set((Object) null, combinedList.toArray(new String[0]));\n\t\t\treturn index;\n\t\t} catch (IllegalArgumentException var5) {\n\t\t\tlogger.throwing(\"ModLoader\", \"AddArmor\", var5);\n\t\t\tthrowException(\"An impossible error has occured!\", var5);\n\t\t} catch (IllegalAccessException var6) {\n\t\t\tlogger.throwing(\"ModLoader\", \"AddArmor\", var6);\n\t\t\tthrowException(\"An impossible error has occured!\", var6);\n\t\t}\n\n\t\treturn -1;\n\t}\n\n\tpublic static void addBiome(abn biome) {\n\t\tabn[] existingBiomes = ahy.biomeArray;\n\t\tList existingBiomeList = Arrays.asList(existingBiomes);\n\t\tList combinedList = new ArrayList();\n\t\tcombinedList.addAll(existingBiomeList);\n\t\tif (!combinedList.contains(biome)) {\n\t\t\tcombinedList.add(biome);\n\t\t}\n\n\t\tahy.biomeArray = (abn[]) combinedList.toArray(new abn[0]);\n\t}\n\n\tpublic static void addLocalization(String key, String value) {\n\t\taddLocalization(key, \"en_US\", value);\n\t}\n\n\tpublic static void addLocalization(String key, String lang, String value) {\n\t\tObject langMap;\n\t\tif (localizedStrings.containsKey(lang)) {\n\t\t\tlangMap = (Map) localizedStrings.get(lang);\n\t\t} else {\n\t\t\tlangMap = new HashMap();\n\t\t\tlocalizedStrings.put(lang, langMap);\n\t\t}\n\n\t\t((Map) langMap).put(key, value);\n\t}\n\n\tprivate static void addMod(ClassLoader loader, String filename) {\n\t\ttry {\n\t\t\tString name = filename.split(\"\\\\.\")[0];\n\t\t\tif (name.contains(\"$\")) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tif (props.containsKey(name) && (props.getProperty(name).equalsIgnoreCase(\"no\")\n\t\t\t\t\t|| props.getProperty(name).equalsIgnoreCase(\"off\"))) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tPackage pack = ModLoader.class.getPackage();\n\t\t\tif (pack != null) {\n\t\t\t\tname = pack.getName() + \".\" + name;\n\t\t\t}\n\n\t\t\tClass instclass = loader.loadClass(name);\n\t\t\tif (!BaseMod.class.isAssignableFrom(instclass)) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tsetupProperties(instclass);\n\t\t\tBaseMod mod = (BaseMod) instclass.newInstance();\n\t\t\tif (mod != null) {\n\t\t\t\tmodList.add(mod);\n\t\t\t\tlogger.fine(\"Mod Initialized: \\\"\" + mod.toString() + \"\\\" from \" + filename);\n\t\t\t\tSystem.out.println(\"Mod Initialized: \" + mod.toString());\n\t\t\t}\n\t\t} catch (Throwable var6) {\n\t\t\tlogger.fine(\"Failed to load mod from \\\"\" + filename + \"\\\"\");\n\t\t\tSystem.out.println(\"Failed to load mod from \\\"\" + filename + \"\\\"\");\n\t\t\tlogger.throwing(\"ModLoader\", \"addMod\", var6);\n\t\t\tthrowException(var6);\n\t\t}\n\n\t}\n\n\tpublic static void addName(Object instance, String name) {\n\t\taddName(instance, \"en_US\", name);\n\t}\n\n\tpublic static void addName(Object instance, String lang, String name) {\n\t\tString tag = null;\n\t\tException e;\n\t\tif (instance instanceof yr) {\n\t\t\tyr item = (yr) instance;\n\t\t\tif (item.e() != null) {\n\t\t\t\ttag = item.e() + \".name\";\n\t\t\t}\n\t\t} else if (instance instanceof pb) {\n\t\t\tpb block = (pb) instance;\n\t\t\tif (block.s() != null) {\n\t\t\t\ttag = block.s() + \".name\";\n\t\t\t}\n\t\t} else if (instance instanceof aan) {\n\t\t\taan stack = (aan) instance;\n\t\t\tString stackTag = yr.e[stack.c].a(stack);\n\t\t\tif (stackTag != null) {\n\t\t\t\ttag = stackTag + \".name\";\n\t\t\t}\n\t\t} else {\n\t\t\te = new Exception(instance.getClass().getName() + \" cannot have name attached to it!\");\n\t\t\tlogger.throwing(\"ModLoader\", \"AddName\", e);\n\t\t\tthrowException(e);\n\t\t}\n\n\t\tif (tag != null) {\n\t\t\taddLocalization(tag, lang, name);\n\t\t} else {\n\t\t\te = new Exception(instance + \" is missing name tag!\");\n\t\t\tlogger.throwing(\"ModLoader\", \"AddName\", e);\n\t\t\tthrowException(e);\n\t\t}\n\n\t}\n\n\tpublic static int addOverride(String fileToOverride, String fileToAdd) {\n\t\ttry {\n\t\t\tint i = getUniqueSpriteIndex(fileToOverride);\n\t\t\taddOverride(fileToOverride, fileToAdd, i);\n\t\t\treturn i;\n\t\t} catch (Throwable var3) {\n\t\t\tlogger.throwing(\"ModLoader\", \"addOverride\", var3);\n\t\t\tthrowException(var3);\n\t\t\tthrow new RuntimeException(var3);\n\t\t}\n\t}\n\n\tpublic static void addOverride(String path, String overlayPath, int index) {\n\t\tint dst = true;\n\t\tint left = false;\n\t\tbyte dst;\n\t\tint left;\n\t\tif (path.equals(\"/terrain.png\")) {\n\t\t\tdst = 0;\n\t\t\tleft = terrainSpritesLeft;\n\t\t} else {\n\t\t\tif (!path.equals(\"/gui/items.png\")) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tdst = 1;\n\t\t\tleft = itemSpritesLeft;\n\t\t}\n\n\t\tSystem.out.println(\"Overriding \" + path + \" with \" + overlayPath + \" @ \" + index + \". \" + left + \" left.\");\n\t\tlogger.finer(\"addOverride(\" + path + \",\" + overlayPath + \",\" + index + \"). \" + left + \" left.\");\n\t\tMap overlays = (Map) overrides.get(Integer.valueOf(dst));\n\t\tif (overlays == null) {\n\t\t\toverlays = new HashMap();\n\t\t\toverrides.put(Integer.valueOf(dst), overlays);\n\t\t}\n\n\t\t((Map) overlays).put(overlayPath, index);\n\t}\n\n\tpublic static void addRecipe(aan output, Object... params) {\n\t\tfr.a().a(output, params);\n\t}\n\n\tpublic static void addShapelessRecipe(aan output, Object... params) {\n\t\tfr.a().b(output, params);\n\t}\n\n\tpublic static void addSmelting(int input, aan output) {\n\t\tdy.a().a(input, output);\n\t}\n\n\tpublic static void addSpawn(Class entityClass, int weightedProb, int min, int max, acf spawnList) {\n\t\taddSpawn((Class) entityClass, weightedProb, min, max, spawnList, (abn[]) null);\n\t}\n\n\tpublic static void addSpawn(Class entityClass, int weightedProb, int min, int max, acf spawnList,\n\t\t\tabn... biomes) {\n\t\tif (entityClass == null) {\n\t\t\tthrow new IllegalArgumentException(\"entityClass cannot be null\");\n\t\t} else if (spawnList == null) {\n\t\t\tthrow new IllegalArgumentException(\"spawnList cannot be null\");\n\t\t} else {\n\t\t\tif (biomes == null) {\n\t\t\t\tbiomes = standardBiomes;\n\t\t\t}\n\n\t\t\tfor (int i = 0; i < biomes.length; ++i) {\n\t\t\t\tList list = biomes[i].a(spawnList);\n\t\t\t\tif (list != null) {\n\t\t\t\t\tboolean exists = false;\n\t\t\t\t\tIterator var10 = list.iterator();\n\n\t\t\t\t\twhile (var10.hasNext()) {\n\t\t\t\t\t\tbg entry = (bg) var10.next();\n\t\t\t\t\t\tif (entry.a == entityClass) {\n\t\t\t\t\t\t\tentry.d = weightedProb;\n\t\t\t\t\t\t\tentry.b = min;\n\t\t\t\t\t\t\tentry.c = max;\n\t\t\t\t\t\t\texists = true;\n\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\tif (!exists) {\n\t\t\t\t\t\tlist.add(new bg(entityClass, weightedProb, min, max));\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static void addSpawn(String entityName, int weightedProb, int min, int max, acf spawnList) {\n\t\taddSpawn((String) entityName, weightedProb, min, max, spawnList, (abn[]) null);\n\t}\n\n\tpublic static void addSpawn(String entityName, int weightedProb, int min, int max, acf spawnList, abn... biomes) {\n\t\tClass entityClass = (Class) classMap.get(entityName);\n\t\tif (entityClass != null && acq.class.isAssignableFrom(entityClass)) {\n\t\t\taddSpawn(entityClass, weightedProb, min, max, spawnList, biomes);\n\t\t}\n\n\t}\n\n\tpublic static boolean dispenseEntity(xd world, double x, double y, double z, int xVel, int zVel, aan item) {\n\t\tboolean result = false;\n\n\t\tfor (Iterator iter = modList.iterator(); iter.hasNext()\n\t\t\t\t&& !result; result = ((BaseMod) iter.next()).dispenseEntity(world, x, y, z, xVel, zVel, item)) {\n\t\t\t;\n\t\t}\n\n\t\treturn result;\n\t}\n\n\tpublic static void genericContainerRemoval(xd world, int x, int y, int z) {\n\t\tio container = (io) world.b(x, y, z);\n\t\tif (container != null) {\n\t\t\tfor (int i = 0; i < container.a(); ++i) {\n\t\t\t\taan item = container.k_(i);\n\t\t\t\tif (item != null) {\n\t\t\t\t\tdouble xOffset = world.r.nextDouble() * 0.8D + 0.1D;\n\t\t\t\t\tdouble yOffset = world.r.nextDouble() * 0.8D + 0.1D;\n\n\t\t\t\t\tfq entity;\n\t\t\t\t\tfor (double zOffset = world.r.nextDouble() * 0.8D + 0.1D; item.a > 0; world.a(entity)) {\n\t\t\t\t\t\tint amt = world.r.nextInt(21) + 10;\n\t\t\t\t\t\tif (amt > item.a) {\n\t\t\t\t\t\t\tamt = item.a;\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\titem.a -= amt;\n\t\t\t\t\t\tentity = new fq(world, (double) x + xOffset, (double) y + yOffset, (double) z + zOffset,\n\t\t\t\t\t\t\t\tnew aan(item.c, amt, item.i()));\n\t\t\t\t\t\tdouble speed = 0.05D;\n\t\t\t\t\t\tentity.r = world.r.nextGaussian() * speed;\n\t\t\t\t\t\tentity.s = world.r.nextGaussian() * speed + 0.2D;\n\t\t\t\t\t\tentity.t = world.r.nextGaussian() * speed;\n\t\t\t\t\t\tif (item.n()) {\n\t\t\t\t\t\t\tentity.a.d((ady) item.o().b());\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\tcontainer.a(i, (aan) null);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t}\n\n\tpublic static List getLoadedMods() {\n\t\treturn Collections.unmodifiableList(modList);\n\t}\n\n\tpublic static Logger getLogger() {\n\t\treturn logger;\n\t}\n\n\tpublic static Minecraft getMinecraftInstance() {\n\t\tif (instance == null) {\n\t\t\ttry {\n\t\t\t\tThreadGroup group = Thread.currentThread().getThreadGroup();\n\t\t\t\tint count = group.activeCount();\n\t\t\t\tThread[] threads = new Thread[count];\n\t\t\t\tgroup.enumerate(threads);\n\n\t\t\t\tint i;\n\t\t\t\tfor (i = 0; i < threads.length; ++i) {\n\t\t\t\t\tSystem.out.println(threads[i].getName());\n\t\t\t\t}\n\n\t\t\t\tfor (i = 0; i < threads.length; ++i) {\n\t\t\t\t\tif (threads[i].getName().equals(\"Minecraft main thread\")) {\n\t\t\t\t\t\tinstance = (Minecraft) getPrivateValue(Thread.class, threads[i], \"target\");\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t} catch (SecurityException var4) {\n\t\t\t\tlogger.throwing(\"ModLoader\", \"getMinecraftInstance\", var4);\n\t\t\t\tthrow new RuntimeException(var4);\n\t\t\t} catch (NoSuchFieldException var5) {\n\t\t\t\tlogger.throwing(\"ModLoader\", \"getMinecraftInstance\", var5);\n\t\t\t\tthrow new RuntimeException(var5);\n\t\t\t}\n\t\t}\n\n\t\treturn instance;\n\t}\n\n\tpublic static  instanceclass, E instance, int fieldindex)\n\t\t\tthrows IllegalArgumentException, SecurityException, NoSuchFieldException {\n\t\ttry {\n\t\t\tField f = instanceclass.getDeclaredFields()[fieldindex];\n\t\t\tf.setAccessible(true);\n\t\t\treturn f.get(instance);\n\t\t} catch (IllegalAccessException var4) {\n\t\t\tlogger.throwing(\"ModLoader\", \"getPrivateValue\", var4);\n\t\t\tthrowException(\"An impossible error has occured!\", var4);\n\t\t\treturn null;\n\t\t}\n\t}\n\n\tpublic static  instanceclass, E instance, String field)\n\t\t\tthrows IllegalArgumentException, SecurityException, NoSuchFieldException {\n\t\ttry {\n\t\t\tField f = instanceclass.getDeclaredField(field);\n\t\t\tf.setAccessible(true);\n\t\t\treturn f.get(instance);\n\t\t} catch (IllegalAccessException var4) {\n\t\t\tlogger.throwing(\"ModLoader\", \"getPrivateValue\", var4);\n\t\t\tthrowException(\"An impossible error has occured!\", var4);\n\t\t\treturn null;\n\t\t}\n\t}\n\n\tpublic static int getUniqueBlockModelID(BaseMod mod, boolean full3DItem) {\n\t\tint id = nextBlockModelID++;\n\t\tblockModels.put(id, mod);\n\t\tblockSpecialInv.put(id, full3DItem);\n\t\treturn id;\n\t}\n\n\tpublic static int getUniqueEntityId() {\n\t\treturn highestEntityId++;\n\t}\n\n\tprivate static int getUniqueItemSpriteIndex() {\n\t\twhile (itemSpriteIndex < usedItemSprites.length) {\n\t\t\tif (!usedItemSprites[itemSpriteIndex]) {\n\t\t\t\tusedItemSprites[itemSpriteIndex] = true;\n\t\t\t\t--itemSpritesLeft;\n\t\t\t\treturn itemSpriteIndex++;\n\t\t\t}\n\n\t\t\t++itemSpriteIndex;\n\t\t}\n\n\t\tException e = new Exception(\"No more empty item sprite indices left!\");\n\t\tlogger.throwing(\"ModLoader\", \"getUniqueItemSpriteIndex\", e);\n\t\tthrowException(e);\n\t\treturn 0;\n\t}\n\n\tpublic static int getUniqueSpriteIndex(String path) {\n\t\tif (path.equals(\"/gui/items.png\")) {\n\t\t\treturn getUniqueItemSpriteIndex();\n\t\t} else if (path.equals(\"/terrain.png\")) {\n\t\t\treturn getUniqueTerrainSpriteIndex();\n\t\t} else {\n\t\t\tException e = new Exception(\"No registry for this texture: \" + path);\n\t\t\tlogger.throwing(\"ModLoader\", \"getUniqueItemSpriteIndex\", e);\n\t\t\tthrowException(e);\n\t\t\treturn 0;\n\t\t}\n\t}\n\n\tprivate static int getUniqueTerrainSpriteIndex() {\n\t\twhile (terrainSpriteIndex < usedTerrainSprites.length) {\n\t\t\tif (!usedTerrainSprites[terrainSpriteIndex]) {\n\t\t\t\tusedTerrainSprites[terrainSpriteIndex] = true;\n\t\t\t\t--terrainSpritesLeft;\n\t\t\t\treturn terrainSpriteIndex++;\n\t\t\t}\n\n\t\t\t++terrainSpriteIndex;\n\t\t}\n\n\t\tException e = new Exception(\"No more empty terrain sprite indices left!\");\n\t\tlogger.throwing(\"ModLoader\", \"getUniqueItemSpriteIndex\", e);\n\t\tthrowException(e);\n\t\treturn 0;\n\t}\n\n\tprivate static void init() {\n\t\thasInit = true;\n\t\tString usedItemSpritesString = \"1111111111111111111111111111111111111101111111111111111111111111111111111111111111111111111111111111110111111111111111000111111111111101111111110000000101111111000000010101111100000000000000110000000000000000000000000000000000000000000000001111111111111111\";\n\t\tString usedTerrainSpritesString = \"1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000001111111111000000001111111100000111111111100000001111111110000001111111111111111111\";\n\n\t\tfor (int i = 0; i < 256; ++i) {\n\t\t\tusedItemSprites[i] = usedItemSpritesString.charAt(i) == '1';\n\t\t\tif (!usedItemSprites[i]) {\n\t\t\t\t++itemSpritesLeft;\n\t\t\t}\n\n\t\t\tusedTerrainSprites[i] = usedTerrainSpritesString.charAt(i) == '1';\n\t\t\tif (!usedTerrainSprites[i]) {\n\t\t\t\t++terrainSpritesLeft;\n\t\t\t}\n\t\t}\n\n\t\ttry {\n\t\t\tinstance = (Minecraft) getPrivateValue(Minecraft.class, (Object) null, 1);\n\t\t\tinstance.u = new EntityRendererProxy(instance);\n\t\t\tclassMap = (Map) getPrivateValue(aao.class, (Object) null, 0);\n\t\t\tfield_modifiers = Field.class.getDeclaredField(\"modifiers\");\n\t\t\tfield_modifiers.setAccessible(true);\n\t\t\tfield_TileEntityRenderers = ach.class.getDeclaredFields()[0];\n\t\t\tfield_TileEntityRenderers.setAccessible(true);\n\t\t\tfield_armorList = we.class.getDeclaredFields()[3];\n\t\t\tfield_modifiers.setInt(field_armorList, field_armorList.getModifiers() & -17);\n\t\t\tfield_armorList.setAccessible(true);\n\t\t\tfield_animList = aaw.class.getDeclaredFields()[6];\n\t\t\tfield_animList.setAccessible(true);\n\t\t\tField[] fieldArray = abn.class.getDeclaredFields();\n\t\t\tList biomes = new LinkedList();\n\n\t\t\tfor (int i = 0; i < fieldArray.length; ++i) {\n\t\t\t\tClass fieldType = fieldArray[i].getType();\n\t\t\t\tif ((fieldArray[i].getModifiers() & 8) != 0 && fieldType.isAssignableFrom(abn.class)) {\n\t\t\t\t\tabn biome = (abn) fieldArray[i].get((Object) null);\n\t\t\t\t\tif (!(biome instanceof td) && !(biome instanceof fz)) {\n\t\t\t\t\t\tbiomes.add(biome);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tstandardBiomes = (abn[]) biomes.toArray(new abn[0]);\n\n\t\t\ttry {\n\t\t\t\tmethod_RegisterTileEntity = kw.class.getDeclaredMethod(\"a\", Class.class, String.class);\n\t\t\t} catch (NoSuchMethodException var8) {\n\t\t\t\tmethod_RegisterTileEntity = kw.class.getDeclaredMethod(\"addMapping\", Class.class, String.class);\n\t\t\t}\n\n\t\t\tmethod_RegisterTileEntity.setAccessible(true);\n\n\t\t\ttry {\n\t\t\t\tmethod_RegisterEntityID = aao.class.getDeclaredMethod(\"a\", Class.class, String.class, Integer.TYPE);\n\t\t\t} catch (NoSuchMethodException var7) {\n\t\t\t\tmethod_RegisterEntityID = aao.class.getDeclaredMethod(\"addMapping\", Class.class, String.class,\n\t\t\t\t\t\tInteger.TYPE);\n\t\t\t}\n\n\t\t\tmethod_RegisterEntityID.setAccessible(true);\n\t\t} catch (SecurityException var10) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var10);\n\t\t\tthrowException(var10);\n\t\t\tthrow new RuntimeException(var10);\n\t\t} catch (NoSuchFieldException var11) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var11);\n\t\t\tthrowException(var11);\n\t\t\tthrow new RuntimeException(var11);\n\t\t} catch (NoSuchMethodException var12) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var12);\n\t\t\tthrowException(var12);\n\t\t\tthrow new RuntimeException(var12);\n\t\t} catch (IllegalArgumentException var13) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var13);\n\t\t\tthrowException(var13);\n\t\t\tthrow new RuntimeException(var13);\n\t\t} catch (IllegalAccessException var14) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var14);\n\t\t\tthrowException(var14);\n\t\t\tthrow new RuntimeException(var14);\n\t\t}\n\n\t\ttry {\n\t\t\tloadConfig();\n\t\t\tif (props.containsKey(\"loggingLevel\")) {\n\t\t\t\tcfgLoggingLevel = Level.parse(props.getProperty(\"loggingLevel\"));\n\t\t\t}\n\n\t\t\tif (props.containsKey(\"grassFix\")) {\n\t\t\t\tvl.cfgGrassFix = Boolean.parseBoolean(props.getProperty(\"grassFix\"));\n\t\t\t}\n\n\t\t\tlogger.setLevel(cfgLoggingLevel);\n\t\t\tif ((logfile.exists() || logfile.createNewFile()) && logfile.canWrite() && logHandler == null) {\n\t\t\t\tlogHandler = new FileHandler(logfile.getPath());\n\t\t\t\tlogHandler.setFormatter(new SimpleFormatter());\n\t\t\t\tlogger.addHandler(logHandler);\n\t\t\t}\n\n\t\t\tlogger.fine(\"ModLoader 1.2.5 Initializing...\");\n\t\t\tSystem.out.println(\"ModLoader 1.2.5 Initializing...\");\n\t\t\t//File source = new File(ModLoader.class.getProtectionDomain().getCodeSource().getLocation().toURI());\n\t\t\tFile file;\n\t\t\t{// resolve jar path | fixed by na_th_an @ 2021 based on coffeenotfound @ 2017\n\t\t\t\tSystem.out.println(\"***** Modloader Fix by na_th_an @ 2021 based on by coffeenotfound @ 2017 ~ https://github.com/coffeenotfound ~ https://bitangent.net/ ****\");\n\t\t\t\ttry {\n\t\t\t\t\tString rawJarPath = URLDecoder.decode(net.minecraft.src.ModLoader.class.getProtectionDomain().getCodeSource().getLocation().getPath(), \"UTF-8\");\n\t\t\t\t\t\n\t\t\t\t\t// fix path\n\t\t\t\t\trawJarPath = rawJarPath.replace(\"jar:\", \"\").replace(\"file:/\", \"\").replace(\"file:\\\\\", \"\"); /* replace scheme part */\n\t\t\t\t\tif(rawJarPath.contains(\".jar!\")) {\n\t\t\t\t\t\trawJarPath = rawJarPath.substring(0, rawJarPath.lastIndexOf(\".jar!\") + \".jar\".length());\n\t\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\t\t// cleanup\n\t\t\t\t\trawJarPath = new File(rawJarPath).getAbsolutePath();\n\t\t\t\t\t\n\t\t\t\t\t// log\n\t\t\t\t\tSystem.out.println(\"[Modloader Fix] original jar path = \" + ((net.minecraft.src.ModLoader.class).getProtectionDomain().getCodeSource().getLocation().toURI().getPath()));\n\t\t\t\t\tSystem.out.println(\"[Modloader Fix] new jar path = \" + rawJarPath);\n\t\t\t\t\t\n\t\t\t\t\t// set file\n\t\t\t\t\tfile = new File(rawJarPath);\n\t\t\t\t}\n\t\t\t\tcatch(Exception e) {\n\t\t\t\t\tthrow new RuntimeException(\"Failed to resolve minecraft jar path; this is the fixed code, if this exception ever gets thrown I owe you a beer.\", e);\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\tmodDir.mkdirs();\n\t\t\t//readFromClassPath(source);\n\t\t\treadFromClassPath(file);\n\t\t\treadFromModFolder(modDir);\n\t\t\tsortModList();\n\t\t\tIterator var18 = modList.iterator();\n\n\t\t\tBaseMod mod;\n\t\t\twhile (var18.hasNext()) {\n\t\t\t\tmod = (BaseMod) var18.next();\n\t\t\t\tmod.load();\n\t\t\t\tlogger.fine(\"Mod Loaded: \\\"\" + mod.toString() + \"\\\"\");\n\t\t\t\tSystem.out.println(\"Mod Loaded: \" + mod.toString());\n\t\t\t\tif (!props.containsKey(mod.getClass().getSimpleName())) {\n\t\t\t\t\tprops.setProperty(mod.getClass().getSimpleName(), \"on\");\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tvar18 = modList.iterator();\n\n\t\t\twhile (var18.hasNext()) {\n\t\t\t\tmod = (BaseMod) var18.next();\n\t\t\t\tmod.modsLoaded();\n\t\t\t}\n\n\t\t\tSystem.out.println(\"Done.\");\n\t\t\tprops.setProperty(\"loggingLevel\", cfgLoggingLevel.getName());\n\t\t\tprops.setProperty(\"grassFix\", Boolean.toString(vl.cfgGrassFix));\n\t\t\tinstance.A.A = registerAllKeys(instance.A.A);\n\t\t\tinstance.A.a();\n\t\t\tinitStats();\n\t\t\tsaveConfig();\n\t\t} catch (Throwable var9) {\n\t\t\tlogger.throwing(\"ModLoader\", \"init\", var9);\n\t\t\tthrowException(\"ModLoader has failed to initialize.\", var9);\n\t\t\tif (logHandler != null) {\n\t\t\t\tlogHandler.close();\n\t\t\t}\n\n\t\t\tthrow new RuntimeException(var9);\n\t\t}\n\t}\n\n\tprivate static void initStats() {\n\t\tint id;\n\t\tString str;\n\t\tfor (id = 0; id < pb.m.length; ++id) {\n\t\t\tif (!gv.a.containsKey(16777216 + id) && pb.m[id] != null && pb.m[id].t()) {\n\t\t\t\tstr = cy.a(\"stat.mineBlock\", new Object[]{pb.m[id].r()});\n\t\t\t\tgv.C[id] = (new aii(16777216 + id, str, id)).a();\n\t\t\t\tgv.e.add(gv.C[id]);\n\t\t\t}\n\t\t}\n\n\t\tfor (id = 0; id < yr.e.length; ++id) {\n\t\t\tif (!gv.a.containsKey(16908288 + id) && yr.e[id] != null) {\n\t\t\t\tstr = cy.a(\"stat.useItem\", new Object[]{yr.e[id].n()});\n\t\t\t\tgv.E[id] = (new aii(16908288 + id, str, id)).a();\n\t\t\t\tif (id >= pb.m.length) {\n\t\t\t\t\tgv.d.add(gv.E[id]);\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tif (!gv.a.containsKey(16973824 + id) && yr.e[id] != null && yr.e[id].i()) {\n\t\t\t\tstr = cy.a(\"stat.breakItem\", new Object[]{yr.e[id].n()});\n\t\t\t\tgv.F[id] = (new aii(16973824 + id, str, id)).a();\n\t\t\t}\n\t\t}\n\n\t\tHashSet idHashSet = new HashSet();\n\t\tIterator var2 = fr.a().b().iterator();\n\n\t\tObject result;\n\t\twhile (var2.hasNext()) {\n\t\t\tresult = var2.next();\n\t\t\tidHashSet.add(((wf) result).b().c);\n\t\t}\n\n\t\tvar2 = dy.a().b().values().iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\tresult = var2.next();\n\t\t\tidHashSet.add(((aan) result).c);\n\t\t}\n\n\t\tvar2 = idHashSet.iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\tint id = (Integer) var2.next();\n\t\t\tif (!gv.a.containsKey(16842752 + id) && yr.e[id] != null) {\n\t\t\t\tString str = cy.a(\"stat.craftItem\", new Object[]{yr.e[id].n()});\n\t\t\t\tgv.D[id] = (new aii(16842752 + id, str, id)).a();\n\t\t\t}\n\t\t}\n\n\t}\n\n\tpublic static boolean isGUIOpen(Class gui) {\n\t\tMinecraft game = getMinecraftInstance();\n\t\tif (gui == null) {\n\t\t\treturn game.s == null;\n\t\t} else {\n\t\t\treturn game.s == null && gui != null ? false : gui.isInstance(game.s);\n\t\t}\n\t}\n\n\tpublic static boolean isModLoaded(String modname) {\n\t\tIterator var2 = modList.iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var2.next();\n\t\t\tif (modname.contentEquals(mod.getName())) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\n\t\treturn false;\n\t}\n\n\tpublic static void loadConfig() throws IOException {\n\t\tcfgdir.mkdir();\n\t\tif (cfgfile.exists() || cfgfile.createNewFile()) {\n\t\t\tif (cfgfile.canRead()) {\n\t\t\t\tInputStream in = new FileInputStream(cfgfile);\n\t\t\t\tprops.load(in);\n\t\t\t\tin.close();\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static BufferedImage loadImage(aaw texCache, String path) throws Exception {\n\t\tgi pack = (gi) getPrivateValue(aaw.class, texCache, 11);\n\t\tInputStream input = pack.a.a(path);\n\t\tif (input == null) {\n\t\t\tthrow new Exception(\"Image not found: \" + path);\n\t\t} else {\n\t\t\tBufferedImage image = ImageIO.read(input);\n\t\t\tif (image == null) {\n\t\t\t\tthrow new Exception(\"Image corrupted: \" + path);\n\t\t\t} else {\n\t\t\t\treturn image;\n\t\t\t}\n\t\t}\n\t}\n\n\tpublic static void onItemPickup(yw player, aan item) {\n\t\tIterator var3 = modList.iterator();\n\n\t\twhile (var3.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var3.next();\n\t\t\tmod.onItemPickup(player, item);\n\t\t}\n \n\t}\n\n\tpublic static void onTick(float tick, Minecraft game) {\n\t\tlv.b();\n\t\tlv.b();\n\t\tlv.a(\"modtick\");\n\t\tif (!hasInit) {\n\t\t\tinit();\n\t\t\tlogger.fine(\"Initialized\");\n\t\t}\n\n\t\tif (texPack == null || game.A.m != texPack) {\n\t\t\ttexturesAdded = false;\n\t\t\ttexPack = game.A.m;\n\t\t}\n\n\t\tif (langPack == null || adn.a().c() != langPack) {\n\t\t\tProperties localized = null;\n\n\t\t\ttry {\n\t\t\t\tlocalized = (Properties) getPrivateValue(adn.class, adn.a(), 1);\n\t\t\t} catch (SecurityException var12) {\n\t\t\t\tlogger.throwing(\"ModLoader\", \"AddLocalization\", var12);\n\t\t\t\tthrowException(var12);\n\t\t\t} catch (NoSuchFieldException var13) {\n\t\t\t\tlogger.throwing(\"ModLoader\", \"AddLocalization\", var13);\n\t\t\t\tthrowException(var13);\n\t\t\t}\n\n\t\t\tlangPack = adn.a().c();\n\t\t\tif (localized != null) {\n\t\t\t\tif (localizedStrings.containsKey(\"en_US\")) {\n\t\t\t\t\tlocalized.putAll((Map) localizedStrings.get(\"en_US\"));\n\t\t\t\t}\n\n\t\t\t\tif (!langPack.contentEquals(\"en_US\") && localizedStrings.containsKey(langPack)) {\n\t\t\t\t\tlocalized.putAll((Map) localizedStrings.get(langPack));\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif (!texturesAdded && game.p != null) {\n\t\t\tregisterAllTextureOverrides(game.p);\n\t\t\ttexturesAdded = true;\n\t\t}\n\n\t\tlong newclock = 0L;\n\t\tIterator iter;\n\t\tEntry modSet;\n\t\tif (game.f != null) {\n\t\t\tnewclock = game.f.w();\n\t\t\titer = inGameHooks.entrySet().iterator();\n\n\t\t\tlabel122 : while (true) {\n\t\t\t\tdo {\n\t\t\t\t\tif (!iter.hasNext()) {\n\t\t\t\t\t\tbreak label122;\n\t\t\t\t\t}\n\n\t\t\t\t\tmodSet = (Entry) iter.next();\n\t\t\t\t} while (clock == newclock && (Boolean) modSet.getValue());\n\n\t\t\t\tif (!((BaseMod) modSet.getKey()).onTickInGame(tick, game)) {\n\t\t\t\t\titer.remove();\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif (game.r != null) {\n\t\t\titer = inGUIHooks.entrySet().iterator();\n\n\t\t\tlabel109 : while (true) {\n\t\t\t\tdo {\n\t\t\t\t\tif (!iter.hasNext()) {\n\t\t\t\t\t\tbreak label109;\n\t\t\t\t\t}\n\n\t\t\t\t\tmodSet = (Entry) iter.next();\n\t\t\t\t} while (clock == newclock && (Boolean) modSet.getValue() & game.f != null);\n\n\t\t\t\tif (!((BaseMod) modSet.getKey()).onTickInGUI(tick, game, game.s)) {\n\t\t\t\t\titer.remove();\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif (clock != newclock) {\n\t\t\tIterator var16 = keyList.entrySet().iterator();\n\n\t\t\tlabel95 : while (var16.hasNext()) {\n\t\t\t\tEntry modSet = (Entry) var16.next();\n\t\t\t\tIterator var7 = ((Map) modSet.getValue()).entrySet().iterator();\n\n\t\t\t\twhile (true) {\n\t\t\t\t\tEntry keySet;\n\t\t\t\t\tboolean state;\n\t\t\t\t\tboolean[] keyInfo;\n\t\t\t\t\tboolean oldState;\n\t\t\t\t\tdo {\n\t\t\t\t\t\tdo {\n\t\t\t\t\t\t\tif (!var7.hasNext()) {\n\t\t\t\t\t\t\t\tcontinue label95;\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tkeySet = (Entry) var7.next();\n\t\t\t\t\t\t\tint key = ((afu) keySet.getKey()).d;\n\t\t\t\t\t\t\tif (key < 0) {\n\t\t\t\t\t\t\t\tkey += 100;\n\t\t\t\t\t\t\t\tstate = Mouse.isButtonDown(key);\n\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\tstate = Keyboard.isKeyDown(key);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tkeyInfo = (boolean[]) keySet.getValue();\n\t\t\t\t\t\t\toldState = keyInfo[1];\n\t\t\t\t\t\t\tkeyInfo[1] = state;\n\t\t\t\t\t\t} while (!state);\n\t\t\t\t\t} while (oldState && !keyInfo[0]);\n\n\t\t\t\t\t((BaseMod) modSet.getKey()).keyboardEvent((afu) keySet.getKey());\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tclock = newclock;\n\t\tlv.b();\n\t\tlv.a(\"render\");\n\t\tlv.a(\"gameRenderer\");\n\t}\n\n\tpublic static void openGUI(yw player, vp gui) {\n\t\tif (!hasInit) {\n\t\t\tinit();\n\t\t\tlogger.fine(\"Initialized\");\n\t\t}\n\n\t\tMinecraft game = getMinecraftInstance();\n\t\tif (game.i == player) {\n\t\t\tif (gui != null) {\n\t\t\t\tgame.a(gui);\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static void populateChunk(ca generator, int chunkX, int chunkZ, xd world) {\n\t\tif (!hasInit) {\n\t\t\tinit();\n\t\t\tlogger.fine(\"Initialized\");\n\t\t}\n\n\t\tRandom rnd = new Random(world.v());\n\t\tlong xSeed = rnd.nextLong() / 2L * 2L + 1L;\n\t\tlong zSeed = rnd.nextLong() / 2L * 2L + 1L;\n\t\trnd.setSeed((long) chunkX * xSeed + (long) chunkZ * zSeed ^ world.v());\n\t\tIterator var10 = modList.iterator();\n\n\t\twhile (var10.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var10.next();\n\t\t\tif (generator.c().equals(\"RandomLevelSource\")) {\n\t\t\t\tmod.generateSurface(world, rnd, chunkX << 4, chunkZ << 4);\n\t\t\t} else if (generator.c().equals(\"HellRandomLevelSource\")) {\n\t\t\t\tmod.generateNether(world, rnd, chunkX << 4, chunkZ << 4);\n\t\t\t}\n\t\t}\n\n\t}\n\n\tprivate static void readFromClassPath(File source) throws FileNotFoundException, IOException {\n\t\tlogger.finer(\"Adding mods from \" + source.getCanonicalPath());\n\t\tClassLoader loader = ModLoader.class.getClassLoader();\n\t\tString name;\n\t\tif (!source.isFile() || !source.getName().endsWith(\".jar\") && !source.getName().endsWith(\".zip\")) {\n\t\t\tif (source.isDirectory()) {\n\t\t\t\tPackage pkg = ModLoader.class.getPackage();\n\t\t\t\tif (pkg != null) {\n\t\t\t\t\tString pkgdir = pkg.getName().replace('.', File.separatorChar);\n\t\t\t\t\tsource = new File(source, pkgdir);\n\t\t\t\t}\n\n\t\t\t\tlogger.finer(\"Directory found.\");\n\t\t\t\tFile[] files = source.listFiles();\n\t\t\t\tif (files != null) {\n\t\t\t\t\tfor (int i = 0; i < files.length; ++i) {\n\t\t\t\t\t\tname = files[i].getName();\n\t\t\t\t\t\tif (files[i].isFile() && name.startsWith(\"mod_\") && name.endsWith(\".class\")) {\n\t\t\t\t\t\t\taddMod(loader, name);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t} else {\n\t\t\tlogger.finer(\"Zip found.\");\n\t\t\tInputStream input = new FileInputStream(source);\n\t\t\tZipInputStream zip = new ZipInputStream(input);\n\t\t\tZipEntry entry = null;\n\n\t\t\twhile (true) {\n\t\t\t\tentry = zip.getNextEntry();\n\t\t\t\tif (entry == null) {\n\t\t\t\t\tinput.close();\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\n\t\t\t\tname = entry.getName();\n\t\t\t\tif (!entry.isDirectory() && name.startsWith(\"mod_\") && name.endsWith(\".class\")) {\n\t\t\t\t\taddMod(loader, name);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t}\n\n\tprivate static void readFromModFolder(File folder) throws IOException, IllegalArgumentException,\n\t\t\tIllegalAccessException, InvocationTargetException, SecurityException, NoSuchMethodException {\n\t\tClassLoader loader = Minecraft.class.getClassLoader();\n\t\tMethod addURL = URLClassLoader.class.getDeclaredMethod(\"addURL\", URL.class);\n\t\taddURL.setAccessible(true);\n\t\tif (!folder.isDirectory()) {\n\t\t\tthrow new IllegalArgumentException(\"folder must be a Directory.\");\n\t\t} else {\n\t\t\tFile[] sourcefiles = folder.listFiles();\n\t\t\tArrays.sort(sourcefiles);\n\t\t\tint file;\n\t\t\tFile source;\n\t\t\tif (loader instanceof URLClassLoader) {\n\t\t\t\tfor (file = 0; file < sourcefiles.length; ++file) {\n\t\t\t\t\tsource = sourcefiles[file];\n\t\t\t\t\tif (source.isDirectory() || source.isFile()\n\t\t\t\t\t\t\t&& (source.getName().endsWith(\".jar\") || source.getName().endsWith(\".zip\"))) {\n\t\t\t\t\t\taddURL.invoke(loader, source.toURI().toURL());\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tfor (file = 0; file < sourcefiles.length; ++file) {\n\t\t\t\tsource = sourcefiles[file];\n\t\t\t\tif (source.isDirectory() || source.isFile()\n\t\t\t\t\t\t&& (source.getName().endsWith(\".jar\") || source.getName().endsWith(\".zip\"))) {\n\t\t\t\t\tlogger.finer(\"Adding mods from \" + source.getCanonicalPath());\n\t\t\t\t\tString name;\n\t\t\t\t\tif (!source.isFile()) {\n\t\t\t\t\t\tif (source.isDirectory()) {\n\t\t\t\t\t\t\tPackage pkg = ModLoader.class.getPackage();\n\t\t\t\t\t\t\tif (pkg != null) {\n\t\t\t\t\t\t\t\tString pkgdir = pkg.getName().replace('.', File.separatorChar);\n\t\t\t\t\t\t\t\tsource = new File(source, pkgdir);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tlogger.finer(\"Directory found.\");\n\t\t\t\t\t\t\tFile[] dirfiles = source.listFiles();\n\t\t\t\t\t\t\tif (dirfiles != null) {\n\t\t\t\t\t\t\t\tfor (int j = 0; j < dirfiles.length; ++j) {\n\t\t\t\t\t\t\t\t\tname = dirfiles[j].getName();\n\t\t\t\t\t\t\t\t\tif (dirfiles[j].isFile() && name.startsWith(\"mod_\") && name.endsWith(\".class\")) {\n\t\t\t\t\t\t\t\t\t\taddMod(loader, name);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t} else {\n\t\t\t\t\t\tlogger.finer(\"Zip found.\");\n\t\t\t\t\t\tInputStream input = new FileInputStream(source);\n\t\t\t\t\t\tZipInputStream zip = new ZipInputStream(input);\n\t\t\t\t\t\tZipEntry entry = null;\n\n\t\t\t\t\t\twhile (true) {\n\t\t\t\t\t\t\tentry = zip.getNextEntry();\n\t\t\t\t\t\t\tif (entry == null) {\n\t\t\t\t\t\t\t\tzip.close();\n\t\t\t\t\t\t\t\tinput.close();\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tname = entry.getName();\n\t\t\t\t\t\t\tif (!entry.isDirectory() && name.startsWith(\"mod_\") && name.endsWith(\".class\")) {\n\t\t\t\t\t\t\t\taddMod(loader, name);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static void receivePacket(ee packet) {\n\t\tif (packetChannels.containsKey(packet.a)) {\n\t\t\tBaseMod mod = (BaseMod) packetChannels.get(packet.a);\n\t\t\tif (mod != null) {\n\t\t\t\tmod.receiveCustomPacket(packet);\n\t\t\t}\n\t\t}\n\n\t}\n\n\tpublic static afu[] registerAllKeys(afu[] keys) {\n\t\tList combinedList = new LinkedList();\n\t\tcombinedList.addAll(Arrays.asList(keys));\n\t\tIterator var3 = keyList.values().iterator();\n\n\t\twhile (var3.hasNext()) {\n\t\t\tMap keyMap = (Map) var3.next();\n\t\t\tcombinedList.addAll(keyMap.keySet());\n\t\t}\n\n\t\treturn (afu[]) combinedList.toArray(new afu[0]);\n\t}\n\n\tpublic static void registerAllTextureOverrides(aaw cache) {\n\t\tanimList.clear();\n\t\tMinecraft game = getMinecraftInstance();\n\t\tIterator var3 = modList.iterator();\n\n\t\twhile (var3.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var3.next();\n\t\t\tmod.registerAnimation(game);\n\t\t}\n\n\t\tvar3 = animList.iterator();\n\n\t\twhile (var3.hasNext()) {\n\t\t\ttt anim = (tt) var3.next();\n\t\t\tcache.a(anim);\n\t\t}\n\n\t\tvar3 = overrides.entrySet().iterator();\n\n\t\twhile (var3.hasNext()) {\n\t\t\tEntry overlay = (Entry) var3.next();\n\t\t\tIterator var5 = ((Map) overlay.getValue()).entrySet().iterator();\n\n\t\t\twhile (var5.hasNext()) {\n\t\t\t\tEntry overlayEntry = (Entry) var5.next();\n\t\t\t\tString overlayPath = (String) overlayEntry.getKey();\n\t\t\t\tint index = (Integer) overlayEntry.getValue();\n\t\t\t\tint dst = (Integer) overlay.getKey();\n\n\t\t\t\ttry {\n\t\t\t\t\tBufferedImage im = loadImage(cache, overlayPath);\n\t\t\t\t\ttt anim = new ModTextureStatic(index, dst, im);\n\t\t\t\t\tcache.a(anim);\n\t\t\t\t} catch (Exception var11) {\n\t\t\t\t\tlogger.throwing(\"ModLoader\", \"RegisterAllTextureOverrides\", var11);\n\t\t\t\t\tthrowException(var11);\n\t\t\t\t\tthrow new RuntimeException(var11);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t}\n\n\tpublic static void registerBlock(pb block) {\n\t\tregisterBlock(block, (Class) null);\n\t}\n\n\tpublic static void registerBlock(pb block, Class itemclass) {\n\t\ttry {\n\t\t\tif (block == null) {\n\t\t\t\tthrow new IllegalArgumentException(\"block parameter cannot be null.\");\n\t\t\t}\n\n\t\t\tint id = block.bO;\n\t\t\tvd item = null;\n\t\t\tif (itemclass != null) {\n\t\t\t\titem = (vd) itemclass.getConstructor(Integer.TYPE).newInstance(id - 256);\n\t\t\t} else {\n\t\t\t\titem = new vd(id - 256);\n\t\t\t}\n\n\t\t\tif (pb.m[id] != null && yr.e[id] == null) {\n\t\t\t\tyr.e[id] = item;\n\t\t\t}\n\t\t} catch (IllegalArgumentException var4) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var4);\n\t\t\tthrowException(var4);\n\t\t} catch (IllegalAccessException var5) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var5);\n\t\t\tthrowException(var5);\n\t\t} catch (SecurityException var6) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var6);\n\t\t\tthrowException(var6);\n\t\t} catch (InstantiationException var7) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var7);\n\t\t\tthrowException(var7);\n\t\t} catch (InvocationTargetException var8) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var8);\n\t\t\tthrowException(var8);\n\t\t} catch (NoSuchMethodException var9) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterBlock\", var9);\n\t\t\tthrowException(var9);\n\t\t}\n\n\t}\n\n\tpublic static void registerEntityID(Class entityClass, String entityName, int id) {\n\t\ttry {\n\t\t\tmethod_RegisterEntityID.invoke((Object) null, entityClass, entityName, id);\n\t\t} catch (IllegalArgumentException var4) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterEntityID\", var4);\n\t\t\tthrowException(var4);\n\t\t} catch (IllegalAccessException var5) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterEntityID\", var5);\n\t\t\tthrowException(var5);\n\t\t} catch (InvocationTargetException var6) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterEntityID\", var6);\n\t\t\tthrowException(var6);\n\t\t}\n\n\t}\n\n\tpublic static void registerEntityID(Class entityClass, String entityName, int id, int background,\n\t\t\tint foreground) {\n\t\tregisterEntityID(entityClass, entityName, id);\n\t\taao.a.put(id, new hr(id, background, foreground));\n\t}\n\n\tpublic static void registerKey(BaseMod mod, afu keyHandler, boolean allowRepeat) {\n\t\tMap keyMap = (Map) keyList.get(mod);\n\t\tif (keyMap == null) {\n\t\t\tkeyMap = new HashMap();\n\t\t}\n\n\t\t((Map) keyMap).put(keyHandler, new boolean[]{allowRepeat, false});\n\t\tkeyList.put(mod, keyMap);\n\t}\n\n\tpublic static void registerPacketChannel(BaseMod mod, String channel) {\n\t\tif (channel.length() < 16) {\n\t\t\tpacketChannels.put(channel, mod);\n\t\t} else {\n\t\t\tthrow new RuntimeException(\n\t\t\t\t\tString.format(\"Invalid channel name: %s. Must be less than 16 characters.\", channel));\n\t\t}\n\t}\n\n\tpublic static void registerTileEntity(Class tileEntityClass, String id) {\n\t\tregisterTileEntity(tileEntityClass, id, (aar) null);\n\t}\n\n\tpublic static void registerTileEntity(Class tileEntityClass, String id, aar renderer) {\n\t\ttry {\n\t\t\tmethod_RegisterTileEntity.invoke((Object) null, tileEntityClass, id);\n\t\t\tif (renderer != null) {\n\t\t\t\tach ref = ach.a;\n\t\t\t\tMap renderers = (Map) field_TileEntityRenderers.get(ref);\n\t\t\t\trenderers.put(tileEntityClass, renderer);\n\t\t\t\trenderer.a(ref);\n\t\t\t}\n\t\t} catch (IllegalArgumentException var5) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterTileEntity\", var5);\n\t\t\tthrowException(var5);\n\t\t} catch (IllegalAccessException var6) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterTileEntity\", var6);\n\t\t\tthrowException(var6);\n\t\t} catch (InvocationTargetException var7) {\n\t\t\tlogger.throwing(\"ModLoader\", \"RegisterTileEntity\", var7);\n\t\t\tthrowException(var7);\n\t\t}\n\n\t}\n\n\tpublic static void removeBiome(abn biome) {\n\t\tabn[] existingBiomes = ahy.biomeArray;\n\t\tList existingBiomeList = Arrays.asList(existingBiomes);\n\t\tList combinedList = new ArrayList();\n\t\tcombinedList.addAll(existingBiomeList);\n\t\tif (combinedList.contains(biome)) {\n\t\t\tcombinedList.remove(biome);\n\t\t}\n\n\t\tahy.biomeArray = (abn[]) combinedList.toArray(new abn[0]);\n\t}\n\n\tpublic static void removeSpawn(Class entityClass, acf spawnList) {\n\t\tremoveSpawn((Class) entityClass, spawnList, (abn[]) null);\n\t}\n\n\tpublic static void removeSpawn(Class entityClass, acf spawnList, abn... biomes) {\n\t\tif (entityClass == null) {\n\t\t\tthrow new IllegalArgumentException(\"entityClass cannot be null\");\n\t\t} else if (spawnList == null) {\n\t\t\tthrow new IllegalArgumentException(\"spawnList cannot be null\");\n\t\t} else {\n\t\t\tif (biomes == null) {\n\t\t\t\tbiomes = standardBiomes;\n\t\t\t}\n\n\t\t\tfor (int i = 0; i < biomes.length; ++i) {\n\t\t\t\tList list = biomes[i].a(spawnList);\n\t\t\t\tif (list != null) {\n\t\t\t\t\tIterator iter = list.iterator();\n\n\t\t\t\t\twhile (iter.hasNext()) {\n\t\t\t\t\t\tbg entry = (bg) iter.next();\n\t\t\t\t\t\tif (entry.a == entityClass) {\n\t\t\t\t\t\t\titer.remove();\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static void removeSpawn(String entityName, acf spawnList) {\n\t\tremoveSpawn((String) entityName, spawnList, (abn[]) null);\n\t}\n\n\tpublic static void removeSpawn(String entityName, acf spawnList, abn... biomes) {\n\t\tClass entityClass = (Class) classMap.get(entityName);\n\t\tif (entityClass != null && acq.class.isAssignableFrom(entityClass)) {\n\t\t\tremoveSpawn(entityClass, spawnList, biomes);\n\t\t}\n\n\t}\n\n\tpublic static boolean renderBlockIsItemFull3D(int modelID) {\n\t\tif (!blockSpecialInv.containsKey(modelID)) {\n\t\t\treturn modelID == 16;\n\t\t} else {\n\t\t\treturn (Boolean) blockSpecialInv.get(modelID);\n\t\t}\n\t}\n\n\tpublic static void renderInvBlock(vl renderer, pb block, int metadata, int modelID) {\n\t\tBaseMod mod = (BaseMod) blockModels.get(modelID);\n\t\tif (mod != null) {\n\t\t\tmod.renderInvBlock(renderer, block, metadata, modelID);\n\t\t}\n\t}\n\n\tpublic static boolean renderWorldBlock(vl renderer, ali world, int x, int y, int z, pb block, int modelID) {\n\t\tBaseMod mod = (BaseMod) blockModels.get(modelID);\n\t\treturn mod == null ? false : mod.renderWorldBlock(renderer, world, x, y, z, block, modelID);\n\t}\n\n\tpublic static void saveConfig() throws IOException {\n\t\tcfgdir.mkdir();\n\t\tif (cfgfile.exists() || cfgfile.createNewFile()) {\n\t\t\tif (cfgfile.canWrite()) {\n\t\t\t\tOutputStream out = new FileOutputStream(cfgfile);\n\t\t\t\tprops.store(out, \"ModLoader Config\");\n\t\t\t\tout.close();\n\t\t\t}\n\n\t\t}\n\t}\n\n\tpublic static void serverChat(String text) {\n\t\tIterator var2 = modList.iterator();\n\n\t\twhile (var2.hasNext()) {\n\t\t\tBaseMod mod = (BaseMod) var2.next();\n\t\t\tmod.receiveChatPacket(text);\n\t\t}\n\n\t}\n\n\tpublic static void serverConnect(adl handler, aec loginPacket) {\n\t\tnetHandler = handler;\n\t\tif (packetChannels.size() > 0) {\n\t\t\tee packet = new ee();\n\t\t\tpacket.a = \"REGISTER\";\n\t\t\tStringBuilder channels = new StringBuilder();\n\t\t\tIterator iter = packetChannels.keySet().iterator();\n\t\t\tchannels.append((String) iter.next());\n\n\t\t\twhile (iter.hasNext()) {\n\t\t\t\tchannels.append(\"",
-			"file": "/D/Games/Minecraft 1.2.5 Modded/data/.minecraft/bin/ModLoader.java",
-			"file_size": 44702,
-			"file_write_time": 132779169521752973,
+			"file": "released/helmet/dev/tilemap_conf.asm",
 			"settings":
 			{
-				"buffer_size": 43246,
+				"buffer_size": 4220,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "diario.md",
+			"settings":
+			{
+				"buffer_size": 26167,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -660,14 +649,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/MK1_Pestecera",
-		"/C/git/MK1_Pestecera/src",
-		"/C/git/MK1_Pestecera/src/dev",
-		"/C/git/MK1_Pestecera/src/dev/engine",
-		"/C/git/MK1_Pestecera/src/dev/my"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/released",
+		"/D/git/MK1_Pestecera/released/helmet",
+		"/D/git/MK1_Pestecera/released/helmet/dev",
+		"/D/git/MK1_Pestecera/released/helmet/gfx"
 	],
 	"file_history":
 	[
+		"/D/Games/Minecraft 1.2.5 Modded/data/.minecraft/bin/ModLoader.java",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/my/title_screen.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/Games/Minecraft 1.2.5 Modded/launch.bat",
 		"/D/Git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/Git/MK1_Pestecera/src/dev/mainloop.h",
@@ -693,10 +687,8 @@
 		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
 		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/sprites.h",
-		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
 		"/D/git/MK1_Pestecera/src/dev/mk1.c",
@@ -792,14 +784,11 @@
 		"/C/git/mk1/src/dev/engine/c_levels.h",
 		"/C/git/mk1/src/dev/assets/sprites-empty.h",
 		"/C/git/mk1/src/dev/assets/levels.h",
-		"/C/git/mk1/trash/blip_blep/dev/my/ci/custom_veng.h",
-		"/C/git/mk1/trash/blip_blep/README.md",
-		"/C/git/mk1/trash/blip_blep/dev/my/config.h",
-		"/C/git/mk1/trash/blip_blep/dev/my/fixed_screens.h"
+		"/C/git/mk1/trash/blip_blep/dev/my/ci/custom_veng.h"
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -1036,31 +1025,32 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "released/helmet/dev/behindtilemasks.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3777,
+						"buffer_size": 587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								540,
-								540
+								587,
+								587
 							]
 						],
 						"settings":
 						{
-							"auto_name": "import java.io.DataInputStream;",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1071,52 +1061,57 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/dev/my/config.h",
+					"file": "released/helmet/dev/compile.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17250,
+						"buffer_size": 6601,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9584,
-								9584
+								5112,
+								5112
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2190.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/dev/my/title_screen.h",
-					"semi_transient": false,
+					"file": "released/helmet/dev/wyz_player.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 744,
+						"buffer_size": 21104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								429,
-								429
+								156,
+								162
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1124,100 +1119,78 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/dev/engine/player.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15442,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7504,
-								7504
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 51.0,
-						"translation.y": 4705.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/dev/definitions.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8620,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8620,
-								8620
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3561.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 5,
-					"file": "/D/Games/Minecraft 1.2.5 Modded/data/.minecraft/bin/ModLoader.java",
+					"buffer": 3,
+					"file": "released/helmet/dev/tilemap_conf.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 43246,
+						"buffer_size": 4220,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1196,
-								1196
+								4220,
+								4220
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 226.0,
+						"translation.y": 400.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "diario.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 26167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1225,7 +1198,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1277,7 +1250,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1319,7 +1292,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 188.0,
+	"side_bar_width": 286.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

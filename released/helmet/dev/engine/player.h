@@ -120,6 +120,37 @@ void player_calc_bounding_box (void) {
 			srl a
 			ld  (_pty2), a
 		#endasm
+	#elif defined (BOUNDING_BOX_12X2_CENTERED)
+		#asm
+			ld  a, (_gpx)
+			add 2
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_ptx1), a
+			ld  a, (_gpx)
+			add 13
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_ptx2), a
+			ld  a, (_gpy)
+			add 7
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_pty1), a
+			ld  a, (_gpy)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_pty2), a
+		#endasm
 	#else
 		#asm
 			ld  a, (_gpx)
@@ -309,6 +340,8 @@ unsigned char player_move (void) {
 				gpy = ((pty1 + 1) << 4) - 8;
 			#elif defined (BOUNDING_BOX_8_CENTERED)
 				gpy = ((pty1 + 1) << 4) - 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				gpy = ((pty1 + 1) << 4) - 7;
 			#elif defined (BOUNDING_BOX_TINY_BOTTOM)
 				gpy = ((pty1 + 1) << 4) - 14;
 			#else
@@ -351,6 +384,8 @@ unsigned char player_move (void) {
 				
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_TINY_BOTTOM)
 				gpy = (pty2 - 1) << 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				gpy = ((pty2 - 1) << 4) + 7;
 			#elif defined (BOUNDING_BOX_8_CENTERED)				
 				gpy = ((pty2 - 1) << 4) + 4;
 			#else
@@ -519,6 +554,8 @@ unsigned char player_move (void) {
 
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_TINY_BOTTOM)				
 				gpx = ((ptx1 + 1) << 4) - 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)	
+				gpx = ((ptx1 + 1) << 4) - 2;
 			#else
 				gpx = ((ptx1 + 1) << 4);
 			#endif
@@ -552,6 +589,8 @@ unsigned char player_move (void) {
 
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_TINY_BOTTOM)				
 				gpx = (ptx1 << 4) + 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)	
+				gpx = (ptx1 << 4) + 2;
 			#else
 				gpx = (ptx1 << 4);
 			#endif
@@ -597,8 +636,8 @@ unsigned char player_move (void) {
 		#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 			if (wall_v == WTOP) {
 				// interact up			
-				#if defined (BOUNDING_BOX_8_BOTTOM)
-					cy1 = (gpy + 7) >> 4;
+				#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_12X2_CENTERED)
+					cy1 = (gpy + 6) >> 4;
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 3) >> 4;
 				#else
@@ -614,6 +653,8 @@ unsigned char player_move (void) {
 				// interact down
 				#if defined (BOUNDING_BOX_8_BOTTOM)
 					cy1 = (gpy + 16) >> 4;
+				#elif defined (BOUNDING_BOX_12X2_CENTERED)
+					cy1 = (gpy + 9) >> 4;
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 12) >> 4;
 				#else
@@ -631,6 +672,8 @@ unsigned char player_move (void) {
 			// interact left
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
 				cx1 = (gpx + 3) >> 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				cx1 = (gpx + 1) >> 4;
 			#else
 				cx1 = (gpx - 1) >> 4;		
 			#endif		
@@ -643,6 +686,8 @@ unsigned char player_move (void) {
 			// interact right
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
 				cx1 = (gpx + 12) >> 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				cx1 = (gpx + 14) >>4;
 			#else
 				cx1 = (gpx + 16) >> 4;		
 			#endif		
