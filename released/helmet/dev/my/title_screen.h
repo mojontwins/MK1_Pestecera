@@ -17,7 +17,7 @@ void title_screen (void) {
 			 _y = 14; _gp_gen = "2 STICK"; print_str ();
 
 	_x = 2; _y = 18; _gp_gen = "DEDICADO A IGNACIO Y PAQUITO"; print_str ();
-	_x = 5; _y = 19; _gp_gen = "@ 2020 THE MOJON TWINS"; print_str ();
+	_x = 5; _y = 19; _gp_gen = "@ 2022 THE MOJON TWINS"; print_str ();
 	cpc_UpdateNow (0);
 
 	// Do a simple 0 start/1 redefine menu
