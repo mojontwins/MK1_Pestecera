@@ -519,51 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "released/helmet/dev/behindtilemasks.asm",
-			"settings":
-			{
-				"buffer_size": 587,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "released/helmet/dev/compile.bat",
-			"settings":
-			{
-				"buffer_size": 6601,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "released/helmet/dev/wyz_player.h",
-			"settings":
-			{
-				"buffer_size": 21104,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "released/helmet/dev/tilemap_conf.asm",
-			"settings":
-			{
-				"buffer_size": 4220,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "diario.md",
-			"settings":
-			{
-				"buffer_size": 26167,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -653,10 +608,17 @@
 		"/D/git/MK1_Pestecera/released",
 		"/D/git/MK1_Pestecera/released/helmet",
 		"/D/git/MK1_Pestecera/released/helmet/dev",
+		"/D/git/MK1_Pestecera/released/helmet/dev/my",
 		"/D/git/MK1_Pestecera/released/helmet/gfx"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/released/helmet/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/my/config.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/my/title_screen.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/tilemap_conf.asm",
+		"/D/git/MK1_Pestecera/released/helmet/dev/behindtilemasks.asm",
+		"/D/git/MK1_Pestecera/released/helmet/dev/compile.bat",
 		"/D/Games/Minecraft 1.2.5 Modded/data/.minecraft/bin/ModLoader.java",
 		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/my/title_screen.h",
@@ -778,13 +740,7 @@
 		"/C/git/mk1/src/utils/src/sprcnvbin.bas",
 		"/C/git/mk1/src/dev/engine.h",
 		"/C/git/mk1/docs/tutorial-cap07.md",
-		"/C/git/mk1/src/dev/my/config.h",
-		"/C/git/mk1/docs/tutorial-cap12.md",
-		"/C/git/mk1/docs/tutorial-cap02.md",
-		"/C/git/mk1/src/dev/engine/c_levels.h",
-		"/C/git/mk1/src/dev/assets/sprites-empty.h",
-		"/C/git/mk1/src/dev/assets/levels.h",
-		"/C/git/mk1/trash/blip_blep/dev/my/ci/custom_veng.h"
+		"/C/git/mk1/src/dev/my/config.h"
 	],
 	"find":
 	{
@@ -795,6 +751,7 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\released\\helmet\\dev",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
@@ -826,6 +783,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BOUNDING_BOX_12X2_CENTERED",
 			"^/\\*[\\s\\d]+\\*/ ",
 			"^/\\*[\\s\\d]+\\*/",
 			"fix",
@@ -952,8 +910,7 @@
 			"defaultInk",
 			"forcezero",
 			"custom",
-			"gpy == 0",
-			"elif"
+			"gpy == 0"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1025,174 +982,13 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "released/helmet/dev/behindtilemasks.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 587,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								587,
-								587
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "released/helmet/dev/compile.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6601,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5112,
-								5112
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 702.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "released/helmet/dev/wyz_player.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 21104,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								156,
-								162
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		},
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 3,
-					"file": "released/helmet/dev/tilemap_conf.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4220,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4220,
-								4220
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 400.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "diario.md",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 26167,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
