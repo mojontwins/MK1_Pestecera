@@ -33,6 +33,7 @@
 // Cosas del juego:
 
 #include "definitions.h"
+#include "mtasmlib.h"
 
 #ifdef ACTIVATE_SCRIPTING
 	#include "my/msc-config.h"

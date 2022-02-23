@@ -310,10 +310,16 @@ unsigned char player_move (void) {
 	if (p_y < 0) p_y = 0;
 	if (p_y > 9216) p_y = 9216;
 
-	gpy = p_y >> 6;
+	// gpy = p_y >> 6;
+	#asm
+			ld  hl, (_p_y)
+			call HLshr6_A
+			ld  (_gpy), a
+	#endasm
 
 	// Collision, may set possee, hit_v
 
+	// Velocity positive (going downwards)
 	player_calc_bounding_box ();
 
 	hit_v = 0;
@@ -348,7 +354,12 @@ unsigned char player_move (void) {
 				gpy = ((pty1 + 1) << 4);
 			#endif
 
-			p_y = gpy << 6;
+			//p_y = gpy << 6;
+			#asm
+					ld  a, (_gpy)
+					call Ashl16_HL
+					ld  (_p_y), hl
+			#endasm
 
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WTOP;
@@ -392,7 +403,12 @@ unsigned char player_move (void) {
 				gpy = (pty2 - 1) << 4;				
 			#endif
 
-			p_y = gpy << 6;
+			//p_y = gpy << 6;
+			#asm
+					ld  a, (_gpy)
+					call Ashl16_HL
+					ld  (_p_y), hl
+			#endasm
 			
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
@@ -401,11 +417,47 @@ unsigned char player_move (void) {
 	}
 
 	#ifndef DEACTIVATE_EVIL_TILE
-		if (p_vy) hit_v = ((at1 & 1) || (at2 & 1));
+		#ifndef CUSTOM_EVIL_TILE_CHECK
+			// if (p_vy) hit_v = ((at1 & 1) || (at2 & 1));
+			#asm
+					ld  a, (_p_vy)
+					ld  c, a
+					ld  a, (_p_vy + 1)
+					or  c
+					jr  z, evil_tile_check_vert_done
+
+					ld  a, (_at1)
+					and 1
+					ld  c, a
+					ld  a, (_at2) 
+					and 1 
+					or  c 
+
+					ld  (_hit_v), a
+				.evil_tile_check_vert_done
+			#endasm
+		#endif
 	#endif
 	
+	/*
 	gpxx = gpx >> 4;
 	gpyy = gpy >> 4;
+	*/
+	#asm
+			ld  a, (_gpx)
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_gpxx), a
+			ld  a, (_gpy)
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_gpyy), a
+	#endasm
+
 
 	#ifndef PLAYER_GENITAL
 		cy1 = cy2 = (gpy + 16) >> 4;
@@ -525,8 +577,17 @@ unsigned char player_move (void) {
 	if (p_x < 0) p_x = 0;
 	if (p_x > 14336) p_x = 14336;
 
+	/*
 	gpox = gpx;
 	gpx = p_x >> 6;
+	*/
+	#asm
+			ld  a, (_gpx)
+			ld  (_gpox), a 
+			ld  hl, (_p_x)
+			call HLshr6_A
+			ld  (_gpx), a	
+	#endasm
 		
 	// Collision. May set hit_h
 	player_calc_bounding_box ();
@@ -560,13 +621,34 @@ unsigned char player_move (void) {
 				gpx = ((ptx1 + 1) << 4);
 			#endif
 
+			/*
 			p_x = gpx << 6;
 			wall_h = WLEFT;
+			*/
+			#asm
+					ld  a, (_gpx)
+					call Ashl16_HL
+					ld  (_p_x), hl
+					ld  a, WLEFT
+					ld  (_wall_h), a
+			#endasm
 		}
 		#ifndef DEACTIVATE_EVIL_TILE
-			else hit_h = ((at1 & 1) || (at2 & 1));
+			#ifndef CUSTOM_EVIL_TILE_CHECK
+				else {
+					// hit_h = ((at1 & 1) || (at2 & 1));
+					#asm
+							ld  a, (_at1)
+							and 1
+							ld  c, a
+							ld  a, (_at2)
+							and 1
+							or  c 
+							ld  (_hit_h), a
+					#endasm
+				}
+			#endif
 		#endif
-
 	}
 
 	#if defined (PLAYER_GENITAL)
@@ -595,11 +677,31 @@ unsigned char player_move (void) {
 				gpx = (ptx1 << 4);
 			#endif
 
+			/*		
 			p_x = gpx << 6;
 			wall_h = WRIGHT;
+			*/
+			#asm
+					ld  a, (_gpx)
+					call Ashl16_HL
+					ld  (_p_x), hl
+					ld  a, WRIGHT
+					ld  (_wall_h), a
+			#endasm
 		}
 		#ifndef DEACTIVATE_EVIL_TILE
-			else hit_h = ((at1 & 1) || (at2 & 1));
+			else {
+				// hit_h = ((at1 & 1) || (at2 & 1));
+				#asm
+						ld  a, (_at1)
+						and 1
+						ld  c, a
+						ld  a, (_at2)
+						and 1
+						or  c 
+						ld  (_hit_h), a
+				#endasm
+			}
 		#endif
 
 	}
@@ -608,24 +710,83 @@ unsigned char player_move (void) {
 
 	#ifdef PLAYER_GENITAL
 		#ifdef TOP_OVER_SIDE
+			/*
 			if (p_facing_v != 0xff) {
 				p_facing = p_facing_v;
 			} else if (p_facing_h != 0xff) {
 				p_facing = p_facing_h;
 			}
+			*/
+			#asm
+				.genital_decide_facing
+					ld  a, (_p_facing_v)
+					cp  0xff
+					jr  z, genital_decide_facing_h
+				.genital_decide_facing_v
+					ld  (_p_facing), a
+					jr  genital_decide_facing_done
+				.genital_decide_facing_h
+					ld  a, (_p_facing_h)
+					cp  0xff
+					jr  z, genital_decide_facing_done
+					ld  (_p_facing), a
+				.genital_decide_facing_done
+			#endasm
 		#else
+			/*
 			if (p_facing_h != 0xff) {
 				p_facing = p_facing_h;
 			} else if (p_facing_v != 0xff) {
 				p_facing = p_facing_v;
 			}
+			*/
+			#asm
+				.genital_decide_facing
+					ld  a, (_p_facing_h)
+					cp  0xff
+					jr  z, genital_decide_facing_v
+				.genital_decide_facing_h
+					ld  (_p_facing), a
+					jr  genital_decide_facing_done
+				.genital_decide_facing_v
+					ld  a, (_p_facing_v)
+					cp  0xff
+					jr  z, genital_decide_facing_done
+					ld  (_p_facing), a
+				.genital_decide_facing_done
+			#endasm	
 		#endif	
 	#endif
 
+	/*
 	cx1 = p_tx = (gpx + 8) >> 4;
 	cy1 = p_ty = (gpy + 8) >> 4;
 
 	rdb = attr (cx1, cy1);
+	*/
+	#asm
+			ld  a, (_gpx)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_p_tx), a 
+			ld  (_cx1), a
+			ld  c, a
+
+			ld  a, (_gpy)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_p_ty), a 
+			ld  (_cy1), a
+
+			call _attr_2
+			ld  (_rdb), a
+	#endasm
 
 	// Special tiles
 	if (rdb & 128) {
@@ -658,7 +819,7 @@ unsigned char player_move (void) {
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 12) >> 4;
 				#else
-					cy1 = (gpy + 16) >> 3;				
+					cy1 = (gpy + 16) >> 4;				
 				#endif		
 			
 				if (attr (cx1, cy1) == 10) {
@@ -717,6 +878,9 @@ unsigned char player_move (void) {
 	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
+		#ifdef CUSTOM_EVIL_TILE_CHECK
+			#include "my/ci/custom_evil_tile_check.h"
+		#else
 		// Tiles que te matan. 
 		// hit_v tiene preferencia sobre hit_h
 		hit = 0;
@@ -727,6 +891,7 @@ unsigned char player_move (void) {
 			hit = 1;
 				p_vx = addsign (-p_vx, PLAYER_MAX_VX);
 		}
+		#endif
 		
 		if (hit) {
 			#ifdef PLAYER_FLICKERS

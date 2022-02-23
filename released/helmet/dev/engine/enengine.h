@@ -15,7 +15,7 @@
 		void enems_init (void) {
 			enit = 0;
 			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
-				malotes [enit].t = malotes [enit].t & 15;	
+				malotes [enit].t = malotes [enit].t &  & 0xEF;	
 				#ifdef PLAYER_CAN_FIRE
 					malotes [enit].life = ENEMIES_LIFE_GAUGE;
 				#endif
@@ -30,9 +30,30 @@ void enems_load (void) {
 	enoffs = n_pant * MAX_ENEMS;
 	
 	for (enit = 0; enit < MAX_ENEMS; ++ enit) {
+		/*
 		en_an_frame [enit] = 0;
 		en_an_state [enit] = 0;
 		en_an_count [enit] = 3;
+		*/
+		#asm
+				ld  bc, (_enit)
+				ld  b, 0
+
+				ld  hl, _en_an_frame 
+				add hl, bc
+				xor a
+				ld  (hl), a
+
+				ld  hl, _en_an_state
+				add hl, bc
+				ld  (hl), a
+
+				ld  hl, _en_an_count
+				add hl, bc
+				ld  a, 3
+				ld  (hl), a
+		#endasm
+
 		enoffsmasi = enoffs + enit;
 
 		#ifdef RESPAWN_ON_ENTER
