@@ -127,7 +127,7 @@
 //#define PLAYER_CAN_FIRE_FLAG		1		// If defined, player can only fire when flag # is 1
 #define PLAYER_BULLET_SPEED 		8		// Pixels/frame. 
 #define MAX_BULLETS 				3		// Max number of bullets on screen. Be careful!.
-#define PLAYER_BULLET_Y_OFFSET		6		// vertical offset from the player's top.
+#define PLAYER_BULLET_Y_OFFSET		5		// vertical offset from the player's top.
 #define PLAYER_BULLET_X_OFFSET		2		// vertical offset from the player's left/right.
 #define ENEMIES_LIFE_GAUGE			2		// Amount of shots needed to kill enemies.
 //#define LIMITED_BULLETS 					// If defined, bullets die after N frames
