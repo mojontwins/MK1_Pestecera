@@ -17,7 +17,7 @@
 		#endif
 	} LEVEL;
 #else
-	// 48K format:
+	// 48K format struct is 18 bytes wide
 	typedef struct {
 		unsigned char map_w, map_h;
 		unsigned char scr_ini, ini_x, ini_y;
