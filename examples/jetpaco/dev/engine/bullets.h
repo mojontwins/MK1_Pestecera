@@ -4,9 +4,19 @@
 // bullets.h
 
 void bullets_init (void) {
+	/*
 	b_it = 0; while (b_it < MAX_BULLETS) { 
 		bullets_estado [b_it] = 0; ++ b_it;
 	}	
+	*/
+	#asm
+			ld  hl, _bullets_estado
+			ld  de, _bullets_estado + 1
+			ld  bc, MAX_BULLETS - 1
+			xor a
+			ld  (hl), a
+			ldir
+	#endasm	
 }
 
 void bullets_update (void) {
@@ -253,7 +263,7 @@ void bullets_move (void) {
 
 			// Render
 			if (_b_estado) {
-					sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
+				sp_sw [bspr_it].cx = (_b_x + VIEWPORT_X * 8) >> 2;
 				sp_sw [bspr_it].cy = (_b_y + VIEWPORT_Y * 8);
 				sp_sw [bspr_it].sp0 = (int) (sprite_19_a);
 			}
@@ -261,7 +271,7 @@ void bullets_move (void) {
 			// Update arrays
 			bullets_update ();				
 		} else {
-				sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
+			sp_sw [bspr_it].cx = (VIEWPORT_X * 8) >> 2;
 			sp_sw [bspr_it].cy = (VIEWPORT_Y * 8);
 			sp_sw [bspr_it].sp0 = (int) (SPRFR_EMPTY);
 		}

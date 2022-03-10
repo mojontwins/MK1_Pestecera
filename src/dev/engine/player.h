@@ -120,6 +120,37 @@ void player_calc_bounding_box (void) {
 			srl a
 			ld  (_pty2), a
 		#endasm
+	#elif defined (BOUNDING_BOX_12X2_CENTERED)
+		#asm
+			ld  a, (_gpx)
+			add 2
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_ptx1), a
+			ld  a, (_gpx)
+			add 13
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_ptx2), a
+			ld  a, (_gpy)
+			add 7
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_pty1), a
+			ld  a, (_gpy)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_pty2), a
+		#endasm
 	#else
 		#asm
 			ld  a, (_gpx)
@@ -279,10 +310,16 @@ unsigned char player_move (void) {
 	if (p_y < 0) p_y = 0;
 	if (p_y > 9216) p_y = 9216;
 
-	gpy = p_y >> 6;
+	// gpy = p_y >> 6;
+	#asm
+			ld  hl, (_p_y)
+			call HLshr6_A
+			ld  (_gpy), a
+	#endasm
 
 	// Collision, may set possee, hit_v
 
+	// Velocity positive (going downwards)
 	player_calc_bounding_box ();
 
 	hit_v = 0;
@@ -305,17 +342,46 @@ unsigned char player_move (void) {
 				p_vy = 0;
 			#endif
 
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM)			
 				gpy = ((pty1 + 1) << 4) - 8;
 			#elif defined (BOUNDING_BOX_8_CENTERED)
 				gpy = ((pty1 + 1) << 4) - 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				gpy = ((pty1 + 1) << 4) - 7;
 			#elif defined (BOUNDING_BOX_TINY_BOTTOM)
 				gpy = ((pty1 + 1) << 4) - 14;
 			#else
 				gpy = ((pty1 + 1) << 4);
 			#endif
+			*/
 
-			p_y = gpy << 6;
+			// KISS mod
+			#asm
+					ld  a, (_pty1)
+					inc a 
+					sla a
+					sla a
+					sla a
+					sla a
+				#ifdef BOUNDING_BOX_8_BOTTOM
+					sub 8
+				#elif defined BOUNDING_BOX_8_CENTERED
+					sub 4
+				#elif defined BOUNDING_BOX_12X2_CENTERED
+					sub 7
+				#elif defined BOUNDING_BOX_TINY_BOTTOM
+					sub 14
+				#endif
+					ld  (_gpy), a
+			#endasm
+
+			//p_y = gpy << 6;
+			#asm
+					ld  a, (_gpy)
+					call Ashl16_HL
+					ld  (_p_y), hl
+			#endasm
 
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WTOP;
@@ -349,15 +415,40 @@ unsigned char player_move (void) {
 				p_vy = 0;
 			#endif
 				
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_TINY_BOTTOM)
 				gpy = (pty2 - 1) << 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				gpy = ((pty2 - 1) << 4) + 7;
 			#elif defined (BOUNDING_BOX_8_CENTERED)				
 				gpy = ((pty2 - 1) << 4) + 4;
 			#else
 				gpy = (pty2 - 1) << 4;				
 			#endif
+			*/
 
-			p_y = gpy << 6;
+			// KISS mod
+			#asm
+					ld  a, (_pty2)
+					dec a 
+					sla a
+					sla a
+					sla a
+					sla a
+				#ifdef BOUNDING_BOX_12X2_CENTERED
+					add 7
+				#elif defined BOUNDING_BOX_8_CENTERED
+					add 4
+				#endif
+					ld  (_gpy), a
+			#endasm
+
+			//p_y = gpy << 6;
+			#asm
+					ld  a, (_gpy)
+					call Ashl16_HL
+					ld  (_p_y), hl
+			#endasm
 			
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
@@ -366,11 +457,47 @@ unsigned char player_move (void) {
 	}
 
 	#ifndef DEACTIVATE_EVIL_TILE
-		if (p_vy) hit_v = ((at1 & 1) || (at2 & 1));
+		#ifndef CUSTOM_EVIL_TILE_CHECK
+			// if (p_vy) hit_v = ((at1 & 1) || (at2 & 1));
+			#asm
+					ld  a, (_p_vy)
+					ld  c, a
+					ld  a, (_p_vy + 1)
+					or  c
+					jr  z, evil_tile_check_vert_done
+
+					ld  a, (_at1)
+					and 1
+					ld  c, a
+					ld  a, (_at2) 
+					and 1 
+					or  c 
+
+					ld  (_hit_v), a
+				.evil_tile_check_vert_done
+			#endasm
+		#endif
 	#endif
 	
+	/*
 	gpxx = gpx >> 4;
 	gpyy = gpy >> 4;
+	*/
+	#asm
+			ld  a, (_gpx)
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_gpxx), a
+			ld  a, (_gpy)
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_gpyy), a
+	#endasm
+
 
 	#ifndef PLAYER_GENITAL
 		cy1 = cy2 = (gpy + 16) >> 4;
@@ -392,9 +519,6 @@ unsigned char player_move (void) {
 				rda = cpc_TestKey (KEY_BUTTON_B);
 			#else
 				rda = cpc_TestKey (KEY_BUTTON_A);
-				#ifdef BOTH_KEYS_JUMP
-					if (is_joystick == 0) rda |= cpc_TestKey(KEY_BUTTON_B);
-				#endif
 			#endif
 
 			if (rda) {
@@ -493,8 +617,17 @@ unsigned char player_move (void) {
 	if (p_x < 0) p_x = 0;
 	if (p_x > 14336) p_x = 14336;
 
+	/*
 	gpox = gpx;
 	gpx = p_x >> 6;
+	*/
+	#asm
+			ld  a, (_gpx)
+			ld  (_gpox), a 
+			ld  hl, (_p_x)
+			call HLshr6_A
+			ld  (_gpx), a	
+	#endasm
 		
 	// Collision. May set hit_h
 	player_calc_bounding_box ();
@@ -520,19 +653,61 @@ unsigned char player_move (void) {
 				p_vx = 0;
 			#endif
 
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_TINY_BOTTOM)				
 				gpx = ((ptx1 + 1) << 4) - 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)	
+				gpx = ((ptx1 + 1) << 4) - 2;
 			#else
 				gpx = ((ptx1 + 1) << 4);
 			#endif
+			*/
 
+			// KISS mod
+
+			#asm
+					ld  a, (_ptx1)
+					inc a 
+					sla a 
+					sla a 
+					sla a 
+					sla a 
+				#if defined BOUNDING_BOX_8_BOTTOM || defined BOUNDING_BOX_8_CENTERED || defined BOUNDING_BOX_TINY_BOTTOM
+					sub 4
+				#elif defined BOUNDING_BOX_12X2_CENTERED
+					sub 2
+				#endif
+					ld  (_gpx), a
+			#endasm
+
+			/*
 			p_x = gpx << 6;
 			wall_h = WLEFT;
+			*/
+			#asm
+					ld  a, (_gpx)
+					call Ashl16_HL
+					ld  (_p_x), hl
+					ld  a, WLEFT
+					ld  (_wall_h), a
+			#endasm
 		}
 		#ifndef DEACTIVATE_EVIL_TILE
-			else hit_h = ((at1 & 1) || (at2 & 1));
+			#ifndef CUSTOM_EVIL_TILE_CHECK
+				else {
+					// hit_h = ((at1 & 1) || (at2 & 1));
+					#asm
+							ld  a, (_at1)
+							and 1
+							ld  c, a
+							ld  a, (_at2)
+							and 1
+							or  c 
+							ld  (_hit_h), a
+					#endasm
+				}
+			#endif
 		#endif
-
 	}
 
 	#if defined (PLAYER_GENITAL)
@@ -553,17 +728,58 @@ unsigned char player_move (void) {
 				p_vx = 0;
 			#endif
 
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_TINY_BOTTOM)				
 				gpx = (ptx1 << 4) + 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)	
+				gpx = (ptx1 << 4) + 2;
 			#else
 				gpx = (ptx1 << 4);
 			#endif
+			*/
 
+			// KISS mod
+
+			#asm
+					ld  a, (_ptx1)
+					sla a 
+					sla a 
+					sla a 
+					sla a 
+				#if defined BOUNDING_BOX_8_BOTTOM || defined BOUNDING_BOX_8_CENTERED || defined BOUNDING_BOX_TINY_BOTTOM
+					add 4
+				#elif defined BOUNDING_BOX_12X2_CENTERED
+					add 2
+				#endif
+					ld  (_gpx), a
+			#endasm
+
+
+			/*		
 			p_x = gpx << 6;
 			wall_h = WRIGHT;
+			*/
+			#asm
+					ld  a, (_gpx)
+					call Ashl16_HL
+					ld  (_p_x), hl
+					ld  a, WRIGHT
+					ld  (_wall_h), a
+			#endasm
 		}
 		#ifndef DEACTIVATE_EVIL_TILE
-			else hit_h = ((at1 & 1) || (at2 & 1));
+			else {
+				// hit_h = ((at1 & 1) || (at2 & 1));
+				#asm
+						ld  a, (_at1)
+						and 1
+						ld  c, a
+						ld  a, (_at2)
+						and 1
+						or  c 
+						ld  (_hit_h), a
+				#endasm
+			}
 		#endif
 
 	}
@@ -572,24 +788,84 @@ unsigned char player_move (void) {
 
 	#ifdef PLAYER_GENITAL
 		#ifdef TOP_OVER_SIDE
+			/*
 			if (p_facing_v != 0xff) {
 				p_facing = p_facing_v;
 			} else if (p_facing_h != 0xff) {
 				p_facing = p_facing_h;
 			}
+			*/
+			#asm
+				.genital_decide_facing
+					ld  a, (_p_facing_v)
+					cp  0xff
+					jr  z, genital_decide_facing_h
+				.genital_decide_facing_v
+					ld  (_p_facing), a
+					jr  genital_decide_facing_done
+				.genital_decide_facing_h
+					ld  a, (_p_facing_h)
+					cp  0xff
+					jr  z, genital_decide_facing_done
+					ld  (_p_facing), a
+				.genital_decide_facing_done
+			#endasm
 		#else
+			/*
 			if (p_facing_h != 0xff) {
 				p_facing = p_facing_h;
 			} else if (p_facing_v != 0xff) {
 				p_facing = p_facing_v;
 			}
+			*/
+			#asm
+				.genital_decide_facing
+					ld  a, (_p_facing_h)
+					cp  0xff
+					jr  z, genital_decide_facing_v
+				.genital_decide_facing_h
+					ld  (_p_facing), a
+					jr  genital_decide_facing_done
+				.genital_decide_facing_v
+					ld  a, (_p_facing_v)
+					cp  0xff
+					jr  z, genital_decide_facing_done
+					ld  (_p_facing), a
+				.genital_decide_facing_done
+			#endasm	
 		#endif	
 	#endif
 
+	/*
 	cx1 = p_tx = (gpx + 8) >> 4;
 	cy1 = p_ty = (gpy + 8) >> 4;
 
 	rdb = attr (cx1, cy1);
+	*/
+	#asm
+			ld  a, (_gpx)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_p_tx), a 
+			ld  (_cx1), a
+			ld  c, a
+
+			ld  a, (_gpy)
+			add 8
+			srl a
+			srl a
+			srl a
+			srl a
+			ld  (_p_ty), a 
+			ld  (_cy1), a
+
+			call _attr_2
+			ld  a, l
+			ld  (_rdb), a
+	#endasm
 
 	// Special tiles
 	if (rdb & 128) {
@@ -600,8 +876,9 @@ unsigned char player_move (void) {
 		#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 			if (wall_v == WTOP) {
 				// interact up			
-				#if defined (BOUNDING_BOX_8_BOTTOM)
-					cy1 = (gpy + 7) >> 4;
+				/*	
+				#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_12X2_CENTERED)
+					cy1 = (gpy + 6) >> 4;
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 3) >> 4;
 				#else
@@ -612,28 +889,107 @@ unsigned char player_move (void) {
 					x0 = x1 = cx1; y0 = cy1; y1 = cy1 - 1;
 					process_tile ();
 				}
+				*/
+
+				// KISS mod
+
+				#asm
+						ld  a, (_gpy)
+					#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_12X2_CENTERED)
+						add 6
+					#elif defined (BOUNDING_BOX_8_CENTERED)
+						add 3
+					#else
+						dec a 
+					#endif
+						srl a
+						srl a
+						srl a
+						srl a
+						ld  (_cy1), a
+				
+						ld  a, (_cx1)
+						ld  c, a
+						ld  a, (_cy1)
+						call _attr_2 
+						ld  a, l 
+						cp  10
+						jr  nz, p_int_up_no
+
+						ld  a, (_cx1)
+						ld  (_x0), a
+						ld  (_x1), a
+						ld  a, (_cy1)
+						ld  (_y0), a 
+						dec a 
+						ld  (_y1), a 
+						call _process_tile
+					.p_int_up_no
+				#endasm
 
 			} else if (wall_v == WBOTTOM) {
 				// interact down
+				/*
 				#if defined (BOUNDING_BOX_8_BOTTOM)
 					cy1 = (gpy + 16) >> 4;
+				#elif defined (BOUNDING_BOX_12X2_CENTERED)
+					cy1 = (gpy + 9) >> 4;
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 12) >> 4;
 				#else
-					cy1 = (gpy + 16) >> 3;				
+					cy1 = (gpy + 16) >> 4;				
 				#endif		
 			
 				if (attr (cx1, cy1) == 10) {
 					x0 = x1 = cx1; y0 = cy1; y1 = cy1 + 1;
 					process_tile ();
 				}
+				*/
+
+				// KISS mod
+				#asm
+						ld  a, (_gpy)
+					#if defined (BOUNDING_BOX_12X2_CENTERED)
+						add 9
+					#elif defined (BOUNDING_BOX_8_CENTERED)
+						add 12
+					#else
+						add 16
+					#endif
+						srl a
+						srl a
+						srl a
+						srl a
+						ld  (_cy1), a
+
+						ld  a, (_cx1)
+						ld  c, a
+						ld  a, (_cy1)
+						call _attr_2 
+						ld  a, l 
+						cp  10
+						jr  nz, p_int_down_no
+
+						ld  a, (_cx1)
+						ld  (_x0), a
+						ld  (_x1), a
+						ld  a, (_cy1)
+						ld  (_y0), a 
+						inc a 
+						ld  (_y1), a 
+						call _process_tile		
+					.p_int_down_no	
+				#endasm
 			} else
 		#endif	
 		
 		if (wall_h == WLEFT) {		
 			// interact left
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
 				cx1 = (gpx + 3) >> 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				cx1 = (gpx + 1) >> 4;
 			#else
 				cx1 = (gpx - 1) >> 4;		
 			#endif		
@@ -642,10 +998,49 @@ unsigned char player_move (void) {
 				y0 = y1 = cy1; x0 = cx1; x1 = cx1 - 1;
 				process_tile ();
 			}
+			*/
+
+			// KISS mod
+			#asm
+					ld  a, (_gpx)
+				#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
+					add 3
+				#elif defined (BOUNDING_BOX_12X2_CENTERED)
+					inc a
+				#else
+					dec a
+				#endif
+					srl a
+					srl a
+					srl a
+					srl a
+					ld  (_cx1), a				
+
+					// ld  a, (_cx1)
+					ld  c, a
+					ld  a, (_cy1)
+					call _attr_2 
+					ld  a, l 
+					cp  10
+					jr  nz, p_int_left_no
+	
+					ld  a, (_cy1)
+					ld  (_y0), a
+					ld  (_y1), a
+					ld  a, (_cx1)
+					ld  (_x0), a 
+					dec a 
+					ld  (_x1), a 
+					call _process_tile
+				.p_int_left_no
+			#endasm
 		} else if (wall_h == WRIGHT) {
 			// interact right
+			/*
 			#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
 				cx1 = (gpx + 12) >> 4;
+			#elif defined (BOUNDING_BOX_12X2_CENTERED)
+				cx1 = (gpx + 14) >>4;
 			#else
 				cx1 = (gpx + 16) >> 4;		
 			#endif		
@@ -653,6 +1048,41 @@ unsigned char player_move (void) {
 				y0 = y1 = cy1; x0 = cx1; x1 = cx1 + 1;
 				process_tile ();
 			}
+			*/
+
+			#asm
+					ld  a, (_gpx)
+				#if defined (BOUNDING_BOX_8_BOTTOM) || defined (BOUNDING_BOX_8_CENTERED)
+					add 12
+				#elif defined (BOUNDING_BOX_12X2_CENTERED)
+					add 14
+				#else
+					add 16
+				#endif
+					srl a
+					srl a
+					srl a
+					srl a
+					ld  (_cx1), a				
+					
+					// ld  a, (_cx1)
+					ld  c, a
+					ld  a, (_cy1)
+					call _attr_2 
+					ld  a, l 
+					cp  10
+					jr  nz, p_int_right_no
+
+					ld  a, (_cy1)
+					ld  (_y0), a
+					ld  (_y1), a
+					ld  a, (_cx1)
+					ld  (_x0), a 
+					inc a 
+					ld  (_x1), a 
+					call _process_tile
+				.p_int_right_no
+			#endasm
 		}
 	#endif
 
@@ -675,6 +1105,9 @@ unsigned char player_move (void) {
 	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
+		#ifdef CUSTOM_EVIL_TILE_CHECK
+			#include "my/ci/custom_evil_tile_check.h"
+		#else
 		// Tiles que te matan. 
 		// hit_v tiene preferencia sobre hit_h
 		hit = 0;
@@ -685,6 +1118,7 @@ unsigned char player_move (void) {
 			hit = 1;
 				p_vx = addsign (-p_vx, PLAYER_MAX_VX);
 		}
+		#endif
 		
 		if (hit) {
 			#ifdef PLAYER_FLICKERS

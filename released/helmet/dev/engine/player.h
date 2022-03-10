@@ -675,7 +675,7 @@ unsigned char player_move (void) {
 				#if defined BOUNDING_BOX_8_BOTTOM || defined BOUNDING_BOX_8_CENTERED || defined BOUNDING_BOX_TINY_BOTTOM
 					sub 4
 				#elif defined BOUNDING_BOX_12X2_CENTERED
-					sub 3
+					sub 2
 				#endif
 					ld  (_gpx), a
 			#endasm
@@ -749,7 +749,7 @@ unsigned char player_move (void) {
 				#if defined BOUNDING_BOX_8_BOTTOM || defined BOUNDING_BOX_8_CENTERED || defined BOUNDING_BOX_TINY_BOTTOM
 					add 4
 				#elif defined BOUNDING_BOX_12X2_CENTERED
-					add 3
+					add 2
 				#endif
 					ld  (_gpx), a
 			#endasm

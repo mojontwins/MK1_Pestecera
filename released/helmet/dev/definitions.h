@@ -258,7 +258,7 @@ unsigned char objs_old, keys_old, life_old, killed_old;
 	#ifdef LANG_ES
 		unsigned char *level_str = "NIVEL 0X";
 	#else
-	unsigned char *level_str = "LEVEL 0X";
+		unsigned char *level_str = "LEVEL 0X";
 	#endif
 	unsigned char silent_level = 0;
 #endif
