@@ -743,56 +743,68 @@ void draw_scr (void) {
 
 #ifdef WALLS_STOP_ENEMIES
 	unsigned char mons_col_sc_x (void) {
-		#ifdef BOUNDING_BOX_12X2_CENTERED
+
+		// Si BOUNDING_BOX_12x2_CENTERED ->
+		// D = 2, E = 13; D = 0, E = 15 si _lineal
+		// H = 7, L = 8;  H = 0, L = 15 si _lineal
+		// else D = 0, E = 15; H = 0, L = 15
+
+		#asm
+			#ifdef BOUNDING_BOX_12x2_CENTERED
+					ld  de, 0x020D
+					ld  hl, 0x0708
+					jr  _mons_col_sc_x_compare
+			#endif
+
+			._mons_col_sc_x_lineal
+				ld  de, 0x000f
+				ld  hl, 0x000f
+
+			._mons_col_sc_x_compare
+
 			// cx1 = cx2 = (_en_mx > 0 ? _en_x + 13 : _en_x + 2) >> 4;
-			#asm
-					ld  a, (__en_mx)
-					and 0x80
-					ld  a, (__en_x)
-					jr  z, _mons_col_sc_x_horz_positive
+				ld  a, (__en_mx)
+				and 0x80
+				ld  a, (__en_x)
+				jr  z, _mons_col_sc_x_horz_positive
 
-				._mons_col_sc_x_horz_negative_zero
-					add 2
-					jr  _mons_col_sc_x_horz_set
+			._mons_col_sc_x_horz_negative_zero
+				add d
+				jr  _mons_col_sc_x_horz_set
 
-				._mons_col_sc_x_horz_positive
-					add 13					
+			._mons_col_sc_x_horz_positive
+				add e				
 
-				._mons_col_sc_x_horz_set
-					srl a 
-					srl a 
-					srl a  
-					srl a
+			._mons_col_sc_x_horz_set
+				srl a 
+				srl a 
+				srl a  
+				srl a
 
-					ld  (_cx1), a
-					ld  (_cx2), a
-			#endasm
+				ld  (_cx1), a
+				ld  (_cx2), a
 
 			// cy1 = (_en_y + 7) >> 4; cy2 = (_en_y + 8) >> 4;
-			#asm
-					ld  a, (__en_y)
-					add 7 
-					ld  b, a
+	
+				ld  a, (__en_y)
+				add h
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cy1), a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cy1), a
 
-					ld  a, b
-					inc a
+				ld  a, (__en_y)
+				add l
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cy2), a
-			#endasm
-		#else
-		cx1 = cx2 = (_en_mx > 0 ? _en_x + 15 : _en_x) >> 4;
-		cy1 = _en_y >> 4; cy2 = (_en_y + 15) >> 4;
-		#endif
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cy2), a
+		#endasm
+
 		cm_two_points ();
 		#ifdef EVERYTHING_IS_A_WALL
 			return (at1 || at2);
@@ -802,56 +814,67 @@ void draw_scr (void) {
 	}
 		
 	unsigned char mons_col_sc_y (void) {
-		#ifdef BOUNDING_BOX_12X2_CENTERED
+
+		// Si BOUNDING_BOX_12x2_CENTERED ->
+		// D = 2, E = 13; D = 0, E = 15 si _lineal
+		// H = 7, L = 8;  H = 0, L = 15 si _lineal
+		// else D = 0, E = 15; H = 0, L = 15
+
+		#asm
+			#ifdef BOUNDING_BOX_12x2_CENTERED
+					ld  de, 0x020D
+					ld  hl, 0x0708
+					jr  _mons_col_sc_x_compare
+			#endif
+
+			._mons_col_sc_y_lineal
+				ld  de, 0x000f
+				ld  hl, 0x000f
+
+			._mons_col_sc_y_compare
+
 			// cy1 = cy2 = (_en_my > 0 ? _en_y + 8 : _en_y + 7) >> 4;
-			#asm
-					ld  a, (__en_my)
-					and 0x80
-					ld  a, (__en_y)
-					jr  z, _mons_col_sc_y_vert_positive
+				ld  a, (__en_my)
+				and 0x80
+				ld  a, (__en_y)
+				jr  z, _mons_col_sc_y_vert_positive
 
-				._mons_col_sc_y_vert_negative_zero
-					add 7
-					jr  _mons_col_sc_y_vert_set
+			._mons_col_sc_y_vert_negative_zero
+				add h
+				jr  _mons_col_sc_y_vert_set
 
-				._mons_col_sc_y_vert_positive
-					add 8					
+			._mons_col_sc_y_vert_positive
+				add l					
 
-				._mons_col_sc_y_vert_set
-					srl a 
-					srl a 
-					srl a  
-					srl a
+			._mons_col_sc_y_vert_set
+				srl a 
+				srl a 
+				srl a  
+				srl a
 
-					ld  (_cy1), a
-					ld  (_cy2), a
-			#endasm		
+				ld  (_cy1), a
+				ld  (_cy2), a
 
 			// cx1 = (_en_x + 2) >> 4; cx2 = (_en_x + 13) >> 4;
-			#asm
-					ld  a, (__en_x)
-					ld  b, a
-					add 2 
+				ld  a, (__en_x)
+				add d
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cx1), a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cx1), a
 
-					ld  a, b
-					add 13
+				ld  a, (__en_x)
+				add e
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cx2), a
-			#endasm
-		#else
-		cy1 = cy2 = (_en_my > 0 ? _en_y + 15 : _en_y) >> 4;
-		cx1 = _en_x >> 4; cx2 = (_en_x + 15) >> 4;
-		#endif
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cx2), a
+		#endasm
+
 		cm_two_points ();
 		#ifdef EVERYTHING_IS_A_WALL
 			return (at1 || at2);
