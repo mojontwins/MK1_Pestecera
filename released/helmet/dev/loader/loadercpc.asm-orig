@@ -10,11 +10,20 @@ org $BA00
 
 	call   blackenpal
 
-; Set mode 
+; Load pre-screen
 
-	ld     bc, $7f00
-	ld     a, $8C + %%%loader_mode%%%
-	out    (c), a
+	ld      ix, $BA00 - %%%scrc_size%%%
+	ld      de, %%%pscrc_size%%%
+	call    cpct_miniload_asm
+
+; Depack pre-screen
+
+	ld      hl, $BA00 - %%%scrc_size%%%
+	ld      de, $C000
+	call    dzx7_standard
+	
+	ld      hl, pre_palette
+	call 	setPal
 
 ; Load screen 
 
@@ -22,13 +31,22 @@ org $BA00
 	ld      de, %%%scrc_size%%%
 	call    cpct_miniload_asm
 
-	call setPal
+	call 	blackenpal
+
+; Set mode 
+
+    ld     bc, $7f00
+    ld     a, $8C + %%%loader_mode%%%
+    out    (c), a
 
 ; Depack screen
 
 	ld      hl, $BA00 - %%%scrc_size%%%
 	ld      de, $C000
 	call    dzx7_standard
+
+	ld      hl, palette
+	call 	setPal
 
 ; Load binary
 
@@ -67,7 +85,6 @@ setPal:
 ; Set palette adapted from cpctelera
 
 	ld     de, 15	
-	ld     hl, palette
 	add    hl, de
 	ld     b, $7f
 
@@ -85,6 +102,9 @@ loopPal:
 
 palette:
 	defb %%%loading_palette%%%
+
+pre_palette:
+	defb %%%preloading_palette%%%
 
 
 ; -----------------------------------------------------------------------------

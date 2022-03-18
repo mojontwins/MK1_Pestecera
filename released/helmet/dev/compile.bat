@@ -96,12 +96,17 @@ echo Construyendo cinta
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
 del ..\bin\loading.c.bin >nul 2>nul
 ..\..\..\src\utils\zx7.exe ..\bin\loading.bin ..\bin\loading.c.bin > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=1 pal=..\gfx\pal_preloading.png mode=scr in=..\gfx\preloading.png out=..\bin\preloading.bin silent > nul
+del ..\bin\preloading.c.bin >nul 2>nul
+..\..\..\src\utils\zx7.exe ..\bin\preloading.bin ..\bin\preloading.c.bin > nul
 del ..\bin\%game%.c.bin >nul 2>nul
 ..\..\..\src\utils\zx7.exe %game%.bin ..\bin\%game%.c.bin > nul
 
 ..\..\..\src\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
+	pscrc_size=?..\bin\preloading.c.bin ^
 	scrc_size=?..\bin\loading.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
+	preloading_palette=!..\gfx\pal_preloading.png ^
 	loading_palette=!..\gfx\pal_loading.png ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\..\..\src\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
@@ -114,6 +119,7 @@ del ..\bin\%game%.c.bin >nul 2>nul
 del %game%.cdt > nul
 ..\..\..\src\utils\cpc2cdt.exe -r %game% -m cpc -l 1024 -x 1024 -p 2000 ..\bin\preloader.bin %game%.cdt
 ..\..\..\src\utils\cpc2cdt.exe -r LOADER -m raw1full -rl 740 -p 2000 ..\bin\loader.bin %game%.cdt
+..\..\..\src\utils\cpc2cdt.exe -r PSCR -m raw1full -rl 740 -p 2000 ..\bin\preloading.c.bin %game%.cdt
 ..\..\..\src\utils\cpc2cdt.exe -r SCR -m raw1full -rl 740 -p 2000 ..\bin\loading.c.bin %game%.cdt
 ..\..\..\src\utils\cpc2cdt.exe -r MAIN -m raw1full -rl 740 -p 2000 ..\bin\%game%.c.bin %game%.cdt
 
