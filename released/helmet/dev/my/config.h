@@ -255,7 +255,7 @@ extern unsigned char def_keys [0];
 		defw $4804		; KEY_ESC	
 
 		defw $4440		; KEY_AUX1 M
-		defw $4608 		; KEY_AUX2 T
+		defw $4880 		; KEY_AUX2 Z
 		defw $4801 		; KEY_AUX3 1	// Those are used in the menus!
 		defw $4802 		; KEY_AUX4 2
 #endasm

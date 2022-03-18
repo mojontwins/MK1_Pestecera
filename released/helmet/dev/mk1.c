@@ -2,7 +2,8 @@
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
 // mk1.c
-//#define DEBUG_KEYS
+#define DEBUG_KEYS
+#define LANG_ES
 
 #include <cpcrslib.h>
 
