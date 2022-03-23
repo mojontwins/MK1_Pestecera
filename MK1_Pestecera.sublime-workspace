@@ -630,14 +630,7 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Git/MK1_Pestecera",
-		"/D/Git/MK1_Pestecera/released",
-		"/D/Git/MK1_Pestecera/released/helmet",
-		"/D/Git/MK1_Pestecera/released/helmet/dev",
-		"/D/Git/MK1_Pestecera/released/helmet/dev/loader",
-		"/D/Git/MK1_Pestecera/released/helmet/dev/my",
-		"/D/Git/MK1_Pestecera/released/helmet/dev/my/ci",
-		"/D/Git/MK1_Pestecera/released/helmet/gfx"
+		"/D/git/MK1_Pestecera"
 	],
 	"file_history":
 	[
@@ -772,7 +765,7 @@
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -1035,6 +1028,8 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C Improved/C Improved.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1064,6 +1059,8 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1093,6 +1090,8 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
 						"translation.x": 0.0,
@@ -1112,7 +1111,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1164,7 +1163,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":

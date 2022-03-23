@@ -56,6 +56,7 @@
 											// Comment both for normal 16x16 bounding box
 #define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
 //#define BOUNDING_BOX_8_CENTERED			// 8x8 aligned to center in 16x16
+//#define BOUNDING_BOX_12X2_CENTERED 		// 8x2 aligned to center in 16x16
 #define SMALL_COLLISION 					// 8x8 centered collision instead of 12x12
 
 // General directives:
@@ -70,6 +71,7 @@
 //#define OBJECT_COUNT				1		// Defines which FLAG will be used to store the object count.
 //#define REVERSE_OBJECTS_COUNT 			// Counts from PLAYER_NUM_OBJETOS to 0
 //#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
+//#define CUSTOM_EVIL_TILE_CHECK			// 
 #define PLAYER_BOUNCES						// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
@@ -253,9 +255,9 @@ extern unsigned char def_keys [0];
 		defw $4204		; KEY_ENTER
 		defw $4804		; KEY_ESC	
 
-		defw $4880		; KEY_AUX1 Z
-		defw $4780 		; KEY_AUX2 X
-		defw $4801 		; KEY_AUX3 1
+		defw $4440		; KEY_AUX1 M
+		defw $4880 		; KEY_AUX2 Z
+		defw $4801 		; KEY_AUX3 1	// Those are used in the menus!
 		defw $4802 		; KEY_AUX4 2
 #endasm
 
