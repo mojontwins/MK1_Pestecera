@@ -1,30 +1,22 @@
 # Capítulo 2: Tileset
 
-## Antes de empezar
-
-En este capítulo y en prácticamente todos los demás tendremos que abrir una ventana de línea de comandos para ejecutar scripts y programillas, además de para lanzar la compilación del juego y cosas por el estilo. Lo que quiero decir es que deberías tener alguna noción básica de estos manejes. Si no sabes lo que es esto que te pongo aquí abajo, es mejor que consultes algún tutorial básico sobre el manejo de la ventana de línea de comandos (o consola) del sistema operativo que uses. O eso, o que llames a tu amigo el de las gafas y la camiseta de Piedra-Papel-Tijeras-Lagarto-Spock.
-
-![Consola de línea de comandos](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_console.png)
-
-Podéis echar un vistazo por ejemplo a [este tutorial](http://www.falconmasters.com/offtopic/como-utilizar-consola-de-windows/). Con los comandos listados en la sección *Lista de comandos básicos* tendréis más que suficiente.
-
 ## Material
 
 El material necesario para seguir este capítulo os lo he dejado aquí:
 
-[Material del capítulo 2](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-zip/churreratut-capitulo2.zip)
+[Material del capítulo 2](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-zip/churreratut-capitulo2.zip)
 
 Descárgalo y ponlo en una carpeta temporal, que ya iremos poniendo cosas en nuestro proyecto según las vayamos necesitando. Dentro hay cosas bonitas.
 
 ## Tileset... ¿De qué leches estamos hablando?
 
-Pues de tiles. ¿Que qué es un _tile_? Pues para ponerlo sencillo, no es más que un cachito de gráfico que es del mismo tamaño y forma que otros cachitos de gráficos. Para que lo veas, busca la traducción: tile significa “azulejo”, (aunque nosotros preferimos pensar que en ralidad se trata de las siglas “Tengo Ideas Locas y Estrafalarias”). Ahora piensa en la pared de tu cuarto de baño, e imagina que en cada azulejo hay un cachito de gráfico. Tenemos el azulejo con un cachito de ladrillo, el azulejo con un cachito de hierba, y el azulejo negro y el azulejo con un cachito de suelo. Con varios de cada uno podemos ordenarlos de forma que hagamos un dibujo que se parezca a una casa de campo. Un cuarto de baño así molaría de la hostia, por cierto. Siempre hay que hacer pipí. Y caca.
+Pues de tiles. ¿Que qué es un _tile_? Pues para ponerlo sencillo, no es más que un cachito de gráfico que es del mismo tamaño y forma que otros cachitos de gráficos. Para que lo veas, busca la traducción: tile significa “azulejo”, (aunque nosotros preferimos pensar que en ralidad se trata de las siglas “Tengo Ideas Locas y Estrafalarias”). Ahora piensa en la pared de tu cuarto de baño, e imagina que en cada azulejo hay un cachito de gráfico. Tenemos el azulejo con un cachito de ladrillo, el azulejo con un cachito de hierba, y el azulejo negro y el azulejo con un cachito de suelo. Con varios de cada uno podemos ordenarlos de forma que hagamos un dibujo que se parezca a una casa de campo. Un cuarto de baño así molaría de la hostia, por cierto. Siempre hay que hacer pipí. Y caca. Hacer caca es genial.
 
-![Una casa de campo](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_tiles.png)
+![Una casa de campo](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_tiles.png)
 
-Esto es lo que usa **MTE MK1** para pintar los gráficos de fondo. Como guardar una pantalla gráfica completa ocupa un huevo, lo que se hace es guardar un cierto número de cachitos y luego una lista de qué cachitos ocupa cada pantalla. La colección de cachitos de un güego es lo que se conoce como “tileset”. En este capítulo vamos a explicar cómo son los tilesets de **MTE MK1**, cómo se crean, cómo se convierten, cómo se importan y cómo se usan. Pero antes necesitamos entender varios conceptos. Vete preparando un zumito.
+Esto es lo que usa **MTE MK1** para pintar los gráficos de fondo. Como guardar una pantalla gráfica completa ocupa un huevo, lo que se hace es guardar un cierto número de cachitos y luego una lista de qué cachitos forman cada pantalla. La colección de cachitos de un güego es lo que se conoce como “tileset”. En este capítulo vamos a explicar cómo son los tilesets de **MTE MK1**, cómo se crean, cómo se convierten, cómo se importan y cómo se usan. Pero antes necesitamos entender varios conceptos. Vete preparando un zumito.
 
-Colisión
+## Colisión
 
 **MTE MK1**, además, usa los tiles para otra cosa: para la colisión. Colisión es un nombre muy chulo para referirse a algo muy tonto: el protagonista del güego podrá andar por la pantalla o no dependiendo del tipo del tile que vaya a pisar. O sea, que cada tile tiene asociado un comportamiento. Por ejemplo, al tile negro del ejemplo de arriba podríamos ponerle un comportamiento “traspasable” para que el jugador pudiera moverse libremente por el espacio ocupado por estos tiles. En cambio, el tile de la hierba debería ser “obstáculo”, entendiendo que debe impedir que el protagonista se mueva por el espacio que ocupan. En un güego de plataformas, por ejemplo, el motor hará caer al protagonista siempre que no haya un tile “obstáculo” bajo sus pies.
 
@@ -42,9 +34,9 @@ En los güegos de **MTE MK1** tenemos los siguientes tipos de tiles o, mejor dic
 
 6. *Tipo “10”, interactuable*. Es un obstáculo pero que sea de tipo “10” hace que el motor esté coscao y sepa que es especial. De este tipo son, por ahora, los cerrojos y los bloques que se pueden empujar. Hablaremos de ellos dentro de poco.
 
-7. *Tipo “16”, destructible*. Son tiles que se pueden romper disparándolos.
+7. *Tipo “16”, destructible*. Son tiles que se pueden romper disparándoles.
 
-Vaya mierda, pensarás, ¡si faltan números! Y más que faltaban antes. Esto está hecho queriendo, amigos, porque simplifica mucho los cálculos y permite **combinar comportamientos** sumando los números, hasta donde tenga sentido. Por ejemplo, un tile *obstáculo que mata* (8+1 = 9) no tiene sentido porque no lo vamos a poder tocar nunca, pero un *obstáculo destructible* (8+16 = 24) sí que lo tiene. De hecho, si no ponemos los destructibles como obstáculos *se podrán traspasar*.
+Vaya mierda, pensarás, ¡si faltan números! Y más que faltaban antes. Esto está hecho queriendo, amigos, porque simplifica mucho los cálculos y permite **combinar comportamientos** sumando los números, hasta donde tenga sentido. Por ejemplo, un tile *obstáculo que mata* (8+1 = 9) no tiene sentido porque no lo vamos a poder tocar nunca, pero un *obstáculo destructible* (8+16 = 24) sí que lo tiene. De hecho, si no ponemos los destructibles como obstáculos *se podrán traspasar* - Honorable mención aquí para **Sgt. Helmet Training Day**, donde las alambradas tienen comportamiento *destructible que mata* (1+16 = 17). Tal y como está configurado el motor en este güego, son efectivamente obstáculos ya que hacen rebotar al prota cuando las toca.
 
 En un futuro, además, se puede ampliar fácilmente, como hemos dicho. Por ejemplo, se podría añadir código a **MTE MK1** para que los tiles de tipo “5” y “6” fueran como cintas transportadoras a la izquierda y a la derecha, respectivamente. Se podría añadir. Podría. A lo mejor, al final, hacemos un capítulo de arremangarse y meter código nuevo en **MTE MK1**... ¿por qué no? Creo que además ya sabes de sobra que [me encanta el café](https://ko-fi.com/I2I0JUJ9)...
 
@@ -58,29 +50,43 @@ Los **tiles empujables** son unos tiles que, al empujarlos con el protagonista, 
 
 ## Vamos al lío ya ¿no?
 
-Eso, vamos al lío ya. Vamos a dibujar nuestro tileset, o a rapiñarlo de por ahí, o a pedir a nuestro amigo que sabe dibujar que nos lo haga. Que sí, hombre, que te busques uno, que hay muchos grafistas faltos de amor. Lo primero que tenemos que decidir es si vamos a usar un tileset de 16 tiles diferentes o de 48, que son los dos tamaños de tilesets que soporta **MTE MK1**. Qué tontería, estarás pensando, ¡de 48! ¡son más! Por supuesto que son más, mi querido Einstein, pero ocurre una cosa: 16 tiles diferentes se pueden representar con un número de 4 bits. Eso significa que en un byte, que tiene 8 bits, podemos almacenar dos tiles. ¿Adónde quiero llegar? ¡Bien, lo habéis adivinado! Los mapas ocupan exactamente la mitad de memoria si usamos tilesets de 16 tiles en lugar de tilesets de 48.
+Eso, vamos al lío ya. Vamos a dibujar nuestro tileset, o a rapiñarlo de por ahí, o a pedir a nuestro amigo que sabe dibujar que nos lo haga. Que sí, hombre, que te busques uno, que hay muchos grafistas faltos de amor. 
 
-Ya sé que 16 pueden parecer pocos tiles, pero pensad que la mayoría de nuestros güegos están hechos así, y muy feos no quedan. Con un poco de inventiva podemos hacer pantallas muy chulas con pocos tiles. Además, como veremos más adelante en este mismo capítulo, usar tilesets de 16 tiles nos permitirá activar el efecto de sombras automáticas, que hará que parezca que tenemos bastantes más de 16 tiles.
+Ahora ¡para! ¿Has decidido ya si tu güego va a ser en modo 0 o en modo 1? ¡Es el momento, hay que empezar a dibujar! Como sabrás si eres cepecero de pro, los píxels del modo 0 son el doble de anchos que los del modo 1 pero pueden salir de más colores. Con esto en mente, has de saber que, internamente, **MTE MK1** maneja los mismos sistemas de coordenadas sin importar el modo, por lo que el movimiento percibido al jugar será exactamente el mismo sin importar el modo. 
 
-Otra cosa que se puede hacer es hacer juegos de varios niveles cortos en el que cambiemos de tileset para cada nivel. Esto dará suficiente variedad y permitirá usar mapas que ocupen la mitad.
+Una vez decidido el modo gráfico, lo siguiente que tenemos que decidir es si vamos a usar un tileset de 16 tiles diferentes o de 48, que son los dos tamaños de tilesets que soporta **MTE MK1** así, en plan *vanilla*. Qué tontería, estarás pensando, ¡de 48! ¡son más! Por supuesto que son más, mi querido Einstein, pero ocurre una cosa: 16 tiles diferentes se pueden representar con un número de 4 bits. Eso significa que en un byte, que tiene 8 bits, podemos almacenar dos tiles. ¿Adónde quiero llegar? ¡Bien, lo habéis adivinado! Los mapas ocupan exactamente la mitad de memoria si usamos tilesets de 16 tiles en lugar de tilesets de 48.
 
-Por lo pronto id abriendo vuestro programa de edición gráfica preferido y creando un nuevo archivo de 256×48 píxeles. Seguro que vuestro programa de edición gráfica tiene una opción para activar una rejilla (o grid). Colocadla para que haga recuadros de 16×16 píxeles y, a ser posible, que tenga 2 subdivisiones, para que podamos ver donde empieza cada carácter. Esto nos ayudará a hacer los gráficos siguiendo las restricciones del Spectrum, o a poder saber donde empieza y termina cada tile a la hora de recortarlos y/o dibujarlos. Yo uso una versión súper vieja de Photoshop y, cuando creo un nuevo tileset, me veo delante de algo así:
+Ya sé que 16 pueden parecer pocos tiles, pero pensad que la mayoría de nuestros güegos están hechos así, y muy feos no quedan. Con un poco de inventiva podemos hacer pantallas muy chulas con pocos tiles. Además, como veremos más adelante en este mismo capítulo, usar tilesets de 16 tiles nos permitirá activar el efecto de sombras automáticas, que hará que parezca que tenemos bastantes más de 16 tiles. Y aparte de esto, nada te impide (cuando ya seas un churrero pro) añadir código para cambiar el tileset por otro dependiendo de la pantalla. 
 
-![Un lienzo vacío](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_empty_ts.png)
+Otra cosa que se puede hacer es construir juegos de varios niveles cortos en el que cambiemos de tileset para cada nivel. Esto dará suficiente variedad y permitirá usar mapas que ocupen la mitad.
 
-Con respecto a la paleta del Spectrum, como todas estas cosas, los valores que soportan por defecto los conversores incluidos en el _toolchain_ son bastante arbitrarios. Para que todo vaya bien, usa unos valores de R, G, B de 200 si quieres representar los colores sin BRIGHT y de 255 si quieres representar los colores con BRIGHT. A Mappy no le gusta el magenta intenso (255, 0, 255), así que para este color puedes usar por ejemplo (254, 0, 255).
+Por lo pronto id abriendo vuestro programa de edición gráfica preferido y creando un nuevo archivo de 256×48 píxeles (si vais a usar modo 1) o 128×48 píxeles (si vais a usar modo 0). Seguro que vuestro programa de edición gráfica tiene una opción para activar una rejilla (o grid). Colocadla para que haga recuadros de 16×16 (modo 1) u 8×16 (en modo 0) píxeles.
 
-Si no te quieres rayar, usa los colores de esta paleta:
+Si usais un editor gráfico de pixel art petón, como puede ser Aseprite, y estáis pintando en modo 0, podéis configurarlo para que muestre los píxeles a doble de ancho y no tener que tirar de imaginación para saber cómo quedará luego en pantalla.
 
-![Paleta](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_palette.png)
+Con respecto a la paleta del CPC, como todas estas cosas, los valores que soportan por defecto los conversores incluidos en el _toolchain_ son bastante arbitrarios. Para que todo vaya bien, puedes emplear esta paleta:
+
+![Paleta](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_palette.png)
+
+En el directorio `/env` tienes esta paleta en varios formatos para usar con Photoshop, Paint Shop Pro, Aseprite, y otros. También la tienes en formato `png`.
+
+En esa paleta están los 27 colores que puede mostrar el CPC, aunque ya deberías saber que los 27 a la vez no puede (sin trucos). Si tu juego está en modo 1 tendrás que elegir 4, y si está en modo 0, hasta 16.
+
+Mientras haces tu tileset es buena idea montar también una imagen con la paleta que has elegido, que se empleará posteriormente en todas las operaciones de conversión de gráficos. El archivo de paleta es una imagen de 16x1 píxels que contendrá, por orden, los colores de tu paleta. Si estás trabajando en modo 1 sólo tendrás que rellenar los 4 primeros píxeles (los de más a la izquierda).
+
+Además, deberías pensar en un color que no vayas a usar en los sprites y ponerlo el primero (el de más a la izquierda): éste será el color *transparente*. Ya te digo que ahora no estamos hablando de sprites, pero esto es importante y debería tenerse en cuenta lo antes posible. Este color lo puedes usar en los tiles sin problema, pero en los sprites *no se dibujarán los píxels que pintes de este color, mostrando el fondo que hay detrás*.
 
 ## Haciendo un tileset de 16 tiles
 
-Si has decidido ahorrar memoria (por ejemplo, si planeas que el motor del güego termine siendo medianamente complejo, con scripting y muchas cosas molonas, o si prefieres que tu mapa sea bien grande) y usar tilesets de 16 tiles, tienes que crear algo así:
+Si has decidido ahorrar memoria (por ejemplo, si planeas que el motor del güego termine siendo medianamente complejo, con scripting o código *custom* y muchas cosas molonas, o si prefieres que tu mapa sea bien grande) y usar tilesets de 16 tiles, tienes que crear algo así:
 
-![16 tiles](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_tileset_16.png)
+![16 tiles](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_tileset_16.png)
 
-El tileset se divide en dos secciones: **la primera, formada por los primeros dieciséis tiles, es la sección de mapa**. Es la que usaremos para hacer nuestro mapa. La segunda, formada por los cuatro siguientes, es la **sección especial** que se usará para pintar cosas especiales.
+Este ejemplo es un tileset en modo 0, con tiles de 8x16 píxeles, que se muestran aquí cuadrados. En realidad, cuando montes el juego, verás los gráficos así:
+
+![16 tiles con ladrillopíxeles](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_tileset_16_brick.png)
+
+El tileset se divide en dos secciones: **la primera, formada por los primeros dieciséis tiles, es la sección de mapa**. Es la que usaremos para hacer nuestro mapa. La segunda, formada en principio por los cuatro siguientes (y, posteriormente, por todos los demás, como ya veremos), es la **sección especial** que se usará para pintar cosas especiales.
 
 ### La sección de mapa
 
@@ -106,7 +112,7 @@ Está formada por cuatro tiles que son, de izquierda a derecha:
 
 4. El **tile 19** es el **fondo alternativo**. Para dar un poco de *age* a las pantallas, de forma aleatoria, se pintará este tile de vez en cuando en vez del tile 0. Por ejemplo, si tu tile 0 es el cielo, puedes poner una estrellica en este tile. O, si estás haciendo un güego de perspectiva genital, puedes poner una variación del suelo. **Este fondo alternativo sólo funciona en tilesets de 16 tiles**. A partir de la versión 5.3 se puede desactivar o elegir otro tile diferente.
 
-¿Se pilla bien? Básicamente hay que dibujar 20 tiles: 16 para hacer el mapa, y 4 para representar objetos y restar monotonía de los fondos. Huelga decir que si, por ejemplo, no vas a usar llaves y cerrojos en tu güego, te puedes ahorrar pintar la llave en el tile 18.
+¿Se pilla bien? Básicamente y para empezar hay que dibujar 20 tiles: 16 para hacer el mapa, y 4 para representar objetos y restar monotonía de los fondos. Huelga decir que si, por ejemplo, no vas a usar llaves y cerrojos en tu güego, te puedes ahorrar pintar la llave en el tile 18.
 
 En el Dogmole, por ejemplo, no hay tiles empujables. Por eso nuestro tile 14 es un mejillón del cantábrico que, como todos sabemos, no se puede empujar.
 
@@ -114,33 +120,35 @@ En el Dogmole, por ejemplo, no hay tiles empujables. Por eso nuestro tile 14 es 
 
 El sombreado automático puede hacer que nuestras pantallas se vean mucho más chulas. Si lo activamos, **MTE MK1** hará que los tiles obstáculo proyecten sombras sobre los demás. Para conseguirlo, necesitamos definir una versión alternativa de la sección de mapa con los tiles que no sean obstáculo sombreados, que pegaremos en la fila inferior de nuestro archivo de tiles. Por ejemplo, este es el tileset de **Cheril Perils**:
 
-![Cheril Perils](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_ts_perils.png)
+![Cheril Perils](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_ts_perils.png)
 
 Tendremos total control, por tanto, de cómo se proyectan las sombras. El resultado obtenido lo podéis ver aquí abajo:
 
-![Cheril Perils](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_perils.png)
+![Cheril Perils](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_perils.png)
 
-Otro ejemplo es **Lala Lah**, dentro pantallazo:
+Otro ejemplo es **Lala Lah**, ahí va pantallazo:
 
-![Cheril Perils](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_lah.png)
+![Cheril Perils](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_lah.png)
 
 En **Dogmole** no vamos a usar esto porque necesitamos el espacio que ocuparían las sombras automáticas para otra cosa que ya veremos en su momento.
+
+También hay que mencionar, porque todo es bueno de saber, que el código que pinta las pantallas en el modo de sombras automáticas es bastante más tocho y lento que el que las muestra tal cual. Queda más bonito, sí, pero tendrás que decidir si merece la pena.
 
 ## Ejemplos
 
 Para verlo, vamos a echarle el ojete a algunos tilesets de nuestros güegos, a modo de ejemplo, para que veáis cómo están diseñados.
 
-![Lala Lah](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_ts_lah.png)
+![Lala Lah](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_ts_lah.png)
 
 Aquí tenemos el tileset de **Lala lah**. Como vemos, el primer tile es el fondo azul que se ve en la mayoría de las pantallas. Le sigue un trozo de plataforma que también es un tile de fondo, y después el rebordecico que es un tile tipo “plataforma” (tipo 4). Si juegas al güego verás cómo se comporta este tile, para terminar de entenderlo. El piedro amarillo que le sigue es un obstáculo (tipo 8). Luego hay dos matojitos psicodélicos para adornar de fondo (tipo 0). Luego otro piedro (8), un fondo enladrillado (0), una variación de los cuadricos (0), una bola de pinchos que mata (tipo 1), una caja con estrella (8), dos tiles para hacer tiras no traspasables (y, por tanto, de tipo 8), una plataforma to roneona (tipo 4), y para terminar el tile nº 15 será de tipo 10, porque usamos cerrojos y los cerrojos tienen que ser obstáculos interactuables. Luego tenemos la recarga, el objeto y la llave, el tile alternativo para el fondo, y en la tira de abajo los que se usan en el sombreado automático. Vamos a ver otro:
 
-![D'Veel'Ng](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_ts_d'veel'ng.png)
+![D'Veel'Ng](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_ts_d'veel'ng.png)
 
-Este es el tileset de **D'Veel'Ng**, un güego de perspectiva genital. Este empieza con dos tiles para suelo (tipo 0), seguidos por cuatro obstáculos (tipo 8) – los buesos, la calavera, la canina y el piedro, dos tiles matadores y malignos (tipo 1), que son esas calaveras rojas tan feas, otro obstáculo en forma de ladrillos amarillos (tipo 8), otro suelo embaldosado (tipo 0), otro tile que te mata en forma de seta maligna (tipo 1), ladrillos blancos (tipo 8), más suelo (tipo 0), y otra calavera obstaculizante (tipo 8). Este güego tiene tiles que se empujan, por lo que el tile 14 es una caja roja de tipo 10. También tenemos llaves, por lo que el tile 15 es un cerrojo, también de tipo 10. Luego tenemos la típica recarga de vida, el objeto y la llave, y el tile alternativo para el fondo que se pinta aleatoriamente. En la fila de abajo, volvemos a tener una versión sombreada de los tiles de fondo. Fíjate como los tiles que matan los he dejado igual en la tira “sombreada”: esto es para que siempre se vean bien destacados. Venga, más:
+Este es el tileset de **D'Veel'Ng**, un güego de perspectiva genital de Spectrum que no nos ha dado la vida de remakear. Este empieza con dos tiles para suelo (tipo 0), seguidos por cuatro obstáculos (tipo 8) – los buesos, la calavera, la canina y el piedro, dos tiles matadores y malignos (tipo 1), que son esas calaveras rojas tan feas, otro obstáculo en forma de ladrillos amarillos (tipo 8), otro suelo embaldosado (tipo 0), otro tile que te mata en forma de seta maligna (tipo 1), ladrillos blancos (tipo 8), más suelo (tipo 0), y otra calavera obstaculizante (tipo 8). Este güego tiene tiles que se empujan, por lo que el tile 14 es una caja roja de tipo 10. También tenemos llaves, por lo que el tile 15 es un cerrojo, también de tipo 10. Luego tenemos la típica recarga de vida, el objeto y la llave, y el tile alternativo para el fondo que se pinta aleatoriamente. En la fila de abajo, volvemos a tener una versión sombreada de los tiles de fondo. Fíjate como los tiles que matan los he dejado igual en la tira “sombreada”: esto es para que siempre se vean bien destacados. Venga, más:
 
-![Monono](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_ts_monono.png)
+![Monono](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_ts_monono.png)
 
-Ahora toca el del **Monono**. Este es muy sencillo de ver: empezamos con el tile de fondo principal, vacío del todo (tipo 0). Seguimos con seis obstáculos (tipo 8). Luego tenemos dos tiles de fondo más, para adornar los fondos: la ventanica para asomarse y desí ola k ase y el escudo. Luego hay tres tiles-obstáculo más (tipo 8), unos pinches venenozos (tipo 1), nuestra típica plataforma metálica copyright Mojon Twins signature special (tipo 4), una caja que se puede empujar (tile 14, tipo 10) y un cerrojo (tile 15, tipo 10). Luego lo de siempre: recarga, objeto, llave, alternativo. Este no tiene sombreado automático.
+Ahora toca el del **Monono**, de Spectrum también y que pa qué remakear (¡fans cepeceros de **Monono**, uníos y exigid un port digno!). Este es muy sencillo de ver: empezamos con el tile de fondo principal, vacío del todo (tipo 0). Seguimos con seis obstáculos (tipo 8). Luego tenemos dos tiles de fondo más, para adornar los fondos: la ventanica para asomarse y desí ola k ase y el escudo. Luego hay tres tiles-obstáculo más (tipo 8), unos pinches venenozos (tipo 1), nuestra típica plataforma metálica copyright Mojon Twins signature special (tipo 4), una caja que se puede empujar (tile 14, tipo 10) y un cerrojo (tile 15, tipo 10). Luego lo de siempre: recarga, objeto, llave, alternativo. Este no tiene sombreado automático.
 
 Podría seguir, pero es que no tengo más ganas.
 
@@ -154,7 +162,7 @@ En los tilesets de 48 tiles, podemos usar los tiles de 0 a 47 para hacer las pan
 
 Como único ejemplo tenemos el tileset de Zombie Calavera. Si te fijas, en Zombie Calavera no hay llaves (ni cerrojos), por lo que sólo están ocupados como “especiales” el 16 para las recargas y el 17 para los objetos. Tampoco hay tiles empujables. Todos los demás se usan para pintar el escenario:
 
-![Zombie Calavera Prologue](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_ts_zcp.png)
+![Zombie Calavera Prologue](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_ts_zcp.png)
 
 ## Ya tenemos el tileset pintado. Ahora ¿qué?
 
@@ -170,7 +178,7 @@ Si estás siguiendo el tutorial con **Dogmole** sin hacer experimentos propios, 
 
 El archivo con la fuente, que debe llamarse `font.png` y estar en el directorio `gfx` si no quieres editar `compile.bat`, debe contener, como hemos dicho, 64 "patrones". Estos "patrones" deben representar los caracteres ASCII desde el 32 al 95 y estar organizados en una imagen de 256x16 parecida a esta:
 
-![Zombie Calavera Prologue](https://raw.githubusercontent.com/mojontwins/MK1/master/docs/wiki-img/02_base_font.png)
+![Zombie Calavera Prologue](https://github.com/mojontwins/MK1_Pestecera/blob/master/docs/wiki-img/02_base_font.png)
 
 Lo más fácil es utilizar como plantilla el archivo `fuente_base.png` incluido en el paquetito de archivos de este capítulo, y dibujar sobre él o adaptar alguna fuente ya existente. La fuente para **Dogmole** también está incluida en el paquetito: `font.png` que deberás copiar en `/gfx` sustituyendo la que viene.
 

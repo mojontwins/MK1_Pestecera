@@ -639,7 +639,7 @@ Vamos con lo primero intentando que sea reutilizable.
 
 Ahora mismo los sprites se convierten con:
 
-```c
+```
     ..\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites.png out=..\bin\sprites.bin silent > nul
 ```
 
