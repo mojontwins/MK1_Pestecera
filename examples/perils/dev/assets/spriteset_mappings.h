@@ -1,5 +1,5 @@
 // MTE MK1 (la Churrera) v5.0
-// Copyleft 2010-2014, 2020 by the Mojon Twins
+// Copyleft 2010-2014, 2020-2021 by the Mojon Twins
 
 // Spriteset mappings. 
 // One entry per sprite face in the spriteset!
@@ -17,17 +17,17 @@ unsigned char sm_coy [] = {
 };
 
 void *sm_invfunc [] = {
-	cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-	cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-	cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, 
-	cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16, cpc_PutSpTileMap8x16
+	cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, 
+	cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, 
+	cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, 
+	cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1, cpc_PutSpTileMap16x16PxM1
 };
 
 void *sm_updfunc [] = {
-	cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, 
-	cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, 
-	cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, 
-	cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b, cpc_PutTrSp8x16TileMap2b
+	cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, 
+	cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, 
+	cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, 
+	cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1, cpc_PutTrSp16x16TileMap2bPxM1
 };
 
 extern void *sm_sprptr [0];

@@ -520,28 +520,65 @@
 	"buffers":
 	[
 		{
-			"file": "released/helmet/dev/mk1.c",
+			"file": "examples/perils/dev/compile.bat",
 			"settings":
 			{
-				"buffer_size": 2168,
+				"buffer_size": 4837,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "released/helmet/dev/loader/loadercpc.asm-orig",
+			"file": "/C/z88dk/include/cpcrslib.h",
 			"settings":
 			{
-				"buffer_size": 16838,
+				"buffer_size": 7181,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/perils/dev/engine/enengine.h",
+			"settings":
+			{
+				"buffer_size": 15930,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "released/helmet/dev/compile.bat",
+			"contents": "Searching 111 files for \"_0ch\"\n\n0 matches\n\nSearching 112 files for \"void game_over\"\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\my\\fixed_screens.h:\n   17  }\n   18  \n   19: void game_over (void) {\n   20  \t_x = 10; _y = 11; _gp_gen = (unsigned char *) (spacer); print_str ();\n   21  \t_x = 10; _y = 12; _gp_gen = \" GAME OVER! \"; print_str ();\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\prototypes.h:\n   66  void prepare_level (void);\n   67  void game_ending (void);\n   68: void game_over (void);\n   69  void time_over (void);\n   70  void pause_screen (void);\n\n2 matches across 2 files\n\n\nSearching 112 files for \"spacer\"\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\definitions.h:\n  119  signed int ptgmx, ptgmy;\n  120  \n  121: unsigned char *spacer = \"            \";\n  122  \n  123  unsigned char enit, enspit;\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\engine\\hotspots.h:\n   56  \t\t\t\t\t\t#if defined GET_X_MORE && defined PLAYER_NUM_OBJETOS\n   57  \t\t\t\t\t\t\tif (PLAYER_NUM_OBJETOS > p_objs) {\n   58: \t\t\t\t\t\t\t\t_x = 10; _y = 11; _gp_gen = spacer; print_str ();\n   59  \t\t\t\t\t\t\t\tgetxmore [5] = '0' + PLAYER_NUM_OBJETOS - p_objs;\n   60  \t\t\t\t\t\t\t\t_x = 10; _y = 12; _gp_gen = getxmore; print_str ();\n   61: \t\t\t\t\t\t\t\t_x = 10; _y = 13; _gp_gen = spacer; print_str ();\n   62  \t\t\t\t\t\t\t\tcpc_ShowTileMap (0);\n   63  \t\t\t\t\t\t\t\tespera_activa (100);\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\my\\fixed_screens.h:\n   18  \n   19  void game_over (void) {\n   20: \t_x = 10; _y = 11; _gp_gen = (unsigned char *) (spacer); print_str ();\n   21  \t_x = 10; _y = 12; _gp_gen = \" GAME OVER! \"; print_str ();\n   22: \t_x = 10; _y = 13; _gp_gen = (unsigned char *) (spacer); print_str ();\n   23  \t\n   24  \tcpc_UpdateNow (0);\n   ..\n   28  #if defined(TIMER_ENABLE) && defined(SHOW_TIMER_OVER)\n   29  \tvoid time_over (void) {\n   30: \t\t_x = 10; _y = 11; _gp_gen = (unsigned char *)(spacer); print_str ();\n   31  \t\t_x = 10; _y = 12; _gp_gen = \" TIME'S UP! \"; print_str ();\n   32: \t\t_x = 10; _y = 13; _gp_gen = (unsigned char *)(spacer); print_str ();\n   33  \t\t\n   34  \t\tcpc_UpdateNow (0);\n   ..\n   39  #ifdef PAUSE_ABORT\n   40  \tvoid pause_screen (void) {\n   41: \t\t_x = 10; _y = 11; _gp_gen = (unsigned char *)(spacer); print_str ();\n   42  \t\t_x = 10; _y = 12; _gp_gen = \"   PAUSED   \"; print_str ();\n   43: \t\t_x = 10; _y = 13; _gp_gen = (unsigned char *)(spacer); print_str ();\n   44  \t\t\n   45  \t\tcpc_UpdateNow (0);\n   ..\n   49  #ifdef COMPRESSED_LEVELS\n   50  \tvoid zone_clear (void) {\n   51: \t\t_x = 10; _y = 11; _gp_gen = (unsigned char *)(spacer); print_str ();\n   52  \t\t_x = 10; _y = 12; _gp_gen = \" ZONE CLEAR \"; print_str ();\n   53: \t\t_x = 10; _y = 13; _gp_gen = (unsigned char *)(spacer); print_str ();\n   54  \t\t\n   55  \t\tcpc_UpdateNow (0);\n\nC:\\git\\MK1_Pestecera\\examples\\perils\\dev\\perils.asm:\n  189  ;\tSECTION\ttext\n  190  \n  191: ._spacer\n  192  \tdefw\ti_1+0\n  193  ;\tSECTION\tcode\n  ...\n 10908  \tXDEF\t_enoffsmasi\n 10909  \tLIB\tcpc_PutSp\n 10910: \tXDEF\t_spacer\n 10911  \tLIB\tcpc_UpdScrAddresses\n 10912  \tXDEF\t_wall_v\n\n13 matches across 4 files\n",
 			"settings":
 			{
-				"buffer_size": 7066,
+				"buffer_size": 2990,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "examples/perils/dev/my/config.h",
+			"settings":
+			{
+				"buffer_size": 17392,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/perils/dev/tilemap_conf.asm",
+			"settings":
+			{
+				"buffer_size": 4149,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/cosas/speccy_vault/MK1/Cheril Perils/dev/config.h",
+			"settings":
+			{
+				"buffer_size": 5965,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		}
@@ -630,10 +667,20 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera"
+		"/C/git/MK1_Pestecera",
+		"/C/git/MK1_Pestecera/examples",
+		"/C/git/MK1_Pestecera/examples/perils",
+		"/C/git/MK1_Pestecera/examples/perils/dev",
+		"/C/git/MK1_Pestecera/examples/perils/dev/assets"
 	],
 	"file_history":
 	[
+		"/C/git/MK1_Pestecera/examples/perils/dev/my/fixed_screens.h",
+		"/C/git/MK1_Pestecera/examples/perils/dev/definitions.h",
+		"/C/git/MK1_Pestecera/examples/perils/dev/perils.asm",
+		"/C/git/MK1_Pestecera/released/helmet/dev/compile.bat",
+		"/C/git/MK1_Pestecera/released/helmet/dev/mk1.c",
+		"/C/git/MK1_Pestecera/released/helmet/dev/loader/loadercpc.asm-orig",
 		"/D/Git/MK1_Pestecera/released/helmet/dev/mainloop/game_loop.h",
 		"/D/Git/MK1_Pestecera/released/helmet/dev/my/config.h",
 		"/D/Git/MK1_Pestecera/src/dev/engine/player.h",
@@ -755,23 +802,18 @@
 		"/C/git/MK1_Pestecera/src/dev/engine.h",
 		"/C/git/MK1_Pestecera/diario.md",
 		"/C/git/MK1_Pestecera/src/dev/definitions.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
-		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/C/git/MK1_Pestecera/src/dev/compile.bat",
-		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
-		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
-		"/C/git/MK1_Pestecera/README.md"
+		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
 		"height": 134.0,
 		"where_history":
 		[
+			"C:\\git\\MK1_Pestecera\\examples\\perils\\dev",
 			"D:\\Git\\MK1_Pestecera\\released\\helmet",
 			"D:\\Git\\MK1_Pestecera\\released\\helmet\\dev",
 			"D:\\git\\MK1_Pestecera\\released\\helmet\\dev\\my",
@@ -807,6 +849,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"i_1",
+			"spacer",
+			"_0ch",
+			"spacer",
+			"void game_over",
+			"_0ch",
+			"..\\utils\\",
+			"push",
 			"LANG_ES",
 			"KEY_AUX1",
 			"DEBUG_KEYS",
@@ -926,15 +976,7 @@
 			"0.4 20191212",
 			"1.0",
 			"MK2",
-			"mk2",
-			"mk1",
-			"digi",
-			"digital",
-			"digiº",
-			"border_col",
-			"31",
-			"\";\"",
-			"border_col"
+			"mk2"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -942,6 +984,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"..\\..\\..\\src\\utils\\",
 			"",
 			"BA00",
 			"$",
@@ -1011,58 +1054,52 @@
 			[
 				{
 					"buffer": 0,
-					"file": "released/helmet/dev/mk1.c",
+					"file": "examples/perils/dev/compile.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2168,
+						"buffer_size": 4837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								362,
-								362
+								3147,
+								3147
 							]
 						],
 						"settings":
 						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 607.0,
+						"translation.y": 369.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "released/helmet/dev/loader/loadercpc.asm-orig",
+					"file": "/C/z88dk/include/cpcrslib.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16838,
+						"buffer_size": 7181,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								418,
-								418
+								993,
+								995
 							]
 						],
 						"settings":
 						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1073,45 +1110,227 @@
 				},
 				{
 					"buffer": 2,
-					"file": "released/helmet/dev/compile.bat",
-					"semi_transient": true,
+					"file": "examples/perils/dev/engine/enengine.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7066,
+						"buffer_size": 15930,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5312,
-								5312
+								825,
+								825
 							]
 						],
 						"settings":
 						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 975.0,
+						"translation.x": 85.0,
+						"translation.y": 305.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2990,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										170,
+										184
+									],
+									[
+										467,
+										481
+									],
+									[
+										733,
+										739
+									],
+									[
+										1020,
+										1026
+									],
+									[
+										1217,
+										1223
+									],
+									[
+										1467,
+										1473
+									],
+									[
+										1611,
+										1617
+									],
+									[
+										1824,
+										1830
+									],
+									[
+										1969,
+										1975
+									],
+									[
+										2152,
+										2158
+									],
+									[
+										2297,
+										2303
+									],
+									[
+										2484,
+										2490
+									],
+									[
+										2629,
+										2635
+									],
+									[
+										2783,
+										2789
+									],
+									[
+										2901,
+										2907
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								735,
+								735
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 286.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "examples/perils/dev/my/config.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14575,
+								14581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3655.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "examples/perils/dev/tilemap_conf.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4149,
+								4149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1504.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/cosas/speccy_vault/MK1/Cheril Perils/dev/config.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5965,
+								5965
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1334.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -1126,18 +1345,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1163,7 +1375,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 40.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1205,7 +1417,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 225.0,
+	"side_bar_width": 153.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

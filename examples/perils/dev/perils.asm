@@ -3,7 +3,7 @@
 ;
 ;	Reconstructed for z80 Module Assembler
 ;
-;	Module compile time: Wed Apr 06 16:42:41 2022
+;	Module compile time: Wed Apr 06 17:11:03 2022
 
 
 
@@ -430,65 +430,14 @@
 ;	SECTION	text
 
 ._mapa
-	defm	""
-	defb	18
-
-	defm	""
-	defb	16
-
-	defm	""
+	defm	"R0"
 	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"3330"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
+	defb	5
 
 	defm	""
 	defb	0
@@ -499,52 +448,25 @@
 	defm	""
 	defb	5
 
-	defm	"UU"
-	defb	0
+	defm	""
+	defb	34
 
-	defm	"31"
-	defb	3
-
-	defm	"3"
+	defm	" "
 	defb	0
 
 	defm	""
 	defb	0
 
-	defm	""
-	defb	0
-
-	defm	"`"
-	defb	0
-
-	defm	"@"
+	defm	"P"
 	defb	0
 
 	defm	""
 	defb	0
 
-	defm	""
-	defb	4
+	defm	"R"
+	defb	34
 
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"UUUP"
-	defb	3
-
-	defm	"3330"
+	defm	" "
 	defb	0
 
 	defm	""
@@ -557,7 +479,13 @@
 	defb	0
 
 	defm	""
-	defb	0
+	defb	5
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
 
 	defm	""
 	defb	0
@@ -566,94 +494,25 @@
 	defb	0
 
 	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	"R"
+	defb	34
+
+	defm	" "
 	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	14
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	192
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	192
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	12
-
-	defm	""
-	defb	188
-
-	defm	""
-	defb	11
-
-	defm	""
-	defb	192
+	defb	15
 
 	defm	""
 	defb	0
@@ -661,143 +520,47 @@
 	defm	""
 	defb	5
 
-	defm	"UUP"
-	defb	0
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	0
+	defb	13
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
 
 	defm	""
 	defb	0
 
-	defm	""
+	defm	"R"
+	defb	34
+
+	defm	" "
 	defb	0
 
-	defm	"UUUUUP"
+	defm	"P"
 	defb	0
 
-	defm	""
-	defb	0
-
-	defm	"UUUUP"
-	defb	0
-
-	defm	"UPUU"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	6
-
-	defm	"eUUUUUUU"
+	defm	"P"
 	defb	5
 
-	defm	"UUUUUU"
-	defb	1
-
 	defm	""
-	defb	17
+	defb	34
 
-	defm	""
-	defb	1
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	"@"
+	defm	" "
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3333"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
+	defb	5
 
 	defm	""
 	defb	0
@@ -805,33 +568,66 @@
 	defm	""
 	defb	5
 
-	defm	"UUP"
-	defb	3
-
-	defm	"3"
+	defm	""
 	defb	0
 
-	defm	"30"
+	defm	"R"
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	"DDDDE"
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	1
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	"R"
+	defb	34
+
+	defm	" "
 	defb	0
 
 	defm	""
 	defb	0
 
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	6
-
-	defm	"`"
-	defb	0
-
 	defm	""
 	defb	0
 
-	defm	"f"
+	defm	""
 	defb	2
 
+	defm	"%"
+	defb	34
+
+	defm	""
+	defb	34
+
 	defm	""
 	defb	0
 
@@ -839,18 +635,90 @@
 	defb	0
 
 	defm	""
-	defb	224
-
-	defm	""
-	defb	21
-
-	defm	"UUU"
 	defb	0
 
 	defm	""
-	defb	16
+	defb	0
 
-	defm	"332@"
+	defm	""
+	defb	0
+
+	defm	"R "
+	defb	0
+
+	defm	"p"
+	defb	13
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"R"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	5
+
+	defm	""
+	defb	7
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
 	defb	0
 
 	defm	"P"
@@ -872,60 +740,18 @@
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	192
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	176
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	203
-
-	defm	""
-	defb	176
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
 	defb	5
 
-	defm	"UUUU"
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"w"
+	defb	0
+
+	defm	"DDDD"
 	defb	0
 
 	defm	""
@@ -935,42 +761,18 @@
 	defb	0
 
 	defm	""
-	defb	5
-
-	defm	"UUU"
-	defb	176
+	defb	10
 
 	defm	""
-	defb	0
-
-	defm	"UP"
-	defb	0
+	defb	170
 
 	defm	""
-	defb	0
+	defb	170
 
 	defm	""
-	defb	0
+	defb	170
 
-	defm	""
-	defb	0
-
-	defm	""
-	defb	4
-
-	defm	""
-	defb	0
-
-	defm	"UUUUUUP"
-	defb	0
-
-	defm	"UUUUUP"
-	defb	5
-
-	defm	"U"
-	defb	5
-
-	defm	"UQ"
+	defm	"P"
 	defb	0
 
 	defm	""
@@ -979,69 +781,114 @@
 	defm	""
 	defb	0
 
-	defm	"UUUUUUUP"
-	defb	17
-
-	defm	"!"
-	defb	17
+	defm	""
+	defb	2
 
 	defm	""
-	defb	17
+	defb	34
 
 	defm	""
-	defb	17
+	defb	34
 
 	defm	""
-	defb	18
+	defb	34
 
 	defm	""
-	defb	16
+	defb	34
 
-	defm	""
-	defb	0
-
-	defm	"'wwq`"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	4
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
+	defm	" "
 	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	25
+	defb	34
 
 	defm	""
-	defb	208
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	1
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	"0"
+	defb	7
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	0
 
 	defm	""
 	defb	3
 
-	defm	"330"
-	defb	0
-
 	defm	""
 	defb	0
 
@@ -1052,34 +899,34 @@
 	defb	0
 
 	defm	""
+	defb	3
+
+	defm	""
+	defb	7
+
+	defm	"w"
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	144
+
+	defm	""
+	defb	0
+
+	defm	"0"
 	defb	0
 
 	defm	""
 	defb	0
 
-	defm	"a"
-	defb	0
+	defm	""
+	defb	3
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
-	defb	1
-
-	defm	""
-	defb	169
+	defb	9
 
 	defm	""
 	defb	144
@@ -1088,16 +935,1000 @@
 	defb	0
 
 	defm	""
-	defb	17
+	defb	3
 
 	defm	""
-	defb	17
+	defb	0
 
 	defm	""
-	defb	17
+	defb	0
 
 	defm	""
-	defb	17
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" p0"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"i"
+	defb	153
+
+	defm	"f"
+	defb	153
+
+	defm	"f`"
+	defb	7
+
+	defm	"f"
+	defb	136
+
+	defm	""
+	defb	137
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	137
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`"
+	defb	0
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`"
+	defb	144
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	144
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	"h"
+	defb	136
+
+	defm	"ff "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"b "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"R"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	208
+
+	defm	""
+	defb	1
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	"S"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	13
+
+	defm	""
+	defb	220
+
+	defm	""
+	defb	204
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	"S "
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	"2"
+	defb	34
+
+	defm	"!"
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	"S"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	"!"
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	"R"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	"-"
+	defb	221
+
+	defm	""
+	defb	220
+
+	defm	""
+	defb	205
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	13
+
+	defm	""
+	defb	220
+
+	defm	""
+	defb	205
+
+	defm	""
+	defb	170
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	"*"
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	213
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	"*"
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	"-"
+	defb	204
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	170
+
+	defm	"P"
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	7
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	"p"
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	2
+
+	defm	" 0"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	"#"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	7
+
+	defm	"w"
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	7
+
+	defm	"w"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"b "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	"f"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"`"
+	defb	0
+
+	defm	"h"
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	"`"
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"`"
+	defb	0
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`"
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"f"
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	"g"
+	defb	9
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`fh"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"fffR"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	221
+
+	defm	""
+	defb	213
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"R"
+	defb	3
 
 	defm	""
 	defb	0
@@ -1115,13 +1946,49 @@
 	defb	0
 
 	defm	""
+	defb	5
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	4
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	14
+
+	defm	""
+	defb	0
+
+	defm	"`P"
+	defb	3
+
+	defm	" @"
 	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	16
+	defb	0
+
+	defm	""
+	defb	5
+
+	defm	""
+	defb	2
+
+	defm	"0"
+	defb	4
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	14
 
 	defm	""
 	defb	0
@@ -1129,11 +1996,8 @@
 	defm	""
 	defb	0
 
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
+	defm	"P"
+	defb	3
 
 	defm	""
 	defb	0
@@ -1141,23 +2005,71 @@
 	defm	"@"
 	defb	0
 
-	defm	" "
-	defb	154
+	defm	""
+	defb	0
 
 	defm	""
-	defb	157
+	defb	0
 
 	defm	""
-	defb	3
-
-	defm	"3330M"
-	defb	221
+	defb	5
 
 	defm	""
-	defb	221
+	defb	0
+
+	defm	"0"
+	defb	4
 
 	defm	""
-	defb	221
+	defb	0
+
+	defm	""
+	defb	14
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"R"
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	"@"
+	defb	4
+
+	defm	""
+	defb	4
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	5
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	4
+
+	defm	""
+	defb	17
+
+	defm	""
+	defb	17
+
+	defm	""
+	defb	17
+
+	defm	""
+	defb	17
 
 	defm	""
 	defb	221
@@ -1169,159 +2081,63 @@
 	defb	209
 
 	defm	""
-	defb	17
+	defb	22
 
 	defm	""
-	defb	17
+	defb	34
 
 	defm	""
-	defb	17
+	defb	34
 
 	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3333$"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	15
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"332"
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	224
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
+	defb	34
 
 	defm	" "
-	defb	3
-
-	defm	"3331"
-	defb	16
-
-	defm	"3333"
-	defb	16
+	defb	0
 
 	defm	""
-	defb	4
-
-	defm	"`"
-	defb	1
+	defb	34
 
 	defm	""
-	defb	3
+	defb	34
 
-	defm	"30"
+	defm	"b"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	"f"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	"f"
+	defb	0
+
+	defm	"b"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
 	defb	0
 
 	defm	""
@@ -1334,51 +2150,18 @@
 	defb	2
 
 	defm	""
-	defb	29
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	"A"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
 	defb	0
 
 	defm	""
@@ -1391,21 +2174,9 @@
 	defb	0
 
 	defm	""
-	defb	1
+	defb	34
 
-	defm	""
-	defb	153
-
-	defm	""
-	defb	208
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	21
-
-	defm	"UUU"
+	defm	"#"
 	defb	0
 
 	defm	""
@@ -1426,10 +2197,7 @@
 	defm	""
 	defb	0
 
-	defm	""
-	defb	16
-
-	defm	""
+	defm	"0"
 	defb	0
 
 	defm	""
@@ -1446,153 +2214,15 @@
 
 	defm	""
 	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	208
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	4
-
-	defm	""
-	defb	132
-
-	defm	"D"
-	defb	132
-
-	defm	"D"
-	defb	132
-
-	defm	"A"
-	defb	0
-
-	defm	"f"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"f"
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	9
-
-	defm	""
-	defb	157
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	6
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
 
 	defm	""
 	defb	3
 
-	defm	"1"
-	defb	17
-
-	defm	" 333"
-	defb	5
-
-	defm	"UUUQ`"
-	defb	0
-
 	defm	""
 	defb	0
 
 	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
+	defb	0
 
 	defm	""
 	defb	0
@@ -1600,323 +2230,32 @@
 	defm	""
 	defb	0
 
-	defm	" "
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	1
+
+	defm	""
 	defb	17
 
 	defm	""
-	defb	0
-
-	defm	"3333"
-	defb	16
+	defb	17
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	" "
-	defb	0
+	defb	17
 
 	defm	"@"
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	1
-
-	defm	""
 	defb	3
-
-	defm	"33"
-	defb	16
-
-	defm	"3"
-	defb	1
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	16
-
-	defm	"31"
-	defb	0
-
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"@"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	4
-
-	defm	""
-	defb	2
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	9
-
-	defm	""
-	defb	169
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	12
-
-	defm	""
-	defb	12
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	145
-
-	defm	""
-	defb	3
-
-	defm	"337q"
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	208
-
-	defm	""
-	defb	208
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	16
-
-	defm	"0"
-	defb	3
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"33"
-	defb	0
-
-	defm	"32"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	193
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	12
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	"0"
-	defb	3
-
-	defm	"333032"
-	defb	16
-
-	defm	"0"
-	defb	16
 
 	defm	""
 	defb	0
@@ -1927,87 +2266,6 @@
 	defm	""
 	defb	3
 
-	defm	"330"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	1
-
-	defm	"U"
-	defb	3
-
-	defm	"3"
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"1"
-	defb	16
-
-	defm	""
-	defb	3
-
-	defm	"331"
-	defb	0
-
-	defm	"f"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"33"
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	"3331"
-	defb	16
-
-	defm	""
-	defb	13
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	153
-
-	defm	""
-	defb	16
-
 	defm	""
 	defb	0
 
@@ -2015,231 +2273,6 @@
 	defb	0
 
 	defm	""
-	defb	6
-
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"`"
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	160
-
-	defm	""
-	defb	146
-
-	defm	""
-	defb	3
-
-	defm	"330"
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	6
-
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	176
-
-	defm	""
-	defb	176
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	9
-
-	defm	""
-	defb	16
-
-	defm	"1"
-	defb	3
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"330"
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	"30"
-	defb	28
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	"1"
-	defb	3
-
-	defm	"333"
-	defb	0
-
-	defm	"3331"
-	defb	30
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	12
-
-	defm	""
-	defb	177
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	192
-
-	defm	"33"
-	defb	16
-
-	defm	"33r"
-	defb	3
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"1"
-	defb	0
-
-	defm	"@"
-	defb	0
-
-	defm	"333"
 	defb	0
 
 	defm	""
@@ -2248,191 +2281,17 @@
 	defm	"0"
 	defb	0
 
-	defm	" ! 33"
-	defb	0
-
-	defm	"3 3333"
-	defb	16
-
 	defm	""
 	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"31 "
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"330"
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	3
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	27
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	215
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
 
 	defm	"0"
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	173
-
-	defm	"}G"
 	defb	0
 
 	defm	""
 	defb	7
 
-	defm	""
-	defb	208
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	" 3303333"
-	defb	16
+	defm	"w"
+	defb	3
 
 	defm	""
 	defb	0
@@ -2442,445 +2301,517 @@
 
 	defm	""
 	defb	3
-
-	defm	"330"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"32"
-	defb	2
-
-	defm	""
-	defb	3
-
-	defm	"3333"
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"3332"
-	defb	6
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"333"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"3<"
-	defb	16
-
-	defm	""
-	defb	18
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"30"
-	defb	3
-
-	defm	";"
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"30"
-	defb	0
-
-	defm	"33"
-	defb	1
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"33331"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"!"
-	defb	3
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"30p"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	"wr"
-	defb	3
-
-	defm	"0"
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	"3"
-	defb	17
-
-	defm	""
-	defb	9
-
-	defm	""
-	defb	215
-
-	defm	""
-	defb	7
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
 
 	defm	""
 	defb	0
 
 	defm	"p"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	2
+
+	defm	" 0"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	7
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" 0"
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	7
+
+	defm	""
+	defb	34
+
+	defm	"'wwp0"
+	defb	0
+
+	defm	""
 	defb	2
 
 	defm	""
-	defb	0
+	defb	34
 
 	defm	""
-	defb	0
+	defb	34
 
 	defm	""
-	defb	0
+	defb	34
 
 	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"1"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
+	defb	34
 
 	defm	""
 	defb	3
 
-	defm	"30"
-	defb	0
-
 	defm	""
-	defb	157
+	defb	7
 
-	defm	""
-	defb	157
-
-	defm	""
-	defb	208
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	218
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"3333"
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"3331"
-	defb	224
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"333"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"33"
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	"31"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	" 31"
-	defb	3
-
-	defm	"3"
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	16
-
-	defm	"30"
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	17
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	"33331"
+	defm	"p"
 	defb	2
 
 	defm	""
-	defb	3
+	defb	34
 
-	defm	"31"
-	defb	17
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" 0"
+	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	224
-
-	defm	""
 	defb	0
-
-	defm	"333"
-	defb	0
-
-	defm	"033"
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	"33333"
-	defb	16
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	16
+	defb	2
 
-	defm	"33"
-	defb	0
+	defm	" "
+	defb	6
 
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
+	defm	"i"
+	defb	136
 
 	defm	""
-	defb	169
+	defb	136
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	153
+
+	defm	"`i"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	134
+
+	defm	"&"
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"bh"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"&"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"bl"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"v"
+	defb	200
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	"bl"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"&"
+	defb	204
+
+	defm	""
+	defb	204
+
+	defm	""
+	defb	204
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	140
+
+	defm	"`ffff"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"fR "
+	defb	0
+
+	defm	"J"
+	defb	170
 
 	defm	""
 	defb	170
 
 	defm	""
-	defb	157
+	defb	170
 
 	defm	""
-	defb	13
+	defb	165
+
+	defm	" "
+	defb	0
 
 	defm	""
-	defb	144
+	defb	4
+
+	defm	"J"
+	defb	170
+
+	defm	""
+	defb	164
+
+	defm	""
+	defb	170
+
+	defm	"R "
+	defb	0
+
+	defm	"DD"
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"E "
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"JP"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"J"
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	181
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"J"
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	181
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	16
+	defb	0
 
 	defm	""
+	defb	4
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"R"
 	defb	0
 
 	defm	""
 	defb	0
 
-	defm	""
+	defm	"DD"
+	defb	204
+
+	defm	"DE"
+	defb	34
+
+	defm	" "
 	defb	1
 
 	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	164
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"@"
 	defb	3
 
-	defm	"330"
-	defb	1
-
-	defm	"www{ww"
-	defb	0
-
 	defm	""
 	defb	0
 
 	defm	""
 	defb	0
 
+	defm	"DDDD"
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"@"
+	defb	3
+
 	defm	""
 	defb	0
 
@@ -2888,73 +2819,106 @@
 	defb	0
 
 	defm	""
-	defb	0
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	164
 
 	defm	""
 	defb	0
 
+	defm	"0"
+	defb	0
+
 	defm	""
-	defb	1
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"B#"
+	defb	0
+
+	defm	" "
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	164
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"B"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	"DD"
+	defb	170
+
+	defm	""
+	defb	164
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	0
+	defb	10
 
 	defm	""
-	defb	0
+	defb	170
 
 	defm	""
-	defb	16
-
-	defm	"3"
-	defb	17
-
-	defm	"!"
-	defb	0
+	defb	170
 
 	defm	""
-	defb	17
-
-	defm	""
-	defb	17
+	defb	170
 
 	defm	""
 	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
 
 	defm	" "
 	defb	0
@@ -2965,12 +2929,6 @@
 	defm	""
 	defb	3
 
-	defm	"3"
-	defb	224
-
-	defm	"30"
-	defb	0
-
 	defm	""
 	defb	0
 
@@ -2987,22 +2945,136 @@
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	"333"
 	defb	3
 
-	defm	"31"
-	defb	3
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
 
 	defm	" "
-	defb	16
+	defb	0
 
-	defm	"33333"
-	defb	16
+	defm	""
+	defb	0
 
-	defm	"2www"
-	defb	22
+	defm	""
+	defb	12
+
+	defm	""
+	defb	0
+
+	defm	"0'w"
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	"'"
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0w"
+	defb	12
+
+	defm	""
+	defb	7
+
+	defm	"p0"
+	defb	12
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	192
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
 
 	defm	""
 	defb	0
@@ -3013,40 +3085,223 @@
 	defm	""
 	defb	7
 
-	defm	"wwwq"
-	defb	3
+	defm	"r "
+	defb	0
 
-	defm	"31"
-	defb	1
+	defm	"0"
+	defb	0
 
 	defm	""
-	defb	18
+	defb	0
+
+	defm	""
+	defb	2
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	6
+
+	defm	"i"
+	defb	150
+
+	defm	"i"
+	defb	152
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	150
+
+	defm	"`i"
+	defb	136
+
+	defm	""
+	defb	137
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	150
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	140
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`h"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	"bh"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	200
+
+	defm	""
+	defb	134
+
+	defm	"&"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"bfff"
+	defb	136
+
+	defm	"fffR"
+	defb	34
+
+	defm	" "
+	defb	17
 
 	defm	""
 	defb	17
 
 	defm	""
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"2"
-	defb	1
-
-	defm	""
 	defb	17
 
 	defm	""
 	defb	17
 
 	defm	""
-	defb	17
+	defb	21
 
-	defm	"!"
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	14
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	"R"
+	defb	34
+
+	defm	""
 	defb	0
 
 	defm	""
@@ -3056,46 +3311,22 @@
 	defb	0
 
 	defm	""
-	defb	17
+	defb	224
 
 	defm	""
-	defb	17
+	defb	0
 
 	defm	""
-	defb	17
+	defb	5
 
 	defm	""
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	16
+	defb	34
 
 	defm	" "
 	defb	0
 
 	defm	""
 	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	16
-
-	defm	"3333"
-	defb	16
 
 	defm	""
 	defb	14
@@ -3106,6 +3337,24 @@
 	defm	""
 	defb	0
 
+	defm	"R "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	224
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	5
+
 	defm	""
 	defb	0
 
@@ -3119,12 +3368,27 @@
 	defb	0
 
 	defm	""
+	defb	14
+
+	defm	""
 	defb	0
 
-	defm	"3"
-	defb	2
+	defm	""
+	defb	0
 
-	defm	" "
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"DDA"
+	defb	17
+
+	defm	""
+	defb	21
+
+	defm	""
 	defb	0
 
 	defm	""
@@ -3132,729 +3396,99 @@
 
 	defm	""
 	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"330"
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"30"
-	defb	0
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	160
-
-	defm	""
-	defb	10
-
-	defm	""
-	defb	160
 
 	defm	""
 	defb	170
 
 	defm	""
+	defb	170
+
+	defm	""
+	defb	202
+
+	defm	""
+	defb	202
+
+	defm	"]"
+	defb	221
+
+	defm	""
 	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	202
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
 
 	defm	""
 	defb	1
 
 	defm	""
-	defb	0
+	defb	171
 
 	defm	""
-	defb	0
+	defb	170
 
 	defm	""
-	defb	0
+	defb	186
 
 	defm	""
-	defb	16
+	defb	171
 
-	defm	"3"
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
 	defm	""
-	defb	0
+	defb	26
 
 	defm	""
-	defb	0
+	defb	170
 
 	defm	""
-	defb	0
+	defb	170
 
-	defm	"30"
-	defb	3
-
-	defm	"33333 "
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"33033"
-	defb	0
-
-	defm	"1"
-	defb	1
-
-	defm	"wwww"
-	defb	16
-
-	defm	"1"
-	defb	1
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	16
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	3
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
 	defm	""
-	defb	0
+	defb	161
 
 	defm	""
-	defb	0
+	defb	34
 
-	defm	""
-	defb	1
-
-	defm	"!"
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"3"
-	defb	17
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"33331"
-	defb	3
-
-	defm	"3331"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
+	defm	" "
 	defb	0
 
 	defm	""
 	defb	4
 
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	192
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"333"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	0
-
-	defm	"0"
-	defb	6
-
-	defm	"@"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	4
-
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	"3>"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"fff"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	5
-
-	defm	"U"
-	defb	0
-
-	defm	""
-	defb	23
-
-	defm	"wUU"
-	defb	0
-
-	defm	""
-	defb	11
-
-	defm	""
-	defb	187
-
-	defm	""
-	defb	203
-
-	defm	"{"
-	defb	199
-
-	defm	"wp"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"33332"
-	defb	3
-
-	defm	"3331"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	0
-
-	defm	"30330"
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	" 33"
-	defb	0
-
-	defm	"3"
-	defb	16
-
-	defm	"`"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	3
-
-	defm	"33331"
-	defb	5
-
-	defm	"P33Q"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"ww"
-	defb	188
-
-	defm	""
-	defb	0
-
-	defm	"333"
-	defb	16
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"l"
+	defm	"DDDB "
 	defb	0
 
 	defm	""
 	defb	0
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"F"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	1
-
-	defm	""
-	defb	224
-
-	defm	"330"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	3
-
-	defm	"0"
-	defb	1
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	6
-
-	defm	"LD"
-	defb	180
-
-	defm	"`"
-	defb	0
+	defb	26
 
 	defm	""
-	defb	1
+	defb	170
 
 	defm	""
-	defb	7
+	defb	170
 
-	defm	"w"
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	192
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	"3"
-	defb	0
-
-	defm	"0"
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	0
+	defb	165
 
 	defm	" "
 	defb	0
@@ -3866,39 +3500,123 @@
 	defb	1
 
 	defm	""
-	defb	17
+	defb	170
 
 	defm	""
-	defb	17
+	defb	170
 
 	defm	""
-	defb	17
+	defb	170
+
+	defm	"R "
+	defb	0
 
 	defm	""
-	defb	16
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
 
 	defm	""
 	defb	1
 
 	defm	""
-	defb	17
+	defb	170
 
 	defm	""
-	defb	17
+	defb	170
 
 	defm	""
-	defb	17
+	defb	170
+
+	defm	"R"
+	defb	34
 
 	defm	""
-	defb	17
+	defb	34
 
 	defm	""
-	defb	17
+	defb	0
 
 	defm	""
-	defb	17
+	defb	26
 
 	defm	""
+	defb	186
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	"R "
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	20
+
+	defm	"DDB"
 	defb	0
 
 	defm	""
@@ -3911,36 +3629,9 @@
 	defb	0
 
 	defm	""
-	defb	0
+	defb	3
 
 	defm	""
-	defb	0
-
-	defm	""
-	defb	0
-
-	defm	""
-	defb	16
-
-	defm	"!"
-	defb	18
-
-	defm	""
-	defb	16
-
-	defm	"1"
-	defb	18
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"33"
-	defb	224
-
-	defm	"3."
 	defb	0
 
 	defm	""
@@ -3950,14 +3641,32 @@
 	defb	2
 
 	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	"0"
+	defb	7
+
+	defm	"w"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
 	defb	0
 
 	defm	""
 	defb	3
 
-	defm	"3"
-	defb	0
-
 	defm	""
 	defb	0
 
@@ -3965,87 +3674,982 @@
 	defb	0
 
 	defm	""
-	defb	2
+	defb	34
 
 	defm	""
-	defb	1
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	" wp"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
 
 	defm	""
 	defb	3
 
-	defm	"33331"
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	"0w"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
 	defb	3
 
-	defm	"3331"
+	defm	"0"
 	defb	0
+
+	defm	""
+	defb	3
 
 	defm	""
 	defb	0
 
 	defm	""
 	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	192
 
 	defm	"3"
 	defb	0
 
-	defm	"30333"
-	defb	16
-
-	defm	"!"
-	defb	17
-
 	defm	""
-	defb	17
+	defb	0
 
-	defm	"!"
-	defb	16
-
-	defm	"3"
-	defb	16
-
-	defm	""
-	defb	17
-
-	defm	""
-	defb	16
-
-	defm	"3"
-	defb	17
-
-	defm	""
-	defb	16
+	defm	"0"
+	defb	0
 
 	defm	""
 	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	7
+
+	defm	"w3"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	34
+
+	defm	"&if"
+	defb	152
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	153
+
+	defm	"fbi"
+	defb	137
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	137
+
+	defm	""
+	defb	150
+
+	defm	"&"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"bh"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"&"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	200
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"`h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	9
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
 
 	defm	"`"
+	defb	9
+
+	defm	"ff"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"b"
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	6
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	"R"
+	defb	34
+
+	defm	" "
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	"DDDDP"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	208
+
+	defm	""
+	defb	0
+
+	defm	""
 	defb	1
 
 	defm	""
-	defb	17
+	defb	171
 
 	defm	""
-	defb	17
+	defb	170
 
 	defm	""
-	defb	17
+	defb	186
 
 	defm	""
-	defb	17
+	defb	171
+
+	defm	"P"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	"DDDDm"
+	defb	208
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	160
+
+	defm	""
+	defb	12
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	1
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	171
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	192
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	26
+
+	defm	""
+	defb	170
+
+	defm	"wwwwwwwy"
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	161
+
+	defm	"DDD"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	"E"
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	16
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	170
+
+	defm	"Z"
+	defb	170
+
+	defm	""
+	defb	161
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	165
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	16
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	170
+
+	defm	"DDD@"
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	4
+
+	defm	"J"
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	16
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	161
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	10
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	170
+
+	defm	""
+	defb	186
+
+	defm	""
+	defb	16
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"wwwwww"
+	defb	0
+
+	defm	""
+	defb	9
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	151
+
+	defm	"w"
+	defb	0
 
 	defm	""
 	defb	3
 
-	defm	"31"
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	34
+
+	defm	" "
+	defb	0
+
+	defm	"0"
+	defb	0
+
+	defm	"ii"
+	defb	153
+
+	defm	"f"
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	""
+	defb	0
+
+	defm	"h"
+	defb	137
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	137
+
+	defm	""
+	defb	144
+
+	defm	"`0"
+	defb	9
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	3
+
+	defm	"i"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	128
+
+	defm	""
+	defb	0
+
+	defm	"h"
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	0
+
+	defm	"f"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	128
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	15
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	134
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	135
+
+	defm	"wwwwwww"
+	defb	34
+
+	defm	""
+	defb	34
+
+	defm	""
+	defb	0
+
+	defm	""
+	defb	0
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"f"
+	defb	34
+
+	defm	" "
+	defb	6
+
+	defm	""
+	defb	6
+
+	defm	"f"
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	146
+
+	defm	" "
+	defb	6
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	134
+
+	defm	"h"
+	defb	153
+
+	defm	""
+	defb	153
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	152
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	150
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"h"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"f"
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	134
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	""
+	defb	136
+
+	defm	"fgwwwwwww"
 ;	SECTION	code
 
 
 ;	SECTION	text
 
 ._cerrojos
-	defb	5
-	defb	6
+	defb	0
+	defb	11
+	defb	4
+	defb	0
+	defb	22
 	defb	3
+	defb	8
 	defb	0
 
 ;	SECTION	code
@@ -4060,815 +4664,653 @@
 ;	SECTION	text
 
 ._malotes
+	defb	112
+	defb	112
+	defb	112
+	defb	112
+	defb	96
+	defb	16
+	defb	-2
+	defb	-2
+	defb	2
+	defb	112
+	defb	32
+	defb	112
+	defb	32
+	defb	96
+	defb	112
+	defb	-2
+	defb	2
+	defb	1
+	defb	80
+	defb	64
+	defb	80
 	defb	64
 	defb	16
 	defb	64
+	defb	-1
+	defb	0
+	defb	3
+	defb	80
+	defb	112
+	defb	80
+	defb	112
+	defb	80
+	defb	64
+	defb	0
+	defb	-1
+	defb	2
+	defb	64
+	defb	112
+	defb	64
+	defb	112
 	defb	16
 	defb	64
-	defb	128
+	defb	-2
+	defb	-2
+	defb	3
+	defb	160
+	defb	112
+	defb	160
+	defb	112
+	defb	160
+	defb	32
+	defb	0
+	defb	-1
+	defb	4
+	defb	32
+	defb	112
+	defb	32
+	defb	112
+	defb	176
+	defb	112
+	defb	2
+	defb	0
+	defb	3
+	defb	192
+	defb	16
+	defb	192
+	defb	16
+	defb	192
+	defb	96
+	defb	0
+	defb	1
+	defb	1
+	defb	80
+	defb	80
+	defb	80
+	defb	80
+	defb	112
+	defb	80
+	defb	1
+	defb	0
+	defb	2
+	defb	48
+	defb	32
+	defb	48
+	defb	32
+	defb	16
+	defb	32
+	defb	-1
+	defb	0
+	defb	3
+	defb	208
+	defb	32
+	defb	208
+	defb	32
+	defb	80
+	defb	48
+	defb	-1
+	defb	1
+	defb	2
+	defb	208
+	defb	96
+	defb	208
+	defb	96
+	defb	112
+	defb	96
+	defb	-1
 	defb	0
 	defb	4
-	defb	3
-	defb	208
-	defb	16
-	defb	208
-	defb	16
 	defb	96
-	defb	16
-	defb	-2
-	defb	0
-	defb	0
-	defb	192
-	defb	0
-	defb	192
-	defb	0
-	defb	112
-	defb	0
-	defb	-2
-	defb	0
-	defb	0
-	defb	128
-	defb	0
-	defb	128
-	defb	0
-	defb	128
-	defb	64
-	defb	0
-	defb	1
-	defb	2
-	defb	144
-	defb	16
-	defb	144
-	defb	16
-	defb	176
+	defb	32
 	defb	96
-	defb	2
-	defb	2
-	defb	2
-	defb	48
-	defb	64
-	defb	48
-	defb	64
-	defb	48
-	defb	128
-	defb	0
+	defb	32
+	defb	208
+	defb	32
 	defb	1
+	defb	0
+	defb	2
+	defb	80
+	defb	128
+	defb	80
+	defb	128
+	defb	80
+	defb	48
+	defb	0
+	defb	-2
 	defb	4
 	defb	16
 	defb	32
 	defb	16
 	defb	32
-	defb	96
-	defb	32
-	defb	2
+	defb	48
+	defb	128
+	defb	1
+	defb	1
+	defb	3
+	defb	80
+	defb	16
+	defb	80
+	defb	16
+	defb	80
+	defb	128
 	defb	0
 	defb	1
-	defb	144
-	defb	96
-	defb	144
-	defb	96
-	defb	144
+	defb	3
+	defb	64
+	defb	64
+	defb	64
+	defb	64
+	defb	16
+	defb	128
+	defb	-2
+	defb	2
+	defb	2
+	defb	64
+	defb	32
+	defb	64
+	defb	32
+	defb	16
+	defb	32
+	defb	-1
 	defb	0
+	defb	1
+	defb	208
+	defb	128
+	defb	208
+	defb	128
+	defb	16
+	defb	128
+	defb	-1
+	defb	0
+	defb	4
+	defb	128
+	defb	64
+	defb	128
+	defb	64
+	defb	96
+	defb	64
+	defb	-1
+	defb	0
+	defb	2
+	defb	32
+	defb	16
+	defb	32
+	defb	16
+	defb	64
+	defb	112
+	defb	2
+	defb	2
+	defb	3
+	defb	80
+	defb	128
+	defb	80
+	defb	128
+	defb	80
+	defb	32
 	defb	0
 	defb	-1
-	defb	3
-	defb	176
-	defb	0
-	defb	176
-	defb	0
-	defb	176
-	defb	80
-	defb	0
+	defb	4
+	defb	144
+	defb	48
+	defb	144
+	defb	48
+	defb	208
+	defb	64
+	defb	1
 	defb	1
 	defb	2
-	defb	96
-	defb	112
-	defb	96
-	defb	112
-	defb	48
-	defb	112
+	defb	208
+	defb	128
+	defb	208
+	defb	128
+	defb	128
+	defb	128
 	defb	-1
 	defb	0
 	defb	3
-	defb	48
+	defb	80
+	defb	96
+	defb	80
+	defb	96
+	defb	80
+	defb	16
 	defb	0
+	defb	-1
+	defb	1
+	defb	112
 	defb	48
+	defb	112
+	defb	48
+	defb	224
+	defb	112
+	defb	2
+	defb	2
+	defb	2
+	defb	128
+	defb	128
+	defb	128
+	defb	128
+	defb	112
+	defb	128
+	defb	-1
 	defb	0
+	defb	3
+	defb	64
+	defb	128
+	defb	64
+	defb	128
+	defb	224
+	defb	128
+	defb	1
+	defb	0
+	defb	4
 	defb	48
+	defb	16
+	defb	48
+	defb	16
+	defb	48
+	defb	128
+	defb	0
+	defb	2
+	defb	2
+	defb	96
+	defb	48
+	defb	96
+	defb	48
+	defb	208
+	defb	96
+	defb	1
+	defb	1
+	defb	3
+	defb	208
+	defb	80
+	defb	208
+	defb	80
+	defb	144
+	defb	48
+	defb	-1
+	defb	-1
+	defb	3
+	defb	128
+	defb	80
+	defb	128
+	defb	80
+	defb	96
 	defb	32
-	defb	0
-	defb	1
-	defb	1
-	defb	208
-	defb	0
-	defb	208
-	defb	0
-	defb	208
+	defb	-1
+	defb	-1
+	defb	2
 	defb	64
+	defb	112
+	defb	64
+	defb	112
+	defb	64
+	defb	48
+	defb	0
+	defb	-1
+	defb	1
+	defb	48
+	defb	48
+	defb	48
+	defb	48
+	defb	192
+	defb	48
+	defb	2
 	defb	0
 	defb	2
-	defb	1
-	defb	64
-	defb	0
-	defb	64
-	defb	0
+	defb	192
+	defb	80
+	defb	192
+	defb	80
 	defb	64
 	defb	80
+	defb	-1
 	defb	0
-	defb	1
-	defb	1
-	defb	96
-	defb	0
-	defb	96
-	defb	0
-	defb	96
-	defb	64
-	defb	0
-	defb	1
-	defb	1
-	defb	160
-	defb	0
-	defb	160
-	defb	0
-	defb	208
-	defb	80
-	defb	2
-	defb	2
-	defb	2
+	defb	3
 	defb	80
 	defb	112
 	defb	80
+	defb	112
+	defb	208
+	defb	112
+	defb	1
+	defb	0
+	defb	1
+	defb	160
+	defb	112
+	defb	160
+	defb	112
+	defb	160
+	defb	80
+	defb	0
+	defb	-1
+	defb	4
+	defb	112
+	defb	112
+	defb	112
+	defb	112
+	defb	112
+	defb	48
+	defb	0
+	defb	-2
+	defb	2
+	defb	128
+	defb	16
+	defb	128
+	defb	16
+	defb	208
+	defb	16
+	defb	1
+	defb	0
+	defb	3
+	defb	16
+	defb	48
+	defb	16
+	defb	48
+	defb	96
+	defb	96
+	defb	2
+	defb	2
+	defb	1
+	defb	96
+	defb	16
+	defb	96
+	defb	16
+	defb	48
+	defb	16
+	defb	-1
+	defb	0
+	defb	2
+	defb	16
 	defb	112
 	defb	16
 	defb	112
-	defb	-2
+	defb	32
+	defb	112
+	defb	1
 	defb	0
-	defb	2
-	defb	96
-	defb	0
-	defb	96
-	defb	0
-	defb	0
+	defb	3
+	defb	192
+	defb	112
+	defb	192
+	defb	112
+	defb	192
+	defb	16
 	defb	0
 	defb	-1
+	defb	4
+	defb	32
+	defb	16
+	defb	32
+	defb	16
+	defb	144
+	defb	16
+	defb	1
 	defb	0
+	defb	2
+	defb	160
+	defb	64
+	defb	160
+	defb	64
+	defb	80
+	defb	64
+	defb	-1
+	defb	0
+	defb	3
+	defb	64
+	defb	80
+	defb	64
+	defb	80
+	defb	32
+	defb	32
+	defb	-1
+	defb	-1
+	defb	3
+	defb	64
+	defb	16
+	defb	64
+	defb	16
+	defb	32
+	defb	128
+	defb	-1
+	defb	1
+	defb	2
+	defb	160
+	defb	16
+	defb	160
+	defb	16
+	defb	160
+	defb	128
+	defb	0
+	defb	2
+	defb	3
+	defb	16
+	defb	16
+	defb	16
+	defb	16
+	defb	144
+	defb	80
+	defb	2
+	defb	2
 	defb	2
 	defb	224
-	defb	0
-	defb	224
-	defb	0
-	defb	224
-	defb	48
-	defb	0
-	defb	1
-	defb	2
-	defb	192
-	defb	48
-	defb	192
-	defb	48
-	defb	128
-	defb	48
-	defb	-1
-	defb	0
-	defb	4
-	defb	160
-	defb	16
-	defb	160
-	defb	16
-	defb	160
-	defb	96
-	defb	0
-	defb	2
-	defb	1
-	defb	16
-	defb	96
-	defb	16
-	defb	96
-	defb	80
-	defb	128
-	defb	4
-	defb	4
-	defb	2
-	defb	16
-	defb	80
-	defb	16
-	defb	80
-	defb	96
-	defb	48
-	defb	1
-	defb	-1
-	defb	1
-	defb	16
-	defb	16
-	defb	16
-	defb	16
-	defb	96
-	defb	16
-	defb	2
-	defb	0
-	defb	2
-	defb	160
-	defb	0
-	defb	160
-	defb	0
-	defb	160
-	defb	144
-	defb	0
-	defb	2
-	defb	3
-	defb	48
-	defb	32
-	defb	48
-	defb	32
-	defb	144
-	defb	32
-	defb	2
-	defb	0
-	defb	3
-	defb	112
-	defb	48
-	defb	112
-	defb	48
-	defb	112
-	defb	128
-	defb	0
-	defb	1
-	defb	2
-	defb	160
-	defb	96
-	defb	160
-	defb	96
-	defb	160
-	defb	0
-	defb	0
-	defb	-2
-	defb	3
-	defb	96
-	defb	128
-	defb	96
-	defb	128
-	defb	96
-	defb	16
-	defb	0
-	defb	-2
-	defb	4
-	defb	144
-	defb	16
-	defb	144
-	defb	16
-	defb	176
-	defb	112
-	defb	2
-	defb	2
-	defb	3
-	defb	112
-	defb	48
-	defb	112
-	defb	48
-	defb	32
-	defb	16
-	defb	-2
-	defb	-2
-	defb	1
-	defb	64
-	defb	128
-	defb	64
-	defb	128
-	defb	208
-	defb	128
-	defb	1
-	defb	0
-	defb	4
-	defb	208
-	defb	112
-	defb	208
-	defb	112
-	defb	112
-	defb	112
-	defb	-1
-	defb	0
-	defb	1
-	defb	64
-	defb	16
-	defb	64
-	defb	16
-	defb	96
-	defb	16
-	defb	1
-	defb	0
-	defb	3
-	defb	16
-	defb	128
-	defb	16
-	defb	128
-	defb	160
-	defb	128
-	defb	1
-	defb	0
-	defb	4
-	defb	48
-	defb	112
-	defb	48
-	defb	112
-	defb	48
-	defb	64
-	defb	0
-	defb	-1
-	defb	4
-	defb	80
-	defb	48
-	defb	80
-	defb	48
-	defb	160
-	defb	96
-	defb	2
-	defb	2
-	defb	2
-	defb	208
-	defb	112
-	defb	208
-	defb	112
-	defb	128
-	defb	112
-	defb	-1
-	defb	0
-	defb	3
-	defb	208
-	defb	80
-	defb	208
-	defb	80
-	defb	208
-	defb	16
-	defb	0
-	defb	-1
-	defb	2
-	defb	16
-	defb	16
-	defb	16
-	defb	16
-	defb	96
-	defb	128
-	defb	4
-	defb	4
-	defb	3
-	defb	64
-	defb	0
-	defb	64
-	defb	0
-	defb	112
-	defb	48
-	defb	2
-	defb	2
-	defb	1
-	defb	16
-	defb	64
-	defb	16
-	defb	64
-	defb	80
-	defb	112
-	defb	1
-	defb	1
-	defb	2
-	defb	208
-	defb	16
-	defb	208
-	defb	16
-	defb	192
-	defb	128
-	defb	-2
-	defb	2
-	defb	3
-	defb	16
-	defb	0
-	defb	16
-	defb	0
-	defb	112
-	defb	32
-	defb	1
-	defb	1
-	defb	2
-	defb	208
-	defb	0
-	defb	208
-	defb	0
-	defb	176
-	defb	48
-	defb	-2
-	defb	2
-	defb	3
-	defb	64
-	defb	64
-	defb	64
-	defb	64
-	defb	96
-	defb	0
-	defb	1
-	defb	-1
-	defb	1
-	defb	160
-	defb	112
-	defb	160
-	defb	112
-	defb	160
-	defb	64
-	defb	0
-	defb	-1
-	defb	4
-	defb	144
-	defb	80
-	defb	144
-	defb	80
-	defb	32
-	defb	80
-	defb	-1
-	defb	0
-	defb	4
-	defb	64
-	defb	0
-	defb	64
-	defb	0
-	defb	176
-	defb	16
-	defb	1
-	defb	1
-	defb	0
-	defb	192
-	defb	48
-	defb	192
-	defb	48
-	defb	80
-	defb	48
-	defb	-1
-	defb	0
-	defb	4
-	defb	112
-	defb	32
-	defb	112
-	defb	32
-	defb	176
-	defb	32
-	defb	1
-	defb	0
-	defb	3
-	defb	64
-	defb	80
-	defb	64
-	defb	80
-	defb	192
-	defb	112
-	defb	2
-	defb	2
-	defb	2
-	defb	192
-	defb	48
-	defb	192
-	defb	48
-	defb	32
-	defb	48
-	defb	-1
-	defb	0
-	defb	4
-	defb	16
-	defb	32
-	defb	16
-	defb	32
-	defb	128
-	defb	32
-	defb	1
-	defb	0
-	defb	1
-	defb	16
-	defb	64
-	defb	16
-	defb	64
-	defb	112
-	defb	112
-	defb	2
-	defb	2
-	defb	2
-	defb	208
-	defb	64
-	defb	208
-	defb	64
-	defb	128
-	defb	64
-	defb	-1
-	defb	0
-	defb	2
-	defb	48
-	defb	16
-	defb	48
-	defb	16
-	defb	48
-	defb	80
-	defb	0
-	defb	2
-	defb	1
-	defb	64
-	defb	32
-	defb	64
-	defb	32
-	defb	64
-	defb	80
-	defb	0
-	defb	2
-	defb	3
-	defb	16
-	defb	112
-	defb	16
-	defb	112
-	defb	112
-	defb	112
-	defb	1
-	defb	0
-	defb	1
-	defb	192
-	defb	128
-	defb	192
-	defb	128
-	defb	192
-	defb	16
-	defb	0
-	defb	-1
-	defb	4
-	defb	112
-	defb	48
-	defb	112
-	defb	48
-	defb	16
-	defb	48
-	defb	-2
-	defb	0
-	defb	3
-	defb	176
-	defb	48
-	defb	176
-	defb	48
-	defb	32
-	defb	48
-	defb	-1
-	defb	0
-	defb	1
-	defb	176
-	defb	64
-	defb	176
-	defb	64
-	defb	48
-	defb	64
-	defb	-1
-	defb	0
-	defb	1
-	defb	16
-	defb	0
-	defb	16
-	defb	0
-	defb	192
-	defb	32
-	defb	2
-	defb	2
-	defb	2
-	defb	32
-	defb	112
-	defb	32
-	defb	112
-	defb	192
-	defb	112
-	defb	2
-	defb	0
-	defb	4
-	defb	192
-	defb	32
-	defb	192
-	defb	32
-	defb	48
-	defb	32
-	defb	-2
-	defb	0
-	defb	4
-	defb	176
-	defb	80
-	defb	176
-	defb	80
-	defb	48
-	defb	80
-	defb	-1
-	defb	0
-	defb	1
-	defb	208
-	defb	80
-	defb	208
-	defb	80
-	defb	32
-	defb	80
-	defb	-1
-	defb	0
-	defb	4
-	defb	64
-	defb	64
-	defb	64
-	defb	64
-	defb	176
-	defb	64
-	defb	1
-	defb	0
-	defb	2
-	defb	16
-	defb	0
-	defb	16
-	defb	0
-	defb	0
-	defb	144
-	defb	-3
-	defb	3
-	defb	0
-	defb	16
-	defb	48
-	defb	16
-	defb	48
-	defb	208
-	defb	48
-	defb	1
-	defb	0
-	defb	4
-	defb	96
-	defb	64
-	defb	96
-	defb	64
-	defb	96
-	defb	128
-	defb	0
-	defb	1
-	defb	1
-	defb	208
-	defb	80
-	defb	208
-	defb	80
-	defb	128
-	defb	128
-	defb	-2
-	defb	2
-	defb	3
-	defb	96
-	defb	32
-	defb	96
-	defb	32
-	defb	96
-	defb	96
-	defb	0
-	defb	2
-	defb	6
-	defb	128
-	defb	80
-	defb	128
 	defb	80
 	defb	224
 	defb	80
-	defb	2
-	defb	0
-	defb	4
-	defb	96
-	defb	112
-	defb	96
-	defb	112
-	defb	32
-	defb	112
-	defb	-1
-	defb	0
-	defb	3
-	defb	112
-	defb	16
-	defb	112
-	defb	16
-	defb	112
-	defb	80
-	defb	0
-	defb	1
-	defb	2
-	defb	48
-	defb	96
-	defb	48
-	defb	96
-	defb	48
-	defb	0
-	defb	0
-	defb	-2
-	defb	1
 	defb	176
-	defb	48
+	defb	64
+	defb	-1
+	defb	-1
+	defb	3
+	defb	224
+	defb	96
+	defb	224
+	defb	96
 	defb	176
-	defb	48
-	defb	176
-	defb	128
-	defb	0
-	defb	2
-	defb	3
-	defb	160
-	defb	32
-	defb	160
-	defb	32
-	defb	192
-	defb	80
-	defb	2
-	defb	2
-	defb	1
 	defb	96
-	defb	48
-	defb	96
-	defb	48
-	defb	96
-	defb	0
-	defb	0
-	defb	-1
-	defb	2
-	defb	144
-	defb	144
-	defb	144
-	defb	144
-	defb	48
-	defb	144
-	defb	-1
-	defb	0
-	defb	3
-	defb	32
-	defb	80
-	defb	32
-	defb	80
-	defb	32
-	defb	16
-	defb	0
-	defb	-2
-	defb	1
-	defb	192
-	defb	80
-	defb	192
-	defb	80
-	defb	192
-	defb	32
-	defb	0
-	defb	-2
-	defb	2
-	defb	112
-	defb	80
-	defb	112
-	defb	80
-	defb	112
-	defb	32
-	defb	0
-	defb	-1
-	defb	3
-	defb	208
-	defb	48
-	defb	208
-	defb	48
-	defb	32
-	defb	48
 	defb	-1
 	defb	0
 	defb	4
-	defb	64
-	defb	32
-	defb	64
-	defb	32
-	defb	192
-	defb	32
-	defb	1
+	defb	80
+	defb	128
+	defb	80
+	defb	128
+	defb	80
+	defb	48
 	defb	0
-	defb	2
-	defb	80
-	defb	96
-	defb	80
-	defb	96
-	defb	112
-	defb	96
+	defb	-1
 	defb	1
+	defb	64
+	defb	128
+	defb	64
+	defb	128
+	defb	64
+	defb	64
 	defb	0
-	defb	1
-	defb	112
-	defb	16
-	defb	112
-	defb	16
-	defb	16
-	defb	80
 	defb	-2
 	defb	2
-	defb	3
-	defb	176
-	defb	64
-	defb	176
-	defb	64
-	defb	176
-	defb	96
-	defb	0
-	defb	1
-	defb	1
-	defb	208
-	defb	80
-	defb	208
-	defb	80
-	defb	208
+	defb	48
+	defb	32
+	defb	48
+	defb	32
+	defb	48
 	defb	128
 	defb	0
 	defb	1
+	defb	3
+	defb	64
+	defb	112
+	defb	64
+	defb	112
+	defb	64
+	defb	16
+	defb	0
+	defb	-1
+	defb	2
+	defb	112
+	defb	64
+	defb	112
+	defb	64
+	defb	128
+	defb	144
+	defb	2
+	defb	2
+	defb	2
+	defb	144
+	defb	16
+	defb	144
+	defb	16
+	defb	224
+	defb	64
+	defb	2
+	defb	2
+	defb	3
+	defb	208
+	defb	80
+	defb	208
+	defb	80
+	defb	32
+	defb	80
+	defb	-2
+	defb	0
+	defb	4
+	defb	96
+	defb	32
+	defb	96
+	defb	32
+	defb	160
+	defb	32
+	defb	1
+	defb	0
+	defb	4
+	defb	48
+	defb	96
+	defb	48
+	defb	96
+	defb	208
+	defb	128
+	defb	1
+	defb	1
+	defb	2
+	defb	208
+	defb	64
+	defb	208
+	defb	64
+	defb	96
+	defb	64
+	defb	-1
+	defb	0
+	defb	1
+	defb	80
+	defb	128
+	defb	80
+	defb	128
+	defb	80
+	defb	16
+	defb	0
+	defb	-1
+	defb	4
+	defb	208
+	defb	112
+	defb	208
+	defb	112
+	defb	160
+	defb	112
+	defb	-1
+	defb	0
+	defb	2
+	defb	48
+	defb	16
+	defb	48
+	defb	16
+	defb	80
+	defb	48
+	defb	1
+	defb	1
+	defb	3
+	defb	144
+	defb	112
+	defb	144
+	defb	112
+	defb	144
+	defb	16
+	defb	0
+	defb	-2
+	defb	1
+	defb	112
+	defb	112
+	defb	112
+	defb	112
+	defb	48
+	defb	112
+	defb	-2
+	defb	0
+	defb	2
+	defb	64
+	defb	32
+	defb	64
+	defb	32
+	defb	96
+	defb	128
+	defb	1
+	defb	1
+	defb	3
+	defb	176
+	defb	128
+	defb	176
+	defb	128
+	defb	176
+	defb	80
+	defb	0
+	defb	-2
+	defb	2
+	defb	192
+	defb	128
+	defb	192
+	defb	128
+	defb	192
+	defb	32
+	defb	0
+	defb	-2
+	defb	1
+	defb	208
+	defb	64
+	defb	208
+	defb	64
+	defb	128
+	defb	64
+	defb	-2
+	defb	0
+	defb	2
+	defb	48
+	defb	96
+	defb	48
+	defb	96
+	defb	192
+	defb	112
+	defb	1
+	defb	1
+	defb	3
+	defb	16
+	defb	32
+	defb	16
+	defb	32
+	defb	64
+	defb	32
+	defb	1
+	defb	0
 	defb	1
 
 ;	SECTION	code
@@ -4876,95 +5318,77 @@
 ;	SECTION	text
 
 ._hotspots
-	defb	22
+	defb	0
+	defb	0
+	defb	0
+	defb	3
 	defb	2
 	defb	0
-	defb	120
-	defb	2
 	defb	0
-	defb	113
-	defb	1
 	defb	0
-	defb	216
-	defb	1
 	defb	0
-	defb	81
-	defb	1
 	defb	0
-	defb	24
-	defb	1
 	defb	0
-	defb	98
-	defb	1
 	defb	0
-	defb	115
-	defb	1
 	defb	0
-	defb	69
-	defb	1
 	defb	0
-	defb	129
-	defb	2
 	defb	0
-	defb	209
-	defb	2
 	defb	0
-	defb	18
-	defb	1
 	defb	0
-	defb	200
-	defb	1
 	defb	0
-	defb	100
-	defb	1
+	defb	130
 	defb	0
-	defb	148
-	defb	1
 	defb	0
-	defb	34
-	defb	1
 	defb	0
-	defb	66
-	defb	1
 	defb	0
-	defb	209
-	defb	1
 	defb	0
-	defb	19
-	defb	1
 	defb	0
-	defb	113
-	defb	1
 	defb	0
-	defb	133
-	defb	1
 	defb	0
-	defb	35
-	defb	1
 	defb	0
-	defb	70
-	defb	1
 	defb	0
-	defb	87
-	defb	1
 	defb	0
-	defb	129
-	defb	1
 	defb	0
-	defb	87
-	defb	1
 	defb	0
-	defb	114
-	defb	1
 	defb	0
-	defb	100
-	defb	1
 	defb	0
-	defb	129
-	defb	1
 	defb	0
-	defb	212
-	defb	1
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
+	defb	0
 	defb	0
 
 ;	SECTION	code
@@ -6083,7 +6507,7 @@
 
 
 ._locks_init
-	ld b, 1
+	ld b, 2
 	ld hl, _cerrojos + 3
 	ld de, 4
 	ld a, 1
@@ -6149,7 +6573,7 @@
 	ld a, (_p_keys)
 	or a
 	jr z, open_lock_end
-	ld b, 1
+	ld b, 2
 	ld hl, _cerrojos
 	.clear_cerrojo_loop
 	ld c, (hl)
@@ -6360,7 +6784,7 @@
 	call _draw_coloured_tile_gamearea
 	._hotspots_setup_done
 	ld hl, _cerrojos
-	ld b, 1
+	ld b, 2
 	._open_locks_loop
 	push bc
 	ld a, (_n_pant)
