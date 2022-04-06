@@ -24,18 +24,18 @@
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
-#define MAP_W						6		//
-#define MAP_H						5		// Map dimensions in screens
-#define SCR_INICIO					24		// Initial screen
+#define MAP_W						4		//
+#define MAP_H						6		// Map dimensions in screens
+#define SCR_INICIO					20		// Initial screen
 #define PLAYER_INI_X				1		//
-#define PLAYER_INI_Y				2		// Initial tile coordinates
+#define PLAYER_INI_Y				4		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS			25		// Objects to get to finish game
-#define PLAYER_LIFE 				10		// Max and starting life gauge.
+//#define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
+#define PLAYER_LIFE 				20		// Max and starting life gauge.
 #define PLAYER_REFILL				1		// Life recharge
-#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
+//#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level
@@ -63,16 +63,16 @@
 // -------------------
 
 //#define PLAYER_CHECK_MAP_BOUNDARIES		// If defined, you can't exit the map.
-//#define DIRECT_TO_PLAY					// If defined, title screen is also the game frame.
+#define DIRECT_TO_PLAY						// If defined, title screen is also the game frame.
 //#define DEACTIVATE_KEYS 					// If defined, keys are not present.
-//#define DEACTIVATE_OBJECTS				// If defined, objects are not present.
+#define DEACTIVATE_OBJECTS					// If defined, objects are not present.
 //#define DEACTIVATE_REFILLS				// If defined, life refills are not present.
 //#define ONLY_ONE_OBJECT					// If defined, only one object can be carried at a time.
 //#define OBJECT_COUNT				1		// Defines which FLAG will be used to store the object count.
 //#define REVERSE_OBJECTS_COUNT 			// Counts from PLAYER_NUM_OBJETOS to 0
 //#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
 //#define CUSTOM_EVIL_TILE_CHECK			// 
-#define PLAYER_BOUNCES						// If defined, collisions make player bounce
+//#define PLAYER_BOUNCES					// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
 #define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
@@ -112,7 +112,7 @@
 // Pushable tile
 // -------------
 
-//#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
+#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
 //#define FIRE_TO_PUSH						// If defined, you have to press FIRE+direction to push.
 //#define ENABLE_PUSHED_SCRIPTING			// If defined, nice goodies (below) are activated:
 //#define MOVED_TILE_FLAG			1		// Current tile "overwritten" with block is stored here.
@@ -197,7 +197,7 @@
 //#define PLAYER_VKEYS 						// Use with VENG_SELECTOR. Advanced.
 //#define PLAYER_DISABLE_GRAVITY			// Disable gravity. Advanced.
 
-//#define PLAYER_STEPS_ON_ENEMIES			// If defined, stepping on enemies kills them
+#define PLAYER_STEPS_ON_ENEMIES				// If defined, stepping on enemies kills them
 //#define PLAYER_CAN_STEP_ON_FLAG	1		// If defined, player can only kill when flag # is "1"
 //#define PLAYER_MIN_KILLABLE		3		// Only kill enemies with id >= PLAYER_MIN_KILLABLE
 
@@ -269,17 +269,17 @@ extern unsigned char def_keys [0];
 // Set to 99 so it doesn't show even if it should!!
 
 #define VIEWPORT_X					1		//
-#define VIEWPORT_Y					2		// Viewport character coordinates
-#define LIFE_X						5		//
-#define LIFE_Y						0		// Life gauge counter character coordinates
-#define OBJECTS_X					30		//
-#define OBJECTS_Y					0		// Objects counter character coordinates
+#define VIEWPORT_Y					3		// Viewport character coordinates
+#define LIFE_X						4		//
+#define LIFE_Y						1		// Life gauge counter character coordinates
+#define OBJECTS_X					99		//
+#define OBJECTS_Y					99		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-#define KEYS_X						16		//
-#define KEYS_Y						0		// Keys counter character coordinates
-#define KILLED_X					99		//
-#define KILLED_Y					99		// Kills counter character coordinates
+#define KEYS_X						10		//
+#define KEYS_Y						1		// Keys counter character coordinates
+#define KILLED_X					16		//
+#define KILLED_Y					1		// Kills counter character coordinates
 #define AMMO_X						99		// 
 #define AMMO_Y						99		// Ammo counter character coordinates
 #define TIMER_X 					99		//
@@ -295,7 +295,7 @@ extern unsigned char def_keys [0];
 // Graphic FX, uncomment which applies...
 
 //#define USE_AUTO_SHADOWS					// Automatic shadows made of darker attributes
-//#define USE_AUTO_TILE_SHADOWS 			// Automatic shadows using specially defined tiles 32-47.
+#define USE_AUTO_TILE_SHADOWS 				// Automatic shadows using specially defined tiles 32-47.
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
@@ -351,7 +351,7 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 8, 8, 0, 0, 8, 8, 1, 8, 8, 8, 8, 8, 8,10,10,
+	0, 0, 0, 0, 8, 8, 8, 8, 0, 8, 0, 0, 1, 8,10,10,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };

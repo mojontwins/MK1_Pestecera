@@ -118,7 +118,11 @@ unsigned char p_tx, p_ty;
 #endif
 signed int ptgmx, ptgmy;
 
-unsigned char *spacer = "            ";
+extern unsigned char *spacer [];
+#asm
+	._spacer
+		defb 32,32,32,32,32,32,32,32,32,32,32,32,0
+#endasm
 
 unsigned char enit, enspit;
 

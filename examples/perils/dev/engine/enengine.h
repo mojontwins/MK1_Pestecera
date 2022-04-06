@@ -35,7 +35,7 @@
 		void enems_init (void) {
 			enit = 0;
 			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
-				malotes [enit].t = malotes [enit].t &  & 0xEF;	
+				malotes [enit].t = malotes [enit].t & 0xEF;	
 				#ifdef PLAYER_CAN_FIRE
 					malotes [enit].life = ENEMIES_LIFE_GAUGE;
 				#endif
