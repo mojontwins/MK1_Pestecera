@@ -12,6 +12,9 @@ void title_screen (void) {
 		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
 			
+	_x = 11; _y = 14; _gp_gen = (unsigned char *) ("1 KEYBOARD"); print_str ();
+	_x = 11; _y = 16; _gp_gen = (unsigned char *) ("1 JOYSTICK"); print_str ();
+
 	cpc_ShowTileMap (1);
 
 	// Do a simple 0 start/1 redefine menu

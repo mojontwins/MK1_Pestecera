@@ -230,7 +230,7 @@ void draw_coloured_tile (void) {
 
 		// cx1 = xx    ; cy1 = yy ? yy - 1 : 0; a2 = (nocast && (attr_mk2 () & 8));
 		#asm
-								// cx1 = xx; 
+			// cx1 = xx; 
 				ld  a, (_xx)					
 				ld  (_cx1), a
 
@@ -260,7 +260,7 @@ void draw_coloured_tile (void) {
 
 		// cx1 = xx - 1; cy1 = yy             ; a3 = (nocast && (attr_mk2 () & 8));
 		#asm
-				// cx1 = xx - 1; 
+			// cx1 = xx - 1; 
 				ld  a, (_xx)
 				dec a
 				ld  (_cx1), a
@@ -394,7 +394,7 @@ void draw_coloured_tile (void) {
 		#endasm	
 
 		// Paint tile
-		// Paint t1, t2, t3, t3 @ (_x, _y) in tile buffer.
+		// Paint t1, t2, t3, t4 @ (_x, _y) in tile buffer.
 		#asm
 			call __tile_address	; DE = buffer address
 			ex  de, hl

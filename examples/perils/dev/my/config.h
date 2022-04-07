@@ -20,7 +20,6 @@
 
 #define PIXELPERFECT 						// If you use mode 0, don't forget the pixelperfectm0
 											// parameter to mkts when converting the main spriteset
-											// WON'T WORK IN MODE 1
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
@@ -321,15 +320,15 @@ extern unsigned char def_keys [0];
 
 #define PLAYER_VY_INICIAL_SALTO		64 		// Initial junp velocity 
 #define PLAYER_MAX_VY_SALTANDO		320 	// Max jump velocity 
-#define PLAYER_INCR_SALTO			64		// acceleration while JUMP is pressed 
+#define PLAYER_INCR_SALTO			48		// acceleration while JUMP is pressed 
 
 #define PLAYER_INCR_JETPAC			32		// Vertical jetpac gauge
 #define PLAYER_MAX_VY_JETPAC		256 	// Max vertical jetpac speed
 
 // IV.2. Horizontal (side view) or general (top view) movement.
 
-#define PLAYER_MAX_VX				192 	// Max velocity (192/64 = 3 p?xels/frame)
-#define PLAYER_AX					24		// Acceleration (24/64 = 0,375 p?xels/frame^2)
+#define PLAYER_MAX_VX				256 	// Max velocity (192/64 = 3 p?xels/frame)
+#define PLAYER_AX					32		// Acceleration (24/64 = 0,375 p?xels/frame^2)
 #define PLAYER_RX					32		// Friction (32/64 = 0,5 p?xels/frame^2)
 
 // ============================================================================

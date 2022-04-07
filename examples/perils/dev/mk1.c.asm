@@ -3,7 +3,7 @@
 ;
 ;	Reconstructed for z80 Module Assembler
 ;
-;	Module compile time: Wed Apr 06 18:49:18 2022
+;	Module compile time: Wed Apr 06 23:50:25 2022
 
 
 	C_LINE	0,"mk1.c"
@@ -119,8 +119,8 @@
 		LIB cpc_UpdTileTable
 		LIB cpc_InvalidateRect
 	C_LINE	0,"my/config.h"
+	C_LINE	233,"my/config.h"
 	C_LINE	234,"my/config.h"
-	C_LINE	235,"my/config.h"
 	._def_keys
 		defw $4404 		; LEFT     O
 		defw $4308 		; RIGHT    P
@@ -134,7 +134,7 @@
 		defw $4880 		; KEY_AUX2 Z
 		defw $4801 		; KEY_AUX3 1	 
 		defw $4802 		; KEY_AUX4 2
-	C_LINE	353,"my/config.h"
+	C_LINE	352,"my/config.h"
 	SECTION	data_compiler
 ._behs
 	defb	0
@@ -4566,7 +4566,43 @@
 	call	_draw_scr_background
 	call	_enems_load
 	C_LINE	0,"my/ci/entering_screen.h::draw_scr::1::37"
-	C_LINE	531,"engine.h::draw_scr::1::37"
+	ld	a,(_n_pant)
+	cp	20
+	jp	nz,i_40	;
+	ld	a,(_p_killed)
+	cp	60
+	jp	nz,i_41	;
+	ld	a,2
+	ld	(__x),a
+	ld	a,7
+	ld	(__y),a
+	ld	hl,0	;const
+	ld	a,l
+	ld	(__n),a
+	ld	(__t),a
+	call	_update_tile
+	ld	a,2
+	ld	(__x),a
+	ld	a,8
+	ld	(__y),a
+	ld	hl,0	;const
+	ld	a,l
+	ld	(__n),a
+	ld	(__t),a
+	call	_update_tile
+.i_41
+	ld	a,1
+	ld	(__x),a
+	ld	a,8
+	ld	(__y),a
+	ld	a,17
+	ld	(__t),a
+	ld	hl,0	;const
+	ld	a,l
+	ld	(__n),a
+	call	_update_tile
+	C_LINE	531,"engine.h::draw_scr::1::39"
+.i_40
 			ld  a, 240
 			ld  (_hotspot_y), a
 			ld  a, (_n_pant)
@@ -4684,11 +4720,11 @@
 	ret
 
 
-	C_LINE	745,"engine.h::draw_scr::0::37"
+	C_LINE	745,"engine.h::draw_scr::0::39"
 
 ; Function mons_col_sc_x flags 0x00000200 __smallc 
 ; unsigned char mons_col_sc_x()
-	C_LINE	745,"engine.h::mons_col_sc_x::0::37"
+	C_LINE	745,"engine.h::mons_col_sc_x::0::39"
 ._mons_col_sc_x
 			._mons_col_sc_x_lineal
 				ld  de, 0x000f
@@ -4727,24 +4763,24 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	a
-	jp	nz,i_40	;
+	jp	nz,i_42	;
 	ld	a,(_at2)
 	and	a
-	jp	nz,i_40	;
+	jp	nz,i_42	;
 	ld	hl,0	;const
-	jr	i_41
-.i_40
+	jr	i_43
+.i_42
 	ld	hl,1	;const
-.i_41
+.i_43
 	ld	h,0
 	ret
 
 
-	C_LINE	816,"engine.h::mons_col_sc_x::0::38"
+	C_LINE	816,"engine.h::mons_col_sc_x::0::40"
 
 ; Function mons_col_sc_y flags 0x00000200 __smallc 
 ; unsigned char mons_col_sc_y()
-	C_LINE	816,"engine.h::mons_col_sc_y::0::38"
+	C_LINE	816,"engine.h::mons_col_sc_y::0::40"
 ._mons_col_sc_y
 			._mons_col_sc_y_lineal
 				ld  de, 0x000f
@@ -4783,26 +4819,26 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	a
-	jp	nz,i_42	;
+	jp	nz,i_44	;
 	ld	a,(_at2)
 	and	a
-	jp	nz,i_42	;
+	jp	nz,i_44	;
 	ld	hl,0	;const
-	jr	i_43
-.i_42
+	jr	i_45
+.i_44
 	ld	hl,1	;const
-.i_43
+.i_45
 	ld	h,0
 	ret
 
 
-	C_LINE	92,"mk1.c::mons_col_sc_y::0::39"
-	C_LINE	0,"engine/player.h::mons_col_sc_y::0::39"
-	C_LINE	6,"engine/player.h::mons_col_sc_y::0::39"
+	C_LINE	92,"mk1.c::mons_col_sc_y::0::41"
+	C_LINE	0,"engine/player.h::mons_col_sc_y::0::41"
+	C_LINE	6,"engine/player.h::mons_col_sc_y::0::41"
 
 ; Function player_init flags 0x00000200 __smallc 
 ; void player_init()
-	C_LINE	6,"engine/player.h::player_init::0::39"
+	C_LINE	6,"engine/player.h::player_init::0::41"
 ._player_init
 	ld	a,16
 	ld	hl,_gpx
@@ -4856,11 +4892,11 @@
 	ret
 
 
-	C_LINE	60,"engine/player.h::player_init::0::40"
+	C_LINE	60,"engine/player.h::player_init::0::42"
 
 ; Function player_calc_bounding_box flags 0x00000200 __smallc 
 ; void player_calc_bounding_box()
-	C_LINE	60,"engine/player.h::player_calc_bounding_box::0::40"
+	C_LINE	60,"engine/player.h::player_calc_bounding_box::0::42"
 ._player_calc_bounding_box
 			ld  a, (_gpx)
 			add 4
@@ -4893,11 +4929,11 @@
 	ret
 
 
-	C_LINE	186,"engine/player.h::player_calc_bounding_box::0::41"
+	C_LINE	186,"engine/player.h::player_calc_bounding_box::0::43"
 
 ; Function player_move flags 0x00000200 __smallc 
 ; unsigned char player_move()
-	C_LINE	186,"engine/player.h::player_move::0::41"
+	C_LINE	186,"engine/player.h::player_move::0::43"
 ._player_move
 						; Signed comparisons are hard
 						; p_vy <=  512  -  32 
@@ -4925,38 +4961,38 @@
 						ld  a, (_p_gotten)
 						or  a
 						jr  z, _player_gravity_p_gotten_done
-						xor a
-						ld  (_p_vy), a
+						ld  hl, 0
+						ld  (_p_vy), hl
 					._player_gravity_p_gotten_done
-	C_LINE	0,"./my/ci/custom_veng.h::player_move::1::43"
-	C_LINE	300,"engine/player.h::player_move::1::43"
+	C_LINE	0,"./my/ci/custom_veng.h::player_move::1::45"
+	C_LINE	300,"engine/player.h::player_move::1::45"
 	ld	de,(_p_y)
 	ld	hl,(_p_vy)
 	add	hl,de
 	ld	(_p_y),hl
 	ld	a,(_p_gotten)
 	and	a
-	jp	z,i_44	;
+	jp	z,i_46	;
 	ld	de,(_p_y)
 	ld	hl,(_ptgmy)
 	add	hl,de
 	ld	(_p_y),hl
-.i_44
+.i_46
 	ld	hl,(_p_y)
 	ld	a,h
 	rla
-	jp	nc,i_45	;
+	jp	nc,i_47	;
 	ld	hl,0	;const
 	ld	(_p_y),hl
-.i_45
+.i_47
 	ld	hl,(_p_y)
 	ld	de,9216
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_46	;
+	jp	nc,i_48	;
 	ld	hl,9216	;const
 	ld	(_p_y),hl
-.i_46
+.i_48
 			ld  hl, (_p_y)
 			call HLshr6_A
 			ld  (_gpy), a
@@ -4972,7 +5008,7 @@
 	add	hl,de
 	ld	a,h
 	rla
-	jp	nc,i_47	;
+	jp	nc,i_49	;
 	ld	hl,(_pty1)
 	ld	a,l
 	ld	(_cy2),a
@@ -4980,13 +5016,13 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	8
-	jp	nz,i_49	;
+	jp	nz,i_51	;
 	ld	a,(_at2)
 	and	8
-	jp	z,i_48	;
-.i_49
-	C_LINE	0,"./my/ci/bg_collision/obstacle_up.h::player_move::3::45"
-	C_LINE	337,"engine/player.h::player_move::3::45"
+	jp	z,i_50	;
+.i_51
+	C_LINE	0,"./my/ci/bg_collision/obstacle_up.h::player_move::3::47"
+	C_LINE	337,"engine/player.h::player_move::3::47"
 	ld	hl,0	;const
 	ld	(_p_vy),hl
 					ld  a, (_pty1)
@@ -5000,15 +5036,15 @@
 					ld  a, (_gpy)
 					call Ashl16_HL
 					ld  (_p_y), hl
-.i_48
-.i_47
+.i_50
+.i_49
 	ld	de,(_p_vy)
 	ld	hl,(_ptgmy)
 	add	hl,de
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_51	;
+	jp	nc,i_53	;
 	ld	hl,(_pty2)
 	ld	a,l
 	ld	(_cy2),a
@@ -5016,10 +5052,10 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	8
-	jp	nz,i_53	;
+	jp	nz,i_55	;
 	ld	a,(_at2)
 	and	8
-	jp	nz,i_53	;
+	jp	nz,i_55	;
 	ld	hl,(_gpy)
 	ld	h,0
 	dec	hl
@@ -5028,19 +5064,19 @@
 	ld	l,a
 	ld	h,0
 	sub	8
-	jp	nc,i_54	;
+	jp	nc,i_56	;
 	ld	a,(_at1)
 	and	4
-	jp	nz,i_55	;
+	jp	nz,i_57	;
 	ld	a,(_at2)
 	and	4
-	jp	z,i_54	;
+	jp	z,i_56	;
+.i_57
 .i_55
-.i_53
-	defc	i_54 = i_52
-.i_58_i_54
-	C_LINE	0,"./my/ci/bg_collision/obstacle_down.h::player_move::3::47"
-	C_LINE	410,"engine/player.h::player_move::3::47"
+	defc	i_56 = i_54
+.i_60_i_56
+	C_LINE	0,"./my/ci/bg_collision/obstacle_down.h::player_move::3::49"
+	C_LINE	410,"engine/player.h::player_move::3::49"
 	ld	hl,0	;const
 	ld	(_p_vy),hl
 					ld  a, (_pty2)
@@ -5053,8 +5089,8 @@
 					ld  a, (_gpy)
 					call Ashl16_HL
 					ld  (_p_y), hl
-.i_52
-.i_51
+.i_54
+.i_53
 					ld  a, (_p_vy)
 					ld  c, a
 					ld  a, (_p_vy + 1)
@@ -5104,54 +5140,66 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	12
-	jp	nz,i_59	;
+	jp	nz,i_61	;
 	ld	a,(_at2)
 	and	12
-	jp	z,i_61	;
-.i_59
+	jp	z,i_63	;
+.i_61
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	a,15
 	and	l
 	ld	l,a
 	sub	8
-	jp	nc,i_61	;
+	jp	nc,i_63	;
 	ld	hl,1	;const
-	jr	i_62
-.i_61
+	jr	i_64
+.i_63
 	ld	hl,0	;const
-.i_62
+.i_64
 	ld	a,l
 	ld	(_possee),a
 	ld	hl,4	;const
 	call	cpc_TestKey
+	ld	a,h
+	or	l
+	jp	nz,i_65	;
+	ld	hl,2	;const
+	call	cpc_TestKey
+	ld	a,h
+	or	l
+	jp	nz,i_65	;
+	jr	i_66
+.i_65
+	ld	hl,1	;const
+.i_66
 	ld	a,l
 	ld	hl,_rda
 	ld	(hl),a
 	and	a
-	jp	z,i_63	;
+	jp	z,i_67	;
 	ld	a,(_p_saltando)
 	and	a
-	jp	nz,i_64	;
+	jp	nz,i_68	;
 	ld	a,(_possee)
 	and	a
-	jp	nz,i_66	;
+	jp	nz,i_70	;
 	ld	a,(_p_gotten)
 	and	a
-	jp	nz,i_66	;
+	jp	nz,i_70	;
 	ld	a,(_hit_v)
 	and	a
-	jp	z,i_65	;
-.i_66
+	jp	z,i_69	;
+.i_70
 	ld	a,1
 	ld	(_p_saltando),a
 	xor	a
 	ld	(_p_cont_salto),a
 	ld	hl,12	;const
 	call	_wyz_play_sound
-	jp	i_68	;EOS
-	defc	i_65 = i_68
-.i_64
+	jp	i_72	;EOS
+	defc	i_69 = i_72
+.i_68
 	ld	hl,(_p_vy)
 	push	hl
 	ld	hl,(_p_cont_salto)
@@ -5160,7 +5208,7 @@
 	rrca
 	and	127
 	ld	l,a
-	ld	de,128
+	ld	de,112
 	ex	de,hl
 	and	a
 	sbc	hl,de
@@ -5176,10 +5224,10 @@
 	ccf
 	rra
 	sbc	126
-	jp	nc,i_69	;
+	jp	nc,i_73	;
 	ld	hl,65216	;const
 	ld	(_p_vy),hl
-.i_69
+.i_73
 	ld	hl,(_p_cont_salto)
 	ld	h,0
 	inc	hl
@@ -5187,53 +5235,53 @@
 	ld	hl,_p_cont_salto
 	ld	(hl),a
 	cp	9
-	jp	nz,i_70	;
+	jp	nz,i_74	;
 	xor	a
 	ld	(_p_saltando),a
-	jp	i_71	;EOS
-	defc	i_70 = i_71
-	defc	i_68 = i_71
-.i_63
+	jp	i_75	;EOS
+	defc	i_74 = i_75
+	defc	i_72 = i_75
+.i_67
 	xor	a
 	ld	(_p_saltando),a
-.i_71
+.i_75
 	ld	hl,0	;const
 	call	cpc_TestKey
 	ld	a,h	
 	or	l
-	jp	nz,i_73	;
+	jp	nz,i_77	;
 	inc	hl
 	call	cpc_TestKey
 	ld	a,h
 	or	l
-	jp	nz,i_73	;
-	jr	i_74
-.i_73
+	jp	nz,i_77	;
+	jr	i_78
+.i_77
 	ld	hl,1	;const
-.i_74
+.i_78
 	call	l_lneg
-	jp	nc,i_72	;
+	jp	nc,i_76	;
 	ld	hl,(_p_vx)
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_75	;
+	jp	nc,i_79	;
 	ld	hl,(_p_vx)
 	ld	bc,-32
 	add	hl,bc
 	ld	(_p_vx),hl
 	ld	a,h
 	rla
-	jp	nc,i_76	;
+	jp	nc,i_80	;
 	ld	hl,0	;const
 	ld	(_p_vx),hl
-	jp	i_77	;EOS
-	defc	i_76 = i_77
-.i_75
+	jp	i_81	;EOS
+	defc	i_80 = i_81
+.i_79
 	ld	hl,(_p_vx)
 	ld	a,h
 	rla
-	jp	nc,i_78	;
+	jp	nc,i_82	;
 	ld	hl,(_p_vx)
 	ld	bc,32
 	add	hl,bc
@@ -5241,58 +5289,58 @@
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_79	;
+	jp	nc,i_83	;
 	ld	hl,0	;const
 	ld	(_p_vx),hl
-.i_79
-.i_78
-.i_77
+.i_83
+.i_82
+.i_81
 	xor	a
 	ld	(_wall_h),a
-.i_72
+.i_76
 	ld	hl,0	;const
 	call	cpc_TestKey
 	ld	a,h
 	or	l
-	jp	z,i_80	;
+	jp	z,i_84	;
 	ld	hl,(_p_vx)
-	ld	de,65344
+	ld	de,65280
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_81	;
+	jp	nc,i_85	;
 	xor	a
 	ld	(_p_facing),a
 	ld	hl,(_p_vx)
-	ld	bc,-24
+	ld	bc,-32
 	add	hl,bc
 	ld	(_p_vx),hl
-.i_81
-.i_80
+.i_85
+.i_84
 	ld	hl,1	;const
 	call	cpc_TestKey
 	ld	a,h
 	or	l
-	jp	z,i_82	;
+	jp	z,i_86	;
 	ld	hl,(_p_vx)
 	ld	a,l
-	sub	192
+	sub	0
 	ld	a,h
 	rla
 	ccf
 	rra
-	sbc	128
-	jp	nc,i_83	;
+	sbc	129
+	jp	nc,i_87	;
 	ld	hl,(_p_vx)
-	ld	bc,24
+	ld	bc,32
 	add	hl,bc
 	ld	(_p_vx),hl
 	ld	hl,1	;const
 	ld	a,l
 	ld	(_p_facing),a
-.i_83
-	C_LINE	0,"./my/ci/custom_heng.h::player_move::1::59"
-	C_LINE	608,"engine/player.h::player_move::1::59"
-.i_82
+.i_87
+	C_LINE	0,"./my/ci/custom_heng.h::player_move::1::61"
+	C_LINE	612,"engine/player.h::player_move::1::61"
+.i_86
 	ld	de,(_p_x)
 	ld	hl,(_p_vx)
 	add	hl,de
@@ -5303,18 +5351,18 @@
 	ld	(_p_x),hl
 	ld	a,h
 	rla
-	jp	nc,i_84	;
+	jp	nc,i_88	;
 	ld	hl,0	;const
 	ld	(_p_x),hl
-.i_84
+.i_88
 	ld	hl,(_p_x)
 	ld	de,14336
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_85	;
+	jp	nc,i_89	;
 	ld	hl,14336	;const
 	ld	(_p_x),hl
-.i_85
+.i_89
 			ld  a, (_gpx)
 			ld  (_gpox), a 
 			ld  hl, (_p_x)
@@ -5332,7 +5380,7 @@
 	add	hl,de
 	ld	a,h
 	rla
-	jp	nc,i_86	;
+	jp	nc,i_90	;
 	ld	hl,(_ptx1)
 	ld	a,l
 	ld	(_cx2),a
@@ -5340,13 +5388,13 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	8
-	jp	nz,i_88	;
+	jp	nz,i_92	;
 	ld	a,(_at2)
 	and	8
-	jp	z,i_87	;
-.i_88
-	C_LINE	0,"./my/ci/bg_collision/obstacle_left.h::player_move::3::61"
-	C_LINE	648,"engine/player.h::player_move::3::61"
+	jp	z,i_91	;
+.i_92
+	C_LINE	0,"./my/ci/bg_collision/obstacle_left.h::player_move::3::63"
+	C_LINE	652,"engine/player.h::player_move::3::63"
 	ld	hl,0	;const
 	ld	(_p_vx),hl
 					ld  a, (_ptx1)
@@ -5362,8 +5410,8 @@
 					ld  (_p_x), hl
 					ld  a,  3 
 					ld  (_wall_h), a
-	jp	i_90	;EOS
-.i_87
+	jp	i_94	;EOS
+.i_91
 							ld  a, (_at1)
 							and 1
 							ld  c, a
@@ -5371,15 +5419,15 @@
 							and 1
 							or  c 
 							ld  (_hit_h), a
+.i_94
 .i_90
-.i_86
 	ld	de,(_p_vx)
 	ld	hl,(_ptgmx)
 	add	hl,de
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_91	;
+	jp	nc,i_95	;
 	ld	hl,(_ptx2)
 	ld	a,l
 	ld	(_cx2),a
@@ -5387,13 +5435,13 @@
 	call	_cm_two_points
 	ld	a,(_at1)
 	and	8
-	jp	nz,i_93	;
+	jp	nz,i_97	;
 	ld	a,(_at2)
 	and	8
-	jp	z,i_92	;
-.i_93
-	C_LINE	0,"./my/ci/bg_collision/obstacle_right.h::player_move::3::64"
-	C_LINE	723,"engine/player.h::player_move::3::64"
+	jp	z,i_96	;
+.i_97
+	C_LINE	0,"./my/ci/bg_collision/obstacle_right.h::player_move::3::66"
+	C_LINE	727,"engine/player.h::player_move::3::66"
 	ld	hl,0	;const
 	ld	(_p_vx),hl
 					ld  a, (_ptx1)
@@ -5408,8 +5456,8 @@
 					ld  (_p_x), hl
 					ld  a,  4 
 					ld  (_wall_h), a
-	jp	i_95	;EOS
-.i_92
+	jp	i_99	;EOS
+.i_96
 						ld  a, (_at1)
 						and 1
 						ld  c, a
@@ -5417,8 +5465,8 @@
 						and 1
 						or  c 
 						ld  (_hit_h), a
+.i_99
 .i_95
-.i_91
 			ld  a, (_gpx)
 			add 8
 			srl a
@@ -5446,15 +5494,15 @@
 	ld	l,a
 	ld	a,h
 	or	l
-	jp	z,i_96	;
-	C_LINE	0,"./my/ci/on_special_tile.h::player_move::2::66"
-	C_LINE	872,"engine/player.h::player_move::2::66"
-.i_96
+	jp	z,i_100	;
+	C_LINE	0,"./my/ci/on_special_tile.h::player_move::2::68"
+	C_LINE	876,"engine/player.h::player_move::2::68"
+.i_100
 	ld	hl,(_wall_h)
 	ld	h,0
 	ld	a,l
 	cp	3
-	jp	nz,i_97	;
+	jp	nz,i_101	;
 					ld  a, (_gpx)
 									add 3
 					srl a
@@ -5477,13 +5525,13 @@
 					ld  (_x1), a 
 					call _process_tile
 				.p_int_left_no
-	jp	i_98	;EOS
-.i_97
+	jp	i_102	;EOS
+.i_101
 	ld	hl,(_wall_h)
 	ld	h,0
 	ld	a,l
 	cp	4
-	jp	nz,i_99	;
+	jp	nz,i_103	;
 					ld  a, (_gpx)
 									add 12
 					srl a
@@ -5506,81 +5554,81 @@
 					ld  (_x1), a 
 					call _process_tile
 				.p_int_right_no
-.i_99
-.i_98
+.i_103
+.i_102
 	xor	a
 	ld	(_hit),a
 	ld	a,(_hit_v)
 	and	a
-	jp	z,i_100	;
+	jp	z,i_104	;
 	ld	a,1
 	ld	(_hit),a
 	ld	hl,(_p_vy)
 	call	l_neg
 	push	hl
-	ld	hl,192	;const
+	ld	hl,256	;const
 	push	hl
 	call	_addsign
 	pop	bc
 	pop	bc
 	ld	(_p_vy),hl
-	jp	i_101	;EOS
-.i_100
+	jp	i_105	;EOS
+.i_104
 	ld	a,(_hit_h)
 	and	a
-	jp	z,i_102	;
+	jp	z,i_106	;
 	ld	a,1
 	ld	(_hit),a
 	ld	hl,(_p_vx)
 	call	l_neg
 	push	hl
-	ld	hl,192	;const
+	ld	hl,256	;const
 	push	hl
 	call	_addsign
 	pop	bc
 	pop	bc
 	ld	(_p_vx),hl
-.i_102
-.i_101
+.i_106
+.i_105
 	ld	a,(_hit)
 	and	a
-	jp	z,i_103	;
+	jp	z,i_107	;
 	ld	a,(_p_estado)
 	and	a
-	jp	nz,i_104	;
+	jp	nz,i_108	;
 	ld	hl,13	;const
 	ld	a,l
 	ld	(_p_killme),a
-.i_104
-.i_103
+.i_108
+.i_107
 	ld	a,(_possee)
 	and	a
-	jp	nz,i_106	;
+	jp	nz,i_110	;
 	ld	a,(_p_gotten)
 	and	a
-	jp	nz,i_106	;
-	defc	i_106 = i_105
-.i_107_i_106
+	jp	nz,i_110	;
+	defc	i_110 = i_109
+.i_111_i_110
 	ld	a,(_p_facing)
 	and	a
-	jp	z,i_108	;
+	jp	z,i_112	;
 	ld	hl,3	;const
-	jp	i_109	;
-.i_108
+	jp	i_113	;
+.i_112
 	ld	hl,7	;const
-.i_109
+.i_113
 	ld	a,l
 	ld	(_gpit),a
-	jp	i_110	;EOS
-.i_105
+	jp	i_114	;EOS
+.i_109
 	ld	a,(_p_facing)
 	and	a
-	jp	z,i_111	;
+	jp	z,i_115	;
 	ld	hl,0	;const
-	jp	i_112	;
-.i_111
+	jp	i_116	;
+.i_115
 	ld	hl,4	;const
-.i_112
+.i_116
 	ld	a,l
 	ld	(_gpit),a
 	ld	hl,(_p_vx)
@@ -5588,11 +5636,11 @@
 	or	l
 	jr	nz,ASMPC+3
 	scf
-	jp	nc,i_113	;
+	jp	nc,i_117	;
 	ld	hl,_gpit
 	inc	(hl)
-	jp	i_114	;EOS
-.i_113
+	jp	i_118	;EOS
+.i_117
 	ld	hl,(_gpx)
 	ld	h,0
 	ld	bc,4
@@ -5605,10 +5653,10 @@
 	ld	hl,_rda
 	ld	(hl),a
 	cp	3
-	jp	nz,i_115	;
+	jp	nz,i_119	;
 	ld	a,1
 	ld	(_rda),a
-.i_115
+.i_119
 	ld	de,(_gpit)
 	ld	d,0
 	ld	hl,(_rda)
@@ -5617,8 +5665,8 @@
 	ld	h,0
 	ld	a,l
 	ld	(_gpit),a
+.i_118
 .i_114
-.i_110
 	ld	hl,_sp_sw
 	push	hl
 	ld	hl,_sm_sprptr
@@ -5641,12 +5689,8 @@
 	call	l_gchar
 	pop	de
 	add	hl,de
-	ld	a,l
-	rrca
-	rrca
-	and	63
-	ld	l,a
 	pop	de
+	ld	a,l
 	ld	(de),a
 	ld	hl,_sp_sw+9
 	push	hl
@@ -5664,24 +5708,24 @@
 	ld	(de),a
 	ld	a,(_p_estado)
 	and	2
-	jp	z,i_117	;
+	jp	z,i_121	;
 	ld	a,(_half_life)
 	and	a
-	jp	z,i_117	;
-	defc	i_117 = i_116
-.i_118_i_117
+	jp	z,i_121	;
+	defc	i_121 = i_120
+.i_122_i_121
 	ld	de,_sp_sw
 	ld	hl,_sprite_18_a
 	call	l_pint
-.i_116
+.i_120
 	ret
 
 
-	C_LINE	1184,"engine/player.h::player_move::0::76"
+	C_LINE	1192,"engine/player.h::player_move::0::78"
 
 ; Function player_deplete flags 0x00000200 __smallc 
 ; void player_deplete()
-	C_LINE	1184,"engine/player.h::player_deplete::0::76"
+	C_LINE	1192,"engine/player.h::player_deplete::0::78"
 ._player_deplete
 	ld	de,(_p_life)
 	ld	d,0
@@ -5689,7 +5733,7 @@
 	ld	h,d
 	and	a
 	sbc	hl,de
-	jp	nc,i_119	;
+	jp	nc,i_123	;
 	ld	de,(_p_life)
 	ld	d,0
 	ld	hl,(_p_kill_amt)
@@ -5697,22 +5741,22 @@
 	ex	de,hl
 	and	a
 	sbc	hl,de
-	jp	i_120	;
-.i_119
+	jp	i_124	;
+.i_123
 	ld	hl,0	;const
-.i_120
+.i_124
 	ld	h,0
 	ld	a,l
 	ld	(_p_life),a
 	ret
 
 
-	C_LINE	1188,"engine/player.h::player_deplete::0::77"
+	C_LINE	1196,"engine/player.h::player_deplete::0::79"
 
 ; Function player_kill flags 0x00000200 __smallc 
 ; void player_kill(unsigned char sound)
 ; parameter 'unsigned char sound' at sp+2 size(1)
-	C_LINE	1188,"engine/player.h::player_kill::0::77"
+	C_LINE	1196,"engine/player.h::player_kill::0::79"
 ._player_kill
 	ld	hl,0	;const
 	ld	a,l
@@ -5731,20 +5775,20 @@
 	ret
 
 
-	C_LINE	93,"mk1.c::player_kill::0::78"
-	C_LINE	0,"engine/enengine.h::player_kill::0::78"
-	C_LINE	35,"engine/enengine.h::player_kill::0::78"
+	C_LINE	93,"mk1.c::player_kill::0::80"
+	C_LINE	0,"engine/enengine.h::player_kill::0::80"
+	C_LINE	35,"engine/enengine.h::player_kill::0::80"
 
 ; Function enems_init flags 0x00000200 __smallc 
 ; void enems_init()
-	C_LINE	35,"engine/enengine.h::enems_init::0::78"
+	C_LINE	35,"engine/enengine.h::enems_init::0::80"
 ._enems_init
 	xor	a
 	ld	(_enit),a
-.i_121
+.i_125
 	ld	a,(_enit)
 	sub	72
-	jp	nc,i_122	;
+	jp	nc,i_126	;
 	ld	hl,_malotes
 	push	hl
 	ld	hl,(_enit)
@@ -5786,16 +5830,16 @@
 	ld	hl,_enit
 	ld	a,(hl)
 	inc	(hl)
-	jp	i_121	;EOS
-.i_122
+	jp	i_125	;EOS
+.i_126
 	ret
 
 
-	C_LINE	48,"engine/enengine.h::enems_init::0::80"
+	C_LINE	48,"engine/enengine.h::enems_init::0::82"
 
 ; Function enems_load flags 0x00000200 __smallc 
 ; void enems_load()
-	C_LINE	48,"engine/enengine.h::enems_load::0::80"
+	C_LINE	48,"engine/enengine.h::enems_load::0::82"
 ._enems_load
 	ld	hl,(_n_pant)
 	ld	h,0
@@ -5807,18 +5851,18 @@
 	ld	(_enoffs),a
 	xor	a
 	ld	(_enit),a
-	jp	i_125	;EOS
-.i_123
+	jp	i_129	;EOS
+.i_127
 	ld	hl,_enit
 	inc	(hl)
 	ld	l,(hl)
 	ld	h,0
-.i_125
+.i_129
 	ld	hl,(_enit)
 	ld	h,0
 	ld	a,l
 	sub	3
-	jp	nc,i_124	;
+	jp	nc,i_128	;
 				ld  bc, (_enit)
 				ld  b, 0
 				ld  hl, _en_an_frame 
@@ -5837,8 +5881,8 @@
 				ld  a, (_enoffs)
 				add c 
 				ld  (_enoffsmasi), a
-	C_LINE	0,"./my/ci/enems_custom_respawn.h::enems_load::3::82"
-	C_LINE	97,"engine/enengine.h::enems_load::3::82"
+	C_LINE	0,"./my/ci/enems_custom_respawn.h::enems_load::3::84"
+	C_LINE	97,"engine/enengine.h::enems_load::3::84"
 	ld	hl,_en_an_next_frame
 	push	hl
 	ld	hl,(_enit)
@@ -5871,24 +5915,24 @@
 	ld	hl,_rdt
 	ld	(hl),a
 	and	a
-	jp	z,i_126	;
+	jp	z,i_130	;
 	ld	hl,(_rdt)
 	ld	h,0
-.i_129
+.i_133
 	ld	a,l
 	cp	+(1% 256)
-	jp	z,i_130	;
+	jp	z,i_134	;
 	cp	+(2% 256)
-	jp	z,i_131	;
+	jp	z,i_135	;
 	cp	+(3% 256)
-	jp	z,i_132	;
+	jp	z,i_136	;
 	cp	+(4% 256)
-	jp	z,i_133	;
-	jp	i_134	;EOS
-.i_130
-.i_131
-.i_132
-.i_133
+	jp	z,i_137	;
+	jp	i_138	;EOS
+.i_134
+.i_135
+.i_136
+.i_137
 	ld	de,_en_an_base_frame
 	ld	hl,(_enit)
 	ld	h,0
@@ -5918,24 +5962,24 @@
 	pop	de
 	ld	a,l
 	ld	(de),a
-	jp	i_128	;EOS
-	C_LINE	0,"./my/ci/enems_load.h::enems_load::5::84"
-	C_LINE	145,"engine/enengine.h::enems_load::5::84"
-.i_134
+	jp	i_132	;EOS
+	C_LINE	0,"./my/ci/enems_load.h::enems_load::5::86"
+	C_LINE	145,"engine/enengine.h::enems_load::5::86"
+.i_138
 	ld	de,_en_an_base_frame
 	ld	hl,(_enit)
 	ld	h,0
 	add	hl,de
 	ld	(hl),255
-	jp	i_135	;EOS
-	defc	i_128 = i_135
-.i_126
+	jp	i_139	;EOS
+	defc	i_132 = i_139
+.i_130
 	ld	de,_en_an_base_frame
 	ld	hl,(_enit)
 	ld	h,0
 	add	hl,de
 	ld	(hl),255
-.i_135
+.i_139
 	ld	hl,(_enit)
 	inc	l
 	ld	a,l
@@ -5953,7 +5997,7 @@
 	ld	(_rdb),a
 	ld	a,h
 	or	l
-	jp	z,i_136	;
+	jp	z,i_140	;
 	ld	hl,_sp_sw
 	push	hl
 	ld	hl,(_rda)
@@ -6065,8 +6109,8 @@
 	add	hl,de
 	call	l_gint	;
 	call	l_pint_pop
-	jp	i_137	;EOS
-.i_136
+	jp	i_141	;EOS
+.i_140
 	ld	hl,_en_an_next_frame
 	push	hl
 	ld	hl,(_enit)
@@ -6077,19 +6121,19 @@
 	ex	de,hl
 	ld	hl,_sprite_18_a
 	call	l_pint
-.i_137
-	C_LINE	0,"./my/ci/enems_extra_mods.h::enems_load::3::87"
-	C_LINE	171,"engine/enengine.h::enems_load::3::87"
-	jp	i_123	;EOS
-.i_124
+.i_141
+	C_LINE	0,"./my/ci/enems_extra_mods.h::enems_load::3::89"
+	C_LINE	171,"engine/enengine.h::enems_load::3::89"
+	jp	i_127	;EOS
+.i_128
 	ret
 
 
-	C_LINE	175,"engine/enengine.h::enems_load::0::87"
+	C_LINE	175,"engine/enengine.h::enems_load::0::89"
 
 ; Function enems_kill flags 0x00000200 __smallc 
 ; void enems_kill()
-	C_LINE	175,"engine/enengine.h::enems_kill::0::87"
+	C_LINE	175,"engine/enengine.h::enems_kill::0::89"
 ._enems_kill
 			ld  a, (__en_t)
 			cp  7
@@ -6097,18 +6141,18 @@
 			or  16
 			ld  (__en_t), a
 		.enems_kill_noflag
-			ld  hl, (_p_killed)
+			ld  hl, _p_killed
 			inc (hl)
-	C_LINE	0,"./my/ci/on_enems_killed.h::enems_kill::1::88"
-	C_LINE	198,"engine/enengine.h::enems_kill::1::88"
+	C_LINE	0,"./my/ci/on_enems_killed.h::enems_kill::1::90"
+	C_LINE	198,"engine/enengine.h::enems_kill::1::90"
 	ret
 
 
-	C_LINE	205,"engine/enengine.h::enems_kill::0::88"
+	C_LINE	205,"engine/enengine.h::enems_kill::0::90"
 
 ; Function enems_move flags 0x00000200 __smallc 
 ; void enems_move()
-	C_LINE	205,"engine/enengine.h::enems_move::0::88"
+	C_LINE	205,"engine/enengine.h::enems_move::0::90"
 ._enems_move
 	ld	hl,0	;const
 	ld	(_ptgmy),hl
@@ -6118,17 +6162,17 @@
 	ld	(_tocado),a
 	xor	a
 	ld	(_enit),a
-	jp	i_140	;EOS
-.i_138
+	jp	i_144	;EOS
+.i_142
 	ld	hl,_enit
 	ld	a,(hl)
 	inc	(hl)
-.i_140
+.i_144
 	ld	hl,(_enit)
 	ld	h,0
 	ld	a,l
 	sub	3
-	jp	nc,i_139	;
+	jp	nc,i_143	;
 				xor a 
 				ld  (_active), a 
 				ld  a, (_enit)
@@ -6181,7 +6225,7 @@
 	add	hl,de
 	ld	a,(hl)
 	cp	4
-	jp	nz,i_141	;
+	jp	nz,i_145	;
 	ld	de,_en_an_count
 	ld	hl,(_enit)
 	ld	h,0
@@ -6193,7 +6237,7 @@
 	add	hl,de
 	ld	a,(hl)
 	and	a
-	jp	nz,i_142	;
+	jp	nz,i_146	;
 	ld	de,_en_an_state
 	ld	hl,(_enit)
 	ld	h,0
@@ -6209,9 +6253,9 @@
 	ex	de,hl
 	ld	hl,_sprite_18_a
 	call	l_pint
-	jp	i_138	;EOS
-.i_142
-.i_141
+	jp	i_142	;EOS
+.i_146
+.i_145
 	ld	hl,(_gpx)
 	ld	h,0
 	ld	bc,12
@@ -6220,7 +6264,7 @@
 	ld	hl,(__en_x)
 	ld	h,0
 	call	l_uge
-	jp	nc,i_143	;
+	jp	nc,i_147	;
 	ld	hl,(_gpx)
 	ld	h,0
 	push	hl
@@ -6232,32 +6276,32 @@
 	and	a
 	sbc	hl,de
 	ccf
-	jp	nc,i_143	;
+	jp	nc,i_147	;
 	ld	hl,1	;const
-	jr	i_144
-.i_143
+	jr	i_148
+.i_147
 	ld	hl,0	;const
-.i_144
+.i_148
 	ld	a,l
 	ld	(_pregotten),a
 	ld	hl,(_rdt)
 	ld	h,0
-.i_147
+.i_151
 	ld	a,l
 	cp	+(1% 256)
-	jp	z,i_148	;
+	jp	z,i_152	;
 	cp	+(2% 256)
-	jp	z,i_149	;
+	jp	z,i_153	;
 	cp	+(3% 256)
-	jp	z,i_150	;
+	jp	z,i_154	;
 	cp	+(4% 256)
-	jp	z,i_151	;
-	jp	i_146	;EOS
-.i_148
-.i_149
-.i_150
-.i_151
-	C_LINE	0,"./engine/enem_mods/enem_type_lineal.h::enems_move::4::93"
+	jp	z,i_155	;
+	jp	i_150	;EOS
+.i_152
+.i_153
+.i_154
+.i_155
+	C_LINE	0,"./engine/enem_mods/enem_type_lineal.h::enems_move::4::95"
 		ld 	a, 1
 		ld  (_active), a
 		ld  a, (__en_mx)
@@ -6302,14 +6346,14 @@
 		neg
 		ld  (__en_my), a
 	._enems_lm_change_axis_y_done
-	C_LINE	332,"engine/enengine.h::enems_move::4::93"
-	jp	i_146	;EOS
-	C_LINE	0,"./my/ci/enems_move.h::enems_move::4::93"
-	C_LINE	350,"engine/enengine.h::enems_move::4::93"
-.i_146
+	C_LINE	332,"engine/enengine.h::enems_move::4::95"
+	jp	i_150	;EOS
+	C_LINE	0,"./my/ci/enems_move.h::enems_move::4::95"
+	C_LINE	350,"engine/enengine.h::enems_move::4::95"
+.i_150
 	ld	a,(_active)
 	and	a
-	jp	z,i_152	;
+	jp	z,i_156	;
 	ld	de,_en_an_base_frame
 	ld	hl,(_enit)
 	ld	h,0
@@ -6318,7 +6362,7 @@
 	ld	h,0
 	ld	a,l
 	cp	99
-	jp	z,i_153	;
+	jp	z,i_157	;
 						ld  bc, (_enit)
 						ld  b, 0
 						ld  hl, _en_an_count
@@ -6351,16 +6395,16 @@
 						ldi
 						ldi 							; Copy 16 bit
 					._enems_move_update_frame_done
-.i_153
+.i_157
 	ld	a,(__en_t)
 	cp	4
-	jp	nz,i_154	;
+	jp	nz,i_158	;
 	ld	a,(_pregotten)
 	and	a
-	jp	z,i_155	;
+	jp	z,i_159	;
 	ld	a,(__en_mx)
 	and	a
-	jp	z,i_156	;
+	jp	z,i_160	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,17
@@ -6369,7 +6413,7 @@
 	ld	hl,(__en_y)
 	ld	h,0
 	call	l_uge
-	jp	nc,i_158	;
+	jp	nc,i_162	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,8
@@ -6380,9 +6424,9 @@
 	and	a
 	sbc	hl,de
 	ccf
-	jp	nc,i_158	;
-	defc	i_158 = i_157
-.i_159_i_158
+	jp	nc,i_162	;
+	defc	i_162 = i_161
+.i_163_i_162
 	ld	a,1
 	ld	(_p_gotten),a
 	ld	hl,__en_mx
@@ -6410,12 +6454,12 @@
 	add	hl,hl
 	add	hl,hl
 	ld	(_p_y),hl
-.i_157
-.i_156
+.i_161
+.i_160
 	ld	hl,__en_my
 	ld	a,(hl)
 	rla
-	jp	nc,i_161	;
+	jp	nc,i_165	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,18
@@ -6424,7 +6468,7 @@
 	ld	hl,(__en_y)
 	ld	h,0
 	call	l_uge
-	jp	nc,i_161	;
+	jp	nc,i_165	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,8
@@ -6435,20 +6479,20 @@
 	and	a
 	sbc	hl,de
 	ccf
-	jp	c,i_163	;
-.i_161
-	jr	i_161_i_162
-.i_162
+	jp	c,i_167	;
+.i_165
+	jr	i_165_i_166
+.i_166
 	ld	a,h
 	or	l
-	jp	nz,i_163	;
-.i_161_i_162
+	jp	nz,i_167	;
+.i_165_i_166
 	ld	hl,__en_my
 	call	l_gchar
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_164	;
+	jp	nc,i_168	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,17
@@ -6462,7 +6506,7 @@
 	ld	hl,(__en_y)
 	ld	h,0
 	call	l_uge
-	jp	nc,i_164	;
+	jp	nc,i_168	;
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	bc,8
@@ -6473,10 +6517,10 @@
 	and	a
 	sbc	hl,de
 	ccf
-	jp	nc,i_164	;
-.i_163
-	defc	i_164 = i_160
-.i_166_i_164
+	jp	nc,i_168	;
+.i_167
+	defc	i_168 = i_164
+.i_170_i_168
 	ld	a,1
 	ld	(_p_gotten),a
 	ld	hl,__en_my
@@ -6504,28 +6548,28 @@
 	add	hl,hl
 	add	hl,hl
 	ld	(_p_y),hl
-	jp	i_167	;EOS
-	defc	i_160 = i_167
-	defc	i_155 = i_167
-.i_154
-	C_LINE	0,"./my/ci/custom_enems_player_collision.h::enems_move::5::101"
-	C_LINE	445,"engine/enengine.h::enems_move::5::101"
+	jp	i_171	;EOS
+	defc	i_164 = i_171
+	defc	i_159 = i_171
+.i_158
+	C_LINE	0,"./my/ci/custom_enems_player_collision.h::enems_move::5::103"
+	C_LINE	445,"engine/enengine.h::enems_move::5::103"
 	ld	a,(__en_x)
 	ld	(_cx2),a
 	ld	a,(__en_y)
 	ld	(_cy2),a
 	ld	a,(_tocado)
 	and	a
-	jp	nz,i_169	;
+	jp	nz,i_173	;
 	call	_collide
 	ld	a,h
 	or	l
-	jp	z,i_169	;
+	jp	z,i_173	;
 	ld	a,(_p_estado)
 	and	a
-	jp	nz,i_169	;
-	defc	i_169 = i_168
-.i_170_i_169
+	jp	nz,i_173	;
+	defc	i_173 = i_172
+.i_174_i_173
 	ld	hl,(_gpy)
 	ld	h,0
 	push	hl
@@ -6537,20 +6581,20 @@
 	ex	de,hl
 	and	a
 	sbc	hl,de
-	jp	nc,i_172	;
+	jp	nc,i_176	;
 	ld	hl,(_p_vy)
 	ld	a,h
 	rla
 	ccf
-	jp	nc,i_172	;
+	jp	nc,i_176	;
 	ld	hl,(_rdt)
 	ld	h,0
 	ld	a,l
 	sub	0
 	ccf
-	jp	nc,i_172	;
-	defc	i_172 = i_171
-.i_173_i_172
+	jp	nc,i_176	;
+	defc	i_176 = i_175
+.i_177_i_176
 	ld	hl,6	;const
 	call	_wyz_play_sound
 	ld	de,_en_an_state
@@ -6576,22 +6620,22 @@
 	ld	hl,65280	;const
 	ld	(_p_vy),hl
 	call	_enems_kill
-	jp	i_174	;EOS
-.i_171
+	jp	i_178	;EOS
+.i_175
 	ld	a,1
 	ld	(_tocado),a
 	ld	hl,14	;const
 	ld	a,l
 	ld	(_p_killme),a
-	C_LINE	0,"./my/ci/on_enems_collision.h::enems_move::7::104"
-	C_LINE	502,"engine/enengine.h::enems_move::7::104"
-.i_174
-.i_168
-.i_167
-.i_175
-	C_LINE	0,"./my/ci/enems_extra_actions.h::enems_move::4::104"
-	C_LINE	687,"engine/enengine.h::enems_move::4::104"
-.i_152
+	C_LINE	0,"./my/ci/on_enems_collision.h::enems_move::7::106"
+	C_LINE	502,"engine/enengine.h::enems_move::7::106"
+.i_178
+.i_172
+.i_171
+.i_179
+	C_LINE	0,"./my/ci/enems_extra_actions.h::enems_move::4::106"
+	C_LINE	687,"engine/enengine.h::enems_move::4::106"
+.i_156
 	ld	hl,(_enit)
 	inc	l
 	ld	a,l
@@ -6635,12 +6679,8 @@
 	call	l_gchar
 	pop	de
 	add	hl,de
-	ld	a,l
-	rrca
-	rrca
-	and	63
-	ld	l,a
 	pop	de
+	ld	a,l
 	ld	(de),a
 	ld	hl,_sp_sw
 	push	hl
@@ -6680,7 +6720,7 @@
 	ld	(de),a
 	ld	a,(_rdt)
 	cp	255
-	jp	z,i_176	;
+	jp	z,i_180	;
 	ld	hl,_sp_sw
 	push	hl
 	ld	hl,(_rda)
@@ -6701,8 +6741,8 @@
 	add	hl,de
 	call	l_gint	;
 	call	l_pint_pop
-	jp	i_177	;EOS
-.i_176
+	jp	i_181	;EOS
+.i_180
 	ld	hl,_sp_sw
 	push	hl
 	ld	hl,(_rda)
@@ -6716,7 +6756,7 @@
 	ex	de,hl
 	ld	hl,_sprite_18_a
 	call	l_pint
-.i_177
+.i_181
 				ld  hl, (__baddies_pointer) 		 
 				ld  a, (__en_x)
 				ld  (hl), a
@@ -6745,18 +6785,18 @@
 				ld  a, (__en_t)
 				ld  (hl), a
 				inc hl
-	jp	i_138	;EOS
-.i_139
+	jp	i_142	;EOS
+.i_143
 	ret
 
 
-	C_LINE	94,"mk1.c::enems_move::0::104"
-	C_LINE	0,"engine/hotspots.h::enems_move::0::104"
-	C_LINE	7,"engine/hotspots.h::enems_move::0::104"
+	C_LINE	94,"mk1.c::enems_move::0::106"
+	C_LINE	0,"engine/hotspots.h::enems_move::0::106"
+	C_LINE	7,"engine/hotspots.h::enems_move::0::106"
 
 ; Function hotspots_init flags 0x00000200 __smallc 
 ; void hotspots_init()
-	C_LINE	7,"engine/hotspots.h::hotspots_init::0::104"
+	C_LINE	7,"engine/hotspots.h::hotspots_init::0::106"
 ._hotspots_init
 				ld  b,  4  *  6 
 				ld  hl, _hotspots + 2
@@ -6769,11 +6809,11 @@
 	ret
 
 
-	C_LINE	30,"engine/hotspots.h::hotspots_init::0::105"
+	C_LINE	30,"engine/hotspots.h::hotspots_init::0::107"
 
 ; Function hotspots_do flags 0x00000200 __smallc 
 ; void hotspots_do()
-	C_LINE	30,"engine/hotspots.h::hotspots_do::0::105"
+	C_LINE	30,"engine/hotspots.h::hotspots_do::0::107"
 ._hotspots_do
 	ld	hl,_hotspots
 	push	hl
@@ -6789,11 +6829,11 @@
 	inc	hl
 	ld	a,(hl)
 	and	a
-	jp	nz,i_178	;
+	jp	nz,i_182	;
 	ret
 
 
-.i_178
+.i_182
 	ld	a,(_hotspot_x)
 	ld	(_cx2),a
 	ld	hl,(_hotspot_y)
@@ -6803,7 +6843,7 @@
 	call	_collide
 	ld	a,h
 	or	l
-	jp	z,i_179	;
+	jp	z,i_183	;
 	ld	a,1
 	ld	(_hotspot_destroy),a
 	ld	hl,_hotspots
@@ -6819,21 +6859,21 @@
 	inc	hl
 	ld	l,(hl)
 	ld	h,0
-.i_182
+.i_186
 	ld	a,l
 	cp	+(2% 256)
-	jp	z,i_183	;
+	jp	z,i_187	;
 	cp	+(3% 256)
-	jp	z,i_184	;
-	jp	i_181	;EOS
-.i_183
+	jp	z,i_188	;
+	jp	i_185	;EOS
+.i_187
 	ld	hl,_p_keys
 	ld	a,(hl)
 	inc	(hl)
 	ld	hl,10	;const
 	call	_wyz_play_sound
-	jp	i_181	;EOS
-.i_184
+	jp	i_185	;EOS
+.i_188
 	ld	hl,(_p_life)
 	inc	l
 	ld	a,l
@@ -6841,19 +6881,19 @@
 	ld	(hl),a
 	ld	a,20
 	sub	(hl)
-	jp	nc,i_185	;
+	jp	nc,i_189	;
 	ld	a,20
 	ld	(_p_life),a
-.i_185
+.i_189
 	ld	hl,11	;const
 	call	_wyz_play_sound
-	jp	i_181	;EOS
-	C_LINE	0,"./my/ci/hotspots_custom.h::hotspots_do::3::108"
-	C_LINE	117,"engine/hotspots.h::hotspots_do::3::108"
-.i_181
+	jp	i_185	;EOS
+	C_LINE	0,"./my/ci/hotspots_custom.h::hotspots_do::3::110"
+	C_LINE	117,"engine/hotspots.h::hotspots_do::3::110"
+.i_185
 	ld	a,(_hotspot_destroy)
 	and	a
-	jp	z,i_186	;
+	jp	z,i_190	;
 	ld	hl,_hotspots
 	push	hl
 	ld	hl,(_n_pant)
@@ -6897,14 +6937,14 @@
 	ld	hl,240	;const
 	ld	a,l
 	ld	(_hotspot_y),a
-.i_186
-.i_179
+.i_190
+.i_183
 	ret
 
 
-	C_LINE	95,"mk1.c::hotspots_do::0::109"
-	C_LINE	0,"my/wyz/efectos.h::hotspots_do::0::109"
-	C_LINE	4,"my/wyz/efectos.h::hotspots_do::0::109"
+	C_LINE	95,"mk1.c::hotspots_do::0::111"
+	C_LINE	0,"my/wyz/efectos.h::hotspots_do::0::111"
+	C_LINE	4,"my/wyz/efectos.h::hotspots_do::0::111"
 	.EFECTO0 
 		defb 0x25, 0x1C, 0x00
 		defb 0x3A, 0x0F, 0x00
@@ -7135,9 +7175,9 @@
 		defb 0x00, 0x00, 0x00
 		defb 0x80, 0x0F, 0x00
 		defb 0xFF
-	C_LINE	102,"mk1.c::hotspots_do::0::109"
-	C_LINE	0,"my/wyz/instrumentos.h::hotspots_do::0::109"
-	C_LINE	7,"my/wyz/instrumentos.h::hotspots_do::0::109"
+	C_LINE	102,"mk1.c::hotspots_do::0::111"
+	C_LINE	0,"my/wyz/instrumentos.h::hotspots_do::0::111"
+	C_LINE	7,"my/wyz/instrumentos.h::hotspots_do::0::111"
     ; Tabla de instrumentos 
     .TABLA_PAUTAS
         defw PAUTA_0,PAUTA_1,PAUTA_2,PAUTA_3,PAUTA_4,PAUTA_5 
@@ -7177,23 +7217,23 @@
     .SONIDO3
         defb 186,58,0,0,102,0,162,131,0,255 
     ;Frecuencias para las notas 
-	C_LINE	103,"mk1.c::hotspots_do::0::109"
-	C_LINE	0,"my/wyz/songs.h::hotspots_do::0::109"
-	C_LINE	4,"my/wyz/songs.h::hotspots_do::0::109"
-	C_LINE	6,"my/wyz/songs.h::hotspots_do::0::109"
+	C_LINE	103,"mk1.c::hotspots_do::0::111"
+	C_LINE	0,"my/wyz/songs.h::hotspots_do::0::111"
+	C_LINE	4,"my/wyz/songs.h::hotspots_do::0::111"
+	C_LINE	6,"my/wyz/songs.h::hotspots_do::0::111"
 	._00_title_mus_bin
 		BINARY "../mus/00_title.mus.bin"
 	._01_ingame_mus_bin
 		BINARY "../mus/01_ingame.mus.bin"
 	._wyz_songs
 		defw 	_00_title_mus_bin, _01_ingame_mus_bin
-	C_LINE	104,"mk1.c::hotspots_do::0::109"
-	C_LINE	0,"wyz_player.h::hotspots_do::0::109"
-	C_LINE	8,"wyz_player.h::hotspots_do::0::109"
+	C_LINE	104,"mk1.c::hotspots_do::0::111"
+	C_LINE	0,"wyz_player.h::hotspots_do::0::111"
+	C_LINE	8,"wyz_player.h::hotspots_do::0::111"
 
 ; Function wyz_init flags 0x00000200 __smallc 
 ; void wyz_init()
-	C_LINE	8,"wyz_player.h::wyz_init::0::109"
+	C_LINE	8,"wyz_player.h::wyz_init::0::111"
 ._wyz_init
 	ld	hl,0	;const
 	ld	a,l
@@ -7202,12 +7242,12 @@
 	ret
 
 
-	C_LINE	17,"wyz_player.h::wyz_init::0::110"
+	C_LINE	17,"wyz_player.h::wyz_init::0::112"
 
 ; Function wyz_play_music flags 0x00000208 __smallc __z88dk_fastcall 
 ; void wyz_play_music(unsigned char m)
 ; parameter 'unsigned char m' at sp+2 size(1)
-	C_LINE	17,"wyz_player.h::wyz_play_music::0::110"
+	C_LINE	17,"wyz_player.h::wyz_play_music::0::112"
 ._wyz_play_music
 	push	hl
 	ld	hl,_wyz_songs
@@ -7236,12 +7276,12 @@
 	ret
 
 
-	C_LINE	29,"wyz_player.h::wyz_play_music::0::111"
+	C_LINE	29,"wyz_player.h::wyz_play_music::0::113"
 
 ; Function wyz_play_sound flags 0x00000208 __smallc __z88dk_fastcall 
 ; void wyz_play_sound(unsigned char s)
 ; parameter 'unsigned char s' at sp+2 size(1)
-	C_LINE	29,"wyz_player.h::wyz_play_sound::0::111"
+	C_LINE	29,"wyz_player.h::wyz_play_sound::0::113"
 ._wyz_play_sound
 	push	hl
 		; Sound number is in L
@@ -7252,11 +7292,11 @@
 	ret
 
 
-	C_LINE	40,"wyz_player.h::wyz_play_sound::0::112"
+	C_LINE	40,"wyz_player.h::wyz_play_sound::0::114"
 
 ; Function wyz_stop_sound flags 0x00000200 __smallc 
 ; void wyz_stop_sound()
-	C_LINE	40,"wyz_player.h::wyz_stop_sound::0::112"
+	C_LINE	40,"wyz_player.h::wyz_stop_sound::0::114"
 ._wyz_stop_sound
 		call PLAYER_OFF
 		xor a
@@ -7264,7 +7304,7 @@
 	ret
 
 
-	C_LINE	50,"wyz_player.h::wyz_stop_sound::0::113"
+	C_LINE	50,"wyz_player.h::wyz_stop_sound::0::115"
 	;  1  PSG proPLAYER V 0.47c - WYZ 19.03.2016
 	; (WYZTracker 2.0 o superior)
 	.WYZPLAYER_INIT
@@ -8189,13 +8229,13 @@
 	.TABLA_EFECTOS
 		defw 	EFECTO0, EFECTO1, EFECTO2, EFECTO3, EFECTO4, EFECTO5, EFECTO6, EFECTO7
 		defw	EFECTO8, EFECTO9, EFECTO10, EFECTO11, EFECTO12, EFECTO13, EFECTO14
-	C_LINE	105,"mk1.c::wyz_stop_sound::0::113"
-	C_LINE	0,"my/title_screen.h::wyz_stop_sound::0::113"
-	C_LINE	6,"my/title_screen.h::wyz_stop_sound::0::113"
+	C_LINE	105,"mk1.c::wyz_stop_sound::0::115"
+	C_LINE	0,"my/title_screen.h::wyz_stop_sound::0::115"
+	C_LINE	6,"my/title_screen.h::wyz_stop_sound::0::115"
 
 ; Function title_screen flags 0x00000200 __smallc 
 ; void title_screen()
-	C_LINE	6,"my/title_screen.h::title_screen::0::113"
+	C_LINE	6,"my/title_screen.h::title_screen::0::115"
 ._title_screen
 	call	_blackout
 	ld	hl,_s_title
@@ -8205,34 +8245,48 @@
 	call	_unpack
 	pop	bc
 	pop	bc
+	ld	a,11
+	ld	(__x),a
+	ld	a,14
+	ld	(__y),a
+	ld	hl,i_1+13
+	ld	(__gp_gen),hl
+	call	_print_str
+	ld	a,11
+	ld	(__x),a
+	ld	a,16
+	ld	(__y),a
+	ld	hl,i_1+24
+	ld	(__gp_gen),hl
+	call	_print_str
 	ld	hl,1	;const
 	call	cpc_ShowTileMap
 	ld	hl,0	;const
 	call	_wyz_play_music
-.i_187
+.i_191
 	ld	hl,10	;const
 	call	cpc_TestKey
 	ld	a,h
 	or	l
-	jp	z,i_189	;
+	jp	z,i_193	;
 	ld	hl,_def_keys
 	ld	(__gp_gen),hl
 	xor	a
 	ld	(_is_joystick),a
-	jp	i_188	;EOS
-.i_189
+	jp	i_192	;EOS
+.i_193
 	ld	hl,11	;const
 	call	cpc_TestKey
 	ld	a,h
 	or	l
-	jp	z,i_190	;
+	jp	z,i_194	;
 	ld	hl,_def_keys_joy
 	ld	(__gp_gen),hl
 	ld	a,1
 	ld	(_is_joystick),a
-	jp	i_188	;EOS
-	defc	i_190 = i_187
-.i_188
+	jp	i_192	;EOS
+	defc	i_194 = i_191
+.i_192
 	call	_wyz_stop_sound
 		._copy_keys_to_extern
 			ld  hl, (__gp_gen)
@@ -8242,13 +8296,13 @@
 	ret
 
 
-	C_LINE	108,"mk1.c::title_screen::0::117"
-	C_LINE	0,"mainloop.h::title_screen::0::117"
-	C_LINE	7,"mainloop.h::title_screen::0::117"
+	C_LINE	108,"mk1.c::title_screen::0::119"
+	C_LINE	0,"mainloop.h::title_screen::0::119"
+	C_LINE	7,"mainloop.h::title_screen::0::119"
 
 ; Function main flags 0x00000000 __stdc 
 ; void main()
-	C_LINE	7,"mainloop.h::main::0::118"
+	C_LINE	7,"mainloop.h::main::0::120"
 ._main
 	call	_wyz_init
 		di
@@ -8374,15 +8428,15 @@
 	call	l_pint_pop
 	ld	a,1
 	ld	(_gpit),a
-	jp	i_193	;EOS
-.i_191
+	jp	i_197	;EOS
+.i_195
 	ld	hl,_gpit
 	ld	a,(hl)
 	inc	(hl)
-.i_193
+.i_197
 	ld	a,(_gpit)
 	sub	4
-	jp	nc,i_192	;
+	jp	nc,i_196	;
 	ld	hl,_sp_sw
 	push	hl
 	ld	hl,(_gpit)
@@ -8413,20 +8467,20 @@
 	ex	de,hl
 	ld	hl,cpc_PutTrSp4x8TileMap2b
 	call	l_pint
-	jp	i_191	;EOS
-.i_192
+	jp	i_195	;EOS
+.i_196
 	xor	a
 	ld	(_gpit),a
-	jp	i_196	;EOS
-.i_194
+	jp	i_200	;EOS
+.i_198
 	ld	hl,_gpit
 	inc	(hl)
 	ld	l,(hl)
 	ld	h,0
-.i_196
+.i_200
 	ld	a,(_gpit)
 	sub	4
-	jp	nc,i_195	;
+	jp	nc,i_199	;
 	ld	de,_spr_on
 	ld	hl,(_gpit)
 	ld	h,0
@@ -8458,19 +8512,19 @@
 	ld	bc,11
 	add	hl,bc
 	ld	(hl),24
-	jp	i_194	;EOS
-.i_195
-	C_LINE	0,"my/ci/after_load.h::main::1::121"
-	C_LINE	176,"mainloop.h::main::1::121"
+	jp	i_198	;EOS
+.i_199
+	C_LINE	0,"my/ci/after_load.h::main::1::123"
+	C_LINE	176,"mainloop.h::main::1::123"
 		ei
-.i_197
+.i_201
 	ld	hl,0	;const
 	ld	a,l
 	ld	(_level),a
 	call	_title_screen
-	C_LINE	0,"my/ci/before_game.h::main::2::122"
-	C_LINE	197,"mainloop.h::main::2::122"
-	C_LINE	0,"mainloop/game_loop.h::main::3::123"
+	C_LINE	0,"my/ci/before_game.h::main::2::124"
+	C_LINE	197,"mainloop.h::main::2::124"
+	C_LINE	0,"mainloop/game_loop.h::main::3::125"
 		; Makes debugging easier
 		._game_loop_init
 	ld	hl,1	;const
@@ -8486,8 +8540,8 @@
 	ld	(_maincounter),a
 	ld	hl,1	;const
 	call	_wyz_play_music
-	C_LINE	0,"./my/ci/entering_game.h::main::3::123"
-	C_LINE	51,"mainloop/game_loop.h::main::3::123"
+	C_LINE	0,"./my/ci/entering_game.h::main::3::125"
+	C_LINE	51,"mainloop/game_loop.h::main::3::125"
 	ld	hl,0	;const
 	ld	a,l
 	ld	(_half_life),a
@@ -8504,11 +8558,11 @@
 	ld	(_objs_old),a
 	ld	a,255
 	ld	(_o_pant),a
-.i_199
+.i_203
 	ld	hl,(_playing)
 	ld	a,l
 	and	a
-	jp	z,i_200	;
+	jp	z,i_204	;
 			; Makes debugging easier
 			._game_loop_do
 	ld	a,1
@@ -8518,22 +8572,22 @@
 	ld	hl,(_n_pant)
 	ld	h,d
 	call	l_ne
-	jp	nc,i_201	;
-	C_LINE	0,"./my/ci/before_entering_screen.h::main::5::125"
-	C_LINE	99,"mainloop/game_loop.h::main::5::125"
+	jp	nc,i_205	;
+	C_LINE	0,"./my/ci/before_entering_screen.h::main::5::127"
+	C_LINE	99,"mainloop/game_loop.h::main::5::127"
 	call	_draw_scr
 	ld	hl,(_n_pant)
 	ld	h,0
 	ld	a,l
 	ld	(_o_pant),a
-	C_LINE	0,"./mainloop/hud.h::main::4::125"
-.i_201
+	C_LINE	0,"./mainloop/hud.h::main::4::127"
+.i_205
 	ld	de,(_p_life)
 	ld	d,0
 	ld	hl,(_life_old)
 	ld	h,d
 	call	l_ne
-	jp	nc,i_202	;
+	jp	nc,i_206	;
 	ld	a,4
 	ld	(__x),a
 	ld	a,1
@@ -8545,13 +8599,13 @@
 	call	_print_number2
 	ld	a,((_p_life))
 	ld	(_life_old),a
-.i_202
+.i_206
 	ld	de,(_p_keys)
 	ld	d,0
 	ld	hl,(_keys_old)
 	ld	h,d
 	call	l_ne
-	jp	nc,i_203	;
+	jp	nc,i_207	;
 	ld	a,10
 	ld	(__x),a
 	ld	a,1
@@ -8563,13 +8617,13 @@
 	call	_print_number2
 	ld	a,((_p_keys))
 	ld	(_keys_old),a
-.i_203
+.i_207
 	ld	de,(_p_killed)
 	ld	d,0
 	ld	hl,(_killed_old)
 	ld	h,d
 	call	l_ne
-	jp	nc,i_204	;
+	jp	nc,i_208	;
 	ld	a,16
 	ld	(__x),a
 	ld	a,1
@@ -8583,8 +8637,8 @@
 	ld	h,0
 	ld	a,l
 	ld	(_killed_old),a
-	C_LINE	163,"mainloop/game_loop.h::main::4::128"
-.i_204
+	C_LINE	163,"mainloop/game_loop.h::main::4::130"
+.i_208
 	ld	hl,_maincounter
 	ld	a,(hl)
 	inc	(hl)
@@ -8598,60 +8652,60 @@
 	call	_enems_move
 	ld	a,(_p_killme)
 	and	a
-	jp	z,i_205	;
+	jp	z,i_209	;
 	ld	a,(_p_life)
 	and	a
-	jp	z,i_206	;
+	jp	z,i_210	;
 	ld	hl,(_p_killme)
 	ld	h,0
 	push	hl
 	call	_player_kill
 	pop	bc
-	C_LINE	0,"./my/ci/on_player_killed.h::main::6::130"
-	C_LINE	182,"mainloop/game_loop.h::main::6::130"
-	jp	i_207	;EOS
-.i_206
+	C_LINE	0,"./my/ci/on_player_killed.h::main::6::132"
+	C_LINE	182,"mainloop/game_loop.h::main::6::132"
+	jp	i_211	;EOS
+.i_210
 	ld	hl,0	;const
 	ld	a,l
 	ld	(_playing),a
-.i_207
-.i_205
+.i_211
+.i_209
 	ld	de,(_o_pant)
 	ld	d,0
 	ld	hl,(_n_pant)
 	ld	h,d
 	call	l_eq
-	jp	nc,i_208	;
+	jp	nc,i_212	;
 	ld	hl,1	;const
 	push	hl
 	call	_cpc_UpdateNow
 	pop	bc
-.i_208
+.i_212
 	ld	a,(_p_estado)
 	cp	2
-	jp	nz,i_209	;
+	jp	nz,i_213	;
 	ld	hl,_p_ct_estado
 	ld	a,(hl)
 	dec	(hl)
 	ld	a,(_p_ct_estado)
 	and	a
-	jp	nz,i_210	;
+	jp	nz,i_214	;
 	ld	hl,0	;const
 	ld	a,l
 	ld	(_p_estado),a
-.i_210
-.i_209
+.i_214
+.i_213
 	call	_hotspots_do
-	C_LINE	0,"./mainloop/flick_screen.h::main::4::132"
+	C_LINE	0,"./mainloop/flick_screen.h::main::4::134"
 	ld	a,(_gpx)
 	and	a
-	jp	nz,i_212	;
+	jp	nz,i_216	;
 	ld	hl,(_p_vx)
 	ld	a,h
 	rla
-	jp	nc,i_212	;
-	defc	i_212 = i_211
-.i_213_i_212
+	jp	nc,i_216	;
+	defc	i_216 = i_215
+.i_217_i_216
 	ld	hl,_n_pant
 	dec	(hl)
 	ld	l,(hl)
@@ -8660,17 +8714,17 @@
 	ld	(_gpx),a
 	ld	hl,14336	;const
 	ld	(_p_x),hl
-.i_211
+.i_215
 	ld	a,(_gpx)
 	cp	224
-	jp	nz,i_215	;
+	jp	nz,i_219	;
 	ld	hl,(_p_vx)
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_215	;
-	defc	i_215 = i_214
-.i_216_i_215
+	jp	nc,i_219	;
+	defc	i_219 = i_218
+.i_220_i_219
 	ld	hl,_n_pant
 	inc	(hl)
 	ld	l,(hl)
@@ -8680,22 +8734,22 @@
 	ld	h,0
 	ld	a,l
 	ld	(_gpx),a
-.i_214
+.i_218
 	ld	a,(_gpy)
 	and	a
-	jp	nz,i_218	;
+	jp	nz,i_222	;
 	ld	hl,(_p_vy)
 	ld	a,h
 	rla
-	jp	nc,i_218	;
+	jp	nc,i_222	;
 	ld	hl,(_n_pant)
 	ld	h,0
 	ld	a,l
 	sub	4
 	ccf
-	jp	nc,i_218	;
-	defc	i_218 = i_217
-.i_219_i_218
+	jp	nc,i_222	;
+	defc	i_222 = i_221
+.i_223_i_222
 	ld	hl,_n_pant
 	ld	a,-4
 	add	(hl)
@@ -8704,23 +8758,23 @@
 	ld	(_gpy),a
 	ld	hl,9216	;const
 	ld	(_p_y),hl
-.i_217
+.i_221
 	ld	hl,(_gpy)
 	ld	h,0
 	ld	a,l
 	sub	144
 	ccf
-	jp	nc,i_221	;
+	jp	nc,i_225	;
 	ld	hl,(_p_vy)
 	ld	de,0
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_221	;
-	defc	i_221 = i_220
-.i_222_i_221
+	jp	nc,i_225	;
+	defc	i_225 = i_224
+.i_226_i_225
 	ld	a,(_n_pant)
 	sub	20
-	jp	nc,i_223	;
+	jp	nc,i_227	;
 	ld	hl,_n_pant
 	ld	a,4
 	add	(hl)
@@ -8733,48 +8787,88 @@
 	ld	de,256
 	ex	de,hl
 	call	l_gt
-	jp	nc,i_224	;
+	jp	nc,i_228	;
 	ld	hl,256	;const
 	ld	(_p_vy),hl
+.i_228
+.i_227
+	C_LINE	281,"mainloop/game_loop.h::main::4::139"
 .i_224
-.i_223
-	C_LINE	281,"mainloop/game_loop.h::main::4::137"
-.i_220
-	C_LINE	0,"./my/ci/extra_routines.h::main::4::138"
-	C_LINE	318,"mainloop/game_loop.h::main::4::138"
-	jp	i_199	;EOS
-.i_200
+	C_LINE	0,"./my/ci/extra_routines.h::main::4::140"
+	ld	a,(_n_pant)
+	cp	20
+	jp	nz,i_230	;
+	ld	a,(_gpx)
+	sub	8
+	jp	nc,i_231	;
+	ld	a,1
+	ld	(_success),a
+	xor	a
+	ld	(_playing),a
+.i_231
+	ld	a,(_p_killed)
+	cp	60
+	jp	nz,i_232	;
+	ld	a,2
+	ld	(__x),a
+	ld	a,7
+	ld	(__y),a
+	ld	hl,0	;const
+	ld	a,l
+	ld	(__n),a
+	ld	(__t),a
+	call	_update_tile
+	ld	a,2
+	ld	(__x),a
+	ld	a,8
+	ld	(__y),a
+	ld	hl,0	;const
+	ld	a,l
+	ld	(__n),a
+	ld	(__t),a
+	call	_update_tile
+.i_232
+	C_LINE	318,"mainloop/game_loop.h::main::4::143"
+	jp	i_203	;EOS
+	defc	i_230 = i_203
+.i_204
 	call	_wyz_stop_sound
-	C_LINE	0,"./my/ci/after_game_loop.h::main::3::138"
-	C_LINE	323,"mainloop/game_loop.h::main::3::138"
-	C_LINE	237,"mainloop.h::main::3::138"
+	C_LINE	0,"./my/ci/after_game_loop.h::main::3::143"
+	C_LINE	323,"mainloop/game_loop.h::main::3::143"
+	C_LINE	237,"mainloop.h::main::3::143"
 	ld	hl,(_success)
 	ld	a,l
 	and	a
-	jp	z,i_226	;
+	jp	z,i_233	;
 	call	_game_ending
-	jp	i_227	;EOS
-.i_226
+	jp	i_234	;EOS
+.i_233
 	call	_game_over
-	C_LINE	0,"my/ci/after_game_over.h::main::4::140"
-	C_LINE	275,"mainloop.h::main::4::140"
-.i_227
+	C_LINE	0,"my/ci/after_game_over.h::main::4::145"
+	C_LINE	275,"mainloop.h::main::4::145"
+.i_234
 	call	_clear_sprites
-	C_LINE	0,"my/ci/after_game.h::main::2::140"
+	C_LINE	0,"my/ci/after_game.h::main::2::145"
 	ld	hl,_my_inks
 	push	hl
 	call	_pal_set
 	pop	bc
-	C_LINE	282,"mainloop.h::main::2::140"
-	jp	i_197	;EOS
-.i_198
+	C_LINE	282,"mainloop.h::main::2::145"
+	jp	i_201	;EOS
+.i_202
 	ret
 
 
-	C_LINE	109,"mk1.c::main::0::140"
+	C_LINE	109,"mk1.c::main::0::145"
 	SECTION	rodata_compiler
 .i_1
 	defm	" GAME OVER! "
+	defb	0
+
+	defm	"1 KEYBOARD"
+	defb	0
+
+	defm	"1 JOYSTICK"
 	defb	0
 
 

@@ -187,7 +187,7 @@ void enems_kill (void) {
 			ld  (__en_t), a
 
 		.enems_kill_noflag
-			ld  hl, (_p_killed)
+			ld  hl, _p_killed
 			inc (hl)
 	#endasm
 
@@ -435,7 +435,7 @@ void enems_move (void) {
 						) {
 							p_gotten = 1;
 							ptgmy = _en_my << 6;
-							gpy = (_en_y - 16); p_y = gpy << 6;						
+							gpy = (_en_y - 16); p_y = gpy << 6;					
 						}
 
 					}
@@ -688,8 +688,12 @@ void enems_move (void) {
 		} 
 
 		rda = SP_ENEMS_BASE + enit; rdt = en_an_sprid [enit];
-		#if defined PIXELPERFECT && CPC_GFX_MODE == 0
-			sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 1;
+		#if defined PIXELPERFECT 
+			#if CPC_GFX_MODE == 0
+				sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 1;
+			#elif CPC_GFX_MODE == 1
+				sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox);
+			#endif
 		#else
 			sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 2;
 		#endif
