@@ -240,8 +240,8 @@ unsigned char player_move (void) {
 						or  a
 						jr  z, _player_gravity_p_gotten_done
 
-						xor a
-						ld  (_p_vy), a
+						ld  hl, 0
+						ld  (_p_vy), hl
 
 					._player_gravity_p_gotten_done
 				#endasm
@@ -518,7 +518,11 @@ unsigned char player_move (void) {
 			#elif defined (PLAYER_CAN_FIRE) && defined (USE_TWO_BUTTONS)				
 				rda = cpc_TestKey (KEY_BUTTON_B);
 			#else
-				rda = cpc_TestKey (KEY_BUTTON_A);
+				#if defined BOTH_KEYS_JUMP
+					rda = cpc_TestKey (KEY_BUTTON_A) || cpc_TestKey (KEY_UP);
+				#else 
+					rda = cpc_TestKey (KEY_BUTTON_A);
+				#endif
 			#endif
 
 			if (rda) {
@@ -1173,8 +1177,12 @@ unsigned char player_move (void) {
 		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#endif
 
-	#if defined PIXELPERFECT && CPC_GFX_MODE == 0
-		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
+	#if defined PIXELPERFECT 
+		#if CPC_GFX_MODE == 0
+			sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
+		#elif CPC_GFX_MODE == 1
+			sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox);
+		#endif
 	#else
 		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 2;
 	#endif

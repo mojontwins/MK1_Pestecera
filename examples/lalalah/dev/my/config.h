@@ -25,14 +25,14 @@
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						6		//
-#define MAP_H						5		// Map dimensions in screens
-#define SCR_INICIO					24		// Initial screen
-#define PLAYER_INI_X				1		//
-#define PLAYER_INI_Y				2		// Initial tile coordinates
+#define MAP_H						3		// Map dimensions in screens
+#define SCR_INICIO					17		// Initial screen
+#define PLAYER_INI_X				13		//
+#define PLAYER_INI_Y				8		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS			25		// Objects to get to finish game
+#define PLAYER_NUM_OBJETOS			12		// Objects to get to finish game
 #define PLAYER_LIFE 				10		// Max and starting life gauge.
 #define PLAYER_REFILL				1		// Life recharge
 #define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
@@ -295,7 +295,7 @@ extern unsigned char def_keys [0];
 // Graphic FX, uncomment which applies...
 
 //#define USE_AUTO_SHADOWS					// Automatic shadows made of darker attributes
-//#define USE_AUTO_TILE_SHADOWS 			// Automatic shadows using specially defined tiles 32-47.
+#define USE_AUTO_TILE_SHADOWS 				// Automatic shadows using specially defined tiles 32-47.
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
@@ -351,7 +351,7 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 8, 8, 0, 0, 8, 8, 1, 8, 8, 8, 8, 8, 8,10,10,
+	0, 0, 4, 8, 0, 0, 8, 8, 0, 0, 1, 8, 8, 8, 4,10,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
