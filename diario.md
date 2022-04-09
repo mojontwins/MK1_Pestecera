@@ -655,3 +655,14 @@ Todo es enorme, incluso la idea de combinar miniload y dx7 para meterlo en la pi
 1.- preloadercpc se carga en $200, quita las interrupciones, y carga el cargador real en $BA00
 2.- el cargador real carga pantalla en DX7, descomprime, carga jueg en $40, descomprime, y ejecuta.
 
+20220409
+========
+
+No he apuntado nada, pero llevo un mes con el último boost que ha incluido la versión definitiva de Helmet y diversas mejoras al motor, incluyendo el modo 1 pixel a pixel.
+
+Para seguir probando todo hemos portado en tropel muchos juegos viejos de la churrera clásica, y ahora habrá que hacer música WYZ 2.0 para...
+
+- Lala Lah
+- Cheril Perils
+- Balowwwwn
+- ...
