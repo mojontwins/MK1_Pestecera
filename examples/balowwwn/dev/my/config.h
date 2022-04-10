@@ -141,9 +141,9 @@
 //#define AMMO_REFILL 				50		// ammo refill, using tile 20 (hotspot #4)
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
-//#define BREAKABLE_WALLS 					// Breakable walls
-//#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
-//#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
+#define BREAKABLE_WALLS 					// Breakable walls
+#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
+#define BREAKABLE_WALLS_BROKEN 		(32 + map_buff [gpaux]) // Use this tile for a broken wall, 0 if not def.
 
 // Scripting
 // ---------
@@ -351,9 +351,9 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 1, 8, 8, 8, 8, 1, 0, 0, 8, 8, 0, 0, 1,10,10,
+	0,24, 8, 8, 8, 8,24, 0, 0, 8, 8, 0, 0,24,10,10,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0,24, 0, 0, 0, 0,24, 0, 0, 0, 0, 0, 0,24, 0, 0,
 };
 #endif
 
