@@ -11,4 +11,6 @@
 // frames in your spriteset.
 
 // i.e. 
-// spr_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [0]);
+// sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [0]);
+
+sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [(maincounter >> 1) & 7]);

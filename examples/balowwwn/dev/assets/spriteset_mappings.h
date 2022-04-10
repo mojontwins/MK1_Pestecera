@@ -1,5 +1,5 @@
 // MTE MK1 (la Churrera) v5.0
-// Copyleft 2010-2014, 2020 by the Mojon Twins
+// Copyleft 2010-2014, 2020-2021 by the Mojon Twins
 
 // Spriteset mappings. 
 // One entry per sprite face in the spriteset!

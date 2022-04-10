@@ -24,18 +24,18 @@
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
-#define MAP_W						6		//
-#define MAP_H						5		// Map dimensions in screens
-#define SCR_INICIO					24		// Initial screen
-#define PLAYER_INI_X				1		//
-#define PLAYER_INI_Y				2		// Initial tile coordinates
+#define MAP_W						5		//
+#define MAP_H						7		// Map dimensions in screens
+#define SCR_INICIO					19		// Initial screen
+#define PLAYER_INI_X				10		//
+#define PLAYER_INI_Y				3		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS			25		// Objects to get to finish game
-#define PLAYER_LIFE 				10		// Max and starting life gauge.
-#define PLAYER_REFILL				1		// Life recharge
-#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
+#define PLAYER_NUM_OBJETOS			31		// Objects to get to finish game
+#define PLAYER_LIFE 				99		// Max and starting life gauge.
+#define PLAYER_REFILL				25		// Life recharge
+//#define PLAYER_DONT_LIMIT_LIFE			// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level
@@ -54,8 +54,8 @@
 // Bounding box size
 // -----------------
 											// Comment both for normal 16x16 bounding box
-#define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
-//#define BOUNDING_BOX_8_CENTERED			// 8x8 aligned to center in 16x16
+//#define BOUNDING_BOX_8_BOTTOM				// 8x8 aligned to bottom center in 16x16
+#define BOUNDING_BOX_8_CENTERED				// 8x8 aligned to center in 16x16
 //#define BOUNDING_BOX_12X2_CENTERED 		// 8x2 aligned to center in 16x16
 #define SMALL_COLLISION 					// 8x8 centered collision instead of 12x12
 
@@ -63,7 +63,7 @@
 // -------------------
 
 //#define PLAYER_CHECK_MAP_BOUNDARIES		// If defined, you can't exit the map.
-//#define DIRECT_TO_PLAY					// If defined, title screen is also the game frame.
+#define DIRECT_TO_PLAY						// If defined, title screen is also the game frame.
 //#define DEACTIVATE_KEYS 					// If defined, keys are not present.
 //#define DEACTIVATE_OBJECTS				// If defined, objects are not present.
 //#define DEACTIVATE_REFILLS				// If defined, life refills are not present.
@@ -75,7 +75,7 @@
 #define PLAYER_BOUNCES						// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
 //#define SLOW_DRAIN						// Works with bounces. Drain is 4 times slower
-#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
+//#define PLAYER_FLICKERS 					// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS					// If defined, exiting the map bottomwise kills.
 #define WALLS_STOP_ENEMIES					// If defined, enemies react to the scenary
 #define EVERYTHING_IS_A_WALL				// If defined, any tile <> type 0 is a wall, otherwise just 8.
@@ -112,7 +112,7 @@
 // Pushable tile
 // -------------
 
-//#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
+#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
 //#define FIRE_TO_PUSH						// If defined, you have to press FIRE+direction to push.
 //#define ENABLE_PUSHED_SCRIPTING			// If defined, nice goodies (below) are activated:
 //#define MOVED_TILE_FLAG			1		// Current tile "overwritten" with block is stored here.
@@ -142,7 +142,7 @@
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
 //#define BREAKABLE_WALLS 					// Breakable walls
-#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
+//#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
 //#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
 
 // Scripting
@@ -183,9 +183,9 @@
 // Top view:
 // ---------
 
-//#define PLAYER_GENITAL				// Enable top view.
+#define PLAYER_GENITAL						// Enable top view.
 //#define TOP_OVER_SIDE 					// UP/DOWN has priority over LEFT/RIGHT
-//#define PLAYER_BOUNCE_WITH_WALLS			// Bounce when hitting a wall. Only really useful in MOGGY_STYLE mode
+#define PLAYER_BOUNCE_WITH_WALLS			// Bounce when hitting a wall. Only really useful in MOGGY_STYLE mode
 
 // Side view:
 // ----------
@@ -268,16 +268,16 @@ extern unsigned char def_keys [0];
 // This sections defines how stuff is rendered, where to show counters, etcetera
 // Set to 99 so it doesn't show even if it should!!
 
-#define VIEWPORT_X					1		//
+#define VIEWPORT_X					0		//
 #define VIEWPORT_Y					2		// Viewport character coordinates
-#define LIFE_X						5		//
-#define LIFE_Y						0		// Life gauge counter character coordinates
+#define LIFE_X						30		//
+#define LIFE_Y						8		// Life gauge counter character coordinates
 #define OBJECTS_X					30		//
-#define OBJECTS_Y					0		// Objects counter character coordinates
+#define OBJECTS_Y					12		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-#define KEYS_X						16		//
-#define KEYS_Y						0		// Keys counter character coordinates
+#define KEYS_X						30		//
+#define KEYS_Y						16		// Keys counter character coordinates
 #define KILLED_X					99		//
 #define KILLED_Y					99		// Kills counter character coordinates
 #define AMMO_X						99		// 
@@ -299,7 +299,7 @@ extern unsigned char def_keys [0];
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
-//#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
 //#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT
@@ -328,9 +328,9 @@ extern unsigned char def_keys [0];
 
 // IV.2. Horizontal (side view) or general (top view) movement.
 
-#define PLAYER_MAX_VX				192 	// Max velocity (192/64 = 3 p?xels/frame)
-#define PLAYER_AX					24		// Acceleration (24/64 = 0,375 p?xels/frame^2)
-#define PLAYER_RX					32		// Friction (32/64 = 0,5 p?xels/frame^2)
+#define PLAYER_MAX_VX				256 	// Max velocity (192/64 = 3 p?xels/frame)
+#define PLAYER_AX					16		// Acceleration (24/64 = 0,375 p?xels/frame^2)
+#define PLAYER_RX					2		// Friction (32/64 = 0,5 p?xels/frame^2)
 
 // ============================================================================
 // V. Tile behaviour
@@ -351,8 +351,13 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 8, 8, 0, 0, 8, 8, 1, 8, 8, 8, 8, 8, 8,10,10,
+	0, 1, 8, 8, 8, 8, 1, 0, 0, 8, 8, 0, 0, 1,10,10,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 #endif
+
+//
+
+#define BOUNCE_EXPRESSION_Y 		(-p_vy)
+#define BOUNCE_EXPRESSION_X 		(-p_vx)
