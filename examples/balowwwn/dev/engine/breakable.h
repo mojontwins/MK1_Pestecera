@@ -6,7 +6,11 @@
 void break_wall (void) {
 	gpaux = COORDS (_x, _y);
 	if (brk_buff [gpaux] < BREAKABLE_WALLS_LIFE) {
-		++ brk_buff [gpaux];
+		#ifdef BREAKABLE_WALLS_BREAKING
+			_t = BREAKABLE_WALLS_BREAKING;
+			_n = behs [_t]; 
+			update_tile ();
+		#endif
 		gpit = SFX_BREAKABLE_HIT;			
 		#include "my/ci/on_wall_hit.h"
 	} else {
@@ -20,6 +24,6 @@ void break_wall (void) {
 		gpit = SFX_BREAKABLE_BREAK;
 		#include "my/ci/on_wall_broken.h"
 	}
+	++ brk_buff [gpaux];
 	AY_PLAY_SOUND (gpit);
-	
 }

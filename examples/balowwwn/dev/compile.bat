@@ -22,7 +22,14 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 5 7 15 10 15 packed fixmappy > nul
+rem ..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 5 7 15 10 15 packed fixmappy > nul
+..\..\..\src\utils\mapcnvbin.exe ..\map\mapa.map ..\bin\mapa.bin 5 7 15 10 15 packed fixmappy > nul
+
+rem We need a compressed copy for this game
+..\..\..\src\utils\apultra.exe ..\bin\mapa.bin ..\bin\mapa.c.bin 
+
+rem Also, zeroing the map we'll get a shorter tape file!
+copy my\map_all_zeroes.h assets\mapa.h /y
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
