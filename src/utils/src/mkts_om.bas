@@ -871,7 +871,121 @@ End Sub
 
 Sub generateMixedMappings (mappingsFn As String)
 	' Reads `spriteMetaData` and outputs custom spriteset mappings in `mappingsFn`
+	Dim As Integer i, fOut, offsetCounter
+	Dim As String functionSuffix
 
+	fiPuts ("Generating " & mappingsFn & " from spriteMetaData (" & spriteMetaIndex & " entries)")
+
+	fOut = FreeFile
+	Open mappingsFn For Output As fOut
+
+	Print #fOut, "// MTE MK1 (la Churrera) v5.10"
+	Print #fOut, "// Copyleft 2010-2014, 2020-2022 by the Mojon Twins"
+	Print #fOut, ""
+	Print #fOut, "// Spriteset mappings. "
+	Print #fOut, "// One entry per sprite face in the spriteset!"
+	Print #fOut, ""
+	Print #fOut, "#define SWsprites_ALL  16"
+	Print #fOut, ""
+
+	' write cox
+
+	Print #fOut, "unsigned char sm_cox [] = {"
+
+	For i = 0 To spriteMetaIndex - 1
+		If i Mod 8 = 0 Then Print #fOut, "	";
+		Print #fOut, "0x" & Hex (spriteMetaData (i).ox, 2);
+		If i < spriteMetaIndex - 1 Then Print #fOut, ", ";
+		If i Mod 8 = 7 Or i = spriteMetaIndex - 1 Then 
+			Print #fOut, ""
+		End If
+	Next i
+	Print #fOut, "};"
+	Print #fOut, ""
+
+	' write coy
+
+	Print #fOut, "unsigned char sm_coy [] = {"
+
+	For i = 0 To spriteMetaIndex - 1
+		If i Mod 8 = 0 Then Print #fOut, "	";
+		Print #fOut, "0x" & Hex (spriteMetaData (i).oy, 2);
+		If i < spriteMetaIndex - 1 Then Print #fOut, ", ";
+		If i Mod 8 = 7 Or i = spriteMetaIndex - 1 Then 
+			Print #fOut, ""
+		End If
+	Next i
+	Print #fOut, "};"
+	Print #fOut, ""
+
+	' write invfunc
+
+	Print #fOut, "void *sm_invfunc [] = {"
+	For i = 0 To spriteMetaIndex - 1
+		If pixelPerfectm1 Then
+			functionSuffix = "" & (spriteMetaData (i).w * 8) & "x" & (spriteMetaData (i).h * 8)
+		Else
+			functionSuffix = "" & (spriteMetaData (i).w * 4) & "x" & (spriteMetaData (i).h * 8)
+		End If
+
+		If i Mod 4 = 0 Then Print #fOut, "	";
+		Print #fOut, "cpc_PutSpTileMap" & functionSuffix;
+		If pixelperfectm0 Then Print #fOut, "Px";
+		If pixelperfectm1 Then Print #fOut, "PxM1";
+		If i < spriteMetaIndex - 1 Then Print #fOut, ", ";
+		If i Mod 4 = 3 Or i = spriteMetaIndex - 1 Then 
+			Print #fOut, ""
+		End If
+	Next i
+	Print #fOut, "};"
+	Print #fOut, ""
+
+	' write sm_updfunc
+
+	Print #fOut, "void *sm_updfunc [] = {"
+	For i = 0 To spriteMetaIndex - 1
+		If pixelPerfectm1 Then
+			functionSuffix = "" & (spriteMetaData (i).w * 8) & "x" & (spriteMetaData (i).h * 8)
+		Else
+			functionSuffix = "" & (spriteMetaData (i).w * 4) & "x" & (spriteMetaData (i).h * 8)
+		End If
+
+		If i Mod 4 = 0 Then Print #fOut, "	";
+		Print #fOut, "cpc_PutTrSp" & functionSuffix & "TileMap2b";
+		If pixelperfectm0 Then Print #fOut, "Px";
+		If pixelperfectm1 Then Print #fOut, "PxM1";
+		If i < spriteMetaIndex - 1 Then Print #fOut, ", ";
+		If i Mod 4 = 3 Or i = spriteMetaIndex - 1 Then 
+			Print #fOut, ""
+		End If
+	Next i
+	Print #fOut, "};"
+	Print #fOut, ""
+
+	Print #fOut, "extern void *sm_sprptr [0];"
+	Print #fOut, "#asm"
+	Print #fOut, "	._sm_sprptr"
+	offsetCounter = 0
+	For i = 0 To spriteMetaIndex - 1
+		If i Mod 4 = 0 Then Print #fOut, "		defw ";
+		Print #fOut, "_sprites + 0x" & Hex (offsetCounter, 4);
+		If i Mod 4 < 3 And i < spriteMetaIndex - 1 Then Print #fOut, ", ";
+		If i Mod 4 = 3 Or i = spriteMetaIndex - 1 Then 
+			Print #fOut, ""
+		End If
+		offsetCounter = offsetCounter + 16 * spriteMetaData (i).h * spriteMetaData (i).w
+	Next i
+	Print #fOut, "#endasm"
+	Print #fOut, ""
+
+	Print #fOut, "// A list of MK1v4-friendly macros"
+	offsetCounter = 0
+	For i = 0 To spriteMetaIndex - 1
+		Print #fOut, "#define SPRITE_" & Hex (i, 2) & " (_sprites + 0x" & Hex (offsetCounter, 4) & ")"
+		offsetCounter = offsetCounter + 16 * spriteMetaData (i).h * spriteMetaData (i).w
+	Next i
+	Print #fOut, ""
+	Close fOut
 End Sub
 
 Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Integer, max As Integer)
@@ -897,8 +1011,8 @@ Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Int
 	fOut = FreeFile
 	Open mappingsFn For Output As fOut
 
-	Print #fOut, "// MTE MK1 (la Churrera) v5.0"
-	Print #fOut, "// Copyleft 2010-2014, 2020-2021 by the Mojon Twins"
+	Print #fOut, "// MTE MK1 (la Churrera) v5.10"
+	Print #fOut, "// Copyleft 2010-2014, 2020-2022 by the Mojon Twins"
 	Print #fOut, ""
 	Print #fOut, "// Spriteset mappings. "
 	Print #fOut, "// One entry per sprite face in the spriteset!"
