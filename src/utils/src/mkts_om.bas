@@ -792,6 +792,88 @@ Sub doSprites (img As Any Ptr, xc0 As Integer, yc0 As Integer, w As Integer, h A
 	End Select
 End Sub
 
+Sub cpcScriptCut (img As Any Ptr, _
+	x0 As Integer, y0 As Integer, hMetaPixels As Integer, hMeta As Integer, wMeta As Integer, _
+	ox As Integer, oy As Integer)
+
+	' Do cut the sprite & fill main bin
+	cpcCutSimpleSprite img, x0, y0, hMetaPixels, wMeta
+
+	' Add an entry to `spriteMetaData`
+	spriteMetaData (spriteMetaIndex).w = wMeta
+	spriteMetaData (spriteMetaIndex).h = hMeta
+	spriteMetaData (spriteMetaIndex).ox = ox
+	spriteMetaData (spriteMetaIndex).oy = oy
+
+	spriteMetaIndex = spriteMetaIndex + 1
+
+End Sub
+
+Sub cpcDoSpriteScript (img As Any Ptr, spriteScript As String) 
+	Dim As Integer fScript
+	Dim As Integer x0, y0
+	Dim As Integer wMeta, hMeta, wMetaPixels, hMetaPixels
+	Dim As Integer ox, oy
+
+	Dim As String lineIn
+	Dim As String tokens (32)
+
+	fScript = FreeFile
+	Open spriteScript For Input As fScript
+
+	While Not Eof (fScript)
+		Do
+			Line Input #fScript, lineIn
+			lineIn = Trim (lineIn, Any Chr (9) + Chr (32))
+		Loop While Not Eof (fScript) And lineIn = ""
+		If debug Then Puts lineIn
+		parseTokenizeString lineIn, tokens (), ",;" & Chr (9), "#"
+
+		Select Case Lcase (tokens (0))
+			Case "cut":
+				x0 = Val (tokens (1)) * patternWidthInPixels
+				y0 = Val (tokens (2)) * 8
+				wMeta = Val (tokens (3))
+				hMeta = Val (tokens (4))
+				ox = Val (tokens (5))
+				oy = Val (tokens (6))
+				wMetaPixels = wMeta * patternWidthInPixels
+				hMetaPixels = hMeta * 8
+
+				cpcScriptCut (img, x0, y0, hMetaPixels, hMeta, wMeta, ox, oy)
+
+			Case "cutp":
+				x0 = Val (tokens (1))
+				y0 = Val (tokens (2))
+				wMeta = Val (tokens (3)) \ patternWidthInPixels
+				hMeta = Val (tokens (4)) \ 8
+				ox = Val (tokens (5))
+				oy = Val (tokens (6))
+				wMetaPixels = wMeta * patternWidthInPixels
+				hMetaPixels = hMeta * 8
+
+				cpcScriptCut (img, x0, y0, hMetaPixels, hMeta, wMeta, ox, oy)
+		End Select
+	Wend
+
+	Close
+
+End Sub
+
+Sub doSpriteScript (img As Any Ptr, spriteScript As String)
+	Select Case platform 
+		Case PLATFORM_ZX:
+			Puts ("Not ready yet ... :-(")
+		Case PLATFORM_CPC
+			cpcDoSpriteScript img, spriteScript
+	End Select
+End Sub
+
+Sub generateMixedMappings (mappingsFn As String)
+	' Reads `spriteMetaData` and outputs custom spriteset mappings in `mappingsFn`
+
+End Sub
+
 Sub generateStraitMappings (mappingsFn As String, wMeta As Integer, hMeta As Integer, max As Integer)
 	Dim As Integer cox, coy, cellSize, offsetCounter, i, fOut
 	Dim As String functionSuffix
@@ -1415,6 +1497,13 @@ If sclpGetValue ("mode") <> "scripted" Then
 	End If
 End If
 
+If Lcase (sclpGetValue ("mode")) = "spritescript" Then
+	If sclpGetValue ("script") = "" Then
+		fiPuts ("Error! No script file!")
+		End
+	End If
+End If
+
 ' offset
 If sclpGetValue ("offset") <> "" Then
 	parseCoordinatesString sclpGetValue ("offset"), coords ()
@@ -1476,7 +1565,7 @@ if mappingsFn <> "" Then fiPuts "output mappings to " & mappingsFn
 
 ' And do.
 
-Select Case sclpGetValue ("mode")
+Select Case Lcase (sclpGetValue ("mode"))
 	Case "pal", "pals"
 		If Trim (prefix) = "" Then prefix = "my_inks"
 		doPals img, prefix, outputBaseFn & ".h"
@@ -1505,6 +1594,12 @@ Select Case sclpGetValue ("mode")
 		doSprites img, xc0, yc0, w, h, wMeta, hMeta, max
 		writeFullBinary outputBaseFn & ".bin"
 		if mappingsFn <> "" Then generateStraitMappings mappingsFn, wMeta, hMeta, cutSpriteCount
+		ImageDestroy img
+
+	Case "spritescript"
+		doSpriteScript img, sclpGetValue ("script")
+		writeFullBinary outputBaseFn & ".bin"
+		if mappingsFn <> "" Then generateMixedMappings mappingsFn
 		ImageDestroy img
 
 	Case "bg"

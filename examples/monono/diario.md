@@ -75,5 +75,16 @@ He visto que ya hay un modo scripted que, sinceramente, no sé para qué lo puse
 
 Tengo que implementar las funciones `doSpriteScript (img As Any Ptr, spriteScript As String)` y `generateMixedMappings (mappingsFx As String)` y lo tendré hecho.
 
+Los mappings referencian no solo a las direcciones de memoria de cada sprite en el binario, sino a qué rutinas de CPCRSLIB debe llamarse para pintar cada uno. Mi idea es tratar de permitir dimensiones arbitrarias aunque no existan rutinas en CPCRSLIB, más que nada con vistas al futuro.
 
+Veamos cuál fue la nomenclatura que me inventé en tiempos para las diferentes rutinas, siendo wMeta y hMeta el tamaño en patrones (o celdas):
 
+`invFunc` = `cpc_PutSpTileMap` & W & `x` & H
+`updfunc` = `cpc_PutTrSp` & W & `x` & H & `TileMap2b` & PPS, donde
+
+* Si estamos en Modo 0, W = wMeta * 4, 
+* Si estamos en Modo 1, W = wMeta * 8,
+* H = hMeta * 8
+* PPS valdrá `Px` si tenemos modo 0 pixel perfect o `PxM1` si tenemos modo 1 pixel perfect
+
+No dejan de referirse a número de pixels. Lo que puedo hacer es precalcular todo esto a la hora de hacer los recortes. Tengo que tener en cuenta `pixelperfectm1` y `brickMultiplier` (que puede valer 2) a la hora de calcular las posiciones de recorte y los anchos. Espero no liarme mucho :-)
