@@ -770,11 +770,11 @@ void draw_scr (void) {
 				jr  z, _mons_col_sc_x_horz_positive
 
 			._mons_col_sc_x_horz_negative_zero
-			add d
+				add d
 				jr  _mons_col_sc_x_horz_set
 
 			._mons_col_sc_x_horz_positive
-			add e				
+				add e				
 
 			._mons_col_sc_x_horz_set
 				srl a 

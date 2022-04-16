@@ -73,7 +73,7 @@ Puedo añadir el `mode=spriteScript` complementado con un parámetro `script=XXX
 
 He visto que ya hay un modo scripted que, sinceramente, no sé para qué lo puse (¿algo de MK3?) pero da igual.
 
-Tengo que implementar las funciones `doSpriteScript (img As Any Ptr, spriteScript As String)` y `generateMixedMappings (mappingsFx As String)` y lo tendré hecho.
+Tengo que implementar las funciones `doSpriteScript (img As Any Ptr, spriteScript As String)` y `generateMixedMappings (mappingsFn As String)` y lo tendré hecho.
 
 Los mappings referencian no solo a las direcciones de memoria de cada sprite en el binario, sino a qué rutinas de CPCRSLIB debe llamarse para pintar cada uno. Mi idea es tratar de permitir dimensiones arbitrarias aunque no existan rutinas en CPCRSLIB, más que nada con vistas al futuro.
 
@@ -88,3 +88,38 @@ Veamos cuál fue la nomenclatura que me inventé en tiempos para las diferentes 
 * PPS valdrá `Px` si tenemos modo 0 pixel perfect o `PxM1` si tenemos modo 1 pixel perfect
 
 No dejan de referirse a número de pixels. Lo que puedo hacer es precalcular todo esto a la hora de hacer los recortes. Tengo que tener en cuenta `pixelperfectm1` y `brickMultiplier` (que puede valer 2) a la hora de calcular las posiciones de recorte y los anchos. Espero no liarme mucho :-)
+
+## 20220416
+
+Lo he ejecutado con este script tonto para recortar los sprites de Monono:
+
+```spt
+	# Player: 8 cells, 16x24
+	cut 0, 0, 2, 3, 0, -8
+	cut 2, 0, 2, 3, 0, -8
+	cut 4, 0, 2, 3, 0, -8
+	cut 6, 0, 2, 3, 0, -8
+	cut 8, 0, 2, 3, 0, -8
+	cut 10, 0, 2, 3, 0, -8
+	cut 12, 0, 2, 3, 0, -8
+	cut 14, 0, 2, 3, 0, -8
+
+	# Standard enems: 8 cells, 16x16
+	cut 0, 3, 2, 2, 0, 0
+	cut 2, 3, 2, 2, 0, 0
+	cut 4, 3, 2, 2, 0, 0
+	cut 6, 3, 2, 2, 0, 0
+	cut 8, 3, 2, 2, 0, 0
+	cut 10, 3, 2, 2, 0, 0
+	cut 12, 3, 2, 2, 0, 0
+	cut 14, 3, 2, 2, 0, 0
+```
+
+¡Y parece que funciona! Bueno, al menos los mappings los ha exportado bien... Los gráficos si eso ya me lo creeré cuando lo vea en acción.
+
+Aquí entramos en lo de siempre: muchas ideas pero pocas ganas o más bien ganas de sobra pero poca energía y menos tiempo. Quería hacer monono de nuevo. Ahora recuerdo que quizá el mapa de la versión de NES lo podría aprovechar, en principio, y luego modificar. Tenía cosas interesantes, si mal no recuerdo... Voy a echarle un ojaldrio.
+
+Remember que en Monono NES se podía saltar sobre los enemigos, aunque no hicieran daño. En principio puedo replicar esto para ver que todo funciona y luego ya modificar o tirar y hacer de nuevo.
+
+El mapa de NES es de 16x12. En las reducciones automaticas se pierde mucho y luego hay que ir retocando... quizá sea mejor ponerse y copiarlo mano.
+

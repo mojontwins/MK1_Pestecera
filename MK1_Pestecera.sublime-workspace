@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"offset",
+				"offsetCounter\tabc"
+			],
+			[
+				"spriteMeta",
+				"spriteMetaData\tabc"
+			],
+			[
+				"function",
+				"functionSuffix\tabc"
+			],
+			[
 				"KEY_B",
 				"KEY_BUTTON_B\tabc"
 			],
@@ -502,23 +514,40 @@
 			[
 				"vcard_",
 				"vcard_filename"
-			],
-			[
-				"toa",
-				"total_entries"
-			],
-			[
-				"write",
-				"write_log"
-			],
-			[
-				"webdav_abook",
-				"webdav_abook_user_url"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"contents": "# Monono\n\nHe tenido una idea de remake de Monono: \n\n* Organizar el mapa más verticalmente, y dividirlo en etapas.\n* Hay que subir y ganar etapas.\n* Caer desde muy alto te hace perder una vida.\n* Si te matan, se reinicia la etapa.\n* Meter tiles que se desmoronan al pisarlos y otras cosas de verticalidad.\n\n## 20220414\n\nUna de las ideas de este juego es preparar por fin el tema del script para recortar spritesets con cells de diferentes tamaños que sea capaz de exportar un binario compuesto y el `spriteset_mappings.h` correspondiente.\n\nPrimero empezaré muy fácilmente: el script se compondrá de sentencias de este tipo\n\n```\n\tCUT x, y, w, h, ox, oy\n\tCUTP x, y, w, h, ox, oy\n```\n\nLa diferencia es que cut pilla las medidas en \"cells\" y la segunda en pixels. En realidad deberían valer para lo mismo porque en rigor sólo admitiremos sprites de 1x1, 2x2 o 2x3 cells. Los demás deberían cascar un error. `ox` y `oy` siepre son desplazamientos en pixels teniendo en cuenta que para el motor las entidades siempre se considerarán de 16x16 y su origen está en la esquina superior izquierda.\n\nTengo que ver como hacer con FreeBASIC para sacar cosas por STDERR en lugar de STDOUT (sobre todo si el `> nul` de windows solo para STDOUT, pero esto es irme por las ramas un poco).\n\nEl tema es que cada CUT debería cortar un sprite, añadirlo al binario, y meter una entrada en un array de descriptores de sprites que luego se recorrerá para generar un `spriteset_mappings.h` correcto.\n\nLa estructura podría conenter:\n\n```\n\tType TypeSpriteEntry\n\t\tw As Integer\n\t\th As Integer\n\t\tox As Integer\n\t\toy As Integer\n\tEnd Type\n```\n\nLo primero será ver como va mkts y si tiene una función que recorte un sólo sprite y que sea la que se llama desde las funciones que recortan spritesets homegeneos, y si no, encapsularla debidamente.\n\n## 20220515 \n\nComo sospechaba, no está encapsulado el código que recorta un único sprite, así que será lo primero que haga. Sería sacar el código de `cpcDoSprites` en una función con este aspecto:\n\n```bas\n\tSub cpcCutSimpleSprite (img As Any Ptr, x As Integer, y As Integer, _\n\t\thMetaPixels As Integer, wMeta As Integer)\n\n\t\t'' hMetaPixels = sprite height in pixels,\n\t\t'' wMeta = sprite width in patterns.\n\n\t\t'' This function will write (hMetaPixels * wMeta * 2) bytes to the main binary\n\n\t\tDim As Integer xa\n\t\tDim As Integer yy\n\t\tDim As Integer xx\n\n\t\tFor yy = 0 To hMetaPixels - 1\n\t\t\txa = x\n\t\t\tFor xx = 0 To wMeta - 1\n\t\t\t\tmbWrite cpcGetBitmapFrom (xa, y + yy, img)\n\t\t\t\tmbWrite cpcGetBitmapFrom (xa + 2 * brickMultiplier, y + yy, img)\n\t\t\t\txa = xa + patternWidthInPixels\n\t\t\tNext xx\n\t\tNext yy\n\n\tEnd Sub\n```\n\nCon esto hecho, solo se trata de hacer un sencillo parser que vaya tirando bytes al binario llamando a esta función y añadiendo entradas en el array `spriteMetaData` que se indexa con `spriteMetaIndex`.\n\nPuedo añadir el `mode=spriteScript` complementado con un parámetro `script=XXX` con la ruta al script con los comandos para recortar el spriteset. \n\nHe visto que ya hay un modo scripted que, sinceramente, no sé para qué lo puse (¿algo de MK3?) pero da igual.\n\nTengo que implementar las funciones `doSpriteScript (img As Any Ptr, spriteScript As String)` y `generateMixedMappings (mappingsFn As String)` y lo tendré hecho.\n\nLos mappings referencian no solo a las direcciones de memoria de cada sprite en el binario, sino a qué rutinas de CPCRSLIB debe llamarse para pintar cada uno. Mi idea es tratar de permitir dimensiones arbitrarias aunque no existan rutinas en CPCRSLIB, más que nada con vistas al futuro.\n\nVeamos cuál fue la nomenclatura que me inventé en tiempos para las diferentes rutinas, siendo wMeta y hMeta el tamaño en patrones (o celdas):\n\n`invFunc` = `cpc_PutSpTileMap` & W & `x` & H\n`updfunc` = `cpc_PutTrSp` & W & `x` & H & `TileMap2b` & PPS, donde\n\n* Si estamos en Modo 0, W = wMeta * 4, \n* Si estamos en Modo 1, W = wMeta * 8,\n* H = hMeta * 8\n* PPS valdrá `Px` si tenemos modo 0 pixel perfect o `PxM1` si tenemos modo 1 pixel perfect\n\nNo dejan de referirse a número de pixels. Lo que puedo hacer es precalcular todo esto a la hora de hacer los recortes. Tengo que tener en cuenta `pixelperfectm1` y `brickMultiplier` (que puede valer 2) a la hora de calcular las posiciones de recorte y los anchos. Espero no liarme mucho :-)\n\n",
+			"file": "examples/monono/diario.md",
+			"file_size": 4392,
+			"file_write_time": 132945026115781036,
+			"settings":
+			{
+				"buffer_size": 4264,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/utils/src/mkts_om.bas",
+			"settings":
+			{
+				"buffer_size": 45123,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/monono/gfx/spriteset.spt",
+			"settings":
+			{
+				"buffer_size": 408,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -606,7 +635,11 @@
 	[
 		"/C/git/MK1_Pestecera",
 		"/C/git/MK1_Pestecera/examples",
-		"/C/git/MK1_Pestecera/examples/monono"
+		"/C/git/MK1_Pestecera/examples/monono",
+		"/C/git/MK1_Pestecera/examples/monono/gfx",
+		"/C/git/MK1_Pestecera/src",
+		"/C/git/MK1_Pestecera/src/utils",
+		"/C/git/MK1_Pestecera/src/utils/src"
 	],
 	"file_history":
 	[
@@ -785,6 +818,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"max",
+			"2020-2021",
+			"5.0",
+			"spritescript",
+			"dosprites",
+			"strait",
+			"brick",
+			"straitmapp",
+			"scripted",
+			"0.6.20210822",
 			"both",
 			"..\\utils\\",
 			"BOTH_KEYS_JUMP",
@@ -902,17 +945,7 @@
 			"unpacked",
 			"19",
 			"MAP_UNPACKED",
-			"sprites",
-			"spacer",
-			"entering_game",
-			"\"new level\"",
-			"blackout_area",
-			"blackout",
-			"jr",
-			"en_an_dead_row",
-			"KEY_",
-			"KEY_ç",
-			"bolts"
+			"sprites"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -920,6 +953,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"spriteMetaIndex",
+			"2020-2022",
+			"5.10",
+			"0.7.20220415",
 			"..\\..\\..\\src\\utils\\",
 			"",
 			"BA00",
@@ -985,13 +1022,100 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "examples/monono/diario.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3986,
+								3986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 895.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 1,
+					"file": "src/utils/src/mkts_om.bas",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25753,
+								25753
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax QBasic/QBasic.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12325.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "examples/monono/gfx/spriteset.spt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

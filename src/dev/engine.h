@@ -158,6 +158,7 @@ void espera_activa (int espera) {
 					call _attr_1b
 					xor a
 					or  l
+					and 0x7f
 					jp  nz, push_boxes_end
 
 					// && x1 < 15
@@ -763,49 +764,59 @@ void draw_scr (void) {
 			._mons_col_sc_x_compare
 
 			// cx1 = cx2 = (_en_mx > 0 ? _en_x + 13 : _en_x + 2) >> 4;
-					ld  a, (__en_mx)
-					and 0x80
-					ld  a, (__en_x)
-					jr  z, _mons_col_sc_x_horz_positive
+				ld  a, (__en_mx)
+				and 0x80
+				ld  a, (__en_x)
+				jr  z, _mons_col_sc_x_horz_positive
 
-				._mons_col_sc_x_horz_negative_zero
+			._mons_col_sc_x_horz_negative_zero
 				add d
-					jr  _mons_col_sc_x_horz_set
+				jr  _mons_col_sc_x_horz_set
 
-				._mons_col_sc_x_horz_positive
+			._mons_col_sc_x_horz_positive
 				add e				
 
-				._mons_col_sc_x_horz_set
-					srl a 
-					srl a 
-					srl a  
-					srl a
+			._mons_col_sc_x_horz_set
+				srl a 
+				srl a 
+				srl a  
+				srl a
 
-					ld  (_cx1), a
-					ld  (_cx2), a
+				ld  (_cx1), a
+				ld  (_cx2), a
 
 			// cy1 = (_en_y + 7) >> 4; cy2 = (_en_y + 8) >> 4;
-	
-					ld  a, (__en_y)
+
+				ld  a, (__en_y)
 				add h
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cy1), a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cy1), a
 
 				ld  a, (__en_y)
 				add l
 
-					srl a
-					srl a
-					srl a
-					srl a
-					ld  (_cy2), a
-			#endasm
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_cy2), a
+		#endasm
 
 		cm_two_points ();
+
+		#asm
+				ld  a, (_at1)
+				and 0x7F
+				ld  (_at1), a
+				ld  a, (_at2)
+				and 0x7F
+				ld  (_at2), a
+		#endasm
+
 		#ifdef EVERYTHING_IS_A_WALL
 			return (at1 || at2);
 		#else
