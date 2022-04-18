@@ -28,7 +28,7 @@ LIB cpc_UpdTileTableClp
     ld  ixh, d
     ld  ixl, e
 
-    ; Tendré que marcar 4, 6 o 9 cuadros dependiendo de las alineaciones.
+    ; Tendré que marcar 4, 6, o 9 cuadros dependiendo de las alineaciones.
 
     ld e, (ix + 10) ; ox
     ld d, (ix + 11) ; oy

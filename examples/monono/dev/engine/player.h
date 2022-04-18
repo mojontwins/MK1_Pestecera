@@ -238,7 +238,7 @@ unsigned char player_move (void) {
 					._player_gravity_done
 
 					#ifdef PLAYER_CUMULATIVE_JUMP
-						ld  a, (_p_jmp_on)
+						ld  a, (_p_saltando)
 						or  a
 						jr  nz, _player_gravity_p_gotten_done
 					#endif
@@ -419,6 +419,9 @@ unsigned char player_move (void) {
 			#ifdef PLAYER_BOUNCE_WITH_WALLS
 				p_vy = BOUNCE_EXPRESSION_Y;
 			#else
+				#ifdef PLAYER_CUMULATIVE_JUMP
+					if (p_saltando == 0)
+				#endif				
 				p_vy = 0;
 			#endif
 				
@@ -533,18 +536,28 @@ unsigned char player_move (void) {
 			#endif
 
 			if (rda) {
-				if (p_saltando == 0) {
+				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (possee || p_gotten || hit_v) {
+						p_vy = -p_vy - PLAYER_VY_INICIAL_SALTO;
+						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
 						p_saltando = 1;
 						p_cont_salto = 0;
 						AY_PLAY_SOUND (SFX_JUMP);
 					}
-				} else {
-					p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
-					if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
-					++ p_cont_salto;
-					if (p_cont_salto == 9) p_saltando = 0;
-				}
+				#else
+					if (p_saltando == 0) {
+						if (possee || p_gotten || hit_v) {
+							p_saltando = 1;
+							p_cont_salto = 0;
+							AY_PLAY_SOUND (SFX_JUMP);
+						}
+					} else {
+						p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
+						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
+						++ p_cont_salto;
+						if (p_cont_salto == 9) p_saltando = 0;
+					}
+				#endif
 			} else p_saltando = 0;
 		}
 	#endif

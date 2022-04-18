@@ -100,9 +100,9 @@
 //#define FANTIES_LIFE_GAUGE		10		// Amount of shots needed to kill flying enemies.
 //#define FANTIES_TYPE_HOMING				// Unset for simple fanties.
 
-//#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
-//#define ORTHOSHOOTERS_FREQ 		(rand()&15)
-//#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
+#define ENABLE_ORTHOSHOOTERS				// If defined, orthoshooters are active
+#define ORTHOSHOOTERS_FREQ 			(rand()&15)
+#define ORTHOSHOOTERS_BASE_CELL 	0 		// 99 means DONT SHOW!
 
 // Cocos
 // -----
@@ -112,7 +112,7 @@
 // Pushable tile
 // -------------
 
-//#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
+#define PLAYER_PUSH_BOXES					// If defined, tile #14 is pushable. Must be type 10.
 //#define FIRE_TO_PUSH						// If defined, you have to press FIRE+direction to push.
 //#define ENABLE_PUSHED_SCRIPTING			// If defined, nice goodies (below) are activated:
 //#define MOVED_TILE_FLAG			1		// Current tile "overwritten" with block is stored here.
@@ -141,7 +141,7 @@
 //#define AMMO_REFILL 				50		// ammo refill, using tile 20 (hotspot #4)
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
-//#define BREAKABLE_WALLS 					// Breakable walls
+#define BREAKABLE_WALLS 					// Breakable walls
 #define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
 //#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
 //#define BREAKABLE_WALLS_BREAKING 	31 		// Use this tile while the wall is breaking (if defined)
@@ -184,7 +184,7 @@
 // Top view:
 // ---------
 
-//#define PLAYER_GENITAL				// Enable top view.
+//#define PLAYER_GENITAL					// Enable top view.
 //#define TOP_OVER_SIDE 					// UP/DOWN has priority over LEFT/RIGHT
 //#define PLAYER_BOUNCE_WITH_WALLS			// Bounce when hitting a wall. Only really useful in MOGGY_STYLE mode
 
@@ -192,15 +192,16 @@
 // ----------
 
 #define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
+#define PLAYER_CUMULATIVE_JUMP
 #define BOTH_KEYS_JUMP 						// If jump and no fire, use UP or FIRE to jump (only with keyboard)
 //#define PLAYER_HAS_JETPAC 				// If defined, player can thrust a vertical jetpac
 //#define PLAYER_BOOTEE 					// Always jumping engine. Don't forget to disable "HAS_JUMP" and "HAS_JETPAC"!!!
 //#define PLAYER_VKEYS 						// Use with VENG_SELECTOR. Advanced.
 //#define PLAYER_DISABLE_GRAVITY			// Disable gravity. Advanced.
 
-//#define PLAYER_STEPS_ON_ENEMIES			// If defined, stepping on enemies kills them
+#define PLAYER_STEPS_ON_ENEMIES				// If defined, stepping on enemies kills them
 //#define PLAYER_CAN_STEP_ON_FLAG	1		// If defined, player can only kill when flag # is "1"
-//#define PLAYER_MIN_KILLABLE		3		// Only kill enemies with id >= PLAYER_MIN_KILLABLE
+#define PLAYER_MIN_KILLABLE			4		// Only kill enemies with id >= PLAYER_MIN_KILLABLE
 
 //#define PLAYER_DISABLE_DEFAULT_HENG 		// To disble default horizontal engine (keyrs)
 

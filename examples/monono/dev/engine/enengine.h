@@ -154,7 +154,10 @@ void enems_load (void) {
 		// Sprite creation
 
 		rda = SP_ENEMS_BASE + enit;
-		if (rdb = en_an_base_frame [enit] != 0xff) { 
+		if ((rdb = en_an_base_frame [enit]) != 0xff) { 
+	#asm
+		.redefine_sp_sw
+	#endasm
 			sp_sw [rda].cox = sm_cox [rdb];
 			sp_sw [rda].coy = sm_coy [rdb];
 			sp_sw [rda].invfunc = sm_invfunc [rdb];

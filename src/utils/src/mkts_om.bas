@@ -1625,7 +1625,7 @@ If sclpGetValue ("offset") <> "" Then
 Else
 	xc0 = 0: yc0 = 0
 End If
-fiPuts "Offset (" & xc0 & ", " & yc0 & ")"
+if (sclpGetValue ("mode") <> "spritescript") Then fiPuts "Offset (" & xc0 & ", " & yc0 & ")"
 
 ' metasize
 If sclpGetValue ("mode") = "chars" Then
@@ -1637,7 +1637,7 @@ Else
 	Else
 		wMeta = 2: hMeta = 2
 	End If
-	fiPuts "Metasize (" & wMeta & ", " & hMeta & ")"
+	If (sclpGetValue ("mode") <> "spritescript") Then fiPuts "Metasize (" & wMeta & ", " & hMeta & ")"
 End If
 
 ' size
@@ -1647,15 +1647,15 @@ If sclpGetValue ("size") <> "" Then
 Else
 	w = wIn \ (wMeta * patternwidthInPixels): h = hIn \ (hMeta * 8)
 End If
-fiPuts "Process size (" & w & ", " & h & ")"
+if (sclpGetValue ("mode") <> "spritescript") Then fiPuts "Process size (" & w & ", " & h & ")"
 
 ' tmapoffs
 cPoolIndex = Val (sclpGetValue ("tmapoffs"))
-fiPuts "tmapoffs " & cPoolIndex
+if (sclpGetValue ("mode") <> "spritescript") Then fiPuts "tmapoffs " & cPoolIndex
 
 ' max
 max = Val (sclpGetValue ("max")): If max < 1 Then max = -1	' Which means no limit
-fiPuts "max " & max
+if (sclpGetValue ("mode") <> "spritescript") Then fiPuts "max " & max
 
 ' default Ink
 If sclpGetValue ("defaultink") <> "" Then 

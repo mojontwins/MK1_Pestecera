@@ -16,6 +16,7 @@ cpc_PutSpTileMap8x16Px
 cpc_PutSpTileMap16x16PxM1
 cpc_PutSpTileMap8x24
 cpc_PutSpTileMap8x24Px
+cpc_PutSpTileMap16x24PxM1
 cpc_PutMaskSpTileMap2b
 cpc_PutORSpTileMap2b
 cpc_PutSpTileMap2b
@@ -92,6 +93,7 @@ cpc_PutTrSp8x16TileMap2bPx
 cpc_PutTrSp16x16TileMap2bPxM1
 cpc_PutTrSp8x24TileMap2b
 cpc_PutTrSp8x24TileMap2bPx
+cpc_PutTrSp16x24TileMap2bPxM1
 cpc_PutCpSpTileMap2b
 cpc_GetTiles
 cpc_PutTiles

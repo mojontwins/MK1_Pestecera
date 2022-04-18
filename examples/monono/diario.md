@@ -123,3 +123,13 @@ Remember que en Monono NES se podía saltar sobre los enemigos, aunque no hicier
 
 El mapa de NES es de 16x12. En las reducciones automaticas se pierde mucho y luego hay que ir retocando... quizá sea mejor ponerse y copiarlo mano.
 
+## 20220418
+
+Voy a ir probando el juego aunque solo haya hecho unas cuantas pantallas (6), como en los viejos tiempos. Por lo pronto he tenido que restaurar el código de `PLAYER_CUMULATIVE_JUMP` que había desaparecido totalmente. Lo siguiente es cambiar `compile.bat` para convertir `spriteset.png` usando `spriteset.spt` así:
+
+```cmd
+	..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=spritescript script=..\gfx\spriteset.spt in=..\gfx\spriteset.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h pixelperfectm1 silent > nul
+```
+
+¡También he visto que faltaban las rutinas de 16x24 en Modo 1 al pixel en CPCRSLIB! A meterlas.
+
