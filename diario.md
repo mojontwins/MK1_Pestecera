@@ -8,8 +8,11 @@ C000 pantalla (a trozos)
 C600 room buffers
 CE00 dirty cells (tiles_tocados)
 D600 arrays
+DE00 *FREE*
 DF80 buffers WYZ
 E600 sprite structures
+EE00 *FREE*
+F600 *FREE*
 FE00 LUT
 
 
