@@ -3,6 +3,37 @@
 
 // enengine.h
 
+#asm
+	.calc_baddies_pointer
+		// Point HL to baddies [enoffsmasi]. The struct is 9 or 10 bytes long
+		// so this is baddies + enoffsmasi*(9|10) depending on PLAYER_CAN_FIRE
+		ld 	hl, (_enoffsmasi)
+		ld  h, 0
+
+		#if defined PLAYER_CAN_FIRE || defined COMPRESSED_LEVELS
+			add hl, hl 				// x2
+			ld  d, h
+			ld  e, l 				// DE = x2
+			add hl, hl 				// x4
+			add hl, hl 				// x8
+
+			add hl, de 				// HL = x8 + x2 = x10
+		#else
+			ld  d, h
+			ld  e, l 				// DE = x1
+			add hl, hl 				// x2
+			add hl, hl 				// x4
+			add hl, hl 				// x8
+
+			add hl, de 				// HL = x8 + x1 = x9
+		#endif
+
+		ld  de, _malotes
+		add hl, de
+
+		ret
+#endasm
+
 #ifdef ENABLE_PURSUERS
 	void enems_pursuers_init (void) {
 		/*
@@ -109,13 +140,45 @@ void enems_load (void) {
 					break;
 
 				#ifdef ENABLE_ORTHOSHOOTERS
-					case 5:					
+					case 5:		
+						/*
 						#if ORTHOSHOOTERS_BASE_CELL==99
 							en_an_base_frame [enit] = ORTHOSHOOTERS_BASE_CELL;
 						#else
 							en_an_base_frame [enit] = GENERAL_ENEMS_BASE_CELL + (ORTHOSHOOTERS_BASE_CELL << 1);
 						#endif
-						en_an_state [enit] = malotes [enoffsmasi].t >> 6;
+						rda = malotes [enoffsmasi].t;
+						rda >>= 6;
+						en_an_state [enit] = rda;
+						*/
+
+						#asm
+							.enems_init_ortoshooters
+								ld  bc, (_enit)
+								ld  b, 0
+
+								ld  hl, _en_an_base_frame
+								add hl, bc
+
+								#if ORTOSHOOTERS_BASE_CELL == 99
+									ld  (hl), ORTOSHOOTERS_BASE_CELL
+								#else
+									ld  (hl), GENERAL_ENEMS_BASE_CELL + (ORTHOSHOOTERS_BASE_CELL << 1)
+								#endif
+
+								call calc_baddies_pointer 		// HL -> malotes [enoffsmasi]
+								ld  de, 8 						// .t is offset 8 in struct
+								add hl, de 						// HL -> malotes [enoffsmasi].t
+
+								ld  a, (hl)
+								rlca
+								rlca
+								and 3							// Short for >> 6, unsigned
+
+								ld  hl, _en_an_state
+								add hl, bc 
+								ld  (hl), a
+						#endasm
 						break;
 				#endif
 
@@ -155,9 +218,9 @@ void enems_load (void) {
 
 		rda = SP_ENEMS_BASE + enit;
 		if ((rdb = en_an_base_frame [enit]) != 0xff) { 
-	#asm
-		.redefine_sp_sw
-	#endasm
+			#asm
+				.redefine_sp_sw
+			#endasm
 			sp_sw [rda].cox = sm_cox [rdb];
 			sp_sw [rda].coy = sm_coy [rdb];
 			sp_sw [rda].invfunc = sm_invfunc [rdb];
@@ -230,31 +293,8 @@ void enems_move (void) {
 		#asm
 				// Those values are stored in this order:
 				// x, y, x1, y1, x2, y2, mx, my, t[, life]
-				// Point HL to baddies [enoffsmasi]. The struct is 9 or 10 bytes long
-				// so this is baddies + enoffsmasi*(9|10) depending on PLAYER_CAN_FIRE
-				ld 	hl, (_enoffsmasi)
-				ld  h, 0
 
-			#if defined PLAYER_CAN_FIRE || defined COMPRESSED_LEVELS
-				add hl, hl 				// x2
-				ld  d, h
-				ld  e, l 				// DE = x2
-				add hl, hl 				// x4
-				add hl, hl 				// x8
-
-				add hl, de 				// HL = x8 + x2 = x10
-			#else
-				ld  d, h
-				ld  e, l 				// DE = x1
-				add hl, hl 				// x2
-				add hl, hl 				// x4
-				add hl, hl 				// x8
-
-				add hl, de 				// HL = x8 + x1 = x9
-			#endif
-
-				ld  de, _malotes
-				add hl, de
+				call calc_baddies_pointer			// Needs enoffsmasi, trashes DE, returns HL
 
 				ld  (__baddies_pointer), hl 		// Save address for later
 

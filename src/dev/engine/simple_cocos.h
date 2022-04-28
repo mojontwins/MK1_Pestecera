@@ -23,7 +23,7 @@ void simple_coco_shoot (void) {
 
 			ld  a, (hl)
 			cp  160
-			ret c
+			ret c 						// if cocos_y [enit] < 160: coco is active, ret.
 
 			ld  a, (__en_y)
 			add 4

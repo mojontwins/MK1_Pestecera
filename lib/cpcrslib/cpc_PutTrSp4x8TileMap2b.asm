@@ -24,8 +24,8 @@ XREF posicion_inicial_superbuffer
     LD IXL,e	;9 
 
 	;lo cambio para la rutina de multiplicar 
-    ld e,(ix+8)		;x
-    ld h,(ix+9)		;y
+    ld e,(ix+8)		;X en bytes! (0-63)
+    ld h,(ix+9)		;Y
 
 .pasa_bloque_a_sbuffer
 
