@@ -133,3 +133,70 @@ Voy a ir probando el juego aunque solo haya hecho unas cuantas pantallas (6), co
 
 ¡También he visto que faltaban las rutinas de 16x24 en Modo 1 al pixel en CPCRSLIB! A meterlas.
 
+## 20220428
+
+Había una terrible miseria que tenía más que ver con cómo el nuevo z88dk generaba código que otra cosa, pero me ha llevado siglos arreglarlo.
+
+Hecho esto, y tras un par de tweaks, tengo el mono saltando. Ha habido que añadir una animación custom en `my/custom_animation.h` (activando `PLAYER_CUSTOM_ANIMATION` en `config.h`: 
+
+```c
+	if (p_killme) {
+		gpit = 3;
+	} else if (possee || p_gotten) {
+		if (p_vx == 0) gpit = 0;
+		else {
+			gpit = ((gpx + 4) >> 3) & 3;
+			if (gpit == 3) gpit = 1;
+		}
+	} else if (p_vy < 0) {
+		gpit = 2;
+	} else if (p_vy >= (PLAYER_MAX_VY_SALTANDO/6)) {
+		gpit = 0;
+	} else gpit = 1;
+
+	gpit += (p_facing ? 0 : 4);
+
+	sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
+```
+
+Lo siguente que hay que conseguir es que las plataformitas pisables se rompan. Puedo hacerlo de varias formas. Lo primero que hay que hacer de todos modos es activar `BREAKABLE_WALLS`.
+
+Como no tenemos muchas historias que controlar, podemos marcar estos tiles levantando el bit 4 del comportamiento. Como son plataformas, serían 4|16 = 20. El tile que usaremos como "intermedio" deberán tener el mismo comportamiento, para que se sigan rompiendo.
+
+Configuraremos el motor así:
+
+
+```c
+	#define BREAKABLE_WALLS 					// Breakable walls
+	#define BREAKABLE_WALLS_LIFE		2		// N+1 = Amount of hits to break wall
+	//#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
+	#define BREAKABLE_WALLS_BREAKING 	24 		// Use this tile while the wall is breaking (if defined)
+```
+
+Esto permitirá cierto margen hasta que se rompan del todo.
+
+La colisión sería hacia abajo (pisar), por lo que añadiremos el código en `my/ci/bg_collision/obstacle_down.h`. Cuando se hacen estas cosas, es interesante saber estos datos:
+
+* El código se añade al principio del todo, justo tras detectar la colisión. Aún no se ha modificado nada: ni se ha ajustado al jugador, ni se ha detenido. Si haces `break` no se ejecutará nada de esto.
+* `gpx` y `gpy` son las coordenadas del jugador en pixels y aún no se han ajustado (estamos colisionando). Se ajustarán luego.
+* (`cx1`, `cy1`) y (`cx2`, `cy2`) son las coordenadas de tile de los puntos del cuadro de colisión que se han comprobado. `at1` y `at2` son los atributos de los tiles implicados (que pueden ser el mismo, cuidado). Si hemos llegado a este punto es porque `at1` o `at2` representan un obstáculo (tienen levantado el bit 3) o, en el caso de la colisión hacia abajo en vista lateral, una plataforma (bit 2).
+
+Sabiendo esto podríamos escribir:
+
+```c
+	// Detect breakable platforms
+
+	if (at1 == 20) {
+		_x = cx1; _y = cy1; break_wall ();
+	} 
+
+	// If we are stepping over TWO different platforms
+	if (cx1 != cx2 && at2 == 20) {
+		_x = cx2; _y = cy1; break_wall ();
+	}
+```
+
+No va del todo fino y tengo que ver por qué. Parece que en ocasiones la última rompesión no registra colisión suficiente para el salto - o eso o tengo un problema de carrera.
+
+Otra cosa que ocurre es que los tiles se presentan rotos con el mismo gráfico hasta romperse del todo. Como les he puesto 2 de energía, lo suyo sería tener dos gráficos para que se rompan. Para poder hacer esto tendré que hacer un par de perivueltas:
+

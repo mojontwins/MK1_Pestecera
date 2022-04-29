@@ -467,6 +467,9 @@ void enems_move (void) {
 							if (gpy + 17 >= _en_y && gpy + 8 <= _en_y) {
 								p_gotten = 1;
 								ptgmx = _en_mx << 6;
+								#ifdef PLAYER_CUMULATIVE_JUMP
+									if (p_vy > 0) 
+								#endif
 								gpy = (_en_y - 16); p_y = gpy << 6;
 							}
 						}

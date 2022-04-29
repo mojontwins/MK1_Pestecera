@@ -517,6 +517,14 @@ unsigned char player_move (void) {
 	#endif
 
 	// Jump
+	#asm
+		ld 	c, 0x54
+		ld  a, (_p_saltando)
+		add c
+		ld  bc, 0x7F11
+		out (c), c
+		out (c), a
+	#endasm
 
 	#ifdef PLAYER_HAS_JUMP
 		#ifdef VENG_SELECTOR
@@ -538,7 +546,7 @@ unsigned char player_move (void) {
 			if (rda) {
 				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (possee || p_gotten || hit_v) {
-						p_vy = -p_vy - PLAYER_VY_INICIAL_SALTO;
+						p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO);
 						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
 						p_saltando = 1;
 						p_cont_salto = 0;

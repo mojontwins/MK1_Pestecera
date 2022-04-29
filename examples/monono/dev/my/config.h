@@ -26,8 +26,8 @@
 
 #define MAP_W						3		//
 #define MAP_H						12		// Map dimensions in screens
-#define SCR_INICIO					2		// Initial screen
-#define PLAYER_INI_X				1		//
+#define SCR_INICIO					1		// Initial screen
+#define PLAYER_INI_X				0		//
 #define PLAYER_INI_Y				8		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
@@ -142,9 +142,9 @@
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
 #define BREAKABLE_WALLS 					// Breakable walls
-#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
+#define BREAKABLE_WALLS_LIFE		2		// N+1 = Amount of hits to break wall
 //#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
-//#define BREAKABLE_WALLS_BREAKING 	31 		// Use this tile while the wall is breaking (if defined)
+#define BREAKABLE_WALLS_BREAKING 	24 		// Use this tile while the wall is breaking (if defined)
 
 // Scripting
 // ---------
@@ -301,7 +301,7 @@ extern unsigned char def_keys [0];
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
-//#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
 //#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT
@@ -318,12 +318,12 @@ extern unsigned char def_keys [0];
 
 // IV.1. Vertical movement. Only for side-view.
 
-#define PLAYER_MAX_VY_CAYENDO		512 		// Max falling speed 
+#define PLAYER_MAX_VY_CAYENDO		512 	// Max falling speed 
 #define PLAYER_G					32		// Gravity acceleration 
 
-#define PLAYER_VY_INICIAL_SALTO		64 		// Initial junp velocity 
-#define PLAYER_MAX_VY_SALTANDO		320 	// Max jump velocity 
-#define PLAYER_INCR_SALTO			64		// acceleration while JUMP is pressed 
+#define PLAYER_VY_INICIAL_SALTO		256 	// Initial junp velocity 
+#define PLAYER_MAX_VY_SALTANDO		512 	// Max jump velocity 
+#define PLAYER_INCR_SALTO			128		// acceleration while JUMP is pressed 
 
 #define PLAYER_INCR_JETPAC			32		// Vertical jetpac gauge
 #define PLAYER_MAX_VY_JETPAC		256 	// Max vertical jetpac speed
@@ -353,8 +353,8 @@ extern unsigned char def_keys [0];
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
-	0, 8, 8, 0, 0, 8, 8, 1, 8, 8, 8, 8, 8, 8,10,10,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 8, 8, 8, 4, 8, 8, 0,20, 8, 8, 8, 1, 4,10,10,
+	0, 0, 0, 0, 0, 0, 0, 0,20, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 #endif

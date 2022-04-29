@@ -545,18 +545,22 @@ unsigned char player_move (void) {
 						AY_PLAY_SOUND (SFX_JUMP);
 					}
 				#else
-				if (p_saltando == 0) {
-					if (possee || p_gotten || hit_v) {
-						p_saltando = 1;
-						p_cont_salto = 0;
-						AY_PLAY_SOUND (SFX_JUMP);
+					if (p_saltando == 0) {
+						if (possee || p_gotten || hit_v) {
+							p_saltando = 1;
+							p_cont_salto = 0;
+							AY_PLAY_SOUND (SFX_JUMP);
+	
+	
+	
+	
+						}
+					} else {
+						p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
+						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
+						++ p_cont_salto;
+						if (p_cont_salto == 9) p_saltando = 0;
 					}
-				} else {
-					p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
-					if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
-					++ p_cont_salto;
-					if (p_cont_salto == 9) p_saltando = 0;
-				}
 				#endif
 			} else p_saltando = 0;
 		}
