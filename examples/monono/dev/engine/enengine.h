@@ -470,7 +470,9 @@ void enems_move (void) {
 								#ifdef PLAYER_CUMULATIVE_JUMP
 									if (p_vy > 0) 
 								#endif
-								gpy = (_en_y - 16); p_y = gpy << 6;
+								{
+									gpy = (_en_y - 16); p_y = gpy << 6;
+								}
 							}
 						}
 
@@ -481,7 +483,12 @@ void enems_move (void) {
 						) {
 							p_gotten = 1;
 							ptgmy = _en_my << 6;
-							gpy = (_en_y - 16); p_y = gpy << 6;					
+							#ifdef PLAYER_CUMULATIVE_JUMP
+								if (p_vy > 0) 
+							#endif
+							{
+								gpy = (_en_y - 16); p_y = gpy << 6;	
+							}
 						}
 
 					}

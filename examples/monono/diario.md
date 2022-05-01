@@ -210,3 +210,30 @@ Otra cosa que ocurre es que los tiles se presentan rotos con el mismo gráfico h
 ```
 
 De esa forma al primer golpe se imprimirá el tile 24 y al segundo el 25. Nos tenemos que asegurar que el comportamiento de ambos tiles es plataforma + breakable, o sea, 20.
+
+Nos hemos dado cuenta además de que tal y como está las plataformas se rompen con solo pisarlas, aunque estemos parados sobre otro obstáculo y la tengamos bajo un pie. Por eso nos hemos inventado esta tosca aunque eficiente solución:
+
+```c
+	// my/ci/bg_collision/obstacle_down.h	
+
+	if (p_vy > PLAYER_G) {
+		if (at1 == 20) {
+			_x = cx1; _y = cy1; break_wall ();
+		} 
+
+		// If we are stepping over TWO different platforms
+		if (cx1 != cx2 && at2 == 20) {
+			_x = cx2; _y = cy1; break_wall ();
+		}
+	}
+
+```
+
+## Colisión con pinchos custom
+
+La colisión con pinchos que trae MK1 no nos vale para este juego. Vamos a cambiarla para que los pinchos solo colisionen por abajo y cuando estemos cayendo, porque si no es imposible salir de los pinchos. Luego en el diseño de niveles enmascararemos esto un poco no permitiendo al jugador entrar en pinchos lateralmente.
+
+Para ello primero activamos `CUSTOM_EVIL_TILE_CHECK`. Esto desactiva todo el sistema de tile malo pero incluye el código de `my/ci/custom_evil_tile_check.h`.  La llamada a esta función se hace después de todo el movimiento y la colisión en ambos ejes, por lo que sólo deberemos emplear esta técnica en casos muy sencillos.
+
+Nuestra idea es detectar cuando `p_vy > 0` (cayendo) en los puntos (gpx+4, gpy+15) y (gpx+11, gpy+15). Lo vamos a hacer medio en ensamble aprovechando que es muy sencillo y que el código para este tipo de tareas tontas que genera z88dk suele ser un poco malo.
+

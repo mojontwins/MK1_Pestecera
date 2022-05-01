@@ -259,7 +259,7 @@ unsigned char player_move (void) {
 
 						; We are going to take a shortcut.
 						; If p_vy < 0, just add PLAYER_G.
-						; If p_vy > 0, we can use unsigned comparition anyway.
+						; If p_vy > 0, we can use unsigned comparison anyway.
 
 						ld  hl, (_p_vy)
 						bit 7, h
@@ -492,7 +492,11 @@ unsigned char player_move (void) {
 
 			// KISS mod
 			#asm
-					ld  a, (_pty2)
+				#ifdef PLAYER_GENITAL
+						ld  a, (_pty2)
+				#else
+						ld  a, (_pty2b)
+				#endif
 					dec a 
 					sla a
 					sla a
@@ -513,14 +517,19 @@ unsigned char player_move (void) {
 					ld  (_p_y), hl
 			#endasm
 			
+			// Finally
+
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
+			#else
+				possee = 1;
 			#endif
-
-			// Finally
-			possee = 1;
 		}
 	}
+
+	#ifndef PLAYER_GENITAL
+		cy1 = cy2 = pty2;
+	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
 		#ifndef CUSTOM_EVIL_TILE_CHECK
@@ -594,12 +603,13 @@ unsigned char player_move (void) {
 
 			if (rda) {
 				#ifdef PLAYER_CUMULATIVE_JUMP
-					if (possee || p_gotten || hit_v) {
-						p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO);
-						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
-						p_saltando = 1;
-						p_cont_salto = 0;
-						AY_PLAY_SOUND (SFX_JUMP);
+					if (p_vy >= 0) {
+						if (possee || p_gotten || hit_v) {
+							p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO);
+							if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
+							p_saltando = 1;
+							AY_PLAY_SOUND (SFX_JUMP);
+						}
 					}
 				#else
 					if (p_saltando == 0) {
