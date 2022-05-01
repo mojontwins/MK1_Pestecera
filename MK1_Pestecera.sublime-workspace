@@ -4,16 +4,32 @@
 		"selected_items":
 		[
 			[
-				"offset",
-				"offsetCounter\tabc"
+				"_pre",
+				"_pregotten_reset\tabc"
 			],
 			[
-				"spriteMeta",
-				"spriteMetaData\tabc"
+				"_sprite",
+				"_sprite_18_a\t(mk1.c.asm)"
 			],
 			[
-				"function",
-				"functionSuffix\tabc"
+				"_en_an_",
+				"_en_an_base_frame\tabc"
+			],
+			[
+				"BREAKABLE",
+				"BREAKABLE_WALLS_BROKEN\tabc"
+			],
+			[
+				"tile_resot",
+				"tile_restore_reverse_lut\t(diario.md)"
+			],
+			[
+				"tile_res",
+				"tile_restore_reverse_lut\tabc"
+			],
+			[
+				"BOUNCE",
+				"BOUNCE_EXPRESSION_X\tabc"
 			],
 			[
 				"KEY_B",
@@ -498,67 +514,26 @@
 			[
 				"current",
 				"current_rule"
-			],
-			[
-				"getg",
-				"get_group\t(list.inc)"
-			],
-			[
-				"rcmail",
-				"rcmail::write_log"
-			],
-			[
-				"grou",
-				"group_id"
-			],
-			[
-				"vcard_",
-				"vcard_filename"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "examples/monono/diario.md",
+			"file": "examples/monono/dev/engine/player.h",
 			"settings":
 			{
-				"buffer_size": 9465,
+				"buffer_size": 25561,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/monono/dev/engine/breakable.h",
+			"file": "examples/monono/dev/engine/enengine.h",
 			"settings":
 			{
-				"buffer_size": 620,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/monono/dev/my/config.h",
-			"settings":
-			{
-				"buffer_size": 17512,
+				"buffer_size": 19420,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/monono/dev/my/ci/bg_collision/obstacle_down.h",
-			"settings":
-			{
-				"buffer_size": 286,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/monono/dev/my/custom_animation.h",
-			"settings":
-			{
-				"buffer_size": 755,
 				"line_ending": "Windows"
 			}
 		}
@@ -570,14 +545,10 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 56.0,
+		"height": 132.0,
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"packa",
-				"Preferences: Browse Packages"
-			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -631,7 +602,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 216.0
+		"width": 382.0
 	},
 	"console":
 	{
@@ -651,50 +622,88 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/MK1_Pestecera",
-		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/monono",
-		"/D/git/MK1_Pestecera/examples/monono/dev",
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine",
-		"/D/git/MK1_Pestecera/examples/monono/dev/my",
-		"/D/git/MK1_Pestecera/examples/monono/gfx",
-		"/D/git/MK1_Pestecera/lib",
-		"/D/git/MK1_Pestecera/lib/cpcrslib"
+		"/D/Git/MK1_Pestecera",
+		"/D/Git/MK1_Pestecera/examples",
+		"/D/Git/MK1_Pestecera/examples/monono",
+		"/D/Git/MK1_Pestecera/examples/monono/dev",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci/bg_collision",
+		"/D/Git/MK1_Pestecera/wip"
 	],
 	"file_history":
 	[
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine/player.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine/enengine.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/my/custom_animation.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/my/config.h",
-		"/D/git/nes_work/multicart/src/Monono/dev/engine/player.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/mainloop/game_loop.h",
-		"/D/git/nes_work/multicart/src/Monono/dev/definitions.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine/simple_cocos.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine/enem_mods/enem_type_orthoshooters.h",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp4x8TileMap2b.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x8TileMap2bPxM1.asm",
-		"/D/git/MK1_Pestecera/examples/monono/dev/definitions.h",
-		"/D/git/MK1_Pestecera/src/dev/definitions.h",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp16x16TileMap2bPxM1.asm",
-		"/D/git/MK1_Pestecera/examples/monono/dev/mk1.c",
-		"/D/git/MK1_Pestecera/examples/monono/dev/tilemap_conf.asm",
-		"/D/git/MK1_Pestecera/examples/monono/dev/engine/bullets.h",
-		"/D/git/MK1_Pestecera/examples/monono/dev/compile.bat",
-		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/D/git/MK1_Pestecera/examples/monono/gfx/spriteset.spt",
-		"/D/git/MK1_Pestecera/examples/monono/diario.md",
-		"/C/git/MK1_Pestecera/examples/lalalah/dev/compile.bat",
-		"/C/git/MK1_Pestecera/examples/lalalah/dev/my/config.h",
-		"/C/git/MK1_Pestecera/examples/lalalah/dev/tilemap_conf.asm",
-		"/C/git/MK1_Pestecera/examples/lalalah/dev/assets/enems.h",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/mk1.c.asm",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/mk1.c",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/custom_animation.h",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci/bg_collision/obstacle_down.h",
+		"/D/Git/MK1_Pestecera/examples/monono/diario.md",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/enengine.h",
+		"/D/Git/MK1_Pestecera/wip.md",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/general.h",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci/custom_evil_tile_check.h",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/my/config.h",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/player.h",
+		"/D/Git/MK1_Pestecera/.gitignore",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/map_all_zeroes.h",
+		"/C/Users/na_th_an/Desktop/mineclone2/README.md",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/engine.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/config.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/diario.md",
+		"/D/Games/TRLE/Sabatu-SabatusTR1Demo/cfg/Tomb1Main_gameflow.json5",
+		"/D/Games/TRLE/Sabatu-SabatusTR1Demo/cfg/Tomb1Main_runtime.json5",
+		"/D/Games/TRLE/Sabatu-SabatusTR1Demo/cfg/Tomb1Main.json5",
+		"/G/DRIVER/.ssh/id_rsa.pub",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/assets/mapa.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/extra_functions.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/entering_game.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/on_tile_pushed.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/on_special_tile.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/aplib.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/balowwwn.map",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/compile.bat",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/engine/player.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/engine/enem_mods/enem_type_lineal.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/on_wall_hit.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/extra_vars.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/entering_screen.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/tilemap_conf.asm",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/engine/breakable.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/definitions.h",
+		"/D/Git/MK1_Pestecera/src/dev/my/ci/entering_game.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/printer.h",
+		"/D/Git/MK1_Pestecera/src/dev/my/ci/on_wall_hit.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/mk1.c",
+		"/D/Cosas/Mappy/luascr/Tile graphic test.lua",
+		"/D/Cosas/Mappy/MAPWIN.INI",
+		"/D/Cosas/Mappy/luascr/Count tiles.lua",
+		"/D/Git/MK1_Pestecera/released/helmet/dev/my/ci/extra_functions.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/bg_collision/obstacle_right.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/bg_collision/obstacle_up.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/bg_collision/obstacle_left.h",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/ci/bg_collision/obstacle_down.h",
+		"/D/Git/MK1_Pestecera/released/helmet/dev/my/ci/extra_vars.h",
+		"/D/Git/MK1_Pestecera/released/helmet/dev/my/ci/entering_screen.h",
+		"/D/Cosas/Mappy/luascr/Find block in map.lua",
+		"/D/Cosas/Mappy/luascr/Tile replace.lua",
+		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/custom_animation.h",
+		"/D/Temp/MK1/examples/old/Balowwwn/dev/config.h",
+		"/D/Git/MK1_Pestecera/examples/perils/dev/my/title_screen.h",
+		"/D/Git/MK1_Pestecera/diario.md",
+		"/D/Git/MK1_Pestecera/src/utils/src/h2ene.bas",
+		"/D/Temp/MK1/examples/old/Balowwwn/dev/enems.h",
+		"/D/Temp/MK1/examples/old/Balowwwn/map/mapa.h",
 		"/D/Temp/MK1/examples/old/Lala Lah/dev/config.h",
+		"/D/Git/MK1_Pestecera/examples/lalalah/dev/compile.bat",
+		"/D/Git/MK1_Pestecera/examples/lalalah/dev/my/config.h",
+		"/D/Git/MK1_Pestecera/examples/lalalah/dev/tilemap_conf.asm",
+		"/D/Git/MK1_Pestecera/examples/lalalah/dev/assets/enems.h",
 		"/D/Temp/MK1/examples/old/Lala Lah/dev/enems.h",
 		"/D/Git/MK1_Pestecera/examples/lalalah/enems/ponedor.bat",
 		"/D/Git/MK1_Pestecera/examples/perils/bin/work.bin",
 		"/D/Git/MK1_Pestecera/examples/perils/dev/mainloop/hud.h",
 		"/D/Git/MK1_Pestecera/examples/perils/dev/pantallas.h",
-		"/D/Git/MK1_Pestecera/examples/perils/dev/my/title_screen.h",
 		"/D/Git/MK1_Pestecera/examples/perils/dev/my/config.h",
 		"/D/Git/MK1_Pestecera/examples/perils/dev/engine/player.h",
 		"/D/Git/MK1_Pestecera/examples/perils/dev/printer.h",
@@ -734,6 +743,7 @@
 		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/my/title_screen.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/Games/Minecraft 1.2.5 Modded/launch.bat",
 		"/D/Git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/Git/MK1_Pestecera/src/dev/mainloop.h",
@@ -750,60 +760,30 @@
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/compile.bat",
-		"/D/git/MK1/src_cpc/utils/imanol.bas",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/D/git/MK1_Pestecera/src/dev/aplib.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/sprites.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
-		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
-		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
-		"/D/git/MK1_Pestecera/src/dev/mk1.c",
-		"/D/temp/cubito/web/comics.css",
-		"/C/Users/jcastano/Desktop/test.html",
-		"/D/temp/cubito/comics.css",
-		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig",
-		"/D/Proyectos/2021/20210407a - Nuevos datos de Sirhus en LDAP/ANEXO2 - Actualizar aplicación Sirhus/instrucciones.txt",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm",
-		"/D/git/MK1/examples/helmet/map/mapa.MAP",
-		"/D/Proyectos/CIs.txt",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/compile.bat",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/preloadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/aplib.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/helmet.asm",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/my/msc.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
-		"/D/git/MK1_Pestecera/src/trash/mkcdt.bat",
-		"/D/git/MK1_Pestecera/diario.md",
-		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
-		"/D/git/MK1_Pestecera/README.md",
-		"/C/Users/jcastano/AppData/Local/Temp/7zOCC2C72D4/dzx7_standard.asm",
-		"/D/git/MK1_Pestecera/docs/config.h.md",
-		"/D/Proyectos/2021/20210406a - Corrección eliminación DNI en miCuenta con usuarios GUIA+SIRHUS/instrucciones.txt",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/engine/simple_cocos.h",
-		"/C/Users/jcastano/Desktop/LDAP Browser/ldapescritura.juntadeandalucia.es - admin.cfg"
+		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
+		"/D/git/MK1/src_cpc/utils/imanol.bas"
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 54.0
 	},
 	"find_in_files":
 	{
-		"height": 128.0,
+		"height": 134.0,
 		"where_history":
 		[
-			"D:\\git\\MK1_Pestecera\\examples\\monono",
-			"D:\\git\\MK1_Pestecera\\examples\\monono\\dev",
-			"D:\\git\\MK1_Pestecera\\examples\\monono",
+			"D:\\Git\\MK1_Pestecera\\examples\\monono",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev\\engine",
+			"D:\\Git\\MK1_Pestecera\\src\\dev",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev",
+			"D:\\Git\\MK1_Pestecera\\lib",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev",
+			"D:\\Git\\MK1_Pestecera\\released\\helmet",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev\\engine",
+			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev",
+			"D:\\Git\\MK1_Pestecera",
 			"D:\\Git\\MK1_Pestecera\\examples\\perils\\dev",
 			"C:\\git\\MK1_Pestecera\\examples\\perils\\dev",
 			"D:\\Git\\MK1_Pestecera\\released\\helmet",
@@ -841,35 +821,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"MAX_VY",
-			"abs",
-			"p_killme",
-			"pvy",
-			"cumulative",
-			"p_gotten",
-			"gotten",
-			"cumulati",
-			"en_an_state",
-			"simple_coco_shoot",
-			"dx",
-			"ENABLE_SIMPLE_COCOS",
-			"simple_coco_update",
-			"orth",
-			"dx",
-			"ORTHO",
-			"ORTO",
-			"bullet",
-			"sprite_19_a",
-			"max",
-			"2020-2021",
-			"5.0",
-			"spritescript",
-			"dosprites",
-			"strait",
-			"brick",
-			"straitmapp",
-			"scripted",
-			"0.6.20210822",
+			"p_cont_salto",
+			"CUSTOM_EVIL_TILE_CHECK",
+			"moving",
+			"cerrojos",
+			"deactivate",
+			"cerrojos",
+			"mons_col_sc_x",
+			"walls_stop_enemies",
+			"brk_buff",
+			"_t",
+			"_",
+			"de00",
+			"d600",
+			"break_vertical",
+			"d600",
+			"0xd600",
+			"restore_table_ptr = 0xd800;",
+			"d800",
+			"c_screen_address",
+			"d800",
+			"persist",
+			"bounce_expre",
+			"p_vx = -(p_vx / 2)",
+			"BOUNCE_EXPRESSION",
+			"PLAYER_BOUNCE_WITH_WALLS",
+			"p_vy = -(p_vy / 2);",
+			"half_life",
+			"..\\utils\\",
 			"both",
 			"..\\utils\\",
 			"BOTH_KEYS_JUMP",
@@ -968,7 +947,8 @@
 			"strait2x2",
 			"_en_t",
 			"rdt",
-			"_en_t"
+			"_en_t",
+			"malotes [enoffsmasi].t"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -976,11 +956,11 @@
 		"regex": false,
 		"replace_history":
 		[
-			"p_vy",
-			"spriteMetaIndex",
-			"2020-2022",
-			"5.10",
-			"0.7.20220415",
+			"de00",
+			"d600",
+			"BOUNCE_EXPRESSION_X",
+			"BOUNCE_EXPRESSION_Y",
+			"p_vy = BOUNCE_EXPRESSION;",
 			"..\\..\\..\\src\\utils\\",
 			"",
 			"BA00",
@@ -1051,31 +1031,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "examples/monono/diario.md",
+					"file": "examples/monono/dev/engine/player.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9465,
+						"buffer_size": 25561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9465,
-								9465
+								24669,
+								24669
 							]
 						],
 						"settings":
 						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2457.0,
+						"translation.y": 8425.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1083,142 +1060,44 @@
 				},
 				{
 					"buffer": 1,
-					"file": "examples/monono/dev/engine/breakable.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 620,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "examples/monono/dev/my/config.h",
+					"file": "examples/monono/dev/engine/enengine.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17512,
+						"buffer_size": 19420,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17430,
-								17430
+								18354,
+								18289
 							]
 						],
 						"settings":
 						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4379.0,
+						"translation.y": 10961.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 3,
-					"file": "examples/monono/dev/my/ci/bg_collision/obstacle_down.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 286,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								286,
-								286
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "examples/monono/dev/my/custom_animation.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 755,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								754,
-								409
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1270,7 +1149,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 88.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1304,7 +1183,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
@@ -1312,7 +1191,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 262.0,
+	"side_bar_width": 219.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

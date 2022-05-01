@@ -58,7 +58,7 @@ gpit += (p_facing ? 0 : 4);
 		ld  hl, _p_vx + 1
 		or  (hl)		
 		
-		jr  z, _pca_possee_walking
+		jr  nz, _pca_possee_walking
 
 		ld  c, 1 
 		jr  _pca_add_facing

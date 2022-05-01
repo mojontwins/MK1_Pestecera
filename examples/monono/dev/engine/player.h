@@ -1264,6 +1264,7 @@ unsigned char player_move (void) {
 		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#endif
 
+	/*
 	#if defined PIXELPERFECT 
 		#if CPC_GFX_MODE == 0
 			sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
@@ -1276,6 +1277,61 @@ unsigned char player_move (void) {
 	sp_sw [SP_PLAYER].cy = (gpy + VIEWPORT_Y*8 + sp_sw [SP_PLAYER].coy);
 
 	if ( (p_estado & EST_PARP) && half_life ) sp_sw [SP_PLAYER].sp0 = (int) (SPRFR_EMPTY);
+	*/
+	#asm
+		._player_spr_setup
+			// We know SP_PLAYER is the first sprite. If you change it, recycle 
+			// the original C code above, 'cause this assembly routine uses a couple
+			// of shortcuts.
+
+			// cx is offset 8, cox is offset 6
+			// sp_sw [0].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> MODE_SHIFT;
+
+			ld  a, (_gpx)
+			ld  c, a
+			ld  a, (_sp_sw + 6)
+			add VIEWPORT_X * 8
+			add c
+
+		#ifdef PIXELPERFECT
+			#ifdef CPC_GFX_MODE_0
+				// Shift right 1
+					srl a
+			#else
+				// Leave as is
+			#endif
+		#else
+			// Shift right 2
+				srl a
+				srl a
+		#endif
+			ld  (_sp_sw + 8), a		
+
+			// cy is offset 9, coy is offset 7
+			// sp_sw [rda].cy = (gpy + VIEWPORT_Y * 8 + sp_sw [rda].coy);
+
+			ld  a, (_gpy)
+			ld  c, a
+			ld  a, (_sp_sw + 7)
+			add VIEWPORT_Y * 8
+			add c
+			ld  (_sp_sw + 9), a
+
+			// if ( (p_estado & EST_PARP) && half_life ) sp_sw [0].sp0 = _sprite_18_a;
+
+			ld  a, (_p_estado)
+			and EST_PARP
+			jr  z, _player_spr_setup_done
+
+			ld  a, (_half_life)
+			or  a 
+			jr  z, _player_spr_setup_done
+
+			ld  hl, _sprite_18_a
+			ld  (_sp_sw), hl
+
+		._player_spr_setup_done
+	#endasm
 }
 
 void player_deplete (void) {
