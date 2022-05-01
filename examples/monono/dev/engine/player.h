@@ -448,7 +448,7 @@ unsigned char player_move (void) {
 	#if defined (PLAYER_GENITAL)
 		if (p_vy > 0)
 	#else	
-		if (p_vy + ptgmy > 0)
+		if (p_vy + ptgmy >= 0)
 	#endif
 	{
 		#ifdef PLAYER_GENITAL
@@ -463,7 +463,7 @@ unsigned char player_move (void) {
 		#else
 			// Greed Optimization tip! Remove this line and uncomment the next one:
 			// (As long as you don't have type 8 blocks over type 4 blocks in your game, the short line is fine)
-			if ((at1 & 8) || (at2 & 8) || (((gpy - 1) & 15) < 8 && ((at1 & 4) || (at2 & 4))))
+			if ((at1 & 8) || (at2 & 8) || ((gpy & 15) < 8 && ((at1 & 4) || (at2 & 4))))
 			//if (((gpy - 1) & 15) < 7 && ((at1 & 12) || (at2 & 12))) {
 		#endif			
 		{
@@ -605,7 +605,7 @@ unsigned char player_move (void) {
 				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (p_vy >= 0) {
 						if (possee || p_gotten || hit_v) {
-							p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO);
+							p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO + PLAYER_G);
 							if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
 							p_saltando = 1;
 							AY_PLAY_SOUND (SFX_JUMP);
@@ -1196,19 +1196,19 @@ unsigned char player_move (void) {
 	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
+		hit = 0;
 		#ifdef CUSTOM_EVIL_TILE_CHECK
 			#include "my/ci/custom_evil_tile_check.h"
 		#else
-		// Tiles que te matan. 
-		// hit_v tiene preferencia sobre hit_h
-		hit = 0;
-		if (hit_v) {
-			hit = 1;
-			p_vy = addsign (-p_vy, PLAYER_MAX_VX);
-		} else if (hit_h) {
-			hit = 1;
-			p_vx = addsign (-p_vx, PLAYER_MAX_VX);
-		}
+			// Tiles que te matan. 
+			// hit_v tiene preferencia sobre hit_h
+			if (hit_v) {
+				hit = 1;
+				p_vy = addsign (-p_vy, PLAYER_MAX_VX);
+			} else if (hit_h) {
+				hit = 1;
+				p_vx = addsign (-p_vx, PLAYER_MAX_VX);
+			}
 		#endif
 		
 		if (hit) {

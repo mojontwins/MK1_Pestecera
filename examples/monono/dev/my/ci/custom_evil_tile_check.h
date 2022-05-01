@@ -46,6 +46,10 @@ if (p_vy > 0) {
 		.custom_hit_do
 			ld  a, 1
 			ld  (_hit), a
+			ld  (_hit_v), a
+
+			ld  hl, -PLAYER_MAX_VY_SALTANDO
+			ld  (_p_vy), hl
 
 		.custom_hit_done
 

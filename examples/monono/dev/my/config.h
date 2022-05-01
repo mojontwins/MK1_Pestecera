@@ -14,7 +14,7 @@
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
-//#define MIN_FAPS_PER_FRAME 		2		// frame cap, *limits* to 50/N fps.
+#define MIN_FAPS_PER_FRAME 			2		// frame cap, *limits* to 50/N fps.
 
 #define BLACK_PEN 					0		// Which palette entry is black
 
@@ -26,9 +26,9 @@
 
 #define MAP_W						3		//
 #define MAP_H						12		// Map dimensions in screens
-#define SCR_INICIO					1		// Initial screen
-#define PLAYER_INI_X				0		//
-#define PLAYER_INI_Y				1		// Initial tile coordinates
+#define SCR_INICIO					5		// Initial screen
+#define PLAYER_INI_X				1		//
+#define PLAYER_INI_Y				8		// Initial tile coordinates
 //#define SCR_FIN 					99		// Last screen. 99 = deactivated.
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game

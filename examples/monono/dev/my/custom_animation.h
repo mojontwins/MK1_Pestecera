@@ -17,7 +17,7 @@
 if (p_killme) {
 	gpit = 3;
 } else if (possee || p_gotten) {
-	if (p_vx == 0) gpit = 0;
+	if (p_vx == 0) gpit = 1;
 	else {
 		gpit = ((gpx + 4) >> 3) & 3;
 		if (gpit == 3) gpit = 1;
