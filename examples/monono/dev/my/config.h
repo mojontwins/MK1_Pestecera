@@ -144,7 +144,7 @@
 #define BREAKABLE_WALLS 					// Breakable walls
 #define BREAKABLE_WALLS_LIFE		2		// N+1 = Amount of hits to break wall
 //#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
-#define BREAKABLE_WALLS_BREAKING 	24 		// Use this tile while the wall is breaking (if defined)
+#define BREAKABLE_WALLS_BREAKING 	(brk_buff [gpaux] + 24) 		// Use this tile while the wall is breaking (if defined)
 
 // Scripting
 // ---------
@@ -270,16 +270,16 @@ extern unsigned char def_keys [0];
 // This sections defines how stuff is rendered, where to show counters, etcetera
 // Set to 99 so it doesn't show even if it should!!
 
-#define VIEWPORT_X					1		//
+#define VIEWPORT_X					0		//
 #define VIEWPORT_Y					2		// Viewport character coordinates
-#define LIFE_X						5		//
-#define LIFE_Y						0		// Life gauge counter character coordinates
+#define LIFE_X						30		//
+#define LIFE_Y						8		// Life gauge counter character coordinates
 #define OBJECTS_X					30		//
-#define OBJECTS_Y					0		// Objects counter character coordinates
+#define OBJECTS_Y					12		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
-#define KEYS_X						16		//
-#define KEYS_Y						0		// Keys counter character coordinates
+#define KEYS_X						30		//
+#define KEYS_Y						16		// Keys counter character coordinates
 #define KILLED_X					99		//
 #define KILLED_Y					99		// Kills counter character coordinates
 #define AMMO_X						99		// 
@@ -354,7 +354,7 @@ extern unsigned char def_keys [0];
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
 	0, 8, 8, 8, 4, 8, 8, 0,20, 8, 8, 8, 1, 4,10,10,
-	0, 0, 0, 0, 0, 0, 0, 0,20, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,20,20, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 #endif

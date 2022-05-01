@@ -200,3 +200,13 @@ No va del todo fino y tengo que ver por qué. Parece que en ocasiones la última
 
 Otra cosa que ocurre es que los tiles se presentan rotos con el mismo gráfico hasta romperse del todo. Como les he puesto 2 de energía, lo suyo sería tener dos gráficos para que se rompan. Para poder hacer esto tendré que hacer un par de perivueltas:
 
+- Los gráficos que se rompen son el 24 y el 25.
+- Al iniciarse la pantalla, el buffer de "daño" de los tiles está a 0 para cada casilla. Al golpear la primera vez se pone en 1, y la segunda vez en 2. A la siguiente, se rompen.
+- Mirando el código en `engine/breakable.h` vemos que el tile *breaking* se imprime *antes* de incrementar el daño, por lo que el valor del daño a la hora de imprimir el tile será 0 o 1. 
+- Para conseguir que eso se refleje en los gráficos, nos basta por tanto con hacer esto en `my/config.h` (esto es una de las cosas pro de MK1 que aprendes únicamente mirando estos documentos):
+
+```c
+	#define BREAKABLE_WALLS_BREAKING (brk_buff [gpaux] + 24)
+```
+
+De esa forma al primer golpe se imprimirá el tile 24 y al segundo el 25. Nos tenemos que asegurar que el comportamiento de ambos tiles es plataforma + breakable, o sea, 20.

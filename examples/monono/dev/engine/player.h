@@ -90,11 +90,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 15
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#elif defined (BOUNDING_BOX_8_CENTERED)
 		#asm
@@ -121,11 +133,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 11
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#elif defined (BOUNDING_BOX_12X2_CENTERED)
 		#asm
@@ -152,11 +176,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 8
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#else
 		#asm
@@ -181,11 +217,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 15
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#endif
 }
@@ -325,6 +373,7 @@ unsigned char player_move (void) {
 	#endasm
 
 	// Collision, may set possee, hit_v
+	possee = 0;
 
 	// Velocity positive (going downwards)
 	player_calc_bounding_box ();
@@ -402,7 +451,11 @@ unsigned char player_move (void) {
 		if (p_vy + ptgmy > 0)
 	#endif
 	{
-		cy1 = cy2 = pty2;
+		#ifdef PLAYER_GENITAL
+			cy1 = cy2 = pty2;
+		#else
+			cy1 = cy2 = pty2b;
+		#endif
 		cm_two_points ();
 
 		#ifdef PLAYER_GENITAL
@@ -463,6 +516,9 @@ unsigned char player_move (void) {
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
 			#endif
+
+			// Finally
+			possee = 1;
 		}
 	}
 
@@ -508,23 +564,16 @@ unsigned char player_move (void) {
 			ld  (_gpyy), a
 	#endasm
 
-
+	/*
 	#ifndef PLAYER_GENITAL
 		cy1 = cy2 = (gpy + 16) >> 4;
 		cx1 = ptx1; cx2 = ptx2;
 		cm_two_points ();
-		possee = ((at1 & 12) || (at2 & 12)) && (gpy & 15) < 8;
+		possee |= ((at1 & 12) || (at2 & 12)) && (gpy & 15) < 8;
 	#endif
+	*/
 
 	// Jump
-	#asm
-		ld 	c, 0x54
-		ld  a, (_p_saltando)
-		add c
-		ld  bc, 0x7F11
-		out (c), c
-		out (c), a
-	#endasm
 
 	#ifdef PLAYER_HAS_JUMP
 		#ifdef VENG_SELECTOR
