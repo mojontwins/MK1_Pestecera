@@ -1,2 +1,1 @@
-del *.obj
-del *.sym
+del *.o

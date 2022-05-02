@@ -1,0 +1,607 @@
+Building normal version
+Library 'z80asm-z80-.lib' not found
+Reading library 'c:/z88dk/lib/z80asm-z80-.lib'
+Predefined constant: __CPU_Z80__ = $0001
+Predefined constant: __CPU_ZILOG__ = $0001
+Assembling 'cpc_ShowTileMap.asm' to 'cpc_ShowTileMap.o'
+Reading 'cpc_ShowTileMap.asm' = 'cpc_ShowTileMap.asm'
+Writing object file 'cpc_ShowTileMap.o'
+Module 'cpc_ShowTileMap' size: 155 bytes
+
+Assembling 'cpc_ShowScrTileMap.asm' to 'cpc_ShowScrTileMap.o'
+Reading 'cpc_ShowScrTileMap.asm' = 'cpc_ShowScrTileMap.asm'
+Writing object file 'cpc_ShowScrTileMap.o'
+Module 'cpc_ShowScrTileMap' size: 197 bytes
+
+Assembling 'cpc_ShowScrTileMap2.asm' to 'cpc_ShowScrTileMap2.o'
+Reading 'cpc_ShowScrTileMap2.asm' = 'cpc_ShowScrTileMap2.asm'
+Writing object file 'cpc_ShowScrTileMap2.o'
+Module 'cpc_ShowScrTileMap2' size: 556 bytes
+
+Assembling 'cpc_TouchTileXY.asm' to 'cpc_TouchTileXY.o'
+Reading 'cpc_TouchTileXY.asm' = 'cpc_TouchTileXY.asm'
+Writing object file 'cpc_TouchTileXY.o'
+Module 'cpc_TouchTileXY' size: 11 bytes
+
+Assembling 'cpc_SetTouchTileXY.asm' to 'cpc_SetTouchTileXY.o'
+Reading 'cpc_SetTouchTileXY.asm' = 'cpc_SetTouchTileXY.asm'
+Reading 'multiplication2.asm' = 'multiplication2.asm'
+Writing object file 'cpc_SetTouchTileXY.o'
+Module 'cpc_SetTouchTileXY' size: 45 bytes
+
+Assembling 'cpc_TouchTileSpXY.asm' to 'cpc_TouchTileSpXY.o'
+Reading 'cpc_TouchTileSpXY.asm' = 'cpc_TouchTileSpXY.asm'
+Writing object file 'cpc_TouchTileSpXY.o'
+Module 'cpc_TouchTileSpXY' size: 55 bytes
+
+Assembling 'cpc_ResetTouchedTiles.asm' to 'cpc_ResetTouchedTiles.o'
+Reading 'cpc_ResetTouchedTiles.asm' = 'cpc_ResetTouchedTiles.asm'
+Writing object file 'cpc_ResetTouchedTiles.o'
+Module 'cpc_ResetTouchedTiles' size: 14 bytes
+
+Assembling 'cpc_UpdScr.asm' to 'cpc_UpdScr.o'
+Reading 'cpc_UpdScr.asm' = 'cpc_UpdScr.asm'
+Reading 'CPCconfig.def' = 'CPCconfig.def'
+Writing object file 'cpc_UpdScr.o'
+Module 'cpc_UpdScr' size: 207 bytes
+
+Assembling 'cpc_ShowTouchedTiles.asm' to 'cpc_ShowTouchedTiles.o'
+Reading 'cpc_ShowTouchedTiles.asm' = 'cpc_ShowTouchedTiles.asm'
+Reading 'CPCconfig.def' = 'CPCconfig.def'
+Writing object file 'cpc_ShowTouchedTiles.o'
+Module 'cpc_ShowTouchedTiles' size: 170 bytes
+
+Assembling 'cpc_PutSpTileMap.asm' to 'cpc_PutSpTileMap.o'
+Reading 'cpc_PutSpTileMap.asm' = 'cpc_PutSpTileMap.asm'
+Writing object file 'cpc_PutSpTileMap.o'
+Module 'cpc_PutSpTileMap' size: 83 bytes
+
+Assembling 'cpc_PutSpTileMap4x8.asm' to 'cpc_PutSpTileMap4x8.o'
+Reading 'cpc_PutSpTileMap4x8.asm' = 'cpc_PutSpTileMap4x8.asm'
+Writing object file 'cpc_PutSpTileMap4x8.o'
+Module 'cpc_PutSpTileMap4x8' size: 84 bytes
+
+Assembling 'cpc_PutSpTileMap4x8Px.asm' to 'cpc_PutSpTileMap4x8Px.o'
+Reading 'cpc_PutSpTileMap4x8Px.asm' = 'cpc_PutSpTileMap4x8Px.asm'
+Writing object file 'cpc_PutSpTileMap4x8Px.o'
+Module 'cpc_PutSpTileMap4x8Px' size: 86 bytes
+
+Assembling 'cpc_PutSpTileMap8x8PxM1.asm' to 'cpc_PutSpTileMap8x8PxM1.o'
+Reading 'cpc_PutSpTileMap8x8PxM1.asm' = 'cpc_PutSpTileMap8x8PxM1.asm'
+Writing object file 'cpc_PutSpTileMap8x8PxM1.o'
+Module 'cpc_PutSpTileMap8x8PxM1' size: 88 bytes
+
+Assembling 'cpc_PutSpTileMap8x16.asm' to 'cpc_PutSpTileMap8x16.o'
+Reading 'cpc_PutSpTileMap8x16.asm' = 'cpc_PutSpTileMap8x16.asm'
+Writing object file 'cpc_PutSpTileMap8x16.o'
+Module 'cpc_PutSpTileMap8x16' size: 112 bytes
+
+Assembling 'cpc_PutSpTileMap8x16Px.asm' to 'cpc_PutSpTileMap8x16Px.o'
+Reading 'cpc_PutSpTileMap8x16Px.asm' = 'cpc_PutSpTileMap8x16Px.asm'
+Writing object file 'cpc_PutSpTileMap8x16Px.o'
+Module 'cpc_PutSpTileMap8x16Px' size: 114 bytes
+
+Assembling 'cpc_PutSpTileMap16x16PxM1.asm' to 'cpc_PutSpTileMap16x16PxM1.o'
+Reading 'cpc_PutSpTileMap16x16PxM1.asm' = 'cpc_PutSpTileMap16x16PxM1.asm'
+Writing object file 'cpc_PutSpTileMap16x16PxM1.o'
+Module 'cpc_PutSpTileMap16x16PxM1' size: 116 bytes
+
+Assembling 'cpc_PutSpTileMap8x24.asm' to 'cpc_PutSpTileMap8x24.o'
+Reading 'cpc_PutSpTileMap8x24.asm' = 'cpc_PutSpTileMap8x24.asm'
+Writing object file 'cpc_PutSpTileMap8x24.o'
+Module 'cpc_PutSpTileMap8x24' size: 132 bytes
+
+Assembling 'cpc_PutSpTileMap8x24Px.asm' to 'cpc_PutSpTileMap8x24Px.o'
+Reading 'cpc_PutSpTileMap8x24Px.asm' = 'cpc_PutSpTileMap8x24Px.asm'
+Writing object file 'cpc_PutSpTileMap8x24Px.o'
+Module 'cpc_PutSpTileMap8x24Px' size: 134 bytes
+
+Assembling 'cpc_PutSpTileMap16x24PxM1.asm' to 'cpc_PutSpTileMap16x24PxM1.o'
+Reading 'cpc_PutSpTileMap16x24PxM1.asm' = 'cpc_PutSpTileMap16x24PxM1.asm'
+Writing object file 'cpc_PutSpTileMap16x24PxM1.o'
+Module 'cpc_PutSpTileMap16x24PxM1' size: 136 bytes
+
+Assembling 'cpc_PutMaskSpTileMap2b.asm' to 'cpc_PutMaskSpTileMap2b.o'
+Reading 'cpc_PutMaskSpTileMap2b.asm' = 'cpc_PutMaskSpTileMap2b.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_PutMaskSpTileMap2b.o'
+Module 'cpc_PutMaskSpTileMap2b' size: 86 bytes
+
+Assembling 'cpc_PutORSpTileMap2b.asm' to 'cpc_PutORSpTileMap2b.o'
+Reading 'cpc_PutORSpTileMap2b.asm' = 'cpc_PutORSpTileMap2b.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_PutORSpTileMap2b.o'
+Module 'cpc_PutORSpTileMap2b' size: 84 bytes
+
+Assembling 'cpc_PutSpTileMap2b.asm' to 'cpc_PutSpTileMap2b.o'
+Reading 'cpc_PutSpTileMap2b.asm' = 'cpc_PutSpTileMap2b.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_PutSpTileMap2b.o'
+Module 'cpc_PutSpTileMap2b' size: 83 bytes
+
+Assembling 'cpc_PutMaskSpriteTileMap2b.asm' to 'cpc_PutMaskSpriteTileMap2b.o'
+Reading 'cpc_PutMaskSpriteTileMap2b.asm' = 'cpc_PutMaskSpriteTileMap2b.asm'
+Writing object file 'cpc_PutMaskSpriteTileMap2b.o'
+Module 'cpc_PutMaskSpriteTileMap2b' size: 61 bytes
+
+Assembling 'cpc_PutTrSpriteTileMap2b.asm' to 'cpc_PutTrSpriteTileMap2b.o'
+Reading 'cpc_PutTrSpriteTileMap2b.asm' = 'cpc_PutTrSpriteTileMap2b.asm'
+Writing object file 'cpc_PutTrSpriteTileMap2b.o'
+Module 'cpc_PutTrSpriteTileMap2b' size: 86 bytes
+
+Assembling 'cpc_PutTrSpTileMap2b.asm' to 'cpc_PutTrSpTileMap2b.o'
+Reading 'cpc_PutTrSpTileMap2b.asm' = 'cpc_PutTrSpTileMap2b.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_PutTrSpTileMap2b.o'
+Module 'cpc_PutTrSpTileMap2b' size: 111 bytes
+
+Assembling 'cpc_SuperbufferAddress.asm' to 'cpc_SuperbufferAddress.o'
+Reading 'cpc_SuperbufferAddress.asm' = 'cpc_SuperbufferAddress.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_SuperbufferAddress.o'
+Module 'cpc_SuperbufferAddress' size: 35 bytes
+
+Assembling 'cpc_SetTile.asm' to 'cpc_SetTile.o'
+Reading 'cpc_SetTile.asm' = 'cpc_SetTile.asm'
+Reading 'multiplication2.asm' = 'multiplication2.asm'
+Writing object file 'cpc_SetTile.o'
+Module 'cpc_SetTile' size: 34 bytes
+
+Assembling 'cpc_ReadTile.asm' to 'cpc_ReadTile.o'
+Reading 'cpc_ReadTile.asm' = 'cpc_ReadTile.asm'
+Reading 'multiplication2.asm' = 'multiplication2.asm'
+Writing object file 'cpc_ReadTile.o'
+Module 'cpc_ReadTile' size: 29 bytes
+
+Assembling 'cpc_PutSp.asm' to 'cpc_PutSp.o'
+Reading 'cpc_PutSp.asm' = 'cpc_PutSp.asm'
+Writing object file 'cpc_PutSp.o'
+Module 'cpc_PutSp' size: 36 bytes
+
+Assembling 'cpc_PutSp0.asm' to 'cpc_PutSp0.o'
+Reading 'cpc_PutSp0.asm' = 'cpc_PutSp0.asm'
+Writing object file 'cpc_PutSp0.o'
+Module 'cpc_PutSp0' size: 32 bytes
+
+Assembling 'cpc_PutMaskSp2x8.asm' to 'cpc_PutMaskSp2x8.o'
+Reading 'cpc_PutMaskSp2x8.asm' = 'cpc_PutMaskSp2x8.asm'
+Writing object file 'cpc_PutMaskSp2x8.o'
+Module 'cpc_PutMaskSp2x8' size: 57 bytes
+
+Assembling 'cpc_PutMaskSp4x16.asm' to 'cpc_PutMaskSp4x16.o'
+Reading 'cpc_PutMaskSp4x16.asm' = 'cpc_PutMaskSp4x16.asm'
+Writing object file 'cpc_PutMaskSp4x16.o'
+Module 'cpc_PutMaskSp4x16' size: 71 bytes
+
+Assembling 'cpc_PutTile2x8.asm' to 'cpc_PutTile2x8.o'
+Reading 'cpc_PutTile2x8.asm' = 'cpc_PutTile2x8.asm'
+Writing object file 'cpc_PutTile2x8.o'
+Module 'cpc_PutTile2x8' size: 51 bytes
+
+Assembling 'cpc_PutTile4x16.asm' to 'cpc_PutTile4x16.o'
+Reading 'cpc_PutTile4x16.asm' = 'cpc_PutTile4x16.asm'
+Writing object file 'cpc_PutTile4x16.o'
+Module 'cpc_PutTile4x16' size: 52 bytes
+
+Assembling 'cpc_SpRLM1.asm' to 'cpc_SpRLM1.o'
+Reading 'cpc_SpRLM1.asm' = 'cpc_SpRLM1.asm'
+Writing object file 'cpc_SpRLM1.o'
+Module 'cpc_SpRLM1' size: 36 bytes
+
+Assembling 'cpc_SpRRM1.asm' to 'cpc_SpRRM1.o'
+Reading 'cpc_SpRRM1.asm' = 'cpc_SpRRM1.asm'
+Writing object file 'cpc_SpRRM1.o'
+Module 'cpc_SpRRM1' size: 41 bytes
+
+Assembling 'cpc_SetInk.asm' to 'cpc_SetInk.o'
+Reading 'cpc_SetInk.asm' = 'cpc_SetInk.asm'
+Writing object file 'cpc_SetInk.o'
+Module 'cpc_SetInk' size: 13 bytes
+
+Assembling 'cpc_SetBorder.asm' to 'cpc_SetBorder.o'
+Reading 'cpc_SetBorder.asm' = 'cpc_SetBorder.asm'
+Writing object file 'cpc_SetBorder.o'
+Module 'cpc_SetBorder' size: 5 bytes
+
+Assembling 'cpc_TestKeyboard.asm' to 'cpc_TestKeyboard.o'
+Reading 'cpc_TestKeyboard.asm' = 'cpc_TestKeyboard.asm'
+Writing object file 'cpc_TestKeyboard.o'
+Module 'cpc_TestKeyboard' size: 36 bytes
+
+Assembling 'cpc_TestKey.asm' to 'cpc_TestKey.o'
+Reading 'cpc_TestKey.asm' = 'cpc_TestKey.asm'
+Writing object file 'cpc_TestKey.o'
+Module 'cpc_TestKey' size: 26 bytes
+
+Assembling 'cpc_AnyKeyPressed.asm' to 'cpc_AnyKeyPressed.o'
+Reading 'cpc_AnyKeyPressed.asm' = 'cpc_AnyKeyPressed.asm'
+Writing object file 'cpc_AnyKeyPressed.o'
+Module 'cpc_AnyKeyPressed' size: 26 bytes
+
+Assembling 'cpc_RedefineKey.asm' to 'cpc_RedefineKey.o'
+Reading 'cpc_RedefineKey.asm' = 'cpc_RedefineKey.asm'
+Writing object file 'cpc_RedefineKey.o'
+Module 'cpc_RedefineKey' size: 110 bytes
+
+Assembling 'cpc_DeleteKeys.asm' to 'cpc_DeleteKeys.o'
+Reading 'cpc_DeleteKeys.asm' = 'cpc_DeleteKeys.asm'
+Writing object file 'cpc_DeleteKeys.o'
+Module 'cpc_DeleteKeys' size: 14 bytes
+
+Assembling 'cpc_AssignKey.asm' to 'cpc_AssignKey.o'
+Reading 'cpc_AssignKey.asm' = 'cpc_AssignKey.asm'
+Writing object file 'cpc_AssignKey.o'
+Module 'cpc_AssignKey' size: 29 bytes
+
+Assembling 'cpc_PrintStr.asm' to 'cpc_PrintStr.o'
+Reading 'cpc_PrintStr.asm' = 'cpc_PrintStr.asm'
+Writing object file 'cpc_PrintStr.o'
+Module 'cpc_PrintStr' size: 20 bytes
+
+Assembling 'cpc_Random.asm' to 'cpc_Random.o'
+Reading 'cpc_Random.asm' = 'cpc_Random.asm'
+Writing object file 'cpc_Random.o'
+Module 'cpc_Random' size: 15 bytes
+
+Assembling 'cpc_GetScrAddress.asm' to 'cpc_GetScrAddress.o'
+Reading 'cpc_GetScrAddress.asm' = 'cpc_GetScrAddress.asm'
+Writing object file 'cpc_GetScrAddress.o'
+Module 'cpc_GetScrAddress' size: 12 bytes
+
+Assembling 'cpc_GetScrAddress0.asm' to 'cpc_GetScrAddress0.o'
+Reading 'cpc_GetScrAddress0.asm' = 'cpc_GetScrAddress0.asm'
+Writing object file 'cpc_GetScrAddress0.o'
+Module 'cpc_GetScrAddress0' size: 106 bytes
+
+Assembling 'cpc_GetSp.asm' to 'cpc_GetSp.o'
+Reading 'cpc_GetSp.asm' = 'cpc_GetSp.asm'
+Writing object file 'cpc_GetSp.o'
+Module 'cpc_GetSp' size: 36 bytes
+
+Assembling 'cpc_GetSp0.asm' to 'cpc_GetSp0.o'
+Reading 'cpc_GetSp0.asm' = 'cpc_GetSp0.asm'
+Writing object file 'cpc_GetSp0.o'
+Module 'cpc_GetSp0' size: 32 bytes
+
+Assembling 'cpc_PutSpTr.asm' to 'cpc_PutSpTr.o'
+Reading 'cpc_PutSpTr.asm' = 'cpc_PutSpTr.asm'
+Writing object file 'cpc_PutSpTr.o'
+Module 'cpc_PutSpTr' size: 36 bytes
+
+Assembling 'cpc_PutSpTr0.asm' to 'cpc_PutSpTr0.o'
+Reading 'cpc_PutSpTr0.asm' = 'cpc_PutSpTr0.asm'
+Writing object file 'cpc_PutSpTr0.o'
+Module 'cpc_PutSpTr0' size: 67 bytes
+
+Assembling 'cpc_Uncrunch.asm' to 'cpc_Uncrunch.o'
+Reading 'cpc_Uncrunch.asm' = 'cpc_Uncrunch.asm'
+Writing object file 'cpc_Uncrunch.o'
+Module 'cpc_Uncrunch' size: 320 bytes
+
+Assembling 'cpc_SetMode.asm' to 'cpc_SetMode.o'
+Reading 'cpc_SetMode.asm' = 'cpc_SetMode.asm'
+Writing object file 'cpc_SetMode.o'
+Module 'cpc_SetMode' size: 10 bytes
+
+Assembling 'cpc_SetModo.asm' to 'cpc_SetModo.o'
+Reading 'cpc_SetModo.asm' = 'cpc_SetModo.asm'
+Writing object file 'cpc_SetModo.o'
+Module 'cpc_SetModo' size: 5 bytes
+
+Assembling 'cpc_SetColour.asm' to 'cpc_SetColour.o'
+Reading 'cpc_SetColour.asm' = 'cpc_SetColour.asm'
+Writing object file 'cpc_SetColour.o'
+Module 'cpc_SetColour' size: 19 bytes
+
+Assembling 'cpc_PrintGphStr.asm' to 'cpc_PrintGphStr.o'
+Reading 'cpc_PrintGphStr.asm' = 'cpc_PrintGphStr.asm'
+Writing object file 'cpc_PrintGphStr.o'
+Module 'cpc_PrintGphStr' size: 22 bytes
+
+Assembling 'cpc_PrintGphStr2X.asm' to 'cpc_PrintGphStr2X.o'
+Reading 'cpc_PrintGphStr2X.asm' = 'cpc_PrintGphStr2X.asm'
+Writing object file 'cpc_PrintGphStr2X.o'
+Module 'cpc_PrintGphStr2X' size: 23 bytes
+
+Assembling 'cpc_PrintGphStr0.asm' to 'cpc_PrintGphStr0.o'
+Reading 'cpc_PrintGphStr0.asm' = 'cpc_PrintGphStr0.asm'
+Writing object file 'cpc_PrintGphStr0.o'
+Module 'cpc_PrintGphStr0' size: 376 bytes
+
+Assembling 'cpc_PrintGphStr0M1.asm' to 'cpc_PrintGphStr0M1.o'
+Reading 'cpc_PrintGphStr0M1.asm' = 'cpc_PrintGphStr0M1.asm'
+Writing object file 'cpc_PrintGphStr0M1.o'
+Module 'cpc_PrintGphStr0M1' size: 353 bytes
+
+Assembling 'cpc_PrintGphStrM1.asm' to 'cpc_PrintGphStrM1.o'
+Reading 'cpc_PrintGphStrM1.asm' = 'cpc_PrintGphStrM1.asm'
+Writing object file 'cpc_PrintGphStrM1.o'
+Module 'cpc_PrintGphStrM1' size: 22 bytes
+
+Assembling 'cpc_PrintGphStrM12X.asm' to 'cpc_PrintGphStrM12X.o'
+Reading 'cpc_PrintGphStrM12X.asm' = 'cpc_PrintGphStrM12X.asm'
+Writing object file 'cpc_PrintGphStrM12X.o'
+Module 'cpc_PrintGphStrM12X' size: 23 bytes
+
+Assembling 'cpc_PrintGphStrXY.asm' to 'cpc_PrintGphStrXY.o'
+Reading 'cpc_PrintGphStrXY.asm' = 'cpc_PrintGphStrXY.asm'
+Writing object file 'cpc_PrintGphStrXY.o'
+Module 'cpc_PrintGphStrXY' size: 25 bytes
+
+Assembling 'cpc_PrintGphStrXY2X.asm' to 'cpc_PrintGphStrXY2X.o'
+Reading 'cpc_PrintGphStrXY2X.asm' = 'cpc_PrintGphStrXY2X.asm'
+Writing object file 'cpc_PrintGphStrXY2X.o'
+Module 'cpc_PrintGphStrXY2X' size: 26 bytes
+
+Assembling 'cpc_PrintGphStrXYM1.asm' to 'cpc_PrintGphStrXYM1.o'
+Reading 'cpc_PrintGphStrXYM1.asm' = 'cpc_PrintGphStrXYM1.asm'
+Writing object file 'cpc_PrintGphStrXYM1.o'
+Module 'cpc_PrintGphStrXYM1' size: 25 bytes
+
+Assembling 'cpc_PrintGphStrXYM12X.asm' to 'cpc_PrintGphStrXYM12X.o'
+Reading 'cpc_PrintGphStrXYM12X.asm' = 'cpc_PrintGphStrXYM12X.asm'
+Writing object file 'cpc_PrintGphStrXYM12X.o'
+Module 'cpc_PrintGphStrXYM12X' size: 26 bytes
+
+Assembling 'cpc_SetInkGphStr.asm' to 'cpc_SetInkGphStr.o'
+Reading 'cpc_SetInkGphStr.asm' = 'cpc_SetInkGphStr.asm'
+Writing object file 'cpc_SetInkGphStr.o'
+Module 'cpc_SetInkGphStr' size: 20 bytes
+
+Assembling 'cpc_SetInkGphStrM1.asm' to 'cpc_SetInkGphStrM1.o'
+Reading 'cpc_SetInkGphStrM1.asm' = 'cpc_SetInkGphStrM1.asm'
+Writing object file 'cpc_SetInkGphStrM1.o'
+Module 'cpc_SetInkGphStrM1' size: 20 bytes
+
+Assembling 'cpc_Chars.asm' to 'cpc_Chars.o'
+Reading 'cpc_Chars.asm' = 'cpc_Chars.asm'
+Writing object file 'cpc_Chars.o'
+Module 'cpc_Chars' size: 345 bytes
+
+Assembling 'cpc_Chars8.asm' to 'cpc_Chars8.o'
+Reading 'cpc_Chars8.asm' = 'cpc_Chars8.asm'
+Writing object file 'cpc_Chars8.o'
+Module 'cpc_Chars8' size: 769 bytes
+
+Assembling 'cpc_InitTileMap.asm' to 'cpc_InitTileMap.o'
+Reading 'cpc_InitTileMap.asm' = 'cpc_InitTileMap.asm'
+Writing object file 'cpc_InitTileMap.o'
+Module 'cpc_InitTileMap' size: 4 bytes
+
+Assembling 'cpc_UpdScrAddresses.asm' to 'cpc_UpdScrAddresses.o'
+Reading 'cpc_UpdScrAddresses.asm' = 'cpc_UpdScrAddresses.asm'
+Writing object file 'cpc_UpdScrAddresses.o'
+Module 'cpc_UpdScrAddresses' size: 42 bytes
+
+Assembling 'cpc_UpdTileTable.asm' to 'cpc_UpdTileTable.o'
+Reading 'cpc_UpdTileTable.asm' = 'cpc_UpdTileTable.asm'
+Reading 'CPCconfig.def' = 'CPCconfig.def'
+Writing object file 'cpc_UpdTileTable.o'
+Module 'cpc_UpdTileTable' size: 50 bytes
+
+Assembling 'cpc_PutMaskSp0.asm' to 'cpc_PutMaskSp0.o'
+Reading 'cpc_PutMaskSp0.asm' = 'cpc_PutMaskSp0.asm'
+Writing object file 'cpc_PutMaskSp0.o'
+Module 'cpc_PutMaskSp0' size: 37 bytes
+
+Assembling 'cpc_PutMaskSp.asm' to 'cpc_PutMaskSp.o'
+Reading 'cpc_PutMaskSp.asm' = 'cpc_PutMaskSp.asm'
+Writing object file 'cpc_PutMaskSp.o'
+Module 'cpc_PutMaskSp' size: 36 bytes
+
+Assembling 'cpc_PutSpXOR.asm' to 'cpc_PutSpXOR.o'
+Reading 'cpc_PutSpXOR.asm' = 'cpc_PutSpXOR.asm'
+Writing object file 'cpc_PutSpXOR.o'
+Module 'cpc_PutSpXOR' size: 36 bytes
+
+Assembling 'cpc_PutSpXOR0.asm' to 'cpc_PutSpXOR0.o'
+Reading 'cpc_PutSpXOR0.asm' = 'cpc_PutSpXOR0.asm'
+Writing object file 'cpc_PutSpXOR0.o'
+Module 'cpc_PutSpXOR0' size: 33 bytes
+
+Assembling 'cpc_PutSpriteXOR.asm' to 'cpc_PutSpriteXOR.o'
+Reading 'cpc_PutSpriteXOR.asm' = 'cpc_PutSpriteXOR.asm'
+Writing object file 'cpc_PutSpriteXOR.o'
+Module 'cpc_PutSpriteXOR' size: 21 bytes
+
+Assembling 'cpc_PutMaskSprite.asm' to 'cpc_PutMaskSprite.o'
+Reading 'cpc_PutMaskSprite.asm' = 'cpc_PutMaskSprite.asm'
+Writing object file 'cpc_PutMaskSprite.o'
+Module 'cpc_PutMaskSprite' size: 21 bytes
+
+Assembling 'cpc_PutSprite.asm' to 'cpc_PutSprite.o'
+Reading 'cpc_PutSprite.asm' = 'cpc_PutSprite.asm'
+Writing object file 'cpc_PutSprite.o'
+Module 'cpc_PutSprite' size: 167 bytes
+
+Assembling 'cpc_SpUpdX.asm' to 'cpc_SpUpdX.o'
+Reading 'cpc_SpUpdX.asm' = 'cpc_SpUpdX.asm'
+Writing object file 'cpc_SpUpdX.o'
+Module 'cpc_SpUpdX' size: 47 bytes
+
+Assembling 'cpc_SpUpdY.asm' to 'cpc_SpUpdY.o'
+Reading 'cpc_SpUpdY.asm' = 'cpc_SpUpdY.asm'
+Writing object file 'cpc_SpUpdY.o'
+Module 'cpc_SpUpdY' size: 89 bytes
+
+Assembling 'cpc_CollSp.asm' to 'cpc_CollSp.o'
+Reading 'cpc_CollSp.asm' = 'cpc_CollSp.asm'
+Writing object file 'cpc_CollSp.o'
+Module 'cpc_CollSp' size: 128 bytes
+
+Assembling 'cpc_UpdateTileMap.asm' to 'cpc_UpdateTileMap.o'
+Reading 'cpc_UpdateTileMap.asm' = 'cpc_UpdateTileMap.asm'
+Writing object file 'cpc_UpdateTileMap.o'
+Module 'cpc_UpdateTileMap' size: 136 bytes
+
+Assembling 'cpc_UnExo.asm' to 'cpc_UnExo.o'
+Reading 'cpc_UnExo.asm' = 'cpc_UnExo.asm'
+Writing object file 'cpc_UnExo.o'
+Module 'cpc_UnExo' size: 354 bytes
+
+Assembling 'cpc_ScrollLeft0.asm' to 'cpc_ScrollLeft0.o'
+Reading 'cpc_ScrollLeft0.asm' = 'cpc_ScrollLeft0.asm'
+Writing object file 'cpc_ScrollLeft0.o'
+Module 'cpc_ScrollLeft0' size: 23 bytes
+
+Assembling 'cpc_ScrollRight0.asm' to 'cpc_ScrollRight0.o'
+Reading 'cpc_ScrollRight0.asm' = 'cpc_ScrollRight0.asm'
+Writing object file 'cpc_ScrollRight0.o'
+Module 'cpc_ScrollRight0' size: 23 bytes
+
+Assembling 'cpc_PutTrSp4x8TileMap2b.asm' to 'cpc_PutTrSp4x8TileMap2b.o'
+Reading 'cpc_PutTrSp4x8TileMap2b.asm' = 'cpc_PutTrSp4x8TileMap2b.asm'
+Writing object file 'cpc_PutTrSp4x8TileMap2b.o'
+Module 'cpc_PutTrSp4x8TileMap2b' size: 69 bytes
+
+Assembling 'cpc_PutTrSp4x8TileMap2bPx.asm' to 'cpc_PutTrSp4x8TileMap2bPx.o'
+Reading 'cpc_PutTrSp4x8TileMap2bPx.asm' = 'cpc_PutTrSp4x8TileMap2bPx.asm'
+Writing object file 'cpc_PutTrSp4x8TileMap2bPx.o'
+Module 'cpc_PutTrSp4x8TileMap2bPx' size: 146 bytes
+
+Assembling 'cpc_PutTrSp8x8TileMap2bPxM1.asm' to 'cpc_PutTrSp8x8TileMap2bPxM1.o'
+Reading 'cpc_PutTrSp8x8TileMap2bPxM1.asm' = 'cpc_PutTrSp8x8TileMap2bPxM1.asm'
+Writing object file 'cpc_PutTrSp8x8TileMap2bPxM1.o'
+Module 'cpc_PutTrSp8x8TileMap2bPxM1' size: 313 bytes
+
+Assembling 'cpc_PutTrSp8x16TileMap2b.asm' to 'cpc_PutTrSp8x16TileMap2b.o'
+Reading 'cpc_PutTrSp8x16TileMap2b.asm' = 'cpc_PutTrSp8x16TileMap2b.asm'
+Writing object file 'cpc_PutTrSp8x16TileMap2b.o'
+Module 'cpc_PutTrSp8x16TileMap2b' size: 85 bytes
+
+Assembling 'cpc_PutTrSp8x16TileMap2bPx.asm' to 'cpc_PutTrSp8x16TileMap2bPx.o'
+Reading 'cpc_PutTrSp8x16TileMap2bPx.asm' = 'cpc_PutTrSp8x16TileMap2bPx.asm'
+Writing object file 'cpc_PutTrSp8x16TileMap2bPx.o'
+Module 'cpc_PutTrSp8x16TileMap2bPx' size: 218 bytes
+
+Assembling 'cpc_PutTrSp16x16TileMap2bPxM1.asm' to 'cpc_PutTrSp16x16TileMap2bPxM1.o'
+Reading 'cpc_PutTrSp16x16TileMap2bPxM1.asm' = 'cpc_PutTrSp16x16TileMap2bPxM1.asm'
+Writing object file 'cpc_PutTrSp16x16TileMap2bPxM1.o'
+Module 'cpc_PutTrSp16x16TileMap2bPxM1' size: 511 bytes
+
+Assembling 'cpc_PutTrSp8x24TileMap2b.asm' to 'cpc_PutTrSp8x24TileMap2b.o'
+Reading 'cpc_PutTrSp8x24TileMap2b.asm' = 'cpc_PutTrSp8x24TileMap2b.asm'
+Writing object file 'cpc_PutTrSp8x24TileMap2b.o'
+Module 'cpc_PutTrSp8x24TileMap2b' size: 85 bytes
+
+Assembling 'cpc_PutTrSp8x24TileMap2bPx.asm' to 'cpc_PutTrSp8x24TileMap2bPx.o'
+Reading 'cpc_PutTrSp8x24TileMap2bPx.asm' = 'cpc_PutTrSp8x24TileMap2bPx.asm'
+Writing object file 'cpc_PutTrSp8x24TileMap2bPx.o'
+Module 'cpc_PutTrSp8x24TileMap2bPx' size: 218 bytes
+
+Assembling 'cpc_PutTrSp16x24TileMap2bPxM1.asm' to 'cpc_PutTrSp16x24TileMap2bPxM1.o'
+Reading 'cpc_PutTrSp16x24TileMap2bPxM1.asm' = 'cpc_PutTrSp16x24TileMap2bPxM1.asm'
+Writing object file 'cpc_PutTrSp16x24TileMap2bPxM1.o'
+Module 'cpc_PutTrSp16x24TileMap2bPxM1' size: 512 bytes
+
+Assembling 'cpc_PutCpSpTileMap2b.asm' to 'cpc_PutCpSpTileMap2b.o'
+Reading 'cpc_PutCpSpTileMap2b.asm' = 'cpc_PutCpSpTileMap2b.asm'
+Reading 'multiplication1.asm' = 'multiplication1.asm'
+Writing object file 'cpc_PutCpSpTileMap2b.o'
+Module 'cpc_PutCpSpTileMap2b' size: 46 bytes
+
+Assembling 'cpc_GetTiles.asm' to 'cpc_GetTiles.o'
+Reading 'cpc_GetTiles.asm' = 'cpc_GetTiles.asm'
+Writing object file 'cpc_GetTiles.o'
+Module 'cpc_GetTiles' size: 46 bytes
+
+Assembling 'cpc_PutTiles.asm' to 'cpc_PutTiles.o'
+Reading 'cpc_PutTiles.asm' = 'cpc_PutTiles.asm'
+Reading 'multiplication2.asm' = 'multiplication2.asm'
+Writing object file 'cpc_PutTiles.o'
+Module 'cpc_PutTiles' size: 75 bytes
+
+Assembling 'cpc_TouchTiles.asm' to 'cpc_TouchTiles.o'
+Reading 'cpc_TouchTiles.asm' = 'cpc_TouchTiles.asm'
+Writing object file 'cpc_TouchTiles.o'
+Module 'cpc_TouchTiles' size: 36 bytes
+
+Assembling 'cpc_RRI.asm' to 'cpc_RRI.o'
+Reading 'cpc_RRI.asm' = 'cpc_RRI.asm'
+Writing object file 'cpc_RRI.o'
+Module 'cpc_RRI' size: 60 bytes
+
+Assembling 'cpc_RLI.asm' to 'cpc_RLI.o'
+Reading 'cpc_RLI.asm' = 'cpc_RLI.asm'
+Writing object file 'cpc_RLI.o'
+Module 'cpc_RLI' size: 60 bytes
+
+Assembling 'cpc_PrintGphStrStd.asm' to 'cpc_PrintGphStrStd.o'
+Reading 'cpc_PrintGphStrStd.asm' = 'cpc_PrintGphStrStd.asm'
+Writing object file 'cpc_PrintGphStrStd.o'
+Module 'cpc_PrintGphStrStd' size: 27 bytes
+
+Assembling 'cpc_PrintGphStrStd0.asm' to 'cpc_PrintGphStrStd0.o'
+Reading 'cpc_PrintGphStrStd0.asm' = 'cpc_PrintGphStrStd0.asm'
+Writing object file 'cpc_PrintGphStrStd0.o'
+Module 'cpc_PrintGphStrStd0' size: 384 bytes
+
+Assembling 'cpc_PrintGphStrStdXY.asm' to 'cpc_PrintGphStrStdXY.o'
+Reading 'cpc_PrintGphStrStdXY.asm' = 'cpc_PrintGphStrStdXY.asm'
+Writing object file 'cpc_PrintGphStrStdXY.o'
+Module 'cpc_PrintGphStrStdXY' size: 30 bytes
+
+Assembling 'cpc_DisableFirmware.asm' to 'cpc_DisableFirmware.o'
+Reading 'cpc_DisableFirmware.asm' = 'cpc_DisableFirmware.asm'
+Writing object file 'cpc_DisableFirmware.o'
+Module 'cpc_DisableFirmware' size: 19 bytes
+
+Assembling 'cpc_EnableFirmware.asm' to 'cpc_EnableFirmware.o'
+Reading 'cpc_EnableFirmware.asm' = 'cpc_EnableFirmware.asm'
+Writing object file 'cpc_EnableFirmware.o'
+Module 'cpc_EnableFirmware' size: 13 bytes
+
+Assembling 'cpc_ClrScr.asm' to 'cpc_ClrScr.o'
+Reading 'cpc_ClrScr.asm' = 'cpc_ClrScr.asm'
+Writing object file 'cpc_ClrScr.o'
+Module 'cpc_ClrScr' size: 14 bytes
+
+Assembling 'cpc_KeysData.asm' to 'cpc_KeysData.o'
+Reading 'cpc_KeysData.asm' = 'cpc_KeysData.asm'
+Writing object file 'cpc_KeysData.o'
+Module 'cpc_KeysData' size: 37 bytes
+
+Assembling 'cpc_ScanKeyboard.asm' to 'cpc_ScanKeyboard.o'
+Reading 'cpc_ScanKeyboard.asm' = 'cpc_ScanKeyboard.asm'
+Writing object file 'cpc_ScanKeyboard.o'
+Module 'cpc_ScanKeyboard' size: 51 bytes
+
+Assembling 'cpc_TestKeyF.asm' to 'cpc_TestKeyF.o'
+Reading 'cpc_TestKeyF.asm' = 'cpc_TestKeyF.asm'
+Writing object file 'cpc_TestKeyF.o'
+Module 'cpc_TestKeyF' size: 35 bytes
+
+Assembling 'cpc_PutSpTileMapO.asm' to 'cpc_PutSpTileMapO.o'
+Reading 'cpc_PutSpTileMapO.asm' = 'cpc_PutSpTileMapO.asm'
+Writing object file 'cpc_PutSpTileMapO.o'
+Module 'cpc_PutSpTileMapO' size: 29 bytes
+
+Assembling 'cpc_Bit2Mask.asm' to 'cpc_Bit2Mask.o'
+Reading 'cpc_Bit2Mask.asm' = 'cpc_Bit2Mask.asm'
+Writing object file 'cpc_Bit2Mask.o'
+Module 'cpc_Bit2Mask' size: 8 bytes
+
+Assembling 'cpc_TblLookup.asm' to 'cpc_TblLookup.o'
+Reading 'cpc_TblLookup.asm' = 'cpc_TblLookup.asm'
+Writing object file 'cpc_TblLookup.o'
+Module 'cpc_TblLookup' size: 7 bytes
+
+Assembling 'cpc_InvalidateRect.asm' to 'cpc_InvalidateRect.o'
+Reading 'cpc_InvalidateRect.asm' = 'cpc_InvalidateRect.asm'
+Writing object file 'cpc_InvalidateRect.o'
+Module 'cpc_InvalidateRect' size: 96 bytes
+
+Assembling 'cpc_bitright2mask.asm' to 'cpc_bitright2mask.o'
+Reading 'cpc_bitright2mask.asm' = 'cpc_bitright2mask.asm'
+Writing object file 'cpc_bitright2mask.o'
+Module 'cpc_bitright2mask' size: 8 bytes
+
+Assembling 'cpc_bitleft2mask.asm' to 'cpc_bitleft2mask.o'
+Reading 'cpc_bitleft2mask.asm' = 'cpc_bitleft2mask.asm'
+Writing object file 'cpc_bitleft2mask.o'
+Module 'cpc_bitleft2mask' size: 8 bytes
+
+Creating library 'cpcrslib.lib'
+cpcrslib.lib
+        1 file(s) copied.
+        1 file(s) copied.
