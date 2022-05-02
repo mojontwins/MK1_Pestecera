@@ -162,8 +162,17 @@
 
 		#include "mainloop/hud.h"
 
+		/*
 		maincounter ++;
 		half_life = !half_life;
+		*/
+		#asm
+				ld  hl, _maincounter
+				inc (hl)
+				ld  a, (_half_life)
+				xor 1
+				ld  (_half_life), a
+		#endasm
 		
 		// Move player
 		player_move ();

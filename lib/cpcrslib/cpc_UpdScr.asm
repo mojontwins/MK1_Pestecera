@@ -38,14 +38,10 @@ ENDIF
 .main_loop
 	push bc
 
-	ld  bc, (_tiles_tocados_ptr)
-
 	call process_touched_byte
 	call process_touched_byte
 	call process_touched_byte
 	call process_touched_byte
-
-	ld  (_tiles_tocados_ptr), bc
 
 	; Next line in superbuffer
 	ld  e, 0
@@ -63,8 +59,11 @@ ENDIF
 .process_touched_byte
 
 	; Read byte from pointer
+	
+	ld bc, (_tiles_tocados_ptr)
 	ld  a, (bc)
 	inc bc
+	ld  (_tiles_tocados_ptr), bc
 
 	bit 0, a
 	jr  z, bit0_skip
@@ -136,7 +135,7 @@ ENDIF
 
 	push hl
 	push de
-	push bc
+	;push bc
 	push af
 
 IF PASARPORDETRAS
@@ -243,7 +242,7 @@ ENDIF
 .skeep
 
 	pop af
-	pop bc
+	;pop bc
 	pop de
 	pop hl
 

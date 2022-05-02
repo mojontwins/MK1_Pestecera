@@ -52,27 +52,29 @@ ENDIF
 	ENDIF
 
 .cpc_UpdTileTable
+
+; We have DE = YX, X, Y = 5 bit max. ·· ·· ·· Y4 Y3 Y2 Y1 Y0  | ·· ·· ·· X4 X3 X2 X1 X0
+; We need HL = X\8+Y*4               ·· ·· ·· ·· ·· ·· ·· ··  | ·· Y4 Y3 Y2 Y1 Y0 X4 X3
+
 	ld  b, d
 	ld  c, e
 
-	sla d 				; Y * 2
-	sla d 				; Y * 4
+	sla d 				; 							2
+	sla d 				; Y * 4						2
 
-	ld  l, d
-	ld  h, 0 			; HL = Y*4
+	ld  a, e 			; 							1
+	srl a 				; 							2
+	srl a 				; 							2
+	srl a  				; 							2
+	or  d 			    ; X / 8 					1
 
-	ld  a, e 			; X
-	and $07				; A = X & 7 (bit mask)
-
-	srl e
-	srl e
-	srl e 				; E = X\8
-
-	ld  d, 0 			; DE = X\8
-	add hl, de 			; HL = X\8 + Y*4
-
-	ld  de, tiles_tocados
-	add hl, de
+	;; tiles_tocados is page aligned!
+	ld  l, a 			; HL = Y * 4 + X / 8 		1
+	ld  h, tiles_tocados/256 						2
+	
+	ld  a, e 			; 							1
+	and $07 			; A = X & 7 (bit mask)		2
+						;	 						20
 
 	ld  de, cpc_Bit2Mask
 	call cpc_TblLookup	; A = bit mask
@@ -84,3 +86,23 @@ ENDIF
 	ld  e, c
 
 	ret
+
+; REWRITE:
+
+; We have DE = YX, X, Y = 5 bit max. ·· ·· ·· Y4 Y3 Y2 Y1 Y0  | ·· ·· ·· X4 X3 X2 X1 X0
+; We need HL = X\8+Y*4               ·· ·· ·· ·· ·· ·· ·· ··  | ·· Y4 Y3 Y2 Y1 Y0 X4 X3
+
+	sla d
+	sla d 				; Y * 4
+
+	ld  a, e
+	srl a
+	srl a
+	srl a
+	or  d
+
+	ld  l, a
+	ld  h, 0
+
+	ld  a, e
+	and $07
