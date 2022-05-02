@@ -347,6 +347,7 @@ void enems_move (void) {
 			_en_cx = _en_x; _en_cy = _en_y;
 		#endif
 		
+		/*
 		if (en_an_state [enit] == GENERAL_DYING) {
 			-- en_an_count [enit];
 			if (en_an_count [enit] == 0) {
@@ -355,13 +356,79 @@ void enems_move (void) {
 				continue;
 			}
 		}
+		*/
+		#asm
+			._en_dying
+				ld  de, (_enit)
+				ld  d, 0
+
+				ld  hl, _en_an_state
+				add hl, de 
+				ld  a, (hl)
+				cp  GENERAL_DYING
+				jr  nz, _en_dying_done
+
+				ld  hl, _en_an_count
+				add hl, de 
+				dec (hl)
+				jr  nz, _en_dying_done
+
+			._en_dying_dead
+				ld  hl, _en_an_state 
+				add hl, de 
+				xor a 
+				ld  (hl), a 
+
+				ex  de, hl 						// HL = enit
+				add hl, hl  					// *2, 16 bit array
+				ld  de, _en_an_next_frame
+				add hl, de  					// HL = en_an_next_frame [enit]
+				ld  de, _sprite_18_a
+				ld  (hl), e 
+				inc hl
+				ld  (hl), d 
+		#endasm	
+		continue;
+		#asm
+			._en_dying_done
+		#endasm
 		
 		#ifndef PLAYER_GENITAL
+			// if (gpx + W >= _en_x && _en_x + W >= gpx) pregotten = 1; else pregotten = 0;
+			#asm
+				._pregotten_calc
+					ld  a, (__en_x)
+					ld  c, a 
+					ld  a, (_gpx)
 			#if defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_8_BOTTOM)
-				pregotten = (gpx + 12 >= _en_x && gpx <= _en_x + 12);
+						add 12
 			#else
-				pregotten = (gpx + 15 >= _en_x && gpx <= _en_x + 15);
+						add 15
+				#endif
+					cp  c 
+					jr  c, _pregotten_reset 
+
+					ld  a, (_gpx) 
+					ld  c, a 
+					ld  a, (__en_x)
+				#if defined (BOUNDING_BOX_8_CENTERED) || defined (BOUNDING_BOX_8_BOTTOM)
+						add 12
+				#else
+						add 15
 			#endif
+					cp  c
+					jr  c, _pregotten_reset
+
+				._pregotten_set
+					ld  a, 1
+					jr  _pregotten_write
+
+				._pregotten_reset
+					xor a
+
+				._pregotten_write
+					ld (_pregotten), a
+			#endasm
 		#endif
 
 		switch (rdt) {
@@ -391,27 +458,21 @@ void enems_move (void) {
 					break;	
 			#endif
 			#include "my/ci/enems_move.h"
-			/*
-			default:
-				if (en_an_state [enit] != GENERAL_DYING) en_an_next_frame [enit] = sprite_18_a;
-			*/
+
 		}
 		
 		if (active) {			
 			// Animate
-			if (en_an_base_frame [enit] != 99) {
-				/*
-				en_an_count [enit] ++; 
-				if (en_an_count [enit] == 4) {
-					en_an_count [enit] = 0;
-					en_an_frame [enit] = !en_an_frame [enit];					
-					en_an_next_frame [enit] = sm_sprptr [en_an_base_frame [enit] + en_an_frame [enit]];
-				}
-				*/
 				
 				#asm
 						ld  bc, (_enit)
 						ld  b, 0
+
+					ld  hl, _en_an_base_frame
+					add hl, bc 
+					ld  a, (hl)
+					cp  99
+					jr  z, _enems_move_update_frame_done
 
 						ld  hl, _en_an_count
 						add hl, bc
@@ -453,8 +514,6 @@ void enems_move (void) {
 					._enems_move_update_frame_done
 				#endasm
 				
-			}
-			
 			// Collide with player
 			
 			#if !defined PLAYER_GENITAL && !defined DISABLE_PLATFORMS
@@ -467,8 +526,13 @@ void enems_move (void) {
 							if (gpy + 17 >= _en_y && gpy + 8 <= _en_y) {
 								p_gotten = 1;
 								ptgmx = _en_mx << 6;
+								#ifdef PLAYER_CUMULATIVE_JUMP
+									if (p_vy > 0) 
+								#endif
+								{
 								gpy = (_en_y - 16); p_y = gpy << 6;
 							}
+						}
 						}
 
 						// Vertical moving platforms
@@ -478,7 +542,12 @@ void enems_move (void) {
 						) {
 							p_gotten = 1;
 							ptgmy = _en_my << 6;
+							#ifdef PLAYER_CUMULATIVE_JUMP
+								if (p_vy > 0) 
+							#endif
+							{
 							gpy = (_en_y - 16); p_y = gpy << 6;					
+						}
 						}
 
 					}
@@ -730,6 +799,7 @@ void enems_move (void) {
 			#include "my/ci/enems_extra_actions.h"
 		} 
 
+		/*
 		rda = SP_ENEMS_BASE + enit; rdt = en_an_sprid [enit];
 		#if defined PIXELPERFECT 
 			#if CPC_GFX_MODE == 0
@@ -743,6 +813,82 @@ void enems_move (void) {
 		sp_sw [rda].cy = (_en_y + VIEWPORT_Y * 8 + sp_sw [rda].coy);
 		if (rdt != 0xff) sp_sw [rda].sp0 = (int) (en_an_next_frame [enit]);
 		else sp_sw [rda].sp0 = (int) (SPRFR_EMPTY);
+		*/
+
+		#asm
+			._enem_spr_setup
+
+				// Calculate a pointer to sp_sw [SP_ENEMS_BASE + enit]
+				// sp_sw is 16 bytes wide, and is max. 256 big, plus it's page-aligned!
+
+				ld  a, (_enit)
+				add SP_ENEMS_BASE
+				sla a
+				sla a 
+				sla a
+				sla a 							// * 256
+				ld  ixl, a
+				ld  ixh, BASE_SPRITES/256	 	// page-aligned pointer
+
+				// cx is offset 8, cox is offset 6
+				// sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> MODE_SHIFT;
+
+				ld  a, (__en_x)
+				add VIEWPORT_X * 8
+				add (ix + 6)
+
+			#ifdef PIXELPERFECT
+				#ifdef CPC_GFX_MODE_0
+					// Shift right 1
+						srl a
+				#else
+					// Leave as is
+				#endif
+			#else
+				// Shift right 2
+					srl a
+					srl a
+			#endif
+				ld  (ix + 8), a
+
+				// cy is offset 9, coy is offset 7
+				// sp_sw [rda].cy = (_en_y + VIEWPORT_Y * 8 + sp_sw [rda].coy);
+
+				ld  a, (__en_y)
+				add VIEWPORT_Y * 8
+				add (ix + 7)
+				ld  (ix + 9), a
+
+				// sp0 is offset 0, 1
+				// en_an_sprid [enit]
+				ld  bc, (_enit)
+				ld  b, 0
+				ld  hl, _en_an_sprid
+				add hl, bc
+				ld  a, (hl)
+				inc a 						// if a = 0xff, inc will make it zero!
+				jr  nz, _set_current_frame
+
+				// Empty frame
+				ld  (ix + 0), _sprite_18_a%256
+				ld  (ix + 1), _sprite_18_a/256
+				jr  _enem_spr_setup_done
+
+			._set_current_frame
+				// Current frame
+				ld  a, (_enit)
+				sla a
+				ld  c, a
+				ld  b, 0
+				ld  hl, _en_an_next_frame
+				add hl, bc
+				ld  a, (hl)
+				ld  (ix + 0), a
+				inc hl 
+				ld  a, (hl)
+				ld  (ix + 1), a
+			._enem_spr_setup_done
+		#endasm
 
 		#asm		
 				// Those values are stored in this order:
