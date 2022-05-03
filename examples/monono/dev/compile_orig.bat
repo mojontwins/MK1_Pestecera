@@ -4,7 +4,7 @@
 if [%1]==[help] goto :help
 
 set game=monono
-set cpc_gfx_mode=0
+set cpc_gfx_mode=1
 
 if [%1]==[justcompile] goto :compile
 if [%1]==[clean] goto :clean
@@ -30,24 +30,24 @@ echo Convirtiendo enemigos/hotspots
 if [%1]==[nogfx] goto :compile
 
 echo Importando GFX
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=chars greyordered in=..\gfx_M0\font.png out=..\bin\font.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=strait2x2 greyordered in=..\gfx_M0\work.png out=..\bin\work.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=chars greyordered in=..\gfx\font.png out=..\bin\font.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=strait2x2 greyordered in=..\gfx\work.png out=..\bin\work.bin silent > nul
 
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=spritescript script=..\gfx_M0\spriteset.spt in=..\gfx_M0\spriteset.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h pixelperfectm0 silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=spritescript script=..\gfx\spriteset.spt in=..\gfx\spriteset.png out=..\bin\sprites.bin mappings=assets\spriteset_mappings.h pixelperfectm1 silent > nul
 
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=sprites in=..\gfx_M0\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=sprites in=..\gfx_M0\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_extra.png out=..\bin\sprites_extra.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_bullet.png out=..\bin\sprites_bullet.bin metasize=1,1 silent > nul
 
-..\..\..\src\utils\png2scr.exe ..\gfx_M0\title.png ..\gfx_M0\title.scr > nul
+..\..\..\src\utils\png2scr.exe ..\gfx\title.png ..\gfx\title.scr > nul
 
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=superbuffer in=..\gfx_M0\marco.png out=..\bin\marco.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=superbuffer in=..\gfx_M0\ending.png out=..\bin\ending.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal.png mode=superbuffer in=..\gfx_M0\title.png out=..\bin\title.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
 ..\..\..\src\utils\apack.exe ..\bin\title.bin ..\bin\titlec.bin > nul
 ..\..\..\src\utils\apack.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
 ..\..\..\src\utils\apack.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 
-..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx_M0\pal.png prefix=my_inks out=assets\pal.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 
 if [%1]==[justassets] goto :end
 
@@ -72,7 +72,7 @@ if [%1]==[justcompile] goto :end
 :clean
 :tape
 echo Construyendo cinta
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx_M0\pal_loading.png mode=scr in=..\gfx_M0\loading.png out=..\bin\loading.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_loading.png mode=scr in=..\gfx\loading.png out=..\bin\loading.bin silent > nul
 del ..\bin\loading.c.bin >nul 2>nul
 ..\..\..\src\utils\zx7.exe ..\bin\loading.bin ..\bin\loading.c.bin > nul
 del ..\bin\%game%.c.bin >nul 2>nul
@@ -81,7 +81,7 @@ del ..\bin\%game%.c.bin >nul 2>nul
 ..\..\..\src\utils\imanol.exe in=loader\loadercpc.asm-orig out=loader\loadercpc.asm ^
 	scrc_size=?..\bin\loading.c.bin ^
 	mainbin_size=?..\bin\%game%.c.bin ^
-	loading_palette=!..\gfx_M0\pal_loading.png ^
+	loading_palette=!..\gfx\pal_loading.png ^
 	loader_mode=%cpc_gfx_mode% > nul
 ..\..\..\src\utils\pasmo.exe loader\loadercpc.asm ..\bin\loader.bin  > nul
 

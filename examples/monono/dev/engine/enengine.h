@@ -838,7 +838,7 @@ void enems_move (void) {
 				add (ix + 6)
 
 			#ifdef PIXELPERFECT
-				#ifdef CPC_GFX_MODE_0
+				#if CPC_GFX_MODE == 0
 					// Shift right 1
 						srl a
 				#else

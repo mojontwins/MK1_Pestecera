@@ -1294,7 +1294,7 @@ unsigned char player_move (void) {
 			add c
 
 		#ifdef PIXELPERFECT
-			#ifdef CPC_GFX_MODE_0
+			#if CPC_GFX_MODE == 0
 				// Shift right 1
 					srl a
 			#else
