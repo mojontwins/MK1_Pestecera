@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"_PLY_Tra",
+				"_PLY_Track2_Volume_Note\tabc"
+			],
+			[
 				"_pre",
 				"_pregotten_reset\tabc"
 			],
@@ -510,28 +514,26 @@
 			[
 				"coo",
 				"cookie_jar"
-			],
-			[
-				"current",
-				"current_rule"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "wip/deleteme/dev/assets/instrumentos.h",
+			"file": "wip/deleteme/dev/arkos_player.h",
 			"settings":
 			{
-				"buffer_size": 3148,
+				"buffer_size": 38288,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "wip/deleteme/mus/instrumentos.asm",
+			"file": "wip/deleteme/dev/wyz_player.h",
 			"settings":
 			{
-				"buffer_size": 2625,
+				"buffer_size": 21104,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		}
@@ -620,15 +622,17 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Git/MK1_Pestecera",
-		"/D/Git/MK1_Pestecera/wip",
-		"/D/Git/MK1_Pestecera/wip/deleteme",
-		"/D/Git/MK1_Pestecera/wip/deleteme/dev",
-		"/D/Git/MK1_Pestecera/wip/deleteme/dev/assets",
-		"/D/Git/MK1_Pestecera/wip/deleteme/mus"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/lib",
+		"/D/git/MK1_Pestecera/wip",
+		"/D/git/MK1_Pestecera/wip/deleteme",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/wip/t1.asm",
+		"/D/git/newspectrum/MK3_OM/cheman/lib/arkos/ArkosTrackerPlayer_CPC_MSX.asm",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/WYZPROPLAY47c_CPC.ASM",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/player.h",
 		"/D/Games/Minecraft 1.10 Forge/server/ops.json",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/compile.bat",
@@ -753,14 +757,11 @@
 		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/src/dev/printer.h",
-		"/C/java/applications/webmovil/src/p3s.properties",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat"
+		"/D/git/MK1_Pestecera/src/dev/printer.h"
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
@@ -816,6 +817,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"PLY_SFX_Track1_Instrument",
+			"endsound_sfx",
+			"PLY_SFX_Track1_Pitch",
+			"PLY_SFX_OffsetPitch",
+			"PLY_SFX_Track1_Volume",
+			"PLY_SFX_Track1_Pitch",
+			"dw",
+			";Register",
+			"#([0-9a-fA-F]+)",
+			"PLY_Track1_Volume",
+			"PLY_Track2_Volume",
+			"af'",
+			";",
+			"PLY_SFX_Track3_Volume",
+			"PLY_Track3_note",
+			"PLY_Track3_Volume",
+			"\\$\\+",
+			"PLY_RetrigValue",
+			"\\[([A-Z_0-9]+)\\]",
+			"([A-Z_0-9]+):",
 			"pixelperfect",
 			"..\\gfx",
 			"gfx",
@@ -923,34 +944,19 @@
 			"enem_cells",
 			"en_an_base_frame",
 			"GENERAL_ENEMS_BASE_CELL",
-			"la carpeta",
-			"mappings",
-			"..\\..\\..\\src\\utils\\",
-			"(\\d+) (\\d+) (\\d+)",
-			"def_keys_joy",
-			"LANG_ES",
-			"bxo",
-			"wyz",
-			"wyzsetplayeron",
-			"sp_",
-			"cpcprintat",
-			"cpc",
-			"SPPrintAtInv",
-			"spprintatinv",
-			"attr",
-			"auto_shadows",
-			"sp_",
-			"cpcmode=1",
-			"MK3",
-			"strait2x2",
-			"_en_t"
+			"la carpeta"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"defw",
+			"// Register",
+			"0x\\1",
+			"(\\1)",
+			".\\1",
 			"..\\gfx_M0",
 			"gfx_M0",
 			"de00",
@@ -1028,29 +1034,60 @@
 			[
 				{
 					"buffer": 0,
-					"file": "wip/deleteme/dev/assets/instrumentos.h",
-					"semi_transient": true,
+					"file": "wip/deleteme/dev/arkos_player.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3148,
+						"buffer_size": 38288,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								472,
+								472
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 156.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "wip/deleteme/dev/wyz_player.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								188
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1059,43 +1096,14 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 1,
-					"file": "wip/deleteme/mus/instrumentos.asm",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2625,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 78.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1147,7 +1155,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 88.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1181,7 +1189,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
