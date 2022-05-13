@@ -520,37 +520,18 @@
 	"buffers":
 	[
 		{
-			"file": "examples/monono/dev/engine/player.h",
+			"file": "wip/deleteme/dev/assets/instrumentos.h",
 			"settings":
 			{
-				"buffer_size": 25561,
-				"encoding": "UTF-8",
+				"buffer_size": 3148,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/monono/dev/compile.bat",
+			"file": "wip/deleteme/mus/instrumentos.asm",
 			"settings":
 			{
-				"buffer_size": 4803,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/monono/dev/mainloop/game_loop.h",
-			"settings":
-			{
-				"buffer_size": 6423,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/monono/dev/engine/enengine.h",
-			"settings":
-			{
-				"buffer_size": 19420,
-				"encoding": "UTF-8",
+				"buffer_size": 2625,
 				"line_ending": "Windows"
 			}
 		}
@@ -640,26 +621,27 @@
 	"expanded_folders":
 	[
 		"/D/Git/MK1_Pestecera",
-		"/D/Git/MK1_Pestecera/examples",
-		"/D/Git/MK1_Pestecera/examples/monono",
-		"/D/Git/MK1_Pestecera/examples/monono/dev",
-		"/D/Git/MK1_Pestecera/examples/monono/dev/engine",
-		"/D/Git/MK1_Pestecera/examples/monono/dev/mainloop",
-		"/D/Git/MK1_Pestecera/wip"
+		"/D/Git/MK1_Pestecera/wip",
+		"/D/Git/MK1_Pestecera/wip/deleteme",
+		"/D/Git/MK1_Pestecera/wip/deleteme/dev",
+		"/D/Git/MK1_Pestecera/wip/deleteme/dev/assets",
+		"/D/Git/MK1_Pestecera/wip/deleteme/mus"
 	],
 	"file_history":
 	[
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/player.h",
+		"/D/Games/Minecraft 1.10 Forge/server/ops.json",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/compile.bat",
+		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/enengine.h",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/mk1.c.asm",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/mk1.c",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/my/custom_animation.h",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci/bg_collision/obstacle_down.h",
 		"/D/Git/MK1_Pestecera/examples/monono/diario.md",
-		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/enengine.h",
 		"/D/Git/MK1_Pestecera/wip.md",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/general.h",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/my/ci/custom_evil_tile_check.h",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/my/config.h",
-		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/player.h",
 		"/D/Git/MK1_Pestecera/.gitignore",
 		"/D/Git/MK1_Pestecera/examples/balowwwn/dev/my/map_all_zeroes.h",
 		"/C/Users/na_th_an/Desktop/mineclone2/README.md",
@@ -774,13 +756,11 @@
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
-		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/D/git/MK1/src_cpc/utils/imanol.bas"
+		"/D/git/MK1_Pestecera/src/dev/compile.bat"
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -1048,68 +1028,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "examples/monono/dev/engine/player.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25561,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24365,
-								24365
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "examples/monono/dev/compile.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4803,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1248,
-								1260
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 884.0,
-						"translation.y": 353.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "examples/monono/dev/mainloop/game_loop.h",
+					"file": "wip/deleteme/dev/assets/instrumentos.h",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 6423,
+						"buffer_size": 3148,
 						"regions":
 						{
 						},
@@ -1123,39 +1046,11 @@
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "examples/monono/dev/engine/enengine.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 19420,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								17672,
-								17672
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 10843.0,
+						"translation.y": 156.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1164,8 +1059,37 @@
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 1,
+					"file": "wip/deleteme/mus/instrumentos.asm",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 78.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1223,7 +1147,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 94.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1257,7 +1181,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
