@@ -121,3 +121,9 @@ void wyz_init (void);
 void __FASTCALL__ wyz_play_music (unsigned char m);
 void __FASTCALL__ wyz_play_sound (unsigned char s);
 void wyz_stop_sound (void);
+
+// arkos_player.h
+void arkos_init (void);
+void __FASTCALL__ arkos_play_music (unsigned char m);
+void __FASTCALL__ arkos_play_sound (unsigned char s);
+void arkos_stop_sound (void);

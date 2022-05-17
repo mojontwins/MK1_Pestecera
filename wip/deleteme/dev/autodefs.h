@@ -26,6 +26,11 @@
 	#define AY_PLAY_SOUND(a) wyz_play_sound (a);
 	#define AY_STOP_SOUND()  wyz_stop_sound ();
 	#define AY_PLAY_MUSIC(a) wyz_play_music (a);
+#elif defined SOUND_ARKOS
+	#define AY_INIT()        arkos_init ();
+	#define AY_PLAY_SOUND(a) arkos_play_sound (a);
+	#define AY_STOP_SOUND()  arkos_stop_sound ();
+	#define AY_PLAY_MUSIC(a) arkos_play_music (a);		
 #endif
 
 // Configure number of blocks and reserve a pool for sprites

@@ -56,12 +56,42 @@ void main (void) {
 			pop bc
 			pop de 
 			pop hl
-	#endif
+		#endif
 
-			xor a
+		#ifdef SOUND_ARKOS
+			push af
+			push bc
+			push hl
+			push de
+			push ix
+			push iy
+			exx
+			ex af, af
+			push af
+			push bc
+			push de
+			push hl
+
+			call PLY_Play
+
+			pop hl 
+			pop de 
+			pop bc
+			pop af 
+			ex af, af
+			exx
+			pop iy
+			pop ix
+			pop de 
+			pop hl 
+			pop bc 
+			pop af
+		#endif
+
+		xor a
 
 	._skip_player
-			ld  (isr_c1), a	
+		ld  (isr_c1), a	
 		
 		pop af
 		ei

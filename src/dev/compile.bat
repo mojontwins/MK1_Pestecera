@@ -55,7 +55,7 @@ if [%1]==[justassets] goto :end
 echo Generating LUTs
 ..\utils\pasmo.exe assets\cpc_TrPixLutM%cpc_gfx_mode%.asm assets\trpixlut.bin
 ..\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
-..\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm assets\instrumentos.h
+..\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
 echo Compilando guego
 zcc +cpc -m -vn -O3 -unsigned -crt0=crt.asm -zorg=1024 -lcpcrslib_fg -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
 ..\utils\printsize.exe %game%.bin

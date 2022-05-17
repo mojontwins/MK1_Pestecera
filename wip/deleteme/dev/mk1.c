@@ -105,5 +105,10 @@
 	#include "wyz_player.h"
 #endif
 
+#ifdef SOUND_ARKOS
+	#include "my/arkos/songs.h"
+	#include "arkos_player.h"
+#endif
+
 #include "my/title_screen.h"
 #include "mainloop.h"

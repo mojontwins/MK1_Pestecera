@@ -519,24 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "wip/deleteme/dev/arkos_player.h",
-			"settings":
-			{
-				"buffer_size": 38288,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "wip/deleteme/dev/wyz_player.h",
-			"settings":
-			{
-				"buffer_size": 21104,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -623,15 +605,28 @@
 	"expanded_folders":
 	[
 		"/D/git/MK1_Pestecera",
-		"/D/git/MK1_Pestecera/lib",
 		"/D/git/MK1_Pestecera/wip",
 		"/D/git/MK1_Pestecera/wip/deleteme",
-		"/D/git/MK1_Pestecera/wip/deleteme/dev"
+		"/D/git/MK1_Pestecera/wip/deleteme/dev",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/arkos",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/wyz",
+		"/D/git/MK1_Pestecera/wip/deleteme/mus"
 	],
 	"file_history":
 	[
-		"/D/git/MK1_Pestecera/wip/t1.asm",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/arkos_player.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/mus/make_ogt.bat",
 		"/D/git/newspectrum/MK3_OM/cheman/lib/arkos/ArkosTrackerPlayer_CPC_MSX.asm",
+		"/D/git/newspectrum/MK3_OM/cheman/dev/sound/arkos_cpc.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/arkos/songs.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/mk1.c",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/config.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/prototypes.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/autodefs.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/wyz_player.h",
+		"/D/git/MK1_Pestecera/wip/t1.asm",
 		"/D/git/MK1_Pestecera/wip/deleteme/dev/WYZPROPLAY47c_CPC.ASM",
 		"/D/Git/MK1_Pestecera/examples/monono/dev/engine/player.h",
 		"/D/Games/Minecraft 1.10 Forge/server/ops.json",
@@ -747,17 +742,7 @@
 		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/Games/Minecraft 1.2.5 Modded/launch.bat",
 		"/D/Git/MK1_Pestecera/src/dev/definitions.h",
-		"/D/Git/MK1_Pestecera/src/dev/mainloop.h",
-		"/C/Users/na_th_an/Downloads/betaexpansion_2.2/betaexpansion.json",
-		"/D/Games/Betaexpansion/versions/betaexpansion/b1.7.3.json",
-		"/D/Games/Betaexpansion/versions/betaexpansion/betaexpansion.json",
-		"/D/Git/MK1_Pestecera/docs/quickstart.md",
-		"/D/Git/MK1_Pestecera/src/dev/setenv.cmd",
-		"/D/Temp/VirtualBox Shared/arroba.txt",
-		"/D/git/MK1_Pestecera/docs/quickstart.md",
-		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/src/dev/printer.h"
+		"/D/Git/MK1_Pestecera/src/dev/mainloop.h"
 	],
 	"find":
 	{
@@ -768,6 +753,7 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\wip\\deleteme\\dev",
 			"D:\\Git\\MK1_Pestecera\\examples\\monono",
 			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn",
 			"D:\\Git\\MK1_Pestecera\\examples\\balowwwn\\dev\\engine",
@@ -817,6 +803,46 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"PLY_Track1_InstrumentsTablePT",
+			"PLY_Init",
+			"PLY_PLAY",
+			"This code is common to both Software and Hardware Dependent.",
+			". ",
+			"PLY_Track3_PitchAdd",
+			"PSG_REG_SEC",
+			"EXT_WORD",
+			"SONIDO_REGS",
+			"tabla_datos_canal_sfx",
+			"LOCALIZA_EFECTO",
+			"INICIA_SONIDO",
+			"ix + ",
+			"PLY_SFX_Track1_InstrumentSpeedCpt",
+			"PLY_SFX_OffsetSpeedCpt",
+			"ix + ",
+			"CalculateFrequency_TestManualFrequency",
+			"0xff",
+			"#",
+			"@",
+			"equ",
+			"PLY_SFX_Init",
+			"$",
+			"ply_sfx_play",
+			"PLY_SFX_StopAll",
+			"SOUND_WYZ",
+			"ply_play",
+			"ply_stop",
+			"isr_player_on",
+			"\t\n",
+			"PLY_INIT\n",
+			"PLY_INIT\nPLY_INIT",
+			"PLY_INIT",
+			"  5\\d\\d  ",
+			"ply_sfx_play",
+			"PLY_PLAY",
+			"ply_play",
+			"0xendasm",
+			"0xasm",
+			"0xdefine",
 			"PLY_SFX_Track1_Instrument",
 			"endsound_sfx",
 			"PLY_SFX_Track1_Pitch",
@@ -904,54 +930,19 @@
 			"AY_",
 			"wyz",
 			"pal_loading",
-			"writepals",
-			"outputpal",
-			"invfunc",
-			"pal_set",
-			"AY_PLAY",
-			"unpack",
-			"clear_sprites",
-			"generatestraitmappings",
-			"sm_sprptr",
-			"trpixlutc",
-			"KEY_AUX1",
-			"pad_read",
-			"update",
-			"KEY_M",
-			"key_m",
-			"blackout",
-			"spr_on",
-			"SW_SPRITES_ALL",
-			"sm_sprptr",
-			"tiles_tocados",
-			"@",
-			"ei",
-			"@",
-			"BF00",
-			"di",
-			"ei",
-			"#",
-			"#0x",
-			"sp_sw",
-			"cpct_miniload_asm",
-			"^   ",
-			"AY_PLAY_MUSIC",
-			"wyz",
-			"SOUND_NONE",
-			"AMMO",
-			"MK1/",
-			"sprptr",
-			"enem_cells",
-			"en_an_base_frame",
-			"GENERAL_ENEMS_BASE_CELL",
-			"la carpeta"
+			"writepals"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"CF_TMF__",
+			"",
+			"#endasm",
+			"#asm",
+			"#define",
 			"defw",
 			"// Register",
 			"0x\\1",
@@ -1029,70 +1020,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "wip/deleteme/dev/arkos_player.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 38288,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								472,
-								472
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "wip/deleteme/dev/wyz_player.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21104,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								182,
-								188
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1189,7 +1118,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

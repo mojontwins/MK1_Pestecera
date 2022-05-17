@@ -3,44 +3,63 @@
 // Biggest song file must fit, so adjust if needed.
 // There's also a buffer to descompress SFX, but this si managed automaticly
 
-0xdefine ARKOS_SFX_BUFFER 	0x8600
-0xdefine ARKOS_SONG_BUFFER 	0x8800
+#define ARKOS_SONG_BUFFER 	0x8400
+#define ARKOS_SFX_BUFFER 	0x8E00
+
+#define ARKOS_SFX_CHANNEL 	1	
 
 // This is `ArkosTrackerPlayer_CPC_MSX.asm` with the macros auto-expanded
 // and code reformatted & resyntaxed for z88dk. There's also a small C wrapper
 
 void arkos_init (void) {
-	0xasm
-		;
-		xor a
-		ld  (_isr_player_on), a
-	0xendasm	
+	unpack ((unsigned int) (arkos_sfx_song), (unsigned int) (ARKOS_SFX_BUFFER));
+	#asm
+		ld  de, ARKOS_SFX_BUFFER
+		call PLY_SFX_Init
+
+		; Put a ret at the top of the PLY_Play routine.
+		ld  a, 201
+		ld  (PLY_Play), a
+	#endasm	
 }
 
 void __FASTCALL__ arkos_play_music (unsigned char m) {
-	0xasm
-		; Song number is in L
+	unpack ((unsigned int) (arkos_songs [m]), (unsigned int) (ARKOS_SONG_BUFFER));
+	#asm
+		ld  de, ARKOS_SONG_BUFFER
+		call PLY_Init
 
-		ld  a, 1
-		ld  (_isr_player_on), a
-	0xendasm
+		; Put a xor a at the top of the PLY_Play routine.
+		ld  a, 175
+		ld  (PLY_Play), a
+	#endasm
 }
 
 void __FASTCALL__ arkos_play_sound (unsigned char s) {
-	0xasm
+	#asm
 		; Sound number is in L
-	0xendasm
+
+		ld a, ARKOS_SFX_CHANNEL
+		ld h, 15
+		ld e, 50
+		ld d, 0
+		ld bc, 0
+
+		call PLY_SFX_Play
+	#endasm
 }
 
 void arkos_stop_sound (void) {
-	0xasm
-		; 
-		xor a
-		ld  (_isr_player_on), a
-	0xendasm
+	#asm
+		call PLY_Stop
+
+		; Turn off arkos play routine
+		ld a, 201
+		ld (PLY_Play), a
+	#endasm
 }
 
-0xasm
+#asm
 	// Arkos Tracker Player V1.01 - CPC & MSX version.
 	// 21/09/09
 
@@ -525,7 +544,7 @@ void arkos_stop_sound (void) {
 		ld de,0
 		add hl,de
 		ld (PLY_Track3_Pitch + 1),hl
-		. Shift the Pitch to slow its speed.
+		// Shift the Pitch to slow its speed.
 		sra h				
 		rr l
 		sra h
@@ -1142,7 +1161,7 @@ void arkos_stop_sound (void) {
 		// Sound is always On here (only Independence mode can switch it off).
 		ld ixl,%1000					
 
-		/7 This code is common to both Software and Hardware Dependent.
+		// This code is common to both Software and Hardware Dependent.
 		// Get Second Byte.
 		ld c,(hl)			
 		inc hl
@@ -1438,7 +1457,7 @@ void arkos_stop_sound (void) {
 		adc a,d
 		ld d,a
 		exx
-		PLY_PS_S_SoundOn_NoPitch
+	.PLY_PS_S_SoundOn_NoPitch
 
 		// Arpeggio ?
 		ld a,e
@@ -1466,7 +1485,7 @@ void arkos_stop_sound (void) {
 		inc hl
 		ld h,(hl)
 		ld l,a
-		add hl,de					;Add TrackPitch + InstrumentPitch (if any).
+		add hl,de					// Add TrackPitch + InstrumentPitch (if any).
 
 		ret
 
@@ -1548,7 +1567,7 @@ void arkos_stop_sound (void) {
 		ret
 
 	.PLY_ReadTrack_Wait
-		add a,32
+		add 32
 		ret
 
 	.PLY_FrequencyTable
@@ -1604,7 +1623,7 @@ void arkos_stop_sound (void) {
 		ld (PLY_SpeedCpt + 1),a
 		ld (PLY_HeightCpt + 1),a
 
-		ld a,#ff
+		ld a,0xff
 		ld (PLY_PSGReg13),a
 		
 		// Set the Instruments pointers to Instrument 0 data (Header has to be skipped).
@@ -1625,27 +1644,13 @@ void arkos_stop_sound (void) {
 	.PLY_Stop
 		ld hl,PLY_PSGReg8
 		ld bc,0x0300
+	._PLY_Stop_REP
 		ld (hl),c
 		inc hl
-		djnz $-2
+		//djnz $-2
+		djnz _PLY_Stop_REP
 		ld a,0x3f // %00111111
 		jp PLY_SendRegisters
-
-	//Initialize the Sound Effects.
-	//DE = SFX Music.
-	.PLY_SFX_Init
-		//Find the Instrument Table.
-		ld hl,12
-		add hl,de
-		ld (PLY_SFX_Play_InstrumentTable + 1),hl
-		
-	// Clear the three channels of any sound effect.
-	.PLY_SFX_StopAll
-		ld hl,0
-		ld (PLY_SFX_Track1_Instrument + 1),hl
-		ld (PLY_SFX_Track2_Instrument + 1),hl
-		ld (PLY_SFX_Track3_Instrument + 1),hl
-		ret
 
 	// Initialize the Sound Effects.
 	// DE = SFX Music.
@@ -1688,7 +1693,7 @@ void arkos_stop_sound (void) {
 	// E = Note (0...143)
 	// D = Speed (0 = As original, 1...255 = new Speed (1 is fastest))
 	// BC = Inverted Pitch (-#FFFF -> FFFF). 0 is no pitch. The higher the pitch, the lower the sound.
-	PLY_SFX_Play
+	.PLY_SFX_Play
 		ld ix,PLY_SFX_Track1_Pitch
 		or a
 		jr z,PLY_SFX_Play_Selected
@@ -1697,13 +1702,15 @@ void arkos_stop_sound (void) {
 		jr z,PLY_SFX_Play_Selected
 		ld ix,PLY_SFX_Track3_Pitch
 		
-	PLY_SFX_Play_Selected
+	.PLY_SFX_Play_Selected
 		//Set Pitch
 		//ld (ix + PLY_SFX_OffsetPitch + 1),c	
-		ld (ix + 0 + 1),c	
+		//ld (ix + 0 + 1),c	
+		ld (ix + 1),c	
 
 		//ld (ix + PLY_SFX_OffsetPitch + 2),b
-		ld (ix + 0 + 2),b
+		//ld (ix + 0 + 2),b
+		ld (ix + 2),b
 
 		// Set Note
 		ld a,e					
@@ -1732,9 +1739,11 @@ void arkos_stop_sound (void) {
 		ld a,(hl)				
 	.PLY_SFX_Play_UserSpeed
 		//ld (ix + PLY_SFX_OffsetSpeed + 1),a
-		ld (ix + 0x23 + 1),a
+		//ld (ix + 0x23 + 1),a
+		ld (ix + 35 + 1),a
 		//ld (ix + PLY_SFX_OffsetSpeedCpt + 1),a
-		ld (ix + 0x1B + 1),a
+		//ld (ix + 0x1B + 1),a
+		ld (ix + 27 + 1),a
 		// Skip Retrig
 		inc hl					
 		inc hl
