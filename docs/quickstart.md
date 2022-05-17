@@ -4,6 +4,10 @@ En esta guía te contamos cómo montar un proyecto. Para ilustrarlo, vamos a por
 
 Esto no es un sustituto del tutorial. Puede ser un documento muy util si ya conocías MK1 para ZX Spectrum y quieres aprender a usar la Pestecera. También puede servir para portar tu juego favorito MK1 a CPC.
 
+## z88dk
+
+**MK1_Pestecera** se compila con la versión más reciente de z88dk a la que hay que instalar la versión custom mojona de **CPCRSLIB** incluida en `/lib`. Para facilitar el proceso, tenemos un z88dk bastante reciente en `/env/z88dk-mt.zip` que ya incluye los archivos necesarios. Sólo hay que descomprimirla en la raíz de `C:`. 
+
 ## Antes de empezar
 
 Lo primero es coger el directorio `/src` y copiarla completa en otro sitio, y acto seguido cambiarle el nombre. Por ejemplo, para la conversión de **Jet Paco** le he cambiado el nombre a `src` por `jetpaco`, obteniendo esta estructura de directorios:

@@ -1,0 +1,9 @@
+; Personalización de CPCRSLIB Mojona
+
+; Ponlo a 1 si quieres que los sprites pasen por detrás de cosas.
+; Necesitarás definir y exportar un behindtilemasks de 256 bytes 
+; con info sobre cada tile de fondo. Un 1 lo marcará como "primer
+; plano"
+
+DEFC PASARPORDETRAS = 1
+

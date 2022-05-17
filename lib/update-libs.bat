@@ -1,4 +1,4 @@
 @echo off
-copy cpcrslib\cpcrslib.lib c:\z88dk10\lib\clibs\
-copy cpcrslib\cpcrslib.h c:\z88dk10\include\
+copy cpcrslib\cpcrslib.lib c:\z88dk\lib\clibs\
+copy cpcrslib\cpcrslib.h c:\z88dk\include\
 echo Updated!

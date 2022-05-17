@@ -480,7 +480,11 @@ void enems_move (void) {
 		} 
 
 		rda = SP_ENEMS_BASE + enit; rdt = en_an_sprid [enit];
-		sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 2;
+		#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+			sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 1;
+		#else
+			sp_sw [rda].cx = (_en_x + VIEWPORT_X * 8 + sp_sw [rda].cox) >> 2;
+		#endif
 		sp_sw [rda].cy = (_en_y + VIEWPORT_Y * 8 + sp_sw [rda].coy);
 		if (rdt != 0xff) sp_sw [rda].sp0 = (int) (en_an_next_frame [enit]);
 		else sp_sw [rda].sp0 = (int) (SPRFR_EMPTY);

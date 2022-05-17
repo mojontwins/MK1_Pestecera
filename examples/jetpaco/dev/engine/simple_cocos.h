@@ -101,8 +101,11 @@ void simple_coco_update (void) {
 				._simple_coco_update_keep_going
 			#endasm
 
-			
-			sp_sw [enspit].cx = (rdx + VIEWPORT_X * 8) >> 2;
+			#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+				sp_sw [enspit].cx = (rdx + VIEWPORT_X * 8) >> 1;
+			#else
+				sp_sw [enspit].cx = (rdx + VIEWPORT_X * 8) >> 2;
+			#endif
 			sp_sw [enspit].cy = (rdy + VIEWPORT_Y * 8);
 			sp_sw [enspit].sp0 = (int) (sprite_19_a);
 			
@@ -196,7 +199,11 @@ void simple_coco_update (void) {
 			#endasm
 		} else {
 			
-			sp_sw [enspit].cx = (VIEWPORT_X * 8) >> 2;
+			#if defined PIXELPERFECT && CPC_GFX_MODE == 0
+				sp_sw [enspit].cx = (VIEWPORT_X * 8) >> 1;
+			#else
+				sp_sw [enspit].cx = (VIEWPORT_X * 8) >> 2;
+			#endif
 			sp_sw [enspit].cy = (VIEWPORT_Y * 8);
 			sp_sw [enspit].sp0 = (int) (SPRFR_EMPTY);
 			

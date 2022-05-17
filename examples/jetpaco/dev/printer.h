@@ -640,6 +640,9 @@ void print_str (void) {
 void clear_sprites (void) {
 	#asm
 	#endasm
+	for (gpit = 0; gpit < SW_SPRITES_ALL; gpit ++) {
+		sp_sw [gpit].sp0 = (int) (SPRFR_EMPTY);
+	}
 }
 
 void pal_set (unsigned char *pal) {

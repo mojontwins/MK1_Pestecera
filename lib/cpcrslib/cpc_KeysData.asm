@@ -9,6 +9,7 @@
 XLIB cpc_KeysData
 
 XDEF tabla_teclas
+XDEF tabla_teclas0
 XDEF keymap
 
 .cpc_KeysData
