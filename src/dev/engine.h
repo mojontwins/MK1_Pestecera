@@ -1,6 +1,10 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
+#ifdef CUSTOM_LOCK_CLEAR
+	#include "my/ci/custom_lock_clear.h"
+#endif
+
 #ifdef TEST_DEBUG
 	void test_debug (void) {
 	}
@@ -310,10 +314,15 @@ void espera_activa (int espera) {
 					ld  (__x), a
 					ld  a, (_y0)
 					ld  (__y), a
-					xor a
-					ld  (__t), a
-					ld  (__n), a
-					call _update_tile
+
+					#ifdef CUSTOM_LOCK_CLEAR
+						call _custom_lock_clear
+					#else
+						xor a
+						ld  (__t), a
+						ld  (__n), a
+						call _update_tile
+					#endif
 			#endasm
 
 			// -- p_keys
@@ -691,34 +700,21 @@ void draw_scr (void) {
 			#endif
 
 			._open_locks_do
+				push hl 			// Save for later.
+			
 				ld  a, d
 				ld  (__x), a
 				ld  a, e
 				ld  (__y), a
-				
-				sla a
-				sla a
-				sla a
-				sla a
-				sub e
-				add d
 
-				ld  b, 0
-				ld  c, a
-				xor a
-				
-				push hl 			// Save for later.
-				
-				ld  hl, _map_attr
-				add hl, bc
-				ld  (hl), a
-				ld  hl, _map_buff
-				add hl, bc
-				ld  (hl), a
-
-				ld  (__t), a
-
-				call _draw_coloured_tile_gamearea
+				#ifdef CUSTOM_LOCK_CLEAR
+					call _custom_lock_clear
+				#else
+					xor a
+					ld  (__t), a
+					ld  (__n), a
+					call _update_tile
+				#endif
 
 				pop hl
 
