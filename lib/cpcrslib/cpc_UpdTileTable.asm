@@ -70,7 +70,7 @@ ENDIF
 
 	;; tiles_tocados is page aligned!
 	ld  l, a 			; HL = Y * 4 + X / 8 		1
-	ld  h, tiles_tocados/256 						2
+	ld  h, tiles_tocados/256 	;					2
 	
 	ld  a, e 			; 							1
 	and $07 			; A = X & 7 (bit mask)		2

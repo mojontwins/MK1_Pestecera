@@ -669,3 +669,28 @@ Para seguir probando todo hemos portado en tropel muchos juegos viejos de la chu
 - Cheril Perils
 - Balowwwwn
 - ...
+
+20220528
+========
+
+Lo siguiente que se me ha ocurrido es que molaria tener un modo OR o XOR pero como me parecen horribles con tantos colores (mezclas raras tipo AGD que quedan fatal), he pensado en implementar el modo que emplea Ghosts'n'goblins, que limita los sprites a 3 colores y los fondos a otros 4, en modo 0. Se que muchos lo detestan, pero a mi me parece interesante y pienso que para juegos con más sprites o sprites más grandes vendrán bien, porque se reduce a la mitad la cantidad de bytes que rotar / volcar. Puedo aprovechar todas las funciones de invalidar el nametable y me puedo centrar en reescribir las del volcado de sprites. Pero creo que tendré que hacer todas, las de a pixel y las que no.
+
+El tema se basa en combinar, con OR o XOR, bits de los pixels del sprite y bits de los pixels del fondo, y tener la paleta preparada con colores repetidos para enmascararlo todo. Nosotros iremos a por OR.
+
+Tendremos entonces por ejemplo que los 4 colores de fondo serán 00XX, 01XX, 10XX, y 11XX, con XX cualquier combinación de pixels. Por lo que nuestra paleta tendrá que empezar así, con los 4 colores del fondo en las posiciones 0, 4, 8 y 12:
+
+```
+    0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F
+    F0 ?? ?? ?? F1 ?? ?? ?? F2 ?? ?? ?? F3 ?? ?? ??
+```
+
+Cuando un sprite combina sus bits 00XX con el fondo, debe verse el color del sprite, menos para cuando XX = 00, que se considerará el color transparente. Por tanto la paleta nos quedaría así:
+
+```
+    0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F
+    F0 S1 S2 S3 F1 S1 S2 S3 F2 S1 S2 S3 F3 S1 S2 S3
+```
+
+Organizando así la paleta, además, el conversor funcionará bien, ya que siempre toma la entrada de la paleta que se encuentra primero para convertir los pixels, por lo que los sprites tomarán correctamente los colores 0001, 0010, 0011 para sus píxeles no transparentes. Ojal, esto limita de una forma muy poco "mala": no se puede repetir colores entre los 4 de fondo y los 3 de sprites. Pero ¿es eso una limitación cuando solo hay 7 colores?
+
+Las rutinas de volcado serán tan sencillas como que hay que coger lo que hay (fondo) y hacerle un OR con cada byte de sprite.
