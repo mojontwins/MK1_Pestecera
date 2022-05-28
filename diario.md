@@ -694,3 +694,8 @@ Cuando un sprite combina sus bits 00XX con el fondo, debe verse el color del spr
 Organizando así la paleta, además, el conversor funcionará bien, ya que siempre toma la entrada de la paleta que se encuentra primero para convertir los pixels, por lo que los sprites tomarán correctamente los colores 0001, 0010, 0011 para sus píxeles no transparentes. Ojal, esto limita de una forma muy poco "mala": no se puede repetir colores entre los 4 de fondo y los 3 de sprites. Pero ¿es eso una limitación cuando solo hay 7 colores?
 
 Las rutinas de volcado serán tan sencillas como que hay que coger lo que hay (fondo) y hacerle un OR con cada byte de sprite.
+
+El siguiente paso tiene que ver con mkts, ya que habrá que añadir un modo que nos permita generar los mappings correctos, en modo normal y en modo scripted spriteset. Recordemos que los métodos que cambian son los que pintan en el buffer.
+
+Finamente un último cambio interesante sería añadir una configuración en `config.h` para que no se incluya la LUT comprimida ni el código para descomprimirla.
+

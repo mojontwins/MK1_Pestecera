@@ -61,7 +61,9 @@
 	#include "assets/extrasprites.h"
 #endif
 #include "assets/spriteset_mappings.h"
-#include "assets/trpixlut.h"
+#ifndef OR_SPRITES
+	#include "assets/trpixlut.h"
+#endif
 
 #include "my/ci/extra_vars.h"
 

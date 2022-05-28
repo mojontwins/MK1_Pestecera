@@ -22,6 +22,9 @@
 											// parameter to mkts when converting the main spriteset
 											// WON'T WORK IN MODE 1
 
+//#define OR_SPRITES 						// This removes the compressed LUT from the binary
+											// and saves some bytes if you are using GnG M0 mode
+
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						6		//
