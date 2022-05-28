@@ -431,6 +431,8 @@ void enems_move (void) {
 			#endasm
 		#endif
 
+		#include "my/ci/enems_before_move.h"
+
 		switch (rdt) {
 			case 1:
 			case 2:
@@ -460,6 +462,10 @@ void enems_move (void) {
 			#include "my/ci/enems_move.h"
 
 		}
+
+		#asm
+			.enems_just_moved
+		#endasm
 		
 		if (active) {			
 			// Animate
@@ -468,11 +474,11 @@ void enems_move (void) {
 						ld  bc, (_enit)
 						ld  b, 0
 
-					ld  hl, _en_an_base_frame
-					add hl, bc 
-					ld  a, (hl)
-					cp  99
-					jr  z, _enems_move_update_frame_done
+						ld  hl, _en_an_base_frame
+						add hl, bc 
+						ld  a, (hl)
+						cp  99
+						jr  z, _enems_move_update_frame_done
 
 						ld  hl, _en_an_count
 						add hl, bc
