@@ -119,7 +119,7 @@ XREF posicion_inicial_superbuffer
 	rrca 			; A = BA
 	ld  c, a 		; Save for next byte
 
-	and $55
+	and $55 		; A = 0A
 
 	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save bg + masked sprite
@@ -179,7 +179,7 @@ XREF posicion_inicial_superbuffer
 	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
-	inc bc
+	inc hl
 
 	;; Byte 4
 	;; GH -> HG, byte 4 = (FE And 0xAA) OR (HG And 0x55) = FG
@@ -224,9 +224,8 @@ XREF posicion_inicial_superbuffer
 	ret z
 
 	; de += 60 (next line in bg)
-	ld hl, 60
-	add hl, de
-	ex de, hl
+	ld bc, 60
+	add hl, bc
 
 	jp loop_alto_map_sbuffer_shifted
 
