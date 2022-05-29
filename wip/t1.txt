@@ -1,9 +1,0 @@
-PLY_PS_EndSound_SFX EQU 00028H
-PLY_SFX_Track1_End EQU 00028H
-PLY_SFX_Track1_Instrument EQU 00007H
-PLY_SFX_Track1_InstrumentSpeed EQU 00023H
-PLY_SFX_Track1_InstrumentSpeedCpt EQU 0001BH
-PLY_SFX_Track1_Instrument_SetAddress EQU 00020H
-PLY_SFX_Track1_Pitch EQU 00000H
-PLY_SFX_Track1_PlayNoForward EQU 00025H
-PLY_SFX_Track1_VolumeNote EQU 00004H

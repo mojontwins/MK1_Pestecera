@@ -63,15 +63,13 @@ XREF posicion_inicial_superbuffer
 	; El ancho está desenrollado: Hay que procesar y copiar 2 bytes.
 
 	ld a, (de) 		; Get sprite
-	ld c, (hl) 		; Get bg
-	or c  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld c, (hl) 		; Get bg
-	or c  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	
@@ -98,20 +96,19 @@ XREF posicion_inicial_superbuffer
 	ld  a, (de) 	; Get sprite byte AB
 
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = BA
 	ld  c, a 		; Save for next byte
 
 	and $55
 
 	; Shifted sprite pixel is in A
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save bg + masked sprite
 	inc de
 	inc hl
@@ -121,26 +118,25 @@ XREF posicion_inicial_superbuffer
 
 	ld  a, c 		; BA
 	and $AA 		; B0
-	ld  iyl, a 		; IYL = B0
+	ld  b, a 		; B = B0
 
 	ld  a, (de) 	; Get sprite byte CD
 	
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = DC
 	ld  c, a 		; C = DC
 
 	and $55 		; A = 0C
-	or  iyl 		; A = BC
+	or  b 			; A = BC
 
 	; Shifted sprite pixels are in A
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	inc hl
@@ -151,8 +147,7 @@ XREF posicion_inicial_superbuffer
 	ld  a, c 		; DC
 	and $aa 		; H0
 
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 
 	;*************************************************		

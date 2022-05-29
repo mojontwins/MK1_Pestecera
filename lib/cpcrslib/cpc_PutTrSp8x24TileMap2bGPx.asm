@@ -63,29 +63,25 @@ XREF posicion_inicial_superbuffer
 	; El ancho está desenrollado: Hay que procesar y copiar 4 bytes.
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	
@@ -114,19 +110,18 @@ XREF posicion_inicial_superbuffer
 	ld  a, (de) 	; Get sprite byte AB
 
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = BA
 	ld  c, a 		; Save for next byte
 
 	and $55
 
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save bg + masked sprite
 	inc de
 	inc hl
@@ -136,25 +131,24 @@ XREF posicion_inicial_superbuffer
 
 	ld  a, c 		; BA
 	and $AA 		; B0
-	ld  iyl, a 		; IYL = B0
+	ld  b, a 		; B = B0
 
-	ld  a, (de) 		; Get sprite byte CD
+	ld  a, (de) 	; Get sprite byte CD
 	
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = DC
 	ld  c, a 		; C = DC
 
 	and $55 		; A = 0C
-	or  iyl 		; A = BC
+	or  b 			; A = BC
 
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	inc hl
@@ -164,26 +158,25 @@ XREF posicion_inicial_superbuffer
 
 	ld  a, c 		; DC
 	and $aa 		; D0
-	ld  iyl, a 		; IYL = D0
+	ld  b, a 		; IYL = D0
 
-	ld  a, (de) 		; Get sprite byte EF
+	ld  a, (de) 	; Get sprite byte EF
 	
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = FE
 
 	ld  c, a 		; C = FE
 
 	and $55 		; A = 0E
-	or  iyl 		; A = DE
+	or  b 			; A = DE
 
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	inc bc
@@ -193,26 +186,25 @@ XREF posicion_inicial_superbuffer
 
 	ld  a, c 		; FE
 	and $aa 		; F0
-	ld  iyl, a 		; IYL = F0
+	ld  b, a 		; IYL = F0
 
 	ld  a, (de) 		; Get sprite byte GH
 	
 	;; swap pixels in byte
-	ld  b, a
+	ld  c, a
 	rlca
 	rlca
-	xor b
+	xor c
 	and $55 		; 01010101
-	xor b
+	xor c
 	rrca 			; A = HG
 
 	ld  c, a 		; C = HG
 
 	and $55 		; A = 0G
-	or  iyl 		; A = FG
+	or  b 			; A = FG
 
-	ld a, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 	inc de
 	inc hl
@@ -223,8 +215,7 @@ XREF posicion_inicial_superbuffer
 	ld  a, c 		; HG
 	and $aa 		; H0
 
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG
 
 	;*************************************************		

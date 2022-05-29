@@ -53,32 +53,29 @@ XREF posicion_inicial_superbuffer
 	ld ixh,24
 
 .loop_alto_map_sbuffer
+
 	; El ancho está desenrollado: Hay que procesar y copiar 4 bytes.
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	inc hl
 
 	ld a, (de) 		; Get sprite
-	ld b, (hl) 		; Get bg
-	or b  			; draw pixels
+	or (hl) 		; Get bg + draw pixels
 	ld (hl), a 		; save BG+sprite
 	inc de
 	
