@@ -4,20 +4,9 @@
 // This is run once per tile print in the map renderer. you can change _t
 // as fit.
 
-#asm
-		// is in A as well
-		or  a 
-		jr  nz, mrtm_skip1
-
-		ld  hl, _map_buff 
-		add hl, bc 
-		ld  de, 16
-		sbc hl, de
-		cp  7
-		jr  nz, mrtm_skip1
-
-		ld  a, 23
-		ld  (__t), 23
-
-	.mrtm_skip1	
-#endasm
+// If you add code, add this as well, at the end of this file:
+/*
+	#asm
+			ld  a, (__t)
+	#endasm
+*/
