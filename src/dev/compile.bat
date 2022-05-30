@@ -58,6 +58,7 @@ echo Generating LUTs
 ..\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
 echo Compilando guego
 zcc +cpc -m -vn -O3 -unsigned -crt0=crt.asm -zorg=1024 -lcpcrslib_fg -DCPC_GFX_MODE=%cpc_gfx_mode% -o %game%.bin tilemap_conf.asm mk1.c > nul
+if %errorlevel% neq 0 goto :error
 ..\utils\printsize.exe %game%.bin
 ..\utils\printsize.exe scripts.bin
 
@@ -98,8 +99,14 @@ del %game%.cdt > nul
 
 goto :end 
 
+:error
+echo Error
+goto endend
+
 :help
 echo "compile.bat help|justcompile|clean|justscripts|justassets|nogfx"
 
 :end
 echo Hecho!
+
+:endend

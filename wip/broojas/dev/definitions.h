@@ -119,6 +119,9 @@ unsigned char p_tx, p_ty;
 signed int ptgmx, ptgmy;
 #ifdef DIE_AND_RESPAWN
 	unsigned char safe_n_pant, safe_gpx, safe_gpy;
+	#ifndef PLAYER_GENITAL
+		unsigned char was_possee;
+	#endif
 #endif
 	
 unsigned char *spacer = "            ";

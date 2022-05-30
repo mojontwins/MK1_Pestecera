@@ -704,3 +704,10 @@ Finamente un último cambio interesante sería añadir una configuración en `co
 
 Quiero añadir `DIE_AND_RESPAWN`. Cuando lo tenga, habrá que pasar esto y el hook de borrar los cerrojos a MK1 de ZX.
 
+Para vista lateral debería tener dos modalidades: 1. Establecer el "punto seguro" cada vez que se aterriza y 2. Establecerlo la primera vez que se aterriza al entrar en una pantalla. La segunda modalidad sería más como Profanation y otros juegos viejos pero sin el bucle de la muerte.
+
+```c
+    #define DIE_AND_RESPAWN                     // Remember last safe spot & respawn there
+    #define SAFE_SPOT_ON_ENTERING               // Comment to have safe spot on landing instead
+```
+

@@ -86,6 +86,12 @@
 		display_items ();
 	#endif
 
+	#ifdef DIE_AND_RESPAWN
+		safe_n_pant = n_pant; 
+		safe_gpx = gpx;
+		safe_gpy = gpy;
+	#endif
+
 	o_pant = 0xff;
 	while (playing) {
 		#asm
@@ -99,6 +105,9 @@
 			#include "my/ci/before_entering_screen.h"
 			draw_scr ();
 			o_pant = n_pant;
+			#if defined DIE_AND_RESPAWN && defined PLAYER_GENITAL
+				safe_gpx = gpx; safe_gpy = gpy;
+			#endif
 		}
 
 		#ifdef TIMER_ENABLE
@@ -185,13 +194,6 @@
 			simple_coco_update ();
 		#endif
 
-		if (p_killme) {
-			if (p_life) {
-				player_kill (p_killme);
-				#include "my/ci/on_player_killed.h"
-			} else playing = 0;
-		}
-
 		#ifdef PLAYER_CAN_FIRE
 			// Move bullets 			
 			bullets_move ();
@@ -226,6 +228,14 @@
 		
 		// Hotspot interaction.
 		hotspots_do ();
+
+		// Kill player
+		if (p_killme) {
+			if (p_life) {
+				player_kill (p_killme);
+				#include "my/ci/on_player_killed.h"
+			} else playing = 0;
+		}
 
 		// Scripting related stuff
 		

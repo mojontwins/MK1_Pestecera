@@ -85,7 +85,9 @@
 //#define BODY_COUNT_ON 			2		// If defined, count enemies on flag #
 //#define DISABLE_PLATFORMS 				// Disables platforms in side-view
 //#define CUSTOM_LOCK_CLEAR 				// use `custom_lock_clear.h` to remove a lock from screen
+
 #define DIE_AND_RESPAWN 					// Remember last safe spot & respawn there
+#define SAFE_SPOT_ON_ENTERING 				// Comment to have safe spot on landing instead
 
 // Extra enemy types
 // -----------------
