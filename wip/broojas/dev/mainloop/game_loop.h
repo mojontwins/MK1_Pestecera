@@ -99,6 +99,9 @@
 			#include "my/ci/before_entering_screen.h"
 			draw_scr ();
 			o_pant = n_pant;
+			#if defined DIE_AND_RESPAWN && defined PLAYER_GENITAL
+				safe_gpx = gpx; safe_gpy = gpy;
+			#endif
 		}
 
 		#ifdef TIMER_ENABLE

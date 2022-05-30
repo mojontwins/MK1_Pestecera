@@ -523,6 +523,10 @@ unsigned char player_move (void) {
 				wall_v = WBOTTOM;
 			#else
 				possee = 1;
+				#ifdef DIE_AND_RESPAWN
+					safe_n_pant = n_pant;
+					safe_gpx = gpx; safe_gpy = gpy;
+				#endif
 			#endif
 		}
 	}
@@ -1359,5 +1363,22 @@ void player_kill (unsigned char sound) {
 	#ifdef PLAYER_FLICKERS
 		p_estado = EST_PARP;
 		p_ct_estado = 50;
+	#endif
+
+	#ifdef DIE_AND_RESPAWN
+		#asm
+				ld  a, (_safe_n_pant)
+				ld  (_n_pant), a 
+
+				ld  a, (_safe_gpx)
+				ld  (_gpx), a				
+				call Ashl16_HL
+				ld  (_p_x), hl
+
+				ld  a, (_safe_gpy)
+				ld  (_gpy), a
+				call Ashl16_HL
+				ld  (_p_y), hl
+		#endasm
 	#endif
 }
