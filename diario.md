@@ -699,3 +699,8 @@ El siguiente paso tiene que ver con mkts, ya que habrá que añadir un modo que 
 
 Finamente un último cambio interesante sería añadir una configuración en `config.h` para que no se incluya la LUT comprimida ni el código para descomprimirla.
 
+20220529
+========
+
+Quiero añadir `DIE_AND_RESPAWN`. Cuando lo tenga, habrá que pasar esto y el hook de borrar los cerrojos a MK1 de ZX.
+
