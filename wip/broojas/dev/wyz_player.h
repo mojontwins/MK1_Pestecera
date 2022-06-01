@@ -141,33 +141,46 @@ void wyz_stop_sound (void) {
 		RET
 		
 	.REPRODUCE_SONIDO_O_EFECTO
-		LD A,(HL)
-		CP 0xFF
+		LD A,(HL) 							// Lee byte #1
+		CP 0xFF 							// ¿Ha acabado el sonido (0xff)?
 		JR Z,FIN_SONIDO
+
 		LD E, (IX+0) ; IX+0 -> SFX_L LO
-		LD D, (IX+1) ; IX+1 -> SFX_L HI
-		LD (DE),A
-		INC HL
-		LD A,(HL)
+		LD D, (IX+1) ; IX+1 -> SFX_L HI 	// Lee la dirección del registro SFX_L del AY
+		LD (DE),A 							// Escribe el SFX_L = byte_1
+
+		INC HL 	 							// Siguiente byte
+
+		LD A,(HL)							// Lee byte #2 
 		RRCA
 		RRCA
 		RRCA
-		RRCA
-		AND 00001111B
+		RRCA 								// Rota a la derecha x4, intercambia nibbles
+		AND 00001111B 						// Estos son los 4 bits más significativos de la frecuencia
+
 		LD E, (IX+2) ; IX+2 -> SFX_H LO
-		LD D, (IX+3) ; IX+3 -> SFX_H HI
-		LD (DE),A
-		LD A,(HL)
-		AND 00001111B
+		LD D, (IX+3) ; IX+3 -> SFX_H HI 	// Lee la dirección del registro SFX_H del AY
+		LD (DE),A 							// Escribe SFX_H = (byte_2 >> 4)
+
+
+		LD A,(HL)							// Lee byte #2 
+		AND 00001111B 						// se queda con el nibble menos significativo
+
 		LD E, (IX+4) ; IX+4 -> SFX_V LO
-		LD D, (IX+5) ; IX+5 -> SFX_V HI
-		LD (DE),A
+		LD D, (IX+5) ; IX+5 -> SFX_V HI 	// Lee la dirección del registro SFX_V del AY
+		LD (DE),A 							// Escribe SFX_V = (byte_2 & 0xf)
 		
-		INC HL
-		LD A,(HL)
-		LD B,A
-		BIT 7,A ;09.08.13 BIT MAS SIGINIFICATIVO ACTIVA ENVOLVENTES
-		JR Z,NO_ENVOLVENTES_SONIDO
+		INC HL 	 							// Siguiente byte
+
+		LD A,(HL) 							// Lee byte 3
+		LD B,A 								// Copia en B
+
+		BIT 7,A  							// Bit 7 del byte 3
+		JR Z,NO_ENVOLVENTES_SONIDO 			// 1 = envolvente, 0 = sin envolvente
+
+		// Si tiene envolvente lee 3 bytes más y los escribe en los registros 
+		// correspondientes del AY
+
 		LD A,0x12
 		LD (DE),A
 		INC HL
@@ -182,20 +195,31 @@ void wyz_stop_sound (void) {
 		JR Z,NO_ENVOLVENTES_SONIDO ;NO ESCRIBE LA ENVOLVENTE SI SU VALOR ES 1
 		LD (PSG_REG_SEC+13),A 
 
+		// Si no tiene envolvente
+
 	.NO_ENVOLVENTES_SONIDO
-		LD A,B
-		AND 0x7F ; RES 7,A ; AND A
-		JR Z,NO_RUIDO
-		LD (PSG_REG_SEC+6),A
-		LD A, (IX+6) ; IX+6 -> SFX_MIX
+		LD A,B 								// Recuperamos byte 3
+
+		AND 0x7F 							// Nos quedamos con bits 6..0
+		JR Z,NO_RUIDO 						// Si el resultado es 0 no hay ruido
+
+		LD (PSG_REG_SEC+6),A 				// Carga el ruido el registro 6 del AY
+
+		LD A, (IX+6) ; IX+6 -> SFX_MIX 		// Obtiene byte 6 de SONIDO_REGS
 		JR SI_RUIDO
-	.NO_RUIDO XOR A
-		LD (PSG_REG_SEC+6),A
-		LD A,10111000B
-	.SI_RUIDO LD (PSG_REG_SEC+7),A 
-		INC HL
+
+	.NO_RUIDO 
+		XOR A 
+		LD (PSG_REG_SEC+6),A 				// No hay ruido, 0 en el registro noise pitch
+		LD A,10111000B 						// noise off, tone on para todos los canales
+
+	.SI_RUIDO 
+		LD (PSG_REG_SEC+7),A  				// Escribimos el mixer en el registro mixer
+		
+		INC HL 								// Siguiente byte
 		LD A, 1
 		RET
+
 	.FIN_SONIDO
 		LD A,(ENVOLVENTE_BACK) ;NO RESTAURA LA ENVOLVENTE SI ES 0
 		AND A
@@ -1024,6 +1048,12 @@ void wyz_stop_sound (void) {
 	;BYTE 1:SFX_H 
 	;BYTE 2:SFX_V 
 	;BYTE 3:SFX_MIX
+
+	; Mixer bits
+	; Bit: 7        6        5        4        3        2        1        0
+	;    _         _
+	;    I/O       I/O   Noise    Noise    Noise     Tone     Tone     Tone
+	;      B        A        C        B        A        C        B        A
 
 	.SELECT_CANAL_A 
 		defw PSG_REG_SEC+0, PSG_REG_SEC+1, PSG_REG_SEC+8

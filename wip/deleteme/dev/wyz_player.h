@@ -81,10 +81,10 @@ void wyz_stop_sound (void) {
 		LD HL, INTERR
 		SET 2, (HL)
 		; na_th_an :: Percussion channel is fixed to 1
-		;LD A, 1
-		;LD HL, TABLA_DATOS_CANAL_SFX
-		;CALL EXT_WORD
-		;LD (SONIDO_REGS), DE
+		LD A, 1
+		LD HL, TABLA_DATOS_CANAL_SFX
+		CALL EXT_WORD
+		LD (SONIDO_REGS), DE
 	RET
 
 	; REPRODUCE UN FX POR EL CANAL ESPECIFICADO
@@ -319,9 +319,9 @@ void wyz_stop_sound (void) {
 
 		PUSH DE
 		; na_th_an :: Percussion channel is fixed to 1
-		;LD HL, TABLA_DATOS_CANAL_SFX
-		;CALL EXT_WORD
-		;LD (SONIDO_REGS), DE
+		LD HL, TABLA_DATOS_CANAL_SFX
+		CALL EXT_WORD
+		LD (SONIDO_REGS), DE
 		POP HL
 		
 		INC HL ;2 BYTES RESERVADOS
@@ -1027,15 +1027,18 @@ void wyz_stop_sound (void) {
 
 	.SELECT_CANAL_A 
 		defw PSG_REG_SEC+0, PSG_REG_SEC+1, PSG_REG_SEC+8
-		defb 10110001B
+		//defb 10110001B
+		defb 10110000B
 		
 	.SELECT_CANAL_B 
 		defw PSG_REG_SEC+2, PSG_REG_SEC+3, PSG_REG_SEC+9
-		defb 10101010B
+		//defb 10101010B
+		defb 10101000B
 		
 	.SELECT_CANAL_C 
 		defw PSG_REG_SEC+4, PSG_REG_SEC+5, PSG_REG_SEC+10
-		defb 10011100B
+		//defb 10011100B
+		defb 10011000B
 
 
 	;____________________________________
@@ -1112,7 +1115,7 @@ void wyz_stop_sound (void) {
 	.PUNTERO_SONIDO defw 0	;DW : PUNTERO DEL SONIDO QUE SE REPRODUCE
 
 	.EFECTO_REGS 	defw 0
-	.SONIDO_REGS 	defw SELECT_CANAL_B ; na_th_an :: Percussion channel is fixed to 1
+	.SONIDO_REGS 	defw 0 //SELECT_CANAL_B ; na_th_an :: Percussion channel is fixed to 1
 
 
 	;DB (13) BUFFERs DE REGISTROS DEL PSG

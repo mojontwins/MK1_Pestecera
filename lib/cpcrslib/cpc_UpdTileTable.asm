@@ -86,23 +86,3 @@ ENDIF
 	ld  e, c
 
 	ret
-
-; REWRITE:
-
-; We have DE = YX, X, Y = 5 bit max. ·· ·· ·· Y4 Y3 Y2 Y1 Y0  | ·· ·· ·· X4 X3 X2 X1 X0
-; We need HL = X\8+Y*4               ·· ·· ·· ·· ·· ·· ·· ··  | ·· Y4 Y3 Y2 Y1 Y0 X4 X3
-
-	sla d
-	sla d 				; Y * 4
-
-	ld  a, e
-	srl a
-	srl a
-	srl a
-	or  d
-
-	ld  l, a
-	ld  h, 0
-
-	ld  a, e
-	and $07

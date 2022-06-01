@@ -9,11 +9,11 @@
 
 //#define SOUND_NONE
 
-//#define SOUND_WYZ
-//#define WYZ_FX_CHANNEL 			1		// Where to play sound effects
+#define SOUND_WYZ
+#define WYZ_FX_CHANNEL 				1		// Where to play sound effects
 
-#define SOUND_ARKOS
-#define ARKOS_FX_CHANNEL 			1		// Where to play sound effects
+//#define SOUND_ARKOS
+//#define ARKOS_FX_CHANNEL 			1		// Where to play sound effects
 
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER

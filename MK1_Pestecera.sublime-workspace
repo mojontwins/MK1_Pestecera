@@ -520,37 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "lib/cpcrslib/cpc_PutTrSp4x8TileMap2bG.asm",
+			"file": "wip/broojas/dev/wyz_player.h",
 			"settings":
 			{
-				"buffer_size": 1684,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_PutTrSp4x8TileMap2bGPx.asm",
-			"settings":
-			{
-				"buffer_size": 3220,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_PutTrSp8x16TileMap2bG.asm",
-			"settings":
-			{
-				"buffer_size": 1849,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/cpcrslib/cpc_PutTrSp8x24TileMap2bG.asm",
-			"settings":
-			{
-				"buffer_size": 1847,
+				"buffer_size": 21037,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
@@ -640,33 +613,34 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/MK1_Pestecera",
-		"/C/git/MK1_Pestecera/lib",
-		"/C/git/MK1_Pestecera/lib/cpcrslib",
-		"/C/git/MK1_Pestecera/src"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/wip",
+		"/D/git/MK1_Pestecera/wip/broojas",
+		"/D/git/MK1_Pestecera/wip/broojas/dev"
 	],
 	"file_history":
 	[
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2bGPx.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x24TileMap2bGPx.asm",
-		"/C/git/MK1_Pestecera/diario.md",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.lst",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.h",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp4x8TileMap2bGPx.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp4x8TileMap2bG.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2bG.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x24TileMap2bG.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable.asm",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/cpc_PutTrSp8x16TileMap2bPx.asm",
-		"/C/git/MK1_Pestecera/docs/quickstart.md",
-		"/C/git/MK1_Pestecera/lib/cpcrslib/README.md",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/definitions.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/mainloop/game_loop.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/compile.bat",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/my/ci/on_player_respawned.h",
+		"/D/git/MK1_Pestecera/diario.md",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/my/config.h",
+		"/D/Proyectos/2022/20220527a - Reserva de Recursos 1.25.0.0/instrucciones.txt",
+		"/C/Users/jcastano/Desktop/pikapika.txt",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/engine.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/compile.bat",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/config.h",
+		"/D/git/MK1_Pestecera/wip/deleteme/mus_WYZ/compress_songs.bat",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
 		"/D/git/MK1/src_cpc/utils/imanol.bas",
 		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
@@ -701,7 +675,6 @@
 		"/D/git/MK1_Pestecera/examples/helmet/dev/my/msc.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/trash/mkcdt.bat",
-		"/D/git/MK1_Pestecera/diario.md",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm-orig",
 		"/D/git/MK1_Pestecera/src/dev/loader/preloadercpc.asm",
 		"/D/git/MK1_Pestecera/README.md",
@@ -750,6 +723,7 @@
 		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
 		"/C/git/MK1_Pestecera/src/dev/engine.h",
+		"/C/git/MK1_Pestecera/diario.md",
 		"/C/git/MK1_Pestecera/src/dev/definitions.h",
 		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
 		"/C/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
@@ -773,18 +747,18 @@
 		"/C/git/mk1/docs/tutorial-cap02.md",
 		"/C/git/mk1/src/dev/engine/c_levels.h",
 		"/C/git/mk1/src/dev/assets/sprites-empty.h",
-		"/C/git/mk1/src/dev/assets/levels.h",
-		"/C/git/mk1/trash/blip_blep/dev/my/ci/custom_veng.h"
+		"/C/git/mk1/src/dev/assets/levels.h"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\wip\\broojas\\dev",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
@@ -816,14 +790,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"cpc_PutTrSp8x24TileMap2bPx",
-			"cpc_PutTrSp8x16TileMap2bPx",
-			"ixh",
-			"ixl",
-			"cpc_PutTrSp4x8TileMap2bPx",
-			"cpc_PutTrSp8x24TileMap2b",
-			"cpc_PutTrSp8x16TileMap2b",
-			"cpc_PutTrSp4x8TileMap2b",
+			"na_th_an",
+			"SONIDO_REGS",
+			"PSG_REG_SEC",
+			".TABLA_DA",
+			".EXT_",
+			"SONIDO_REGS",
+			"TABLA_DATOS_CANAL_SFX",
+			"SONIDO_REGS",
+			"kill",
+			"safe",
+			"espera_",
+			"safe_",
+			"player_init",
+			"<< 6",
+			"player_kill",
+			"kill",
+			"possee",
+			"n_pant",
+			"mus",
 			"sprites",
 			"cpc_UpdateNow (0);",
 			"isr_player_on",
@@ -932,31 +917,14 @@
 			"mk2",
 			"mk1",
 			"digi",
-			"digital",
-			"digiº",
-			"border_col",
-			"31",
-			"\";\"",
-			"border_col",
-			"on_enemy",
-			"max_o",
-			"0.3 20191202",
-			"defaultInk",
-			"forcezero",
-			"custom"
+			"digital"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
-			"cpc_PutTrSp8x24TileMap2bGPx",
-			"cpc_PutTrSp8x16TileMap2bGPx",
-			"cpc_PutTrSp4x8TileMap2bGPx",
-			"cpc_PutTrSp8x24TileMap2bG",
-			"cpc_PutTrSp8x16TileMap2bG",
-			"cpc_PutTrSp4x8TileMap2bG",
 			"BA00",
 			"$",
 			"\\t",
@@ -1020,131 +988,52 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/cpcrslib/cpc_PutTrSp4x8TileMap2bG.asm",
+					"file": "wip/broojas/dev/wyz_player.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1684,
+						"buffer_size": 21037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1488,
-								1488
+								1459,
+								1459
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 494.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "lib/cpcrslib/cpc_PutTrSp4x8TileMap2bGPx.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3220,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2673,
-								2673
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1138.0,
+						"translation.y": 1045.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "lib/cpcrslib/cpc_PutTrSp8x16TileMap2bG.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1849,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1849,
-								1174
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 598.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "lib/cpcrslib/cpc_PutTrSp8x24TileMap2bG.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1847,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								962,
-								962
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 520.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1159,11 +1048,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1189,7 +1085,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1231,7 +1127,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 262.0,
+	"side_bar_width": 294.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

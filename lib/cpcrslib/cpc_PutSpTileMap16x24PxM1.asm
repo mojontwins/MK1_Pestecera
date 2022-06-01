@@ -51,12 +51,12 @@ do_update:
     ; X está en pixels. Estará alineado a rejilla si & 7 == 0.
     ld a, e
     and 7
-    ld (ancho), a
+    ld iyl, a
 
     ; Y está en pixeles. Estará alineado si AND 7 == 0
     ld a, d
     and 7
-    ld (alto), a
+    ld iyh, a
 
     ; Convertir a coordenadas de rejilla
     srl e
@@ -76,7 +76,7 @@ do_update:
     call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
-    ld a, (ancho)
+    ld a, iyl
     or a
     jr z, origin_next_row
 
@@ -96,7 +96,7 @@ origin_next_row:
     call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
-    ld a, (ancho)
+    ld a, iyl
     or a
     jr z, origin_next_row2
 
@@ -116,7 +116,7 @@ origin_next_row2:
     call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
-    ld a, (ancho)
+    ld a, iyl
     or a
     jr z, origin_last_row
 
@@ -127,7 +127,7 @@ origin_last_row:
     pop de                  ; Recuperamos   
 
     ; Marcar esta fila?
-    ld a, (alto)
+    ld a, iyh
     or a
     jr z, fin
 
@@ -141,7 +141,7 @@ origin_last_row:
     call cpc_UpdTileTableClp   ; Marca el tile en DE
 
     ; Marcar el siguiente?
-    ld a, (ancho)
+    ld a, iyl
     or a
     jr z, fin
 
@@ -150,6 +150,3 @@ origin_last_row:
 
 fin:
     ret
-
-ancho: defb 0
-alto: defb 0
