@@ -520,11 +520,86 @@
 	"buffers":
 	[
 		{
-			"file": "wip/broojas/dev/wyz_player.h",
+			"file": "wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
 			"settings":
 			{
-				"buffer_size": 21037,
+				"buffer_size": 5129,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Junio 2021\n\n    1  2  X  4\n    p  p     s\n       \\--------> Cambio de password en miCuenta 1.6\n 7  8  9 10 11\n s  s  s  s  s -> Listas de sindicatos 1.36\n\n14 15 16 17 18\n m  m  m  m  w\n          \\-----> Mails duplicados en multidominio 1.37 \n21 22 23 24 25\n c  c  c  w  w\n       \\--------> Corrección admdir JAdni\n28 29 30\n w  w  w\n       \\--------> WSDC\n\n\n\nJulio 2021e\n\n          1  2\n          c  c\n\n 5  6  7  8  9 \n c  c  c  c  C\n          \\-----> Consigna 2.8 (API invitaciones)\n12 13 14 15 16\n C  C  C  C  C\n\n19 20 21 22 23\n C  C  C  C  C--> Consigna 2.9 (API invitaciones + correos)\n\n26 27 28 29 30          \n L  L  L  L  L--> Pantallas de login\n\n\n\nAgosto 2021\n\n 2  3  4  5  6\n L  L  L  *  *\n\n 9 10 11 12 13\n *  *  *  *  *\n\n16 17 18 19 20\nXX  *  *  *  *\n\n23 24 25 26 27\n *  L  L  h  h\n\n30 31\n h  L\n\n\n\nSeptiembre 2021\n\n       1  2  3\n       W  W  W\n             \\--> Mejoras UI Webmail\n 6  7  8  9 10\n W  W  W  W  W\n\n13 14 15 16 17\n W  W  g  g  g\n             \\--> JAdni en genéricas (admdir)\n20 21 22 23 24\n A  A  A  A  A\n\n27 28 29 30\n A  A  A  A ----> Ayuda\n\n\n\nOctubre 2021\n\n             1\n             A \n             \\--> Ayuda\n 4  5  6  7  8\n A  W  W  W  W\n\n11  X 13 14 15\n W     W     f\n\n18 19 20 21 22\n f  f  f  f  f--> Ficheros Junta 1.6\n\n25 26 27 28 29\n f  f  t  t  t\n             \\--> Tramolla SSOWeb (imputada a Buzones Correo)\n\n\n\nNoviembre 2021\n\n    2  3  4  5\n    *  *  f  f--> Ficheros Junta 1.6\n\n 8  9 10 11 12\n f  f  f  f  f\n\n15 16 17 18 19\n f  T  T  t  t\n       \\--------> Tramolla SSOWeb (imputada a FJ 1.5.1)\n22 23 24 25 26\n t  f  f  f  M\n |        \\-----> Ficheros Junta 1.6\n \\--------------> Tramolla SSOWeb (imputada a Buzones Correo)\n29 30\n M  M ----------> MiCuenta passwords (OT HOY!)\n\n\n\nDiciembre 2021\n\n       1  2  3\n       r  r  r\n\n 6  7  8  9 10       \n F  r  F  r  r\n\n13 14 15 16 17\n P  P  P  r  r--> Reservas\n       \\--------> P3S/Webmóvil\n20 21 22 23 24\n C  C  C  C  F\n          \\-----> CCOTOM\n27 28 29 30 31\n *  *  *  *  F\n\n\n\nEnero 2022\n\n 3  4  5  6  7\n *  *  *  F  *\n\n10 11 12 13 14\n M  M  M  M  M\n             \\---> Seguridad miCuenta\n17 18 19 20 21\n M  M  M  *  *\n\n24 25 26 27 28\n M  M  M  M  s\n             \\---> Seneca\n31\n s\n\n\n\nFebrero 2022\n\n    1  2  3  4\n    s  s  s  *---> AAPP\n          \\------> Seneca\n 7  8  9 10 11\n s  s  R  R  R\n\n14 15 16 17 18\n R  R  C  C  C\n    |\n    \\------------> Reservas \n21 22 23 24 25\n C  C  C  C  C\n             \\---> CCOTOM\n28\n F\n\n\n\nMarzo 2022\n\n    1  2  3  4\n    C  C  C  C\n\n 7  8  9 10 11\n C  C  C  C[ w\n          \\------> CCOTOM\n14 15 16 17 18\n w  w  w  w  *\n          \\------> WS\n21 22 23 24 25\n a  a  a  a  a\n          \\------> admdir\n28 29 30 31\n F  F  F  F\n\n\n\nAbril 2022\n\n             1\n             F \n             \\---> FJ\n 4  5  6  7  8          \n F  F  F  F  c\n\n11 12 13 14 15\n c  c  *  *  *\n\n18 19 20 21 22\n c  R  R  R  R\n \\---------------> Consigna\n\n25 26 27 28 29\n R  R  R  R  R\n             \\---> Reservas\n\n\n\nMayo 2022\n\n 2  3  4  5  6  \n    R     R -----> 5H!\n    \\_RECUP\n\n 9 10 11 12 13\n R  R  R  R  R\n\n16 17 18 19 20\n R  R  R  r  r\n        \\--------> Reservas 1\n23 24 25 26 27\n r  r  r  W  W\n       \\---------> Reservas 2\n30 31\n W  W\n    \\------------> Webmail LDAP\n\n\n\n\nJunio 2022\n\n       1  2  3\n\n\n 6  7  8  9 10\n\n\n13 14 15 16 17\n\n\n20 21 22 23 24\n\n\n27 28 29 30\n\n",
+			"file": "/C/Users/jcastano/Desktop/pikapika.txt",
+			"file_size": 3395,
+			"file_write_time": 132983787195374656,
+			"settings":
+			{
+				"buffer_size": 3258,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/temp/MK1/examples/goku_mal/mus/WYZproPlay47aZXc.ASM",
+			"settings":
+			{
+				"buffer_size": 25510,
 				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "wip/deleteme/dev/wyz_player.h",
+			"settings":
+			{
+				"buffer_size": 21158,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/jcastano/Downloads/config.php",
+			"settings":
+			{
+				"buffer_size": 246,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "En las máquinas de Reserva de Recursos\n======================================\n\nEsta versión de Reservas añade dos importantes funcionalidades nuevas:\n\n- Posibilidad de asociar varias ramas y que actúen como un solo organismo de cara a sus usuarios.\n- Posibilidad de configurar una rama con \"visibilidad universal\" de forma que sus usuarios puedan elegir sede y reservar cualquier recurso de las mismas.\n\nAdemás trae arreglos y mejoras varias.\n\nI. BASE DE DATOS\n================\n\nEjecutar las siguientes sentencias en la BD de Reservas con un usuario con permisos:\n\n```sql\n    create table assocs (\n        assoc_id smallint(5) unsigned auto_increment,\n        master_organismo_id smallint(5) unsigned,\n        name varchar(85) not null,\n        primary key (assoc_id),\n        index (assoc_id)\n    ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8;\n\n    create table assoc_organismos (\n        assoc_id smallint(5) unsigned, \n        organismo_id smallint(5) unsigned,\n        primary key (assoc_id, organismo_id),\n        index (assoc_id),\n        foreign key (assoc_id)\n            references assocs(assoc_id)\n            on update cascade on delete cascade\n    ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8;\n\n    alter table `groups` add unique `unique_name_in_sede` (`name`, `sede_id`);\n``` \n\nII. APLICATIVO\n==============\n\n1.- Hacemos copia de seguridad de la versión actual de Reserva de Recursos renombrando el directorio\n\n\t$ cd /var/www/html/\n\t$ mv reserva.juntadeandalucia.es reserva.juntadeandalucia.es--20220527\n\n2.- Nos traemos el nuevo paquete y lo descomprimimos desde /var/www/html/\n\n\t$ cp -rp reserva.juntadeandalucia.es--v1.25.0.0.tar.gz /var/www/html/\n\t$ tar -zxvf reserva.juntadeandalucia.es--v1.25.0.0.tar.gz\n\n3.- Revisamos la configuración. Es seguro copiar la configuración de la versión anterior:\n\n\t$ cd /var/www/html/\n\t$ cp -rvp reserva.juntadeandalucia.es--20220527/config reserva.juntadeandalucia.es/\n\t$ cp reserva.juntadeandalucia.es--20220527/plugins/Authentication/Ldap/Ldap.config.php reserva.juntadeandalucia.es/plugins/Authentication/Ldap/\n\t$ cp reserva.juntadeandalucia.es--20220527/Sync/config.pºhp reserva.juntadeandalucia.es/Sync/\n\n4.- Copiamos toda la carpeta simplesamlphp desde la copia de seguridad\n\n\t$ cd /var/www/html/reserva.juntadeandalucia.es/\n\t$ cp -rpv /var/www/html/reserva.juntadeandalucia.es--20220527/simplesamlphp .\n\n5.- Copiamos toda la carpeta docs desde la copia de seguridad\n\n\t$ cd /var/www/html/reserva.juntadeandalucia.es/\n\t$ cp -rpv /var/www/html/reserva.juntadeandalucia.es--20220527/docs .\n\n6.- Revisamos los permisos de estas carpetas; les damos 777 si no lo tienen ya:\n\n\t$ chmod 777 /var/www/html/reserva.juntadeandalucia.es/tpl/\n\t$ chmod 777 /var/www/html/reserva.juntadeandalucia.es/tpl_c/\n\t$ chmod 777 /var/www/html/reserva.juntadeandalucia.es/Web/uploads -R\n\t$ chmod 777 /var/www/html/reserva.juntadeandalucia.es/simplesamlphp/log/\n\t$ chmod 777 /var/www/html/reserva.juntadeandalucia.es/simplesamlphp/log/*\n\nMARCHA ATRÁS:\n\n1.- Eliminar la versión nueva\n\n\t$ cd /var/www/html\n\t$ rm -rf reserva.juntadeandalucia.es\n\n2.- Restaurar la versión anterior\n\n\t$ cd /var/www/html\n\t$ mv reserva.juntadeandalucia.es--20220527 reserva.juntadeandalucia.es\n\nNo hace falta deshacer los cambios en la BD.\n\nCIs\n\nReserva de Recursos\n6281\tCORRES01\n6282\tCORRES02\n\n",
+			"file": "/D/Proyectos/2022/20220527a - Reserva de Recursos 1.25.0.0/instrucciones.txt",
+			"file_size": 3404,
+			"file_write_time": 132990533796168919,
+			"settings":
+			{
+				"buffer_size": 3298,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "wip/broojas/dev/my/ci/extra_vars.h",
+			"settings":
+			{
+				"buffer_size": 129,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#asm\n\t.lva_jmp\n\t\tld  a, (_p_saltando)\n\t\tor  a\n\t\tjr  nz, lva_jmp_off\n\n\t\t// p_cont_salto ++;\n\t\tld  a, (_p_cont_salto)\n\t\tinc a\n\t\tld  (_p_cont_salto), a\n\t\tld  b, a\n\n\t\t// if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {\n\t\tcp  PLAYER_JUMPING_FRAMES\n\t\tjr  nc, lva_jmp_shutdown\n\n\t\tdec a\n\t\tjr  z, lva_jmp_do\n\n\t\tld  a, (_possee)\n\t\tor  a\n\t\tjr  z, lva_jmp_do\n\n\t.lva_jmp_shutdown\n\t\txor a \n\t\tld  (_p_cont_salto), a\n\t\tjr  lva_jmp_done\n\n\t.lva_jmp_do\n\t\t// p_vx = p_jump_vx;\n\t\tld  a, (_p_jump_vx)\n\t\tld  (_p_vx), a\n\n\t\t// if (p_cont_salto > (PLAYER_JUMPING_FRAMES/2)) {\n\t\t// (PLAYER_JUMPING_FRAMES/2) < p_cont_salto\n\t\t// p_cont_salto is in B\n\t\tld  hl, (_p_jump_vy)\n\t\tld  a, PLAYER_JUMPING_FRAMES/2\n\t\tcp  b\n\t\tjr  c, lva_jmp_set\n\n\t\tld  de, 0\n\t\tex  de, hl\n\t\tsbc de \t\t\t// Carry is off\n\n\t.lva_jmp_set\n\t\tld  (_p_vy), hl\n\n\t\t// Have to check again\n\t\tld  a, (_p_saltando)\n\t\tor  a\n\t\tjr  nz, lva_jmp_done\n\n\t.lva_jmp_off\n\t\tld  hl, PLAYER_LINEAR_GRAVITY << FIXBITS\n\t\tld  (_p_vy), hl\n\n\t.lva_jmp_done",
+			"settings":
+			{
+				"buffer_size": 993,
+				"line_ending": "Windows",
+				"name": "#asm"
+			}
+		},
+		{
+			"file": "wip/broojas/dev/plugins/plugin_linear_platformers.h",
+			"settings":
+			{
+				"buffer_size": 4441,
 				"line_ending": "Windows"
 			}
 		}
@@ -616,10 +691,30 @@
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/wip",
 		"/D/git/MK1_Pestecera/wip/broojas",
-		"/D/git/MK1_Pestecera/wip/broojas/dev"
+		"/D/git/MK1_Pestecera/wip/broojas/dev",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins",
+		"/D/git/MK1_Pestecera/wip/deleteme",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/wip/wyztest/WYZProPlay47cCPC.ASM",
+		"/D/git/MK1_Pestecera/wip/deleteme/dev/wyz_player.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/wyz_player.h",
+		"/C/Users/jcastano/Desktop/reproduce_sonido_o_efecto.asm",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO44E4A498/WYZPlayer_Test_WinAPE.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap16x16PxM1.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap16x24PxM1.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap4x8.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap4x8Px.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x16.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x16Px.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x24.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x24Px.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x8PxM1.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap2b.asm",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable.asm",
+		"/D/Proyectos/index.php",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/definitions.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/mainloop/game_loop.h",
@@ -730,24 +825,7 @@
 		"/C/git/MK1_Pestecera/src/dev/compile.bat",
 		"/C/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/C/git/newspectrum/MK3_OM/mega_meghan/dev/util/system_cpc.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h",
-		"/C/git/MK1_Pestecera/README.md",
-		"/C/git/mk1/examples/helmet/dev/engine/enengine.h",
-		"/C/git/mk1/examples/helmet/dev/helmet.map",
-		"/C/temp/left-right/dev/my/ci/enems_extra_actions.h",
-		"/C/git/mk1/docs/README.md",
-		"/C/git/mk1/docs/tutorial-cap16.md",
-		"/C/git/mk1/docs/tutorial-cap15.md",
-		"/C/git/mk1/src/utils/src/sprcnv.bas",
-		"/C/git/mk1/src/utils/src/sprcnvbin.bas",
-		"/C/git/mk1/src/dev/engine.h",
-		"/C/git/mk1/docs/tutorial-cap07.md",
-		"/C/git/mk1/src/dev/my/config.h",
-		"/C/git/mk1/docs/tutorial-cap12.md",
-		"/C/git/mk1/docs/tutorial-cap02.md",
-		"/C/git/mk1/src/dev/engine/c_levels.h",
-		"/C/git/mk1/src/dev/assets/sprites-empty.h",
-		"/C/git/mk1/src/dev/assets/levels.h"
+		"/C/git/MK1_Pestecera/src/dev/assets/ay_fx_numbers.h"
 	],
 	"find":
 	{
@@ -758,6 +836,7 @@
 		"height": 128.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\lib\\cpcrslib",
 			"D:\\git\\MK1_Pestecera\\wip\\broojas\\dev",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
@@ -790,6 +869,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"na_th_an",
+			"SFX_MIX",
+			"reproduce_sonido",
+			"REPRODUCE_SONIDO_O_EFECTO",
+			"inicia_efecto",
+			"inicia_sonido",
+			"(ancho)",
+			"(alto)",
+			"(ancho)",
+			"(alto)",
+			"ix",
+			"TABLA_DATOS_CANAL_SFX",
+			"reproduce_sonido_o_efecto",
+			"reproduce_sonido",
+			"ROUT",
 			"na_th_an",
 			"SONIDO_REGS",
 			"PSG_REG_SEC",
@@ -902,22 +996,7 @@
 			"\"new level\"",
 			"blackout_area",
 			"blackout",
-			"jr",
-			"en_an_dead_row",
-			"KEY_",
-			"KEY_ç",
-			"bolts",
-			"hotspots",
-			"hots",
-			"sprites",
-			"7d85",
-			"0.4 20191212",
-			"1.0",
-			"MK2",
-			"mk2",
-			"mk1",
-			"digi",
-			"digital"
+			"jr"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -925,6 +1004,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"iyl",
+			"iyh",
+			"ixh",
 			"BA00",
 			"$",
 			"\\t",
@@ -988,24 +1070,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "wip/broojas/dev/wyz_player.h",
+					"file": "wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21037,
+						"buffer_size": 5129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1459,
-								1459
+								2186,
+								2186
 							]
 						],
 						"settings":
@@ -1017,17 +1099,269 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1045.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/jcastano/Desktop/pikapika.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3258,
+								3258
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2425.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/temp/MK1/examples/goku_mal/mus/WYZproPlay47aZXc.ASM",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7647,
+								7842
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "wip/deleteme/dev/wyz_player.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1100,
+								825
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 165.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/jcastano/Downloads/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/Proyectos/2022/20220527a - Reserva de Recursos 1.25.0.0/instrucciones.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2120,
+								2120
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 411.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "wip/broojas/dev/my/ci/extra_vars.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								461
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#asm",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "wip/broojas/dev/plugins/plugin_linear_platformers.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
 			]
 		}
 	],
