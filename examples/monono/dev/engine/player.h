@@ -18,27 +18,33 @@ void player_init (void) {
 		gpx = PLAYER_INI_X << 4; p_x = gpx << 6;
 		gpy = PLAYER_INI_Y << 4; p_y = gpy << 6;
 	#endif	
+
 	p_vy = 0;
 	p_vx = 0;
 	p_cont_salto = 1;
 	p_saltando = 0;
 	p_frame = 0;
 	p_subframe = 0;
+	
 	#ifdef PLAYER_GENITAL
 		p_facing = FACING_DOWN;
 		p_facing_v = p_facing_h = 0xff;
 	#else
 		p_facing = 1;
 	#endif	
+	
 	p_estado = 	EST_NORMAL;
 	p_ct_estado = 0;
+	
 	#if !defined(COMPRESSED_LEVELS) || defined(REFILL_ME)	
 		p_life = 		PLAYER_LIFE;
 	#endif
+	
 	p_objs =	0;
 	p_keys = 0;
 	p_killed = 0;
 	p_disparando = 0;
+
 	#ifdef MAX_AMMO
 		#ifdef INITIAL_AMMO
 			p_ammo = INITIAL_AMMO;
@@ -295,9 +301,13 @@ unsigned char player_move (void) {
 						or  a
 						jr  z, _player_gravity_p_gotten_done
 
+						; If HL = pvy > 0
+						bit 7, h 
+						jr  nz, _player_gravity_p_gotten_done
+
 						ld  hl, 0
 						ld  (_p_vy), hl
-
+						
 					._player_gravity_p_gotten_done
 				#endasm
 			}	
@@ -452,7 +462,7 @@ unsigned char player_move (void) {
 	#endif
 	{
 		#ifdef PLAYER_GENITAL
-			cy1 = cy2 = pty2;
+		cy1 = cy2 = pty2;
 		#else
 			cy1 = cy2 = pty2b;
 		#endif
@@ -493,7 +503,7 @@ unsigned char player_move (void) {
 			// KISS mod
 			#asm
 				#ifdef PLAYER_GENITAL
-						ld  a, (_pty2)
+					ld  a, (_pty2)
 				#else
 						ld  a, (_pty2b)
 				#endif
@@ -521,11 +531,29 @@ unsigned char player_move (void) {
 
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
-			#else
+			#endif
+
+			#ifndef PLAYER_GENITAL
+				#ifdef DIE_AND_RESPAWN
+					if (
+						#ifdef SAFE_SPOT_ON_ENTERING
+							safe_n_pant != n_pant
+						#else
+							was_possee == 0
+						#endif
+					) {
+						safe_n_pant = n_pant;
+						safe_gpx = gpx; safe_gpy = gpy;						
+					}
+				#endif
 				possee = 1;
 			#endif
 		}
 	}
+
+	#if defined DIE_AND_RESPAWN && !defined PLAYER_GENITAL
+		was_possee = possee;
+	#endif
 
 	#ifndef PLAYER_GENITAL
 		cy1 = cy2 = pty2;
@@ -608,6 +636,7 @@ unsigned char player_move (void) {
 							p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO + PLAYER_G);
 							if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
 							p_saltando = 1;
+	
 							AY_PLAY_SOUND (SFX_JUMP);
 						}
 					}
@@ -1200,15 +1229,15 @@ unsigned char player_move (void) {
 		#ifdef CUSTOM_EVIL_TILE_CHECK
 			#include "my/ci/custom_evil_tile_check.h"
 		#else
-			// Tiles que te matan. 
-			// hit_v tiene preferencia sobre hit_h
-			if (hit_v) {
-				hit = 1;
-				p_vy = addsign (-p_vy, PLAYER_MAX_VX);
-			} else if (hit_h) {
-				hit = 1;
-				p_vx = addsign (-p_vx, PLAYER_MAX_VX);
-			}
+		// Tiles que te matan. 
+		// hit_v tiene preferencia sobre hit_h
+		if (hit_v) {
+			hit = 1;
+			p_vy = addsign (-p_vy, PLAYER_MAX_VX);
+		} else if (hit_h) {
+			hit = 1;
+			p_vx = addsign (-p_vx, PLAYER_MAX_VX);
+		}
 		#endif
 		
 		if (hit) {
@@ -1359,5 +1388,27 @@ void player_kill (unsigned char sound) {
 	#ifdef PLAYER_FLICKERS
 		p_estado = EST_PARP;
 		p_ct_estado = 50;
+	#endif
+
+	#ifdef DIE_AND_RESPAWN
+		#asm
+				ld  a, (_safe_n_pant)
+				ld  (_n_pant), a 
+
+				ld  a, (_safe_gpx)
+				ld  (_gpx), a				
+				call Ashl16_HL
+				ld  (_p_x), hl
+
+				ld  a, (_safe_gpy)
+				ld  (_gpy), a
+				call Ashl16_HL
+				ld  (_p_y), hl
+
+				ld  hl, 0
+				ld  (_p_vx), hl 
+				ld  (_p_vy), hl				
+		#endasm
+		#include "my/ci/on_player_respawned.h"
 	#endif
 }

@@ -3,6 +3,13 @@
 
 // player.h
 
+#ifndef BOUNCE_EXPRESSION_Y
+	#define BOUNCE_EXPRESSION_Y (-(p_vy >> 1))
+#endif
+#ifndef BOUNCE_EXPRESSION_X
+	#define BOUNCE_EXPRESSION_X (-(p_vx >> 1))
+#endif
+
 void player_init (void) {
 	// Inicializa player con los valores iniciales
 	// (de ahí lo de inicializar).
@@ -11,27 +18,33 @@ void player_init (void) {
 		gpx = PLAYER_INI_X << 4; p_x = gpx << 6;
 		gpy = PLAYER_INI_Y << 4; p_y = gpy << 6;
 	#endif	
+
 	p_vy = 0;
 	p_vx = 0;
 	p_cont_salto = 1;
 	p_saltando = 0;
 	p_frame = 0;
 	p_subframe = 0;
+	
 	#ifdef PLAYER_GENITAL
 		p_facing = FACING_DOWN;
 		p_facing_v = p_facing_h = 0xff;
 	#else
 		p_facing = 1;
 	#endif	
+	
 	p_estado = 	EST_NORMAL;
 	p_ct_estado = 0;
+	
 	#if !defined(COMPRESSED_LEVELS) || defined(REFILL_ME)	
 		p_life = 		PLAYER_LIFE;
 	#endif
+	
 	p_objs =	0;
 	p_keys = 0;
 	p_killed = 0;
 	p_disparando = 0;
+
 	#ifdef MAX_AMMO
 		#ifdef INITIAL_AMMO
 			p_ammo = INITIAL_AMMO;
@@ -83,11 +96,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 15
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#elif defined (BOUNDING_BOX_8_CENTERED)
 		#asm
@@ -114,11 +139,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 11
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#elif defined (BOUNDING_BOX_12X2_CENTERED)
 		#asm
@@ -145,11 +182,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 8
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#else
 		#asm
@@ -174,11 +223,23 @@ void player_calc_bounding_box (void) {
 			ld  (_pty1), a
 			ld  a, (_gpy)
 			add 15
+			#ifndef PLAYER_GENITAL
+				ld  c, a
+			#endif
 			srl a
 			srl a
 			srl a
 			srl a
 			ld  (_pty2), a
+			#ifndef PLAYER_GENITAL
+				ld  a, c 
+				inc a
+				srl a
+				srl a
+				srl a
+				srl a
+				ld  (_pty2b), a
+			#endif
 		#endasm
 	#endif
 }
@@ -204,7 +265,7 @@ unsigned char player_move (void) {
 
 						; We are going to take a shortcut.
 						; If p_vy < 0, just add PLAYER_G.
-						; If p_vy > 0, we can use unsigned comparition anyway.
+						; If p_vy > 0, we can use unsigned comparison anyway.
 
 						ld  hl, (_p_vy)
 						bit 7, h
@@ -231,7 +292,7 @@ unsigned char player_move (void) {
 					._player_gravity_done
 
 					#ifdef PLAYER_CUMULATIVE_JUMP
-						ld  a, (_p_jmp_on)
+						ld  a, (_p_saltando)
 						or  a
 						jr  nz, _player_gravity_p_gotten_done
 					#endif
@@ -240,9 +301,13 @@ unsigned char player_move (void) {
 						or  a
 						jr  z, _player_gravity_p_gotten_done
 
-						xor a
-						ld  (_p_vy), a
+						; If HL = pvy > 0
+						bit 7, h 
+						jr  nz, _player_gravity_p_gotten_done
 
+						ld  hl, 0
+						ld  (_p_vy), hl
+						
 					._player_gravity_p_gotten_done
 				#endasm
 			}	
@@ -318,6 +383,7 @@ unsigned char player_move (void) {
 	#endasm
 
 	// Collision, may set possee, hit_v
+	possee = 0;
 
 	// Velocity positive (going downwards)
 	player_calc_bounding_box ();
@@ -337,7 +403,7 @@ unsigned char player_move (void) {
 			#include "my/ci/bg_collision/obstacle_up.h"
 
 			#ifdef PLAYER_BOUNCE_WITH_WALLS
-				p_vy = -(p_vy / 2);
+				p_vy = BOUNCE_EXPRESSION_Y;
 			#else
 				p_vy = 0;
 			#endif
@@ -392,10 +458,14 @@ unsigned char player_move (void) {
 	#if defined (PLAYER_GENITAL)
 		if (p_vy > 0)
 	#else	
-		if (p_vy + ptgmy > 0)
+		if (p_vy + ptgmy >= 0)
 	#endif
 	{
+		#ifdef PLAYER_GENITAL
 		cy1 = cy2 = pty2;
+		#else
+			cy1 = cy2 = pty2b;
+		#endif
 		cm_two_points ();
 
 		#ifdef PLAYER_GENITAL
@@ -403,15 +473,18 @@ unsigned char player_move (void) {
 		#else
 			// Greed Optimization tip! Remove this line and uncomment the next one:
 			// (As long as you don't have type 8 blocks over type 4 blocks in your game, the short line is fine)
-			if ((at1 & 8) || (at2 & 8) || (((gpy - 1) & 15) < 8 && ((at1 & 4) || (at2 & 4))))
+			if ((at1 & 8) || (at2 & 8) || ((gpy & 15) < 8 && ((at1 & 4) || (at2 & 4))))
 			//if (((gpy - 1) & 15) < 7 && ((at1 & 12) || (at2 & 12))) {
 		#endif			
 		{
 			#include "my/ci/bg_collision/obstacle_down.h"
 
 			#ifdef PLAYER_BOUNCE_WITH_WALLS
-				p_vy = -(p_vy / 2);
+				p_vy = BOUNCE_EXPRESSION_Y;
 			#else
+				#ifdef PLAYER_CUMULATIVE_JUMP
+					if (p_saltando == 0)
+				#endif				
 				p_vy = 0;
 			#endif
 				
@@ -429,7 +502,11 @@ unsigned char player_move (void) {
 
 			// KISS mod
 			#asm
+				#ifdef PLAYER_GENITAL
 					ld  a, (_pty2)
+				#else
+						ld  a, (_pty2b)
+				#endif
 					dec a 
 					sla a
 					sla a
@@ -450,11 +527,37 @@ unsigned char player_move (void) {
 					ld  (_p_y), hl
 			#endasm
 			
+			// Finally
+
 			#if defined PLAYER_GENITAL || defined LOCKS_CHECK_VERTICAL
 				wall_v = WBOTTOM;
 			#endif
+
+			#ifndef PLAYER_GENITAL
+				#ifdef DIE_AND_RESPAWN
+					if (
+						#ifdef SAFE_SPOT_ON_ENTERING
+							safe_n_pant != n_pant
+						#else
+							was_possee == 0
+						#endif
+					) {
+						safe_n_pant = n_pant;
+						safe_gpx = gpx; safe_gpy = gpy;						
+					}
+				#endif
+				possee = 1;
+			#endif
 		}
 	}
+
+	#if defined DIE_AND_RESPAWN && !defined PLAYER_GENITAL
+		was_possee = possee;
+	#endif
+
+	#ifndef PLAYER_GENITAL
+		cy1 = cy2 = pty2;
+	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
 		#ifndef CUSTOM_EVIL_TILE_CHECK
@@ -498,13 +601,14 @@ unsigned char player_move (void) {
 			ld  (_gpyy), a
 	#endasm
 
-
+	/*
 	#ifndef PLAYER_GENITAL
 		cy1 = cy2 = (gpy + 16) >> 4;
 		cx1 = ptx1; cx2 = ptx2;
 		cm_two_points ();
-		possee = ((at1 & 12) || (at2 & 12)) && (gpy & 15) < 8;
+		possee |= ((at1 & 12) || (at2 & 12)) && (gpy & 15) < 8;
 	#endif
+	*/
 
 	// Jump
 
@@ -518,22 +622,38 @@ unsigned char player_move (void) {
 			#elif defined (PLAYER_CAN_FIRE) && defined (USE_TWO_BUTTONS)				
 				rda = cpc_TestKey (KEY_BUTTON_B);
 			#else
-				rda = cpc_TestKey (KEY_BUTTON_A);
+				#if defined BOTH_KEYS_JUMP
+					rda = cpc_TestKey (KEY_BUTTON_A) || cpc_TestKey (KEY_UP);
+				#else 
+					rda = cpc_TestKey (KEY_BUTTON_A);
+				#endif
 			#endif
 
 			if (rda) {
-				if (p_saltando == 0) {
-					if (possee || p_gotten || hit_v) {
-						p_saltando = 1;
-						p_cont_salto = 0;
-						AY_PLAY_SOUND (SFX_JUMP);
+				#ifdef PLAYER_CUMULATIVE_JUMP
+					if (p_vy >= 0) {
+						if (possee || p_gotten || hit_v) {
+							p_vy = -p_vy - (p_saltando ? PLAYER_INCR_SALTO : PLAYER_VY_INICIAL_SALTO + PLAYER_G);
+							if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
+							p_saltando = 1;
+	
+							AY_PLAY_SOUND (SFX_JUMP);
+						}
 					}
-				} else {
-					p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
-					if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
-					++ p_cont_salto;
-					if (p_cont_salto == 9) p_saltando = 0;
-				}
+				#else
+					if (p_saltando == 0) {
+						if (possee || p_gotten || hit_v) {
+							p_saltando = 1;
+							p_cont_salto = 0;
+							AY_PLAY_SOUND (SFX_JUMP);
+						}
+					} else {
+						p_vy -= (PLAYER_VY_INICIAL_SALTO + PLAYER_INCR_SALTO - (p_cont_salto >> 1));
+						if (p_vy < -PLAYER_MAX_VY_SALTANDO) p_vy = -PLAYER_MAX_VY_SALTANDO;
+						++ p_cont_salto;
+						if (p_cont_salto == 9) p_saltando = 0;
+					}
+				#endif
 			} else p_saltando = 0;
 		}
 	#endif
@@ -648,7 +768,7 @@ unsigned char player_move (void) {
 			#include "my/ci/bg_collision/obstacle_left.h"
 
 			#ifdef PLAYER_BOUNCE_WITH_WALLS
-				p_vx = -(p_vx / 2);
+				p_vx = BOUNCE_EXPRESSION_X;
 			#else
 				p_vx = 0;
 			#endif
@@ -723,7 +843,7 @@ unsigned char player_move (void) {
 			#include "my/ci/bg_collision/obstacle_right.h"
 
 			#ifdef PLAYER_BOUNCE_WITH_WALLS
-				p_vx = -(p_vx / 2);
+				p_vx = BOUNCE_EXPRESSION_X;
 			#else
 				p_vx = 0;
 			#endif
@@ -1105,18 +1225,18 @@ unsigned char player_move (void) {
 	#endif
 
 	#ifndef DEACTIVATE_EVIL_TILE
+		hit = 0;
 		#ifdef CUSTOM_EVIL_TILE_CHECK
 			#include "my/ci/custom_evil_tile_check.h"
 		#else
 		// Tiles que te matan. 
 		// hit_v tiene preferencia sobre hit_h
-		hit = 0;
 		if (hit_v) {
 			hit = 1;
-				p_vy = addsign (-p_vy, PLAYER_MAX_VX);
+			p_vy = addsign (-p_vy, PLAYER_MAX_VX);
 		} else if (hit_h) {
 			hit = 1;
-				p_vx = addsign (-p_vx, PLAYER_MAX_VX);
+			p_vx = addsign (-p_vx, PLAYER_MAX_VX);
 		}
 		#endif
 		
@@ -1125,7 +1245,7 @@ unsigned char player_move (void) {
 				if (p_estado == EST_NORMAL)
 			#endif		
 			{
-					p_killme = SFX_SPIKES;
+				p_killme = SFX_SPIKES;
 			}
 		}
 	#endif
@@ -1173,14 +1293,74 @@ unsigned char player_move (void) {
 		sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
 	#endif
 
-	#if defined PIXELPERFECT && CPC_GFX_MODE == 0
-		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
+	/*
+	#if defined PIXELPERFECT 
+		#if CPC_GFX_MODE == 0
+			sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 1;
+		#elif CPC_GFX_MODE == 1
+			sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox);
+		#endif
 	#else
 		sp_sw [SP_PLAYER].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> 2;
 	#endif
 	sp_sw [SP_PLAYER].cy = (gpy + VIEWPORT_Y*8 + sp_sw [SP_PLAYER].coy);
 
 	if ( (p_estado & EST_PARP) && half_life ) sp_sw [SP_PLAYER].sp0 = (int) (SPRFR_EMPTY);
+	*/
+	#asm
+		._player_spr_setup
+			// We know SP_PLAYER is the first sprite. If you change it, recycle 
+			// the original C code above, 'cause this assembly routine uses a couple
+			// of shortcuts.
+
+			// cx is offset 8, cox is offset 6
+			// sp_sw [0].cx = (gpx + VIEWPORT_X*8 + sp_sw [SP_PLAYER].cox) >> MODE_SHIFT;
+
+			ld  a, (_gpx)
+			ld  c, a
+			ld  a, (_sp_sw + 6)
+			add VIEWPORT_X * 8
+			add c
+
+		#ifdef PIXELPERFECT
+			#if CPC_GFX_MODE == 0
+				// Shift right 1
+					srl a
+			#else
+				// Leave as is
+			#endif
+		#else
+			// Shift right 2
+				srl a
+				srl a
+		#endif
+			ld  (_sp_sw + 8), a		
+
+			// cy is offset 9, coy is offset 7
+			// sp_sw [rda].cy = (gpy + VIEWPORT_Y * 8 + sp_sw [rda].coy);
+
+			ld  a, (_gpy)
+			ld  c, a
+			ld  a, (_sp_sw + 7)
+			add VIEWPORT_Y * 8
+			add c
+			ld  (_sp_sw + 9), a
+
+			// if ( (p_estado & EST_PARP) && half_life ) sp_sw [0].sp0 = _sprite_18_a;
+
+			ld  a, (_p_estado)
+			and EST_PARP
+			jr  z, _player_spr_setup_done
+
+			ld  a, (_half_life)
+			or  a 
+			jr  z, _player_spr_setup_done
+
+			ld  hl, _sprite_18_a
+			ld  (_sp_sw), hl
+
+		._player_spr_setup_done
+	#endasm
 }
 
 void player_deplete (void) {
@@ -1208,5 +1388,27 @@ void player_kill (unsigned char sound) {
 	#ifdef PLAYER_FLICKERS
 		p_estado = EST_PARP;
 		p_ct_estado = 50;
+	#endif
+
+	#ifdef DIE_AND_RESPAWN
+		#asm
+				ld  a, (_safe_n_pant)
+				ld  (_n_pant), a 
+
+				ld  a, (_safe_gpx)
+				ld  (_gpx), a				
+				call Ashl16_HL
+				ld  (_p_x), hl
+
+				ld  a, (_safe_gpy)
+				ld  (_gpy), a
+				call Ashl16_HL
+				ld  (_p_y), hl
+
+				ld  hl, 0
+				ld  (_p_vx), hl 
+				ld  (_p_vy), hl				
+		#endasm
+		#include "my/ci/on_player_respawned.h"
 	#endif
 }
