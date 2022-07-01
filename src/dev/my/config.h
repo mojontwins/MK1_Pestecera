@@ -149,7 +149,7 @@
 //#define INITIAL_AMMO				0		// If defined, ammo = X when entering game.
 
 //#define BREAKABLE_WALLS 					// Breakable walls
-#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
+//#define BREAKABLE_WALLS_LIFE		1		// N+1 = Amount of hits to break wall
 //#define BREAKABLE_WALLS_BROKEN 	30 		// Use this tile for a broken wall, 0 if not def.
 //#define BREAKABLE_WALLS_BREAKING 	31 		// Use this tile while the wall is breaking (if defined)
 
@@ -157,8 +157,8 @@
 // ---------
 
 //#define ACTIVATE_SCRIPTING				// Activates msc scripting and flag related stuff.
-#define MAX_FLAGS 					32
-#define SCRIPTING_DOWN						// Use DOWN as the action key.
+//#define MAX_FLAGS 					32
+//#define SCRIPTING_DOWN					// Use DOWN as the action key.
 //#define SCRIPTING_KEY_AUX1				// Use AUX1 as the action key instead.
 //#define SCRIPTING_KEY_FIRE				// User FIRE as the action key instead.
 //#define SCRIPTING_KEY_NONE 				// No action key. 
