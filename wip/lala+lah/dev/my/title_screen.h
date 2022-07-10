@@ -11,12 +11,23 @@ void title_screen (void) {
 	#else		
 		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
+
+	#asm
+		._copy_keys_to_extern_b
+			ld  hl, _def_keys
+			ld  de, cpc_KeysData + 12
+			ld  bc, 24
+			ldir
+	#endasm
 			
 	cpc_ShowTileMap (1);
 
 	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);
 	while (1) {
+		// gm = 0 means Prologue (default), gm = 1 means Lah (press "H")
+		gm = cpc_TestKey (KEY_AUX2);
+
 		if (cpc_TestKey (KEY_AUX3)) { 
 			_gp_gen = def_keys; 
 			is_joystick = 0;

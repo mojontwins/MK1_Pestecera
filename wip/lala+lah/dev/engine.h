@@ -151,6 +151,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+				#ifndef UNPACKED_MAP
+					and 15
+				#endif
 					cp  14
 					jp  nz, push_boxes_end
 
@@ -255,6 +258,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+					#ifndef UNPACKED_MAP
+						and 15
+					#endif
 					cp  15
 					jp  nz, open_lock_end
 
@@ -425,6 +431,9 @@ void draw_scr_background (void) {
 						and 15
 
 					._draw_scr_packed_done
+				#endasm
+				#include "my/ci/on_map_tile_decoded.h" 
+				#asm
 						ld  (__t), a
 						
 						ld  b, 0
@@ -641,6 +650,9 @@ void draw_scr (void) {
 			xor a
 		._hotspots_setup_set
 			add 16
+	#endasm
+	#include "my/ci/hotspot_setup_t_modification.h"
+	#asm
 			ld  (__t), a		
 
 			call _draw_coloured_tile_gamearea

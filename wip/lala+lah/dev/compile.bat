@@ -1,9 +1,8 @@
 @echo off
 
-
 if [%1]==[help] goto :help
 
-set game=lala_beta
+set game=lala
 set cpc_gfx_mode=0
 
 if [%1]==[justcompile] goto :compile
@@ -48,6 +47,7 @@ echo Importando GFX
 ..\..\..\src\utils\apack.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal1.png prefix=my_inks1 out=assets\pal1.h silent > nul
 
 if [%1]==[justassets] goto :end
 
