@@ -520,39 +520,18 @@
 	"buffers":
 	[
 		{
-			"contents": "Searching 114 files for \"ee00\"\n\n0 matches\n\nSearching 258 files for \"fe00\"\n\nD:\\git\\MK1_Pestecera\\src\\dev\\mk1.c:\n   27  #define BASE_ARRAYS \t\t0xD600\n   28  #define BASE_SPRITES \t\t0xE600\n   29: #define BASE_LUT\t\t\t0xFE00\n   30  \n   31  #define BASE_SUPERBUFF  \t0x9000\n\n1 match in 1 file\n\n\nSearching 258 files for \"f600\"\n\nD:\\git\\MK1_Pestecera\\src\\dev\\loader\\loadercpc-old.asm-orig:\n  151  out     (c),c\n  152  \n  153: ld      bc,&f600+&c0+&10\t;; \"AY write register\" and enable tape motor\n  154  out     (c),c\n  155  \n  ...\n  160  out     (c),c\t\t\t\t;; this will also write 0 to port C and port A on CPC.\n  161  \n  162: ld      bc,&f600+&40+&10+&8\t;; tape motor enable, \"AY read register\", select keyboard row 8\n  163  \t\t\t\t\t\t\t;; (keys on this row: z, caps lock, a, tab, q, esc, 2, 1)\n  164  \t\t\t\t\t\t\t;; we are only interested in ESC\n  ...\n  276  ld      bc,&f782\t\t\t\t;; set PPI port A for output\n  277  out     (c),c\n  278: ld      bc,&f600\t\t\t\t;; tape motor off, \"AY inactive\"\n  279  out     (c),c\n  280  \n\nD:\\git\\MK1_Pestecera\\src\\dev\\loader\\loadercpc.asm:\n  444  exit:\n  445  \texx               ;; \n  446: \tld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)\n  447  \tout  (c), c       ;; Cassette stop\n  448  \tpop   de\n\nD:\\git\\MK1_Pestecera\\src\\dev\\loader\\loadercpc.asm-orig:\n  444  exit:\n  445  \texx               ;; \n  446: \tld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)\n  447  \tout  (c), c       ;; Cassette stop\n  448  \tpop   de\n\nD:\\git\\MK1_Pestecera\\src\\dev\\loader\\preloadercpc.asm:\n  289  exit:\n  290  \texx               ;; \n  291: \tld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)\n  292  \tout  (c), c       ;; Cassette stop\n  293  \tpop   bc          ;; Restore BC' before ending (Leave alternate register set as it was)\n\nD:\\git\\MK1_Pestecera\\src\\dev\\loader\\preloadercpc.asm-orig:\n  289  exit:\n  290  \texx               ;; \n  291: \tld    bc, $F600 ;; F6 = PIO Port C (0x00 for cassette stop)\n  292  \tout  (c), c       ;; Cassette stop\n  293  \tpop   bc          ;; Restore BC' before ending (Leave alternate register set as it was)\n\n7 matches across 5 files\n\n\nSearching 114 files for \"p_tx\"\n\nD:\\Git\\MK1_Pestecera\\src\\dev\\definitions.h:\n  113  unsigned char p_killme;\n  114  unsigned char p_kill_amt;\n  115: unsigned char p_tx, p_ty;\n  116  #ifdef PLAYER_HAS_JETPAC\n  117  \tunsigned char p_jetpac_on;\n\nD:\\Git\\MK1_Pestecera\\src\\dev\\engine\\player.h:\n  958  \n  959  \t/*\n  960: \tcx1 = p_tx = (gpx + 8) >> 4;\n  961  \tcy1 = p_ty = (gpy + 8) >> 4;\n  962  \n  ...\n  970  \t\t\tsrl a\n  971  \t\t\tsrl a\n  972: \t\t\tld  (_p_tx), a \n  973  \t\t\tld  (_cx1), a\n  974  \t\t\tld  c, a\n\nD:\\Git\\MK1_Pestecera\\src\\dev\\lala_beta.map:\n  653  _p_killme                       = $5B0D ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::135:111\n  654  _p_kill_amt                     = $5B0E ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::135:111\n  655: _p_tx                           = $5B0F ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::135:111\n  656  _p_ty                           = $5B10 ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::135:111\n  657  _ptgmx                          = $5B11 ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::135:111\n\n4 matches across 3 files\n",
+			"file": "src/dev/mainloop.h",
 			"settings":
 			{
-				"buffer_size": 3205,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "src/dev/my/config.h",
-			"settings":
-			{
-				"buffer_size": 17888,
-				"encoding": "UTF-8",
+				"buffer_size": 4898,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/dev/engine/player.h",
+			"file": "src/dev/mainloop/game_loop.h",
 			"settings":
 			{
-				"buffer_size": 26380,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/dev/definitions.h",
-			"settings":
-			{
-				"buffer_size": 8871,
-				"encoding": "Western (Windows 1252)",
+				"buffer_size": 6637,
 				"line_ending": "Windows"
 			}
 		}
@@ -641,14 +620,22 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Git/MK1_Pestecera",
-		"/D/Git/MK1_Pestecera/src",
-		"/D/Git/MK1_Pestecera/src/dev",
-		"/D/Git/MK1_Pestecera/src/dev/engine",
-		"/D/Git/MK1_Pestecera/src/dev/my"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/src",
+		"/D/git/MK1_Pestecera/src/dev",
+		"/D/git/MK1_Pestecera/src/dev/assets",
+		"/D/git/MK1_Pestecera/src/dev/mainloop",
+		"/D/git/MK1_Pestecera/src/dev/my"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/examples/monono/dev/printer.h",
+		"/D/git/MK1_Pestecera/examples/monono/dev/engine.h",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/my/ci/after_game_over.h",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Tostadera/trash/test/engine.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
@@ -685,10 +672,8 @@
 		"/D/git/MK1_Pestecera/wip/deleteme/dev/compile.bat",
 		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/deleteme/mus_WYZ/compress_songs.bat",
-		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/docs/quickstart.md",
 		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/src/dev/printer.h",
 		"/C/java/applications/webmovil/src/p3s.properties",
 		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
@@ -704,7 +689,6 @@
 		"/D/git/MK1_Pestecera/src/dev/definitions.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
 		"/D/git/MK1_Pestecera/src/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/pantallas.h",
 		"/D/git/MK1_Pestecera/src/dev/my/fixed_screens.h",
 		"/D/git/MK1_Pestecera/src/dev/mk1.c",
@@ -772,22 +756,18 @@
 		"/C/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/hotspots.h",
 		"/C/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/C/git/MK1_Pestecera/src/dev/engine.h",
-		"/C/git/MK1_Pestecera/diario.md",
-		"/C/git/MK1_Pestecera/src/dev/definitions.h",
-		"/C/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h"
+		"/C/git/MK1_Pestecera/src/dev/engine/bullets.h"
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
 		"height": 134.0,
 		"where_history":
 		[
-			"D:\\Git\\MK1_Pestecera\\src\\dev",
+			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\src",
 			"D:\\git\\MK1_Pestecera\\src\\dev",
 			"D:\\git\\MK1_Pestecera\\lib\\cpcrslib",
@@ -823,9 +803,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"ptx1",
-			"Searching",
-			"p_tx",
+			"p_killme",
 			"f600",
 			"fe00",
 			"ee00",
@@ -950,7 +928,9 @@
 			"unpacked",
 			"19",
 			"MAP_UNPACKED",
-			"sprites"
+			"sprites",
+			"spacer",
+			"entering_game"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1024,156 +1004,39 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3205,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										212,
-										216
-									],
-									[
-										425,
-										429
-									],
-									[
-										624,
-										628
-									],
-									[
-										925,
-										929
-									],
-									[
-										1109,
-										1113
-									],
-									[
-										1337,
-										1341
-									],
-									[
-										1563,
-										1567
-									],
-									[
-										1873,
-										1877
-									],
-									[
-										2250,
-										2254
-									],
-									[
-										2409,
-										2413
-									],
-									[
-										2531,
-										2535
-									],
-									[
-										2857,
-										2861
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								3077,
-								3079
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 4,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 936.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/dev/my/config.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17888,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								90,
-								90
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/dev/engine/player.h",
+					"file": "src/dev/mainloop.h",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 26380,
+						"buffer_size": 4898,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4435,
-								4435
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3316.0,
+						"translation.y": 2368.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1183,32 +1046,35 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
-					"file": "src/dev/definitions.h",
+					"buffer": 1,
+					"file": "src/dev/mainloop/game_loop.h",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 8871,
+						"buffer_size": 6637,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7624,
-								7624
+								696,
+								696
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3382.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1302,7 +1168,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
@@ -1310,7 +1176,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 294.0,
+	"side_bar_width": 205.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

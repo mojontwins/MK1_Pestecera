@@ -29,7 +29,7 @@
 void hotspots_do (void) {
 	if (hotspots [n_pant].act == 0) return;
 
-	cx2 = hotspot_x; cy2 = hotspot_y; if (collide ()) {
+	cx2 = hotspot_x; cy2 = hotspot_y; if (collide16 ()) {
 		// Deactivate hotspot
 		hotspot_destroy = 1;
 			
