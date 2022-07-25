@@ -287,6 +287,7 @@ unsigned char x0, y0, x1, y1;
 unsigned char ptx1, pty1, ptx2, pty2, pty2b;
 unsigned char *_gp_gen;
 
+#define MAX_TILANIMS 8
 #ifdef ENABLE_TILANIMS
 	unsigned char tait;
 	unsigned char max_tilanims;

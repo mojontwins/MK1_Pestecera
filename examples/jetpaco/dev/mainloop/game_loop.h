@@ -86,6 +86,12 @@
 		display_items ();
 	#endif
 
+	#ifdef DIE_AND_RESPAWN
+		safe_n_pant = n_pant; 
+		safe_gpx = gpx;
+		safe_gpy = gpy;
+	#endif
+
 	o_pant = 0xff;
 	while (playing) {
 		#asm
@@ -99,6 +105,9 @@
 			#include "my/ci/before_entering_screen.h"
 			draw_scr ();
 			o_pant = n_pant;
+			#if defined DIE_AND_RESPAWN && defined PLAYER_GENITAL
+				safe_gpx = gpx; safe_gpy = gpy;
+			#endif
 		}
 
 		#ifdef TIMER_ENABLE
@@ -162,8 +171,17 @@
 
 		#include "mainloop/hud.h"
 
+		/*
 		maincounter ++;
 		half_life = !half_life;
+		*/
+		#asm
+				ld  hl, _maincounter
+				inc (hl)
+				ld  a, (_half_life)
+				xor 1
+				ld  (_half_life), a
+		#endasm
 		
 		// Move player
 		player_move ();
@@ -175,13 +193,6 @@
 			// Move simple cocos
 			simple_coco_update ();
 		#endif
-
-		if (p_killme) {
-			if (p_life) {
-				player_kill (p_killme);
-				#include "my/ci/on_player_killed.h"
-			} else playing = 0;
-		}
 
 		#ifdef PLAYER_CAN_FIRE
 			// Move bullets 			
@@ -217,6 +228,14 @@
 		
 		// Hotspot interaction.
 		hotspots_do ();
+
+		// Kill player
+		if (p_killme) {
+			if (p_life) {
+				player_kill (p_killme);
+				#include "my/ci/on_player_killed.h"
+			} else playing = 0;
+		}
 
 		// Scripting related stuff
 		
@@ -271,7 +290,7 @@
 		#endif
 
 		#ifdef DEBUG_KEYS
-			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2)) {
+			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2) && cpc_TestKey (KEY_AUX3)) {
 				playing = 0; success = 1;
 			}
 		#endif

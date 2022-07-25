@@ -10,3 +10,6 @@
 			ld  a, (__t)
 	#endasm
 */
+
+// Note that this ONLY CHANGES THE TILE # BEING DRAWN, 
+// the original value & beh are written to the arrays

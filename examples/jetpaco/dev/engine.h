@@ -1,6 +1,10 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
+#ifdef CUSTOM_LOCK_CLEAR
+	#include "my/ci/custom_lock_clear.h"
+#endif
+
 #ifdef TEST_DEBUG
 	void test_debug (void) {
 	}
@@ -147,6 +151,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+				#ifndef UNPACKED_MAP
+					and 15
+				#endif
 					cp  14
 					jp  nz, push_boxes_end
 
@@ -158,6 +165,7 @@ void espera_activa (int espera) {
 					call _attr_1b
 					xor a
 					or  l
+					and 0x7f
 					jp  nz, push_boxes_end
 
 					// && x1 < 15
@@ -250,6 +258,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+					#ifndef UNPACKED_MAP
+						and 15
+					#endif
 					cp  15
 					jp  nz, open_lock_end
 
@@ -309,10 +320,15 @@ void espera_activa (int espera) {
 					ld  (__x), a
 					ld  a, (_y0)
 					ld  (__y), a
+
+					#ifdef CUSTOM_LOCK_CLEAR
+						call _custom_lock_clear
+					#else
 					xor a
 					ld  (__t), a
 					ld  (__n), a
 					call _update_tile
+					#endif
 			#endasm
 
 			// -- p_keys
@@ -415,6 +431,9 @@ void draw_scr_background (void) {
 						and 15
 
 					._draw_scr_packed_done
+				#endasm
+				#include "my/ci/on_map_tile_decoded.h" 
+				#asm
 						ld  (__t), a
 						
 						ld  b, 0
@@ -471,10 +490,12 @@ void draw_scr_background (void) {
 			#endif
 
 			#ifdef ENABLE_TILANIMS
-				if (_t >= ENABLE_TILANIMS) {
-					_n = (((_x - VIEWPORT_X) << 3) & 0xf0) | ((_y - VIEWPORT_Y) >> 1);
-					tilanims_add ();	
-				}
+				#if ENABLE_TILANIMS != 99
+					if (_t >= ENABLE_TILANIMS) {
+						_n = (((_x - VIEWPORT_X) << 3) & 0xf0) | ((_y - VIEWPORT_Y) >> 1);
+						tilanims_add ();	
+					}
+				#endif
 			#endif
 				
 			draw_coloured_tile ();
@@ -631,6 +652,9 @@ void draw_scr (void) {
 			xor a
 		._hotspots_setup_set
 			add 16
+	#endasm
+	#include "my/ci/hotspot_setup_t_modification.h"
+	#asm
 			ld  (__t), a		
 
 			call _draw_coloured_tile_gamearea
@@ -690,34 +714,21 @@ void draw_scr (void) {
 			#endif
 
 			._open_locks_do
+				push hl 			// Save for later.
+			
 				ld  a, d
 				ld  (__x), a
 				ld  a, e
 				ld  (__y), a
 				
-				sla a
-				sla a
-				sla a
-				sla a
-				sub e
-				add d
-
-				ld  b, 0
-				ld  c, a
+				#ifdef CUSTOM_LOCK_CLEAR
+					call _custom_lock_clear
+				#else
 				xor a
-				
-				push hl 			// Save for later.
-				
-				ld  hl, _map_attr
-				add hl, bc
-				ld  (hl), a
-				ld  hl, _map_buff
-				add hl, bc
-				ld  (hl), a
-
 				ld  (__t), a
-
-				call _draw_coloured_tile_gamearea
+					ld  (__n), a
+					call _update_tile
+				#endif
 
 				pop hl
 
@@ -743,20 +754,37 @@ void draw_scr (void) {
 
 #ifdef WALLS_STOP_ENEMIES
 	unsigned char mons_col_sc_x (void) {
-		#ifdef BOUNDING_BOX_12X2_CENTERED
+
+		// Si BOUNDING_BOX_12x2_CENTERED ->
+		// D = 2, E = 13; D = 0, E = 15 si _lineal
+		// H = 7, L = 8;  H = 0, L = 15 si _lineal
+		// else D = 0, E = 15; H = 0, L = 15
+
+		#asm
+			#ifdef BOUNDING_BOX_12x2_CENTERED
+					ld  de, 0x020D
+					ld  hl, 0x0708
+					jr  _mons_col_sc_x_compare
+			#endif
+
+			._mons_col_sc_x_lineal
+				ld  de, 0x000f
+				ld  hl, 0x000f
+
+			._mons_col_sc_x_compare
+
 			// cx1 = cx2 = (_en_mx > 0 ? _en_x + 13 : _en_x + 2) >> 4;
-			#asm
 					ld  a, (__en_mx)
 					and 0x80
 					ld  a, (__en_x)
 					jr  z, _mons_col_sc_x_horz_positive
 
 				._mons_col_sc_x_horz_negative_zero
-					add 2
+				add d
 					jr  _mons_col_sc_x_horz_set
 
 				._mons_col_sc_x_horz_positive
-					add 13					
+				add e				
 
 				._mons_col_sc_x_horz_set
 					srl a 
@@ -766,13 +794,11 @@ void draw_scr (void) {
 
 					ld  (_cx1), a
 					ld  (_cx2), a
-			#endasm
 
 			// cy1 = (_en_y + 7) >> 4; cy2 = (_en_y + 8) >> 4;
-			#asm
+
 					ld  a, (__en_y)
-					add 7 
-					ld  b, a
+				add h
 
 					srl a
 					srl a
@@ -780,8 +806,8 @@ void draw_scr (void) {
 					srl a
 					ld  (_cy1), a
 
-					ld  a, b
-					inc a
+				ld  a, (__en_y)
+				add l
 
 					srl a
 					srl a
@@ -789,11 +815,18 @@ void draw_scr (void) {
 					srl a
 					ld  (_cy2), a
 			#endasm
-		#else
-		cx1 = cx2 = (_en_mx > 0 ? _en_x + 15 : _en_x) >> 4;
-		cy1 = _en_y >> 4; cy2 = (_en_y + 15) >> 4;
-		#endif
+
 		cm_two_points ();
+
+		#asm
+				ld  a, (_at1)
+				and 0x7F
+				ld  (_at1), a
+				ld  a, (_at2)
+				and 0x7F
+				ld  (_at2), a
+		#endasm
+
 		#ifdef EVERYTHING_IS_A_WALL
 			return (at1 || at2);
 		#else
@@ -802,20 +835,37 @@ void draw_scr (void) {
 	}
 		
 	unsigned char mons_col_sc_y (void) {
-		#ifdef BOUNDING_BOX_12X2_CENTERED
+
+		// Si BOUNDING_BOX_12x2_CENTERED ->
+		// D = 2, E = 13; D = 0, E = 15 si _lineal
+		// H = 7, L = 8;  H = 0, L = 15 si _lineal
+		// else D = 0, E = 15; H = 0, L = 15
+
+		#asm
+			#ifdef BOUNDING_BOX_12x2_CENTERED
+					ld  de, 0x020D
+					ld  hl, 0x0708
+					jr  _mons_col_sc_x_compare
+			#endif
+
+			._mons_col_sc_y_lineal
+				ld  de, 0x000f
+				ld  hl, 0x000f
+
+			._mons_col_sc_y_compare
+
 			// cy1 = cy2 = (_en_my > 0 ? _en_y + 8 : _en_y + 7) >> 4;
-			#asm
 					ld  a, (__en_my)
 					and 0x80
 					ld  a, (__en_y)
 					jr  z, _mons_col_sc_y_vert_positive
 
 				._mons_col_sc_y_vert_negative_zero
-					add 7
+				add h
 					jr  _mons_col_sc_y_vert_set
 
 				._mons_col_sc_y_vert_positive
-					add 8					
+				add l					
 
 				._mons_col_sc_y_vert_set
 					srl a 
@@ -825,13 +875,10 @@ void draw_scr (void) {
 
 					ld  (_cy1), a
 					ld  (_cy2), a
-			#endasm		
 
 			// cx1 = (_en_x + 2) >> 4; cx2 = (_en_x + 13) >> 4;
-			#asm
 					ld  a, (__en_x)
-					ld  b, a
-					add 2 
+				add d
 
 					srl a
 					srl a
@@ -839,8 +886,8 @@ void draw_scr (void) {
 					srl a
 					ld  (_cx1), a
 
-					ld  a, b
-					add 13
+				ld  a, (__en_x)
+				add e
 
 					srl a
 					srl a
@@ -848,10 +895,7 @@ void draw_scr (void) {
 					srl a
 					ld  (_cx2), a
 			#endasm
-		#else
-		cy1 = cy2 = (_en_my > 0 ? _en_y + 15 : _en_y) >> 4;
-		cx1 = _en_x >> 4; cx2 = (_en_x + 15) >> 4;
-		#endif
+
 		cm_two_points ();
 		#ifdef EVERYTHING_IS_A_WALL
 			return (at1 || at2);

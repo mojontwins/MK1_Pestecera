@@ -41,7 +41,7 @@ Function inCommand (spec As String) As Integer
 End Function
 
 Dim As Integer map_w, map_h, scr_w, scr_h, bolt
-Dim As Integer x, y, xx, yy, i, j, f, packed, ac, ct, fixmappy
+Dim As Integer x, y, xx, yy, i, j, f, packed, ac, ct, fixmappy, scr_x, scr_y, n_pant
 Dim As Byte d
 Dim As String o
 
@@ -96,6 +96,16 @@ For y = 0 To (map_h * scr_h - 1)
 	For x = 0 To (map_w * scr_w - 1)
 		get #f , , d
 		If fixmappy Then d = d - 1
+		If packed = 1 Then		
+			If d >= 16 Then 
+				' calculate screen number
+				scr_x = x \ scr_w 
+				scr_y = y \ scr_h
+				n_pant = scr_y * map_w + scr_x 
+				Print "Warning! out of bounds tile " & d & " @ " & n_pant & " (" & (x Mod scr_w) & ", " & (y Mod scr_h) & ") -> wrote 0"
+				d = 0
+			End If
+		End If
 		BigOrigMap (y, x) = d
 	Next x
 Next y
@@ -131,19 +141,19 @@ for yy = 0 To map_h - 1
 				end if
 				
 				if packed = 0 then
-					o = o + str (BigOrigMap (yy * scr_h + y, xx * scr_w + x))
+					o = o & "0x" & hex (BigOrigMap (yy * scr_h + y, xx * scr_w + x), 2)
 					if yy < map_h - 1 Or xx < map_w - 1 Or y < scr_h -1 Or x < scr_w -1 then
-						o = o + ", "
+						o = o & ", "
 					end if
 				else
 					if ct = 0 then
 						ac = BigOrigMap (yy * scr_h + y, xx * scr_w + x) * 16
 					else
 						ac = ac + BigOrigMap (yy * scr_h + y, xx * scr_w + x) 
-						o = o + str (ac)
+						o = o & "0x" & Hex (ac, 2)
 						
 						if yy < map_h - 1 Or xx < map_w - 1 Or y < scr_h - 1 Or x < scr_w - 1 then
-							o = o + ", "
+							o = o & ", "
 						end if
 					end if
 					ct = 1 - ct

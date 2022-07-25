@@ -44,60 +44,124 @@ void tilanims_do (void) {
 			or  a
 			ret z
 
-			ld  a, (_tait)
-			add TILANIMS_PRIME
-			cp  MAX_TILANIMS
-			jr  c, _tilanims_tait_0_skip
-			sub MAX_TILANIMS
-		._tilanims_tait_0_skip
-			ld  (_tait), a
+		#ifdef TILANIMS_MOVE_ONE
+				ld  a, (_tait)
+				add TILANIMS_PRIME
+				cp  MAX_TILANIMS
+				jr  c, _tilanims_tait_0_skip
+				sub MAX_TILANIMS
+			._tilanims_tait_0_skip
+				ld  (_tait), a
 
-			// Check counter for tilanim #tait
-			ld  d, 0
-			ld  e, a
+				// Check counter for tilanim #tait
+				ld  d, 0
+				ld  e, a
 
-			// Check of active
-			ld  hl, _tilanims_ft
-			add hl, de
-			ld  a, (hl)
-			or  a
-			ret z
+				// Check of active
+				ld  hl, _tilanims_ft
+				add hl, de
+				ld  a, (hl)
+				or  a
+				ret z
 
-			// Flip bit 7
-			ld  hl, _tilanims_ft
-			add hl, de
-			ld  a, (hl)
-			xor 128
-			ld  (hl), a			
+				// Flip bit 7
+				ld  hl, _tilanims_ft
+				add hl, de
+				ld  a, (hl)
+				xor 128
+				ld  (hl), a			
+				
+				// Which tile?
+				bit 7, a
+				jr  z, _tilanims_no_flick
+
+				inc a
+			._tilanims_no_flick
+				and 127
+				ld  (__t), a
 			
-			// Which tile?
-			bit 7, a
-			jr  z, _tilanims_no_flick
+			// Draw tile
+				ld  hl, _tilanims_xy
+				add hl, de
+				ld  a, (hl)
+				ld  c, a
+				srl a
+				srl a
+				srl a
+				and 0xfe
+				add VIEWPORT_X
+				ld  (__x), a
 
-			inc a
-		._tilanims_no_flick
-			and 127
-			ld  (__t), a
-		
-		// Draw tile
-			ld  hl, _tilanims_xy
-			add hl, de
-			ld  a, (hl)
-			ld  c, a
-			srl a
-			srl a
-			srl a
-			and 0xfe
-			add VIEWPORT_X
-			ld  (__x), a
+				ld  a, c
+				and 15
+				sla a
+				add VIEWPORT_Y
+				ld  (__y), a
 
-			ld  a, c
-			and 15
-			sla a
-			add VIEWPORT_Y
-			ld  (__y), a
+				call _draw_coloured_tile
+				call _invalidate_tile			
+		#endif
 
-			call _draw_coloured_tile
-			call _invalidate_tile
+		#ifdef TILANIMS_MOVE_ALL
+				xor a 
+
+			tilanims_do_loop:
+				ld  (_tait), a 
+
+				ld  d, 0
+				ld  e, a
+
+				// Check of active
+				ld  hl, _tilanims_ft
+				add hl, de
+				ld  a, (hl)
+				or  a
+				jr z, tilanims_do_continue
+
+				// Flip bit 7
+				ld  hl, _tilanims_ft
+				add hl, de
+				ld  a, (hl)
+				xor 128
+				ld  (hl), a			
+				
+				// Which tile?
+				bit 7, a
+				jr  z, _tilanims_no_flick
+
+				inc a
+			._tilanims_no_flick
+				and 127
+				ld  (__t), a
+			
+				// Draw tile
+				ld  hl, _tilanims_xy
+				add hl, de
+				ld  a, (hl)
+				ld  c, a
+				srl a
+				srl a
+				srl a
+				and 0xfe
+				add VIEWPORT_X
+				ld  (__x), a
+
+				ld  a, c
+				and 15
+				sla a
+				add VIEWPORT_Y
+				ld  (__y), a
+
+				call _draw_coloured_tile
+				call _invalidate_tile
+
+			tilanims_do_continue:
+				ld  a, (_max_tilanims)
+				ld  c, a
+				ld  a, (_tait)
+				inc a 
+				cp  c
+				jr  nz, tilanims_do_loop
+		#endif
 	#endasm
 }

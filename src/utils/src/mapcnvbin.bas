@@ -42,7 +42,7 @@ Function inCommand (spec As String) As Integer
 	Return res
 End Function
 
-Dim As Integer map_w, map_h, scr_w, scr_h, bolt
+Dim As Integer map_w, map_h, scr_w, scr_h, bolt, scr_x, scr_y, n_pant
 Dim As Integer x, y, xx, yy, i, j, f, packed, ct, b, fixmappy, totalBytes
 Dim As uByte d, ac
 Dim As String o
@@ -98,6 +98,16 @@ For y = 0 To (map_h * scr_h - 1)
 	For x = 0 To (map_w * scr_w - 1)
 		get #f , , d
 		If fixmappy Then d = d - 1
+		If packed = 1 Then		
+			If d >= 16 Then 
+				' calculate screen number
+				scr_x = x \ scr_w 
+				scr_y = y \ scr_h
+				n_pant = scr_y * map_w + scr_x 
+				Print "Warning! out of bounds tile " & d & " @ " & n_pant & " (" & (x Mod scr_w) & ", " & (y Mod scr_h) & ") -> wrote 0"
+				d = 0
+			End If
+		End If
 		BigOrigMap (y, x) = d
 	Next x
 Next y

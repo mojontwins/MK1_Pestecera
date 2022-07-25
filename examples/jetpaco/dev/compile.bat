@@ -21,7 +21,7 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 5 15 10 15 packed fixmappy > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 10 15 10 99 packed > nul
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
@@ -45,6 +45,7 @@ echo Importando GFX
 ..\..\..\src\utils\apack.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal1.png prefix=my_inks1 out=assets\pal1.h silent > nul
 
 if [%1]==[justassets] goto :end
 
