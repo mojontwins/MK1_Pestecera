@@ -9,7 +9,7 @@
 			ld  hl, _gm_ts
 			ld  e, (hl)
 			inc hl
-			ld  d, (hl) 			; DE -> *gm_ts
+			ld  d, (hl) 			// DE -> *gm_ts
 
 			ld  l, a 
 			ld  h, 0
