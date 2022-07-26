@@ -87,3 +87,52 @@ Con eso y esto, entiendo que deberían funcionar:
 He tenido que añadir código a `tilanims.h` para que los actualice todos pero no estoy NADA contento con esto, creo que podría hacerlo mejor y más optimizado si pasara de tilanims y programase mi propia mierda. Lo terminaré haciendo, pero antes quiero ver que al menos funciona.
 
 ## Paco / Puri
+
+TODO
+
+## Más fases
+
+La idea ronda de meter una tercera fase. En el juego original se reaprovechaban tiles de las dos anteriores, mezclándolos. Podría hacerlo si meto mapeo de tiles. Podría probar el concepto con lo que tengo, estableciendo un array al mapeo de tiles, que para la fase uno contenga valores 0-15 y para la segunda valores 32-47. Para cada tile, en lugar de sumar el offset, habría que acceder con "_t" al array correspondiente y obtener el valor de ahí.
+
+Cuando tenga esto funcionando meter la tercera fase será cuestión de hacer un nuevo array.
+
+Y esto es super interesante para otros juegos (MK1v4 lo implementa de fábrica, esto sería por custom). ¡Y lo he hecho en 5 minutos!
+
+```c
+	// extra_vars.h
+
+	// Mapped tilesets
+
+	unsigned char gm_ts_0 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+	unsigned char gm_ts_1 = { 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
+	unsigned char *gm_ts_list [] = {gm_ts_0, gm_ts_1};
+
+	unsigned char *gm_ts;
+```
+
+```c
+	// before_game.h
+
+	gm_ts = gm_ts_list [gm];
+```
+
+```c
+	// on_map_tile_decoded.h
+
+	#asm
+		// Mapped tilesets. Current tile would be gm_ts [A]
+
+			ld  hl, _gm_ts
+			ld  e, (hl)
+			inc hl
+			ld  d, (hl) 			; DE -> *gm_ts
+
+			ld  l, a 
+			ld  h, 0
+			add hl, de 
+			ld  a, (hl)
+	#endasm
+```
+
+
+

@@ -6,3 +6,5 @@ gm = 1;
 tile_offset = gm_tile_offset [gm];
 hotspots_offset = gm_hotspots_offset [gm];
 pal_set (gm_palette [gm]);
+
+gm_ts = gm_ts_list [gm];

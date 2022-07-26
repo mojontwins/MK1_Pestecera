@@ -46,6 +46,7 @@ echo Importando GFX
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal1.png prefix=my_inks1 out=assets\pal1.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal2.png prefix=my_inks2 out=assets\pal2.h silent > nul
 
 if [%1]==[justassets] goto :end
 
