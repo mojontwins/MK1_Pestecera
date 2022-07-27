@@ -52,7 +52,7 @@ unsigned char spr_on [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*18;
 unsigned char spr_x [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*19;
 unsigned char spr_y [SW_SPRITES_ALL]		@ BASE_SPRITES + (SW_SPRITES_ALL)*20;
 
-unsigned char enoffs;
+unsigned int enoffs;
 
 // Aux
 
@@ -236,7 +236,8 @@ unsigned char possee, hit_v, hit_h, hit, wall_h, wall_v;
 unsigned char gpen_x, gpen_y, gpen_cx, gpen_cy, gpaux;
 unsigned char tocado, active;
 unsigned char gpit, gpjt;
-unsigned char enoffsmasi;
+unsigned int enoffsmasi;
+unsigned int gpint;
 unsigned char *map_pointer;
 #ifdef PLAYER_CAN_FIRE
 	unsigned char blx, bly;

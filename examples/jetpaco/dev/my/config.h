@@ -11,6 +11,13 @@
 #define SOUND_WYZ
 #define WYZ_FX_CHANNEL 				1		// Where to play sound effects
 
+// Music indexes, comment if not applicable
+#define MUSIC_TITLE 				0
+#define MUSIC_INGAME 				(gm_music_ingame [gm])
+#define MUSIC_GOVER 				2
+#define MUSIC_ENDING 				3
+#define MUSIC_SCLEAR 				4
+
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing

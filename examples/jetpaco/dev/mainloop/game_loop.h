@@ -41,7 +41,9 @@
 	#ifdef COMPRESSED_LEVELS		
 		AY_PLAY_MUSIC (levels [level].music_id);
 	#else
-		AY_PLAY_MUSIC (1);
+		#ifdef MUSIC_INGAME
+			AY_PLAY_MUSIC (MUSIC_INGAME);
+		#endif
 	#endif		
 
 	#ifdef ACTIVATE_SCRIPTING

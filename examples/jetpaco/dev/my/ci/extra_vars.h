@@ -16,6 +16,7 @@ unsigned char gm_ini_y [] = { 6, 6, 6 };
 unsigned char gm_max_objects [] = { 20, 20, 20 };
 unsigned char gm_hotspots_offset [] = { 0, 8, 0 };
 unsigned char *gm_palette [] = { my_inks, my_inks1, my_inks2 };
+unsigned char gm_music_ingame [] = { 1, 1, 1 };
 
 unsigned char hotspots_offset;
 

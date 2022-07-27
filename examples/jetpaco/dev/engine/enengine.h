@@ -8,7 +8,7 @@
 		// Point HL to baddies [enoffsmasi]. The struct is 9 or 10 bytes long
 		// so this is baddies + enoffsmasi*(9|10) depending on PLAYER_CAN_FIRE
 		ld 	hl, (_enoffsmasi)
-		ld  h, 0
+		// ld  h, 0 	// Now enoffsmasi is 16 bits
 
 		#if defined PLAYER_CAN_FIRE || defined COMPRESSED_LEVELS
 			add hl, hl 				// x2
@@ -64,13 +64,13 @@
 #ifndef COMPRESSED_LEVELS
 	#if defined(PLAYER_STEPS_ON_ENEMIES) || defined (PLAYER_CAN_FIRE)
 		void enems_init (void) {
-			enit = 0;
-			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
-				malotes [enit].t = malotes [enit].t & 0xEF;	
+			gpint = 0;
+			while (gpint < MAP_W * MAP_H * MAX_ENEMS) {
+				malotes [gpint].t = malotes [gpint].t & 0xEF;	
 				#ifdef PLAYER_CAN_FIRE
-					malotes [enit].life = ENEMIES_LIFE_GAUGE;
+					malotes [gpint].life = ENEMIES_LIFE_GAUGE;
 				#endif
-				enit ++;
+				gpint ++;
 			}
 		}
 	#endif

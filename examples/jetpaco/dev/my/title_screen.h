@@ -16,7 +16,9 @@ void title_screen (void) {
 	_x = 13; _y = 13; _gp_gen = "1 POQA"; print_str ();
 			 _y = 14; _gp_gen = "2 STICK"; print_str ();
 
-	cpc_UpdateNow (0);
+	#ifdef MUSIC_TITLE
+		AY_PLAY_MUSIC (MUSIC_TITLE)
+	#endif
 
 	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);
