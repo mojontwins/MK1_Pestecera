@@ -21,16 +21,20 @@ Const HIDEMOUSE = 0
 #define CS_MINUS 	&H80 
 #define CS_ESC 		&H100
 
-Redim Shared As uByte map(0,0)
+Redim Shared As uByte map (0,0)
 Dim Shared As Integer consoleW, consoleH 			' Console size
 Dim Shared As Integer mW, mH
 Dim Shared As Integer scrW, scrH
+Dim Shared As Integer behsEnable
+Dim Shared As Integer behsMode
+Dim Shared As Integer behs (63)
 
 Sub usage 
 	Print "usage: "
-	Print "$ tmmaped in=file.map size=w,h scrsize=w,h"
+	Print "$ tmmaped in=file.map size=w,h scrsize=w,h [behs=...]"
 	Print "size w, h in screens"
 	Print "scrsize w, h in tiles"
+	Print "behs is a comma separated list to up to 64 behs for tiles"
 End Sub
 
 Function Window_Event_Close() As Integer
@@ -105,6 +109,43 @@ Sub saveMap (fileName As String)
 	Close #fOut
 End Sub
 
+Function behsStr (beh as Integer) As String
+	Dim As String res
+
+	' Basic behs
+	If beh = 0 Then 
+		return "  "
+	ElseIf beh = 1 Then
+		return "**"
+	ElseIf beh = 4 Then 
+		return "~~"
+	ElseIf beh = 8 Then
+		return "XX"
+	ElseIf beh = 10 Then
+		return "()"
+	ElseIf beh = 128 Then
+		return "!!"
+	Else
+		' Combinations
+		res = " "
+		If (beh And 1) Then res = "*"
+		If (beh And 4) Then res = "~"
+		If (beh And 8) Then res = "X"
+
+		If (beh And 2) Then 
+			res = res & "h"
+		ElseIf (beh And 16) Then 
+			res = res & "%"
+		ElseIf (beh And 128) Then 
+			res = res & "!"
+		Else 
+			res = res  & "?"
+		End If
+
+		return res
+	End If
+End Function
+
 Sub displayMap (offX As Integer, offY As Integer)
 	Dim As Integer x, y, xx, yy, xc, yc
 	Dim As String conc
@@ -112,36 +153,65 @@ Sub displayMap (offX As Integer, offY As Integer)
 
 	yy = offY: yc = yy Mod (scrH+1)
 	
-	For y = 5 To consoleH-2
-		If yc = scrH Then 
-			conc = String (consoleW-2, "-")
-		Else
-			conc = ""
-			xx = offX
-			xc = xx Mod (scrW+1)
-			For x = 1 To consoleW-2	Step 2
-				If xc = scrW Then
-					conc = conc & "| "
-				Else					
-					If xx >= 0 And xx < (mW*(scrW+1)) And yy >= 0 And yy < (mH*(scrH+1)) Then
-						d = map (xx, yy)
-						If d = 0 Then
-							conc = conc & "  "
+	' Code is so unrolled for speed
+	If behsMode Then
+		For y = 5 To consoleH-2
+			If yc = scrH Then 
+				conc = String (consoleW-2, "-")
+			Else
+				conc = ""
+				xx = offX
+				xc = xx Mod (scrW+1)
+				For x = 1 To consoleW-2	Step 2
+					If xc = scrW Then
+						conc = conc & "]["
+					Else					
+						If xx >= 0 And xx < (mW*(scrW+1)) And yy >= 0 And yy < (mH*(scrH+1)) Then
+							conc = conc & behsStr (behs (map (xx, yy)))
 						Else
-							conc = conc & Hex (d, 2)
-						End If					
-					Else
-						conc = conc & ".."
-					End If 
-				End If
-				xc = xc + 1: If xc = scrW+1 Then xc = 0
-				xx = xx + 1
-			Next x
-		End If
-		Locate y, 1 : Print conc & "]";
-		yc = yc + 1: If yc = scrH+1 Then yc = 0
-		yy = yy + 1
-	Next y
+							conc = conc & ".."
+						End If 
+					End If
+					xc = xc + 1: If xc = scrW+1 Then xc = 0
+					xx = xx + 1
+				Next x
+			End If
+			Locate y, 1 : Print conc & "]";
+			yc = yc + 1: If yc = scrH+1 Then yc = 0
+			yy = yy + 1
+		Next y
+	Else
+		For y = 5 To consoleH-2
+			If yc = scrH Then 
+				conc = String (consoleW-2, "-")
+			Else
+				conc = ""
+				xx = offX
+				xc = xx Mod (scrW+1)
+				For x = 1 To consoleW-2	Step 2
+					If xc = scrW Then
+						conc = conc & "]["
+					Else					
+						If xx >= 0 And xx < (mW*(scrW+1)) And yy >= 0 And yy < (mH*(scrH+1)) Then
+							d = map (xx, yy)
+							If d = 0 Then
+								conc = conc & "  "
+							Else
+								conc = conc & Hex (d, 2)
+							End If					
+						Else
+							conc = conc & ".."
+						End If 
+					End If
+					xc = xc + 1: If xc = scrW+1 Then xc = 0
+					xx = xx + 1
+				Next x
+			End If
+			Locate y, 1 : Print conc & "]";
+			yc = yc + 1: If yc = scrH+1 Then yc = 0
+			yy = yy + 1
+		Next y
+	End If
 End Sub 
 
 Sub setupScreen 
@@ -150,18 +220,19 @@ Sub setupScreen
 	i = 0
 	For y = 0 To 3 
 		For x = 0 To 15
-			Locate 1 + y, 1 + (x * 3): Print i
+			Locate 1 + y, 2 + (x * 3)
+			If behsMode Then Print behsStr(behs(i)) Else Print Hex(i, 2)
 			i = i + 1
 		Next x
 	Next y
 
-	Locate 1, 50: Print "[S] SAVE [ESC] EXIT"
+	Locate 1, 50: Print "[S] SAVE [ESC] EXIT [G] TOGGLE"
 End Sub
 
 Dim As Integer mX, mY, msW, mB, mC 		' Mouse
 Dim As Integer r
 Dim As String mandatory (2) = { "in", "size", "scrsize" }
-Dim As Integer coords (10)
+Dim As Integer coords (64)
 Dim As Integer keys, keysTF
 Dim As Integer offX, offY, ooffX, ooffY
 Dim As Integer psX, psY, pmX, pmY
@@ -185,6 +256,16 @@ mw = coords (0): mH = coords (1)
 
 parseCoordinatesString sclpGetValue ("scrsize"), coords ()
 scrW = coords (0): scrH = coords (1)
+
+behsMode = 0
+behsEnable = 0
+If sclpGetValue ("behs") <> "" Then
+	behsEnable = -1
+	parseCoordinatesString sclpGetValue ("behs"), coords ()
+	For i = 0 To 63
+		If coords(i) <> -1 Then behs (i) = coords (i) Else behs (i) = 0
+	Next i
+End If
 
 loadMap sclpGetValue ("in")
 
@@ -229,6 +310,13 @@ Do
 		Cls
 		setupScreen
 		ooffX = &HFFFF
+	End If
+
+	'' TOGGLE
+	If (keysTF And CS_GRID) And behsEnable Then
+		behsMode = Not behsMode
+		ooffX = &HFFFF
+		setupScreen
 	End If
 
 	'' Calculate map positions!
