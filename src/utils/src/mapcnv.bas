@@ -4,12 +4,21 @@
 ' Estos programas son tela de optimizables, pero me da igual porque tengo un dual core.
 ' ­OLE!
 
+Function procrust (n As Integer, l As Integer) As String
+	Dim s As String
+	s = Ltrim (Str (n))
+	If Len (s) < l Then
+		s = Space (l - Len (s)) & s
+	End If
+	Return s
+End Function
+
 Sub WarningMessage ()
 End Sub
 
 sub usage () 
 	Print "** USO **"
-	Print "   MapCnv archivo.map archivo.h ancho_mapa alto_mapa ancho_pantalla alto_pantalla tile_cerrojo [packed] [fixmappy]"
+	Print "   MapCnv archivo.map archivo.h ancho_mapa alto_mapa ancho_pantalla alto_pantalla tile_cerrojo [packed] [fixmappy] [errors_as_arrays]"
 	Print
 	Print "   - archivo.map : Archivo de entrada exportado con mappy en formato raw."
 	Print "   - archivo.h : Archivo de salida"
@@ -20,6 +29,7 @@ sub usage ()
 	Print "   - tile_cerrojo : N§ del tile que representa el cerrojo."
 	Print "   - packed : Escribe esta opci¢n para mapas de la churrera de 16 tiles."
 	Print "   - fixmappy : Escribe esta opci¢n para arreglar lo del tile 0 no negro"
+	Print "   - errors_as_arrays: Saca los errores de rango como tres arrays np, x, y"
 	Print
 	Print "Por ejemplo, para un mapa de 6x5 pantallas para MTE MK1:"
 	Print
@@ -44,6 +54,8 @@ Dim As Integer map_w, map_h, scr_w, scr_h, bolt
 Dim As Integer x, y, xx, yy, i, j, f, packed, ac, ct, fixmappy, scr_x, scr_y, n_pant
 Dim As Byte d
 Dim As String o
+Dim As Integer errorsAsArrays
+Dim As Integer errorsNp(255), errorsX(255), errorsY(255), errorsT(255), errorsIdx
 
 Type MyBolt
 	np As Integer
@@ -85,6 +97,8 @@ Else
 	fixmappy = 0
 End If
 
+errorsAsArrays = InCommand ("errors_as_arrays")
+
 Dim As Integer BigOrigMap (map_h * scr_h - 1, map_w * scr_w - 1)
 
 ' Leemos el mapa original
@@ -102,7 +116,15 @@ For y = 0 To (map_h * scr_h - 1)
 				scr_x = x \ scr_w 
 				scr_y = y \ scr_h
 				n_pant = scr_y * map_w + scr_x 
-				Print "Warning! out of bounds tile " & d & " @ " & n_pant & " (" & (x Mod scr_w) & ", " & (y Mod scr_h) & ") -> wrote 0"
+				If Not errorsAsArrays Then
+					Print "Warning! out of bounds tile " & d & " @ " & n_pant & " (" & (x Mod scr_w) & ", " & (y Mod scr_h) & ") -> wrote 0"
+				Else
+					errorsNp (errorsIdx) = n_pant 
+					errorsX  (errorsIdx) = (x Mod scr_w)
+					errorsY  (errorsIdx) = (y Mod scr_h)
+					errorsT  (errorsIdx) = d
+					errorsIdx = errorsIdx + 1
+				End If
 				d = 0
 			End If
 		End If
@@ -199,4 +221,31 @@ else
 end if
 Print "Se encontraron " + trim(str(i)) + " cerrojos."
 print " "
-end
+
+If errorsAsArrays Then
+	Print "Errors as arrays"
+	Print "unsigned char _np [] = {";
+	For i = 0 To errorsIdx - 1
+		Print procrust (errorsNp (i), 3) & ", ";
+	Next i
+	Print "};"
+
+	Print "unsigned char _t [] = {";
+	For i = 0 To errorsIdx - 1
+		Print procrust (errorsT (i), 3) & ", ";
+	Next i
+	Print "};"
+
+	Print "unsigned char _x [] = {";
+	For i = 0 To errorsIdx - 1
+		Print procrust (errorsX (i), 3) & ", ";
+	Next i
+	Print "};"
+
+	Print "unsigned char _y [] = {";
+	For i = 0 To errorsIdx - 1
+		Print procrust (errorsY (i), 3) & ", ";
+	Next i
+	Print "};"
+
+End If

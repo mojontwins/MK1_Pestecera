@@ -35,7 +35,7 @@
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						7		//
-#define MAP_H						5		// Map dimensions in screens
+#define MAP_H						15		// Map dimensions in screens
 #define SCR_INICIO					(gm_scr_ini [gm])		// Initial screen
 #define PLAYER_INI_X				(gm_ini_x [gm]) 		//
 #define PLAYER_INI_Y				(gm_ini_y [gm]) 		// Initial tile coordinates
@@ -270,9 +270,9 @@ extern unsigned char def_keys [0];
 		defw $4204		; KEY_ENTER
 		defw $4804		; KEY_ESC	
 
-		defw $4880		; KEY_AUX1 Z
-		defw $4780 		; KEY_AUX2 X
-		defw $4801 		; KEY_AUX3 1
+		defw $4440		; KEY_AUX1 M
+		defw $4608 		; KEY_AUX2 T
+		defw $4801 		; KEY_AUX3 1	// Those are used in the menus!
 		defw $4802 		; KEY_AUX4 2
 #endasm
 

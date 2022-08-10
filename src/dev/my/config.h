@@ -11,6 +11,13 @@
 #define SOUND_WYZ
 #define WYZ_FX_CHANNEL 				1		// Where to play sound effects
 
+// Music indexes, comment if not applicable
+#define MUSIC_TITLE 				0
+#define MUSIC_INGAME 				1
+//#define MUSIC_GOVER 				2
+//#define MUSIC_ENDING 				3
+//#define MUSIC_SCLEAR 				4
+
 //#define VENG_SELECTOR 					// Very advanced!
 //#define USE_MAP_CUSTOM_DECODER
 #define GENERAL_ENEMS_BASE_CELL 	8 		// Don't touch this unless you know what you are doing
@@ -308,8 +315,14 @@ extern unsigned char def_keys [0];
 #define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
 //#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.
+											// Use 99 to disable autodetection in map data and handle
+											// creation yourself!
+//#define TILANIMS_MOVE_ONE 				// Update one per frame
+#define TILANIMS_MOVE_ALL 					// Update all per frame
+
 //#define PAUSE_ABORT						// Add h=PAUSE, y=ABORT
 //#define GET_X_MORE						// Shows "get X more" when getting an object
 

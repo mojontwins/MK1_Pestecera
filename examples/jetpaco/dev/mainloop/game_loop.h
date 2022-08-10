@@ -292,7 +292,7 @@
 		#endif
 
 		#ifdef DEBUG_KEYS
-			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2) && cpc_TestKey (KEY_AUX3)) {
+			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2)) {
 				playing = 0; success = 1;
 			}
 		#endif

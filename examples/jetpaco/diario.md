@@ -135,4 +135,199 @@ Y esto es super interesante para otros juegos (MK1v4 lo implementa de fábrica, 
 ```
 
 
+## Estrujadores
+
+Después de un millón de dimes y diretes debidos a padrastros, vamos a implementar los estrujadores. Antes que nada, los guardaré en arrays como hice con los ventiladores propellers, utilizando para ello los mensajes de error del conversor de mapas:
+
+```
+	Warning! out of bounds tile 24 @ 70 (7, 2) -> wrote 0
+	Warning! out of bounds tile 25 @ 74 (1, 4) -> wrote 0
+	Warning! out of bounds tile 24 @ 73 (2, 5) -> wrote 0
+	Warning! out of bounds tile 25 @ 73 (5, 5) -> wrote 0
+	Warning! out of bounds tile 26 @ 75 (14, 5) -> wrote 0
+	Warning! out of bounds tile 26 @ 76 (0, 5) -> wrote 0
+	Warning! out of bounds tile 25 @ 71 (3, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 71 (9, 6) -> wrote 0
+	Warning! out of bounds tile 24 @ 82 (3, 0) -> wrote 0
+	Warning! out of bounds tile 24 @ 77 (5, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 77 (9, 6) -> wrote 0
+	Warning! out of bounds tile 24 @ 85 (3, 2) -> wrote 0
+	Warning! out of bounds tile 24 @ 85 (4, 2) -> wrote 0
+	Warning! out of bounds tile 24 @ 88 (6, 3) -> wrote 0
+	Warning! out of bounds tile 25 @ 88 (9, 3) -> wrote 0
+	Warning! out of bounds tile 25 @ 84 (9, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 84 (13, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 91 (11, 1) -> wrote 0
+	Warning! out of bounds tile 24 @ 92 (4, 1) -> wrote 0
+	Warning! out of bounds tile 25 @ 92 (5, 1) -> wrote 0
+	Warning! out of bounds tile 25 @ 91 (11, 5) -> wrote 0
+	Warning! out of bounds tile 26 @ 92 (6, 5) -> wrote 0
+	Warning! out of bounds tile 25 @ 94 (5, 5) -> wrote 0
+	Warning! out of bounds tile 24 @ 93 (13, 6) -> wrote 0
+	Warning! out of bounds tile 24 @ 99 (3, 1) -> wrote 0
+	Warning! out of bounds tile 25 @ 99 (4, 1) -> wrote 0
+	Warning! out of bounds tile 24 @ 98 (13, 2) -> wrote 0
+	Warning! out of bounds tile 24 @ 101 (3, 3) -> wrote 0
+	Warning! out of bounds tile 24 @ 102 (9, 3) -> wrote 0
+	Warning! out of bounds tile 24 @ 102 (12, 3) -> wrote 0
+	Warning! out of bounds tile 26 @ 98 (3, 6) -> wrote 0
+	Warning! out of bounds tile 24 @ 98 (13, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 103 (6, 6) -> wrote 0
+	Warning! out of bounds tile 25 @ 103 (8, 6) -> wrote 0
+```
+
+Estoy pensando que una buena ampliación para el conversor es que, si se añade cierto parámetro, estos warnings te los saque en un formato reutilizable, en tres listas de números (np, x, y) que luego se puedan meter en el código. Mejor así:
+
+```c
+	// Errors as arrays
+	unsigned char _np [] = { 40,  40,  40,  44,  44,  55,  57,  61,  63,  67,  70,  74,  73,  73,  75,  76,  71,  71,  82,  77,  77,  85,  85,  88,  88,  84,  84,  91,  92,  92,  91,  92,  94,  93,  99,  99,  98, 101, 102, 102,  98,  98, 103, 103, };
+	unsigned char _t [] = { 16,  16,  16,  16,  16,  16,  16,  16,  16,  16,  24,  25,  24,  25,  26,  26,  25,  25,  24,  24,  25,  24,  24,  24,  25,  25,  25,  25,  24,  25,  25,  26,  25,  24,  24,  25,  24,  24,  24,  24,  26,  24,  25,  25, };
+	unsigned char _x [] = {  6,   4,   2,   1,   5,  12,   3,   9,   4,   3,   7,   1,   2,   5,  14,   0,   3,   9,   3,   5,   9,   3,   4,   6,   9,   9,  13,  11,   4,   5,  11,   6,   5,  13,   3,   4,  13,   3,   9,  12,   3,  13,   6,   8, };
+	unsigned char _y [] = {  3,   5,   7,   9,   9,   9,   9,   9,   9,   9,   2,   4,   5,   5,   5,   5,   6,   6,   0,   6,   6,   2,   2,   3,   3,   6,   6,   1,   1,   1,   5,   5,   5,   6,   1,   1,   2,   3,   3,   3,   6,   6,   6,   6, };
+```
+
+Sólo me tengo que quedar con los >= 24 de esos arrays para construir esto:
+
+```c 
+	#define ESTRUJATORS_MAX 34
+	unsigned char estr_n_pant [] = { 
+		 70,  74,  73,  73,  75,  76,  71,  71,  
+		 82,  77,  77,  85,  85,  88,  88,  84,  
+		 84,  91,  92,  92,  91,  92,  94,  93,  
+		 99,  99,  98, 101, 102, 102,  98,  98, 
+		103, 103 
+	};
+	unsigned char estr_t []      = {
+		  0,   1,   0,   1,   2,   2,   1,   1,
+		  0,   0,   1,   0,   0,   0,   1,   1,
+		  1,   1,   0,   1,   1,   2,   1,   0,
+		  0,   1,   0,   0,   0,   0,   2,   0,
+		  1,   1 
+	};
+ 	unsigned char estr_x []      = {
+ 		  7,   1,   2,   5,  14,   0,   3,   9,
+ 		  3,   5,   9,   3,   4,   6,   9,   9, 
+ 		 13,  11,   4,   5,  11,   6,   5,  13,
+ 		  3,   4,  13,   3,   9,  12,   3,  13,
+ 		  6,   8
+ 	};
+	unsigned char estr_y []      = {  
+		  2,   4,   5,   5,   5,   5,   6,   6,
+		  0,   6,   6,   2,   2,   3,   3,   6, 
+		  6,   1,   1,   1,   5,   5,   5,   6, 
+		  1,   1,   2,   3,   3,   3,   6,   6, 
+		  6,   6
+	};
+```
+
+A lo que añadimos estos parámetros que definen a los estrujadores. ¿Hago un plugin con esto? Seh. Estos valores de configuración son para 50 fps (los usaré en una futura versión tostadera). Los chac chacs tienen N estados, y para cada estado se pintan con tres tiles t1, t2, t3. Cada estado durará lo que dig `chac_chac_times` y se pintará con `chac_chac_t1`, `chac_chac_t2` y `chac_chac_t3` uno encima del otro. Nosotros tenemos los tiles 20, 21 y 22 con los distintos trozos que se usan para dibujar el estrujador en cada uno de sus seis estados.
+
+```c
+	#define CHAC_CHAC_MAX_STATES
+
+	const unsigned char chac_chac_initial_times [] = {
+		25, 50, 100
+	};
+
+	const unsigned char chac_chac_times [] = {
+		0, 1, 1, 100, 16, 16
+	};
+
+	const unsigned char chac_chac_t1 [] = {
+		20, 21, 22, 22, 22, 21
+	};
+
+	const unsigned char chac_chac_t2 [] = {
+		 0,  0, 21, 22, 21,  0
+	};
+
+	const unsigned char chac_chac_t3 [] = {
+		 0,  0,  0, 21,  0,  0
+	};
+```
+
+Ajustados a CPC a 25 faps sería algo así:
+
+```c
+	#define CHAC_CHAC_MAX_STATES
+
+	const unsigned char chac_chac_initial_times [] = {
+		12, 25, 50
+	};
+
+	const unsigned char chac_chac_times [] = {
+		0, 1, 1, 50, 8, 8
+	};
+
+	const unsigned char chac_chac_t1 [] = {
+		20, 21, 22, 22, 22, 21
+	};
+
+	const unsigned char chac_chac_t2 [] = {
+		 0,  0, 21, 22, 21,  0
+	};
+
+	const unsigned char chac_chac_t3 [] = {
+		 0,  0,  0, 21,  0,  0
+	};
+```
+
+Veamos, los `chac_chac_initial_times` son el tiempo para el estado 0 de cada tipo de chac-chac, o estrujador, que en este juego serán los tipos 0, 1 y 2.
+
+Los arrays `estr_?` digamos que son el "store". Aparte hace falta un set de arrays para los que están en la pantalla, que se deberían rellenar en `entering_screen.h`. Estos arrays y variables serían:
+
+```c
+	#define CHAC_CHAC_MAX 4
+	unsigned char chac_chac_idx;					// Index / # of chac chacs on screen
+	unsigned char chac_chac_x [CHAC_CHAC_MAX]; 
+	unsigned char chac_chac_y [CHAC_CHAC_MAX];  	// x, y coordinates
+	unsigned char chac_chac_state [CHAC_CHAC_MAX]; 	// Current state (0..CHAC_CHAC_MAX_STATES-1)
+	unsigned char chac_chac_idle [CHAC_CHAC_MAX]; 	// Time to wait in state 0
+	unsigned char chac_chac_ct [CHAC_CHAC_MAX]; 	// Frame counter, wait N frames
+```
+
+En la inicialización se rellenan `chac_chac_x` y `chac_chac_y`, se ponen los `chac_chac_state` a `CHAC_CHAC_MAX_STATES - 1`, se rellenan los `chac_chac_idle` y se ponen los `chac_chac_ct` a 0 y listo.
+
+Durante el juego, se decrementan los `chac_chac_ct`. Al llegar a 0 se incrementa el estado y se asigna el `chac_chac_times` correspondiente a `chac_chac_ct` excepto si el estado es 0, en cuyo caso se establece a `chac_chac_idle`. Se manda pintar el `chac_chac` en el estado que sea.
+
+Estaba pensando en hacerlo en ensamble pero es que si lo hago en C me vale para tostar pan luego, así que por ahora lo voy a hacer en C a ver y luego ya si eso ya.
+
+Lo he montado todo como un plugin que habrá que enganchar debidamente. El plugin es totalmente agnóstico de cómo se almacenen los chac chacs, así podré por ejemplo meterlos en el mapa directamente en otras implementaciones. Lo único que necesita es que se llame a `chac_chacs_add` con `_x, _y` indicando donde crearlo y `_t` indicando el tipo. Hay que acordarse de poner `chac_chac_idx` a 0 cada vez, ofc.
+
+Por tanto, mi enganche en `entering_screen.h` podría ser algo así como (para `gm == 2`, of course):
+
+```c
+	for (gpit = 0; gpit < ESTRUJATORS_MAX; gpit ++) {
+		if (n_pant == estr_n_pant) {
+			_x = estr_x [gpit]; _y = estr_y [gpit]; _t = estr_t [gpit];
+			chac_chacs_add ();
+		}
+	}
+```
+
+Y en `extra_routines.h` sólo tendría que llamar (para `gm == 2`):
+
+```c
+	chac_chacs_do ();
+```
+
+## Niveles en secuencia
+
+Hacer niveles custom en MK1v4 es mucho más fácil que en v5. Vamos a ver qué formas tenemos de engañar al chamán. A grandes rasgos, y esquemáticamente, esto es el bucle de MK1v5:
+
+* Pantalla de título
+* `my/ci/before_game.h`
+* `game_loop.h`
+* `if (success) game_ending (); else game_over ();`
+* `my/ci/after_game.h`
+
+Con esto podríamos montar algo así:
+
+- En `before_game.h` se pone `gm` a 0 y se abre un loop. Al principio de este loop se preparan las cosas del nivel.
+- Entonces ocurre el bucle de juego, que se acaba al morir (`success == 0` o al terminar la fase `success == 1`).
+- En `game_ending` mostramos "stage clear" e incrementamos `gm`. Cuando valga 3, mostramos la pantalla final y hacemos un `break`, que saldría del bucle que abrimos en `before_game`.
+- En `game_over` mostramos "game over" y permitimos continuar. Si NO continuamos, hacemos un `break`, que saldría del bucle que abrimos en `before_game`. 
+- En `after_game.h` se cierra el bucle (con un confusísimo `}` )
+
+¡MENOS MAL QUE LO HE DOCUMENTADO!
 

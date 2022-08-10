@@ -7,7 +7,7 @@ extern unsigned char *wyz_songs [0];
 	._00_title_mus_bin
 		BINARY "../mus/00_title.mus.bin"
 
-	._01_ingame_mus_bin
+	._01_ingamea_mus_bin
 		BINARY "../mus/01_ingamea.mus.bin"
 
 	._02_gover_mus_bin
@@ -19,7 +19,13 @@ extern unsigned char *wyz_songs [0];
 	._04_sclear_mus_bin
 		BINARY "../mus/04_sclear.mus.bin"
 
+	._05_ingameb_mus_bin
+		BINARY "../mus/05_ingameb.mus.bin"
+
+	._06_ingamec_mus_bin
+		BINARY "../mus/06_ingamec.mus.bin"
+
 	._wyz_songs
-		defw 	_00_title_mus_bin, _01_ingame_mus_bin, _02_gover_mus_bin, _03_ending_mus_bin
-		defw	_04_sclear_mus_bin
+		defw 	_00_title_mus_bin, _01_ingamea_mus_bin, _02_gover_mus_bin, _03_ending_mus_bin
+		defw	_04_sclear_mus_bin, _05_ingameb_mus_bin, _06_ingamec_mus_bin
 #endasm
