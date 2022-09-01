@@ -20,7 +20,6 @@ void title_screen (void) {
 		AY_PLAY_MUSIC (MUSIC_TITLE)
 	#endif
 
-	// Do a simple 0 start/1 redefine menu
 	AY_PLAY_MUSIC (0);
 	while (1) {
 		if (cpc_TestKey (KEY_AUX3)) { _gp_gen = def_keys; break; }

@@ -15,17 +15,17 @@ Que podría poner un custom renderer 53... Pues sí. Pero vamos a hacerlo de otr
 El conversor (que he modificado) me chiva los tiles fuera de rango, que son los propellers. Esta es la lista que saca:
 
 ```
-	$ ..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 10 15 10 15 packed
-	Warning! out of bounds tile 16 @ 40 (6, 3) -> wrote 0
-	Warning! out of bounds tile 16 @ 40 (4, 5) -> wrote 0
-	Warning! out of bounds tile 16 @ 40 (2, 7) -> wrote 0
-	Warning! out of bounds tile 16 @ 44 (1, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 44 (5, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 55 (12, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 57 (3, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 61 (9, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 63 (4, 9) -> wrote 0
-	Warning! out of bounds tile 16 @ 67 (3, 9) -> wrote 0
+    $ ..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 7 10 15 10 15 packed
+    Warning! out of bounds tile 16 @ 40 (6, 3) -> wrote 0
+    Warning! out of bounds tile 16 @ 40 (4, 5) -> wrote 0
+    Warning! out of bounds tile 16 @ 40 (2, 7) -> wrote 0
+    Warning! out of bounds tile 16 @ 44 (1, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 44 (5, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 55 (12, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 57 (3, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 61 (9, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 63 (4, 9) -> wrote 0
+    Warning! out of bounds tile 16 @ 67 (3, 9) -> wrote 0
 ```
 
 Como son muy pocos creo que no se me va a caer un dedo por armar unos arrays a mano para esto. Los propellers funcionaban convirtiendo los behs de los tiles 0 que tenían arriba, hasta llegar a uno con beh no 0, a un beh especial. Puedo usar el 128 y aprovechar toda la infraestructura que ya trae MK1 en `my/ci/on_special_tile.h` para hacer flotar a Paco / Puri.
@@ -35,41 +35,41 @@ Para mover los propellers haré algo así como los tiles animados, que no sé c�
 Los tiles animados (`ENABLE_TILANIMS`) se añaden automáticamente mientras se pinta el mapa por arte de comparar el tile con `ENABLE_TILANIMS`. Esto me parece gastar mucho tiempo porque yo no voy a usar esto. Quizá es hora de añadir algo para desactivar este comportamiento y vamos a manejar los tiles animados por nuestra borza. O no: si ponemos `ENABLE_TILANIMS` a 99 haremos que el comportamiento sea este.
 
 ```c
-	// Añadiendo a my/ci/extra_vars.h
-	
-	#define PROPELLERS_MAX 10
-	unsigned char prop_n_pant [] = {40, 40, 40, 44, 44, 55, 57, 61, 63, 67};
-	unsigned char prop_x      [] = { 6,  4,  2,  1,  5, 12,  3,  9,  4,  3};
-	unsigned char prop_y      [] = { 3,  5,  7,  9,  9,  9,  9,  9,  9,  9};
+    // Añadiendo a my/ci/extra_vars.h
+    
+    #define PROPELLERS_MAX 10
+    unsigned char prop_n_pant [] = {40, 40, 40, 44, 44, 55, 57, 61, 63, 67};
+    unsigned char prop_x      [] = { 6,  4,  2,  1,  5, 12,  3,  9,  4,  3};
+    unsigned char prop_y      [] = { 3,  5,  7,  9,  9,  9,  9,  9,  9,  9};
 
-	#define PLAYER_AY_FLOAT 	64
-	#define PLAYER_VY_FLOAT_MAX 512
+    #define PLAYER_AY_FLOAT     64
+    #define PLAYER_VY_FLOAT_MAX 512
 ```
 
 Tendré que procesar esta información para cada pantalla en `entering_screen.h`, que se ejecuta cuando `map_buff` y `map_attr` están debidamente llenos, algo así (que pasaré a ensamble).
 
 ```c
-	// my/ci/entering_screen.h
+    // my/ci/entering_screen.h
 
-	if (gm == 1) {
-		for (gpit = 0; gpit < PROPELLERS_MAX; gpit ++) {
-			if (n_pant == prop_n_pant [gpit]) {
-				_x = prop_x [gpit]; _y = prop_y [gpit];
+    if (gm == 1) {
+        for (gpit = 0; gpit < PROPELLERS_MAX; gpit ++) {
+            if (n_pant == prop_n_pant [gpit]) {
+                _x = prop_x [gpit]; _y = prop_y [gpit];
 
-				// "paint" behs over propeller as 128 until we hit a non-zero
-				rda = _x | ((_y << 4) - _y);
+                // "paint" behs over propeller as 128 until we hit a non-zero
+                rda = _x | ((_y << 4) - _y);
 
-				while (rda >= 15) {
-					rda -= 15;
-					if (map_attr [rda]) break; else map_attr [rda] = 128;
-				}
+                while (rda >= 15) {
+                    rda -= 15;
+                    if (map_attr [rda]) break; else map_attr [rda] = 128;
+                }
 
-				// Add tilanim
-				_n = _y | (_x << 4); _t = 30; 	// tilanims are tiles 30-31
-				tilanims_add ();
-			}
-		}
-	}
+                // Add tilanim
+                _n = _y | (_x << 4); _t = 30;   // tilanims are tiles 30-31
+                tilanims_add ();
+            }
+        }
+    }
 ```
 
 Pasar a ensamble no por velocidad, porque es al entrar a la pantalla y tampoco nadie se va a andar fijando. Es por tamaño.
@@ -77,11 +77,11 @@ Pasar a ensamble no por velocidad, porque es al entrar a la pantalla y tampoco n
 Con eso y esto, entiendo que deberían funcionar:
 
 ```c
-	// my/ci/on_special_tile.h
+    // my/ci/on_special_tile.h
 
-	// Propel!
-	p_vy -= PLAYER_AY_FLOAT;
-	if (p_vy < -PLAYER_VY_FLOAT_MAX) p_vy = -PLAYER_VY_FLOAT_MAX;
+    // Propel!
+    p_vy -= PLAYER_AY_FLOAT;
+    if (p_vy < -PLAYER_VY_FLOAT_MAX) p_vy = -PLAYER_VY_FLOAT_MAX;
 ```
 
 He tenido que añadir código a `tilanims.h` para que los actualice todos pero no estoy NADA contento con esto, creo que podría hacerlo mejor y más optimizado si pasara de tilanims y programase mi propia mierda. Lo terminaré haciendo, pero antes quiero ver que al menos funciona.
@@ -99,39 +99,39 @@ Cuando tenga esto funcionando meter la tercera fase será cuestión de hacer un 
 Y esto es super interesante para otros juegos (MK1v4 lo implementa de fábrica, esto sería por custom). ¡Y lo he hecho en 5 minutos!
 
 ```c
-	// extra_vars.h
+    // extra_vars.h
 
-	// Mapped tilesets
+    // Mapped tilesets
 
-	unsigned char gm_ts_0 [] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-	unsigned char gm_ts_1 [] = { 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
-	unsigned char *gm_ts_list [] = {gm_ts_0, gm_ts_1};
+    unsigned char gm_ts_0 [] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+    unsigned char gm_ts_1 [] = { 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
+    unsigned char *gm_ts_list [] = {gm_ts_0, gm_ts_1};
 
-	unsigned char *gm_ts;
+    unsigned char *gm_ts;
 ```
 
 ```c
-	// before_game.h
+    // before_game.h
 
-	gm_ts = gm_ts_list [gm];
+    gm_ts = gm_ts_list [gm];
 ```
 
 ```c
-	// on_map_tile_decoded.h
+    // on_map_tile_decoded.h
 
-	#asm
-		// Mapped tilesets. Current tile would be gm_ts [A]
+    #asm
+        // Mapped tilesets. Current tile would be gm_ts [A]
 
-			ld  hl, _gm_ts
-			ld  e, (hl)
-			inc hl
-			ld  d, (hl) 			; DE -> *gm_ts
+            ld  hl, _gm_ts
+            ld  e, (hl)
+            inc hl
+            ld  d, (hl)             ; DE -> *gm_ts
 
-			ld  l, a 
-			ld  h, 0
-			add hl, de 
-			ld  a, (hl)
-	#endasm
+            ld  l, a 
+            ld  h, 0
+            add hl, de 
+            ld  a, (hl)
+    #endasm
 ```
 
 
@@ -140,136 +140,136 @@ Y esto es super interesante para otros juegos (MK1v4 lo implementa de fábrica, 
 Después de un millón de dimes y diretes debidos a padrastros, vamos a implementar los estrujadores. Antes que nada, los guardaré en arrays como hice con los ventiladores propellers, utilizando para ello los mensajes de error del conversor de mapas:
 
 ```
-	Warning! out of bounds tile 24 @ 70 (7, 2) -> wrote 0
-	Warning! out of bounds tile 25 @ 74 (1, 4) -> wrote 0
-	Warning! out of bounds tile 24 @ 73 (2, 5) -> wrote 0
-	Warning! out of bounds tile 25 @ 73 (5, 5) -> wrote 0
-	Warning! out of bounds tile 26 @ 75 (14, 5) -> wrote 0
-	Warning! out of bounds tile 26 @ 76 (0, 5) -> wrote 0
-	Warning! out of bounds tile 25 @ 71 (3, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 71 (9, 6) -> wrote 0
-	Warning! out of bounds tile 24 @ 82 (3, 0) -> wrote 0
-	Warning! out of bounds tile 24 @ 77 (5, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 77 (9, 6) -> wrote 0
-	Warning! out of bounds tile 24 @ 85 (3, 2) -> wrote 0
-	Warning! out of bounds tile 24 @ 85 (4, 2) -> wrote 0
-	Warning! out of bounds tile 24 @ 88 (6, 3) -> wrote 0
-	Warning! out of bounds tile 25 @ 88 (9, 3) -> wrote 0
-	Warning! out of bounds tile 25 @ 84 (9, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 84 (13, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 91 (11, 1) -> wrote 0
-	Warning! out of bounds tile 24 @ 92 (4, 1) -> wrote 0
-	Warning! out of bounds tile 25 @ 92 (5, 1) -> wrote 0
-	Warning! out of bounds tile 25 @ 91 (11, 5) -> wrote 0
-	Warning! out of bounds tile 26 @ 92 (6, 5) -> wrote 0
-	Warning! out of bounds tile 25 @ 94 (5, 5) -> wrote 0
-	Warning! out of bounds tile 24 @ 93 (13, 6) -> wrote 0
-	Warning! out of bounds tile 24 @ 99 (3, 1) -> wrote 0
-	Warning! out of bounds tile 25 @ 99 (4, 1) -> wrote 0
-	Warning! out of bounds tile 24 @ 98 (13, 2) -> wrote 0
-	Warning! out of bounds tile 24 @ 101 (3, 3) -> wrote 0
-	Warning! out of bounds tile 24 @ 102 (9, 3) -> wrote 0
-	Warning! out of bounds tile 24 @ 102 (12, 3) -> wrote 0
-	Warning! out of bounds tile 26 @ 98 (3, 6) -> wrote 0
-	Warning! out of bounds tile 24 @ 98 (13, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 103 (6, 6) -> wrote 0
-	Warning! out of bounds tile 25 @ 103 (8, 6) -> wrote 0
+    Warning! out of bounds tile 24 @ 70 (7, 2) -> wrote 0
+    Warning! out of bounds tile 25 @ 74 (1, 4) -> wrote 0
+    Warning! out of bounds tile 24 @ 73 (2, 5) -> wrote 0
+    Warning! out of bounds tile 25 @ 73 (5, 5) -> wrote 0
+    Warning! out of bounds tile 26 @ 75 (14, 5) -> wrote 0
+    Warning! out of bounds tile 26 @ 76 (0, 5) -> wrote 0
+    Warning! out of bounds tile 25 @ 71 (3, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 71 (9, 6) -> wrote 0
+    Warning! out of bounds tile 24 @ 82 (3, 0) -> wrote 0
+    Warning! out of bounds tile 24 @ 77 (5, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 77 (9, 6) -> wrote 0
+    Warning! out of bounds tile 24 @ 85 (3, 2) -> wrote 0
+    Warning! out of bounds tile 24 @ 85 (4, 2) -> wrote 0
+    Warning! out of bounds tile 24 @ 88 (6, 3) -> wrote 0
+    Warning! out of bounds tile 25 @ 88 (9, 3) -> wrote 0
+    Warning! out of bounds tile 25 @ 84 (9, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 84 (13, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 91 (11, 1) -> wrote 0
+    Warning! out of bounds tile 24 @ 92 (4, 1) -> wrote 0
+    Warning! out of bounds tile 25 @ 92 (5, 1) -> wrote 0
+    Warning! out of bounds tile 25 @ 91 (11, 5) -> wrote 0
+    Warning! out of bounds tile 26 @ 92 (6, 5) -> wrote 0
+    Warning! out of bounds tile 25 @ 94 (5, 5) -> wrote 0
+    Warning! out of bounds tile 24 @ 93 (13, 6) -> wrote 0
+    Warning! out of bounds tile 24 @ 99 (3, 1) -> wrote 0
+    Warning! out of bounds tile 25 @ 99 (4, 1) -> wrote 0
+    Warning! out of bounds tile 24 @ 98 (13, 2) -> wrote 0
+    Warning! out of bounds tile 24 @ 101 (3, 3) -> wrote 0
+    Warning! out of bounds tile 24 @ 102 (9, 3) -> wrote 0
+    Warning! out of bounds tile 24 @ 102 (12, 3) -> wrote 0
+    Warning! out of bounds tile 26 @ 98 (3, 6) -> wrote 0
+    Warning! out of bounds tile 24 @ 98 (13, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 103 (6, 6) -> wrote 0
+    Warning! out of bounds tile 25 @ 103 (8, 6) -> wrote 0
 ```
 
 Estoy pensando que una buena ampliación para el conversor es que, si se añade cierto parámetro, estos warnings te los saque en un formato reutilizable, en tres listas de números (np, x, y) que luego se puedan meter en el código. Mejor así:
 
 ```c
-	// Errors as arrays
-	unsigned char _np [] = { 40,  40,  40,  44,  44,  55,  57,  61,  63,  67,  70,  74,  73,  73,  75,  76,  71,  71,  82,  77,  77,  85,  85,  88,  88,  84,  84,  91,  92,  92,  91,  92,  94,  93,  99,  99,  98, 101, 102, 102,  98,  98, 103, 103, };
-	unsigned char _t [] = { 16,  16,  16,  16,  16,  16,  16,  16,  16,  16,  24,  25,  24,  25,  26,  26,  25,  25,  24,  24,  25,  24,  24,  24,  25,  25,  25,  25,  24,  25,  25,  26,  25,  24,  24,  25,  24,  24,  24,  24,  26,  24,  25,  25, };
-	unsigned char _x [] = {  6,   4,   2,   1,   5,  12,   3,   9,   4,   3,   7,   1,   2,   5,  14,   0,   3,   9,   3,   5,   9,   3,   4,   6,   9,   9,  13,  11,   4,   5,  11,   6,   5,  13,   3,   4,  13,   3,   9,  12,   3,  13,   6,   8, };
-	unsigned char _y [] = {  3,   5,   7,   9,   9,   9,   9,   9,   9,   9,   2,   4,   5,   5,   5,   5,   6,   6,   0,   6,   6,   2,   2,   3,   3,   6,   6,   1,   1,   1,   5,   5,   5,   6,   1,   1,   2,   3,   3,   3,   6,   6,   6,   6, };
+    // Errors as arrays
+    unsigned char _np [] = { 40,  40,  40,  44,  44,  55,  57,  61,  63,  67,  70,  74,  73,  73,  75,  76,  71,  71,  82,  77,  77,  85,  85,  88,  88,  84,  84,  91,  92,  92,  91,  92,  94,  93,  99,  99,  98, 101, 102, 102,  98,  98, 103, 103, };
+    unsigned char _t [] = { 16,  16,  16,  16,  16,  16,  16,  16,  16,  16,  24,  25,  24,  25,  26,  26,  25,  25,  24,  24,  25,  24,  24,  24,  25,  25,  25,  25,  24,  25,  25,  26,  25,  24,  24,  25,  24,  24,  24,  24,  26,  24,  25,  25, };
+    unsigned char _x [] = {  6,   4,   2,   1,   5,  12,   3,   9,   4,   3,   7,   1,   2,   5,  14,   0,   3,   9,   3,   5,   9,   3,   4,   6,   9,   9,  13,  11,   4,   5,  11,   6,   5,  13,   3,   4,  13,   3,   9,  12,   3,  13,   6,   8, };
+    unsigned char _y [] = {  3,   5,   7,   9,   9,   9,   9,   9,   9,   9,   2,   4,   5,   5,   5,   5,   6,   6,   0,   6,   6,   2,   2,   3,   3,   6,   6,   1,   1,   1,   5,   5,   5,   6,   1,   1,   2,   3,   3,   3,   6,   6,   6,   6, };
 ```
 
 Sólo me tengo que quedar con los >= 24 de esos arrays para construir esto:
 
 ```c 
-	#define ESTRUJATORS_MAX 34
-	unsigned char estr_n_pant [] = { 
-		 70,  74,  73,  73,  75,  76,  71,  71,  
-		 82,  77,  77,  85,  85,  88,  88,  84,  
-		 84,  91,  92,  92,  91,  92,  94,  93,  
-		 99,  99,  98, 101, 102, 102,  98,  98, 
-		103, 103 
-	};
-	unsigned char estr_t []      = {
-		  0,   1,   0,   1,   2,   2,   1,   1,
-		  0,   0,   1,   0,   0,   0,   1,   1,
-		  1,   1,   0,   1,   1,   2,   1,   0,
-		  0,   1,   0,   0,   0,   0,   2,   0,
-		  1,   1 
-	};
- 	unsigned char estr_x []      = {
- 		  7,   1,   2,   5,  14,   0,   3,   9,
- 		  3,   5,   9,   3,   4,   6,   9,   9, 
- 		 13,  11,   4,   5,  11,   6,   5,  13,
- 		  3,   4,  13,   3,   9,  12,   3,  13,
- 		  6,   8
- 	};
-	unsigned char estr_y []      = {  
-		  2,   4,   5,   5,   5,   5,   6,   6,
-		  0,   6,   6,   2,   2,   3,   3,   6, 
-		  6,   1,   1,   1,   5,   5,   5,   6, 
-		  1,   1,   2,   3,   3,   3,   6,   6, 
-		  6,   6
-	};
+    #define ESTRUJATORS_MAX 34
+    unsigned char estr_n_pant [] = { 
+         70,  74,  73,  73,  75,  76,  71,  71,  
+         82,  77,  77,  85,  85,  88,  88,  84,  
+         84,  91,  92,  92,  91,  92,  94,  93,  
+         99,  99,  98, 101, 102, 102,  98,  98, 
+        103, 103 
+    };
+    unsigned char estr_t []      = {
+          0,   1,   0,   1,   2,   2,   1,   1,
+          0,   0,   1,   0,   0,   0,   1,   1,
+          1,   1,   0,   1,   1,   2,   1,   0,
+          0,   1,   0,   0,   0,   0,   2,   0,
+          1,   1 
+    };
+    unsigned char estr_x []      = {
+          7,   1,   2,   5,  14,   0,   3,   9,
+          3,   5,   9,   3,   4,   6,   9,   9, 
+         13,  11,   4,   5,  11,   6,   5,  13,
+          3,   4,  13,   3,   9,  12,   3,  13,
+          6,   8
+    };
+    unsigned char estr_y []      = {  
+          2,   4,   5,   5,   5,   5,   6,   6,
+          0,   6,   6,   2,   2,   3,   3,   6, 
+          6,   1,   1,   1,   5,   5,   5,   6, 
+          1,   1,   2,   3,   3,   3,   6,   6, 
+          6,   6
+    };
 ```
 
 A lo que añadimos estos parámetros que definen a los estrujadores. ¿Hago un plugin con esto? Seh. Estos valores de configuración son para 50 fps (los usaré en una futura versión tostadera). Los chac chacs tienen N estados, y para cada estado se pintan con tres tiles t1, t2, t3. Cada estado durará lo que dig `chac_chac_times` y se pintará con `chac_chac_t1`, `chac_chac_t2` y `chac_chac_t3` uno encima del otro. Nosotros tenemos los tiles 20, 21 y 22 con los distintos trozos que se usan para dibujar el estrujador en cada uno de sus seis estados.
 
 ```c
-	#define CHAC_CHAC_MAX_STATES
+    #define CHAC_CHAC_MAX_STATES
 
-	const unsigned char chac_chac_initial_times [] = {
-		25, 50, 100
-	};
+    const unsigned char chac_chac_initial_times [] = {
+        25, 50, 100
+    };
 
-	const unsigned char chac_chac_times [] = {
-		0, 1, 1, 100, 16, 16
-	};
+    const unsigned char chac_chac_times [] = {
+        0, 1, 1, 100, 16, 16
+    };
 
-	const unsigned char chac_chac_t1 [] = {
-		20, 21, 22, 22, 22, 21
-	};
+    const unsigned char chac_chac_t1 [] = {
+        20, 21, 22, 22, 22, 21
+    };
 
-	const unsigned char chac_chac_t2 [] = {
-		 0,  0, 21, 22, 21,  0
-	};
+    const unsigned char chac_chac_t2 [] = {
+         0,  0, 21, 22, 21,  0
+    };
 
-	const unsigned char chac_chac_t3 [] = {
-		 0,  0,  0, 21,  0,  0
-	};
+    const unsigned char chac_chac_t3 [] = {
+         0,  0,  0, 21,  0,  0
+    };
 ```
 
 Ajustados a CPC a 25 faps sería algo así:
 
 ```c
-	#define CHAC_CHAC_MAX_STATES
+    #define CHAC_CHAC_MAX_STATES
 
-	const unsigned char chac_chac_initial_times [] = {
-		12, 25, 50
-	};
+    const unsigned char chac_chac_initial_times [] = {
+        12, 25, 50
+    };
 
-	const unsigned char chac_chac_times [] = {
-		0, 1, 1, 50, 8, 8
-	};
+    const unsigned char chac_chac_times [] = {
+        0, 1, 1, 50, 8, 8
+    };
 
-	const unsigned char chac_chac_t1 [] = {
-		20, 21, 22, 22, 22, 21
-	};
+    const unsigned char chac_chac_t1 [] = {
+        20, 21, 22, 22, 22, 21
+    };
 
-	const unsigned char chac_chac_t2 [] = {
-		 0,  0, 21, 22, 21,  0
-	};
+    const unsigned char chac_chac_t2 [] = {
+         0,  0, 21, 22, 21,  0
+    };
 
-	const unsigned char chac_chac_t3 [] = {
-		 0,  0,  0, 21,  0,  0
-	};
+    const unsigned char chac_chac_t3 [] = {
+         0,  0,  0, 21,  0,  0
+    };
 ```
 
 Veamos, los `chac_chac_initial_times` son el tiempo para el estado 0 de cada tipo de chac-chac, o estrujador, que en este juego serán los tipos 0, 1 y 2.
@@ -277,13 +277,13 @@ Veamos, los `chac_chac_initial_times` son el tiempo para el estado 0 de cada tip
 Los arrays `estr_?` digamos que son el "store". Aparte hace falta un set de arrays para los que están en la pantalla, que se deberían rellenar en `entering_screen.h`. Estos arrays y variables serían:
 
 ```c
-	#define CHAC_CHAC_MAX 4
-	unsigned char chac_chac_idx;					// Index / # of chac chacs on screen
-	unsigned char chac_chac_x [CHAC_CHAC_MAX]; 
-	unsigned char chac_chac_y [CHAC_CHAC_MAX];  	// x, y coordinates
-	unsigned char chac_chac_state [CHAC_CHAC_MAX]; 	// Current state (0..CHAC_CHAC_MAX_STATES-1)
-	unsigned char chac_chac_idle [CHAC_CHAC_MAX]; 	// Time to wait in state 0
-	unsigned char chac_chac_ct [CHAC_CHAC_MAX]; 	// Frame counter, wait N frames
+    #define CHAC_CHAC_MAX 4
+    unsigned char chac_chac_idx;                    // Index / # of chac chacs on screen
+    unsigned char chac_chac_x [CHAC_CHAC_MAX]; 
+    unsigned char chac_chac_y [CHAC_CHAC_MAX];      // x, y coordinates
+    unsigned char chac_chac_state [CHAC_CHAC_MAX];  // Current state (0..CHAC_CHAC_MAX_STATES-1)
+    unsigned char chac_chac_idle [CHAC_CHAC_MAX];   // Time to wait in state 0
+    unsigned char chac_chac_ct [CHAC_CHAC_MAX];     // Frame counter, wait N frames
 ```
 
 En la inicialización se rellenan `chac_chac_x` y `chac_chac_y`, se ponen los `chac_chac_state` a `CHAC_CHAC_MAX_STATES - 1`, se rellenan los `chac_chac_idle` y se ponen los `chac_chac_ct` a 0 y listo.
@@ -297,18 +297,18 @@ Lo he montado todo como un plugin que habrá que enganchar debidamente. El plugi
 Por tanto, mi enganche en `entering_screen.h` podría ser algo así como (para `gm == 2`, of course):
 
 ```c
-	for (gpit = 0; gpit < ESTRUJATORS_MAX; gpit ++) {
-		if (n_pant == estr_n_pant) {
-			_x = estr_x [gpit]; _y = estr_y [gpit]; _t = estr_t [gpit];
-			chac_chacs_add ();
-		}
-	}
+    for (gpit = 0; gpit < ESTRUJATORS_MAX; gpit ++) {
+        if (n_pant == estr_n_pant) {
+            _x = estr_x [gpit]; _y = estr_y [gpit]; _t = estr_t [gpit];
+            chac_chacs_add ();
+        }
+    }
 ```
 
 Y en `extra_routines.h` sólo tendría que llamar (para `gm == 2`):
 
 ```c
-	chac_chacs_do ();
+    chac_chacs_do ();
 ```
 
 ## Niveles en secuencia
@@ -329,5 +329,77 @@ Con esto podríamos montar algo así:
 - En `game_over` mostramos "game over" y permitimos continuar. Si NO continuamos, hacemos un `break`, que saldría del bucle que abrimos en `before_game`. 
 - En `after_game.h` se cierra el bucle (con un confusísimo `}` )
 
+"Hacer un break" del bucle no es posible limpiamente, así que he introducido una variable `outer_game_loop`. Si se pone a 0, se sale del bucle de los niveles y se vuelve al título.
+
 ¡MENOS MAL QUE LO HE DOCUMENTADO!
+
+## Continue
+
+Tras las vacaciones, retomamos. Faltaba por integrar el continue en el pifostio montado en la anterior sección. Voy a darme un garbeo por los otros güegos para pillar el continue de algún sitio y pensar poco. Me refiero al tema del texto / input. El del Helmet me vale, talmente, que es así:
+
+```c
+    // Código continue de Sgt. Helmet
+
+    if (level) {
+        #ifdef LANG_ES
+            _x = 10; _y = 12; _gp_gen = " CONTINUAR?"; print_str ();
+            _x = 10; _y = 13; _gp_gen = "   1   SI   "; print_str ();
+            _x = 10; _y = 14; _gp_gen = "   2   NO   "; print_str ();
+        #else
+            _x = 10; _y = 12; _gp_gen = " CONTINUE? "; print_str ();
+            _x = 10; _y = 13; _gp_gen = "   1   YES  "; print_str ();
+            _x = 10; _y = 14; _gp_gen = "   2   NO   "; print_str ();
+        #endif
+
+        _x = 10; _y = 15; _gp_gen = spacer; print_str ();
+        cpc_UpdateNow (0);
+
+        rda = 0;
+        while (!cpc_TestKey (KEY_AUX4)) {
+            if (cpc_TestKey (KEY_AUX3)) { rda = 1; break; }
+        }
+
+        if (rda) continue;
+    }
+```
+
+Adaptamos esto pues. Aquí "no continuar" equivaldría a salir del bucle de niveles y volver al título, esto es, poner `outter_game_loop` a 0. Sólo tiene sentido mostrar la pantalla si hemos pasado el primer nivel, esto es, si `gm` no es 0.
+
+```c
+    void game_over (void) {
+        _gp_gen = " GAME OVER! "; req ();
+
+        #ifdef MUSIC_GOVER
+            AY_PLAY_MUSIC (MUSIC_GOVER);
+        #endif
+        espera_activa (500);
+        #ifdef MUSIC_GOVER
+            AY_STOP_SOUND ();
+        #endif
+
+        // Show continue option if we got past the 1st level
+        if (gm) {
+            #ifdef LANG_ES
+                _x = 10; _y = 12; _gp_gen = " CONTINUAR?"; print_str ();
+                         _y = 13; _gp_gen = "   1   SI   "; print_str ();
+                         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+            #else
+                _x = 10; _y = 12; _gp_gen = " CONTINUE? "; print_str ();
+                         _y = 13; _gp_gen = "   1   YES  "; print_str ();
+                         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+            #endif
+
+            cpc_UpdateNow (0);
+
+            while (!cpc_TestKey (KEY_AUX3)) {
+                if (cpc_TestKey (KEY_AUX4)) {
+                    outer_game_loop = 0;        // Exit outter game loop!
+                    break;
+                }
+            }
+
+            // Otherwise just repeat the level!
+        }
+    }
+```
 

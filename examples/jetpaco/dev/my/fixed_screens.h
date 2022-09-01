@@ -67,9 +67,29 @@ void game_over (void) {
 		AY_STOP_SOUND ();
 	#endif
 
-	// TODO: Continue
+	// Show continue option if we got past the 1st level
+	if (gm) {
+		#ifdef LANG_ES
+			_x = 10; _y = 12; _gp_gen = " CONTINUAR?"; print_str ();
+			         _y = 13; _gp_gen = "   1   SI   "; print_str ();
+			         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+		#else
+			_x = 10; _y = 12; _gp_gen = " CONTINUE? "; print_str ();
+			         _y = 13; _gp_gen = "   1   YES  "; print_str ();
+			         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+		#endif
 
-	outer_game_loop = 0;		// Exit outter game loop!
+		cpc_UpdateNow (0);
+
+		while (!cpc_TestKey (KEY_AUX3)) {
+			if (cpc_TestKey (KEY_AUX4)) {
+				outer_game_loop = 0;		// Exit outter game loop!
+				break;
+			}
+		}
+
+		// Otherwise just repeat the level!
+	}
 }
 
 #if defined(TIMER_ENABLE) && defined(SHOW_TIMER_OVER)
