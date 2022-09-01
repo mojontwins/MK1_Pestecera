@@ -687,6 +687,7 @@ unsigned char player_move (void) {
 
 	#ifndef PLAYER_DISABLE_DEFAULT_HENG
 		if ( ! (cpc_TestKey (KEY_LEFT) || cpc_TestKey (KEY_RIGHT))) {
+			/*
 			#ifdef PLAYER_GENITAL		
 				p_facing_h = 0xff;
 			#endif
@@ -698,9 +699,59 @@ unsigned char player_move (void) {
 				if (p_vx > 0) p_vx = 0;
 			}
 			wall_h = 0;
+			*/
+			#asm
+					xor a
+					ld  (_wall_h), a
+				#ifdef PLAYER_GENITAL
+						dec a 					; 0 - 1 = 0xff
+						ld  (_p_facing_h), a
+				#endif
+	
+					// Check sign of p_vx (unsigned int)
+					ld  hl, (_p_vx)
+					bit 7, h 				; bit 7 of H = 1 : negative (left)
+					jr  z, decelerate_right
+	
+				.decelerate_left
+					// p_vx < 0, so add RX
+					ld  de, PLAYER_RX
+					add hl, de
+	
+					// Zero if it became positive
+					bit 7, h
+					jr  nz, h_acceleration_set				
+	
+					ld  hl, 0
+	
+				.h_acceleration_set
+					ld  (_p_vx), hl
+					jr  h_acceleration_done
+	
+				.decelerate_right
+					// Check that p_vx is NOT zero
+					ld  a, l
+					or  h
+					jr  z, h_acceleration_done	
+	
+					// p_vx > 0 , so add RX
+					ld  de, -PLAYER_RX
+					add hl, de
+					
+					// Zero if it became negative
+					bit 7, h
+					jr  z, h_acceleration_set
+	
+	
+					ld  hl, 0
+					jr  h_acceleration_set
+				.h_decelerate_done
+
+			#endasm
 		}
 
 		if (cpc_TestKey (KEY_LEFT)) {
+			/*
 			#ifdef PLAYER_GENITAL
 				p_facing_h = FACING_LEFT;
 			#endif
@@ -710,9 +761,34 @@ unsigned char player_move (void) {
 				#endif
 				p_vx -= PLAYER_AX;
 			}
+			*/
+			#asm
+					#ifdef PLAYER_GENITAL
+						ld  a, FACING_LEFT
+						ld  (_p_facing_h), a
+					#endif
+	
+					// if (p_vx > -PLAYER_MAX_VX)
+					ld  de, (_p_vx)
+					ld  hl, -PLAYER_MAX_VX
+					call l_gt				; Int signed de > hl
+					jr  nc, accelerate_left_done
+	
+					#ifndef PLAYER_GENITAL
+						xor a
+						ld  (_p_facing), a
+					#endif
+	
+					ld  hl, (_p_vx)
+					ld  de, -PLAYER_AX
+					add hl, de
+					jr  h_acceleration_set
+				.accelerate_left_done
+			#endasm
 		}
 
 		if (cpc_TestKey (KEY_RIGHT)) {
+			/*
 			#ifdef PLAYER_GENITAL	
 				p_facing_h = FACING_RIGHT;
 			#endif
@@ -722,7 +798,36 @@ unsigned char player_move (void) {
 					p_facing = 1;
 				#endif
 			}
+			*/
+			#asm
+					#ifdef PLAYER_GENITAL
+						ld  a, FACING_RIGHT
+						ld  (_p_facing_h), a
+					#endif
+	
+					// if (p_vx < PLAYER_MAX_VX)
+					ld  de, (_p_vx)
+					ld  hl, PLAYER_MAX_VX
+					call l_lt 				; Int signed de < hl
+					jr  nc, accelerate_right_done
+	
+					#ifndef PLAYER_GENITAL
+						ld  a, 1
+						ld  (_p_facing), a
+					#endif
+	
+					ld  hl, (_p_vx)
+					ld  de, PLAYER_AX
+					add hl, de
+					jr  h_acceleration_set
+	
+				.accelerate_right_done
+			#endasm
 		}
+
+		#asm
+			.h_acceleration_done
+		#endasm
 	#endif
 
 	#include "my/ci/custom_heng.h"
