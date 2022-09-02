@@ -403,3 +403,92 @@ Adaptamos esto pues. Aquí "no continuar" equivaldría a salir del bucle de nive
     }
 ```
 
+## Reparaciones
+
+A ver, que hacer las cosas a cachos y mal me está trayendo bugs bastante tochos:
+
+- En la fase 2 (gm == 1) los hotspots de los cristales no son traspasables, misteriosamente.
+- Al coger un cristal en la fase 3 (gm == 2) me saltó el final.
+- En la segunda partida se cuelga tras el menú.
+
+Hay que recapitular y revisar todo.
+
+### Revisando hotspots
+
+Recordemos que la impresión del gráfico del hotspot se ha modificado en esta versión de la pestecera para poder meter un hook. `hotspot_setup_t_modification.h` contiene esto:
+
+```c
+    #asm
+            ld  c, a
+            ld  a, (_hotspots_offset)
+            add c
+    #endasm
+```
+
+Este código se intruduce así, con "a" conteniendo 0, 1, 2 ...
+
+```c
+        ._hotspots_setup_set
+            add 16
+    #endasm
+    #include "my/ci/hotspot_setup_t_modification.h"
+    #asm
+            ld  (__t), a        
+
+            call _draw_coloured_tile_gamearea
+```
+
+O sea, esto sólo coloca un tile, no modifica el comportamiento. Por tanto (y ahora mismo me estoy sintiendo un poco idiota) ¿se trata de un fallo de mapa? ¿hay un tile no transpasable tras el hotspot que he querido tocar pero que no he podido? :-/
+
+Digo, eso era :*)
+
+### ¿Por qué saltó el final?
+
+Primero de todo vamos a tratar de reproducir el problema... Para quitarme cosas de enmedio, voy a probar primero activand en el config la opción de que los objetos se cuenten hacia atrás (de MAX a 0) ... 
+
+El tema es que al cambiar a la pantalla de al lado (única conexión posible) al empezar la fase 3 se termina el juego... El número de cristales está bien... ¿en qué otros supuestos se sale del bucle del juego? Veamos, `playing` se pone a 0 si:
+
+- El jugador pierde todas las vidas (game over).
+- Se pulsa ESC con `PAUSE_ABORT` definido (no es el caso).
+- Se pulsa `KEY_AUX1` y `KEY_AUX2` a la vez con `DEBUG_KEYS` activado. ¡Pero no las he pulsado!
+- `script_result == 1 || script_result > 2` si `ACTIVATE SCRIPTING` está definido (no es el caso)
+- `p_objs == PLAYER_NUM_OBJETOS` si `PLAYER_NUM_OBJETOS` está definido. 
+- Estamos en `SCR_FIN` (si está definido) y tocamos el tile (`PLAYER_FIN_X`, `PLAYER_FIN_Y`) (si están definidos) (no es el caso).
+- "Time over" o game over desde scripting cuando están activadas esas opciones (no es el caso).
+
+WTF. Porfis que no sea un leak o algo no controlado.
+
+Voy a poner el borde de otro color en la única opción válida, a ver si es por ahí por donde sale o no. Sí que es por ahí por donde sale but why?... `PLAYER_NUM_OBJETOS` equivale a `(gm_max_objects [gm])` que vale 20, como bien se refleja en el *hud*...
+
+Veamos el ensamble generado...
+
+```
+    zcc +cpc -a -vn -O3 -unsigned -crt0=crt.asm -zorg=1024 -lcpcrslib_fg -DCPC_GFX_MODE=0  tilemap_conf.asm mk1.c --c-code-in-asm
+```
+
+El código es una mierda pero al menos sólo contiene el código de IF correcto (el que comprueba el número de objetos). Sólo me queda mirar con el debugger el valor de `gm_max_objects [gm]`... `gm_max_objects` contiene (20, 20, 20). `gm` vale 2. `p_objs` vale 0...
+
+Pero es entrar en esa pantalla y finalizar el nivel... Con todos los valores aparentemente correctos. Voy a revisar los estrujadores, que es lo que tiene esta fase de especial ¿estoy petando el array? ¿se me ha olvidado reiniciar el índice con el que se rellenan los estrujadores al entrar en la pantalla?
+
+Digo. Esto es. Probablemente esté haciendo la petasión por eso. Veamos...
+
+¡Arreglado!
+
+### Revisando el outer loop
+
+Vamos a revisar bien el hack multinivel-en-uno que he liado y que implica un { ... } dividido en dos archivos :-S
+
+Quizá este fallo estaba causado por el descacharre anterior, ya que estaba haciendo un buffer overflow.
+
+## Eliminando el hotspot
+
+Supuestamente, el hotspot debe eliminarse con el tile que hubiera originalmente en pantalla. Esto se precalcula en `orig_tile` a la hora de decodificar y pintar el hotspot al empezar la pantalla, y se extrae de `map_buff` que, en teoría, debería contener los números correctos de tile, ya que el # de tile se mete en este array después de decodificarlo y de ser modificado en `on_map_tile_decoded.h`. Sin embargo, jugando a la fase 2, al coger un objeto me ha puesto el tile "0" del tileset en lugar del tile gm_ts [0], que es 32 en este nivel (`gm` = 1).
+
+Voy a echar un vistazo a la memoria. `map_buff` está en `BASE_ROOM_BUFFERS + 150`, o sea, en `$C600 + 150 = $C696`. Lo primero es ver que esto esté bien almacenado...
+
+Otia, no. En `map_buff` está el mismo contenido que en `map_attr` !! Esto es un fallo gordérrimo ¿cómo no ha dado la cara hasta ahora? Voy a examinar bien el decoder.
+
+¡Ya sé! El bug sólo ocurre cuando no hay definido un `PACKED_MAP_ALT_TILE`: en este caso el valor de `__t` no vuelve al registro A, que contendría el comportamiento. Se arregla fásil sacando la carga del `#ifdef`.
+
+¡Arreglado!
+

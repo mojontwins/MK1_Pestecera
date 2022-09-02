@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cpc_Upd",
+				"cpc_UpdTileTable\t(printer.h)"
+			],
+			[
 				"bla",
 				"blackout_area\t(before_game.h)"
 			],
@@ -510,33 +514,43 @@
 			[
 				"bedew",
 				"bedework_client"
-			],
-			[
-				"bede",
-				"bedework_client"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "// MTE MK1 (la Churrera) v5.0\n// Copyleft 2010-2014, 2020 by the Mojon Twins\n\n// Config.h\n\n// ============================================================================\n// I. General configuration\n// ============================================================================\n\n//#define SOUND_NONE\n#define SOUND_WYZ\n#define WYZ_FX_CHANNEL \t\t\t\t1\t\t// Where to play sound effects\n\n// Music indexes, comment if not applicable\n#define MUSIC_TITLE \t\t\t\t0\n#define MUSIC_INGAME \t\t\t\t(gm_music_ingame [gm])\n#define MUSIC_GOVER \t\t\t\t2\n#define MUSIC_ENDING \t\t\t\t3\n#define MUSIC_SCLEAR \t\t\t\t4\n\n//#define VENG_SELECTOR \t\t\t\t\t// Very advanced!\n//#define USE_MAP_CUSTOM_DECODER\n#define GENERAL_ENEMS_BASE_CELL \t8 \t\t// Don't touch this unless you know what you are doing\n//#define MIN_FAPS_PER_FRAME \t\t2\t\t// frame cap, *limits* to 50/N fps.\n\n#define BLACK_PEN \t\t\t\t\t5\t\t// Which palette entry is black\n\n#define PIXELPERFECT \t\t\t\t\t\t// If you use mode 0, don't forget the pixelperfectm0\n\t\t\t\t\t\t\t\t\t\t\t// parameter to mkts when converting the main spriteset\n\t\t\t\t\t\t\t\t\t\t\t// WON'T WORK IN MODE 1\n\n//#define OR_SPRITES \t\t\t\t\t\t// This removes the compressed LUT from the binary\n\t\t\t\t\t\t\t\t\t\t\t// and saves some bytes if you are using GnG M0 mode\n\n// In this section we define map dimensions, initial and authomatic ending conditions, etc.\n\n#define MAP_W\t\t\t\t\t\t7\t\t//\n#define MAP_H\t\t\t\t\t\t15\t\t// Map dimensions in screens\n#define SCR_INICIO\t\t\t\t\t(gm_scr_ini [gm])\t\t// Initial screen\n#define PLAYER_INI_X\t\t\t\t(gm_ini_x [gm]) \t\t//\n#define PLAYER_INI_Y\t\t\t\t(gm_ini_y [gm]) \t\t// Initial tile coordinates\n//#define SCR_FIN \t\t\t\t\t99\t\t// Last screen. 99 = deactivated.\n//#define PLAYER_FIN_X\t\t\t\t99\t\t//\n//#define PLAYER_FIN_Y\t\t\t\t99\t\t// Player tile coordinates to finish game\n#define PLAYER_NUM_OBJETOS\t\t\t(gm_max_objects [gm])\t// Objects to get to finish game\n#define PLAYER_LIFE \t\t\t\t15\t\t// Max and starting life gauge.\n#define PLAYER_REFILL\t\t\t\t1\t\t// Life recharge\n#define PLAYER_DONT_LIMIT_LIFE\t\t\t\t// PLAYER_LIFE isn't max.\n//#define COMPRESSED_LEVELS \t\t\t\t// use levels.h instead of mapa.h and enems.h (!)\n//#define PER_LEVEL_SPRITESET \t\t\t\t// use a different spriteset for each level in 48K\n//#define PER_LEVEL_TILESET \t\t\t\t// use a different tileset for each level\n//#define MAX_LEVELS\t\t\t\t4\t\t// # of compressed levels\n//#define REFILL_ME \t\t\t\t\t\t// If defined, refill player on each level\n\n// ============================================================================\n// II. Engine type\n// ============================================================================\n\n// This section is used to define the game engine behaviour. Many directives are related,\n// and others are mutually exclusive. I think this will be pretty obvious when you look at them. \n\n// Right now the shooting engine is only compatible with the side-view engine.\n\n// Bounding box size\n// -----------------\n\t\t\t\t\t\t\t\t\t\t\t// Comment both for normal 16x16 bounding box\n#define BOUNDING_BOX_8_BOTTOM\t\t\t\t// 8x8 aligned to bottom center in 16x16\n//#define BOUNDING_BOX_8_CENTERED\t\t\t// 8x8 aligned to center in 16x16\n//#define BOUNDING_BOX_12X2_CENTERED \t\t// 8x2 aligned to center in 16x16\n#define SMALL_COLLISION \t\t\t\t\t// 8x8 centered collision instead of 12x12\n\n// General directives:\n// -------------------\n\n//#define PLAYER_CHECK_MAP_BOUNDARIES\t\t// If defined, you can't exit the map.\n#define DIRECT_TO_PLAY\t\t\t\t\t\t// If defined, title screen is also the game frame.\n#define DEACTIVATE_KEYS \t\t\t\t\t// If defined, keys are not present.\n//#define DEACTIVATE_OBJECTS\t\t\t\t// If defined, objects are not present.\n//#define DEACTIVATE_REFILLS\t\t\t\t// If defined, life refills are not present.\n//#define ONLY_ONE_OBJECT\t\t\t\t\t// If defined, only one object can be carried at a time.\n//#define OBJECT_COUNT\t\t\t\t1\t\t// Defines which FLAG will be used to store the object count.\n//#define REVERSE_OBJECTS_COUNT \t\t\t// Counts from PLAYER_NUM_OBJETOS to 0\n//#define DEACTIVATE_EVIL_TILE\t\t\t\t// If defined, no killing tiles (behaviour 1) are detected.\n//#define CUSTOM_EVIL_TILE_CHECK\t\t\t// \n//#define PLAYER_BOUNCES\t\t\t\t\t// If defined, collisions make player bounce\n//#define FULL_BOUNCE \t\t\t\t\t\t// If defined, evil tile bounces equal MAX_VX, otherwise v/2\n//#define SLOW_DRAIN\t\t\t\t\t\t// Works with bounces. Drain is 4 times slower\n#define PLAYER_FLICKERS \t\t\t\t\t// If defined, collisions make player flicker instead.\n//#define MAP_BOTTOM_KILLS\t\t\t\t\t// If defined, exiting the map bottomwise kills.\n//#define WALLS_STOP_ENEMIES\t\t\t\t// If defined, enemies react to the scenary\n//#define EVERYTHING_IS_A_WALL\t\t\t\t// If defined, any tile <> type 0 is a wall, otherwise just 8.\n//#define BODY_COUNT_ON \t\t\t2\t\t// If defined, count enemies on flag #\n//#define DISABLE_PLATFORMS \t\t\t\t// Disables platforms in side-view\n//#define CUSTOM_LOCK_CLEAR \t\t\t\t// use `custom_lock_clear.h` to remove a lock from screen\n\n//#define DIE_AND_RESPAWN \t\t\t\t\t// Remember last safe spot & respawn there\n//#define SAFE_SPOT_ON_ENTERING \t\t\t// Comment to have safe spot on landing instead\n\n// Extra enemy types\n// -----------------\n\n//#define ENABLE_PURSUERS\t\t\t\t\t// If defined, type 7 enemies are active\n//#define DEATH_COUNT_AND \t\t\t7\n//#define DEATH_COUNT_ADD \t\t\t11 \t\t// Frames to wait = ADD + (rand & AND)\n//#define PURSUERS_MAX_V \t\t\t4\t\t// 1, 2, 4.\n//#define PURSUERS_BASE_CELL\t\t3\t\t// If defined, type 7 enemies are always #\n//#define PURSUERS_DONT_SPAWN_IN_OBSTACLE \t// Move an obstacle to stop spawning\n\n//#define ENABLE_FANTIES\t\t\t\t\t// If defined, Fanties are enabled!\n//#define FANTIES_BASE_CELL \t\t2\t\t// Base sprite cell (0, 1, 2 or 3)\n//#define FANTIES_SIGHT_DISTANCE\t64 \t\t// Used in our type 6 enemies.\n//#define FANTIES_MAX_V \t\t\t256 \t// Flying enemies max speed (also for custom type 6 if you want)\n//#define FANTIES_A \t\t\t\t16\t\t// Flying enemies acceleration.\n//#define FANTIES_LIFE_GAUGE\t\t10\t\t// Amount of shots needed to kill flying enemies.\n//#define FANTIES_TYPE_HOMING\t\t\t\t// Unset for simple fanties.\n\n//#define ENABLE_ORTHOSHOOTERS\t\t\t\t// If defined, orthoshooters are active\n//#define ORTHOSHOOTERS_FREQ \t\t(rand()&15)\n//#define ORTHOSHOOTERS_BASE_CELL \t0 \t\t// 99 means DONT SHOW!\n\n// Cocos\n// -----\n\n#define COCOS_V \t\t\t\t\t8\t\t// pixels per frame\n\n// Pushable tile\n// -------------\n\n//#define PLAYER_PUSH_BOXES\t\t\t\t\t// If defined, tile #14 is pushable. Must be type 10.\n//#define FIRE_TO_PUSH\t\t\t\t\t\t// If defined, you have to press FIRE+direction to push.\n//#define ENABLE_PUSHED_SCRIPTING\t\t\t// If defined, nice goodies (below) are activated:\n//#define MOVED_TILE_FLAG\t\t\t1\t\t// Current tile \"overwritten\" with block is stored here.\n//#define MOVED_X_FLAG\t\t\t\t2\t\t// X after pushing is stored here.\n//#define MOVED_Y_FLAG\t\t\t\t3\t\t// Y after pushing is stored here.\n//#define PUSHING_ACTION\t\t\t\t\t// If defined, pushing a tile runs PRESS_FIRE script\n\n// Shooting behaviour\n// ------------------\n\n//#define PLAYER_CAN_FIRE \t\t\t\t\t// If defined, shooting engine is enabled.\n//#define PLAYER_CAN_FIRE_FLAG\t\t1\t\t// If defined, player can only fire when flag # is 1\n//#define PLAYER_BULLET_SPEED \t\t8\t\t// Pixels/frame. \n//#define MAX_BULLETS \t\t\t\t3\t\t// Max number of bullets on screen. Be careful!.\n//#define PLAYER_BULLET_Y_OFFSET\t6\t\t// vertical offset from the player's top.\n//#define PLAYER_BULLET_X_OFFSET\t0\t\t// vertical offset from the player's left/right.\n//#define ENEMIES_LIFE_GAUGE\t\t4\t\t// Amount of shots needed to kill enemies.\n//#define LIMITED_BULLETS \t\t\t\t\t// If defined, bullets die after N frames\n//#define LB_FRAMES \t\t\t\t4\t\t// If defined, defines the # of frames bullets live (fixed)\n//#define LB_FRAMES_FLAG\t\t\t2\t\t// If defined, defines which flag determines the # of frames\n\n//#define RESPAWN_ON_ENTER\t\t\t\t\t// Enemies respawn when entering screen\n//#define FIRE_MIN_KILLABLE\t\t\t3\t\t// If defined, only enemies >= N can be killed.\n//#define CAN_FIRE_UP \t\t\t\t\t\t// If defined, player can fire upwards and diagonal.\n//#define MAX_AMMO\t\t\t\t\t99\t\t// If defined, ammo is not infinite!\n//#define AMMO_REFILL \t\t\t\t50\t\t// ammo refill, using tile 20 (hotspot #4)\n//#define INITIAL_AMMO\t\t\t\t0\t\t// If defined, ammo = X when entering game.\n\n//#define BREAKABLE_WALLS \t\t\t\t\t// Breakable walls\n#define BREAKABLE_WALLS_LIFE\t\t1\t\t// N+1 = Amount of hits to break wall\n//#define BREAKABLE_WALLS_BROKEN \t30 \t\t// Use this tile for a broken wall, 0 if not def.\n//#define BREAKABLE_WALLS_BREAKING \t31 \t\t// Use this tile while the wall is breaking (if defined)\n\n// Scripting\n// ---------\n\n//#define ACTIVATE_SCRIPTING\t\t\t\t// Activates msc scripting and flag related stuff.\n#define MAX_FLAGS \t\t\t\t\t32\n#define SCRIPTING_DOWN\t\t\t\t\t\t// Use DOWN as the action key.\n//#define SCRIPTING_KEY_AUX1\t\t\t\t// Use AUX1 as the action key instead.\n//#define SCRIPTING_KEY_FIRE\t\t\t\t// User FIRE as the action key instead.\n//#define SCRIPTING_KEY_NONE \t\t\t\t// No action key. \n//#define ENABLE_EXTERN_CODE\t\t\t\t// Enables custom code to be run from the script using EXTERN n\n//#define ENABLE_FIRE_ZONE\t\t\t\t\t// Allows to define a zone which auto-triggers \"FIRE\"\n\n// Timer\n// -----\n\n//#define TIMER_ENABLE\t\t\t\t\t\t// Enable timer\n//#define TIMER_INITIAL \t\t\t99\t\t// For unscripted games, initial value.\n//#define TIMER_REFILL\t\t\t\t30\t\t// Timer refill, using tile 21 (hotspot #5)\n//#define TIMER_LAPSE\t\t\t\t32\t\t// # of frames between decrements\n//#define TIMER_START\t\t\t\t\t\t// If defined, start timer from the beginning\n//#define TIMER_SCRIPT_0\t\t\t\t\t// If defined, timer = 0 runs \"ON_TIMER_OFF\" in the script\n//#define TIMER_GAMEOVER_0\t\t\t\t\t// If defined, timer = 0 causes \"game over\"\n//#define TIMER_KILL_0\t\t\t\t\t\t// If defined, timer = 0 causes \"one life less\".\n//#define TIMER_WARP_TO 0\t\t\t\t\t// If defined, warp to screen X after \"one life less\".\n//#define TIMER_WARP_TO_X\t\t\t1\t\t//\n//#define TIMER_WARP_TO_Y\t\t\t1\t\t// \"warp to\" coordinates.\n//#define TIMER_AUTO_RESET\t\t\t\t\t// If defined, timer resets after \"one life less\"\n//#define SHOW_TIMER_OVER\t\t\t\t\t// If defined, \"TIME OVER\" shows when time is up.\n\n// Save state\n// ----------\n//#define ENABLE_CHECKPOINTS\t\t\t\t// Enable checkpoints\n//#define CP_RESET_WHEN_DYING\t\t\t\t// Move player to checkpoint when player dies.\n//#define CP_RESET_ALSO_FLAGS\t\t\t\t// and also restore its flags / values\n\n// Top view:\n// ---------\n\n//#define PLAYER_GENITAL\t\t\t\t\t// Enable top view.\n//#define TOP_OVER_SIDE \t\t\t\t\t// UP/DOWN has priority over LEFT/RIGHT\n//#define PLAYER_BOUNCE_WITH_WALLS\t\t\t// Bounce when hitting a wall. Only really useful in MOGGY_STYLE mode\n\n// Side view:\n// ----------\n\n//#define PLAYER_HAS_JUMP \t\t\t\t\t// If defined, player is able to jump.\n#define BOTH_KEYS_JUMP \t\t\t\t\t\t// If jump and no fire, use UP or FIRE to jump (only with keyboard)\n#define PLAYER_HAS_JETPAC \t\t\t\t\t// If defined, player can thrust a vertical jetpac\n//#define PLAYER_BOOTEE \t\t\t\t\t// Always jumping engine. Don't forget to disable \"HAS_JUMP\" and \"HAS_JETPAC\"!!!\n//#define PLAYER_VKEYS \t\t\t\t\t\t// Use with VENG_SELECTOR. Advanced.\n//#define PLAYER_DISABLE_GRAVITY\t\t\t// Disable gravity. Advanced.\n\n//#define PLAYER_STEPS_ON_ENEMIES\t\t\t// If defined, stepping on enemies kills them\n//#define PLAYER_CAN_STEP_ON_FLAG\t1\t\t// If defined, player can only kill when flag # is \"1\"\n//#define PLAYER_MIN_KILLABLE\t\t3\t\t// Only kill enemies with id >= PLAYER_MIN_KILLABLE\n\n//#define PLAYER_DISABLE_DEFAULT_HENG \t\t// To disble default horizontal engine (keyrs)\n\n// Configure keyboard\n\n// How keys work (in sideview)\n// - If player can't fire, BUTTON_A will JUMP.\n// - If player can fire, and USE_TWO_BUTTONS is DEFINED, BUTTON_A will FIRE, BUTTON_B will JUMP\n// - If player can fire, and USE_TWO_BUTTONS is DEFINED, BUTTON_A will FIRE, ÛP will JUMP\n\n// To define different keys, the first two hex digits are the COLUMN, the next the ROW\n// (Adapt. from cpctelera docs @ https://lronaldo.github.io/cpctelera/files/keyboard/keyboard-txt.html)\n/*\n=========================================================================================================\n|     |                                       column                                                    |\n|     |-------------------------------------------------------------------------------------------------|\n| row |     40      |     41     |  42   | 43  | 44  | 45   |     46       | 47  |   48     |    49     |\n|=====|=============|============|=======|=====|=====|======|==============|=====|==========|===========|\n| 80  | f.          | f0         | Ctrl  | > , | < . | Space| V            | X   | Z        | Del       |\n| 40  | Enter       | f2         | ` \\   | ? / | M   | N    | B            | C   | Caps Lock| Unused    |\n| 20  | f3          | f1         | Shift | * : | K   | J    | F Joy1_Fire1 | D   | A        | Joy0_Fire1|\n| 10  | f6          | f5         | f4    | + ; | L   | H    | G Joy1_Fire2 | S   | Tab      | Joy0_Fire2|\n| 08  | f9          | f8         | } ]   | P   | I   | Y    | T Joy1_Right | W   | Q        | Joy0_Right|\n| 04  | Cursor Down | f7         | Return| | @ | O   | U    | R Joy1_Left  | E   | Esc      | Joy0_Left |\n| 02  | Cursor Right| Copy       | { [   | = - | ) 9 | ' 7  | % 5 Joy1_Down| # 3 | \" 2      | Joy0_Down |\n| 01  | Cursor Up   | Cursor Left| Clr   | £ ^ | _ 0 | ( 8  | & 6 Joy1_Up  | $ 4 | ! 1      | Joy0_Up   |\n=========================================================================================================\n*/\n\n//#define USE_TWO_BUTTONS\t\t\t\t\t// Alternate keyboard scheme for two-buttons games\n\nextern unsigned char def_keys [0];\n#asm\n\t._def_keys\n\t\t/*\n\t\tdefw $4820 \t\t; LEFT     A\n\t\tdefw $4720 \t\t; RIGHT    D\n\t\tdefw $4708 \t\t; UP       W\n\t\tdefw $4710 \t\t; DOWN     S\n\n\t\tdefw $4440 \t\t; BUTTON_A M\n\t\tdefw $4540 \t\t; BUTTON_B N\n\t\t*/\n\n\t\tdefw $4404 \t\t; LEFT     O\n\t\tdefw $4308 \t\t; RIGHT    P\n\t\tdefw $4808 \t\t; UP       Q\n\t\tdefw $4820 \t\t; DOWN     A\n\n\t\tdefw $4580 \t\t; BUTTON_A SPACE\n\t\tdefw $4808 \t\t; BUTTON_B Q\n\n\t\tdefw $4204\t\t; KEY_ENTER\n\t\tdefw $4804\t\t; KEY_ESC\t\n\n\t\tdefw $4440\t\t; KEY_AUX1 M\n\t\tdefw $4608 \t\t; KEY_AUX2 T\n\t\tdefw $4801 \t\t; KEY_AUX3 1\t// Those are used in the menus!\n\t\tdefw $4802 \t\t; KEY_AUX4 2\n#endasm\n\n// ============================================================================\n// III. Screen configuration\n// ============================================================================\n\n// This sections defines how stuff is rendered, where to show counters, etcetera\n// Set to 99 so it doesn't show even if it should!!\n\n#define VIEWPORT_X\t\t\t\t\t0\t\t//\n#define VIEWPORT_Y\t\t\t\t\t2\t\t// Viewport character coordinates\n#define LIFE_X\t\t\t\t\t\t30\t\t//\n#define LIFE_Y\t\t\t\t\t\t8\t\t// Life gauge counter character coordinates\n#define OBJECTS_X\t\t\t\t\t30\t\t//\n#define OBJECTS_Y\t\t\t\t\t12\t\t// Objects counter character coordinates\n#define OBJECTS_ICON_X\t\t\t\t99\t\t// \n#define OBJECTS_ICON_Y\t\t\t\t99\t\t// Objects icon character coordinates (use with ONLY_ONE_OBJECT)\n#define KEYS_X\t\t\t\t\t\t99\t\t//\n#define KEYS_Y\t\t\t\t\t\t99\t\t// Keys counter character coordinates\n#define KILLED_X\t\t\t\t\t99\t\t//\n#define KILLED_Y\t\t\t\t\t99\t\t// Kills counter character coordinates\n#define AMMO_X\t\t\t\t\t\t99\t\t// \n#define AMMO_Y\t\t\t\t\t\t99\t\t// Ammo counter character coordinates\n#define TIMER_X \t\t\t\t\t99\t\t//\n#define TIMER_Y \t\t\t\t\t99\t\t// Timer counter coordinates\n\n// Text\n\n//#define LINE_OF_TEXT\t\t\t\t1\t\t// If defined, scripts can show text @ Y = #\n//#define LINE_OF_TEXT_X\t\t\t1\t\t// X coordinate.\n//#define LINE_OF_TEXT_ATTR\t\t\t71\t\t// Attribute\n//#define LINE_OF_TEXT_NO_AUTOERASE\t\t\t// Do it yourself\n\n// Graphic FX, uncomment which applies...\n\n//#define USE_AUTO_SHADOWS\t\t\t\t\t// Automatic shadows made of darker attributes\n//#define USE_AUTO_TILE_SHADOWS \t\t\t// Automatic shadows using specially defined tiles 32-47.\n//#define UNPACKED_MAP\t\t\t\t\t\t// Full, uncompressed maps. Shadows settings are ignored.\n//#define PACKED_MAP_ALT_TILE \t\t19\t\t// If defined, in 16 tiles mode, alt tile (default 19)\n\n//#define PLAYER_CUSTOM_ANIMATION \t\t\t// Code your own animation in my/custom_animation.h\n\n#define ENABLE_TILANIMS\t\t\t\t99\t\t// If defined, animated tiles are enabled.\n\t\t\t\t\t\t\t\t\t\t\t// the value especifies first animated tile pair.\n\t\t\t\t\t\t\t\t\t\t\t// Use 99 to disable autodetection in map data and handle\n\t\t\t\t\t\t\t\t\t\t\t// creation yourself!\n//#define TILANIMS_MOVE_ONE \t\t\t\t// Update one per frame\n#define TILANIMS_MOVE_ALL \t\t\t\t\t// Update all per frame\n\n//#define PAUSE_ABORT\t\t\t\t\t\t// Add h=PAUSE, y=ABORT\n//#define GET_X_MORE\t\t\t\t\t\t// Shows \"get X more\" when getting an object\n\n// ============================================================================\n// IV. Player movement configuration\n// ============================================================================\n\n// This section is used to define which constants are used in the gravity/acceleration engine.\n// If a side-view engine is configured, we have to define vertical and horizontal constants\n// separately. If a top-view engine is configured instead, the horizontal values are also\n// applied to the vertical component, vertical values are ignored.\n\n// IV.1. Vertical movement. Only for side-view.\n\n#define PLAYER_MAX_VY_CAYENDO\t\t128\t\t// Max falling speed \n#define PLAYER_G\t\t\t\t\t8\t\t// Gravity acceleration \n\n#define PLAYER_VY_INICIAL_SALTO\t\t64 \t\t// Initial junp velocity \n#define PLAYER_MAX_VY_SALTANDO\t\t320 \t// Max jump velocity \n#define PLAYER_INCR_SALTO\t\t\t64\t\t// acceleration while JUMP is pressed \n\n#define PLAYER_INCR_JETPAC\t\t\t24\t\t// Vertical jetpac gauge\n#define PLAYER_MAX_VY_JETPAC\t\t128 \t// Max vertical jetpac speed\n\n// IV.2. Horizontal (side view) or general (top view) movement.\n\n#define PLAYER_MAX_VX\t\t\t\t192 \t// Max velocity (192/64 = 3 p?xels/frame)\n#define PLAYER_AX\t\t\t\t\t24\t\t// Acceleration (24/64 = 0,375 p?xels/frame^2)\n#define PLAYER_RX\t\t\t\t\t32\t\t// Friction (32/64 = 0,5 p?xels/frame^2)\n\n// ============================================================================\n// V. Tile behaviour\n// ============================================================================\n\n// Defines the behaviour for each tile. Remember that if keys are activated, tile #15 is a bolt\n// and, therefore, it should be made a full obstacle!\n\n// 0 = Walkable (no action)\n// 1 = Walkable and kills.\n// 2 = Walkable and hides.\n// 4 = Platform (only stops player if falling on it)\n// 8 = Full obstacle (blocks player from all directions)\n// 10 = special obstacle (pushing blocks OR locks!)\n// 16 = Breakable (#ifdef BREAKABLE_WALLS)\n// 128 = C.I. launcher tile, launches my/ci/on_special_tile.h on touch\n// You can add the numbers to get combined behaviours\n// Save for 10 (special), but that's obvious, innit?\n#ifndef COMPRESSED_LEVELS\nunsigned char behs [] = {\n\t0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,\n\t0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n\t0, 1, 8, 8, 8, 8, 0, 0, 0, 0, 0, 4, 4, 8, 8, 8\n};\n#endif\n",
-			"file": "examples/jetpaco/dev/my/config.h",
-			"file_size": 18746,
-			"file_write_time": 133046031276791566,
+			"file": "examples/jetpaco/diario.md",
 			"settings":
 			{
-				"buffer_size": 18365,
+				"buffer_size": 19838,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/jetpaco/dev/my/ci/extra_vars.h",
+			"contents": "Searching 218 files for \"hotspot_setup_t_modification\" (regex)\n\nD:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev\\engine.h:\n  654  \t\t\tadd 16\n  655  \t#endasm\n  656: \t#include \"my/ci/hotspot_setup_t_modification.h\"\n  657  \t#asm\n  658  \t\t\tld  (__t), a\t\t\n\nD:\\git\\MK1_Pestecera\\examples\\jetpaco\\diario.md:\n  416  ### Revisando hotspots\n  417  \n  418: Recordemos que la impresión del gráfico del hotspot se ha modificado en esta versión de la pestecera para poder meter un hook. `hotspot_setup_t_modification.h` contiene esto:\n  419  \n  420  ```c\n\n2 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 2539,
-				"encoding": "UTF-8",
+				"buffer_size": 559,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/engine.h",
+			"settings":
+			{
+				"buffer_size": 17398,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/printer.h",
+			"settings":
+			{
+				"buffer_size": 11726,
 				"line_ending": "Windows"
 			}
 		}
@@ -626,31 +640,33 @@
 	"expanded_folders":
 	[
 		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/docs",
 		"/D/git/MK1_Pestecera/examples",
 		"/D/git/MK1_Pestecera/examples/jetpaco",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/plugins",
 		"/D/git/MK1_Pestecera/examples/jetpaco/gfx",
-		"/D/git/MK1_Pestecera/src",
-		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/gfx"
+		"/D/git/MK1_Pestecera/released",
+		"/D/git/MK1_Pestecera/released/helmet"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/game_loop.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/my/ci/after_game_over.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/before_game.h",
+		"/D/git/MK1_Pestecera/examples/balowwwn/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/title_screen.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/fixed_screens.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_functions.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/tilemap_conf.asm",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/after_game.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mk1.c",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_routines.h",
 		"/D/git/MK1_Pestecera/src/utils/src/mapcnv.bas",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/entering_screen.h",
@@ -666,7 +682,6 @@
 		"/D/Proyectos/2022/20220405a - Ficheros v1.8.0.0 - clamav, uidshort, tags, misc/instrucciones.md",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/wyz_player.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/mus/instrumentos.asm",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/title_screen.h",
 		"/D/git/MK1_Pestecera/wip/tmmaped.bas",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/autodefs.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine/enengine.h",
@@ -765,9 +780,7 @@
 		"/D/temp/cubito/web/comics.css",
 		"/C/Users/jcastano/Desktop/test.html",
 		"/D/temp/cubito/comics.css",
-		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/loader/loadercpc.asm-orig"
+		"/D/git/MK1_Pestecera/src/dev/assets/spriteset_mappings.h"
 	],
 	"find":
 	{
@@ -778,6 +791,10 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco",
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev\\engine",
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
+			"D:\\git\\MK1_Pestecera\\released\\helmet",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
@@ -820,6 +837,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hotspot_setup_t_modification",
+			"PLAYER_NUM_OBJETOS",
+			"printatinv",
+			"continue",
 			"ENABLE_ZONE_CLEAR",
 			"chac_chacs",
 			"packed",
@@ -943,11 +964,7 @@
 			"wyz",
 			"wyzsetplayeron",
 			"sp_",
-			"cpcprintat",
-			"cpc",
-			"SPPrintAtInv",
-			"spprintatinv",
-			"attr"
+			"cpcprintat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1035,19 +1052,103 @@
 			[
 				{
 					"buffer": 0,
-					"file": "examples/jetpaco/dev/my/config.h",
+					"file": "examples/jetpaco/diario.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18365,
+						"buffer_size": 19838,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16989,
-								16989
+								19692,
+								19692
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 559,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										173,
+										201
+									],
+									[
+										466,
+										494
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "examples/jetpaco/dev/engine.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12621,
+								12649
 							]
 						],
 						"settings":
@@ -1059,10 +1160,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4072.0,
+						"translation.y": 7984.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1072,20 +1173,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 1,
-					"file": "examples/jetpaco/dev/my/ci/extra_vars.h",
-					"semi_transient": false,
+					"buffer": 3,
+					"file": "examples/jetpaco/dev/printer.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2539,
+						"buffer_size": 11726,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1547,
-								1549
+								7417,
+								7444
 							]
 						],
 						"settings":
@@ -1097,10 +1198,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 351.0,
+						"translation.y": 5782.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1160,7 +1261,7 @@
 	"project": "MK1_Pestecera.sublime-project",
 	"replace":
 	{
-		"height": 94.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1194,7 +1295,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

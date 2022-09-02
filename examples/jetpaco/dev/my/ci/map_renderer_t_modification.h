@@ -12,4 +12,4 @@
 */
 
 // Note that this ONLY CHANGES THE TILE # BEING DRAWN, 
-// the original value & beh are written to the arrays
+// the original beh is written to the array

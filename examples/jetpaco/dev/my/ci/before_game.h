@@ -13,6 +13,26 @@ while (outer_game_loop) {
 	blackout_area ();	
 	level_str [7] = 49 + gm;
 	_x = 12; _y = 12; _gp_gen = level_str; print_str ();
+	
+	// Update HUD as well:
+	#asm
+			ld  a, 30
+			ld  (__x), a
+			ld  a, 21 
+			ld  (__y), a 
+			call __tile_address 		;; DE -> nametable address 
+
+			ld  a, (_gm)
+			add 17
+			ld  (de), a 
+
+			ld  a, (__x)
+			ld  e, a 
+			ld  a, (__y)
+			ld  d, a 
+			call cpc_UpdTileTable
+	#endasm
+
 	invalidate_viewport ();
 	cpc_UpdateNow (0);
 

@@ -40,7 +40,7 @@ void player_init (void) {
 		p_life = 		PLAYER_LIFE;
 	#endif
 	
-	p_objs =	0;
+	p_objs = 0;
 	p_keys = 0;
 	p_killed = 0;
 	p_disparando = 0;

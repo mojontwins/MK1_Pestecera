@@ -79,7 +79,7 @@
 //#define DEACTIVATE_REFILLS				// If defined, life refills are not present.
 //#define ONLY_ONE_OBJECT					// If defined, only one object can be carried at a time.
 //#define OBJECT_COUNT				1		// Defines which FLAG will be used to store the object count.
-//#define REVERSE_OBJECTS_COUNT 			// Counts from PLAYER_NUM_OBJETOS to 0
+#define REVERSE_OBJECTS_COUNT 				// Counts from PLAYER_NUM_OBJETOS to 0
 //#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
 //#define CUSTOM_EVIL_TILE_CHECK			// 
 //#define PLAYER_BOUNCES					// If defined, collisions make player bounce
@@ -283,12 +283,12 @@ extern unsigned char def_keys [0];
 // This sections defines how stuff is rendered, where to show counters, etcetera
 // Set to 99 so it doesn't show even if it should!!
 
-#define VIEWPORT_X					0		//
-#define VIEWPORT_Y					2		// Viewport character coordinates
-#define LIFE_X						30		//
-#define LIFE_Y						8		// Life gauge counter character coordinates
-#define OBJECTS_X					30		//
-#define OBJECTS_Y					12		// Objects counter character coordinates
+#define VIEWPORT_X					1		//
+#define VIEWPORT_Y					0		// Viewport character coordinates
+#define LIFE_X						7		//
+#define LIFE_Y						21		// Life gauge counter character coordinates
+#define OBJECTS_X					20		//
+#define OBJECTS_Y					21		// Objects counter character coordinates
 #define OBJECTS_ICON_X				99		// 
 #define OBJECTS_ICON_Y				99		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
 #define KEYS_X						99		//
@@ -373,7 +373,7 @@ extern unsigned char def_keys [0];
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
 	0, 1, 8, 8, 8, 8, 0, 0, 0, 4, 8, 8, 4, 8, 8, 8,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 1, 8, 8, 8, 8, 0, 0, 0, 0, 0, 4, 4, 8, 8, 8
 };
 #endif

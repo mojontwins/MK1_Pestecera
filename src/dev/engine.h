@@ -448,8 +448,8 @@ void draw_scr_background (void) {
 						add hl, bc
 						ld  (hl), a
 
-				#ifdef PACKED_MAP_ALT_TILE
 						ld  a, (__t)
+				#ifdef PACKED_MAP_ALT_TILE
 						or  a
 						jr  nz, _draw_scr_packed_noalt
 

@@ -26,6 +26,7 @@ switch (gm) {
 		break;
 
 	case 2:
+		chac_chac_idx = 0;
 		for (gpit = 0; gpit < ESTRUJATORS_MAX; gpit ++) {
 			if (n_pant == estr_n_pant [gpit]) {
 				_x = estr_x [gpit]; _y = estr_y [gpit]; _t = estr_t [gpit];
