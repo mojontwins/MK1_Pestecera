@@ -85,8 +85,6 @@ void enems_load (void) {
 		en_an_frame [enit] = 0;
 		en_an_state [enit] = 0;
 		en_an_count [enit] = 3;
-		
-		enoffsmasi = enoffs + enit;
 		*/
 		#asm
 				ld  bc, (_enit)
@@ -105,13 +103,9 @@ void enems_load (void) {
 				add hl, bc
 				ld  a, 3
 				ld  (hl), a
-
-				ld  a, (_enit)
-				ld  c, a 
-				ld  a, (_enoffs)
-				add c 
-				ld  (_enoffsmasi), a
 		#endasm
+
+		enoffsmasi = enoffs + enit;				
 
 		#ifdef RESPAWN_ON_ENTER
 			// Back to life!

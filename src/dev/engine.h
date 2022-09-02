@@ -568,16 +568,28 @@ void draw_scr (void) {
 			ld  a, 240
 			ld  (_hotspot_y), a
 
-			// Hotspots are 3-byte wide structs. No game will have more than 85 screens
-			// in the same map so we can do the math in 8 bits:
-
-			ld  a, (_n_pant)
-			ld  b, a
-			sla a
-			add b
-
-			ld  c, a
-			ld  b, 0
+			#if (MAP_W*MAP_H) < 86
+				// Hotspots are 3-byte wide structs. No game will have more than 85 screens
+				// in the same map so we can do the math in 8 bits:
+	
+				ld  a, (_n_pant)
+				ld  b, a
+				sla a
+				add b
+	
+				ld  c, a
+				ld  b, 0
+			#else
+				// More than 85 screens need 16 bits math
+				ld  hl, (_n_pant)
+				ld  h, 0
+				ld  d, h 
+				ld  e, l 
+				add hl, de 
+				add hl, de 
+				ld  b, h 
+				ld  c, l
+			#endif
 
 			// BC = Index to the hotspots struct, which happens to be {xy, type, act}
 

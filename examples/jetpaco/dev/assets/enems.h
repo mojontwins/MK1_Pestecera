@@ -506,7 +506,7 @@ MALOTE malotes [] = {
  	{224, 144, 224, 144, 0, 0, 0, 0, 0},
 
 	// Pantalla 98
- 	{224, 144, 224, 144, 0, 0, 0, 0, 0},
+ 	{176, 32, 176, 32, 112, 48, -1, 1, 2},
  	{224, 144, 224, 144, 0, 0, 0, 0, 0},
  	{224, 144, 224, 144, 0, 0, 0, 0, 0},
 
@@ -542,9 +542,9 @@ MALOTE malotes [] = {
 
 };
 
-#define N_ENEMS_TYPE_0 214
+#define N_ENEMS_TYPE_0 213
 #define N_ENEMS_TYPE_1 21
-#define N_ENEMS_TYPE_2 40
+#define N_ENEMS_TYPE_2 41
 #define N_ENEMS_TYPE_3 39
 #define N_ENEMS_TYPE_5 0
 #define N_ENEMS_TYPE_6 0

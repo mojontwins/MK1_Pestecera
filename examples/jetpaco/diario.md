@@ -480,7 +480,7 @@ Vamos a revisar bien el hack multinivel-en-uno que he liado y que implica un { .
 
 Quizá este fallo estaba causado por el descacharre anterior, ya que estaba haciendo un buffer overflow.
 
-## Eliminando el hotspot
+### Eliminando el hotspot
 
 Supuestamente, el hotspot debe eliminarse con el tile que hubiera originalmente en pantalla. Esto se precalcula en `orig_tile` a la hora de decodificar y pintar el hotspot al empezar la pantalla, y se extrae de `map_buff` que, en teoría, debería contener los números correctos de tile, ya que el # de tile se mete en este array después de decodificarlo y de ser modificado en `on_map_tile_decoded.h`. Sin embargo, jugando a la fase 2, al coger un objeto me ha puesto el tile "0" del tileset en lugar del tile gm_ts [0], que es 32 en este nivel (`gm` = 1).
 
@@ -489,6 +489,66 @@ Voy a echar un vistazo a la memoria. `map_buff` está en `BASE_ROOM_BUFFERS + 15
 Otia, no. En `map_buff` está el mismo contenido que en `map_attr` !! Esto es un fallo gordérrimo ¿cómo no ha dado la cara hasta ahora? Voy a examinar bien el decoder.
 
 ¡Ya sé! El bug sólo ocurre cuando no hay definido un `PACKED_MAP_ALT_TILE`: en este caso el valor de `__t` no vuelve al registro A, que contendría el comportamiento. Se arregla fásil sacando la carga del `#ifdef`.
+
+¡Arreglado!
+
+### Enemigos
+
+Me da la impresión de que no está calculando bien el puntero de los enemigos porque he ido a "arreglar" los de las dos pantallas de la fase 3 que había visto y resulta que en esas pantallas o no había enemigos o estaban bien puestos. 
+
+Esto ha sido otra de las cosas que he cambiado recientemente y, por lo que se ve, no va fino.
+
+Vale - había cambiado `enoffs` y `enoffsmasi` a 16 bits, pero el cálculo (que está en ensamble) seguía siendo de 8 bits.
+
+¡Arreglado!
+
+### Hotspots
+
+No salen los hotspots en pantallas de número avanzado y creo que va a estar todo relacionado con lo mesmo. El tamaño de las cosas y los bits que tiene un byte. Revisemos.
+
+Pues sí, aquí:
+
+```c
+    #asm 
+            // Hotspots are 3-byte wide structs. No game will have more than 85 screens
+            // in the same map so we can do the math in 8 bits:
+
+            ld  a, (_n_pant)
+            ld  b, a
+            sla a
+            add b
+
+            ld  c, a
+            ld  b, 0
+    #endasm
+```
+
+Esto hay que cambiarlo. Multiplicar n_pant por 3 en 16 bits... Un poco para salir del paso, no es una parte crítica:
+
+```c
+            #if (MAP_W*MAP_H) < 86
+                // Hotspots are 3-byte wide structs. No game will have more than 85 screens
+                // in the same map so we can do the math in 8 bits:
+
+                ld  a, (_n_pant)
+                ld  b, a
+                sla a
+                add b
+
+                ld  c, a
+                ld  b, 0
+            #else
+                // More than 85 screens need 16 bits math
+                ld  hl, (_n_pant)
+                ld  h, 0
+                ld  d, h 
+                ld  e, l 
+                add hl, de 
+                add hl, de 
+                ld  b, h 
+                ld  c, l
+            #endif
+```
 
 ¡Arreglado!
 
