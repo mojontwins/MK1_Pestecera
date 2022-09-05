@@ -35,7 +35,7 @@ unsigned char hotspots_offset;
 
 unsigned char gm_ts_0 [] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 unsigned char gm_ts_1 [] = { 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
-unsigned char gm_ts_2 [] = { 0, 1, 14, 47, 4, 5, 28, 29, 40, 9, 10, 2, 12, 45, 46, 41};
+unsigned char gm_ts_2 [] = { 23, 28, 14, 47, 4, 5, 38, 39, 40, 9, 10, 2, 29, 45, 46, 41};
 unsigned char *gm_ts_list [] = {gm_ts_0, gm_ts_1, gm_ts_2};
 
 unsigned char *gm_ts;

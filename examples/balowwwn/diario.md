@@ -31,7 +31,8 @@ Creo mi propio `Count tiles.lua`... A ver si me acuerdo como iba:
                 blk = mappy.getValue (mappy.CURBLOCK)
             else
                 -- setBlock need anims in the format below (ie: anim 1 should be a value of -2)
-            blk = -(blk+1)
+                blk = -(blk+1)
+            end
         end  
 
         local count = 0

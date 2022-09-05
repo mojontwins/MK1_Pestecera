@@ -508,47 +508,49 @@ No salen los hotspots en pantallas de número avanzado y creo que va a estar tod
 
 Pues sí, aquí:
 
-```c
-    #asm 
-            // Hotspots are 3-byte wide structs. No game will have more than 85 screens
-            // in the same map so we can do the math in 8 bits:
+```c   
+        // Hotspots are 3-byte wide structs. No game will have more than 85 screens
+        // in the same map so we can do the math in 8 bits:
 
-            ld  a, (_n_pant)
-            ld  b, a
-            sla a
-            add b
+        ld  a, (_n_pant)
+        ld  b, a
+        sla a
+        add b
 
-            ld  c, a
-            ld  b, 0
-    #endasm
+        ld  c, a
+        ld  b, 0
 ```
 
 Esto hay que cambiarlo. Multiplicar n_pant por 3 en 16 bits... Un poco para salir del paso, no es una parte crítica:
 
 ```c
-            #if (MAP_W*MAP_H) < 86
-                // Hotspots are 3-byte wide structs. No game will have more than 85 screens
-                // in the same map so we can do the math in 8 bits:
+    #if (MAP_W*MAP_H) < 86
+        // Hotspots are 3-byte wide structs. No game will have more than 85 screens
+        // in the same map so we can do the math in 8 bits:
 
-                ld  a, (_n_pant)
-                ld  b, a
-                sla a
-                add b
+        ld  a, (_n_pant)
+        ld  b, a
+        sla a
+        add b
 
-                ld  c, a
-                ld  b, 0
-            #else
-                // More than 85 screens need 16 bits math
-                ld  hl, (_n_pant)
-                ld  h, 0
-                ld  d, h 
-                ld  e, l 
-                add hl, de 
-                add hl, de 
-                ld  b, h 
-                ld  c, l
-            #endif
+        ld  c, a
+        ld  b, 0
+    #else
+        // More than 85 screens need 16 bits math
+        ld  hl, (_n_pant)
+        ld  h, 0
+        ld  d, h 
+        ld  e, l 
+        add hl, de 
+        add hl, de 
+        ld  b, h 
+        ld  c, l
+    #endif
 ```
 
 ¡Arreglado!
+
+## Feature complete!
+
+Creo que ya estamos en ese punto en el que hay que ponerse a probar las fases. Lo que pasa es que me gustaría a mi dar una primera vuelta antes de pasar esto a los testers y no encuentro el momento @#!!
 

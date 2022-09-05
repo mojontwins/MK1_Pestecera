@@ -50,11 +50,11 @@
 	};
 
 	unsigned char chac_chac_t2 [] = {
-		 0,  0, 21, 22, 21,  0
+		23, 23, 21, 22, 21, 23
 	};
 
 	unsigned char chac_chac_t3 [] = {
-		 0,  0,  0, 21,  0,  0
+		23, 23, 23, 21, 23, 23
 	};
 
 	#define CHAC_CHAC_MAX 4
@@ -85,6 +85,7 @@
 				if (rda == CHAC_CHAC_MAX_STATES) {
 					chac_chac_state [gpit] = 0;
 					chac_chac_ct [gpit] = chac_chac_idle [gpit];
+					rda = 0;
 				} else {
 					chac_chac_ct [gpit] = chac_chac_times [rda];
 				}
