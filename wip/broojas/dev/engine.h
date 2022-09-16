@@ -151,6 +151,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+				#ifndef UNPACKED_MAP
+					and 15
+				#endif
 					cp  14
 					jp  nz, push_boxes_end
 
@@ -255,6 +258,9 @@ void espera_activa (int espera) {
 					ld  a, (_y0)
 					call qtile_do
 					ld  a, l
+					#ifndef UNPACKED_MAP
+						and 15
+					#endif
 					cp  15
 					jp  nz, open_lock_end
 
@@ -425,6 +431,9 @@ void draw_scr_background (void) {
 						and 15
 
 					._draw_scr_packed_done
+				#endasm
+				#include "my/ci/on_map_tile_decoded.h" 
+				#asm
 						ld  (__t), a
 						
 						ld  b, 0
@@ -439,8 +448,8 @@ void draw_scr_background (void) {
 						add hl, bc
 						ld  (hl), a
 
-				#ifdef PACKED_MAP_ALT_TILE
 						ld  a, (__t)
+				#ifdef PACKED_MAP_ALT_TILE
 						or  a
 						jr  nz, _draw_scr_packed_noalt
 
@@ -481,10 +490,12 @@ void draw_scr_background (void) {
 			#endif
 
 			#ifdef ENABLE_TILANIMS
+				#if ENABLE_TILANIMS != 99
 				if (_t >= ENABLE_TILANIMS) {
 					_n = (((_x - VIEWPORT_X) << 3) & 0xf0) | ((_y - VIEWPORT_Y) >> 1);
 					tilanims_add ();	
 				}
+			#endif
 			#endif
 				
 			draw_coloured_tile ();
@@ -557,6 +568,7 @@ void draw_scr (void) {
 			ld  a, 240
 			ld  (_hotspot_y), a
 
+			#if (MAP_W*MAP_H) < 86
 			// Hotspots are 3-byte wide structs. No game will have more than 85 screens
 			// in the same map so we can do the math in 8 bits:
 
@@ -567,6 +579,17 @@ void draw_scr (void) {
 
 			ld  c, a
 			ld  b, 0
+			#else
+				// More than 85 screens need 16 bits math
+				ld  hl, (_n_pant)
+				ld  h, 0
+				ld  d, h 
+				ld  e, l 
+				add hl, de 
+				add hl, de 
+				ld  b, h 
+				ld  c, l
+			#endif
 
 			// BC = Index to the hotspots struct, which happens to be {xy, type, act}
 
@@ -641,6 +664,9 @@ void draw_scr (void) {
 			xor a
 		._hotspots_setup_set
 			add 16
+	#endasm
+	#include "my/ci/hotspot_setup_t_modification.h"
+	#asm
 			ld  (__t), a		
 
 			call _draw_coloured_tile_gamearea

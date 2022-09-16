@@ -41,7 +41,9 @@
 	#ifdef COMPRESSED_LEVELS		
 		AY_PLAY_MUSIC (levels [level].music_id);
 	#else
-		AY_PLAY_MUSIC (1);
+		#ifdef MUSIC_INGAME
+			AY_PLAY_MUSIC (MUSIC_INGAME);
+		#endif
 	#endif		
 
 	#ifdef ACTIVATE_SCRIPTING
@@ -290,7 +292,7 @@
 		#endif
 
 		#ifdef DEBUG_KEYS
-			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2) && cpc_TestKey (KEY_AUX3)) {
+			if (cpc_TestKey (KEY_AUX1) && cpc_TestKey (KEY_AUX2)) {
 				playing = 0; success = 1;
 			}
 		#endif

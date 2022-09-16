@@ -520,10 +520,19 @@
 	"buffers":
 	[
 		{
-			"file": "examples/balowwwn/diario.md",
+			"file": "src/dev/my/config.h",
 			"settings":
 			{
-				"buffer_size": 14313,
+				"buffer_size": 18383,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/dev/engine/player.h",
+			"settings":
+			{
+				"buffer_size": 28378,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -615,24 +624,29 @@
 	[
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
-		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/balowwwn"
+		"/D/git/MK1_Pestecera/src",
+		"/D/git/MK1_Pestecera/src/dev",
+		"/D/git/MK1_Pestecera/src/dev/engine",
+		"/D/git/MK1_Pestecera/src/dev/my"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/wip/broojas/dev/my/config.h",
+		"/D/git/MK1_Pestecera/wip/broojas/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/plugins/plugin_chac_chacs.h",
+		"/D/git/MK1_Pestecera/examples/balowwwn/diario.md",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine/enengine.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO86B3C505/ModLoader.txt",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO86B31073/instance.cfg",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO434A67B1/README.txt",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/on_map_tile_decoded.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/game_loop.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_vars.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/jet_paco.map",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/plugins/plugin_chac_chacs.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mk1.c",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/entering_screen.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO0D8024B9/on_wall_broken.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO0D866FB9/on_wall_hit.h",
@@ -722,11 +736,9 @@
 		"/D/Proyectos/index.php",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/definitions.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/mainloop/game_loop.h",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/engine/player.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/compile.bat",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/my/ci/on_player_respawned.h",
 		"/D/git/MK1_Pestecera/diario.md",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/engine.h",
 		"/D/git/MK1_Pestecera/wip/deleteme/dev/compile.bat",
 		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/config.h",
@@ -746,8 +758,7 @@
 		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
 		"/D/git/MK1_Pestecera/src/dev/assets/sprites.h",
 		"/D/git/MK1_Pestecera/src/dev/definitions.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h",
-		"/D/git/MK1_Pestecera/src/dev/autodefs.h"
+		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h"
 	],
 	"find":
 	{
@@ -758,6 +769,7 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\wip\\broojas\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev\\engine",
@@ -805,6 +817,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"SAFE_SPOT_ON_ENTERING",
+			"DIE_AND_RESPAWN",
+			"respawn",
 			"chac_chac_idx",
 			"success = 1;",
 			"playing",
@@ -929,10 +944,7 @@
 			"la carpeta",
 			"mappings",
 			"..\\..\\..\\src\\utils\\",
-			"(\\d+) (\\d+) (\\d+)",
-			"def_keys_joy",
-			"LANG_ES",
-			"bxo"
+			"(\\d+) (\\d+) (\\d+)"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -940,6 +952,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"4",
 			"chac_chac",
 			"&H8000",
 			"(GetAsyncKeyState (VK\\1) And &H800)",
@@ -1020,19 +1033,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "examples/balowwwn/diario.md",
+					"file": "src/dev/my/config.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14313,
+						"buffer_size": 18383,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1919,
-								1919
+								11066,
+								11093
 							]
 						],
 						"settings":
@@ -1040,22 +1053,54 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3237.0,
+						"translation.y": 2408.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 1,
+					"file": "src/dev/engine/player.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5777,
+								5777
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3900.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1147,7 +1192,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
