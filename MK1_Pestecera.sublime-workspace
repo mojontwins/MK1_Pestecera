@@ -520,20 +520,19 @@
 	"buffers":
 	[
 		{
-			"file": "src/dev/my/config.h",
+			"file": "wip/fred/dev/my/ci/extra_routines.h",
 			"settings":
 			{
-				"buffer_size": 18383,
+				"buffer_size": 256,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/dev/engine/player.h",
+			"file": "wip/fred/dev/my/ci/extra_functions.h",
 			"settings":
 			{
-				"buffer_size": 28378,
-				"encoding": "UTF-8",
+				"buffer_size": 988,
 				"line_ending": "Windows"
 			}
 		}
@@ -624,13 +623,66 @@
 	[
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/docs",
-		"/D/git/MK1_Pestecera/src",
-		"/D/git/MK1_Pestecera/src/dev",
-		"/D/git/MK1_Pestecera/src/dev/engine",
-		"/D/git/MK1_Pestecera/src/dev/my"
+		"/D/git/MK1_Pestecera/examples",
+		"/D/git/MK1_Pestecera/wip",
+		"/D/git/MK1_Pestecera/wip/fred",
+		"/D/git/MK1_Pestecera/wip/fred/dev",
+		"/D/git/MK1_Pestecera/wip/fred/dev/assets",
+		"/D/git/MK1_Pestecera/wip/fred/dev/engine",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/custom_animation.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/engine/enengine.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/assets/spriteset_mappings.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/definitions.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/enems_extra_actions.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/extra_functions.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/printer.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/enems_move.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/enems_load.h",
+		"/D/temp/fred/dev/my/ci/hotspots_custom.h",
+		"/D/temp/fred/dev/my/ci/on_enems_collision.h",
+		"/D/temp/fred/dev/my/ci/on_enems_killed.h",
+		"/D/temp/fred/dev/my/ci/on_jetpac_boost.h",
+		"/D/temp/fred/dev/my/ci/on_player_fires.h",
+		"/D/temp/fred/dev/my/ci/on_player_killed.h",
+		"/D/temp/fred/dev/my/ci/on_special_tile.h",
+		"/D/temp/fred/dev/my/ci/on_tile_pushed.h",
+		"/D/temp/fred/dev/my/ci/on_unlocked_bolt.h",
+		"/D/temp/fred/dev/my/ci/on_wall_broken.h",
+		"/D/temp/fred/dev/my/ci/on_wall_hit.h",
+		"/D/temp/fred/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/extra_routines.h",
+		"/D/temp/fred/dev/my/ci/extra_routines.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/entering_screen.h",
+		"/D/temp/fred/dev/my/ci/extra_functions.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/custom_heng.h",
+		"/D/temp/fred/dev/my/ci/enems_move.h",
+		"/D/temp/fred/dev/my/ci/entering_game.h",
+		"/D/temp/fred/dev/my/ci/entering_screen.h",
+		"/D/temp/fred/dev/my/ci/enems_load.h",
+		"/D/temp/fred/dev/my/ci/enems_extra_actions.h",
+		"/D/temp/fred/dev/my/ci/enems_extra_mods.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/custom_veng.h",
+		"/D/temp/fred/dev/my/ci/custom_veng.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/engine/player.h",
+		"/D/temp/fred/dev/my/ci/before_entering_screen.h",
+		"/D/temp/fred/dev/my/ci/before_game.h",
+		"/D/temp/fred/dev/my/ci/custom_enems_player_collision.h",
+		"/D/temp/fred/dev/my/ci/custom_heng.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/ci/after_load.h",
+		"/D/temp/fred/dev/my/ci/after_game_loop.h",
+		"/D/temp/fred/dev/my/ci/after_load.h",
+		"/D/temp/fred/dev/compile.bat",
+		"/D/temp/fred/dev/my/config.h",
+		"/D/git/MK1_Pestecera/wip/fred/dev/compile.bat",
+		"/D/git/MK1_Pestecera/wip/fred/dev/my/config.h",
+		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/engine/player.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
@@ -702,63 +754,14 @@
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine/hotspots.h",
 		"/D/git/MK1_Pestecera/src/dev/engine/hotspots.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/trash/enshrinkerC64toCPC.bas",
-		"/D/git/MK1_Pestecera/src/dev/engine/player.h",
 		"/D/git/MK1_Pestecera/examples/monono/dev/printer.h",
 		"/D/git/MK1_Pestecera/examples/monono/dev/engine.h",
-		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/src/dev/my/ci/after_game_over.h",
 		"/D/git/MK1_Pestecera/src/dev/compile.bat",
 		"/D/git/MK1_Pestecera/src/dev/mainloop.h",
 		"/D/git/MK1_Tostadera/trash/test/engine.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers.h",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
-		"/D/temp/MK1/examples/goku_mal/mus/WYZproPlay47aZXc.ASM",
-		"/D/git/MK1_Pestecera/wip/deleteme/dev/wyz_player.h",
-		"/D/Proyectos/2022/20220527a - Reserva de Recursos 1.25.0.0/instrucciones.txt",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/my/ci/extra_vars.h",
-		"/C/Users/jcastano/Desktop/pikapika.txt",
-		"/C/Users/jcastano/Downloads/config.php",
-		"/D/git/MK1_Pestecera/wip/wyztest/WYZProPlay47cCPC.ASM",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/wyz_player.h",
-		"/C/Users/jcastano/Desktop/reproduce_sonido_o_efecto.asm",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO44E4A498/WYZPlayer_Test_WinAPE.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap16x16PxM1.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap16x24PxM1.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap4x8.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap4x8Px.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x16.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x16Px.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x24.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x24Px.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap8x8PxM1.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_PutSpTileMap2b.asm",
-		"/D/git/MK1_Pestecera/lib/cpcrslib/cpc_UpdTileTable.asm",
-		"/D/Proyectos/index.php",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/definitions.h",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/mainloop/game_loop.h",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/compile.bat",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/my/ci/on_player_respawned.h",
-		"/D/git/MK1_Pestecera/diario.md",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/engine.h",
-		"/D/git/MK1_Pestecera/wip/deleteme/dev/compile.bat",
-		"/D/git/MK1_Pestecera/wip/deleteme/dev/my/config.h",
-		"/D/git/MK1_Pestecera/wip/deleteme/mus_WYZ/compress_songs.bat",
-		"/D/git/MK1_Pestecera/docs/quickstart.md",
-		"/D/git/MK1_Pestecera/src/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/src/dev/printer.h",
-		"/C/java/applications/webmovil/src/p3s.properties",
-		"/D/git/MK1_Pestecera/src/dev/loader/loadercpc.asm-orig",
-		"/D/git/MK1_Pestecera/src/utils/src/mkts_om.bas",
-		"/D/git/MK1/src_cpc/utils/imanol.bas",
-		"/D/git/MK1_Pestecera/src/dev/engine/enengine.h",
-		"/D/git/MK1_Pestecera/src/dev/engine/bullets.h",
-		"/D/git/MK1_Pestecera/src/dev/aplib.h",
-		"/D/git/MK1_Pestecera/src/dev/mainloop/game_loop.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/definitions.h",
-		"/D/git/MK1_Pestecera/examples/helmet/dev/printer.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/sprites.h",
-		"/D/git/MK1_Pestecera/src/dev/definitions.h",
-		"/D/git/MK1_Pestecera/src/dev/assets/trpixlut.h"
+		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers_asm.h"
 	],
 	"find":
 	{
@@ -769,6 +772,9 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\wip\\fred",
+			"D:\\git\\MK1_Pestecera\\wip\\fred\\dev",
+			"D:\\git\\MK1_Pestecera\\wip\\fred",
 			"D:\\git\\MK1_Pestecera\\wip\\broojas\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco",
@@ -817,6 +823,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"KEY_",
+			"blackout",
+			"GENERAL_DYING",
+			"custom_animation",
+			"99",
+			"FANTIES_BASE_CELL",
 			"SAFE_SPOT_ON_ENTERING",
 			"DIE_AND_RESPAWN",
 			"respawn",
@@ -938,13 +950,7 @@
 			"AMMO",
 			"MK1/",
 			"sprptr",
-			"enem_cells",
-			"en_an_base_frame",
-			"GENERAL_ENEMS_BASE_CELL",
-			"la carpeta",
-			"mappings",
-			"..\\..\\..\\src\\utils\\",
-			"(\\d+) (\\d+) (\\d+)"
+			"enem_cells"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1028,41 +1034,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/dev/my/config.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18383,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11066,
-								11093
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2408.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1070,20 +1043,51 @@
 			"sheets":
 			[
 				{
-					"buffer": 1,
-					"file": "src/dev/engine/player.h",
+					"buffer": 0,
+					"file": "wip/fred/dev/my/ci/extra_routines.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28378,
+						"buffer_size": 256,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5777,
-								5777
+								106,
+								106
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "wip/fred/dev/my/ci/extra_functions.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 988,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1095,10 +1099,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3900.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1192,7 +1196,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

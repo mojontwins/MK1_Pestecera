@@ -1,0 +1,31 @@
+# Project: cpc2cdt
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = src/cpc2cdt.o src/tinytape.o
+LINKOBJ  = src/cpc2cdt.o src/tinytape.o
+LIBS     = -L"C:/Archivos de programa/Dev-Cpp/MinGW64/lib32" -L"C:/Archivos de programa/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"C:/Archivos de programa/Dev-Cpp/MinGW64/include" -I"C:/Archivos de programa/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Archivos de programa/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Archivos de programa/Dev-Cpp/MinGW64/include" -I"C:/Archivos de programa/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Archivos de programa/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Archivos de programa/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = cpc2cdt.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32 -std=c99
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+src/cpc2cdt.o: src/cpc2cdt.c
+	$(CC) -c src/cpc2cdt.c -o src/cpc2cdt.o $(CFLAGS)
+
+src/tinytape.o: src/tinytape.c
+	$(CC) -c src/tinytape.c -o src/tinytape.o $(CFLAGS)
