@@ -1,11 +1,11 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-// Setup propellers...
+// Setup special stuff...
 // *TODO*: Inline assembly this / replace default tilanims with custom implementation
 
 switch (gm) {
-	case 1:
+	case GM_PROPELLERS_LEVEL:
 		for (gpit = 0; gpit < PROPELLERS_MAX; gpit ++) {
 			if (n_pant == prop_n_pant [gpit]) {
 				_x = prop_x [gpit]; _y = prop_y [gpit];
@@ -25,7 +25,7 @@ switch (gm) {
 		}
 		break;
 
-	case 2:
+	case GM_ESTRUJATORS_LEVEL:
 		chac_chac_idx = 0;
 		for (gpit = 0; gpit < ESTRUJATORS_MAX; gpit ++) {
 			if (n_pant == estr_n_pant [gpit]) {

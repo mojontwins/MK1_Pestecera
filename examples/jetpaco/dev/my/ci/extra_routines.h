@@ -1,4 +1,4 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-if (gm == 2) chac_chacs_do ();
+if (gm == GM_ESTRUJATORS_LEVEL) chac_chacs_do ();

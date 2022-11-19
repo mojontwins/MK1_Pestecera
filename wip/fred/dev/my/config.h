@@ -31,6 +31,10 @@
 //#define OR_SPRITES 						// This removes the compressed LUT from the binary
 											// and saves some bytes if you are using GnG M0 mode
 
+#define EXTRA_SPRITES 				1 		// If you want to add extra software sprite entities, 
+											// add them there. Your sprites will be defined as
+											// sp_sw [SP_EXTRA_BASE] onwards.
+
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						5		//
@@ -314,7 +318,7 @@ extern unsigned char def_keys [0];
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 //#define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
-//#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 
 //#define ENABLE_TILANIMS			32		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.

@@ -21,4 +21,4 @@ if (p_on_rope) {
 	rda = (gpx >> 4) & 3;
 } 
 
-spr_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [custom_animation [(p_facing ? 0 : 6) + rda]]);
+sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [custom_animation [(p_facing ? 0 : 6) + rda]]);

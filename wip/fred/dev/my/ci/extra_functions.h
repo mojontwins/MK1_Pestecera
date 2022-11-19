@@ -8,59 +8,25 @@ void shoot_create (void) {
 }
 
 void shoot_do (void) {
-	/*
+	
 	if (shoot_y < 160) {
 		shoot_x += shoot_mx;
 
 		// Show sprite
-		#asm
-				ld  ix, (_sp_shoot)
-				ld  iy, vpClipStruct
-
-				ld  bc, 0
-
-				ld  a, (_shoot_y)
-				srl a
-				srl a
-				srl a
-				add VIEWPORT_Y
-				ld  h, a 
-
-				ld  a, (_shoot_x)
-				srl a
-				srl a
-				srl a
-				add VIEWPORT_X
-				ld  l, a 
-				
-				ld  a, (_shoot_x)
-				and 7
-				ld  d, a
-
-				ld  a, (_shoot_y)
-				and 7
-				ld  e, a
-
-				call SPMoveSprAbs
-		#endasm
-
+		sp_sw [SP_EXTRA_BASE].cx = (shoot_x + VIEWPORT_X * 8) >> 2;
+		sp_sw [SP_EXTRA_BASE].cy = (shoot_y + VIEWPORT_Y * 8);
+		sp_sw [SP_EXTRA_BASE].sp0 = (int) (sprite_19_a);
+		
 		// BG collision / out of screen
 		if (
 			shoot_x < 8 || shoot_x > 240 || 
 			attr ((shoot_x + 4) >> 4, (shoot_y + 4) >> 4) & 8
 		) shoot_y = 160;
 	} else {
-				// Show sprite
-		#asm
-				ld  ix, (_sp_shoot)
-				ld  iy, vpClipStruct
-
-				ld  bc, 0
-				ld  hl, 0xDEDE
-				ld  de, 0
-
-				call SPMoveSprAbs
-		#endasm
+		// Hide sprite
+		sp_sw [SP_EXTRA_BASE].cx = (VIEWPORT_X * 8) >> 2;
+		sp_sw [SP_EXTRA_BASE].cy = (VIEWPORT_Y * 8);
+		sp_sw [SP_EXTRA_BASE].sp0 = (int) (SPRFR_EMPTY);
 	}
-	*/
+	
 }

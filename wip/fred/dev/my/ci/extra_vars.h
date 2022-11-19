@@ -15,9 +15,9 @@
 
 unsigned char custom_animation [] = {
 	// Looking right (offset 0)
-	0, 1, 2, 3, 4,
+	1, 0, 1, 2, 3, 4,
 	// Looking left (offset 5)
-	5, 6, 7, 16, 17
+	6, 5, 6, 7, 16, 17
 };
 
 // Drop animation
