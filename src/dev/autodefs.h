@@ -43,12 +43,13 @@
 	#define MAX_COCOS 0
 #endif
 
-#define SW_SPRITES_ALL 		1 + MAX_ENEMS + MAX_BULLETS + MAX_COCOS
+#define SW_SPRITES_ALL 		1 + MAX_ENEMS + MAX_BULLETS + MAX_COCOS + EXTRA_SPRITES
 
 #define SP_PLAYER 			0
 #define SP_ENEMS_BASE 		1
 #define SP_BULLETS_BASE 	SP_ENEMS_BASE + MAX_ENEMS
 #define SP_COCOS_BASE 		SP_BULLETS_BASE + MAX_BULLETS
+#define SP_EXTRA_BASE 		SP_COCOS_BASE + MAX_COCOS
 
 // Automagically calculate this byte
 #if CPC_GFX_MODE == 0

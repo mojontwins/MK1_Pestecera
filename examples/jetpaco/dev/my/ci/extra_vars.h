@@ -89,4 +89,17 @@ unsigned char estr_y []      = {
 	  6,   6
 };
 
+// Puff of smoke
+
+extern unsigned char spr_jumo [0];
+#asm
+	._spr_jumo
+		BINARY "../bin/sprites_humo.bin"
+#endasm
+
+unsigned char jumo_x;
+unsigned char jumo_y;
+unsigned char jumo_fr;
+unsigned char jumo_ct;
+
 #include "plugins/plugin_chac_chacs.h"	

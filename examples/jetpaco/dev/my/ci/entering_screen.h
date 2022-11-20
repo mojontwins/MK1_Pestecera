@@ -4,6 +4,9 @@
 // Setup special stuff...
 // *TODO*: Inline assembly this / replace default tilanims with custom implementation
 
+// Turns jumo off
+jumo_y = 160;
+
 switch (gm) {
 	case GM_PROPELLERS_LEVEL:
 		for (gpit = 0; gpit < PROPELLERS_MAX; gpit ++) {

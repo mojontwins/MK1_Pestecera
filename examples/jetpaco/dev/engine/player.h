@@ -316,35 +316,39 @@ unsigned char player_move (void) {
 
 	#if defined PLAYER_GENITAL || (defined VENG_SELECTOR && defined PLAYER_VKEYS)
 
-		#if defined (VENG_SELECTOR)
-			if (veng_selector == VENG_KEYS )
-		#endif
-		{
-			// Pad do
-
-			if ( ! (cpc_TestKey (KEY_UP) || cpc_TestKey (KEY_DOWN))) {
-
-				p_facing_v = 0xff;
-				wall_v = 0;
-				if (p_vy > 0) {
-					p_vy -= PLAYER_RX;
-					if (p_vy < 0) p_vy = 0;
-				} else if (p_vy < 0) {
-					p_vy += PLAYER_RX;
-					if (p_vy > 0) p_vy = 0;
+		#ifndef PLAYER_DISABLE_DEFAULT_VENG
+	
+			#if defined (VENG_SELECTOR)
+				if (veng_selector == VENG_KEYS )
+			#endif
+			{
+				// Pad do
+	
+				if ( ! (cpc_TestKey (KEY_UP) || cpc_TestKey (KEY_DOWN))) {
+					p_facing_v = 0xff;
+					wall_v = 0;
+					if (p_vy > 0) {
+						p_vy -= PLAYER_RX;
+						if (p_vy < 0) p_vy = 0;
+					} else if (p_vy < 0) {
+						p_vy += PLAYER_RX;
+						if (p_vy > 0) p_vy = 0;
+					}
+				}
+	
+				if (cpc_TestKey (KEY_UP)) {
+					#include "my/ci/on_controller_pressed/up.h"
+					p_facing_v = FACING_UP;
+					if (p_vy > -PLAYER_MAX_VX) p_vy -= PLAYER_AX;
+				}
+	
+				if (cpc_TestKey (KEY_DOWN)) {
+					#include "my/ci/on_controller_pressed/down.h"
+					p_facing_v = FACING_DOWN;
+					if (p_vy < PLAYER_MAX_VX) p_vy += PLAYER_AX;
 				}
 			}
-
-			if (cpc_TestKey (KEY_UP)) {
-				p_facing_v = FACING_UP;
-				if (p_vy > -PLAYER_MAX_VX) p_vy -= PLAYER_AX;
-			}
-
-			if (cpc_TestKey (KEY_DOWN)) {
-				p_facing_v = FACING_DOWN;
-				if (p_vy < PLAYER_MAX_VX) p_vy += PLAYER_AX;
-			}
-		}
+		#endif
 	#endif
 
 	#ifdef PLAYER_HAS_JETPAC
@@ -353,6 +357,8 @@ unsigned char player_move (void) {
 		#endif
 		{
 			if (cpc_TestKey (KEY_UP)) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				p_vy -= PLAYER_INCR_JETPAC;
 				if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
 
@@ -631,6 +637,8 @@ unsigned char player_move (void) {
 			#endif
 
 			if (rda) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (p_vy >= 0) {
 						if (possee || p_gotten || hit_v) {
@@ -752,6 +760,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_LEFT)) {
+			#include "my/ci/on_controller_pressed/left.h"
+		
 			/*
 			#ifdef PLAYER_GENITAL
 				p_facing_h = FACING_LEFT;
@@ -789,6 +799,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_RIGHT)) {
+			#include "my/ci/on_controller_pressed/right.h"
+
 			/*
 			#ifdef PLAYER_GENITAL	
 				p_facing_h = FACING_RIGHT;

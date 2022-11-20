@@ -27,10 +27,13 @@
 
 #define PIXELPERFECT 						// If you use mode 0, don't forget the pixelperfectm0
 											// parameter to mkts when converting the main spriteset
-											// WON'T WORK IN MODE 1
 
 //#define OR_SPRITES 						// This removes the compressed LUT from the binary
 											// and saves some bytes if you are using GnG M0 mode
+
+#define EXTRA_SPRITES 				1 		// If you want to add extra software sprite entities, 
+											// add them there. Your sprites will be defined as
+											// sp_sw [SP_EXTRA_BASE] onwards.
 
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 

@@ -1,7 +1,7 @@
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
 
-// TODO : setup a sprite for the shoot
+// Setup a sprite for the shoot
 
 sp_sw [SP_EXTRA_BASE].cox = 0;
 sp_sw [SP_EXTRA_BASE].coy = 0;

@@ -62,7 +62,7 @@
 #endif
 #include "assets/spriteset_mappings.h"
 #ifndef OR_SPRITES
-#include "assets/trpixlut.h"
+	#include "assets/trpixlut.h"
 #endif
 
 #include "my/ci/extra_vars.h"

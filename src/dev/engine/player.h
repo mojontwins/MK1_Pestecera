@@ -337,11 +337,13 @@ unsigned char player_move (void) {
 				}
 
 				if (cpc_TestKey (KEY_UP)) {
+					#include "my/ci/on_controller_pressed/up.h"
 					p_facing_v = FACING_UP;
 					if (p_vy > -PLAYER_MAX_VX) p_vy -= PLAYER_AX;
 				}
 
 				if (cpc_TestKey (KEY_DOWN)) {
+					#include "my/ci/on_controller_pressed/down.h"
 					p_facing_v = FACING_DOWN;
 					if (p_vy < PLAYER_MAX_VX) p_vy += PLAYER_AX;
 				}
@@ -355,6 +357,8 @@ unsigned char player_move (void) {
 		#endif
 		{
 			if (cpc_TestKey (KEY_UP)) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				p_vy -= PLAYER_INCR_JETPAC;
 				if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
 
@@ -633,6 +637,8 @@ unsigned char player_move (void) {
 			#endif
 
 			if (rda) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (p_vy >= 0) {
 						if (possee || p_gotten || hit_v) {
@@ -754,6 +760,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_LEFT)) {
+			#include "my/ci/on_controller_pressed/left.h"
+		
 			/*
 			#ifdef PLAYER_GENITAL
 				p_facing_h = FACING_LEFT;
@@ -791,6 +799,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_RIGHT)) {
+			#include "my/ci/on_controller_pressed/right.h"
+
 			/*
 			#ifdef PLAYER_GENITAL	
 				p_facing_h = FACING_RIGHT;
