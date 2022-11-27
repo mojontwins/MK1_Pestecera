@@ -209,11 +209,11 @@
 // ----------
 
 //#define PLAYER_HAS_JUMP 					// If defined, player is able to jump.
-#define BOTH_KEYS_JUMP 						// If jump and no fire, use UP or FIRE to jump (only with keyboard)
-#define PLAYER_HAS_JETPAC 					// If defined, player can thrust a vertical jetpac
+//#define BOTH_KEYS_JUMP 					// If jump and no fire, use UP or FIRE to jump (only with keyboard)
+//#define PLAYER_HAS_JETPAC 				// If defined, player can thrust a vertical jetpac
 //#define PLAYER_BOOTEE 					// Always jumping engine. Don't forget to disable "HAS_JUMP" and "HAS_JETPAC"!!!
 //#define PLAYER_VKEYS 						// Use with VENG_SELECTOR. Advanced.
-//#define PLAYER_DISABLE_GRAVITY			// Disable gravity. Advanced.
+#define PLAYER_DISABLE_GRAVITY				// Disable gravity. Advanced.
 
 //#define PLAYER_STEPS_ON_ENEMIES			// If defined, stepping on enemies kills them
 //#define PLAYER_CAN_STEP_ON_FLAG	1		// If defined, player can only kill when flag # is "1"
@@ -317,7 +317,7 @@ extern unsigned char def_keys [0];
 //#define UNPACKED_MAP						// Full, uncompressed maps. Shadows settings are ignored.
 //#define PACKED_MAP_ALT_TILE 		19		// If defined, in 16 tiles mode, alt tile (default 19)
 
-//#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
+#define PLAYER_CUSTOM_ANIMATION 			// Code your own animation in my/custom_animation.h
 
 #define ENABLE_TILANIMS				99		// If defined, animated tiles are enabled.
 											// the value especifies first animated tile pair.

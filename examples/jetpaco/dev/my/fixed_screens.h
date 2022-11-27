@@ -70,13 +70,13 @@ void game_over (void) {
 	// Show continue option if we got past the 1st level
 	if (gm) {
 		#ifdef LANG_ES
-			_x = 10; _y = 12; _gp_gen = " CONTINUAR?"; print_str ();
-			         _y = 13; _gp_gen = "   1   SI   "; print_str ();
-			         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+			_x = 10; _y = 11; _gp_gen = " CONTINUAR?"; print_str ();
+			         _y = 12; _gp_gen = "   1   SI   "; print_str ();
+			         _y = 13; _gp_gen = "   2   NO   "; print_str ();
 		#else
-			_x = 10; _y = 12; _gp_gen = " CONTINUE? "; print_str ();
-			         _y = 13; _gp_gen = "   1   YES  "; print_str ();
-			         _y = 14; _gp_gen = "   2   NO   "; print_str ();
+			_x = 10; _y = 11; _gp_gen = " CONTINUE? "; print_str ();
+			         _y = 12; _gp_gen = "   1   YES  "; print_str ();
+			         _y = 13; _gp_gen = "   2   NO   "; print_str ();
 		#endif
 
 		cpc_UpdateNow (0);

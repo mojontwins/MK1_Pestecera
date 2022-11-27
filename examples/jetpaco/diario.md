@@ -554,3 +554,53 @@ Esto hay que cambiarlo. Multiplicar n_pant por 3 en 16 bits... Un poco para sali
 
 Creo que ya estamos en ese punto en el que hay que ponerse a probar las fases. Lo que pasa es que me gustaría a mi dar una primera vuelta antes de pasar esto a los testers y no encuentro el momento @#!!
 
+## Paco / Puri
+
+Nah, ahora se me ha antojado esto. Paco y Puri no solo cambian el sprite (esto es fácil con `my/custom_animation.h`), sino que debe cambiar las constantes de movimiento.
+
+Como la gravedad está en ensamble, no puedo tirar de definir una constante de forma creativa para poner el valor variable, por lo que replicaré todo el movimiento vertical (gravedad y jet pac) en `custom_veng.h` para poder modificarlo al gusto. Para que esto funcione, tengo que desactivar todos los motores verticales (comentando `PLAYER_HAS_JETPAC` y descomentando `PLAYER_DISABLE_GRAVITY`).
+
+Hay cuatro constantes que tengo que convertir en variables:
+
+```
+    PLAYER_G
+    PLAYER_MAX_VY_CAYENDO
+
+    PLAYER_INCR_JETPAC
+    PLAYER_MAX_VY_JETPAC
+```
+
+Además, para ahorrar toneladas de espacio y dolores de cabeza, tendré que almacenar `PLAYER_MAX_VY_CAYENDO - PLAYER_G` precalculado.
+
+```
+    // extra_vars.h
+
+    unsigned int p_g;
+    unsigned int p_max_vy_g;
+    unsigned int p_g_minus_max_vy_g;
+
+    unsigned int p_jetpac;
+    unsigned int p_max_vy_j;
+```
+
+Los valores para paco serían:
+
+```
+    p_g = 8;
+    p_max_vy_g = 128;
+    p_g_minus_max_vy_g = 120;
+
+    p_jetpac = 24;
+    p_max_vy_j = 128;
+```
+
+Para puri podemos probar valores más amables:
+
+```
+    p_g = 8;
+    p_max_vy_g = 96;
+    p_g_minus_max_vy_g = 88;
+
+    p_jetpac = 16;
+    p_max_vy_j = 96;
+```

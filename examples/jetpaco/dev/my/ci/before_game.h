@@ -1,5 +1,26 @@
+
 // MTE MK1 (la Churrera) v5.0
 // Copyleft 2010-2014, 2020 by the Mojon Twins
+
+// Select player
+
+blackout_area ();
+
+_x = 8; _y = 11; _gp_gen = "1. PACO (NORMAL)"; print_str();
+        _y = 12; _gp_gen = "2. PURI (EASY)"; print_str();
+
+invalidate_viewport ();
+cpc_UpdateNow (0);
+
+player_sprite_offset = 0;
+while (!cpc_TestKey (KEY_AUX3)) {
+	if (cpc_TestKey (KEY_AUX4)) {
+		player_sprite_offset = 16;		// Exit outter game loop!
+		break;
+	}
+}
+
+// Outer game loop for fake multi - level
 
 gm = 0; outer_game_loop = 1;
 
