@@ -13,9 +13,42 @@ invalidate_viewport ();
 cpc_UpdateNow (0);
 
 player_sprite_offset = 0;
+
+#asm
+    ld  hl, PLAYER_G
+    ld  (_player_gravity_add + 1), hl
+
+    ld  hl, PLAYER_MAX_VY_CAYENDO
+    ld  (_player_gravity_maximum + 1), hl
+
+    ld  hl, PLAYER_MAX_VY_CAYENDO - PLAYER_G
+    ld  (_player_gravity_comp1 + 1), hl
+
+    ld  hl, -PLAYER_INCR_JETPAC
+    ld  (_player_jetpac_increment + 1), hl
+
+    ld  hl, -PLAYER_MAX_VY_JETPAC
+    ld  (_player_jetpac_check_ld + 1), hl
+#endasm
+
 while (!cpc_TestKey (KEY_AUX3)) {
 	if (cpc_TestKey (KEY_AUX4)) {
-		player_sprite_offset = 16;		// Exit outter game loop!
+		#asm
+		    ld  hl, 8
+		    ld  (_player_gravity_add + 1), hl
+
+		    ld  hl, 96
+		    ld  (_player_gravity_maximum + 1), hl
+
+		    ld  hl, 88
+		    ld  (_player_gravity_comp1 + 1), hl
+
+		    ld  hl, -16
+		    ld  (_player_jetpac_increment + 1), hl
+
+		    ld  hl, -96
+		    ld  (_player_jetpac_check_ld + 1), hl
+		#endasm
 		break;
 	}
 }

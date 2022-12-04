@@ -604,3 +604,17 @@ Para puri podemos probar valores más amables:
     p_jetpac = 16;
     p_max_vy_j = 96;
 ```
+
+¿Y si lo hago con código automodificable? Molaría y ocuparía menos. Por ejemplo, para modificar la gravedad:
+
+```c
+    ._player_gravity_add
+        ld  de, PLAYER_G
+```
+
+Haría un...
+
+```c
+    ld  hl, PLAYER_G
+    ld  (_player_gravity_add + 1), hl
+```

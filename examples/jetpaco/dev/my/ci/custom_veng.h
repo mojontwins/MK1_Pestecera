@@ -19,6 +19,7 @@
 		bit 7, h
 		jr  nz, _player_gravity_add 	; < 0
 
+	._player_gravity_comp1
 		ld  de, PLAYER_MAX_VY_CAYENDO - PLAYER_G
 		or  a
 		push hl
@@ -55,9 +56,39 @@
 
 if (cpc_TestKey (KEY_UP)) {
 	#include "my/ci/on_controller_pressed/up.h"
-		
-	p_vy -= PLAYER_INCR_JETPAC;
-	if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
+	
+	#asm
+		// p_vy -= PLAYER_INCR_JETPAC;
+			ld  hl, (_p_vy)
+		._player_jetpac_increment
+			ld  de, -PLAYER_INCR_JETPAC
+			add hl, de
+			ld  (_p_vy), hl
+
+		// if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
+		// Simplifying: if p_vy >= 0 -> do nothing.
+		// If p_vy < 0, consider it unsigned 
+		// Negative numbers if considered positive: -2 < -1 -> 254 < 255
+		// So we can compare as if they were unsigned.
+
+		// Is p_vy positive or negative
+			bit 7, h 
+			jr z, _player_jetpac_check_done
+
+		// Negative, compare as unsigned.
+		._player_jetpac_check_ld
+			ld  de, -PLAYER_MAX_VY_JETPAC
+
+			xor a
+			sbc hl, de 
+
+			jr  nc, _player_jetpac_check_done
+
+			ld  (_p_vy), de
+
+		._player_jetpac_check_done
+
+	#endasm
 
 	#include "my/ci/on_jetpac_boost.h"
 } 

@@ -16,11 +16,19 @@ unsigned char outer_game_loop;
 	unsigned char *level_str = "LEVEL 0X";
 #endif
 
-// Variables to control GM (game mode) for level A, B or C
-// These arrays & gm will be used from before_game.h
-
+// Paco / Puri sutff
 // 0 for paco, 16 for puri
 unsigned char player_sprite_offset = 16;
+
+unsigned int p_g;
+unsigned int p_max_vy_g;
+unsigned int p_g_minus_max_vy_g;
+
+unsigned int p_jetpac;
+unsigned int p_max_vy_j;
+
+// Variables to control GM (game mode) for level A, B or C
+// These arrays & gm will be used from before_game.h
 
 #define GM_PROPELLERS_LEVEL   0
 #define GM_ESTRUJATORS_LEVEL  1
