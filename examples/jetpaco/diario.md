@@ -618,3 +618,10 @@ Haría un...
     ld  hl, PLAYER_G
     ld  (_player_gravity_add + 1), hl
 ```
+
+Y así con todos, mucho mejor.
+
+## Problema con los estrujadores
+
+Ahora los estrujadores tienen comportamiento 1 para que maten, pero eso da problemas de jugabilidad porque el 1 además de matar te hace rebotar. Lo que voy a hacer es ponerles comportamiento 2 y luego chequear colisión del centro del player con ellos en `player_center_checks.h`.
+

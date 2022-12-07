@@ -1105,6 +1105,8 @@ unsigned char player_move (void) {
 			ld  (_rdb), a
 	#endasm
 
+	#include "my/ci/player_center_checks.h"
+
 	// Special tiles
 	if (rdb & 128) {
 		#include "my/ci/on_special_tile.h"

@@ -54,7 +54,7 @@
 	._player_gravity_p_gotten_done
 #endasm
 
-if (cpc_TestKey (KEY_UP)) {
+if (cpc_TestKey (KEY_UP) || cpc_TestKey (KEY_BUTTON_A)) {
 	#include "my/ci/on_controller_pressed/up.h"
 	
 	#asm

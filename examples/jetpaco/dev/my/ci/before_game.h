@@ -6,8 +6,8 @@
 
 blackout_area ();
 
-_x = 8; _y = 11; _gp_gen = "1. PACO (NORMAL)"; print_str();
-        _y = 12; _gp_gen = "2. PURI (EASY)"; print_str();
+_x = 8; _y = 11; _gp_gen = "1. PACO (GAME A)"; print_str();
+        _y = 12; _gp_gen = "2. PURI (GAME B)"; print_str();
 
 invalidate_viewport ();
 cpc_UpdateNow (0);
@@ -33,8 +33,10 @@ player_sprite_offset = 0;
 
 while (!cpc_TestKey (KEY_AUX3)) {
 	if (cpc_TestKey (KEY_AUX4)) {
+		player_sprite_offset = 16;
+
 		#asm
-		    ld  hl, 8
+		    ld  hl, 6
 		    ld  (_player_gravity_add + 1), hl
 
 		    ld  hl, 96
