@@ -266,22 +266,10 @@ void enems_move (void) {
 	tocado = p_gotten = ptgmx = ptgmy = 0;
 
 	for (enit = 0; enit < MAX_ENEMS; enit ++) {
-		/*
+		
 		active = 0;
 		enoffsmasi = enoffs + enit;
-		*/
-
-		#asm
-				xor a 
-				ld  (_active), a 
-
-				ld  a, (_enit)
-				ld  c, a 
-				ld  a, (_enoffs)
-				add c 
-				ld  (_enoffsmasi), a
-		#endasm
-
+		
 		// Copy array values to temporary variables as fast as possible
 		
 		#asm
