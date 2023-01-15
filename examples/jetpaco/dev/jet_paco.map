@@ -1,5 +1,5 @@
-DEFINED_CRT_ORG_CODE            = $0001 ; const, local, , cpc_crt0, , C:/Users/na_th_an/AppData/Local/Temp/zcc00000DB43FA84/zcc_opt.def:3
-CRT_ORG_CODE                    = $0400 ; const, local, , cpc_crt0, , C:/Users/na_th_an/AppData/Local/Temp/zcc00000DB43FA84/zcc_opt.def:4
+DEFINED_CRT_ORG_CODE            = $0001 ; const, local, , cpc_crt0, , C:/Users/na_th_an/AppData/Local/Temp/zcc0000146C40754/zcc_opt.def:3
+CRT_ORG_CODE                    = $0400 ; const, local, , cpc_crt0, , C:/Users/na_th_an/AppData/Local/Temp/zcc0000146C40754/zcc_opt.def:4
 start                           = $0400 ; addr, local, , cpc_crt0, , crt.asm:7
 T_WIDTH                         = $0020 ; const, local, , tilemap_conf_asm, , tilemap_conf.asm:66
 T_HEIGHT                        = $0018 ; const, local, , tilemap_conf_asm, , tilemap_conf.asm:67
