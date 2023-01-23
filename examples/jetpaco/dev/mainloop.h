@@ -85,9 +85,9 @@ void main (void) {
 	#endasm
 
 	#ifndef OR_SPRITES
-	// Decompress LUT in place
+		// Decompress LUT in place
 
-	unpack ((unsigned int) (trpixlutc), BASE_LUT);
+		unpack ((unsigned int) (trpixlutc), BASE_LUT);
 	#endif
 
 	blackout ();

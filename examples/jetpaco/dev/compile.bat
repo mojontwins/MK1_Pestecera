@@ -39,22 +39,28 @@ echo Importando GFX
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=sprites in=..\gfx\sprites_humo.png out=..\bin\sprites_humo.bin metasize=1,1 silent > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
-..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal_ending.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
-..\..\..\src\utils\apack.exe ..\bin\title.bin ..\bin\titlec.bin > nul
-..\..\..\src\utils\apack.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
-..\..\..\src\utils\apack.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\cuts.png out=..\bin\cuts.bin silent > nul
+
+del ..\bin\*c.bin >nul
+..\..\..\src\utils\zx0.exe ..\bin\title.bin ..\bin\titlec.bin > nul
+..\..\..\src\utils\zx0.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
+..\..\..\src\utils\zx0.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+..\..\..\src\utils\zx0.exe ..\bin\cuts.bin ..\bin\cutsc.bin > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal1.png prefix=my_inks1 out=assets\pal1.h silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal2.png prefix=my_inks2 out=assets\pal2.h silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal_ending.png prefix=my_inks_ending out=assets\pal_ending.h silent > nul
 
 if [%1]==[justassets] goto :end
 
 :compile
 echo Generating LUTs
 ..\..\..\src\utils\pasmo.exe assets\cpc_TrPixLutM%cpc_gfx_mode%.asm assets\trpixlut.bin
-..\..\..\src\utils\apultra.exe assets\trpixlut.bin assets\trpixlutc.bin
+del assets\trpixlutc.bin
+..\..\..\src\utils\zx0.exe assets\trpixlut.bin assets\trpixlutc.bin > nul
 ..\..\..\src\utils\wyzTrackerParser.exe ..\mus\instrumentos.asm my\wyz\instrumentos.h
 echo Compilando guego
 del %game%.bin > nul

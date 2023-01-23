@@ -9,10 +9,17 @@ blackout_area ();
 _x = 8; _y = 11; _gp_gen = "1. PACO (GAME A)"; print_str();
         _y = 12; _gp_gen = "2. PURI (GAME B)"; print_str();
 
-invalidate_viewport ();
+#asm
+		ld  bc, 0x0000 	// From 0, 0
+		ld  de, 0x171F  // To 23, 31
+		
+		call cpc_InvalidateRect
+#endasm
 cpc_UpdateNow (0);
 
 player_sprite_offset = 0;
+
+// Punch the values directly inside the routine:
 
 #asm
     ld  hl, PLAYER_G
@@ -61,12 +68,26 @@ gm = 0; outer_game_loop = 1;
 
 while (outer_game_loop) {
 
-	hotspots_offset = gm_hotspots_offset [gm];
-	pal_set (gm_palette [gm]);
-
+	hotspots_offset = gm_hotspots_offset [gm];	
 	gm_ts = gm_ts_list [gm];
 
-	blackout_area ();	
+	blackout ();
+	pal_set (my_inks);
+
+	// Cutscene
+	unpack ((unsigned int) (s_cuts), BASE_SUPERBUFF);
+
+	_x = 6; _y = 14; _gp_gen = cuts_line1 [gm]; print_str ();
+	        _y = 16; _gp_gen = cuts_line2 [gm]; print_str ();
+
+	show_buffer_and_tiles ();
+
+	espera_activa (5000);
+
+	// Frame & hud
+	unpack ((unsigned int) (s_frame), BASE_SUPERBUFF);
+	draw_hud ();	
+
 	level_str [7] = 49 + gm;
 	_x = 12; _y = 12; _gp_gen = level_str; print_str ();
 	
@@ -89,15 +110,18 @@ while (outer_game_loop) {
 			call cpc_UpdTileTable
 	#endasm
 
-	invalidate_viewport ();
-	cpc_UpdateNow (0);
+	blackout ();
+	pal_set (gm_palette [gm]);
+	show_buffer_and_tiles ();
 
 	AY_PLAY_SOUND (1);
 	espera_activa (100);
 
+	/*
 	blackout_area ();
 	invalidate_viewport ();
 	cpc_UpdateNow (0);
+	*/
 
 	// This while is closed in `my/ci/after_game.h`.
 	// Constructs to exit this loop are found in game_over () and game_ending () @ my/fixed_screens.h

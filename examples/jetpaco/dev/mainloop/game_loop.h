@@ -171,7 +171,7 @@
 			}
 		#endif
 
-		#include "mainloop/hud.h"
+		draw_hud ();
 
 		/*
 		maincounter ++;

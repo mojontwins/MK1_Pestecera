@@ -6,6 +6,10 @@
 #include "assets/pal1.h"
 #include "assets/pal2.h"
 
+// Ending also has a different palette
+
+#include "assets/pal_ending.h"
+
 // This variable will control the custom outter game loop.
 
 unsigned char outer_game_loop;
@@ -113,4 +117,33 @@ unsigned char jumo_y;
 unsigned char jumo_fr;
 unsigned char jumo_ct;
 
+// Chac chac plugin for estrujators
+
 #include "plugins/plugin_chac_chacs.h"	
+
+// Cutscene bitmap
+
+extern unsigned char s_cuts [0];
+#asm
+	._s_cuts
+		BINARY "../bin/cutsc.bin"
+#endasm
+
+// Cutscene texts
+unsigned char cuts_line1_0 [] = "LOST IN SPACE...";
+unsigned char cuts_line2_0 [] = "IN THIS ORGANIC BASE";
+unsigned char cuts_line1_1 [] = "YOU BETTER RUSH";
+unsigned char cuts_line2_1 [] = "OR YOU'LL GET CRUSHED!";
+unsigned char cuts_line1_2 [] = "THIS LOOKS FAMILIAR";
+unsigned char cuts_line2_2 [] = "M.T. ARE SO CHEAP!";
+
+unsigned char *cuts_line1 [] = { cuts_line1_0, cuts_line1_1, cuts_line1_2 };
+unsigned char *cuts_line2 [] = { cuts_line2_0, cuts_line2_1, cuts_line2_2 };
+
+// Frame bitmap - include by hand as we are showing it in a custom way
+
+extern unsigned char s_frame [0];
+#asm
+	._s_frame
+		BINARY "../bin/marcoc.bin"
+#endasm

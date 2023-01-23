@@ -50,6 +50,9 @@ void simple_coco_init (void);
 void simple_coco_shoot (void);
 void simple_coco_update (void);
 
+// hud.h
+void draw_hud (void);
+
 // Main
 
 // 128k.h

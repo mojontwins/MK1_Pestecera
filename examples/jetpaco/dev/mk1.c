@@ -45,7 +45,13 @@
 #endif
 
 #include "assets/ay_fx_numbers.h"
-#include "aplib.h"
+
+#ifdef USE_ZX0
+	#include "zx0.h"
+#else
+	#include "aplib.h"
+#endif
+
 #include "pantallas.h"
 #include "assets/pal.h"
 
@@ -108,4 +114,5 @@
 #endif
 
 #include "my/title_screen.h"
+#include "mainloop/hud.h"
 #include "mainloop.h"

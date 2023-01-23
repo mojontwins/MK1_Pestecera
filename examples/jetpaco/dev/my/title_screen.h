@@ -11,10 +11,17 @@ void title_screen (void) {
 	#else		
 		unpack ((unsigned int) (s_title), BASE_SUPERBUFF);
 	#endif
-			
-	cpc_ShowTileMap (1);
-	_x = 13; _y = 13; _gp_gen = "1 POQA"; print_str ();
-			 _y = 14; _gp_gen = "2 STICK"; print_str ();
+	
+	_x = 10; _y = 7; _gp_gen = "SUPER SPECIAL"; print_str ();
+	_x = 11; _y = 8; _gp_gen = "SPACE AGENT"; print_str ();
+
+	_x = 17; _y = 13; _gp_gen = "1. POQA"; print_str ();
+	         _y = 14; _gp_gen = "2. JOYSTICK"; print_str ();
+
+	_x = 5; _y = 19; _gp_gen = "@ 2023 THE MOJON TWINS"; print_str ();
+	_x = 7; _y = 20; _gp_gen = "MOJONTWINS.ITCH.IO"; print_str ();
+
+	show_buffer_and_tiles ();
 
 	#ifdef MUSIC_TITLE
 		AY_PLAY_MUSIC (MUSIC_TITLE)

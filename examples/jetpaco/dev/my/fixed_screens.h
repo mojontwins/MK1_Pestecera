@@ -36,18 +36,26 @@ void game_ending (void) {
 	
 	if (gm == 3) {
 		blackout ();
+
+		// Switch palette
+		pal_set (my_inks_ending);
+
 		#ifdef MODE_128K
 			// Resource 2 = ending
 			get_resource (ENDING_BIN, BASE_SUPERBUFF);
 		#else
 			unpack ((unsigned int) (s_ending), BASE_SUPERBUFF);
 		#endif
-		cpc_ShowTileMap (1);
+		
+		_x = 4; _y = 12; _gp_gen = "FUEL TANKS REPLENISHED"; print_str ();
+		_x = 3; _y = 14; _gp_gen = "ON TO THE NEXT ADVENTURE"; print_str ();
+
+		show_buffer_and_tiles ();
 		
 		#ifdef MUSIC_ENDING
 			AY_PLAY_MUSIC (MUSIC_ENDING)
 		#endif
-		espera_activa (500);
+		espera_activa (22222);
 		#ifdef MUSIC_ENDING
 			AY_STOP_SOUND ();
 		#endif
