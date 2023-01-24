@@ -38,11 +38,11 @@
 	#define CHAC_CHAC_MAX_STATES 6
 
 	unsigned char chac_chac_initial_times [] = {
-		12, 25, 50
+		20, 30, 55
 	};
 
 	unsigned char chac_chac_times [] = {
-		0, 1, 1, 50, 8, 8
+		0, 1, 1, 50, 9, 10
 	};
 
 	unsigned char chac_chac_t1 [] = {

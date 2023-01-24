@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cut",
+				"cuts_line1_1\tabc"
+			],
+			[
 				"PLAYER_MAX_",
 				"PLAYER_MAX_VY_CAYENDO\t(player.h)"
 			],
@@ -510,57 +514,67 @@
 			[
 				"bedewo",
 				"bedework_client"
-			],
-			[
-				"allow",
-				"allow_report"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "examples/jetpaco/dev/engine/player.h",
-			"settings":
-			{
-				"buffer_size": 28693,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "examples/jetpaco/dev/my/ci/custom_veng.h",
-			"settings":
-			{
-				"buffer_size": 1959,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "examples/jetpaco/dev/my/ci/before_game.h",
 			"settings":
 			{
-				"buffer_size": 1991,
+				"buffer_size": 2492,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/jetpaco/diario.md",
+			"file": "examples/balowwwn/dev/printer.h",
 			"settings":
 			{
-				"buffer_size": 26641,
+				"buffer_size": 11726,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/my/title_screen.h",
+			"settings":
+			{
+				"buffer_size": 1067,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "examples/jetpaco/dev/my/ci/extra_vars.h",
+			"file": "examples/jetpaco/dev/pantallas.h",
 			"settings":
 			{
-				"buffer_size": 3064,
+				"buffer_size": 844,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/my/level_screen.h",
+			"settings":
+			{
+				"buffer_size": 502,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/my/fixed_screens.h",
+			"settings":
+			{
+				"buffer_size": 2788,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/jetpaco/dev/my/ci/extra_functions.h",
+			"settings":
+			{
+				"buffer_size": 449,
 				"line_ending": "Windows"
 			}
 		}
@@ -653,24 +667,52 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/MK1_Pestecera",
-		"/C/git/MK1_Pestecera/docs",
-		"/C/git/MK1_Pestecera/examples",
-		"/C/git/MK1_Pestecera/examples/jetpaco",
-		"/C/git/MK1_Pestecera/examples/jetpaco/dev",
-		"/C/git/MK1_Pestecera/examples/jetpaco/dev/my",
-		"/C/git/MK1_Pestecera/examples/jetpaco/dev/my/ci",
-		"/C/git/MK1_Pestecera/wip",
-		"/C/git/MK1_Pestecera/wip/fred",
-		"/C/git/MK1_Pestecera/wip/fred/dev",
-		"/C/git/MK1_Pestecera/wip/fred/dev/assets",
-		"/C/git/MK1_Pestecera/wip/fred/dev/engine",
-		"/C/git/MK1_Pestecera/wip/fred/dev/my",
-		"/C/git/MK1_Pestecera/wip/fred/dev/my/ci",
-		"/C/git/MK1_Pestecera/wip/fred/gfx"
+		"/D/git/MK1_Pestecera",
+		"/D/git/MK1_Pestecera/examples",
+		"/D/git/MK1_Pestecera/examples/jetpaco",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/wyz",
+		"/D/git/MK1_Pestecera/examples/jetpaco/gfx",
+		"/D/git/MK1_Pestecera/examples/jetpaco/mus",
+		"/D/git/MK1_Pestecera/lib",
+		"/D/git/MK1_Pestecera/lib/cpcrslib"
 	],
 	"file_history":
 	[
+		"/D/cosas/CPCbasic3/pepsi1.bas",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/title_screen.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/before_game.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/fixed_screens.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/pantallas.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
+		"/D/Proyectos/2023/20230123 - Reserva de Recursos v1.3.0.0 - Mejoras en la administración de Reservas/instrucciones.txt",
+		"/D/git/MK1_Pestecera/examples/balowwwn/dev/printer.h",
+		"/D/git/MK1_Pestecera/lib/cpcrslib/cpcrslib.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/wyz_player.h",
+		"/D/Proyectos/CIs.txt",
+		"/D/git/MK1_Pestecera/examples/jetpaco/mus/compress_songs.bat",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/zx0.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/game_loop.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/hud.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mk1.c",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/after_game.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/printer.h",
+		"/D/git/MK1/games_zx/ramiro4/dev/zx0.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/mainloop/hud.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/mainloop/game_loop.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/prototypes.h",
+		"/D/git/MK1_Pestecera/released/helmet/dev/mk1.c",
+		"/D/git/MK1_Pestecera/released/helmet/dev/prototypes.h",
+		"/D/git/MK1_Pestecera/src/dev/my/ci/extra_vars.h",
+		"/D/git/MK1_Pestecera/src/dev/compile.bat",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine/player.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/custom_veng.h",
+		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
 		"/C/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
 		"/C/git/MK1_Pestecera/wip/fred/dev/my/config.h",
 		"/C/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/before_game.h",
@@ -750,9 +792,6 @@
 		"/D/git/MK1_Pestecera/src/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/my/config.h",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/engine/player.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/diario.md",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_vars.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/config.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/plugins/plugin_chac_chacs.h",
 		"/D/git/MK1_Pestecera/examples/balowwwn/diario.md",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine/enengine.h",
@@ -761,44 +800,14 @@
 		"/C/Users/jcastano/AppData/Local/Temp/7zO86B31073/instance.cfg",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO434A67B1/README.txt",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/on_map_tile_decoded.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop/game_loop.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/jet_paco.map",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mk1.c",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/entering_screen.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO0D8024B9/on_wall_broken.h",
 		"/C/Users/jcastano/AppData/Local/Temp/7zO0D866FB9/on_wall_hit.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/map_renderer_t_modification.h",
 		"/D/git/MK1_Pestecera/released/helmet/dev/my/ci/after_game_over.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/before_game.h",
 		"/D/git/MK1_Pestecera/examples/balowwwn/dev/engine/player.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/title_screen.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/fixed_screens.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_functions.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/tilemap_conf.asm",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/after_game.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/mainloop.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_routines.h",
-		"/D/git/MK1_Pestecera/src/utils/src/mapcnv.bas",
-		"/D/git/MK1_Pestecera/examples/jetpaco/mus/compress_songs.bat",
-		"/D/git/MK1_Pestecera/src/dev/tilemap_conf.asm",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/wyz/songs.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/compile.bat",
-		"/D/git/MK1_NES/src/utils/ponedor.bas",
-		"/D/git/MK1_NES/src/utils/gui.bi",
-		"/D/git/tmzx/teletext/utils/gui.bas",
-		"/D/git/MK1_Pestecera/wip/tmmaped/tmmaped.bas",
-		"/D/Proyectos/2022/20220405a - Ficheros v1.8.0.0 - clamav, uidshort, tags, misc/instrucciones.md",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/wyz_player.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/mus/instrumentos.asm",
-		"/D/git/MK1_Pestecera/wip/tmmaped.bas",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/autodefs.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/definitions.h",
-		"/C/Users/jcastano/Downloads/instrucciones.txt",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/assets/enems.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/assets/mapa.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/setenv64.bat",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/tilanim.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/on_special_tile.h"
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/extra_functions.h"
 	],
 	"find":
 	{
@@ -809,6 +818,10 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
+			"D:\\git\\MK1_Pestecera\\released\\helmet",
+			"D:\\git\\MK1_Pestecera\\released\\helmet\\dev",
+			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev\\my",
 			"C:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
 			"C:\\git\\MK1_Pestecera\\wip\\fred",
 			"C:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev\\my",
@@ -865,6 +878,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"level_screen",
+			"blackout_area",
+			"blackout",
+			"ucopyTile",
+			"aplib",
+			"apultra",
+			"3",
+			"hud",
+			"direct_to_play",
+			"hud",
+			"pal_set",
+			"zone_clear",
+			"pal2.h",
 			"p_jetpac_on",
 			"enem_cells",
 			"/on_controller",
@@ -979,20 +1005,7 @@
 			"KEY_AUX1",
 			"pad_read",
 			"update",
-			"KEY_M",
-			"key_m",
-			"blackout",
-			"spr_on",
-			"SW_SPRITES_ALL",
-			"sm_sprptr",
-			"tiles_tocados",
-			"@",
-			"ei",
-			"@",
-			"BF00",
-			"di",
-			"ei",
-			"#"
+			"KEY_M"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1077,144 +1090,95 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "examples/jetpaco/dev/engine/player.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28693,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8658,
-								8658
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6088.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "examples/jetpaco/dev/my/ci/custom_veng.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1959,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1740,
-								1763
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 651.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "examples/jetpaco/dev/my/ci/before_game.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1991,
+						"buffer_size": 2492,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1091,
-								1091
+								303,
+								303
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 210.0,
+						"translation.y": 936.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "examples/jetpaco/diario.md",
+					"buffer": 1,
+					"file": "examples/balowwwn/dev/printer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26641,
+						"buffer_size": 11726,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26579,
-								26638
+								7070,
+								7070
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8960.0,
+						"translation.y": 5612.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "examples/jetpaco/dev/my/ci/extra_vars.h",
+					"buffer": 2,
+					"file": "examples/jetpaco/dev/my/title_screen.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3064,
+						"buffer_size": 1067,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								587,
-								587
+								735,
+								735
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1222,9 +1186,142 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "examples/jetpaco/dev/pantallas.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 844,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								499,
+								499
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "examples/jetpaco/dev/my/level_screen.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								502,
+								502
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "examples/jetpaco/dev/my/fixed_screens.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								531,
+								531
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "examples/jetpaco/dev/my/ci/extra_functions.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								112
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -1245,11 +1342,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1309,7 +1413,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
