@@ -612,11 +612,12 @@
 		"/D/git/MK1_Pestecera/examples",
 		"/D/git/MK1_Pestecera/examples/jetpaco",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/engine",
-		"/D/git/MK1_Pestecera/examples/jetpaco/gfx",
-		"/D/git/MK1_Pestecera/examples/jetpaco/mus",
-		"/D/git/MK1_Pestecera/lib",
-		"/D/git/MK1_Pestecera/lib/cpcrslib"
+		"/D/git/MK1_Pestecera/examples/jetpaco/dev/assets",
+		"/D/git/MK1_Pestecera/released",
+		"/D/git/MK1_Pestecera/released/jetpaco",
+		"/D/git/MK1_Pestecera/released/jetpaco/dev",
+		"/D/git/MK1_Pestecera/released/jetpaco/dev/assets",
+		"/D/git/MK1_Pestecera/released/jetpaco/enems"
 	],
 	"file_history":
 	[
@@ -751,7 +752,7 @@
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
