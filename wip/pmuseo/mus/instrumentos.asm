@@ -1,0 +1,39 @@
+
+; Tabla de instrumentos
+TABLA_PAUTAS: DW PAUTA_0,PAUTA_1,PAUTA_2,PAUTA_3,PAUTA_4,PAUTA_5
+
+; Tabla de efectos
+TABLA_SONIDOS: DW SONIDO0,SONIDO1,SONIDO2,SONIDO3
+
+;Pautas (instrumentos)
+;Instrumento 'Piano'
+PAUTA_0:	DB	47,0,15,0,13,0,11,0,4,0,129
+;Instrumento 'PICC'
+PAUTA_1:	DB	76,0,13,0,12,0,11,0,10,0,8,0,7,0,5,0,1,0,129
+;Instrumento 'Flauta vol bajo'
+PAUTA_2:	DB	12,0,9,0,7,0,9,0,11,0,9,0,10,0,10,0,8,0,10,0,129
+;Instrumento 'Flauta'
+PAUTA_3:	DB	10,0,12,0,13,0,13,0,13,0,12,0,11,0,11,0,11,0,10,0,10,0,10,0,10,0,10,0,9,0,9,0,9,0,9,0,9,0,138
+;Instrumento 'Picc vol 2'
+PAUTA_4:	DB	71,0,6,0,7,0,6,0,5,0,129
+;Instrumento 'Eco'
+PAUTA_5:	DB	6,0,8,0,9,0,8,0,7,0,6,0,129
+
+;Efectos
+;Efecto 'bass drum'
+SONIDO0:	DB	209,62,0,186,92,0,255
+;Efecto 'drum'
+SONIDO1:	DB	139,46,0,232,43,8,255
+;Efecto 'hithat'
+SONIDO2:	DB	0,11,1,0,6,1,255
+;Efecto 'bass drum vol 2'
+SONIDO3:	DB	186,58,0,0,102,0,162,131,0,255
+
+;Frecuencias para las notas
+DATOS_NOTAS: DW 0,0
+DW 964,910,859,811,766,722,682,644,608,573
+DW 541,511,482,455,430,405,383,361,341,322
+DW 304,287,271,255,241,228,215,203,191,180
+DW 170,161,152,143,135,128,121,114,107,101
+DW 96,90,85,81,76,72,68,64,60,57
+DW 54,51,48,45,43,40,38,36,34,32
