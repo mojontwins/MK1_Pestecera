@@ -15,7 +15,7 @@ Give credit where credit is due:
 * **WYZ Tracker 2** by **Augusto Ruiz** - [link](https://github.com/AugustoRuiz/WYZTracker).
 * **TinyTape** by **CNGsoft**.
 * **cpctbin2sna** and **cpc2cdt** from [CPCtelera](http://lronaldo.github.io/cpctelera/) by **Fran Gallego** & others.
-* **ZX7** by **Einar Saukas**.
+* **ZX7** & **ZX0** by **Einar Saukas**.
 
 Very, very special thanks to many contributors over twitter, greets to **Néstor Sancho** (@NestorSancho), **Miloš Bazelides** (@baze3SC), **Peter Helcmanovsky** (@ped7g), **Jorge PM** (@TrueVideo99), 
 **Juan** (@reidrac).
