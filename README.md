@@ -17,8 +17,7 @@ Give credit where credit is due:
 * **cpctbin2sna** and **cpc2cdt** from [CPCtelera](http://lronaldo.github.io/cpctelera/) by **Fran Gallego** & others.
 * **ZX7** by **Einar Saukas**.
 
-Very, very special thanks to many contributors over twitter, greets to **Néstor Sancho** (@NestorSancho), **
-Miloš Bazelides** (@baze3SC), **Peter Helcmanovsky** (@ped7g), **Jorge PM** (@TrueVideo99), 
+Very, very special thanks to many contributors over twitter, greets to **Néstor Sancho** (@NestorSancho), **Miloš Bazelides** (@baze3SC), **Peter Helcmanovsky** (@ped7g), **Jorge PM** (@TrueVideo99), 
 **Juan** (@reidrac).
 
 Did I forget you? Open an issue!
