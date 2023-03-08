@@ -50,6 +50,7 @@
 		// Entering game
 		run_script (2 * MAP_W * MAP_H);
 	#endif
+
 	#include "my/ci/entering_game.h"
 	
 	#ifdef PLAYER_STEPS_ON_ENEMIES 	
