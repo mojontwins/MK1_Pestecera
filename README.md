@@ -2,7 +2,7 @@
 
 MK1 for Pestecé
 
-**NOT READY YET**...
+This product is still lacking proper documentation, but most of [this](https://github.com/mojontwins/MK1/tree/master/docs) applies, and you can find some CPC specific documents in the doc folder.
 
 ## Credits
 
