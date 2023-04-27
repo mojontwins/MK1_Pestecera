@@ -519,6 +519,33 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "Searching 127 files for \"unpack\"\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\aplib.h:\n  153  #else\n  154  \n  155: \tvoid unpack (unsigned int address, unsigned int destination) {\n  156  \t\tram_address = address; ram_destination = destination;\n  157  \t\t#asm\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\assets\\levels.h:\n   66  \n   67  extern unsigned char mapa [0];\n   68: #ifdef UNPACKED_MAP\n   69  \t#asm\n   70  \t\t._mapa defs MAP_W * MAP_H * 150\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\engine.h:\n  152  \t\t\t\t\tcall qtile_do\n  153  \t\t\t\t\tld  a, l\n  154: \t\t\t\t#ifndef UNPACKED_MAP\n  155  \t\t\t\t\tand 15\n  156  \t\t\t\t#endif\n  ...\n  259  \t\t\t\t\tcall qtile_do\n  260  \t\t\t\t\tld  a, l\n  261: \t\t\t\t\t#ifndef UNPACKED_MAP\n  262  \t\t\t\t\t\tand 15\n  263  \t\t\t\t\t#endif\n  ...\n  350  \n  351  void draw_scr_background (void) {\n  352: \t#ifdef UNPACKED_MAP\n  353  \t\tmap_pointer = mapa + (n_pant * 150);\n  354  \t#else\n  ...\n  366  \t#else\n  367  \t\tfor (gpit = 0; gpit < 150; ++ gpit) {\t\n  368: \t\t\t#ifdef UNPACKED_MAP\n  369: \t\t\t\t// Mapa tipo UNPACKED\n  370  \t\t\t\t/*\n  371  \t\t\t\t_t = *map_pointer ++;\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\engine\\c_levels.h:\n   19  \t\t#endif\n   20  \t#else\n   21: \t\tunpack ((unsigned int) levels [level].c_map_bolts, (unsigned int) (mapa));\n   22  \t\t#ifdef PER_LEVEL_TILESET\n   23: \t\t\tunpack ((unsigned int) levels [level].c_tileset, (unsigned int) (tspatterns));\n   24  \t\t#endif\n   25: \t\tunpack ((unsigned int) levels [level].c_enems_hotspots, (unsigned int) (malotes));\n   26: \t\tunpack ((unsigned int) levels [level].c_behs, (unsigned int) (behs));\n   27  \n   28  \t\t#ifdef PER_LEVEL_SPRITESET\n   29: \t\t\tunpack ((unsigned int) levels [level].c_sprites, (unsigned int) (sprites + 16));\n   30  \t\t#endif\n   31  \n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\jet_paco.map:\n  618  _player_kill                    = $6A45 ; addr, public, , mk1_c, code_compiler, engine/player.h::player_kill::0::89:1491\n  619  _draw_hud                       = $8088 ; addr, public, , mk1_c, code_compiler, mainloop/hud.h::draw_hud::0::125:6\n  620: _unpack                         = $391A ; addr, public, , mk1_c, code_compiler, zx0.h::unpack::0::0:76\n  621  _game_ending                    = $6035 ; addr, public, , mk1_c, code_compiler, my/fixed_screens.h::game_ending::0::39:32\n  622  _game_over                      = $60A2 ; addr, public, , mk1_c, code_compiler, my/fixed_screens.h::game_over::0::41:67\n  ...\n  786  _ram_address                    = $889F ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::154:118\n  787  _ram_destination                = $88A1 ; addr, public, , mk1_c, bss_compiler, mk1.c::main::0::154:118\n  788: _s_title                        = $3935 ; addr, public, , mk1_c, code_compiler, pantallas.h::unpack::0::1:13\n  789: _s_marco                        = $3BAF ; addr, public, , mk1_c, code_compiler, pantallas.h::unpack::0::1:13\n  790: _s_ending                       = $3BAF ; addr, public, , mk1_c, code_compiler, pantallas.h::unpack::0::1:23\n  791  _show_buffer_and_tiles          = $40DC ; addr, public, , mk1_c, code_compiler, pantallas.h::show_buffer_and_tiles::0::2:53\n  792  _my_inks                        = $869B ; addr, public, , mk1_c, rodata_compiler, assets/pal.h::show_buffer_and_tiles::0::3:5\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\mainloop.h:\n   88  \t\t// Decompress LUT in place\n   89  \n   90: \t\tunpack ((unsigned int) (trpixlutc), BASE_LUT);\n   91  \t#endif\n   92  \n   ..\n  230  \t\t\t\t\tget_resource (MARCO_BIN, BASE_SUPERBUFF);\n  231  \t\t\t\t#else\t\t\n  232: \t\t\t\t\tunpack ((unsigned int) (s_marco), BASE_SUPERBUFF);\t\t\t\t\n  233  \t\t\t\t#endif\n  234  \t\t\t\tcpc_ShowTileMap (1);\t\t\t\t\t\t\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\my\\ci\\before_game.h:\n   76  \n   77  \t// Cutscene\n   78: \tunpack ((unsigned int) (s_cuts), BASE_SUPERBUFF);\n   79  \n   80  \t_x = 6; _y = 14; _gp_gen = cuts_line1 [gm]; print_str ();\n   ..\n   86  \n   87  \t// Frame & hud\n   88: \tunpack ((unsigned int) (s_frame), BASE_SUPERBUFF);\n   89  \tdraw_hud ();\t\n   90  \n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\my\\config.h:\n  318  //#define USE_AUTO_SHADOWS\t\t\t\t\t// Automatic shadows made of darker attributes\n  319  //#define USE_AUTO_TILE_SHADOWS \t\t\t// Automatic shadows using specially defined tiles 32-47.\n  320: //#define UNPACKED_MAP\t\t\t\t\t\t// Full, uncompressed maps. Shadows settings are ignored.\n  321  //#define PACKED_MAP_ALT_TILE \t\t19\t\t// If defined, in 16 tiles mode, alt tile (default 19)\n  322  \n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\my\\fixed_screens.h:\n   45  \t\t\tget_resource (ENDING_BIN, BASE_SUPERBUFF);\n   46  \t\t#else\n   47: \t\t\tunpack ((unsigned int) (s_ending), BASE_SUPERBUFF);\n   48  \t\t#endif\n   49  \t\t\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\my\\title_screen.h:\n   10  \t\tget_resource (TITLE_BIN, BASE_SUPERBUFF);\n   11  \t#else\t\t\n   12: \t\tunpack ((unsigned int) (s_title), BASE_SUPERBUFF);\n   13  \t#endif\n   14  \t\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\prototypes.h:\n   61  // aplib.h\n   62  void get_resource (unsigned char n, unsigned int destination);\n   63: void unpack (unsigned int address, unsigned int destination);\n   64  \n   65  // beeper.h\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\wyz_player.h:\n   14  \n   15  void __FASTCALL__ wyz_play_music (unsigned char m) {\n   16: \tunpack ((unsigned int) (wyz_songs [m]), (unsigned int) (WYZ_SONG_BUFFER));\n   17  \t#asm\n   18  \t\tld  a, 0\n\nD:\\git\\MK1_Pestecera\\released\\jetpaco\\dev\\zx0.h:\n   72  #endasm\n   73  \n   74: void unpack (unsigned int address, unsigned int destination) {\n   75  \tram_address = address; ram_destination = destination;\n   76  \t#asm\n\n27 matches across 13 files\n",
+			"settings":
+			{
+				"buffer_size": 5540,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "released/jetpaco/dev/mainloop.h",
+			"settings":
+			{
+				"buffer_size": 4898,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "released/jetpaco/dev/mainloop/game_loop.h",
+			"settings":
+			{
+				"buffer_size": 6627,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -610,17 +637,17 @@
 	[
 		"/D/git/MK1_Pestecera",
 		"/D/git/MK1_Pestecera/examples",
-		"/D/git/MK1_Pestecera/examples/jetpaco",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/assets",
 		"/D/git/MK1_Pestecera/released",
 		"/D/git/MK1_Pestecera/released/jetpaco",
 		"/D/git/MK1_Pestecera/released/jetpaco/dev",
-		"/D/git/MK1_Pestecera/released/jetpaco/dev/assets",
+		"/D/git/MK1_Pestecera/released/jetpaco/dev/mainloop",
 		"/D/git/MK1_Pestecera/released/jetpaco/enems"
 	],
 	"file_history":
 	[
+		"/D/git/MK1_Pestecera/released/jetpaco/dev/engine/update.h",
+		"/D/git/MK1_Pestecera/released/jetpaco/dev/mainloop.h",
+		"/D/git/MK1_Pestecera/released/jetpaco/dev/printer.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/before_game.h",
 		"/D/git/MK1_Pestecera/examples/balowwwn/dev/printer.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/title_screen.h",
@@ -745,10 +772,7 @@
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/on_map_tile_decoded.h",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/jet_paco.map",
 		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/entering_screen.h",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO0D8024B9/on_wall_broken.h",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO0D866FB9/on_wall_hit.h",
-		"/D/git/MK1_Pestecera/examples/jetpaco/dev/my/ci/map_renderer_t_modification.h",
-		"/D/git/MK1_Pestecera/released/helmet/dev/my/ci/after_game_over.h"
+		"/C/Users/jcastano/AppData/Local/Temp/7zO0D8024B9/on_wall_broken.h"
 	],
 	"find":
 	{
@@ -759,6 +783,7 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\MK1_Pestecera\\released\\jetpaco\\dev",
 			"D:\\git\\MK1_Pestecera\\examples",
 			"D:\\git\\MK1_Pestecera\\examples\\jetpaco\\dev",
 			"D:\\git\\MK1_Pestecera\\released\\helmet",
@@ -820,6 +845,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"unpack",
+			"depack",
+			"cpc_UpdateNow",
 			"gm_music_ingame",
 			"level_screen",
 			"blackout_area",
@@ -944,10 +972,7 @@
 			"clear_sprites",
 			"generatestraitmappings",
 			"sm_sprptr",
-			"trpixlutc",
-			"KEY_AUX1",
-			"pad_read",
-			"update"
+			"trpixlutc"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1032,8 +1057,226 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5540,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										119,
+										125
+									],
+									[
+										374,
+										380
+									],
+									[
+										560,
+										566
+									],
+									[
+										683,
+										689
+									],
+									[
+										805,
+										811
+									],
+									[
+										963,
+										969
+									],
+									[
+										1000,
+										1006
+									],
+									[
+										1157,
+										1163
+									],
+									[
+										1276,
+										1282
+									],
+									[
+										1380,
+										1386
+									],
+									[
+										1472,
+										1478
+									],
+									[
+										1596,
+										1602
+									],
+									[
+										2016,
+										2022
+									],
+									[
+										2102,
+										2108
+									],
+									[
+										2700,
+										2706
+									],
+									[
+										2816,
+										2822
+									],
+									[
+										2932,
+										2938
+									],
+									[
+										3320,
+										3326
+									],
+									[
+										3481,
+										3487
+									],
+									[
+										3692,
+										3698
+									],
+									[
+										3861,
+										3867
+									],
+									[
+										4200,
+										4206
+									],
+									[
+										4523,
+										4529
+									],
+									[
+										4739,
+										4745
+									],
+									[
+										4971,
+										4977
+									],
+									[
+										5188,
+										5194
+									],
+									[
+										5379,
+										5385
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								3527,
+								3527
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 1,
+							"remote_loading": false,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"synced": false,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 468.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "released/jetpaco/dev/mainloop.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3971,
+								3951
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2544.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "released/jetpaco/dev/mainloop/game_loop.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6627,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1280,
+								1280
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 624.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
