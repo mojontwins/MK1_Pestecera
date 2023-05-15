@@ -1,0 +1,11 @@
+- el mapa es un enorme laberinto, la fila de arriba es el exterior (como en el Fred) y tiene 3 entradas/salidas
+- Frida lleva katana
+- hay bloques que hay que romper, la rotura es permanente
+- hay que activar X palancas en el mapa para poder activar una bomba y salir
+- que haya sigilo como en helmet, pero que acabes en una especie de cárcel de la que se sale fácil si tienes X objeto o algo que se nos ocurra
+- líanas de Fred para subir y bajar
+- gráficos muy barrocos en modo 1
+- efecto paleta, pasar a modo oscuro si ocurre algo, en esos momentos se puede hacer X
+- contadores de tiempo: por ejemplo, el del modo oscuro ( puede ser que si nos cargamos un cuadro de luces o algo, te quedes a oscuras 1 minuto y las puertas se abran). Si pones la bomba, tienes 5 minutos para salir
+- Tiene que ser algo medio tecnologico medio medieval, no sé si me explico
+- modo 1 para lucirnos.

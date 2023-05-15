@@ -8,45 +8,66 @@
      
     ; Tabla de instrumentos 
     .TABLA_PAUTAS
-        defw PAUTA_0,PAUTA_1,PAUTA_2,PAUTA_3,PAUTA_4,PAUTA_5 
+        defw PAUTA_0,PAUTA_1,PAUTA_2,PAUTA_3,PAUTA_4,PAUTA_5,0,PAUTA_7,PAUTA_8,PAUTA_9,PAUTA_10,PAUTA_11,PAUTA_12,PAUTA_13,PAUTA_14,PAUTA_15,PAUTA_16 
      
     ; Tabla de efectos 
     .TABLA_SONIDOS
-        defw SONIDO0,SONIDO1,SONIDO2,SONIDO3 
+        defw 0,0,0,0,0,0,0,0,0,SONIDO9 
      
     ;Pautas (instrumentos) 
     ;Instrumento 'Piano' 
     .PAUTA_0
-        defb 47,0,15,0,13,0,11,0,4,0,129 
-    ;Instrumento 'PICC' 
+        defb 6,0,5,0,4,0,3,0,129 
+    ;Instrumento 'Piano Reverb' 
     .PAUTA_1
-        defb 76,0,13,0,12,0,11,0,10,0,8,0,7,0,5,0,1,0,129 
-    ;Instrumento 'Flauta vol bajo' 
+        defb 10,0,11,0,10,0,9,0,8,0,8,0,8,0,8,0,8,0,8,0,7,0,7,0,7,0,7,0,136 
+    ;Instrumento 'Fade In FX' 
     .PAUTA_2
-        defb 12,0,9,0,7,0,9,0,11,0,9,0,10,0,10,0,8,0,10,0,129 
-    ;Instrumento 'Flauta' 
+        defb 2,0,3,0,4,8,4,-1,5,-4,5,20,5,-24,4,4,132 
+    ;Instrumento 'Guitar 1' 
     .PAUTA_3
-        defb 10,0,12,0,13,0,13,0,13,0,12,0,11,0,11,0,11,0,10,0,10,0,10,0,10,0,10,0,9,0,9,0,9,0,9,0,9,0,138 
-    ;Instrumento 'Picc vol 2' 
+        defb 13,0,13,0,11,0,11,0,9,0,8,1,8,1,8,-1,7,-1,7,0,7,0,134 
+    ;Instrumento 'Guitar 2' 
     .PAUTA_4
-        defb 71,0,6,0,7,0,6,0,5,0,129 
-    ;Instrumento 'Eco' 
+        defb 10,0,10,0,9,0,8,0,6,0,5,1,5,0,5,0,5,-1,5,0,5,0,134 
+    ;Instrumento 'Eco guitar' 
     .PAUTA_5
-        defb 6,0,8,0,9,0,8,0,7,0,6,0,129 
+        defb 7,0,7,0,7,0,6,0,6,0,6,0,6,0,6,0,5,0,5,0,5,0,5,0,5,0,4,0,4,0,4,0,4,0,3,0,0,0,129 
+    ;Instrumento 'Solo Guitar' 
+    .PAUTA_7
+        defb 76,0,11,0,11,0,11,0,10,0,9,1,9,0,9,-1,9,0,9,0,9,-1,9,0,9,1,9,0,9,0,138 
+    ;Instrumento 'Eco Solo Guitar' 
+    .PAUTA_8
+        defb 70,0,6,0,6,0,5,0,5,0,5,0,5,0,5,0,4,0,4,0,4,0,4,0,4,0,4,0,3,0,3,0,3,0,3,0,3,0,3,0,2,0,2,0,2,0,1,0,129 
+    ;Instrumento 'Slap Bass' 
+    .PAUTA_9
+        defb 47,2,14,4,13,-4,12,3,11,-5,10,0,129 
+    ;Instrumento 'Robo' 
+    .PAUTA_10
+        defb 13,-1,13,-1,29,11,28,3,28,6,28,7,27,3,27,4,27,15,26,11,26,8,26,6,9,0,25,5,25,7,131 
+    ;Instrumento 'Chip' 
+    .PAUTA_11
+        defb 76,0,13,0,46,0,13,0,12,0,11,0,129 
+    ;Instrumento 'Clipclop' 
+    .PAUTA_12
+        defb 12,0,11,0,10,0,9,0,9,0,9,0,9,0,9,0,8,0,8,0,8,0,8,0,8,0,138 
+    ;Instrumento 'Eco' 
+    .PAUTA_13
+        defb 9,0,8,0,7,0,6,0,129 
+    ;Instrumento 'Harmonica' 
+    .PAUTA_14
+        defb 44,0,13,0,14,0,13,0,12,0,11,0,129 
+    ;Instrumento 'Onda' 
+    .PAUTA_15
+        defb 71,0,7,0,8,0,9,0,8,0,7,0,6,0,3,0,129 
+    ;Instrumento 'Teeth' 
+    .PAUTA_16
+        defb 73,0,10,0,42,0,9,0,8,0,7,0,7,0,7,0,7,0,6,0,6,0,6,0,6,0,136 
      
     ;Efectos 
-    ;Efecto 'bass drum' 
-    .SONIDO0
-        defb 209,62,0,186,92,0,255 
-    ;Efecto 'drum' 
-    .SONIDO1
-        defb 139,46,0,232,43,8,255 
-    ;Efecto 'hithat' 
-    .SONIDO2
-        defb 0,11,1,0,6,1,255 
-    ;Efecto 'bass drum vol 2' 
-    .SONIDO3
-        defb 186,58,0,0,102,0,162,131,0,255 
+    ;Efecto 'Mute' 
+    .SONIDO9
+        defb 0,0,0,255 
      
     ;Frecuencias para las notas 
 #endasm

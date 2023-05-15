@@ -46,3 +46,9 @@ void blackout (void) {
 			jr  nz, bo_l1
 	#endasm
 }
+
+void show_buffer_and_tiles (void) {
+	cpc_UpdScr ();
+	cpc_ShowTileMap (1);
+	cpc_ResetTouchedTiles ();
+}

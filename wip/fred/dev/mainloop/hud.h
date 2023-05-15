@@ -3,6 +3,8 @@
 
 // hud.h - Updates hud
 
+void draw_hud (void) {
+
 	#if !defined DEACTIVATE_OBJECTS && OBJECTS_X != 99
 		if (p_objs != objs_old) {
 			draw_objs ();
@@ -46,3 +48,4 @@
 			timer_old = timer_t;
 		}
 	#endif
+}

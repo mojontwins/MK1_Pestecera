@@ -337,11 +337,13 @@ unsigned char player_move (void) {
 				}
 
 				if (cpc_TestKey (KEY_UP)) {
+					#include "my/ci/on_controller_pressed/up.h"
 					p_facing_v = FACING_UP;
 					if (p_vy > -PLAYER_MAX_VX) p_vy -= PLAYER_AX;
 				}
 
 				if (cpc_TestKey (KEY_DOWN)) {
+					#include "my/ci/on_controller_pressed/down.h"
 					p_facing_v = FACING_DOWN;
 					if (p_vy < PLAYER_MAX_VX) p_vy += PLAYER_AX;
 				}
@@ -355,6 +357,8 @@ unsigned char player_move (void) {
 		#endif
 		{
 			if (cpc_TestKey (KEY_UP)) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				p_vy -= PLAYER_INCR_JETPAC;
 				if (p_vy < -PLAYER_MAX_VY_JETPAC) p_vy = -PLAYER_MAX_VY_JETPAC;
 
@@ -477,7 +481,7 @@ unsigned char player_move (void) {
 			// Greed Optimization tip! Remove this line and uncomment the next one:
 			// (As long as you don't have type 8 blocks over type 4 blocks in your game, the short line is fine)
 			if ((at1 & 8) || (at2 & 8) || ((gpy & 15) < 8 && ((at1 & 4) || (at2 & 4))))
-			//if (((gpy - 1) & 15) < 7 && ((at1 & 12) || (at2 & 12))) {
+			//if (((gpy - 1) & 15) < 7 && ((at1 & 12) || (at2 & 12)))
 		#endif			
 		{
 			#include "my/ci/bg_collision/obstacle_down.h"
@@ -633,6 +637,8 @@ unsigned char player_move (void) {
 			#endif
 
 			if (rda) {
+				#include "my/ci/on_controller_pressed/up.h"
+					
 				#ifdef PLAYER_CUMULATIVE_JUMP
 					if (p_vy >= 0) {
 						if (possee || p_gotten || hit_v) {
@@ -754,6 +760,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_LEFT)) {
+			#include "my/ci/on_controller_pressed/left.h"
+		
 			/*
 			#ifdef PLAYER_GENITAL
 				p_facing_h = FACING_LEFT;
@@ -791,6 +799,8 @@ unsigned char player_move (void) {
 		}
 
 		if (cpc_TestKey (KEY_RIGHT)) {
+			#include "my/ci/on_controller_pressed/right.h"
+
 			/*
 			#ifdef PLAYER_GENITAL	
 				p_facing_h = FACING_RIGHT;
@@ -1095,6 +1105,8 @@ unsigned char player_move (void) {
 			ld  (_rdb), a
 	#endasm
 
+	#include "my/ci/player_center_checks.h"
+
 	// Special tiles
 	if (rdb & 128) {
 		#include "my/ci/on_special_tile.h"
@@ -1110,7 +1122,7 @@ unsigned char player_move (void) {
 				#elif defined (BOUNDING_BOX_8_CENTERED)
 					cy1 = (gpy + 3) >> 4;
 				#else
-					cy1 = (gpy - 1) >> 3;		
+					cy1 = (gpy - 1) >> 4;
 				#endif
 
 				if (attr (cx1, cy1) == 10) {
@@ -1272,6 +1284,7 @@ unsigned char player_move (void) {
 			#else
 				cx1 = (gpx + 16) >> 4;		
 			#endif		
+
 			if (attr (cx1, cy1) == 10) {
 				y0 = y1 = cy1; x0 = cx1; x1 = cx1 + 1;
 				process_tile ();
@@ -1363,7 +1376,6 @@ unsigned char player_move (void) {
 	#ifdef PLAYER_CUSTOM_ANIMATION
 		#include "my/custom_animation.h"
 	#elif defined PLAYER_GENITAL
-		
 		if (p_vx || p_vy) {
 			++ p_subframe;
 			if (p_subframe == 4) {
