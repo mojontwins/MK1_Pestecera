@@ -55,7 +55,7 @@ void bullets_update (void) {
 #ifdef PLAYER_GENITAL
 	// Based upon facing >> 1: RIGHT LEFT UP DOWN
 	signed char _bxo [] = { 12, -4, 8 - PLAYER_BULLET_X_OFFSET, PLAYER_BULLET_X_OFFSET };
-	signed char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, 4, 12};
+	signed char _byo [] = { PLAYER_BULLET_Y_OFFSET, PLAYER_BULLET_Y_OFFSET, -4, 12};
 	signed char _bmxo [] = { PLAYER_BULLET_SPEED, -PLAYER_BULLET_SPEED, 0, 0 };
 	signed char _bmyo [] = { 0, 0, -PLAYER_BULLET_SPEED, PLAYER_BULLET_SPEED };
 #endif

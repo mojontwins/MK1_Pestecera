@@ -64,13 +64,13 @@
 #ifndef COMPRESSED_LEVELS
 	#if defined(PLAYER_STEPS_ON_ENEMIES) || defined (PLAYER_CAN_FIRE)
 		void enems_init (void) {
-			gpint = 0;
-			while (gpint < MAP_W * MAP_H * MAX_ENEMS) {
-				malotes [gpint].t = malotes [gpint].t & 0xEF;	
+			enit = 0;
+			while (enit < MAP_W * MAP_H * MAX_ENEMS) {
+				malotes [enit].t = malotes [enit].t & 0xEF;	// Clear bit 4
 				#ifdef PLAYER_CAN_FIRE
-					malotes [gpint].life = ENEMIES_LIFE_GAUGE;
+					malotes [enit].life = ENEMIES_LIFE_GAUGE;
 				#endif
-				gpint ++;
+				enit ++;
 			}
 		}
 	#endif
@@ -518,9 +518,9 @@ void enems_move (void) {
 									if (p_vy > 0) 
 								#endif
 								{
-								gpy = (_en_y - 16); p_y = gpy << 6;
+									gpy = (_en_y - 16); p_y = gpy << 6;
+								}
 							}
-						}
 						}
 
 						// Vertical moving platforms
@@ -534,8 +534,8 @@ void enems_move (void) {
 								if (p_vy > 0) 
 							#endif
 							{
-							gpy = (_en_y - 16); p_y = gpy << 6;					
-						}
+								gpy = (_en_y - 16); p_y = gpy << 6;					
+							}
 						}
 
 					}

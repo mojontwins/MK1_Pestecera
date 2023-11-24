@@ -24,6 +24,7 @@ void break_wall (void) {
 		gpit = SFX_BREAKABLE_BREAK;
 		#include "my/ci/on_wall_broken.h"
 	}
+
 	++ brk_buff [gpaux];
 	AY_PLAY_SOUND (gpit);
 }

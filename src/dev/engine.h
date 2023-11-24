@@ -179,8 +179,9 @@ void espera_activa (int espera) {
 					jp  nc, push_boxes_end
 			#endasm
 
+			rda = map_buff [COORDS(x1,y1)];
+			
 			#if defined(ACTIVATE_SCRIPTING) && defined(ENABLE_PUSHED_SCRIPTING)
-				rda = map_buff [COORDS(x1,y1)];
 				flags [MOVED_TILE_FLAG] = rda; 
 				flags [MOVED_X_FLAG] = x1;
 				flags [MOVED_Y_FLAG] = y1;
