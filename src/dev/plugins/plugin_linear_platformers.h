@@ -193,7 +193,11 @@ void linear_custom_animation (void) {
 		gpit += 3;
 	}
 
-	sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
+    #ifdef IS_CPC
+    	sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [gpit]);
+    #else
+        p_next_frame = (unsigned char *) (player_cells [gpit]);
+    #endif
 }
 
 void linear_player_respawned (void) {
