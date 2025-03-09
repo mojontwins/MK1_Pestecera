@@ -4,12 +4,15 @@
 extern unsigned char *wyz_songs [0];
 
 #asm
-	._00_title_mus_bin
-		BINARY "../mus/00_title.mus.bin"
+	.title_mus_bin
+		BINARY "../mus/title.mus.bin"
 
-	._01_ingame_mus_bin
-		BINARY "../mus/01_ingame.mus.bin"
+	.ingame_mus_bin
+		BINARY "../mus/ingame.mus.bin"
+
+	.gover_mus_bin
+		BINARY "../mus/gover.mus.bin"
 
 	._wyz_songs
-		defw 	_00_title_mus_bin, _01_ingame_mus_bin
+		defw 	title_mus_bin, ingame_mus_bin, gover_mus_bin
 #endasm

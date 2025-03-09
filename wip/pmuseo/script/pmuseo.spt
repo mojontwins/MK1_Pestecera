@@ -1,5 +1,9 @@
 # Phantomas en el museo CPC MK1v5 (Pestecera)
 
+ENTERING ANY
+	TEXT CULO
+END
+
 # Este script coloca los cinco objetos en el mapa y permite recogerlos
 # El código para cada objeto es exactamente igual. Esta funcionalidad
 # podría añadirse de forma muy compacta en C usando inyección de código,

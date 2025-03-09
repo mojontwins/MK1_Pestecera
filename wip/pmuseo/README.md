@@ -33,3 +33,9 @@ Para programar desde 0 todo el movimiento primero hay que preparar el motor:
 El tema de los objetos se puede hacer de mil formas, por ejemplo usando hotspots custom. Pero vamos a hacerlo mediante scripting por eso de ser didácticos.
 
 
+## Angel -> dudas y mierdas
+
+He puesto el hotspot 3 que es el de recargar energía pero como el tile está ocupado por escenario, sale ese tile.
+
+El enemigo 4 no es una plataforma, es malo, y cuando te pones encima luego no te puedes mover.
+
