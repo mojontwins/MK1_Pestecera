@@ -1,5 +1,5 @@
-// MTE MK1 (la Churrera) v5.0
-// Copyleft 2010-2014, 2020 by the Mojon Twins
+// MTE MK1 (la Churrera) v5.11
+// Copyleft 2010-2014, 2020-2025 by the Mojon Twins
 
 // custom_animation.h
 
@@ -11,4 +11,4 @@
 // frames in your spriteset.
 
 // i.e. 
-// spr_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [0]);
+// sp_sw [SP_PLAYER].sp0 = (int) (sm_sprptr [0]);

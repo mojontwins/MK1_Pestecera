@@ -1,5 +1,5 @@
-// MTE MK1 (la Churrera) v5.0
-// Copyleft 2010-2014, 2020 by the Mojon Twins
+// MTE MK1 (la Churrera) v5.11
+// Copyleft 2010-2014, 2020-2025 by the Mojon Twins
 
 // Config.h
 
@@ -7,7 +7,7 @@
 // I. General configuration
 // ============================================================================
 
-//#define USE_ZX0							// Einar Sauka's ZX0 rather than ol' aplib
+#define USE_ZX0								// Einar Sauka's ZX0 rather than ol' aplib
 
 //#define SOUND_NONE
 #define SOUND_WYZ
