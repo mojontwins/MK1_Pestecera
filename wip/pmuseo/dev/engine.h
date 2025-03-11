@@ -25,6 +25,15 @@ signed int addsign (signed int n, signed int value) {
 	#include "tilanim.h"
 #endif
 
+#ifdef LINE_OF_TEXT
+	extern unsigned char line_of_text_eraser [0];
+	#asm
+		._line_of_text_eraser 
+		defs LINE_OF_TEXT_LETRAS, 32
+		defb 0
+	#endasm
+#endif
+
 void espera_activa (int espera) {
 	while (cpc_AnyKeyPressed ());
 	do {
@@ -543,7 +552,7 @@ void draw_scr (void) {
 
 	#ifdef ACTIVATE_SCRIPTING
 		#if defined LINE_OF_TEXT && !defined LINE_OF_TEXT_NO_AUTOERASE
-			_x = LINE_OF_TEXT_X; _y = LINE_OF_TEXT; _gp_gen = "                              "; print_str ();
+			_x = LINE_OF_TEXT_X; _y = LINE_OF_TEXT; _gp_gen = line_of_text_eraser; print_str ();
 		#endif
 		// Ejecutamos los scripts de entrar en pantalla:
 		run_script (2 * MAP_W * MAP_H + 1); 	// ENTERING ANY
