@@ -198,6 +198,14 @@ void run_script (unsigned char whichs) {
                         // Opcode: 40 sc_n
                         p_objs += read_vbyte ();
                         break;
+                    case 0x50:
+                        // PRINT_TILE_AT (sc_x, sc_y) = sc_n
+                        // Opcode: 50 sc_x sc_y sc_n
+                        readxy ();
+                        _x = sc_x; _y = sc_y; _t = read_vbyte (); 
+                        draw_coloured_tile ();
+                        invalidate_tile ();
+                        break;
                     case 0x51:
                         // SET_FIRE_ZONE x1, y1, x2, y2
                         // Opcode: 51 x1 y1 x2 y2

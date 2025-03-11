@@ -50,7 +50,7 @@
 #define PLAYER_NUM_OBJETOS			5		// Objects to get to finish game
 #define PLAYER_LIFE 				99		// Max and starting life gauge.
 #define PLAYER_REFILL				25		// Life recharge
-#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
+//#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)
 //#define PER_LEVEL_SPRITESET 				// use a different spriteset for each level in 48K
 //#define PER_LEVEL_TILESET 				// use a different tileset for each level
@@ -291,7 +291,7 @@ extern unsigned char def_keys [0];
 
 #define VIEWPORT_X					1		//
 #define VIEWPORT_Y					0		// Viewport character coordinates
-#define LIFE_X						10		//
+#define LIFE_X						9		//
 #define LIFE_Y						21		// Life gauge counter character coordinates
 #define OBJECTS_X					99		//
 #define OBJECTS_Y					99		// Objects counter character coordinates
@@ -310,7 +310,7 @@ extern unsigned char def_keys [0];
 
 #define LINE_OF_TEXT				23		// If defined, scripts can show text @ Y = #
 #define LINE_OF_TEXT_X				8		// X coordinate.
-#define LINE_OF_TEXT_LETRAS			18 		// How many chars max.
+#define LINE_OF_TEXT_LETRAS			19 		// How many chars max.
 //#define LINE_OF_TEXT_NO_AUTOERASE			// Do it yourself
 
 // Graphic FX, uncomment which applies...
