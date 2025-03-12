@@ -13,6 +13,7 @@ void draw_hud (void) {
 	#endif
 
 	#if LIFE_X != 99
+		if (p_life > 99) p_life = 99;
 		if (p_life != life_old) {
 			_x = LIFE_X; _y = LIFE_Y; _t = p_life; print_number2 ();
 			life_old = p_life;
