@@ -215,42 +215,10 @@ void run_script (unsigned char whichs) {
                         fzy2 = read_byte ();
                         f_zone_ac = 1;
                         break;
-                    case 0xE3:
-                        _y = LINE_OF_TEXT; _x = LINE_OF_TEXT_X;
-                       	#asm
-                      			xor a 
-                       			ld  (_rdn), a 		; Strlen
-
-                       			call __tile_address	; DE = buffer address
-
-                       		.msc_print_str_loop
-                       			call _read_byte     ; A <- new byte
-                       			cp  0xEE
-                       			jr  z, msc_print_str_inv 
-
-                       			ld  (de), a
-                       			inc de
-
-                       			ld  a, (_rdn)
-                       			inc a
-                       			ld  (_rdn), a
-
-                       			jr  msc_print_str_loop
-
-                       		.msc_print_str_inv
-
-                       			; Invalidate cells based upon strlen.
-                       			ld  a, (__y)
-                       			ld  b, a
-                       			ld  d, a
-                       			ld  a, (__x)
-                       			ld  c, a
-                       			ld  a, (_rdn)
-                       			add c
-                       			dec a
-                       			ld  e, a
-                       			call cpc_InvalidateRect
-                       	#endasm
+                    case 0xE0:
+                        // SOUND sc_n
+                        // Opcode: E0 sc_n
+                        AY_PLAY_SOUND (read_vbyte ());
                         break;
                     case 0xFF:
                         sc_terminado = 1;

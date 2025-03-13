@@ -4,9 +4,9 @@
 #include "plugins/plugin_linear_platformers.h"
 
 
-unsigned char texto_pant_0 [] = " ZARAGOZA#S NIGHT  ";
-unsigned char texto_pant_1 [] = "RITMO EN EL ESPACIO";
-unsigned char texto_pant_2 [] = "      TERRAZA      ";
+unsigned char texto_pant_0 [] = " ZARAGOZA'S NIGHT  ";
+unsigned char texto_pant_1 [] = " ZARAGOZA'S NIGHT  ";
+unsigned char texto_pant_2 [] = "RITMO EN EL ESPACIO";
 unsigned char texto_pant_3 [] = "      TERRAZA      ";
 unsigned char texto_pant_4 [] = "     GUITARRA      ";
 unsigned char texto_pant_5 [] = "      TERRAZA      ";

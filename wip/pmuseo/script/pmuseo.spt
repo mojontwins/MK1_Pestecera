@@ -1,18 +1,23 @@
 # Phantomas en el museo CPC MK1v5 (Pestecera)
-
-ENTERING ANY
-	IF TRUE
-	THEN
-		TEXT _ZARAGOZA'S_NIGHT__ 
-	END
-END
-
 # Este script coloca los cinco objetos en el mapa y permite recogerlos
 # El código para cada objeto es exactamente igual. Esta funcionalidad
 # podría añadirse de forma muy compacta en C usando inyección de código,
 # pero estamos siendo didácticos.
 
 # Los flags del 1 al 5 representan los objetos.
+
+# Hay que limpiar las flags al entrar en el juego
+
+ENTERING GAME
+        IF TRUE
+        THEN
+            SET FLAG 1 = 0
+			SET FLAG 2 = 0
+			SET FLAG 3 = 0
+			SET FLAG 4 = 0
+			SET FLAG 5 = 0
+        END
+    END
 
 # Objeto número 1
 
@@ -32,6 +37,7 @@ PRESS_FIRE AT SCREEN 4
 		SET_FIRE_ZONE_TILES 15,15,15,15
 		SET FLAG 1 = 1
 		INC OBJECTS 1
+		SOUND 1
 		INC LIFE 25
 		PRINT_TILE_AT (20,21) = 41
 	END
@@ -54,6 +60,7 @@ PRESS_FIRE AT SCREEN 30
 		SET TILE (10,2) = 0
 		SET_FIRE_ZONE_TILES 15,15,15,15
 		SET FLAG 2 = 1
+		SOUND 1
 		INC OBJECTS 1
 		INC LIFE 25
 		PRINT_TILE_AT (22,21) = 42
@@ -77,6 +84,7 @@ PRESS_FIRE AT SCREEN 19
 		SET TILE (4,8) = 0
 		SET_FIRE_ZONE_TILES 15,15,15,15
 		SET FLAG 3 = 1
+		SOUND 1
 		INC OBJECTS 1
 		INC LIFE 25
 		PRINT_TILE_AT (24,21) = 43
@@ -101,6 +109,7 @@ PRESS_FIRE AT SCREEN 14
 		SET_FIRE_ZONE_TILES 15,15,15,15
 		SET FLAG 4 = 1
 		INC OBJECTS 1
+		SOUND 1
 		INC LIFE 25
 		PRINT_TILE_AT (26,21) = 44
 	END
@@ -108,22 +117,23 @@ END
 
 # Objeto número 5
 
-ENTERING SCREEN 1
+ENTERING SCREEN 3
 	IF FLAG 5 = 0
 	THEN
-		SET TILE (12,3) = 45
+		SET TILE (7,3) = 45
 		SET_FIRE_ZONE_TILES 12,3,12,3
 	END
 END
 
-PRESS_FIRE AT SCREEN 1
+PRESS_FIRE AT SCREEN 3
 	IF FLAG 5 = 0
 	IF PLAYER_TOUCHES 12,3
 	THEN
-		SET TILE (12,3) = 0
+		SET TILE (7,3) = 0
 		SET_FIRE_ZONE_TILES 15,15,15,15
 		SET FLAG 5 = 1
 		INC OBJECTS 1
+		SOUND 1
 		INC LIFE 25
 		PRINT_TILE_AT (28,21) = 45
 	END
