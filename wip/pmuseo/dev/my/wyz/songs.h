@@ -7,12 +7,21 @@ extern unsigned char *wyz_songs [0];
 	.title_mus_bin
 		BINARY "../mus/title.mus.bin"
 
-	.ingame_mus_bin
-		BINARY "../mus/ingame.mus.bin"
+	.ingame_a_mus_bin
+		BINARY "../mus/ingame_a.mus.bin"
+
+	.ingame_b_mus_bin
+		BINARY "../mus/ingame_b.mus.bin"
+
+	.ingame_c_mus_bin
+		BINARY "../mus/ingame_c.mus.bin"
 
 	.gover_mus_bin
 		BINARY "../mus/gover.mus.bin"
 
+	.ending_1_mus_bin
+		BINARY "../mus/ending_1.mus.bin"
+
 	._wyz_songs
-		defw 	title_mus_bin, ingame_mus_bin, gover_mus_bin
+		defw 	title_mus_bin, ingame_a_mus_bin, ingame_b_mus_bin, ingame_c_mus_bin, gover_mus_bin, ending_1_mus_bin
 #endasm

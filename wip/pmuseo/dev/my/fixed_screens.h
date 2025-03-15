@@ -11,8 +11,8 @@ void game_ending (void) {
 	#endif
 	cpc_ShowTileMap (1);
 	
-	AY_PLAY_MUSIC (0);
-	espera_activa (500);
+	AY_PLAY_MUSIC (5);
+	espera_activa (0);
 	AY_STOP_SOUND ();
 }
 
@@ -21,7 +21,7 @@ void game_over (void) {
 	_x = 10; _y = 12; _gp_gen = " GAME UNDER "; print_str ();
 	_x = 10; _y = 13; _gp_gen = (unsigned char *) (spacer); print_str ();
 	
-	AY_PLAY_MUSIC (2);
+	AY_PLAY_MUSIC (4);
 	cpc_UpdateNow (0);
 	espera_activa (500);
 }
@@ -40,7 +40,7 @@ void game_over (void) {
 #ifdef PAUSE_ABORT
 	void pause_screen (void) {
 		_x = 10; _y = 11; _gp_gen = (unsigned char *)(spacer); print_str ();
-		_x = 10; _y = 12; _gp_gen = "   PAUSED   "; print_str ();
+		_x = 10; _y = 12; _gp_gen = "   PAUSA!   "; print_str ();
 		_x = 10; _y = 13; _gp_gen = (unsigned char *)(spacer); print_str ();
 		
 		cpc_UpdateNow (0);

@@ -220,6 +220,20 @@ void run_script (unsigned char whichs) {
                         // Opcode: E0 sc_n
                         AY_PLAY_SOUND (read_vbyte ());
                         break;
+                    case 0xE6:
+                        // MUSIC n
+                        sc_n = read_vbyte ();
+                        if (sc_n == 0xff) {
+                            AY_STOP_SOUND ();
+                        } else {
+#ifdef COMPRESSED_LEVELS
+                            level_data->music_id = sc_n;
+                            AY_PLAY_MUSIC (level_data->music_id);
+#else
+                            AY_PLAY_MUSIC (sc_n);
+#endif
+                        }
+                        break;
                     case 0xFF:
                         sc_terminado = 1;
                         break;
