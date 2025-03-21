@@ -40,7 +40,7 @@
 // In this section we define map dimensions, initial and authomatic ending conditions, etc.
 
 #define MAP_W						6		//
-#define MAP_H						6		// Map dimensions in screens
+#define MAP_H						7		// Map dimensions in screens
 #define SCR_INICIO					0		// Initial screen
 #define PLAYER_INI_X				2		//
 #define PLAYER_INI_Y				0		// Initial tile coordinates
@@ -85,7 +85,7 @@
 //#define ONLY_ONE_OBJECT					// If defined, only one object can be carried at a time.
 //#define OBJECT_COUNT				1		// Defines which FLAG will be used to store the object count.
 //#define REVERSE_OBJECTS_COUNT 			// Counts from PLAYER_NUM_OBJETOS to 0
-#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
+//#define DEACTIVATE_EVIL_TILE				// If defined, no killing tiles (behaviour 1) are detected.
 //#define CUSTOM_EVIL_TILE_CHECK			// 
 //#define PLAYER_BOUNCES					// If defined, collisions make player bounce
 //#define FULL_BOUNCE 						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
@@ -379,7 +379,7 @@ extern unsigned char def_keys [0];
 #ifndef COMPRESSED_LEVELS
 unsigned char behs [] = {
 	0, 0, 8, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8,10,
-	8, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 0, 4,
+	8, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 1, 4,
 	8, 0, 8, 4, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0
 };
 #endif

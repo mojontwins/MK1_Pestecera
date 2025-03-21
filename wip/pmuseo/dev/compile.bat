@@ -11,7 +11,7 @@ if [%1]==[clean] goto :clean
 cd ..\script
 if not exist %game%.spt goto :noscript
 echo Compilando script
-..\..\..\src\utils\msc3_mk1.exe %game%.spt 36 > nul
+..\..\..\src\utils\msc3_mk1.exe %game%.spt 42 > nul
 copy msc.h ..\dev\my > nul
 copy msc-config.h ..\dev\my > nul
 copy scripts.bin ..\dev\ > nul
@@ -21,7 +21,7 @@ cd ..\dev
 if [%1]==[justscripts] goto :compile
 
 echo Convirtiendo mapa
-..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 6 6 15 10 15  > nul
+..\..\..\src\utils\mapcnv.exe ..\map\mapa.map assets\mapa.h 6 7 15 10 15  > nul
 
 echo Convirtiendo enemigos/hotspots
 ..\..\..\src\utils\ene2h.exe ..\enems\enems.ene assets\enems.h
