@@ -9,6 +9,9 @@
 	extern unsigned char s_title [];
 	extern unsigned char s_marco [];
 	extern unsigned char s_ending [];
+	extern unsigned char s_intro [];
+	extern unsigned char s_creditos [];
+
 
 	#asm
 		._s_title
@@ -23,6 +26,14 @@
 	#asm
 		._s_ending
 			BINARY "../bin/endingc.bin"
+	#endasm
+	#asm
+		._s_intro
+			BINARY "../bin/introc.bin"
+	#endasm
+	#asm
+		._s_creditos
+			BINARY "../bin/creditosc.bin"
 	#endasm
 #endif
 

@@ -40,9 +40,13 @@ echo Importando GFX
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\marco.png out=..\bin\marco.bin silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\ending.png out=..\bin\ending.bin silent > nul
 ..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\title.png out=..\bin\title.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\intro.png out=..\bin\intro.bin silent > nul
+..\..\..\src\utils\mkts_om.exe platform=cpc cpcmode=%cpc_gfx_mode% pal=..\gfx\pal.png mode=superbuffer in=..\gfx\creditos.png out=..\bin\creditos.bin silent > nul
 ..\..\..\src\utils\apack.exe ..\bin\title.bin ..\bin\titlec.bin > nul
 ..\..\..\src\utils\apack.exe ..\bin\marco.bin ..\bin\marcoc.bin > nul
 ..\..\..\src\utils\apack.exe ..\bin\ending.bin ..\bin\endingc.bin > nul
+..\..\..\src\utils\apack.exe ..\bin\intro.bin ..\bin\introc.bin > nul
+..\..\..\src\utils\apack.exe ..\bin\creditos.bin ..\bin\creditosc.bin > nul
 
 ..\..\..\src\utils\mkts_om.exe platform=cpc mode=pals in=..\gfx\pal.png prefix=my_inks out=assets\pal.h silent > nul
 
