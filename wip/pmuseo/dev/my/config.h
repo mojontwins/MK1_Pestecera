@@ -16,7 +16,7 @@
 // Music indexes, comment if not applicable
 #define MUSIC_TITLE 				0
 #define MUSIC_INGAME 				1
-#define MUSIC_GOVER 				2
+//#define MUSIC_GOVER 				2
 //#define MUSIC_ENDING 				3
 //#define MUSIC_SCLEAR 				4
 
@@ -48,7 +48,7 @@
 //#define PLAYER_FIN_X				99		//
 //#define PLAYER_FIN_Y				99		// Player tile coordinates to finish game
 #define PLAYER_NUM_OBJETOS			5		// Objects to get to finish game
-#define PLAYER_LIFE 				50		// Max and starting life gauge.
+#define PLAYER_LIFE 				69		// Max and starting life gauge.
 #define PLAYER_REFILL				25		// Life recharge
 //#define PLAYER_DONT_LIMIT_LIFE				// PLAYER_LIFE isn't max.
 //#define COMPRESSED_LEVELS 				// use levels.h instead of mapa.h and enems.h (!)

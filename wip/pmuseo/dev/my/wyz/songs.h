@@ -22,6 +22,9 @@ extern unsigned char *wyz_songs [0];
 	.ending_1_mus_bin
 		BINARY "../mus/ending_1.mus.bin"
 
+	.intro_mus_bin
+		BINARY "../mus/intro.mus.bin"
+
 	._wyz_songs
-		defw 	title_mus_bin, ingame_a_mus_bin, ingame_b_mus_bin, ingame_c_mus_bin, gover_mus_bin, ending_1_mus_bin
+		defw 	title_mus_bin, ingame_a_mus_bin, ingame_b_mus_bin, ingame_c_mus_bin, gover_mus_bin, ending_1_mus_bin, intro_mus_bin
 #endasm
