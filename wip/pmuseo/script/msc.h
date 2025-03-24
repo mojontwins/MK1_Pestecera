@@ -145,6 +145,23 @@ void run_script (unsigned char whichs) {
                         ._flag_equal_val_ok
                     #endasm
                     break;
+                case 0x13:
+                    // IF FLAG sc_x <> sc_n
+                    // Opcode: 13 sc_x sc_n
+                    // readxy ();
+                    // sc_terminado = (flags [sc_x] == sc_y);
+                    #asm
+                            call _read_two_bytes_D_E
+                            // Set sc_terminado if flags [C] == E
+                            ld  a, d
+                            call undo_flag_reference_do
+                            cp  e
+                            jr  nz, _flag_different_val_ok
+                            ld  a, 1
+                            ld  (_sc_terminado), a
+                        ._flag_different_val_ok
+                    #endasm
+                    break;
                 case 0x20:
                     // IF PLAYER_TOUCHES sc_x, sc_y
                     // Opcode: 20 sc_x sc_y

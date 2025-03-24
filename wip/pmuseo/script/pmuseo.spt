@@ -11,6 +11,11 @@
 # La idea es que si estamos en las pantallas adyacentes a las puertas,
 comprobemos de dónde venimos y según donde vayamos cambiémos la música.
 
+# Cambior. Creo que quedará más sencillo usar una sola flag que
+# almacene el número de la música que suena.
+
+
+
 # Hay que inicializar las flags al entrar en el juego
 
 ENTERING GAME
@@ -21,9 +26,9 @@ ENTERING GAME
 			SET FLAG 3 = 0
 			SET FLAG 4 = 0
 			SET FLAG 5 = 0
-			SET FLAG 6 = 1
-			SET FLAG 7 = 0
-			SET FLAG 8 = 0
+
+			SET FLAG 6 = 1 		# Suena la canción 1 al empezar.
+			
 		END
     END
 
@@ -151,55 +156,66 @@ END
 #MUSICAS
 
 ENTERING SCREEN 24
-	IF FLAG 7 = 1
+	# Aquí hay que activar la canción 1 (si no está puesta)
+	IF FLAG 6 <> 1
 	THEN
-		SET FLAG 7 = 0
 		SET FLAG 6 = 1
 		MUSIC 1
 	END
 END
 
 ENTERING SCREEN 25
-	IF FLAG 6 = 1
+	# Aquí hay que activar la canción 2 (si no está puesta)
+	IF FLAG 6 <> 2
 	THEN
-		SET FLAG 7 = 1
-		SET FLAG 6 = 0
-		MUSIC 2
-	END
-END
-
-ENTERING SCREEN 3
-	IF FLAG 7 = 1
-	THEN
-		SET FLAG 7 = 0
-		SET FLAG 6 = 1
-		MUSIC 1
-	END
-END
-
-ENTERING SCREEN 9
-	IF FLAG 6 = 1
-	THEN
-		SET FLAG 7 = 1
-		SET FLAG 6 = 0
+		SET FLAG 6 = 2
 		MUSIC 2
 	END
 END
 
 ENTERING SCREEN 28
-	IF FLAG 8 = 1
+	# Aquí hay que activar la canción 2 (si no está puesta)
+	IF FLAG 6 <> 2
 	THEN
-		SET FLAG 8 = 0
-		SET FLAG 7 = 1
+		SET FLAG 6 = 2
 		MUSIC 2
 	END
 END
 
 ENTERING SCREEN 34
-	IF FLAG 7 = 1
+	# Aquí hay que activar la canción 3 (si no está puesta)
+	IF FLAG 6 <> 3
 	THEN
-		SET FLAG 7 = 0
-		SET FLAG 8 = 1
+		SET FLAG 6 = 3
 		MUSIC 3
+	END
+END
+
+ENTERING SCREEN 10
+	# Aquí vamos a definir un fire zone para que se ejecute 
+	# el script cuando andemos cerca del buquete.
+	IF TRUE
+	THEN
+		SET_FIRE_ZONE_TILES 13, 1, 13, 2
+	END
+END
+
+PRESS_FIRE AT SCREEN 10
+	# Aquí detectamos donde estamos para poner la música 1 o 2.
+	
+	IF PLAYER_TOUCHES 13, 1
+	IF FLAG 6 <> 1
+	THEN
+		# Saliendo
+		SET FLAG 6 = 1
+		MUSIC 1
+	END 
+
+	IF PLAYER_TOUCHES 13, 2
+	IF FLAG 6 <> 2
+	THEN
+		# Entrando
+		SET FLAG 6 = 2
+		MUSIC 2
 	END
 END
