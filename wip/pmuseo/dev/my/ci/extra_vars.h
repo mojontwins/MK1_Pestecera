@@ -19,8 +19,8 @@ unsigned char texto_pant_10 [] = "SALA EXPOSICION P4 ";
 unsigned char texto_pant_11 [] = "SALA EXPOSICION P4 ";
 		
 unsigned char texto_pant_12 [] = "   SIGUE BAJANDO   ";
-unsigned char texto_pant_13 [] = "   DRAMA Y QUEMA   ";
-unsigned char texto_pant_14 [] = "SALA EXPOSICION P3 ";
+unsigned char texto_pant_13 [] = "SALA EXPOSICION P3 ";
+unsigned char texto_pant_14 [] = "   DRAMA Y QUEMA   ";
 unsigned char texto_pant_15 [] = "SALA EXPOSICION P3 ";
 unsigned char texto_pant_16 [] = "SALA EXPOSICION P3 ";
 unsigned char texto_pant_17 [] = "SALA EXPOSICION P3 ";

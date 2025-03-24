@@ -12,7 +12,7 @@ blackout ();
 cpc_ShowTileMap (1);
 AY_PLAY_MUSIC (6);
 
-espera_activa (600);
+espera_activa (400);
 
 #ifdef MODE_128K
     // Resource 2 = ending
@@ -23,5 +23,5 @@ espera_activa (600);
 cpc_ShowTileMap (1);
 
 
-espera_activa (500);
+espera_activa (400);
 AY_STOP_SOUND ();
