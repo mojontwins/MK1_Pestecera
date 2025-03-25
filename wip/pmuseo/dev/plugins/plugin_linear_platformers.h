@@ -105,7 +105,7 @@ void linear_vertical_axis (void) {
 		// Jump B
 
 		#ifdef IS_CPC
-			if (cpc_TestKey (KEY_DOWN) || cpc_TestKey(KEY_BUTTON_B))
+			if (cpc_TestKey (KEY_DOWN) || cpc_TestKey(KEY_BUTTON_B) || cpc_TestKey(KEY_AUX1))
 		#else
 			if ((pad0 & sp_DOWN) == 0)
 		#endif
