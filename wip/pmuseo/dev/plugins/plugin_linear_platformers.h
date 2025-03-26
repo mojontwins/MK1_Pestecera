@@ -51,19 +51,18 @@
 signed int p_jump_vx, p_jump_vy;
 
 void linear_vertical_axis (void) {
+	if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
+		p_saltando = 0;
+	}
+
 	if (p_saltando) {
 		p_cont_salto ++;
-		if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
-			p_saltando = 0;
+	
+		if (p_cont_salto > (PLAYER_JUMPING_FRAMES/2)) {
+			p_vy = p_jump_vy;
 		} else {
-			p_vx = p_jump_vx;
-
-			if (p_cont_salto > (PLAYER_JUMPING_FRAMES/2)) {
-				p_vy = p_jump_vy;
-			} else {
-				p_vy = -p_jump_vy;
-			}
-		}
+			p_vy = -p_jump_vy;
+		}		
 	} 
 
 	if (p_saltando == 0) {
@@ -135,8 +134,10 @@ void linear_vertical_axis (void) {
 	}
 }
 
-void linear_horizontal_axis (void) {	
-	if (possee) {
+void linear_horizontal_axis (void) {
+	if (p_saltando) {
+		p_vx = p_jump_vx;
+	} else if (possee) {
 		// On platform
 		#ifdef IS_CPC
 			if (cpc_TestKey (KEY_LEFT))
