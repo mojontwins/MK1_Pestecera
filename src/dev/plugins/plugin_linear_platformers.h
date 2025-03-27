@@ -51,30 +51,28 @@
 signed int p_jump_vx, p_jump_vy;
 
 void linear_vertical_axis (void) {
+	
 	if (p_saltando) {
-		p_cont_salto ++;
-		if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
-			p_saltando = 0;
-		} else {
-			p_vx = p_jump_vx;
 
 			if (p_cont_salto > (PLAYER_JUMPING_FRAMES/2)) {
 				p_vy = p_jump_vy;
 			} else {
 				p_vy = -p_jump_vy;
 			}
-		}
-	} 
 
+	} else {
+		// Gravity
 	if (p_saltando == 0) {
 		p_vy = (PLAYER_LINEAR_GRAVITY << FIXBITS);
 	}
 
+
+		if (possee) {
+	
 	// Jump A 
 
-	if (possee) {
 		#ifdef IS_CPC
-			if (cpc_TestKey (KEY_UP))
+				if (cpc_TestKey (KEY_UP) || cpc_TestKey(KEY_BUTTON_B) || cpc_TestKey(KEY_AUX2))
 		#else
 			if ((pad0 & sp_UP) == 0)
 		#endif
@@ -105,7 +103,7 @@ void linear_vertical_axis (void) {
 		// Jump B
 
 		#ifdef IS_CPC
-			if (cpc_TestKey (KEY_DOWN))
+				if (cpc_TestKey (KEY_DOWN) || cpc_TestKey(KEY_BUTTON_A))
 		#else
 			if ((pad0 & sp_DOWN) == 0)
 		#endif
@@ -134,9 +132,19 @@ void linear_vertical_axis (void) {
 		}
 	}
 }
+}
 
 void linear_horizontal_axis (void) {	
-	if (possee) {
+	if (p_saltando) {
+		p_vx = p_jump_vx;
+
+		p_cont_salto ++;
+		if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
+			p_saltando = 0;
+		}
+
+
+	} else if (possee) {
 		// On platform
 		#ifdef IS_CPC
 			if (cpc_TestKey (KEY_LEFT))
@@ -144,10 +152,8 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_LEFT) == 0)
 		#endif
 		{
-			if (possee) {
 				p_vx = -(PLAYER_LINEAR_VX << FIXBITS);
 				p_facing = 0;
-			} 
 		} else
 
 		#ifdef IS_CPC
@@ -156,27 +162,23 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_RIGHT) == 0)
 		#endif
 		{
-			if (possee) {
 				p_vx = (PLAYER_LINEAR_VX << FIXBITS);
 				p_facing = 1;
-			}
 		} else {
-			p_vx = 0; 
 			p_vx = 0; 
 			#ifdef IS_CPC
 				gpx &= 0xfe;
+				p_x = gpx << 6;
 			#endif
 		}
 	} else {
-		// Airborne
-		if (p_saltando == 0) {
 			p_vx = 0; 
 			#ifdef IS_CPC
 				gpx &= 0xfe;
+			p_x = gpx << 6;
 			#endif
 		}
 	}
-}
 
 void linear_custom_animation (void) {
 	gpit = p_facing ? 0 : 4;

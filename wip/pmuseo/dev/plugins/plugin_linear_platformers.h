@@ -51,92 +51,99 @@
 signed int p_jump_vx, p_jump_vy;
 
 void linear_vertical_axis (void) {
-	if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
-		p_saltando = 0;
-	}
-
+	
 	if (p_saltando) {
-		p_cont_salto ++;
 	
 		if (p_cont_salto > (PLAYER_JUMPING_FRAMES/2)) {
 			p_vy = p_jump_vy;
 		} else {
 			p_vy = -p_jump_vy;
 		}		
-	} 
 
-	if (p_saltando == 0) {
-		p_vy = (PLAYER_LINEAR_GRAVITY << FIXBITS);
-	}
-
-	// Jump A 
-
-	if (possee) {
-		#ifdef IS_CPC
-			if (cpc_TestKey (KEY_UP) || cpc_TestKey(KEY_BUTTON_B) || cpc_TestKey(KEY_AUX2))
-		#else
-			if ((pad0 & sp_UP) == 0)
-		#endif
-		{
-			p_jump_vy = (PLAYER_JUMP_A_VY << FIXBITS);
-
-			#ifdef PLAYER_CAN_JUMP_UP
-				#ifdef IS_CPC
-					if (cpc_TestKey (KEY_LEFT))
-				#else
-					if ((pad0 & sp_LEFT) == 0)
-				#endif
-					p_jump_vx = -(PLAYER_JUMP_A_VX << FIXBITS);
-
-				#ifdef IS_CPC
-					if (cpc_TestKey (KEY_RIGHT))
-				#else
-					if ((pad0 & sp_RIGHT) == 0)
-				#endif
-					p_jump_vx = (PLAYER_JUMP_A_VX << FIXBITS);
-			#else
-				p_jump_vx = p_facing ? (PLAYER_JUMP_A_VX << FIXBITS) : -(PLAYER_JUMP_A_VX << FIXBITS);
-			#endif
-
-			p_cont_salto = 0; p_saltando = 1;
+	} else {
+		// Gravity
+		if (p_saltando == 0) {
+			p_vy = (PLAYER_LINEAR_GRAVITY << FIXBITS);
 		}
 
-		// Jump B
 
-		#ifdef IS_CPC
-			if (cpc_TestKey (KEY_DOWN) || cpc_TestKey(KEY_BUTTON_A))
-		#else
-			if ((pad0 & sp_DOWN) == 0)
-		#endif
-		{
-			p_jump_vy = (PLAYER_JUMP_B_VY << FIXBITS);
-
-			#ifdef PLAYER_CAN_JUMP_UP
-				#ifdef IS_CPC
-					if (cpc_TestKey (KEY_LEFT))
-				#else
-					if ((pad0 & sp_LEFT) == 0)
-				#endif
-					p_jump_vx = -(PLAYER_JUMP_B_VX << FIXBITS);
-
-				#ifdef IS_CPC
-					if (cpc_TestKey (KEY_RIGHT))
-				#else
-					if ((pad0 & sp_RIGHT) == 0)
-				#endif
-					p_jump_vx = (PLAYER_JUMP_B_VX << FIXBITS);
+		if (possee) {
+	
+			// Jump A 
+		
+			#ifdef IS_CPC
+				if (cpc_TestKey (KEY_UP) || cpc_TestKey(KEY_BUTTON_B) || cpc_TestKey(KEY_AUX2))
 			#else
-				p_jump_vx = p_facing ? (PLAYER_JUMP_B_VX << FIXBITS) : -(PLAYER_JUMP_B_VX << FIXBITS);
+				if ((pad0 & sp_UP) == 0)
 			#endif
+			{
+				p_jump_vy = (PLAYER_JUMP_A_VY << FIXBITS);
 
-			p_cont_salto = 0; p_saltando = 1;
-		}
+				#ifdef PLAYER_CAN_JUMP_UP
+					#ifdef IS_CPC
+						if (cpc_TestKey (KEY_LEFT))
+					#else
+						if ((pad0 & sp_LEFT) == 0)
+					#endif
+						p_jump_vx = -(PLAYER_JUMP_A_VX << FIXBITS);
+
+					#ifdef IS_CPC
+						if (cpc_TestKey (KEY_RIGHT))
+					#else
+						if ((pad0 & sp_RIGHT) == 0)
+					#endif
+						p_jump_vx = (PLAYER_JUMP_A_VX << FIXBITS);
+				#else
+					p_jump_vx = p_facing ? (PLAYER_JUMP_A_VX << FIXBITS) : -(PLAYER_JUMP_A_VX << FIXBITS);
+				#endif
+
+				p_cont_salto = 0; p_saltando = 1;
+			}
+
+			// Jump B
+
+			#ifdef IS_CPC
+				if (cpc_TestKey (KEY_DOWN) || cpc_TestKey(KEY_BUTTON_A))
+			#else
+				if ((pad0 & sp_DOWN) == 0)
+			#endif
+			{
+				p_jump_vy = (PLAYER_JUMP_B_VY << FIXBITS);
+
+				#ifdef PLAYER_CAN_JUMP_UP
+					#ifdef IS_CPC
+						if (cpc_TestKey (KEY_LEFT))
+					#else
+						if ((pad0 & sp_LEFT) == 0)
+					#endif
+						p_jump_vx = -(PLAYER_JUMP_B_VX << FIXBITS);
+
+					#ifdef IS_CPC
+						if (cpc_TestKey (KEY_RIGHT))
+					#else
+						if ((pad0 & sp_RIGHT) == 0)
+					#endif
+						p_jump_vx = (PLAYER_JUMP_B_VX << FIXBITS);
+				#else
+					p_jump_vx = p_facing ? (PLAYER_JUMP_B_VX << FIXBITS) : -(PLAYER_JUMP_B_VX << FIXBITS);
+				#endif
+
+				p_cont_salto = 0; p_saltando = 1;
+			}
+		} 
 	}
 }
 
 void linear_horizontal_axis (void) {
 	if (p_saltando) {
 		p_vx = p_jump_vx;
+
+		p_cont_salto ++;
+		if (p_cont_salto >= PLAYER_JUMPING_FRAMES || (possee && p_cont_salto > 1)) {
+			p_saltando = 0;
+		}
+
+
 	} else if (possee) {
 		// On platform
 		#ifdef IS_CPC
@@ -145,10 +152,8 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_LEFT) == 0)
 		#endif
 		{
-			if (possee) {
-				p_vx = -(PLAYER_LINEAR_VX << FIXBITS);
-				p_facing = 0;
-			} 
+			p_vx = -(PLAYER_LINEAR_VX << FIXBITS);
+			p_facing = 0;
 		} else
 
 		#ifdef IS_CPC
@@ -157,25 +162,21 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_RIGHT) == 0)
 		#endif
 		{
-			if (possee) {
-				p_vx = (PLAYER_LINEAR_VX << FIXBITS);
-				p_facing = 1;
-			}
+			p_vx = (PLAYER_LINEAR_VX << FIXBITS);
+			p_facing = 1;
 		} else {
-			p_vx = 0; 
 			p_vx = 0; 
 			#ifdef IS_CPC
 				gpx &= 0xfe;
+				p_x = gpx << 6;
 			#endif
 		}
 	} else {
-		// Airborne
-		if (p_saltando == 0) {
-			p_vx = 0; 
-			#ifdef IS_CPC
-				gpx &= 0xfe;
-			#endif
-		}
+		p_vx = 0; 
+		#ifdef IS_CPC
+			gpx &= 0xfe;
+			p_x = gpx << 6;
+		#endif
 	}
 }
 
