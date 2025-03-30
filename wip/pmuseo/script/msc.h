@@ -169,6 +169,13 @@ void run_script (unsigned char whichs) {
                     sc_x <<= 4; sc_y <<= 4;
                     sc_terminado = (!(gpx + 15 >= sc_x && gpx <= sc_x + 15 && gpy + 15 >= sc_y && gpy <= sc_y + 15));
                     break;
+                case 0x22:
+                    // IF PLAYER_IN_Y y1, y2
+                    // Opcode: 22 y1 y2
+                    sc_x = read_byte ();
+                    sc_y = read_byte ();
+                    sc_terminado = (!((p_y >> FIXBITS) >= sc_x && (p_y >> FIXBITS) <= sc_y));
+                    break;
                 case 0xF0:
                      // IF TRUE
                      // Opcode: F0
@@ -251,6 +258,9 @@ void run_script (unsigned char whichs) {
 #endif
                         }
                         break;
+                    case 0xF2:
+                        // BREAK
+                        return;
                     case 0xFF:
                         sc_terminado = 1;
                         break;

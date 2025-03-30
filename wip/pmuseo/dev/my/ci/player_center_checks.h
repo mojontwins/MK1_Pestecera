@@ -5,10 +5,8 @@
 
 // rdb contains behaviour at the center of the player
 
-// estrujators have behaviour 2. Use this to crush player!
-if ((rdb & 2) == 2) {
-	p_vy = 0;
-
+// Se usa para el evil tile en este juego
+if ((rdb & 1) == 1) {
 	#ifdef PLAYER_FLICKERS
 		if (p_estado == EST_NORMAL)
 	#endif		

@@ -152,8 +152,9 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_LEFT) == 0)
 		#endif
 		{
-			p_vx = -(PLAYER_LINEAR_VX << FIXBITS);
-			p_facing = 0;
+			if (p_facing == 0) {
+				p_vx = -(PLAYER_LINEAR_VX << FIXBITS);
+			} else p_facing = 0;
 		} else
 
 		#ifdef IS_CPC
@@ -162,8 +163,9 @@ void linear_horizontal_axis (void) {
 			if ((pad0 & sp_RIGHT) == 0)
 		#endif
 		{
-			p_vx = (PLAYER_LINEAR_VX << FIXBITS);
-			p_facing = 1;
+			if (p_facing == 1) {
+				p_vx = (PLAYER_LINEAR_VX << FIXBITS);
+			} else p_facing = 1;
 		} else {
 			p_vx = 0; 
 			#ifdef IS_CPC
