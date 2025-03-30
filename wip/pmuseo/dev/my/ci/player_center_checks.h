@@ -8,7 +8,7 @@
 // Se usa para el evil tile en este juego
 if ((rdb & 1) == 1) {
 	#ifdef PLAYER_FLICKERS
-		if (p_estado == EST_NORMAL)
+		if (p_estado == EST_NORMAL && half_life)
 	#endif		
 	{
 		p_killme = SFX_SPIKES;
