@@ -433,7 +433,7 @@ Function procesaClausulas (f As integer) As String
 								clausulasUsed (&H21) = -1
 								numClausulas = numClausulas + 1
 							Case "PLAYER_IN_Y":
-								clausula = clausula + chr (&H22) + chr (val (lP (2)) * 16 - 15) + chr (val (lP (4)) * 16 + 15)
+								clausula = clausula + chr (&H22) + chr (val (lP (2))) + chr (val (lP (4)))
 								clausulasUsed (&H22) = -1
 								numClausulas = numClausulas + 1
 							Case "PLAYER_IN_Y_TILES":

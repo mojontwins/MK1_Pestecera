@@ -1,5 +1,5 @@
-// MTE MK1 (la Churrera) v5.0
-// Copyleft 2010-2014, 2020 by the Mojon Twins
+// MTE MK1 (la Churrera) v5.12
+// Copyleft 2010-2014, 2020-2025 by the Mojon Twins
 
 // player.h
 
@@ -480,7 +480,7 @@ unsigned char player_move (void) {
 		#else
 			// Greed Optimization tip! Remove this line and uncomment the next one:
 			// (As long as you don't have type 8 blocks over type 4 blocks in your game, the short line is fine)
-			if ((at1 & 8) || (at2 & 8) || ((gpy & 15) < 8 && ((at1 & 4) || (at2 & 4))))
+			if ((at1 & 8) || (at2 & 8) || (((gpy - 1) & 15) < 8 && ((at1 & 4) || (at2 & 4))))
 			//if (((gpy - 1) & 15) < 7 && ((at1 & 12) || (at2 & 12)))
 		#endif			
 		{
